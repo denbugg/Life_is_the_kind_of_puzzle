@@ -16,6 +16,8 @@ RE = {
     "compat_val":  re.compile(r"\[VAL real\] H@1 ([\d.]+) V@1 ([\d.]+)"),
     "restore_step":re.compile(r"step (\d+)/(\d+) loss ([\d.]+) lr \S+ ([\d.]+)s/it"),
     "restore_val": re.compile(r"\[VAL\] SSIM base\(distorted\) ([\d.]+) -> restored ([\d.]+)"),
+    "pair_step":   re.compile(r"step (\d+)/(\d+) loss ([\d.]+) acc@\d+ ([\d.]+) lr \S+ ([\d.]+)s/it"),
+    "pair_val":    re.compile(r"\[VAL real\] acc@\d+ ([\d.]+)"),
     "infer_prog":  re.compile(r"(\d+)/(\d+)\s+([\d.]+)s/img\s+eta ([\d.]+)min"),
     "infer_done":  re.compile(r"wrote .*\((\d+) imgs, ([\d.]+) MB"),
 }
@@ -63,6 +65,17 @@ def parse(kind, path):
             m = RE["restore_val"].search(ln)
             if m:
                 out["val"].append(dict(s=last_step, a=float(m.group(1)), b=float(m.group(2))))
+        elif kind == "pair":
+            m = RE["pair_step"].search(ln)
+            if m:
+                s, tot, loss, acc, sit = m.groups()
+                last_step = int(s)
+                out["steps"].append(dict(s=int(s), total=int(tot), loss=float(loss),
+                                         h=float(acc), sit=float(sit)))
+                continue
+            m = RE["pair_val"].search(ln)
+            if m:
+                out["val"].append(dict(s=last_step, a=float(m.group(1))))
         elif kind == "infer":
             m = RE["infer_prog"].search(ln)
             if m:
@@ -105,7 +118,7 @@ def api():
             src = json.load(open(SOURCES_JSON))
         except Exception:
             src = {}
-    data = {k: parse(k, src.get(k)) for k in ("compat", "restore", "infer")}
+    data = {k: parse(k, src.get(k)) for k in ("compat", "pair", "restore", "infer")}
     return {"t": time.time(), "jobs": data, "stages": stages()}
 
 
@@ -189,6 +202,15 @@ function card(name,j){
   charts=`<canvas id=c_${name}></canvas>
    <div class=leg><span><i style=background:#3fb950></i>restored SSIM</span>
    <span><i style=background:#8b949e></i>distorted SSIM</span></div>`;
+ }else if(j.kind=='pair'){
+  const s=j.steps.at(-1)||{},v=j.val.at(-1)||{};
+  kv=`<div><b>${(s.s||0)}</b><span>/ ${s.total||'?'} step</span></div>
+      <div><b>${((v.a??s.h)||0).toFixed(3)}</b><span>acc@cand</span></div>
+      <div><b>${(s.loss||0).toFixed(2)}</b><span>loss</span></div>
+      <div><b>${j.eta_min??'–'}</b><span>eta min</span></div>`;
+  charts=`<canvas id=c_${name}></canvas>
+   <div class=leg><span><i style=background:#58a6ff></i>train acc</span>
+   <span><i style=background:#3fb950></i>val acc</span></div>`;
  }else{
   const e=j.extra||{};
   kv=`<div><b>${e.i||e.imgs||0}</b><span>/ ${e.n||700} imgs</span></div>
@@ -207,7 +229,7 @@ async function tick(){
   $('clock').textContent='updated '+new Date().toLocaleTimeString()+' · auto-refresh 3s';
   $('stages').innerHTML=Object.entries(d.stages).map(([k,v])=>
     `<div class=chip><span class="dot ${v?'done':'missing'}"></span>${k}</div>`).join('');
-  const order=['compat','restore','infer'];
+  const order=['compat','pair','restore','infer'];
   $('cards').innerHTML=order.map(n=>card(n,d.jobs[n])).join('');
   const j=d.jobs;
   if(j.compat.steps.length)chart($('c_compat'),[
@@ -215,6 +237,10 @@ async function tick(){
     {c:'#bc8cff',pts:j.compat.steps.map(p=>[p.s,p.v])},
     {c:'#3fb950',dot:1,pts:j.compat.val.map(p=>[p.s,p.a])}],0,
     Math.max(0.3,...j.compat.steps.map(p=>p.h),...j.compat.val.map(p=>p.a))*1.1);
+  if(j.pair.steps.length)chart($('c_pair'),[
+    {c:'#58a6ff',pts:j.pair.steps.map(p=>[p.s,p.h])},
+    {c:'#3fb950',dot:1,pts:j.pair.val.map(p=>[p.s,p.a])}],0,
+    Math.max(0.3,...j.pair.steps.map(p=>p.h),...j.pair.val.map(p=>p.a))*1.1);
   if(j.restore.steps.length)chart($('c_restore'),[
     {c:'#3fb950',dot:1,pts:j.restore.val.map(p=>[p.s,p.b])},
     {c:'#8b949e',dot:1,pts:j.restore.val.map(p=>[p.s,p.a])}],0.4,

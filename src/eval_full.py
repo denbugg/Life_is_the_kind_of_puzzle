@@ -6,7 +6,7 @@ import torch
 from skimage.metrics import structural_similarity as sk_ssim
 from config import TRAIN_INP, TRAIN_TGT, CACHE_DIR
 from imgio import load, to_frags, assemble, train_val_split
-from pipeline import load_compat, load_restore, restore_full, process
+from pipeline import load_compat, load_restore, load_pair, restore_full, process
 
 DEV = "cuda"
 
@@ -21,12 +21,20 @@ def main():
     ap.add_argument("--iters", type=int, default=4_000_000)
     ap.add_argument("--restarts", type=int, default=3)
     ap.add_argument("--no_restore", action="store_true")
+    ap.add_argument("--use_pair", action="store_true", help="rescore top-K with pairwise")
+    ap.add_argument("--full_pair", action="store_true", help="full NxN pairwise scoring")
+    ap.add_argument("--K", type=int, default=32)
+    ap.add_argument("--alpha", type=float, default=3.0)
     args = ap.parse_args()
 
     compat, cck = load_compat()
     restore, rck = (None, None) if args.no_restore else load_restore()
+    pair, pck = (None, None)
+    if args.use_pair or args.full_pair:
+        pair, pck = load_pair()
     print(f"compat step={cck.get('step')} val={cck.get('val')}; "
-          f"restore step={rck.get('step') if rck else None} val={rck.get('val') if rck else None}")
+          f"restore step={rck.get('step') if rck else None} val={rck.get('val') if rck else None}; "
+          f"pair step={pck.get('step') if pck else None} val={pck.get('val') if pck else None}")
 
     z = np.load(os.path.join(CACHE_DIR, "perms.npz"), allow_pickle=True)
     names_, inv_ = z["names"], z["inv"]
@@ -38,8 +46,10 @@ def main():
     for nm in val[:args.n]:
         frags = to_frags(load(os.path.join(TRAIN_INP, nm)))
         tgt = load(os.path.join(TRAIN_TGT, nm))
-        out, place, assembled = process(frags, compat, restore,
-                                        dict(iters=args.iters, restarts=args.restarts))
+        out, place, assembled = process(
+            frags, compat, restore,
+            dict(iters=args.iters, restarts=args.restarts, full_pair=args.full_pair),
+            pair=pair, rescore_kw=dict(K=args.K, alpha=args.alpha))
         inv = gt[nm]
         accs.append(float(np.mean(place == inv)))
         fin.append(ssim(tgt, out))

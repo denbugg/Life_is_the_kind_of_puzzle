@@ -131,7 +131,77 @@ def solve_from_scores(R, D, iters=3_000_000, restarts=3, T_scale=1.0, seed0=0):
     return best, bestv
 
 
-def solve_image(frags_np, model, device="cuda", **kw):
+@torch.no_grad()
+def rescore_pairwise(pair_model, frags_np, R, D, K=32, alpha=3.0, device="cuda", bs=16384):
+    """Blend standardized siamese scores with pairwise logits on top-K candidates.
+    Keeps a smooth objective (non-topK keep siamese order) while topK get the
+    more accurate pairwise signal."""
+    pair_model.eval()
+    x = torch.from_numpy(np.ascontiguousarray(frags_np)).permute(0, 3, 1, 2).float().div_(255).to(device)
+    xt = x.transpose(-1, -2)
+    N = x.shape[0]
+
+    def zc(M):
+        return (M - M.mean()) / (M.std() + 1e-6)
+
+    def do(M, feat):
+        base = zc(M).copy()
+        Mm = M.copy(); np.fill_diagonal(Mm, -1e30)
+        topk = np.argpartition(-Mm, K, axis=1)[:, :K]           # (N,K)
+        anchors = np.repeat(np.arange(N), K)
+        cands = topk.reshape(-1)
+        logits = np.empty(len(anchors), np.float32)
+        for s in range(0, len(anchors), bs):
+            a = torch.as_tensor(anchors[s:s + bs], device=device)
+            c = torch.as_tensor(cands[s:s + bs], device=device)
+            pair = torch.cat([feat[a], feat[c]], dim=-1)
+            with torch.autocast("cuda", dtype=torch.float16):
+                lg = pair_model(pair).float()
+            logits[s:s + bs] = lg.cpu().numpy()
+        lz = (logits - logits.mean()) / (logits.std() + 1e-6)
+        for i in range(N):
+            base[i, topk[i]] += alpha * lz[i * K:(i + 1) * K]
+        return base.astype(np.float32)
+
+    return do(R, x), do(D, xt)
+
+
+@torch.no_grad()
+def pairwise_scores_full(pair_model, frags_np, device="cuda", bs=16384):
+    """Full NxN pairwise compatibility (bypasses any siamese pre-filter)."""
+    pair_model.eval()
+    x = torch.from_numpy(np.ascontiguousarray(frags_np)).permute(0, 3, 1, 2).float().div_(255).to(device)
+    xt = x.transpose(-1, -2)
+    N = x.shape[0]
+    ii, jj = np.meshgrid(np.arange(N), np.arange(N), indexing="ij")
+    ii = ii.reshape(-1); jj = jj.reshape(-1)
+
+    def do(feat):
+        out = np.empty(N * N, np.float32)
+        for s in range(0, N * N, bs):
+            a = torch.as_tensor(ii[s:s + bs], device=device)
+            b = torch.as_tensor(jj[s:s + bs], device=device)
+            pair = torch.cat([feat[a], feat[b]], dim=-1)
+            with torch.autocast("cuda", dtype=torch.float16):
+                lg = pair_model(pair).float()
+            out[s:s + bs] = lg.cpu().numpy()
+        return out.reshape(N, N)
+
+    return do(x), do(xt)
+
+
+def solve_image(frags_np, model, device="cuda", pair_model=None, rescore_kw=None,
+                full_pair=False, **kw):
+    if full_pair and pair_model is not None:
+        R, D = pairwise_scores_full(pair_model, frags_np, device)
+    else:
+        R, D = compat_scores(model, frags_np, device)
+        if pair_model is not None:
+            R, D = rescore_pairwise(pair_model, frags_np, R, D, **(rescore_kw or {}))
+    place, v = solve_from_scores(R, D, **kw)
+    return place, R, D, v
     R, D = compat_scores(model, frags_np, device)
+    if pair_model is not None:
+        R, D = rescore_pairwise(pair_model, frags_np, R, D, **(rescore_kw or {}))
     place, v = solve_from_scores(R, D, **kw)
     return place, R, D, v

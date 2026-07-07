@@ -30,9 +30,18 @@ def main():
     ap.add_argument("--restarts", type=int, default=3)
     ap.add_argument("--tscale", type=float, default=1.0)
     ap.add_argument("--tag", default="compat")
+    ap.add_argument("--use_pair", action="store_true")
+    ap.add_argument("--full_pair", action="store_true")
+    ap.add_argument("--K", type=int, default=32)
+    ap.add_argument("--alpha", type=float, default=3.0)
     args = ap.parse_args()
 
     model = load_compat(args.tag)
+    pair = None
+    if args.use_pair or args.full_pair:
+        from pipeline import load_pair
+        pair, pck = load_pair()
+        print(f"pair step={pck.get('step')} val={pck.get('val')}")
     z = np.load(os.path.join(CACHE_DIR, "perms.npz"), allow_pickle=True)
     names_, inv_, conf_ = z["names"], z["inv"], z["conf"]  # materialize once
     gt = {n: (inv_[i], conf_[i]) for i, n in enumerate(names_)}
@@ -43,7 +52,9 @@ def main():
     for k, nm in enumerate(val[:args.n]):
         frags = to_frags(load(os.path.join(TRAIN_INP, nm)))
         tgt = load(os.path.join(TRAIN_TGT, nm))
-        place, R, D, v = solve_image(frags, model, DEV, iters=args.iters,
+        place, R, D, v = solve_image(frags, model, DEV, pair_model=pair,
+                                     rescore_kw=dict(K=args.K, alpha=args.alpha),
+                                     full_pair=args.full_pair, iters=args.iters,
                                      restarts=args.restarts, T_scale=args.tscale)
         inv, conf = gt[nm]
         inv = inv.astype(np.int64)

@@ -144,5 +144,25 @@ class CompatNet(nn.Module):
         return n(eR), n(eL), n(eT), n(eB)
 
 
+class PairwiseNet(nn.Module):
+    """Sees both fragments straddling the seam (3,20,40) -> compatibility logit.
+    More expressive than siamese dot-product; used to re-score top-K candidates."""
+    def __init__(self, C=64):
+        super().__init__()
+        self.body = nn.Sequential(
+            nn.Conv2d(3, C, 3, padding=1), nn.GELU(),
+            ConvBlock(C, C),
+            nn.Conv2d(C, 2 * C, 3, stride=2, padding=1), nn.GELU(),     # 10x20
+            ConvBlock(2 * C, 2 * C),
+            nn.Conv2d(2 * C, 4 * C, 3, stride=2, padding=1), nn.GELU(),  # 5x10
+            ConvBlock(4 * C, 4 * C),
+            nn.AdaptiveAvgPool2d(1), nn.Flatten(),
+        )
+        self.head = nn.Sequential(nn.Linear(4 * C, 2 * C), nn.GELU(), nn.Linear(2 * C, 1))
+
+    def forward(self, pair):        # pair: (B,3,20,40)
+        return self.head(self.body(pair)).squeeze(-1)
+
+
 def count_params(m):
     return sum(p.numel() for p in m.parameters())
