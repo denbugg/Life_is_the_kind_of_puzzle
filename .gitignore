@@ -1,3 +1,13 @@
 test.zip
 train.zip
 submission.zip
+
+# big stuff lives on E: — never commit
+data/
+*.zip
+*.pt
+*.npz
+*.png
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
