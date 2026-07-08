@@ -35,15 +35,20 @@ def build(frags, has_right, offset, nA, M, gen):
 
 
 def step_loss(model, frags_b, ph, pv, nA, M, gen):
-    loss = 0.0; acc = 0.0; nb = 0
+    """Build ALL pairs for the step and score them in ONE model() call. This is
+    critical for DataParallel: it replicates the model once and splits the big
+    pair batch across GPUs, instead of paying replication overhead per sub-call."""
+    chunks = []
     for frags in frags_b:
         for has, off, tr in ((ph, 1, False), (pv, GRID, True)):
             a, cand = build(frags, has, off, nA, M, gen)
-            pairs = make_pairs(frags, a, cand, tr)
-            logits = model(pairs).view(nA, M)
-            loss = loss + F.cross_entropy(logits, torch.zeros(nA, dtype=torch.long, device=DEV))
-            acc += (logits.argmax(1) == 0).float().mean().item(); nb += 1
-    return loss / nb, acc / nb
+            chunks.append(make_pairs(frags, a, cand, tr))     # (nA*M, 3, 20, 40)
+    G = len(chunks)
+    logits = model(torch.cat(chunks, 0)).view(G, nA, M)       # one call; order preserved
+    tgt = torch.zeros(G * nA, dtype=torch.long, device=DEV)
+    loss = F.cross_entropy(logits.reshape(G * nA, M), tgt)
+    acc = (logits.argmax(-1) == 0).float().mean().item()
+    return loss, acc
 
 
 @torch.no_grad()
@@ -60,18 +65,19 @@ def evaluate(model, vdl, ph, pv, gen, M=32, nA=48, n=16):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--steps", type=int, default=9000)
-    ap.add_argument("--bs", type=int, default=3)
-    ap.add_argument("--nA", type=int, default=96)
-    ap.add_argument("--M", type=int, default=24)
-    ap.add_argument("--lr", type=float, default=1.2e-3)
-    ap.add_argument("--real_prob", type=float, default=0.0)
+    ap.add_argument("--steps", type=int, default=25000)
+    ap.add_argument("--bs", type=int, default=2)
+    ap.add_argument("--nA", type=int, default=48)
+    ap.add_argument("--M", type=int, default=40)
+    ap.add_argument("--lr", type=float, default=1.0e-3)
+    ap.add_argument("--real_prob", type=float, default=0.6)   # train on REAL degradation, not just synthetic
     ap.add_argument("--workers", type=int, default=8)
+    ap.add_argument("--seed", type=int, default=SEED)   # differ across ensemble members
     ap.add_argument("--tag", default="pair")
     args = ap.parse_args()
-    torch.manual_seed(SEED); np.random.seed(SEED)
+    torch.manual_seed(args.seed); np.random.seed(args.seed)
     torch.backends.cudnn.benchmark = True
-    gen = torch.Generator(device=DEV); gen.manual_seed(SEED)
+    gen = torch.Generator(device=DEV); gen.manual_seed(args.seed)
 
     trn, val = train_val_split()
     dl = DataLoader(CompatDataset(trn, args.real_prob), batch_size=args.bs, shuffle=True,
@@ -85,6 +91,13 @@ def main():
 
     model = PairwiseNet().to(DEV)
     print(f"PairwiseNet params: {count_params(model):,}", flush=True)
+    ngpu = torch.cuda.device_count()
+    print(f"CUDA devices: {ngpu} -> {[torch.cuda.get_device_name(i) for i in range(ngpu)]}", flush=True)
+    if ngpu > 1:                                    # use BOTH T4s: DataParallel splits the pair batch
+        model = torch.nn.DataParallel(model)
+        print(f"DataParallel across {ngpu} GPUs enabled", flush=True)
+    def state_dict():
+        return (model.module if hasattr(model, "module") else model).state_dict()
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, args.lr, total_steps=args.steps, pct_start=0.05)
     scaler = torch.amp.GradScaler("cuda")
@@ -104,15 +117,15 @@ def main():
             if step % 500 == 0 and step > 0:
                 va = evaluate(model, vdl, ph, pv, gen)
                 print(f"  [VAL real] acc@48 {va:.3f}", flush=True)
-                torch.save({"model": model.state_dict(), "step": step, "val": va},
+                torch.save({"model": state_dict(), "step": step, "val": va},
                            os.path.join(CKPT_DIR, f"{args.tag}_last.pt"))
                 if va > best:
                     best = va
-                    torch.save({"model": model.state_dict(), "step": step, "val": va},
+                    torch.save({"model": state_dict(), "step": step, "val": va},
                                os.path.join(CKPT_DIR, f"{args.tag}_best.pt"))
             step += 1
             if step >= args.steps: break
-    torch.save({"model": model.state_dict(), "step": step}, os.path.join(CKPT_DIR, f"{args.tag}_last.pt"))
+    torch.save({"model": state_dict(), "step": step}, os.path.join(CKPT_DIR, f"{args.tag}_last.pt"))
     print(f"done. best val acc@48={best:.3f}", flush=True)
 
 

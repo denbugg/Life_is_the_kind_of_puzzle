@@ -1,0 +1,87 @@
+<meta charset="utf-8">
+<style>
+  @page { size: A4; margin: 15mm 14mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "Segoe UI","Helvetica Neue",Arial,sans-serif; color:#12211d; font-size:10.2pt; line-height:1.46; margin:0; }
+  h1 { font-size:21pt; margin:0 0 2px; letter-spacing:-.3px; }
+  h2 { font-size:12.5pt; margin:18px 0 6px; padding-bottom:4px; border-bottom:2px solid #0f766e; color:#0b3d38; }
+  .sub { color:#4b5b57; font-size:10pt; margin:2px 0 0; }
+  .badge { display:inline-block; background:#0f766e; color:#fff; font-weight:600; font-size:8.5pt; padding:3px 10px; border-radius:20px; letter-spacing:.3px; }
+  .meta { color:#6b7280; font-size:8.5pt; margin-top:6px; }
+  header { border-bottom:3px solid #0b3d38; padding-bottom:10px; margin-bottom:6px; }
+  code { font-family:"Cascadia Code",Consolas,monospace; font-size:9pt; background:#e7f1ef; padding:1px 4px; border-radius:3px; }
+  .callout { border-left:4px solid #0f766e; background:#e9f5f3; padding:8px 12px; margin:10px 0; border-radius:0 5px 5px 0; }
+  .start { border-left-color:#b7791f; background:#fdf6e7; }
+  .idea { border:1px solid #cbd8d5; border-radius:7px; padding:9px 12px 10px; margin:9px 0; break-inside:avoid; }
+  .idea h3 { margin:0 0 5px; font-size:11pt; color:#0b3d38; }
+  .idea .tag { float:right; font-size:8pt; color:#fff; background:#0f766e; border-radius:10px; padding:2px 8px; font-weight:600; }
+  .idea .tag.big { background:#b7791f; }
+  .idea p { margin:3px 0; }
+  .idea b.l { color:#0b3d38; }
+  ul { margin:5px 0; padding-left:18px; } li { margin:2px 0; }
+  .foot { margin-top:18px; border-top:1px solid #cbd8d5; padding-top:8px; color:#6b7280; font-size:8.5pt; }
+  h2 { break-after:avoid; } .callout { break-inside:avoid; }
+</style>
+
+<header>
+  <span class="badge">PAZZLE · IDEAS TO EXPLORE</span>
+  <h1>Alternative &amp; Promising Directions</h1>
+  <p class="sub">Fresh approaches that deliberately <b>avoid</b> the well-trodden path (learn pairwise edge-compatibility → greedy / simulated-annealing assembly). If that path has already stalled, pick from these — each attacks a <i>different</i> part of the problem.</p>
+  <p class="meta">Team brainstorm · reconstruct a shuffled &amp; per-fragment-degraded 24×24 jigsaw · metric = mean SSIM</p>
+</header>
+
+<div class="callout">
+<b>Why we need different ideas.</b> The intuitive pipeline — a CNN that scores "does B sit next to A?", then greedily/SA-assemble — hits a wall: heavy <i>per-fragment</i> degradation (noise σ40–55 + JPEG q35 + independent brightness/contrast) <b>destroys the fine edge continuity</b> those methods depend on. The most confident pairwise matches end up ~50% correct, and a 576-piece assembly needs ~90%. So the ideas below either (A) build a <b>more robust representation</b>, (B) use a <b>fundamentally different assembly algorithm</b>, or (C) learn the whole thing in a <b>different paradigm</b>.</div>
+
+<div class="callout start"><b>Cheapest first (do these before the big bets):</b> <b>B2 (spectral layout)</b> reuses any compatibility matrix you already have and could replace the whole solver in an afternoon; <b>A1 (foundation-model features)</b> is inference-only and tests whether representation robustness is the real bottleneck. Evaluate everything with the same yardsticks: <i>best-buddy precision</i>, <i>neighbour accuracy</i>, and final <i>SSIM</i> — so results are comparable across ideas.</div>
+
+<h2>A · Stronger / different fragment representations</h2>
+
+<div class="idea"><span class="tag">low effort</span><h3>A1 · Foundation-model features (DINOv2 / CLIP / SAM encoder)</h3>
+<p><b class="l">Pitch.</b> Don't train a compatibility net from scratch — embed each fragment (and its edge strips) with a large <i>pretrained</i> vision encoder that is already robust to noise/JPEG/contrast, and match on those features.</p>
+<p><b class="l">Why different / why it may work here.</b> Our from-scratch CNN plateaus because 20×20 corrupted tiles carry little learnable signal; foundation features are trained on billions of images and are far more invariant to exactly this degradation. If they beat 0.48 best-buddy precision out of the box, that reframes the whole project.</p>
+<p><b class="l">First step.</b> Upsample fragments (or take patch tokens), extract edge-strip descriptors, compute best-buddy precision — the same gauge as the main pipeline.</p></div>
+
+<div class="idea"><span class="tag">low effort</span><h3>A2 · Coarse-to-fine on degradation-robust low frequencies</h3>
+<p><b class="l">Pitch.</b> Noise/JPEG kill high frequencies, but <b>low-frequency structure survives</b> (mean colour, coarse gradient). Solve a robust <i>coarse</i> layout on low-freq descriptors first, then refine placement locally.</p>
+<p><b class="l">Why different / why it may work.</b> It never relies on the fine seam continuity that the degradation destroys; the coarse solve strongly constrains the fine solve, and coarse descriptors are far less ambiguous.</p>
+<p><b class="l">First step.</b> 5×5-downsample each fragment, build coarse adjacency (even just average-colour continuity), solve a coarse arrangement, measure neighbour accuracy.</p></div>
+
+<div class="idea"><span class="tag">medium</span><h3>A3 · Joint photometric canonicalisation (un-shuffle the lighting, then match)</h3>
+<p><b class="l">Pitch.</b> Each fragment has its <i>own</i> brightness/contrast/JPEG. Estimate a per-fragment photometric correction and the placement <b>jointly</b> (alternating), so that seam continuity <i>emerges</i> once neighbours are on a common scale.</p>
+<p><b class="l">Why different / why it may work.</b> Naive per-fragment normalisation failed, but that ignored neighbours; a <b>joint</b> estimate (each fragment's gain/bias fitted to make its tentative seams continuous) is a strictly stronger formulation and directly targets the biggest matching-killer.</p>
+<p><b class="l">First step.</b> Given a tentative assembly, least-squares fit each fragment's (gain, bias) to minimise seam discontinuity; iterate placement ↔ photometry.</p></div>
+
+<h2>B · Fundamentally different assembly algorithms</h2>
+
+<div class="idea"><span class="tag big">bigger bet</span><h3>B1 · End-to-end differentiable assembly (Sinkhorn / Gumbel + Transformer)</h3>
+<p><b class="l">Pitch.</b> One network ingests all 576 fragments as a <b>set</b> and outputs a soft permutation (doubly-stochastic via Sinkhorn) mapping fragments → grid cells; trained end-to-end against the known arrangement of train images.</p>
+<p><b class="l">Why different / why it may work.</b> Learns <b>global</b> assembly directly (cf. DeepPermNet / Visual Permutation Learning / Gumbel-Sinkhorn nets) — no hand-crafted pairwise scores, no greedy search. A global objective can exploit long-range and multi-fragment context that pairwise greedy structurally cannot.</p>
+<p><b class="l">First step.</b> Transformer over fragment embeddings + 576 learned position queries + a Sinkhorn head; supervise with permutation cross-entropy (we have ground-truth perms for all train images).</p></div>
+
+<div class="idea"><span class="tag">low–medium</span><h3>B2 · Spectral / manifold layout (compatibility graph → 2-D coordinates)</h3>
+<p><b class="l">Pitch.</b> Treat the fragment-fragment compatibility as a graph; recover each fragment's 2-D grid coordinate from the graph's <b>spectral embedding</b> — the leading Laplacian eigenvectors act as the (row, column) coordinates. Snap to the 24×24 grid.</p>
+<p><b class="l">Why different / why it may work.</b> Non-combinatorial: assembly becomes a continuous eigenproblem that integrates <b>global</b> graph structure and tolerates many individually-wrong edges — exactly where greedy growth breaks. And it <b>reuses any compatibility matrix you already have</b>, so it's a cheap drop-in replacement for the SA solver.</p>
+<p><b class="l">First step.</b> Symmetrise the existing scores into an affinity, take the smallest non-trivial normalised-Laplacian eigenvectors, check whether they linearly recover (row, col).</p></div>
+
+<div class="idea"><span class="tag">medium</span><h3>B3 · Row-then-column decomposition (2-D → two 1-D problems)</h3>
+<p><b class="l">Pitch.</b> Cluster fragments into their 24 <b>rows</b> (row-mates share horizontal statistics), order each row as a 1-D chain, then order the 24 rows vertically. Two easy 1-D orderings instead of one hard 2-D assignment.</p>
+<p><b class="l">Why different / why it may work.</b> Divide-and-conquer that exploits the grid structure; 1-D ordering is vastly easier and more robust than 2-D assignment, and a mistake stays local instead of cascading across the whole board.</p>
+<p><b class="l">First step.</b> Use horizontal-only compatibility to grow best-buddy chains → partial rows; a second vertical pass stitches the rows.</p></div>
+
+<h2>C · Different learning paradigms</h2>
+
+<div class="idea"><span class="tag">medium–high</span><h3>C1 · Global "assembly critic" energy + optimisation</h3>
+<p><b class="l">Pitch.</b> Train a CNN that looks at a <b>whole</b> candidate assembled image and scores how coherent/real it is (a discriminator); then search placements to maximise this global score — or use it to re-rank a combinatorial solver's candidates.</p>
+<p><b class="l">Why different / why it may work.</b> The critic sees the <b>global</b> picture, not isolated seams, so it can disambiguate flat/ambiguous tiles using object-level and long-range context that pairwise scoring misses.</p>
+<p><b class="l">First step.</b> Train a real-vs-wrongly-assembled classifier (both are trivially generated from train perms); use its score/gradient to guide or re-rank placement.</p></div>
+
+<div class="idea"><span class="tag big">bigger bet</span><h3>C2 · Agentic / RL placement with backtracking</h3>
+<p><b class="l">Pitch.</b> An agent places fragments sequentially with a value function that permits undoing moves, trained by RL with reward = assembly correctness (dense, from known perms).</p>
+<p><b class="l">Why different / why it may work.</b> A <b>learned</b> search policy that recovers from mistakes and learns a smart order (confident anchors first, ambiguous flats last) — unlike fixed greedy/SA heuristics.</p>
+<p><b class="l">First step.</b> Imitation-learn from an optimal placement order on train puzzles first (cheap), then fine-tune with RL.</p></div>
+
+<div class="foot">
+<b>Evaluation harness for all of the above:</b> report <i>best-buddy precision</i> and <i>neighbour accuracy</i> (frame-invariant, isolate assembly quality from the scorer), then final <i>SSIM</i> after an NLM denoise. A method is worth pursuing the moment its neighbour accuracy clears the current baseline — you do not need a full pipeline to know it's working. Ideas compiled for the PAZZLE team · Pasha883.
+</div>

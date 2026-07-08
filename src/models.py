@@ -144,24 +144,46 @@ class CompatNet(nn.Module):
         return n(eR), n(eL), n(eT), n(eB)
 
 
+class GNBlock(nn.Module):
+    """Residual conv block with GroupNorm (stabilizes the deeper pairwise net and
+    helps it stay invariant to the per-fragment brightness/contrast shifts)."""
+    def __init__(self, cin, cout, groups=8):
+        super().__init__()
+        self.c1 = nn.Conv2d(cin, cout, 3, padding=1)
+        self.n1 = nn.GroupNorm(groups, cout)
+        self.c2 = nn.Conv2d(cout, cout, 3, padding=1)
+        self.n2 = nn.GroupNorm(groups, cout)
+        self.skip = nn.Conv2d(cin, cout, 1) if cin != cout else nn.Identity()
+        self.act = nn.GELU()
+
+    def forward(self, x):
+        h = self.act(self.n1(self.c1(x)))
+        h = self.n2(self.c2(h))
+        return self.act(h + self.skip(x))
+
+
 class PairwiseNet(nn.Module):
     """Sees both fragments straddling the seam (3,20,40) -> compatibility logit.
-    More expressive than siamese dot-product; used to re-score top-K candidates."""
-    def __init__(self, C=64):
+    v2: SEAM-AWARE (keeps spatial layout instead of global-avg-pooling it away, so
+    the model can localize continuity at the seam), GroupNorm, wider (C=96).
+    autocast lives INSIDE forward so fp16 survives nn.DataParallel replica threads."""
+    def __init__(self, C=96):
         super().__init__()
         self.body = nn.Sequential(
-            nn.Conv2d(3, C, 3, padding=1), nn.GELU(),
-            ConvBlock(C, C),
-            nn.Conv2d(C, 2 * C, 3, stride=2, padding=1), nn.GELU(),     # 10x20
-            ConvBlock(2 * C, 2 * C),
-            nn.Conv2d(2 * C, 4 * C, 3, stride=2, padding=1), nn.GELU(),  # 5x10
-            ConvBlock(4 * C, 4 * C),
-            nn.AdaptiveAvgPool2d(1), nn.Flatten(),
+            nn.Conv2d(3, C, 3, padding=1), nn.GroupNorm(8, C), nn.GELU(),
+            GNBlock(C, C),
+            nn.Conv2d(C, 2 * C, 3, stride=2, padding=1), nn.GroupNorm(8, 2 * C), nn.GELU(),  # 10x20
+            GNBlock(2 * C, 2 * C),
+            nn.Conv2d(2 * C, 4 * C, 3, stride=2, padding=1), nn.GroupNorm(8, 4 * C), nn.GELU(),  # 5x10
+            GNBlock(4 * C, 4 * C),
+            nn.Conv2d(4 * C, C, 1), nn.GELU(),      # neck: cheap channel squeeze, keep 5x10 layout
+            nn.Flatten(),                            # 5*10*C -> seam position preserved
         )
-        self.head = nn.Sequential(nn.Linear(4 * C, 2 * C), nn.GELU(), nn.Linear(2 * C, 1))
+        self.head = nn.Sequential(nn.Linear(5 * 10 * C, 256), nn.GELU(), nn.Linear(256, 1))
 
     def forward(self, pair):        # pair: (B,3,20,40)
-        return self.head(self.body(pair)).squeeze(-1)
+        with torch.autocast("cuda", dtype=torch.float16, enabled=pair.is_cuda):
+            return self.head(self.body(pair)).squeeze(-1)
 
 
 def count_params(m):

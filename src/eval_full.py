@@ -6,7 +6,7 @@ import torch
 from skimage.metrics import structural_similarity as sk_ssim
 from config import TRAIN_INP, TRAIN_TGT, CACHE_DIR
 from imgio import load, to_frags, assemble, train_val_split
-from pipeline import load_compat, load_restore, load_pair, restore_full, process
+from pipeline import load_compat, load_restore, load_pair, restore_full, restore_apply, process
 
 DEV = "cuda"
 
@@ -25,14 +25,22 @@ def main():
     ap.add_argument("--full_pair", action="store_true", help="full NxN pairwise scoring")
     ap.add_argument("--K", type=int, default=32)
     ap.add_argument("--alpha", type=float, default=3.0)
+    ap.add_argument("--nlm", action="store_true", help="use NLM denoise as restore (beats undertrained RestoreNet)")
     args = ap.parse_args()
 
-    compat, cck = load_compat()
-    restore, rck = (None, None) if args.no_restore else load_restore()
     pair, pck = (None, None)
     if args.use_pair or args.full_pair:
         pair, pck = load_pair()
-    print(f"compat step={cck.get('step')} val={cck.get('val')}; "
+    compat, cck = (None, None)
+    if args.full_pair:
+        try:
+            compat, cck = load_compat()
+        except FileNotFoundError:
+            print("no compat checkpoint; using full_pair pairwise only")
+    else:
+        compat, cck = load_compat()
+    restore, rck = (None, None) if args.no_restore else load_restore()
+    print(f"compat step={cck.get('step') if cck else None} val={cck.get('val') if cck else None}; "
           f"restore step={rck.get('step') if rck else None} val={rck.get('val') if rck else None}; "
           f"pair step={pck.get('step') if pck else None} val={pck.get('val') if pck else None}")
 
@@ -49,14 +57,14 @@ def main():
         out, place, assembled = process(
             frags, compat, restore,
             dict(iters=args.iters, restarts=args.restarts, full_pair=args.full_pair),
-            pair=pair, rescore_kw=dict(K=args.K, alpha=args.alpha))
+            pair=pair, rescore_kw=dict(K=args.K, alpha=args.alpha), nlm=args.nlm)
         inv = gt[nm]
         accs.append(float(np.mean(place == inv)))
         fin.append(ssim(tgt, out))
         sol.append(ssim(tgt, assembled))
         ceil_asm = assemble(frags, inv)
         ceil_nr.append(ssim(tgt, ceil_asm))
-        ceil_r.append(ssim(tgt, restore_full(restore, ceil_asm)))
+        ceil_r.append(ssim(tgt, restore_apply(restore, ceil_asm, nlm=args.nlm)))
     n = len(fin)
     print(f"\n== N={n}  ({(time.time()-t0)/n:.1f}s/img) ==")
     print(f"placement acc          : {np.mean(accs):.3f}")

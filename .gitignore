@@ -11,3 +11,7 @@ data/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+KAGGLE_API_for_subs.txt
+WANDB_API.txt
+kaggle_kernel/
+kaggle_outputs/

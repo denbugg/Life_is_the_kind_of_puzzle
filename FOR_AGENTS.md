@@ -1,203 +1,483 @@
-# FOR_AGENTS.md — operational runbook for the `pazzle` solution
+# FOR_AGENTS.md - operational runbook for the `pazzle` solution
 
-> Read this first. It is a complete, self-contained guide for an AI agent (or human)
-> to continue this project: what the task is, where everything lives, how to run it,
-> the current state, and the traps that already bit us.
+> Read this first. This is the handoff/runbook for continuing the PAZZLE image
+> restoration solution: what the task is, where everything lives, what has already
+> run locally and on Kaggle, what broke, and what should happen next.
+>
+> Last updated: 2026-07-08.
 
 ---
 
-## 1. The task (what we are solving)
+## 1. The task
 
-Competition: restore a corrupted 480×480 image that was turned into a **shuffled +
-degraded jigsaw**.
+Competition: restore a corrupted 480x480 image that was turned into a shuffled +
+degraded jigsaw.
 
-- The image is a **24×24 grid of 20×20 px fragments** (576 fragments).
-- Fragments are **shuffled** to random grid positions AND each fragment is
-  **independently degraded**: brightness ±30, contrast 0.70–1.30, Gaussian noise
-  σ=40–55, 3×3 Gaussian blur, JPEG quality 35–50.
-- **Goal:** output the restored original 480×480 image.
-- **Metric:** mean **SSIM** over the test set,
-  `skimage.metrics.structural_similarity(pred, target, channel_axis=2, data_range=255)`
-  (defaults ⇒ win_size=7, uniform window).
-- **Submission:** a zip of exactly **700** PNGs, RGB, 480×480, named `img_XXXXXX.png`
-  matching `test/` filenames, **in the zip root** (no subfolders).
-- Current leaderboard leader = **0.40 SSIM**. Objective: beat it decisively.
-- **Submission size limit:** ≤10 MB through 07-07; the limit is **removed after 08-07**
-  ⇒ submit full-quality PNGs on/after 08-07 (full-quality zip is ~250–300 MB).
+- Image geometry: 24x24 grid of 20x20 px fragments = 576 fragments.
+- Input fragments are shuffled and each fragment is independently degraded:
+  brightness +/-30, contrast 0.70-1.30, Gaussian noise sigma 40-55, 3x3 Gaussian
+  blur, JPEG quality 35-50.
+- Goal: output the restored original 480x480 RGB image.
+- Metric: mean SSIM over test set:
+  `skimage.metrics.structural_similarity(pred, target, channel_axis=2, data_range=255)`.
+- Submission: exactly 700 PNG files, RGB, 480x480, named like the test files, in
+  the root of `submission.zip`.
 
-### Strategy in one line
-`solve the puzzle (place fragments) → assemble → restore (denoise/deblock/deblur)`.
-The two sub-problems are near-separable and SSIM ≈ (placement quality) × (restoration quality).
+### Strategy
 
-### SSIM headroom (measured locally — this is why the strategy works)
+`solve the puzzle (place fragments) -> assemble -> restore (denoise/deblock/deblur)`.
+
+The intended factorization is:
+
+- placement quality controls whether the image is semantically reconstructed;
+- restoration quality cleans the already assembled image.
+
+Measured headroom from earlier validation:
+
 | configuration | mean SSIM |
-|---|---|
-| submit shuffled input unchanged | 0.08–0.11 |
-| perfect placement, NO restoration | 0.43–0.50  ← already beats leader |
-| perfect placement + restoration (target) | ~0.6–0.8 |
+|---|---:|
+| shuffled input unchanged | 0.08-0.11 |
+| perfect placement, no restoration | 0.43-0.50 |
+| perfect placement + restoration | ~0.6-0.8 |
+
+Important current reality: the restoration part is still valuable, but the current
+full-pairwise placement path is not yet working well enough for final submission.
+See section 6.
 
 ---
 
-## 2. Where everything lives (PATHS)
+## 2. Local paths
 
-**Big data is on `E:` (C: is low on space — do NOT put datasets/checkpoints on C:).**
+Big files live on `E:`. Avoid putting datasets/checkpoints on `C:`.
 
 | what | path |
 |---|---|
-| Code (git repo) | `C:\Users\pasha\Documents\GitHub\pazzle_will_be_killed` (branch `pasha883`) |
-| Source modules | `<repo>\src\` — run scripts with **cwd = src** (modules use bare imports) |
-| Train inputs (shuffled+degraded) | `E:/pazzle_data/train/inputs/*.png` (7000) |
-| Train targets (clean originals) | `E:/pazzle_data/train/targets/*.png` (7000) |
+| Code repo | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed` |
+| Source modules | `<repo>/src/` |
+| Train inputs | `E:/pazzle_data/train/inputs/*.png` (7000) |
+| Train targets | `E:/pazzle_data/train/targets/*.png` (7000) |
 | Test inputs | `E:/pazzle_data/test/*.png` (700) |
-| Original zips (backup) | `E:/pazzle_data/zips/{train,test,submission}.zip` |
-| Checkpoints | `E:/pazzle_work/ckpt/{compat,pair,restore}_{best,last}.pt` |
-| Permutation cache (GT for train) | `E:/pazzle_work/cache/perms.npz` |
-| Training/inference logs | `E:/pazzle_work/logs/{compat,pair,restore,infer}.log` |
-| Submissions output | `E:/pazzle_work/submissions/` |
-| Dashboard log-source config | `E:/pazzle_work/dash_sources.json` |
-| Scratch/experiments | session scratchpad (throwaway analysis, e.g. `analyze.py`) |
+| Original zips | `E:/pazzle_data/zips/{train,test,submission}.zip` |
+| Local work root | `E:/pazzle_work/` |
+| Local checkpoints | `E:/pazzle_work/ckpt/{compat,pair,restore}_{best,last}.pt` |
+| Local permutation cache | `E:/pazzle_work/cache/perms.npz` |
+| Local logs | `E:/pazzle_work/logs/*.log` |
+| Local submissions | `E:/pazzle_work/submissions/` |
+| Kaggle image dataset staging | `E:/pazzle_kaggle_images/` |
+| Kaggle resume artifact staging | `E:/pazzle_kaggle_resume_v7_flat/` |
+| Downloaded Kaggle outputs | `<repo>/kaggle_outputs/` (ignored by git) |
+| Kaggle kernel working dir | `<repo>/kaggle_kernel/` (ignored by git, contains secrets) |
 
-Paths/constants are centralized in `src/config.py`. Override data/work roots with env
-vars `PAZZLE_DATA` / `PAZZLE_WORK` if ever needed.
+`src/config.py` centralizes paths. Override with:
 
----
-
-## 3. Environment
-
-- Windows 11, **Git Bash** (`Bash` tool, POSIX) and **PowerShell** both available.
-- Python `C:\Python313\python.exe` (3.13). Packages: torch 2.11+cu128 (CUDA works),
-  torchvision, numpy, scipy, scikit-image, opencv-python (cv2), numba, Pillow.
-- GPU: **RTX 2070, 8 GB** (Turing, fp16 tensor cores → training uses AMP autocast fp16).
-  Desktop apps already use ~1.4 GB, so budget ~6.5 GB for training.
-- 12 CPU cores.
+```powershell
+$env:PAZZLE_DATA='...'
+$env:PAZZLE_WORK='...'
+```
 
 ---
 
-## 4. Code map (`src/`)
+## 3. Kaggle setup
+
+### PC-side Kaggle files
+
+Absolute paths on this Windows PC:
+
+| what | local path |
+|---|---|
+| Kaggle CLI executable | `C:/Users/pasha/AppData/Roaming/Python/Python313/Scripts/kaggle.exe` |
+| Kaggle API token source file | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/KAGGLE_API_for_subs.txt` |
+| Kaggle CLI access token file | `C:/Users/pasha/.kaggle/access_token` |
+| W&B API key source file | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/WANDB_API.txt` |
+| Kaggle kernel folder to push | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/kaggle_kernel/` |
+| Kernel metadata | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/kaggle_kernel/kernel-metadata.json` |
+| Kernel notebook | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/kaggle_kernel/pazzle_kaggle_train.ipynb` |
+| Downloaded Kaggle outputs | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/kaggle_outputs/` |
+| Failed v7 outputs | `C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/kaggle_outputs/train_v7_error/` |
+| Main Kaggle image dataset staging | `E:/pazzle_kaggle_images/` |
+| Resume v7 dataset staging (flat) | `E:/pazzle_kaggle_resume_v7_flat/` |
+| Original train zip | `E:/pazzle_data/zips/train.zip` |
+| Original test zip | `E:/pazzle_data/zips/test.zip` |
+| Original sample submission/test duplicate zip | `E:/pazzle_data/zips/submission.zip` |
+
+Security note: `KAGGLE_API_for_subs.txt`, `WANDB_API.txt`, `kaggle_kernel/`, and
+`kaggle_outputs/` are intentionally ignored by git. The kernel notebook currently
+contains an embedded W&B key, so do not publish it publicly.
+
+### Kaggle CLI/auth
+
+CLI path on this machine:
+
+```powershell
+C:/Users/pasha/AppData/Roaming/Python/Python313/Scripts/kaggle.exe
+```
+
+The Kaggle API token file is in the repo root as `KAGGLE_API_for_subs.txt` and was
+copied to `~/.kaggle/access_token` for the new Kaggle CLI. Do not print or commit it.
+`.gitignore` includes:
+
+```text
+KAGGLE_API_for_subs.txt
+WANDB_API.txt
+kaggle_kernel/
+kaggle_outputs/
+```
+
+### Kaggle datasets
+
+Main image dataset:
+
+- URL: `https://www.kaggle.com/datasets/pasha883/vsos-ai-initiative-pazzle`
+- Kaggle ref: `pasha883/vsos-ai-initiative-pazzle`
+- Actual mounted path seen in Kaggle kernel:
+  `/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle`
+- Kaggle auto-extracted the uploaded zips. Final layout on Kaggle:
+
+```text
+/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle/
+  train/inputs/*.png   # 7000
+  train/targets/*.png  # 7000
+  test/*.png           # 700
+```
+
+Resume artifact dataset from failed run v7:
+
+- URL: `https://www.kaggle.com/datasets/pasha883/vsos-ai-pazzle-resume-v7`
+- Kaggle ref: `pasha883/vsos-ai-pazzle-resume-v7`
+- Contents are flat files:
+
+```text
+perms.npz
+pair_best.pt
+pair_last.pt
+recover.log
+pair.log
+```
+
+This dataset lets a new Kaggle session skip `recover.py` and `train_pair.py`.
+
+### Kaggle kernel
+
+Kernel URL:
+
+```text
+https://www.kaggle.com/code/pasha883/vsos-ai-pazzle-train
+```
+
+Kernel ref:
+
+```text
+pasha883/vsos-ai-pazzle-train
+```
+
+Local source folder:
+
+```text
+<repo>/kaggle_kernel/
+  kernel-metadata.json
+  pazzle_kaggle_train.ipynb
+```
+
+`kernel-metadata.json` currently attaches both datasets:
+
+```json
+"dataset_sources": [
+  "pasha883/vsos-ai-initiative-pazzle",
+  "pasha883/vsos-ai-pazzle-resume-v7"
+]
+```
+
+The notebook embeds the current `src/*.py` into the notebook itself, writes them to
+`/kaggle/working/src`, detects the Kaggle dataset path, symlinks data into
+`/kaggle/working/pazzle_data`, restores resume artifacts into
+`/kaggle/working/pazzle_work`, then runs the pipeline.
+
+Kaggle smoke test v5/v6 confirmed:
+
+- data counts: 7000 train inputs, 7000 train targets, 700 test;
+- CUDA available;
+- GPU shown as Tesla T4; `nvidia-smi` exposed 2x T4 on the smoke run;
+- W&B run creation works.
+
+### Useful Kaggle commands
+
+```powershell
+# Status
+C:/Users/pasha/AppData/Roaming/Python/Python313/Scripts/kaggle.exe kernels status pasha883/vsos-ai-pazzle-train
+
+# Push kernel
+C:/Users/pasha/AppData/Roaming/Python/Python313/Scripts/kaggle.exe kernels push -p kaggle_kernel
+
+# Download latest outputs after COMPLETE/ERROR
+$out='kaggle_outputs/latest'
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+C:/Users/pasha/AppData/Roaming/Python/Python313/Scripts/kaggle.exe kernels output pasha883/vsos-ai-pazzle-train -p $out -o
+
+# List resume dataset files
+C:/Users/pasha/AppData/Roaming/Python/Python313/Scripts/kaggle.exe datasets files pasha883/vsos-ai-pazzle-resume-v7
+```
+
+---
+
+## 4. W&B monitoring
+
+W&B is configured in the Kaggle notebook.
+
+```python
+wandb.init(
+    entity="pasha883-yandex",
+    project="VsOS AI initiative PAZZLE",
+)
+```
+
+The W&B key is in `WANDB_API.txt` and is embedded into the private Kaggle notebook.
+Do not make the Kaggle notebook public while this embedded key exists. Prefer moving
+the key to Kaggle Secrets as `WANDB_API_KEY` later.
+
+The notebook parses trainer stdout and logs:
+
+- `recover/conf_mean`, `recover/frac_conf_gt_0_5`
+- `pair/loss`, `pair/acc@16`, `pair/val_acc@48`, `pair/sec_per_it`
+- `restore/loss`, `restore/val_restored_ssim`, `restore/val_lift`
+- `eval/place_acc`, `eval/solve_ssim`, `eval/final_solve_restore_ssim`
+- `infer/sec_per_img`, `infer/pct`, `infer/submission_mb`
+
+W&B also collects system/GPU metrics.
+
+---
+
+## 5. Code map
 
 | file | purpose |
 |---|---|
-| `config.py` | paths + puzzle constants (GRID=24, FS=20, IMG=480, NFRAG=576) + distortion params + split |
-| `imgio.py` | load/save, `to_frags`/`from_frags` (any square grid), `assemble(frags, order)`, `train_val_split` (last 300 train = val) |
-| `distort.py` | synthetic per-fragment degradation (affine→noise→3×3 blur→JPEG). Matches real to ~0.03 SSIM |
-| `recover.py` | recover GT arrangement of a train input (Hungarian on normalized 5×5 descriptors); `build_cache` → `perms.npz` (`names/perm/inv/conf`) |
-| `models.py` | `CompatNet` (siamese edge-embeddings), `PairwiseNet` (seam CNN (3,20,40)→logit), `RestoreNet` (U-Net), SSIM/MS-SSIM + `restore_loss` |
-| `datasets.py` | `RestoreDataset`, `CompatDataset`; both mix SYNTHETIC + REAL-recon via `real_prob` |
-| `train_compat.py` | train siamese with symmetric InfoNCE; logs neighbor **H@1/V@1** |
-| `train_pair.py` | train pairwise with InfoNCE over sampled candidates; logs **acc@M** |
-| `train_restore.py` | train restorer (MS-SSIM+L1); logs real **SSIM base→restored** |
-| `solve.py` | `compat_scores` (siamese all-pairs), `pairwise_scores_full` (NxN), `rescore_pairwise` (siamese top-K → pairwise), numba **greedy + simulated-annealing** solver, `solve_image` |
-| `pipeline.py` | `load_compat/load_pair/load_restore`, `restore_full`, `process` (solve→assemble→restore) |
-| `eval_place.py` | placement accuracy + SSIM vs recovered GT on val (`--full_pair`/`--use_pair`) |
-| `eval_full.py` | end-to-end SSIM on val incl. ceilings (leaderboard estimate) |
-| `diag_compat.py` | siamese retrieval quality: top-1 + recall@K (predicts if top-K re-scoring helps) |
-| `infer.py` | build the submission zip (solve+restore every test image) |
-| `dashboard.py` | live web monitor at http://localhost:8000 (parses logs) |
-| `smoke.py` | shape/memory/timing sanity for models+datasets |
-| `validate_distort.py` | confirms synthetic degradation matches real statistics |
+| `config.py` | paths + puzzle constants (`GRID=24`, `FS=20`, `IMG=480`, `NFRAG=576`) |
+| `imgio.py` | image load/save, fragment conversion, train/val split |
+| `distort.py` | synthetic degradation matching real corruption |
+| `recover.py` | builds GT-ish train arrangement cache `perms.npz` with Hungarian matching |
+| `datasets.py` | `RestoreDataset`, `CompatDataset`; mix synthetic and real reconstructed samples |
+| `models.py` | `CompatNet`, `PairwiseNet`, `RestoreNet`, SSIM/MS-SSIM losses |
+| `train_compat.py` | trains siamese compatibility model; currently not needed for full pairwise path |
+| `train_pair.py` | trains `PairwiseNet` seam scorer with InfoNCE over sampled candidates |
+| `train_restore.py` | trains `RestoreNet` U-Net restoration model |
+| `solve.py` | full NxN pairwise scoring + greedy/SA solver |
+| `pipeline.py` | model loading and solve->assemble->restore processing |
+| `eval_place.py` | placement accuracy/solve-only SSIM on val; patched so `--full_pair` does not require compat checkpoint |
+| `eval_full.py` | end-to-end val SSIM; patched so `--full_pair` does not require compat checkpoint |
+| `infer.py` | submission generation; patched so `--full_pair` does not require compat checkpoint |
+| `dashboard.py` | local-only dashboard, not useful as Kaggle public monitor |
+| `smoke.py` | model/dataset sanity checks |
+| `validate_distort.py` | validates synthetic degradation stats |
 
-### Pipeline flow (inference)
-```
-test PNG → to_frags (576×20×20) → compat scores R,D  (siamese all-pairs, and/or
-           full pairwise NxN, and/or siamese-topK re-scored by pairwise)
-        → solve_from_scores (numba greedy + SA maximizing edge compatibility)
-        → assemble distorted frags in solved order
-        → RestoreNet (full 480×480) → save PNG
+Important patch after Kaggle v7 failure: `eval_place.py`, `eval_full.py`, and `infer.py`
+now tolerate missing `compat_best.pt` when `--full_pair` is set. Full pairwise scoring
+uses `PairwiseNet` only; `CompatNet` is unnecessary in that mode.
+
+---
+
+## 6. Current state as of 2026-07-08
+
+### Completed
+
+- Data is local on `E:/pazzle_data` and uploaded to Kaggle as
+  `pasha883/vsos-ai-initiative-pazzle`.
+- Kaggle kernel `pasha883/vsos-ai-pazzle-train` exists and runs with W&B.
+- Kaggle run v7 completed `recover.py`:
+  - output: `perms.npz`
+  - downloaded locally to `kaggle_outputs/train_v7_error/pazzle_work/cache/perms.npz`
+  - uploaded to resume dataset `pasha883/vsos-ai-pazzle-resume-v7`
+- Kaggle run v7 completed `train_pair.py`:
+  - finished `9000/9000`
+  - best `pair val acc@48 = 0.477`
+  - outputs: `pair_best.pt`, `pair_last.pt`
+  - downloaded locally to `kaggle_outputs/train_v7_error/pazzle_work/ckpt/`
+  - uploaded to resume dataset
+- Kaggle v7 failed at `eval_place.py --full_pair` because the old script still tried to
+  load `compat_best.pt`. This was fixed locally and embedded into the Kaggle notebook.
+- Kaggle run v8 was pushed with resume logic:
+  - restores `perms.npz`, `pair_best.pt`, `pair_last.pt` from resume dataset;
+  - skips `recover.py` if `cache/perms.npz` exists;
+  - skips `train_pair.py` if `ckpt/pair_best.pt` exists;
+  - starts from `eval_place.py --n 20 --full_pair`.
+
+### Current concern: placement is failing
+
+User-provided W&B/log snippet from `eval_place` shows validation images
+`img_006700.png` onward with:
+
+- `place_acc` mostly `0.000` to `0.007`
+- `hi_acc` mostly `0.000`
+- `SSIM_solve` about `0.06-0.16`
+- perfect-placement ceiling (`ceil`) about `0.40-0.50`
+
+Approximate mean over the visible 15-image snippet:
+
+- `place_acc ~= 0.0015`
+- `SSIM_solve ~= 0.106`
+- `ceil ~= 0.447`
+
+Interpretation:
+
+- The recovered GT/cache is sane: `ceil` is high enough.
+- The current full-pairwise solve is not assembling the puzzle.
+- `PairwiseNet` trained to decent sampled candidate accuracy (`acc@48=0.477`), but the
+  end-to-end `pairwise_scores_full -> solve_from_scores` path is failing.
+- Final `infer.py --full_pair` is not worth trusting until placement is fixed.
+
+### Pipeline stage summary
+
+```text
+recover.py       done on Kaggle v7, resumed via dataset
+train_pair.py    done on Kaggle v7, best val acc@48=0.477, resumed via dataset
+eval_place.py    running/ran on v8, but visible metrics are bad
+train_restore.py may run after eval_place; useful, but final quality is placement-blocked
+eval_full.py     not yet meaningful if placement remains broken
+infer.py         do not use for final submission until placement is fixed
 ```
 
 ---
 
-## 5. How to run things (all commands: `cd <repo>/src` first)
+## 7. How to run locally
 
-Build the GT permutation cache (once; already done):
-```
+All local commands assume cwd is `src/` unless noted.
+
+Build/verify cache:
+
+```powershell
 python recover.py
-```
-Confirm synthetic degradation matches real:
-```
 python validate_distort.py
 ```
-Train models (run **sequentially** — one 8GB GPU; see §7):
+
+Train pairwise scorer:
+
+```powershell
+python -u train_pair.py --steps 9000 --bs 2 --nA 48 --M 16 --workers 6 --lr 1e-3 --tag pair
 ```
-# siamese pre-filter (optional if using full pairwise)
-python -u train_compat.py --steps 9000 --bs 8 --workers 8 --real_prob 0.0 --tag compat | tee /e/pazzle_work/logs/compat.log
-# pairwise scorer (primary). KEEP pairs/step small (bs*2*nA*M ≈ 3000) or 8GB OOM-hangs!
-python -u train_pair.py  --steps 9000 --bs 2 --nA 48 --M 16 --workers 6 --lr 1e-3 --tag pair | tee /e/pazzle_work/logs/pair.log
-# restorer
-python -u train_restore.py --steps 14000 --bs 16 --workers 8 --real_prob 0.5 --tag restore | tee /e/pazzle_work/logs/restore.log
+
+Train restorer:
+
+```powershell
+python -u train_restore.py --steps 14000 --bs 16 --workers 8 --real_prob 0.5 --tag restore
 ```
-Measure (uses held-out val + recovered GT):
+
+Placement eval:
+
+```powershell
+python eval_place.py --n 20 --full_pair --iters 3000000 --restarts 3
 ```
-python diag_compat.py --n 15                          # siamese recall@K
-python eval_place.py --n 20 --full_pair               # placement acc + SSIM (pairwise solve)
-python eval_full.py  --n 30 --full_pair               # end-to-end SSIM (leaderboard estimate)
+
+End-to-end eval:
+
+```powershell
+python eval_full.py --n 30 --full_pair --iters 4000000 --restarts 3
 ```
-Make the submission (all 700 test images):
+
+Submission:
+
+```powershell
+python infer.py --full_pair --iters 5000000 --restarts 4 --out submission.zip
 ```
-python infer.py --iters 5000000 --restarts 4 --out submission.zip
-#   → E:/pazzle_work/submissions/submission.zip   (add --no_restore or --n N for tests)
-#   NOTE: infer.py currently uses siamese compat only; wire pair/full_pair before final run.
+
+Do not submit while `eval_place` solve-only SSIM is near `0.1`.
+
+---
+
+## 8. Immediate next steps
+
+The next agent should focus on placement debugging before final inference.
+
+1. Let/inspect Kaggle v8 outputs once it completes/errors.
+   - Download outputs.
+   - Check whether `train_restore.py` produced `restore_best.pt`/`restore_last.pt`.
+   - Keep restoration checkpoints if produced; they can still be useful.
+
+2. Debug `PairwiseNet` full-score usage on validation.
+   - Add/Run a diagnostic for true-neighbor rank using full NxN pairwise scores on val.
+   - Report right/down true-neighbor `R@1`, `R@5`, `R@25`, median rank.
+   - Compare horizontal vs vertical orientation; verify transpose handling in
+     `pairwise_scores_full()` matches `train_pair.py`.
+   - Inspect logits distribution for true seams vs random seams.
+   - Confirm self-pairs/diagonal are not dominating or poisoning the solver.
+
+3. Debug solver separately.
+   - Feed solver an oracle-ish score matrix where true neighbors are boosted; ensure
+     `solve_from_scores()` can recover high placement on 24x24.
+   - Try smaller grids/crops with known GT to see if greedy+SA works structurally.
+   - Tune `iters`, `restarts`, `T_scale`, but do not expect tuning alone to fix
+     near-zero `place_acc`.
+
+4. Consider alternatives if pairwise full solve remains bad.
+   - Reintroduce/retrain `CompatNet` and use hybrid top-K rescoring.
+   - Build a row/column/neighbor graph assembly method instead of global swap SA.
+   - Use local edge/color continuity baselines as an ensemble term with PairwiseNet logits.
+   - Weight textured/high-confidence fragments more heavily; flat fragments are ambiguous.
+
+5. Train/keep `RestoreNet`, but do not treat it as solving placement.
+   - Restorer can improve perfect-placement ceiling.
+   - It cannot fix a shuffled/incorrect assembly.
+
+---
+
+## 9. Known gotchas
+
+1. One 8 GB local GPU means train sequentially. Kaggle may expose T4(s), but the current
+   scripts use `cuda` default device and are not multi-GPU aware.
+2. Keep pairwise training pairs/step around `bs*2*nA*M ~= 3000`; larger batches caused
+   near-OOM/allocator stalls locally.
+3. `np.load` on `.npz` is lazy. Materialize arrays once; repeated `z['arr'][i]` access can
+   reload/pressure memory.
+4. On Kaggle, uploaded zips may be auto-extracted; do not assume `train.zip` exists.
+   The current notebook handles the real mount path under `/kaggle/input/datasets/...`.
+5. The Kaggle notebook embeds `src/*.py`; after editing local `src`, refresh the embedded
+   source cell before pushing. The previous push workflow did this explicitly.
+6. The Kaggle notebook currently embeds a W&B key. Keep it private or move the key to
+   Kaggle Secrets before sharing.
+7. `eval_place --full_pair`, `eval_full --full_pair`, and `infer --full_pair` no longer
+   require a compat checkpoint after the latest patch. If this error returns, the embedded
+   notebook source is stale.
+8. W&B is the live monitor. `dashboard.py` is local-only and cannot be exposed from Kaggle
+   in a useful way.
+
+---
+
+## 10. Artifact inventory
+
+Downloaded v7 outputs:
+
+```text
+kaggle_outputs/train_v7_error/
+  pazzle_work/cache/perms.npz
+  pazzle_work/ckpt/pair_best.pt
+  pazzle_work/ckpt/pair_last.pt
+  pazzle_work/logs/recover.log
+  pazzle_work/logs/pair.log
+  pazzle_work/logs/eval_place.log
+  vsos-ai-pazzle-train.log
 ```
-Live monitor:
+
+Resume dataset staging:
+
+```text
+E:/pazzle_kaggle_resume_v7_flat/
+  perms.npz
+  pair_best.pt
+  pair_last.pt
+  recover.log
+  pair.log
+  dataset-metadata.json
 ```
-python dashboard.py     # then open http://localhost:8000
+
+Kaggle resume dataset:
+
+```text
+pasha883/vsos-ai-pazzle-resume-v7
 ```
 
 ---
 
-## 6. Current state (update this section as you go)
+## 11. Deliverables still needed
 
-- ✅ Data extracted to E:, zips moved off C:. Env verified.
-- ✅ `perms.npz` built for all 7000 train (conf_mean 0.82, 87.6% frags high-conf).
-- ✅ Synthetic distorter validated (~0.03 SSIM from real).
-- ✅ Full pipeline code written; numba solver + dashboard working.
-- ⚠️ **Siamese CompatNet**: only trained to ~step 1000 (val H@1 ≈ 0.16) then stopped to
-  pivot to pairwise. `compat_best.pt` exists but is weak. Retrain fully if you want the
-  fast hybrid path; not required if using full pairwise.
-- 🔄 **PairwiseNet**: TRAINING NOW (`train_pair`, bs2·nA48·M16, 9000 steps). This is the
-  primary scorer. Watch `pair.log` / dashboard.
-- ⬜ **RestoreNet**: not trained yet — run right after pairwise.
-- ⬜ No submission produced yet.
-- Next: finish pairwise → `eval_place --full_pair` (does placement work?) → train restore
-  → `eval_full` → wire pairwise into `infer.py` → submission.
-
----
-
-## 7. GOTCHAS / lessons (do not relearn these the hard way)
-
-1. **One 8 GB GPU ⇒ train sequentially.** Concurrent trainings are *slower* wall-clock
-   (context-switch overhead + forced-smaller batches) and risk OOM.
-2. **Right-size batches to VRAM.** Near-full memory (>7.5 GB) causes allocator
-   thrashing that looks like a hang (no progress, GPU 100%). For pairwise keep
-   `bs*2*nA*M ≈ 3000` pairs/step. This bit us twice (training loop and the val loop).
-3. **`np.load` is lazy.** `d = np.load(x.npz); d["arr"][i]` reloads the whole array
-   every access → dataloader-worker `MemoryError`. Materialize once:
-   `z=np.load(...); arr=z["arr"]`.
-4. **Chain scripts with `set -e` (or `&&`).** `A | tee f` returns tee's exit code, so a
-   crashed trainer is masked as success and the next stage runs anyway. Use
-   `set -o pipefail` and check, or run stages separately.
-5. **Train compat on synthetic (`real_prob=0`).** Real-recon adjacency has ~12% label
-   noise (misplaced flat fragments). Synthetic labels are perfect and the distribution
-   is validated-close. (Restore can still use real via `real_prob≈0.5`.)
-6. **Logs:** always `... 2>&1 | tee /e/pazzle_work/logs/<name>.log` so the dashboard
-   (which reads `dash_sources.json`) shows it. Use `python -u` for unbuffered output.
-
-### Managing background processes (Windows)
-- List trainers:
-  `Get-CimInstance Win32_Process -Filter "Name='python.exe'" | ? {$_.CommandLine -match 'train_'} | ft ProcessId,CommandLine`
-- Kill a training + its worker tree: `taskkill /F /T /PID <pid>`
-- GPU status: `nvidia-smi --query-gpu=memory.used,utilization.gpu --format=csv,noheader`
-- Kill a bash chain cleanly: find the root `bash.exe` (by CommandLine) and `taskkill /F /T /PID` it (killing only the python lets the chain proceed to the next stage).
-
----
-
-## 8. Ideas / TODO if placement is still weak after pairwise
-- Ensemble siamese + pairwise scores; or full pairwise (bypasses siamese recall ceiling).
-- **Iterative solve↔restore**: restore the assembled image, re-extract cleaner fragments,
-  re-score + re-solve.
-- Uniform/low-texture fragments are inherently ambiguous but cheap in SSIM when
-  misplaced — weight effort toward textured fragments.
-- Test-time augmentation for the restorer (avg over flips).
-- Tune SA (`iters`, `restarts`, `T_scale`) in `solve.py` on val via `eval_place`.
-- Deliverables still to build: `solution.ipynb` (Colab-reproducible) + presentation.
-  See `docs/EXPERIMENTS.md` for the experiment history to draw on.
+- A reliable placement method with validation `SSIM_solve` far above the shuffled baseline.
+- Trained `RestoreNet` checkpoint.
+- `eval_full.py` report on held-out val.
+- `submission.zip` with 700 PNGs.
+- Final `solution.ipynb` and presentation if required by the competition.

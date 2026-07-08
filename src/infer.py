@@ -21,10 +21,17 @@ def main():
     ap.add_argument("--save_dir", default="")
     args = ap.parse_args()
 
-    compat, cck = load_compat()
-    restore, rck = (None, None) if args.no_restore else load_restore()
     pair, pck = (load_pair() if (args.use_pair or args.full_pair) else (None, None))
-    print(f"compat step={cck.get('step')}; restore step={rck.get('step') if rck else None}; "
+    compat, cck = (None, None)
+    if args.full_pair:
+        try:
+            compat, cck = load_compat()
+        except FileNotFoundError:
+            print("no compat checkpoint; using full_pair pairwise only", flush=True)
+    else:
+        compat, cck = load_compat()
+    restore, rck = (None, None) if args.no_restore else load_restore()
+    print(f"compat step={cck.get('step') if cck else None}; restore step={rck.get('step') if rck else None}; "
           f"pair step={pck.get('step') if pck else None}", flush=True)
 
     names = list_test()

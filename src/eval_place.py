@@ -36,7 +36,14 @@ def main():
     ap.add_argument("--alpha", type=float, default=3.0)
     args = ap.parse_args()
 
-    model = load_compat(args.tag)
+    model = None
+    if args.full_pair:
+        try:
+            model = load_compat(args.tag)
+        except FileNotFoundError:
+            print("no compat checkpoint; using full_pair pairwise only")
+    else:
+        model = load_compat(args.tag)
     pair = None
     if args.use_pair or args.full_pair:
         from pipeline import load_pair

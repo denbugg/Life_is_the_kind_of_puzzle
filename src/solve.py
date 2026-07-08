@@ -168,8 +168,12 @@ def rescore_pairwise(pair_model, frags_np, R, D, K=32, alpha=3.0, device="cuda",
 
 @torch.no_grad()
 def pairwise_scores_full(pair_model, frags_np, device="cuda", bs=16384):
-    """Full NxN pairwise compatibility (bypasses any siamese pre-filter)."""
-    pair_model.eval()
+    """Full NxN pairwise compatibility (bypasses any siamese pre-filter).
+    pair_model may be a single net or a LIST of nets, whose logits are averaged
+    (ensemble of independently-trained scorers → sharper compatibility)."""
+    models = pair_model if isinstance(pair_model, (list, tuple)) else [pair_model]
+    for m in models:
+        m.eval()
     x = torch.from_numpy(np.ascontiguousarray(frags_np)).permute(0, 3, 1, 2).float().div_(255).to(device)
     xt = x.transpose(-1, -2)
     N = x.shape[0]
@@ -183,7 +187,7 @@ def pairwise_scores_full(pair_model, frags_np, device="cuda", bs=16384):
             b = torch.as_tensor(jj[s:s + bs], device=device)
             pair = torch.cat([feat[a], feat[b]], dim=-1)
             with torch.autocast("cuda", dtype=torch.float16):
-                lg = pair_model(pair).float()
+                lg = sum(m(pair).float() for m in models) / len(models)
             out[s:s + bs] = lg.cpu().numpy()
         return out.reshape(N, N)
 
