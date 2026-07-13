@@ -1,0 +1,119 @@
+{
+  "assets": {
+    "denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "hbt": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  },
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "error": "2xT4 end-to-end smoke failed returncode=1 timed_out=False:\n[W713 12:44:38.880590343 socket.cpp:207] [c10d] The hostname of the client socket cannot be retrieved. err=-3\n[W713 12:44:41.176392392 socket.cpp:207] [c10d] The hostname of the client socket cannot be retrieved. err=-3\n[W713 12:44:41.179067090 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())\n/usr/local/lib/python3.12/dist-packages/torch/distributed/c10d_logger.py:83: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.\n  return func(*args, **kwargs)\n[rank0]:[W713 12:44:41.182899929 ProcessGroupNCCL.cpp:5138] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()\n[W713 12:44:41.192193619 socket.cpp:207] [c10d] The hostname of the client socket cannot be retrieved. err=-3\n[W713 12:44:41.192657879 Utils.hpp:137] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())\n/kaggle/working/latent_edge_staging/src/puzzle_assembly/latent_edge_embedding.py:111: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n  self.line_encoder = nn.TransformerEncoder(layer, num_layers=layers)\n/kaggle/working/latent_edge_staging/src/puzzle_assembly/latent_edge_embedding.py:111: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n  self.line_encoder = nn.TransformerEncoder(layer, num_layers=layers)\n[rank1]:[W713 12:44:47.895733567 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())\n[rank0]:[W713 12:44:47.895752402 Utils.hpp:112] Warning: Environment variable NCCL_ASYNC_ERROR_HANDLING is deprecated; use TORCH_NCCL_ASYNC_ERROR_HANDLING instead (function operator())\n/usr/local/lib/python3.12/dist-packages/torch/autograd/graph.py:865: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.\ngrad.sizes() = [16, 48, 1, 1], strides() = [48, 1, 48, 48]\nbucket_view.sizes() = [16, 48, 1, 1], strides() = [48, 1, 1, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:330.)\n  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n/usr/local/lib/python3.12/dist-packages/torch/autograd/graph.py:865: UserWarning: Grad strides do not match bucket view strides. This may indicate grad was not created according to the gradient layout contract, or that the param's strides changed since DDP was constructed.  This is not an error, but may impair performance.\ngrad.sizes() = [16, 48, 1, 1], strides() = [48, 1, 48, 48]\nbucket_view.sizes() = [16, 48, 1, 1], strides() = [48, 1, 1, 1] (Triggered internally at /pytorch/torch/csrc/distributed/c10d/reducer.cpp:330.)\n  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n[rank0]: Traceback (most recent call last):\n[rank0]:   File \"/kaggle/working/latent_edge_staging/scripts/train_evaluate_latent_edge_embedding.py\", line 879, in <module>\n[rank0]:     main()\n[rank0]:   File \"/kaggle/working/latent_edge_staging/scripts/train_evaluate_latent_edge_embedding.py\", line 722, in main\n[rank0]:     metrics = _train_source(\n[rank0]:               ^^^^^^^^^^^^^^\n[rank0]:   File \"/kaggle/working/latent_edge_staging/scripts/train_evaluate_latent_edge_embedding.py\", line 395, in _train_source\n[rank0]:     raise RuntimeError(\"non-finite latent-edge gradient\")\n[rank0]: RuntimeError: non-finite latent-edge gradient\n[rank1]: Traceback (most recent call last):\n[rank1]:   File \"/kaggle/working/latent_edge_staging/scripts/train_evaluate_latent_edge_embedding.py\", line 879, in <module>\n[rank1]:     main()\n[rank1]:   File \"/kaggle/working/latent_edge_staging/scripts/train_evaluate_latent_edge_embedding.py\", line 722, in main\n[rank1]:     metrics = _train_source(\n[rank1]:               ^^^^^^^^^^^^^^\n[rank1]:   File \"/kaggle/working/latent_edge_staging/scripts/train_evaluate_latent_edge_embedding.py\", line 395, in _train_source\n[rank1]:     raise RuntimeError(\"non-finite latent-edge gradient\")\n[rank1]: RuntimeError: non-finite latent-edge gradient\nW0713 12:44:51.350000 34 torch/distributed/elastic/multiprocessing/api.py:1010] Sending process 41 closing signal SIGTERM\nE0713 12:44:51.416000 34 torch/distributed/elastic/multiprocessing/api.py:984] failed (exitcode: 1) local_rank: 0 (pid: 40) of binary: /usr/bin/python3\nTraceback (most recent call last):\n  File \"/usr/local/bin/torchrun\", line 10, in <module>\n    sys.exit(main())\n             ^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py\", line 362, in wrapper\n    return f(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/torch/distributed/run.py\", line 991, in main\n    run(args)\n  File \"/usr/local/lib/python3.12/dist-packages/torch/distributed/run.py\", line 982, in run\n    elastic_launch(\n  File \"/usr/local/lib/python3.12/dist-packages/torch/distributed/launcher/api.py\", line 170, in __call__\n    return launch_agent(self._config, self._entrypoint, list(args))\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/usr/local/lib/python3.12/dist-packages/torch/distributed/launcher/api.py\", line 317, in launch_agent\n    raise ChildFailedError(\ntorch.distributed.elastic.multiprocessing.errors.ChildFailedError: \n============================================================\nscripts/train_evaluate_latent_edge_embedding.py FAILED\n------------------------------------------------------------\nFailures:\n[1]:\n  time      : 2026-07-13_12:44:51\n  host      : ecec753e45e9\n  rank      : 1 (local_rank: 1)\n  exitcode  : 1 (pid: 41)\n  error_file: <N/A>\n  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html\n------------------------------------------------------------\nRoot Cause (first observed failure):\n[0]:\n  time      : 2026-07-13_12:44:51\n  host      : ecec753e45e9\n  rank      : 0 (local_rank: 0)\n  exitcode  : 1 (pid: 40)\n  error_file: <N/A>\n  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html\n============================================================",
+  "error_type": "RuntimeError",
+  "hardware": {
+    "cuda": "12.8",
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_probe": -0.03873510658740997,
+        "total_memory": 15636037632
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_probe": -0.011211616918444633,
+        "total_memory": 15636037632
+      }
+    ],
+    "nvidia_smi": [
+      "Tesla T4, 15360 MiB, 580.159.04",
+      "Tesla T4, 15360 MiB, 580.159.04"
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "tilenaf_latent_edge_kaggle_wrapper",
+  "qap_run": false,
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 62.67598366737366,
+  "staging": {
+    "base_file_count": 21,
+    "base_manifest_sha256": "1583053a4276ba9b30368dcc6af00f24cd0fe091bfaff93090c41c01b0c3675b",
+    "base_root": "/kaggle/input/datasets/pasha883/vsos-masked-gap-gate-code",
+    "overlay_hashes": {
+      "scripts/train_evaluate_latent_edge_embedding.py": "43b6923c3f80d9681449a2f9c7a9c8916df5cdbf24192828888f0d955b36ba25",
+      "src/puzzle_assembly/latent_edge_embedding.py": "1433383279dde07bd6d704b73cc20eb7eb1ecc1a0b6dda9b6ce71c6d356f105d",
+      "src/puzzle_denoise_v2/model.py": "d111d106352715cdebbbf24fd6c99facd0b3c9520951abf588a6c6bc03c7feba",
+      "tests/test_latent_edge_embedding.py": "10a3d8e708c9a83833d66c260589eb73872db95ccc52584205080eeea288d526",
+      "tests/test_latent_edge_trainer.py": "d66b0c61ce77047371886d304210d63f92cac3a9063fa630348da6dce8f81f45"
+    },
+    "overlay_root": "/kaggle/input/datasets/pasha883/vsos-tilenaf-latent-edge-overlay-v1",
+    "staging": "/kaggle/working/latent_edge_staging"
+  },
+  "started_unix": 1783946629.1619499,
+  "status": "failed",
+  "steps": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_latent_edge_embedding.py",
+        "tests/test_latent_edge_trainer.py"
+      ],
+      "label": "overlay unit tests",
+      "log": "/kaggle/working/latent_edge_tests.log",
+      "log_sha256": "7ee10058d99929c698ff37cf09c0ce2b2bac22dd21754c464d9b3e843055900d",
+      "returncode": 0,
+      "seconds": 7.784027019999996,
+      "timed_out": false,
+      "timeout_seconds": 900
+    },
+    {
+      "command": [
+        "torchrun",
+        "--standalone",
+        "--nproc_per_node=2",
+        "scripts/train_evaluate_latent_edge_embedding.py",
+        "--output-dir",
+        "/kaggle/working/latent_edge_smoke",
+        "--smoke",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/latent_edge_staging/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/latent_edge_staging/configs/denoise_validation_quarantine_v1.json",
+        "--selection-split",
+        "assembly_incremental_gate",
+        "--selection-offset",
+        "192",
+        "--holdout-offset",
+        "208"
+      ],
+      "label": "2xT4 end-to-end smoke",
+      "log": "/kaggle/working/latent_edge_smoke.log",
+      "log_sha256": "d4aa10d58a6595d5c0f0c9f55b6cae4bcea667c37d40c315011bc43b46d85cfe",
+      "returncode": 1,
+      "seconds": 15.810409426000007,
+      "timed_out": false,
+      "timeout_seconds": 3600
+    }
+  ]
+}

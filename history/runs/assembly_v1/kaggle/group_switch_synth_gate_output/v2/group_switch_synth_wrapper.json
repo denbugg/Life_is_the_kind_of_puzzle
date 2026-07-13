@@ -1,0 +1,30 @@
+{
+  "code_root": "/kaggle/input/datasets/pasha883/vsos-group-switch-sync-code",
+  "code_tree_sha256": "23defd7e017da28a3b06005bd3164a764b28683f6f51f571ef92e971844ec724",
+  "command": [
+    "/usr/bin/python3",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/test_group_switch_sync.py"
+  ],
+  "environment": {
+    "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+    "python": "3.12.13"
+  },
+  "error": "RuntimeError: group-switch synthetic gate failed",
+  "kind": "group_switch_synthetic_kaggle_wrapper",
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "scientific_status": "stop_synthetic_gate_failed",
+  "seconds": 7.277194261550903,
+  "started_unix": 1783914656.4665275,
+  "status": "failed",
+  "targets_opened": false,
+  "tests": {
+    "returncode": 1,
+    "stderr": "",
+    "stdout": ".......F.                                                                [100%]\n=================================== FAILURES ===================================\n__________ test_geometry_can_recover_truth_that_is_rank_two_by_prior ___________\n\n    def test_geometry_can_recover_truth_that_is_rank_two_by_prior() -> None:\n        size = 4\n        source, destination, offsets, confidence = _rank2_truth_graph(size)\n        groups = _candidate_groups(source, destination, offsets, confidence)\n        truth_edges: list[tuple[int, int]] = []\n        false_constraints: dict[tuple[int, float, float], set[int]] = {}\n        assert len(groups) == size * size - 1\n        for (query, dx, dy), candidates in groups.items():\n            truth = _truth_destination(query, dx, dy, size)\n            assert truth is not None\n            by_destination = dict(candidates)\n            assert by_destination[truth] == pytest.approx(0.45)\n            false, false_confidence = max(candidates, key=lambda item: item[1])\n            assert false != truth\n            assert false_confidence == pytest.approx(0.55)\n            truth_edges.append((query, truth))\n            false_constraints.setdefault((false, dx, dy), set()).add(query)\n        assert _connected(size, truth_edges)\n        # A tree has no redundant truth: deleting any rank-two edge disconnects it.\n        assert all(\n            not _connected(size, truth_edges[:index] + truth_edges[index + 1 :])\n            for index in range(len(truth_edges))\n        )\n        # Reused false hubs demand identical relative positions from distinct tiles.\n        assert sum(len(queries) >= 2 for queries in false_constraints.values()) >= 2\n        result = solve_group_switch(\n            source,\n            destination,\n            offsets,\n            confidence,\n            _block_scramble(size),\n            _config(size),\n            seed=37,\n        )\n>       np.testing.assert_array_equal(\n            result.grid, np.arange(size * size, dtype=np.int32).reshape(size, size)\n        )\n\ntests/test_group_switch_sync.py:470: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n/usr/local/lib/python3.12/dist-packages/numpy/_utils/__init__.py:85: in wrapper\n    return fun(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nargs = (<built-in function eq>, array([[10, 11,  8,  9],\n       [14, 15, 12, 13],\n       [ 2,  3,  0,  1],\n       [ 6,  7,  4...32), array([[ 0,  1,  2,  3],\n       [ 4,  5,  6,  7],\n       [ 8,  9, 10, 11],\n       [12, 13, 14, 15]], dtype=int32))\nkwds = {'err_msg': '', 'header': 'Arrays are not equal', 'strict': False, 'verbose': True}\n\n    @wraps(func)\n    def inner(*args, **kwds):\n        with self._recreate_cm():\n>           return func(*args, **kwds)\n                   ^^^^^^^^^^^^^^^^^^^\nE           AssertionError: \nE           Arrays are not equal\nE           \nE           Mismatched elements: 16 / 16 (100%)\nE           Max absolute difference among violations: 10\nE           Max relative difference among violations: 10.\nE            ACTUAL: array([[10, 11,  8,  9],\nE                  [14, 15, 12, 13],\nE                  [ 2,  3,  0,  1],\nE                  [ 6,  7,  4,  5]], dtype=int32)\nE            DESIRED: array([[ 0,  1,  2,  3],\nE                  [ 4,  5,  6,  7],\nE                  [ 8,  9, 10, 11],\nE                  [12, 13, 14, 15]], dtype=int32)\n\n/usr/lib/python3.12/contextlib.py:81: AssertionError\n=============================== warnings summary ===============================\n../../../../../usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475\n  /usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /kaggle/input/datasets/pasha883/vsos-group-switch-sync-code/.pytest_cache/v/cache/nodeids: [Errno 30] Read-only file system: '/kaggle/input/datasets/pasha883/vsos-group-switch-sync-code/pytest-cache-files-7lepcxkr'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n../../../../../usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:429\n  /usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:429: PytestCacheWarning: could not create cache path /kaggle/input/datasets/pasha883/vsos-group-switch-sync-code/.pytest_cache/v/cache/lastfailed: [Errno 30] Read-only file system: '/kaggle/input/datasets/pasha883/vsos-group-switch-sync-code/pytest-cache-files-idw76wmr'\n    config.cache.set(\"cache/lastfailed\", self.lastfailed)\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED tests/test_group_switch_sync.py::test_geometry_can_recover_truth_that_is_rank_two_by_prior\n1 failed, 8 passed, 2 warnings in 3.50s\n"
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 126, in main\n    raise RuntimeError(\"group-switch synthetic gate failed\")\nRuntimeError: group-switch synthetic gate failed\n"
+}

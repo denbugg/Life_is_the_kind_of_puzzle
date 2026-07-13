@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "kind": "contextual_refiner_smoke_launch_expectation",
+  "created_utc": "2026-07-12T15:31:38Z",
+  "status": "complete_smoke_gate_failed_stop_or_pivot_verified",
+  "kernel": {
+    "slug": "pasha883/vsos-contextual-refiner-smoke-t4x2-v2",
+    "job_dir": "runs/assembly_v1/kaggle/contextual_refiner_smoke_job_final",
+    "train_sha256": "81d75ecd449c5c24931d4686dd9c8397da7d56df5808960845dc2cd82e98ad08",
+    "kernel_metadata_sha256": "e1f5f785672a0ef260fee2a8bcff860e4913f7bfda64939bc68f0628f7e9ed4e",
+    "enable_gpu": true,
+    "enable_internet": false,
+    "expected_maximum_gpu_count": 2,
+    "machine_shape": "NvidiaTeslaT4",
+    "kernel_version": 1,
+    "kernel_session_id": 334590037,
+    "t4_server_readback_train_sha256": "81d75ecd449c5c24931d4686dd9c8397da7d56df5808960845dc2cd82e98ad08",
+    "t4_server_readback_metadata_sha256": "838c38cc2873991d803fb16626dc33a349c2584ef819d7a5d444a486b623af60",
+    "v2_server_readback_train_sha256": "45a52a5ce9b1f419c1508cb9807c28bcbbc21b51589aa5a0c4ab04d87c3de284",
+    "v2_server_readback_metadata_sha256": "7bd07d56295b95a24e160ebfbcd56f788e8923be417bbcb58118dc3f5cd6bf12"
+  },
+  "protocol": {
+    "path": "configs/postassembly_contextual_refiner_v1.json",
+    "sha256": "7de1a724a128a104467bf47ab1b075062bd2f689ba724c2a34897c1b28317c8e",
+    "steps": 2500,
+    "maximum_steps_without_new_gate": 2500,
+    "submission_promotion_allowed": false
+  },
+  "completion": {
+    "output_dir": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1",
+    "result_path": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1/RESULT.json",
+    "report_path": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1/contextual_refiner_smoke_report.json",
+    "report_sha256": "2c3c33fa8530da79790c43ab9b6099f64119f6a5550ca4b1390f37963dc0d599",
+    "checkpoint_path": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1/contextual_refiner_smoke_best.pt",
+    "checkpoint_sha256": "88bddc0c973df2651b80219903cfc8051f69f846752ebd0b2169eeff8c4f344e",
+    "best_step": 2500,
+    "runtime_seconds": 2901.141495704651,
+    "hardware": "2x Tesla T4, compute capability 7.5, torch 2.10.0+cu128, DataParallel",
+    "source_protocol": "512 train / 32 correct-layout development / 32 frozen-QAP one-shot; unique whole-source disjoint",
+    "correct_layout_primary_kornia_ssim_delta": 0.006873342931167207,
+    "correct_layout_independent_libjpeg_ssim_delta": 0.006481509705194424,
+    "actual_qap_primary_kornia_ssim_delta": -0.0011441000216836188,
+    "actual_qap_independent_libjpeg_ssim_delta": -0.0012743877949188851,
+    "all_layouts_unchanged": true,
+    "gate_passed": false,
+    "continuation_to_10000_allowed": false,
+    "submission_promotion_allowed": false,
+    "verification": "report/checkpoint hashes exact; finite tensors; zero-confidence identity; contextual plus harmonizer suite 28/28 passed"
+  },
+  "code": {
+    "contextual_refiner_sha256": "5ab4a18be6689ff722b45a8fa73aeae820ed26e420a213cbf4cb4ab31ca1523a",
+    "contextual_refiner_training_sha256": "c25e83536c73fa2e7fc7df04dbe684845b080f3ed3db537a8442edfd7d0fe2de"
+  },
+  "inputs": {
+    "dataset_sources": [
+      "pasha883/vsos-contextual-refiner-code",
+      "pasha883/vsos-ai-initiative-pazzle",
+      "pasha883/vsos-assembly-v1-runtime",
+      "pasha883/vsos-contextual-refiner-frozen-qap-gate"
+    ],
+    "kernel_sources": [
+      "pasha883/vsos-assembly-v1-seam-denoiser-gpu"
+    ],
+    "frozen_qap_gate_dataset_status": "ready",
+    "code_dataset_status": "ready",
+    "code_bundle_zip_sha256": "1c70ce8fc49688f47c280e6e2122e90add9ade3cb6bb37f4de0904a10f20e8a4",
+    "frozen_qap_gate_manifest_sha256": "a288a773022ff068705642e9227cde7ba8d17abd4d84476d168359c55c137117",
+    "frozen_qap_gate_contains_target_pixels": false,
+    "frozen_qap_gate_contains_target_derived_metrics": false,
+    "selected_tilenaf_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "seam_tilenaf_sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9"
+  },
+  "preflight": {
+    "project_doctor_passed": true,
+    "contextual_unit_tests": "11 passed",
+    "one_source_end_to_end_render_smoke": "passed on MPS",
+    "job_python_compile": "passed",
+    "whole_source_disjointness_test": "passed",
+    "oracle_dataset_or_kernel_used": false,
+    "v1_failure": "ModuleNotFoundError before data access or training; fixed by mounting the isolated code dataset",
+    "v2_failure": "P100 sm60 rejected by stock Torch 2.10 at real tensor probe before data access or training; v3 conditionally installs the validated Torch 2.6 cu124 wheel before import",
+    "v3_cancel": "session 334588559 only; SDK response error_message was empty; denoiser session 334584570 was explicitly protected",
+    "v4_cancel": "session 334589346 only; lowercase accelerator enum normalized to generic Gpu; SDK response error_message was empty",
+    "v5_cancel": "session 334589635 only; CLI accelerator override could not change the old slug from generic Gpu; new slug pins NvidiaTeslaT4 in metadata from version 1"
+  }
+}

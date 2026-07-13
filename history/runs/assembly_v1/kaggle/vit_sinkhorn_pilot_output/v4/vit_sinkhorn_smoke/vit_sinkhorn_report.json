@@ -1,0 +1,91 @@
+{
+  "checkpoint": {
+    "bytes": 1223058,
+    "model_state_sha256": "22b12c6280695a218b19595d6226fda39c21bbeca8ac73be3fed637b5aaaa41c",
+    "path": "vit_sinkhorn_checkpoint.pt",
+    "sha256": "2a127a199de11b7babb03ac4ca1f59f66ffe430031b74308e6128a803766cb34"
+  },
+  "development_gate_eligible": false,
+  "hungarian_layout_sha256": "8535e4eacbc66b4140b793442b7c204f2b46a2501007e39eb1998e8182e90cd6",
+  "hungarian_metrics": {
+    "column_accuracy": 1.0,
+    "combined_adjacency": 1.0,
+    "down_adjacency": 1.0,
+    "exact_solved": true,
+    "mean_manhattan": 0.0,
+    "median_manhattan": 0.0,
+    "position_accuracy": 1.0,
+    "right_adjacency": 1.0,
+    "row_accuracy": 1.0,
+    "valid_permutation": true,
+    "within_one_manhattan": 1.0
+  },
+  "kind": "vit_sinkhorn_synthetic_smoke",
+  "loss_history": [
+    {
+      "assignment": 2.823887348175049,
+      "directional_contrast": 3.5364668369293213,
+      "neighbor_consistency": 1.547061562538147,
+      "total": 3.6085338592529297
+    },
+    {
+      "assignment": 2.1842594146728516,
+      "directional_contrast": 3.1685216426849365,
+      "neighbor_consistency": 1.4603395462036133,
+      "total": 2.8909807205200195
+    }
+  ],
+  "model_config": {
+    "activation_checkpointing": false,
+    "cnn_channels": 16,
+    "d_model": 64,
+    "dropout": 0.0,
+    "edge_band": 3,
+    "edge_bins": 5,
+    "edge_channels": 8,
+    "edge_dim": 16,
+    "feedforward_dim": 128,
+    "grid_size": 4,
+    "num_heads": 4,
+    "num_layers": 2,
+    "qap_prior_dropout": 0.25,
+    "sinkhorn_iterations": 12,
+    "sinkhorn_temperature": 0.2,
+    "tile_size": 20
+  },
+  "prior_policy": "no QAP prior; infrastructure-only synthetic batch",
+  "reason": "small-grid infrastructure smoke only",
+  "runtime": {
+    "cuda": "12.8",
+    "device": "cuda:0",
+    "torch": "2.10.0+cu128"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seed": 20260711,
+  "sinkhorn_max_column_error": 1.7881393432617188e-07,
+  "sinkhorn_max_row_error": 0.0002752542495727539,
+  "source_code": {
+    "combined_sha256": "7ba75f9043137dc9d0492fc0ac5302fc88b7ffb6ee36aa70e89cf827cf131788",
+    "files": {
+      "scripts/train_evaluate_vit_sinkhorn.py": "eadea65c112211955b807d1cf6bff5c5d0053f1efeb3244d87a37bc518e28c33",
+      "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+      "src/puzzle_assembly/components.py": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367",
+      "src/puzzle_assembly/geometry.py": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86",
+      "src/puzzle_assembly/metrics.py": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69",
+      "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+      "src/puzzle_assembly/protocol.py": "b711ad6d28a2fe60329e3e8236e58adbfbceea8ca4c8bf85e9a057e7619e24f4",
+      "src/puzzle_assembly/solvers.py": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e",
+      "src/puzzle_assembly/vit_sinkhorn.py": "cc7e1a71aa538eb867c1f8ce35fdc52e5ba5b4438db139b824967a13d1f2f964",
+      "src/puzzle_denoise_v2/degradation.py": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+      "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+      "src/puzzle_denoise_v2/losses.py": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34",
+      "src/puzzle_denoise_v2/metrics.py": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36",
+      "src/puzzle_denoise_v2/model.py": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+      "src/puzzle_denoise_v2/tiles.py": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+      "src/puzzle_denoise_v2/training.py": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+    }
+  },
+  "status": "synthetic_smoke_passed",
+  "steps": 2
+}

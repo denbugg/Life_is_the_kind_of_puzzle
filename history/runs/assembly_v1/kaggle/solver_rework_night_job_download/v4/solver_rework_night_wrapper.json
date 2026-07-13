@@ -1,0 +1,105 @@
+{
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "kind": "solver_rework_night_matrix",
+  "probe": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "cuda_available": true,
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "matmul_mean": -0.05837368220090866,
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "records": [
+    {
+      "name": "exact_primary_kornia_rl_k4",
+      "output": "/kaggle/working/exact_primary_kornia_rl_k4.json",
+      "returncode": 2,
+      "seconds": 0.09299742599995398
+    },
+    {
+      "name": "exact_primary_kornia_rl_k16",
+      "output": "/kaggle/working/exact_primary_kornia_rl_k16.json",
+      "returncode": 2,
+      "seconds": 0.0934096249999925
+    },
+    {
+      "name": "exact_independent_libjpeg_rl_k4",
+      "output": "/kaggle/working/exact_independent_libjpeg_rl_k4.json",
+      "returncode": 2,
+      "seconds": 0.09034938799999281
+    },
+    {
+      "name": "exact_independent_libjpeg_rl_k16",
+      "output": "/kaggle/working/exact_independent_libjpeg_rl_k16.json",
+      "returncode": 2,
+      "seconds": 0.09182080199997245
+    },
+    {
+      "name": "real16_rl_k4",
+      "output": "/kaggle/working/real16_rl_k4.json",
+      "returncode": 2,
+      "seconds": 0.09029787400004352
+    },
+    {
+      "name": "real16_rl_k8",
+      "output": "/kaggle/working/real16_rl_k8.json",
+      "returncode": 2,
+      "seconds": 0.090702465999982
+    },
+    {
+      "name": "real16_rl_k16",
+      "output": "/kaggle/working/real16_rl_k16.json",
+      "returncode": 2,
+      "seconds": 0.0904008699999963
+    },
+    {
+      "name": "real16_lns_s64",
+      "output": "/kaggle/working/real16_lns_s64.json",
+      "returncode": 2,
+      "seconds": 0.09017158899996502
+    },
+    {
+      "name": "real16_lns_s192",
+      "output": "/kaggle/working/real16_lns_s192.json",
+      "returncode": 2,
+      "seconds": 0.09520926900000859
+    },
+    {
+      "name": "real16_cross_softcycle",
+      "output": "/kaggle/working/real16_cross_softcycle.json",
+      "returncode": 2,
+      "seconds": 0.09305894900001022
+    },
+    {
+      "name": "real16_anneal20k",
+      "output": "/kaggle/working/real16_anneal20k.json",
+      "returncode": 2,
+      "seconds": 0.09069746300002635
+    }
+  ],
+  "runtime_root": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime",
+  "schema_version": 1,
+  "seconds": 56.597148790000006
+}

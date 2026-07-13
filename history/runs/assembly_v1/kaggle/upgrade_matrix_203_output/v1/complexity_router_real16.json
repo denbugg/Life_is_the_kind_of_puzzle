@@ -1,0 +1,283 @@
+{
+  "anti_leakage": {
+    "candidate_layouts_were_frozen_before_calibration_targets": true,
+    "features_are_raw_input_only": true,
+    "router_frozen_before_this_phase": true
+  },
+  "frozen_rule": {
+    "kind": "fixed",
+    "label": "qap_w1_b0.05_i25",
+    "train_mean_ssim": 0.20722265300095843
+  },
+  "kind": "input_complexity_qap_router_real16_score",
+  "paired_vs_fixed_exact_best": {
+    "bootstrap_95_ci": [
+      0.0,
+      0.0
+    ],
+    "fixed_label": "qap_w1_b0.05_i25",
+    "losses": 0,
+    "mean_delta": 0.0,
+    "wins": 0
+  },
+  "paired_vs_promoted_baseline": {
+    "bootstrap_95_ci": [
+      0.0001698926026909731,
+      0.00396008187595659
+    ],
+    "losses": 3,
+    "mean_delta": 0.002046263980019114,
+    "mean_ssim": 0.18486617900797297,
+    "median_delta": 0.0012864074796147401,
+    "ties": 0,
+    "wins": 13
+  },
+  "router": "runs/assembly_v1/kaggle/upgrade_matrix_203_output/v1/complexity_router.json",
+  "router_sha256": "aa1562099bb01bd264cc6ddd4b13a90c65d5b186dc3900c0ad97b5f0b12a44d6",
+  "schema_version": 1,
+  "selections": [
+    {
+      "baseline_ssim": 0.20411704516995546,
+      "features": {
+        "gradient_mean": 0.030105505138635635,
+        "gradient_median": 0.02782163769006729,
+        "gradient_q90": 0.04544461518526077,
+        "saturation_mean": 0.33884134888648987,
+        "tile_luma_mean_std": 0.24351653456687927,
+        "tile_luma_std_mean": 0.09053664654493332,
+        "tile_rgb_mean_std": 0.2461768239736557
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.20486872207078466,
+      "source": "img_003877.png"
+    },
+    {
+      "baseline_ssim": 0.28540185208468744,
+      "features": {
+        "gradient_mean": 0.02909857966005802,
+        "gradient_median": 0.027951497584581375,
+        "gradient_q90": 0.03895081207156181,
+        "saturation_mean": 0.30689528584480286,
+        "tile_luma_mean_std": 0.1598530411720276,
+        "tile_luma_std_mean": 0.07952722907066345,
+        "tile_rgb_mean_std": 0.16260714828968048
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.28621347069742337,
+      "source": "img_005080.png"
+    },
+    {
+      "baseline_ssim": 0.11997886391431656,
+      "features": {
+        "gradient_mean": 0.03579755499958992,
+        "gradient_median": 0.0339336097240448,
+        "gradient_q90": 0.05373150855302811,
+        "saturation_mean": 0.318412184715271,
+        "tile_luma_mean_std": 0.16684801876544952,
+        "tile_luma_std_mean": 0.11676658689975739,
+        "tile_rgb_mean_std": 0.1671534776687622
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.12382553889982018,
+      "source": "img_004383.png"
+    },
+    {
+      "baseline_ssim": 0.12849737102221534,
+      "features": {
+        "gradient_mean": 0.03508124127984047,
+        "gradient_median": 0.0338570699095726,
+        "gradient_q90": 0.04918128624558449,
+        "saturation_mean": 0.36931633949279785,
+        "tile_luma_mean_std": 0.19318127632141113,
+        "tile_luma_std_mean": 0.11538733541965485,
+        "tile_rgb_mean_std": 0.1920621246099472
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.1347501271724417,
+      "source": "img_006582.png"
+    },
+    {
+      "baseline_ssim": 0.346880669680284,
+      "features": {
+        "gradient_mean": 0.02642218954861164,
+        "gradient_median": 0.024749740958213806,
+        "gradient_q90": 0.03915634751319885,
+        "saturation_mean": 0.3334880769252777,
+        "tile_luma_mean_std": 0.1371738314628601,
+        "tile_luma_std_mean": 0.06902340054512024,
+        "tile_rgb_mean_std": 0.13497896492481232
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.35276675932073925,
+      "source": "img_004810.png"
+    },
+    {
+      "baseline_ssim": 0.172730106166612,
+      "features": {
+        "gradient_mean": 0.03137967735528946,
+        "gradient_median": 0.030528035014867783,
+        "gradient_q90": 0.043108876794576645,
+        "saturation_mean": 0.3181084096431732,
+        "tile_luma_mean_std": 0.1747266948223114,
+        "tile_luma_std_mean": 0.0936417281627655,
+        "tile_rgb_mean_std": 0.1776912361383438
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.1744016012188997,
+      "source": "img_006306.png"
+    },
+    {
+      "baseline_ssim": 0.19242243914389046,
+      "features": {
+        "gradient_mean": 0.031432315707206726,
+        "gradient_median": 0.030106637626886368,
+        "gradient_q90": 0.04608703404664993,
+        "saturation_mean": 0.25778448581695557,
+        "tile_luma_mean_std": 0.2599112391471863,
+        "tile_luma_std_mean": 0.09306660294532776,
+        "tile_rgb_mean_std": 0.26374053955078125
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.1924910562864297,
+      "source": "img_005844.png"
+    },
+    {
+      "baseline_ssim": 0.19458636228933793,
+      "features": {
+        "gradient_mean": 0.02988637238740921,
+        "gradient_median": 0.029348984360694885,
+        "gradient_q90": 0.03906862810254097,
+        "saturation_mean": 0.4515245854854584,
+        "tile_luma_mean_std": 0.19788767397403717,
+        "tile_luma_std_mean": 0.0846748948097229,
+        "tile_rgb_mean_std": 0.21101014316082
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.19251516538764069,
+      "source": "img_004191.png"
+    },
+    {
+      "baseline_ssim": 0.2521388932020044,
+      "features": {
+        "gradient_mean": 0.029319413006305695,
+        "gradient_median": 0.02904626913368702,
+        "gradient_q90": 0.03788527846336365,
+        "saturation_mean": 0.31427815556526184,
+        "tile_luma_mean_std": 0.24438992142677307,
+        "tile_luma_std_mean": 0.08958669751882553,
+        "tile_rgb_mean_std": 0.25002142786979675
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.25216083690244046,
+      "source": "img_001281.png"
+    },
+    {
+      "baseline_ssim": 0.14283754437040996,
+      "features": {
+        "gradient_mean": 0.03420068696141243,
+        "gradient_median": 0.0332808755338192,
+        "gradient_q90": 0.049027346074581146,
+        "saturation_mean": 0.31071487069129944,
+        "tile_luma_mean_std": 0.20511087775230408,
+        "tile_luma_std_mean": 0.10599052906036377,
+        "tile_rgb_mean_std": 0.21012736856937408
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.14142356535646156,
+      "source": "img_003971.png"
+    },
+    {
+      "baseline_ssim": 0.1052121086853866,
+      "features": {
+        "gradient_mean": 0.03560115769505501,
+        "gradient_median": 0.034553661942481995,
+        "gradient_q90": 0.04836171120405197,
+        "saturation_mean": 0.3350421190261841,
+        "tile_luma_mean_std": 0.20487795770168304,
+        "tile_luma_std_mean": 0.11165155470371246,
+        "tile_rgb_mean_std": 0.2117832899093628
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.1072611631904437,
+      "source": "img_006070.png"
+    },
+    {
+      "baseline_ssim": 0.070902705853411,
+      "features": {
+        "gradient_mean": 0.039574213325977325,
+        "gradient_median": 0.03877536952495575,
+        "gradient_q90": 0.05617646872997284,
+        "saturation_mean": 0.2599472999572754,
+        "tile_luma_mean_std": 0.165719673037529,
+        "tile_luma_std_mean": 0.12092908471822739,
+        "tile_rgb_mean_std": 0.16668029129505157
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.07180402576035279,
+      "source": "img_005710.png"
+    },
+    {
+      "baseline_ssim": 0.17409689426189812,
+      "features": {
+        "gradient_mean": 0.02883796952664852,
+        "gradient_median": 0.02728242054581642,
+        "gradient_q90": 0.04092707484960556,
+        "saturation_mean": 0.37579891085624695,
+        "tile_luma_mean_std": 0.16904421150684357,
+        "tile_luma_std_mean": 0.08972577750682831,
+        "tile_rgb_mean_std": 0.16767604649066925
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.18418556733772348,
+      "source": "img_005224.png"
+    },
+    {
+      "baseline_ssim": 0.2318613609304708,
+      "features": {
+        "gradient_mean": 0.02910240739583969,
+        "gradient_median": 0.027275539934635162,
+        "gradient_q90": 0.04291365668177605,
+        "saturation_mean": 0.23552215099334717,
+        "tile_luma_mean_std": 0.28574246168136597,
+        "tile_luma_std_mean": 0.0990997925400734,
+        "tile_rgb_mean_std": 0.2844140827655792
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.22574501710172656,
+      "source": "img_006489.png"
+    },
+    {
+      "baseline_ssim": 0.11429897556451886,
+      "features": {
+        "gradient_mean": 0.0356743186712265,
+        "gradient_median": 0.034534744918346405,
+        "gradient_q90": 0.051264192909002304,
+        "saturation_mean": 0.21967770159244537,
+        "tile_luma_mean_std": 0.24635155498981476,
+        "tile_luma_std_mean": 0.12756867706775665,
+        "tile_rgb_mean_std": 0.24794252216815948
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.1224551276908457,
+      "source": "img_002514.png"
+    },
+    {
+      "baseline_ssim": 0.1891554481078632,
+      "features": {
+        "gradient_mean": 0.03499992936849594,
+        "gradient_median": 0.03319831192493439,
+        "gradient_q90": 0.04775885492563248,
+        "saturation_mean": 0.31169402599334717,
+        "tile_luma_mean_std": 0.18319126963615417,
+        "tile_luma_std_mean": 0.10459951311349869,
+        "tile_rgb_mean_std": 0.193185493350029
+      },
+      "selected_label": "qap_w1_b0.05_i25",
+      "selected_ssim": 0.19099111973339447,
+      "source": "img_004878.png"
+    }
+  ],
+  "status": "real_gate_failed",
+  "upgrade_report": "runs/assembly_v1/kaggle/upgrade_matrix_203_output/v1/upgrade_matrix_203.json",
+  "upgrade_report_sha256": "27581dd51bf54b029dc7ee6b021f9b107fb1dae06947aa5d7d6c25e0223ee8a5"
+}

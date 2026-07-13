@@ -1,0 +1,351 @@
+{
+  "aggregate_simple_neighbor_rank": {
+    "denoised": {
+      "mean_rank": 60.61843297101449,
+      "median_rank": 22.0,
+      "mrr": 0.22516163841893858,
+      "pairs": 4416,
+      "top1": 0.14334239130434784,
+      "top10": 0.37817028985507245,
+      "top5": 0.297554347826087
+    },
+    "raw": {
+      "mean_rank": 82.0240036231884,
+      "median_rank": 36.0,
+      "mrr": 0.1654936738724179,
+      "pairs": 4416,
+      "top1": 0.09329710144927536,
+      "top10": 0.30344202898550726,
+      "top5": 0.22169384057971014
+    },
+    "scope": "right and down ground-truth neighbours, RGB boundary MSE, 1104 pairs/source"
+  },
+  "calibration_report": "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v3_current/prefinetune_calibration_report.json",
+  "calibration_report_sha256": "9db9f7bfbde54b3f79844086aaf38247146bf435b94ab696cbf85382afda9a59",
+  "candidate_sources": 257,
+  "checkpoint": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+  "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+  "contact_sheets": {
+    "comparison": "runs/denoise_v2/reordered_examples/before_after_clean_comparison.png",
+    "denoised": "runs/denoise_v2/reordered_examples/correct_order_with_denoise.png",
+    "raw": "runs/denoise_v2/reordered_examples/correct_order_without_denoise.png"
+  },
+  "correct_order_caveat": "train data has no published permutation labels; order is inferred against the clean target with an ensemble Hungarian map and examples are restricted to the most internally consistent maps",
+  "device": "mps",
+  "examples": [
+    {
+      "denoised": {
+        "boundary_mae": 19.09517122821351,
+        "gradient_mae": 6.658976760477582,
+        "interior_mae": 18.629721159297052,
+        "mae": 18.867100694444446,
+        "ordered_image_ssim": 0.6865288811223403,
+        "psnr": 20.170295164270968,
+        "seam_reference_mae": 25.545351028442383,
+        "signed_bias_b": -5.400538194444445,
+        "signed_bias_g": -4.963745659722222,
+        "signed_bias_r": -4.734796006944444,
+        "tile_ssim": 0.786246579015981
+      },
+      "denoised_neighbor_rank": {
+        "mean_rank": 63.00271739130435,
+        "median_rank": 24.0,
+        "mrr": 0.19248748519604372,
+        "pairs": 1104,
+        "top1": 0.11322463768115942,
+        "top10": 0.34692028985507245,
+        "top5": 0.25815217391304346
+      },
+      "files": {
+        "clean_target": "runs/denoise_v2/reordered_examples/individual/img_006113_clean_target.png",
+        "denoised": "runs/denoise_v2/reordered_examples/individual/img_006113_correct_order_denoised.png",
+        "raw": "runs/denoise_v2/reordered_examples/individual/img_006113_correct_order_raw.png"
+      },
+      "mapping": {
+        "coarse_structural_consensus": 0.9826388888888888,
+        "fused_coarse_agreement": 0.9895833333333334,
+        "fused_structural_agreement": 0.9878472222222222
+      },
+      "name": "img_006113.png",
+      "raw": {
+        "boundary_mae": 23.362302559912855,
+        "gradient_mae": 10.165793280945419,
+        "interior_mae": 22.953107284580497,
+        "mae": 23.161796875,
+        "ordered_image_ssim": 0.5152370654673533,
+        "psnr": 18.727600452850208,
+        "seam_reference_mae": 31.97960662841797,
+        "signed_bias_b": 0.20887586805555555,
+        "signed_bias_g": -0.24524739583333333,
+        "signed_bias_r": -0.5037673611111111,
+        "tile_ssim": 0.5816951847551359
+      },
+      "raw_neighbor_rank": {
+        "mean_rank": 83.07336956521739,
+        "median_rank": 40.0,
+        "mrr": 0.14181626487876323,
+        "pairs": 1104,
+        "top1": 0.07336956521739131,
+        "top10": 0.2708333333333333,
+        "top5": 0.19021739130434784
+      },
+      "selection_is_independent_of_denoiser_gain": true
+    },
+    {
+      "denoised": {
+        "boundary_mae": 19.944963575708062,
+        "gradient_mae": 9.115681347465888,
+        "interior_mae": 19.328606268896447,
+        "mae": 19.64294849537037,
+        "ordered_image_ssim": 0.6562185680577128,
+        "psnr": 19.930208563606563,
+        "seam_reference_mae": 24.188148498535156,
+        "signed_bias_b": 4.490954861111111,
+        "signed_bias_g": 1.1217491319444444,
+        "signed_bias_r": -0.9234071180555555,
+        "tile_ssim": 0.7157089930387281
+      },
+      "denoised_neighbor_rank": {
+        "mean_rank": 56.768115942028984,
+        "median_rank": 24.0,
+        "mrr": 0.2180262626603575,
+        "pairs": 1104,
+        "top1": 0.13949275362318841,
+        "top10": 0.3686594202898551,
+        "top5": 0.28532608695652173
+      },
+      "files": {
+        "clean_target": "runs/denoise_v2/reordered_examples/individual/img_003975_clean_target.png",
+        "denoised": "runs/denoise_v2/reordered_examples/individual/img_003975_correct_order_denoised.png",
+        "raw": "runs/denoise_v2/reordered_examples/individual/img_003975_correct_order_raw.png"
+      },
+      "mapping": {
+        "coarse_structural_consensus": 0.9861111111111112,
+        "fused_coarse_agreement": 0.9861111111111112,
+        "fused_structural_agreement": 1.0
+      },
+      "name": "img_003975.png",
+      "raw": {
+        "boundary_mae": 24.814593545751634,
+        "gradient_mae": 11.700458394249512,
+        "interior_mae": 24.3077876984127,
+        "mae": 24.566258680555556,
+        "ordered_image_ssim": 0.5364691547911744,
+        "psnr": 18.23071717789923,
+        "seam_reference_mae": 31.04615020751953,
+        "signed_bias_b": 8.585108506944444,
+        "signed_bias_g": 1.1562152777777779,
+        "signed_bias_r": -2.6689192708333334,
+        "tile_ssim": 0.5798482960725083
+      },
+      "raw_neighbor_rank": {
+        "mean_rank": 80.07971014492753,
+        "median_rank": 42.0,
+        "mrr": 0.1606847685859989,
+        "pairs": 1104,
+        "top1": 0.09601449275362318,
+        "top10": 0.28351449275362317,
+        "top5": 0.20833333333333334
+      },
+      "selection_is_independent_of_denoiser_gain": true
+    },
+    {
+      "denoised": {
+        "boundary_mae": 19.768963893427742,
+        "gradient_mae": 7.528227796052631,
+        "interior_mae": 19.238744803476948,
+        "mae": 19.509156539351853,
+        "ordered_image_ssim": 0.6969360931256624,
+        "psnr": 19.132689011138535,
+        "seam_reference_mae": 27.03316879272461,
+        "signed_bias_b": -2.0874131944444443,
+        "signed_bias_g": -2.246892361111111,
+        "signed_bias_r": -2.0817057291666665,
+        "tile_ssim": 0.781806143822743
+      },
+      "denoised_neighbor_rank": {
+        "mean_rank": 60.30615942028985,
+        "median_rank": 19.0,
+        "mrr": 0.2586187134499401,
+        "pairs": 1104,
+        "top1": 0.17572463768115942,
+        "top10": 0.41394927536231885,
+        "top5": 0.33061594202898553
+      },
+      "files": {
+        "clean_target": "runs/denoise_v2/reordered_examples/individual/img_003388_clean_target.png",
+        "denoised": "runs/denoise_v2/reordered_examples/individual/img_003388_correct_order_denoised.png",
+        "raw": "runs/denoise_v2/reordered_examples/individual/img_003388_correct_order_raw.png"
+      },
+      "mapping": {
+        "coarse_structural_consensus": 0.96875,
+        "fused_coarse_agreement": 0.9861111111111112,
+        "fused_structural_agreement": 0.9809027777777778
+      },
+      "name": "img_003388.png",
+      "raw": {
+        "boundary_mae": 23.709218409586057,
+        "gradient_mae": 10.673610349658869,
+        "interior_mae": 23.243613591269842,
+        "mae": 23.48107204861111,
+        "ordered_image_ssim": 0.5588819494973247,
+        "psnr": 18.06673101737093,
+        "seam_reference_mae": 32.405147552490234,
+        "signed_bias_b": 3.0543142361111113,
+        "signed_bias_g": 2.0295703125,
+        "signed_bias_r": 1.3362934027777778,
+        "tile_ssim": 0.6178736617262568
+      },
+      "raw_neighbor_rank": {
+        "mean_rank": 82.37590579710145,
+        "median_rank": 32.0,
+        "mrr": 0.18355756704497236,
+        "pairs": 1104,
+        "top1": 0.10507246376811594,
+        "top10": 0.33061594202898553,
+        "top5": 0.24909420289855072
+      },
+      "selection_is_independent_of_denoiser_gain": true
+    },
+    {
+      "denoised": {
+        "boundary_mae": 21.93326751997095,
+        "gradient_mae": 9.39190804702729,
+        "interior_mae": 21.466296414399093,
+        "mae": 21.70445167824074,
+        "ordered_image_ssim": 0.6540310164223094,
+        "psnr": 19.176408513309923,
+        "seam_reference_mae": 28.480403900146484,
+        "signed_bias_b": -1.658107638888889,
+        "signed_bias_g": -4.247265625,
+        "signed_bias_r": -6.202573784722222,
+        "tile_ssim": 0.74562164179045
+      },
+      "denoised_neighbor_rank": {
+        "mean_rank": 62.39673913043478,
+        "median_rank": 22.0,
+        "mrr": 0.23151409236941312,
+        "pairs": 1104,
+        "top1": 0.14492753623188406,
+        "top10": 0.38315217391304346,
+        "top5": 0.3161231884057971
+      },
+      "files": {
+        "clean_target": "runs/denoise_v2/reordered_examples/individual/img_005410_clean_target.png",
+        "denoised": "runs/denoise_v2/reordered_examples/individual/img_005410_correct_order_denoised.png",
+        "raw": "runs/denoise_v2/reordered_examples/individual/img_005410_correct_order_raw.png"
+      },
+      "mapping": {
+        "coarse_structural_consensus": 0.9722222222222222,
+        "fused_coarse_agreement": 0.9756944444444444,
+        "fused_structural_agreement": 0.984375
+      },
+      "name": "img_005410.png",
+      "raw": {
+        "boundary_mae": 26.360328159041394,
+        "gradient_mae": 12.31880330165692,
+        "interior_mae": 26.038811531557066,
+        "mae": 26.202785011574075,
+        "ordered_image_ssim": 0.533743976751023,
+        "psnr": 17.687038757313434,
+        "seam_reference_mae": 34.40313720703125,
+        "signed_bias_b": 1.8100043402777777,
+        "signed_bias_g": -1.9156119791666666,
+        "signed_bias_r": -7.969405381944444,
+        "tile_ssim": 0.5992451774687518
+      },
+      "raw_neighbor_rank": {
+        "mean_rank": 82.56702898550725,
+        "median_rank": 33.0,
+        "mrr": 0.17591609497993713,
+        "pairs": 1104,
+        "top1": 0.09873188405797101,
+        "top10": 0.328804347826087,
+        "top5": 0.2391304347826087
+      },
+      "selection_is_independent_of_denoiser_gain": true
+    }
+  ],
+  "kind": "ordered_raw_vs_denoised_examples",
+  "model_metadata": {
+    "allow_unpromoted": false,
+    "best_ssim": 0.8082800069902816,
+    "best_step": null,
+    "best_validation": {
+      "boundary_mae": 14.56935402199074,
+      "gradient_mae": 5.444638551311728,
+      "interior_mae": 13.981659865913958,
+      "libjpeg_boundary_mae": 14.421931026461511,
+      "libjpeg_gradient_mae": 4.794274830957602,
+      "libjpeg_interior_mae": 13.962492766203704,
+      "libjpeg_mae": 14.196806278935185,
+      "libjpeg_ordered_image_ssim": 0.7131094332531336,
+      "libjpeg_psnr": 22.979736378138675,
+      "libjpeg_signed_bias_b": -2.017492404513889,
+      "libjpeg_signed_bias_g": -1.9056770833333334,
+      "libjpeg_signed_bias_r": -1.568976779513889,
+      "libjpeg_tile_ssim": 0.8192828992318947,
+      "mae": 14.281383885513117,
+      "ordered_image_ssim": 0.7238045820230582,
+      "paired_kornia_boundary_mae": 14.342894000771604,
+      "paired_kornia_gradient_mae": 4.720267574317738,
+      "paired_kornia_interior_mae": 13.878353381283068,
+      "paired_kornia_mae": 14.115269097222223,
+      "paired_kornia_ordered_image_ssim": 0.7164549161702867,
+      "paired_kornia_psnr": 23.033958552634516,
+      "paired_kornia_signed_bias_b": -1.748955078125,
+      "paired_kornia_signed_bias_g": -1.690519748263889,
+      "paired_kornia_signed_bias_r": -1.3206358506944444,
+      "paired_kornia_tile_ssim": 0.8226739476757541,
+      "psnr": 22.83672320634709,
+      "signed_bias_b": -1.6919364872685185,
+      "signed_bias_g": -1.6417550998263888,
+      "signed_bias_r": -1.658593388310185,
+      "step": 50000,
+      "tile_ssim": 0.8082800069902816
+    },
+    "checkpoint": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "checkpoint_is_latest": false,
+    "checkpoint_resolved": "/Users/rusyalain/Documents/test/runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "device": "mps",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "model_name": "tile-naf",
+    "promotion_issues": [],
+    "resolved_device_fingerprint": {
+      "capability": [
+        6,
+        0
+      ],
+      "index": 0,
+      "machine": "x86_64",
+      "name": "Tesla P100-PCIE-16GB",
+      "total_memory": 17059545088,
+      "type": "cuda"
+    },
+    "rolled_back": false,
+    "runtime_versions": {
+      "cuda": "12.4",
+      "jpeg_codec": "6.2",
+      "kornia": "0.8.3",
+      "libjpeg_turbo": "True",
+      "libjpeg_turbo_version": "3.1.1",
+      "numpy": "2.0.2",
+      "opencv": "4.13.0",
+      "pillow": "11.3.0",
+      "python": "3.12.13",
+      "scipy": "1.16.3",
+      "skimage": "0.25.2",
+      "torch": "2.6.0+cu124"
+    },
+    "schema_version": 2,
+    "source_code_sha256": "6b62548370f370eb65b7d0a770cc6f3241ea209d12de257cc4882ddea4b4629f",
+    "state": "ema",
+    "step": 50000,
+    "training_data_sha256": "77d9c64527c7b4e98d36b001d9e4ccc0ef678cb2a41b52f4ac26901ee9c93b2e",
+    "validation_data_sha256": "35246d3d4e9ec249e8faff8455656d9deb8601f3d38dce101655a6c1040d686d"
+  },
+  "schema_version": 1,
+  "selected_sources": 4,
+  "selection_policy": "top fused/coarse/structural mapping agreement on the frozen clean calibration partition; selection does not use denoiser improvement"
+}

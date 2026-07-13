@@ -1,0 +1,15 @@
+{
+  "id": "pasha883/vsos-context-reorg-gate",
+  "title": "VSOS Context Reorg Gate",
+  "code_file": "run_context_reorg_gate.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-solver-rework-night-code"
+  ]
+}

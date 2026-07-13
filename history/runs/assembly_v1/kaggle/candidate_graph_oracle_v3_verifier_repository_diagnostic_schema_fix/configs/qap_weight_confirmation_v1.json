@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "kind": "fixed_qap_weight_confirmation",
+  "status": "precommitted_before_new_64_source_confirmation_input_or_target_pixel_access",
+  "created_utc": "2026-07-11T20:20:00Z",
+  "candidate_was_fixed_before_this_protocol": true,
+  "candidate_evidence": {
+    "source_report": "runs/assembly_v1/kaggle/upgrade_matrix_203_output/v1/upgrade_matrix_203.json",
+    "source_report_sha256": "27581dd51bf54b029dc7ee6b021f9b107fb1dae06947aa5d7d6c25e0223ee8a5",
+    "selection_before_old_real16_target_access": "exact.selection.promoted_label_before_real_targets == qap_w1_b0.05_i25",
+    "old_real16_all_five_variants_were_target_scored": true,
+    "candidate_was_not_reselected_after_old_real16_scoring": true,
+    "real16_calibration_source_count": 16,
+    "real16_calibration_names_sha256": "189a55e96ed1315138423a1300a4574f39d58824829b50ca601e2082eeeda04d",
+    "real16_calibration_mean_delta": 0.002046263980019114,
+    "real16_calibration_wins": 13,
+    "real16_calibration_losses": 3,
+    "real16_calibration_bootstrap_95_ci": [
+      0.00017481806287029863,
+      0.003975690918244345
+    ],
+    "old_major_promotion_threshold": 0.005,
+    "old_major_promotion_gate_passed": false
+  },
+  "assets": {
+    "denoiser": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "hbt": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+    "hbt_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "manifest": "configs/denoise_splits_seed20260710.json",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "quarantine": "configs/denoise_validation_quarantine_v1.json",
+    "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+  },
+  "common_solver": {
+    "renderer": "selected_tilenaf_synth_50k_ema_uint8",
+    "seed_score": "denoised_hbt_l1",
+    "soft_cycle_top_k": 8,
+    "soft_cycle_keep_per_tile": 1,
+    "soft_cycle_keep_fraction": 0.5,
+    "soft_cycle_loop_weight": 1.0,
+    "soft_cycle_reciprocal_weight": 0.35,
+    "qap_iterations": 25,
+    "qap_restarts": 2,
+    "qap_boundary_weight": 0.05,
+    "qap_initial_weight": 0.75,
+    "qap_noisy_components": 3,
+    "qap_noise_scale": 1.0,
+    "qap_refine_swaps": 8,
+    "qap_refine_weak_cells": 32,
+    "qap_seed_formula": "sha256(filename)[:4]_little + 7001"
+  },
+  "baseline": {
+    "label": "qap_w4_b0.05_i25",
+    "score": "denoised_C1_HBTw4_rank_fusion",
+    "hbt_weight": 4.0
+  },
+  "candidate": {
+    "label": "qap_w1_b0.05_i25",
+    "score": "denoised_C1_HBTw1_rank_fusion",
+    "hbt_weight": 1.0
+  },
+  "original_real_confirmation": {
+    "split": "assembly_incremental_gate",
+    "offset": 128,
+    "count": 64,
+    "names_sha256": "e5fb7fc6b3d24e9c080b4f33224b863c181e72452de4e54e602a80a321c13251",
+    "assembler_fresh": true,
+    "globally_fresh": false,
+    "upstream_exposure_note": "targets were previously opened by the frozen denoiser gate, but not by an assembly solver",
+    "exposure_evidence": {
+      "upstream_denoiser_gate_report": "runs/denoise_v2/release_readback/20260710T074500Z/final_gate_cpu_v1/selected_final_gate_report.json",
+      "upstream_denoiser_gate_report_sha256": "afc5b311c3234048c5d28d1d5cb6d9745c4e4578b34de001bb2ae0fd86066264",
+      "dense_reserved_gate_report": "runs/assembly_v1/kaggle/dense_pair_residual_pilot_output/verified_v1/dense_pair_residual_pilot/dense_pair_residual_report.json",
+      "dense_reserved_gate_report_sha256": "b435b213e51a3e1f5baca82190a53aad1e8c28b1060984dbb0da1bab92efe119",
+      "dense_status": "stop_cheap_selection_retrieval",
+      "dense_original_real_input_gate_opened": false,
+      "dense_real_gate": null,
+      "old_real16_new_confirmation_overlap_count": 0
+    },
+    "metric": {
+      "name": "RGB_SSIM",
+      "call": "skimage.metrics.structural_similarity(target_rgb_uint8, frozen_render_rgb_uint8, channel_axis=2, data_range=255)",
+      "expected_shape": [
+        480,
+        480,
+        3
+      ],
+      "bootstrap_unit": "paired_whole_source_delta_candidate_minus_baseline",
+      "bootstrap_method": "two_sided_percentile",
+      "bootstrap_quantiles": [
+        0.025,
+        0.975
+      ],
+      "bootstrap_resamples": 20000,
+      "bootstrap_seed": 20260711,
+      "tie_tolerance": 1e-12,
+      "win_definition": "delta > tie_tolerance",
+      "tie_definition": "abs(delta) <= tie_tolerance",
+      "loss_definition": "delta < -tie_tolerance",
+      "large_regression_definition": "delta < -0.01"
+    },
+    "phase_a": {
+      "input_visibility": "runner-provided root physically exposes train/inputs only and has no train/targets path",
+      "target_paths_must_not_be_constructed_or_read": true,
+      "prediction_envelope": "independently anchored from pinned config and authoritative source slice, not from mutable shard claims",
+      "artifacts": "both valid layouts and exact denoised RGB PNG bytes for every source",
+      "durability": "atomic write, file fsync, rename, and parent-directory fsync before canonical manifest finalization",
+      "integrity": "canonical manifest binds source order, input hashes, layouts, layout hashes, relative contained render paths, render byte hashes, config hash, code hash, and both checkpoint hashes"
+    },
+    "phase_b": {
+      "precondition": "reconstruct and verify the complete canonical Phase-A envelope and every artifact hash",
+      "target_access_marker": "atomically write and fsync TARGET_ACCESS_STARTED.json before the first target path construction or read",
+      "scoring": "reload and decode exactly the frozen PNG bytes already hashed in Phase A",
+      "postcondition": "rehash config, code, checkpoints, manifest, layouts, renders, and target-access marker after all scoring",
+      "toctou_failure_behavior": "fail closed and report no accepted metric"
+    },
+    "gate": {
+      "logic": "all_of",
+      "mean_ssim_delta_min": 0.005,
+      "mean_ssim_delta_operator": ">=",
+      "ssim_bootstrap_95_lower_gt": 0.0,
+      "ssim_bootstrap_95_lower_operator": ">",
+      "wins_min": 40,
+      "wins_operator": ">=",
+      "large_regressions_max": 6,
+      "large_regressions_operator": "<=",
+      "valid_permutation_count": 64,
+      "valid_permutation_operator": "=="
+    },
+    "success_behavior": "eligible_for_one_sealed_final_audit_but_not_yet_for_submission",
+    "positive_ci_but_mean_below_0.005_behavior": "report_confirmed_small_gain_without_promotion_and_do_not_retune_weight",
+    "failure_behavior": "retain_qap_w4_submission",
+    "post_phase_b_mutation_policy": "no_weight_retuning_no_per_source_routing_no_threshold_changes"
+  },
+  "next_diagnostic_if_not_promoted": {
+    "kind": "candidate_graph_oracle_ceiling",
+    "split": "edge_development",
+    "offset": 128,
+    "count": 32,
+    "names_sha256": "149ca83873e5e2e79e6458098c5c758b935af5d9131e093f5eb34fef82b76634",
+    "purpose": "measure whether a cycle-factor graph can recover a useful layout from the existing C1/HBT candidate union",
+    "must_not_tune_or_reopen_qap_weight": true
+  },
+  "sealed_sets": {
+    "audit_exclusion_ledger": "configs/assembly_audit_exclusion_v1.json",
+    "audit_exclusion_ledger_sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+    "assembly_final_audit_0_64_sha256": "c281ef844bed9fbfd452b896c2961164ded794fca65d010f1b4adea7f58bff33",
+    "assembly_final_audit_64_128_sha256": "9aa995c9bc628bd17ae2d55d0ef8852d5b5e19ef241f8834c8d1b8bd0358429a",
+    "must_remain_unopened": true
+  },
+  "safe_for_submission_before_gate": false
+}

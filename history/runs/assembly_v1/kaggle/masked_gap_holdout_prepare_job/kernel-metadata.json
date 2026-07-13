@@ -1,0 +1,17 @@
+{
+  "id": "pasha883/vsos-masked-gap-holdout-prepare",
+  "title": "VSOS Masked Gap Holdout Prepare",
+  "code_file": "run_holdout_prepare.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-masked-gap-gate-code",
+    "__PASSING_CALIBRATION_B_REPORT_DATASET_SLUG__"
+  ]
+}

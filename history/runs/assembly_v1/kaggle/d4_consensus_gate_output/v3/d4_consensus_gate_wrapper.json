@@ -1,0 +1,240 @@
+{
+  "assets": {
+    "embedding": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    },
+    "seam_denoiser": {
+      "path": "/kaggle/input/vsos-postassembly-harmonizer-runtime/assets/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9"
+    },
+    "selected_denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    }
+  },
+  "bundle_root": "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code",
+  "code_hashes": {
+    "configs/assembly_audit_exclusion_v1.json": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+    "configs/denoise_splits_seed20260710.json": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "configs/denoise_validation_quarantine_v1.json": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "references/d4_consensus_slow_phase_a_v2_independent_libjpeg.json": "f9c132f45b1520cb07d03b405509efdf5802cffd71dcf0546c2033387554e845",
+    "references/d4_consensus_slow_phase_a_v2_primary_kornia.json": "66710a9e2e42b98658ca7513d8bb08b5458c84152552114f79640c8bd1afd45b",
+    "scripts/build_assembly_submission.py": "8433c0e545edfeb49f2512208a3ea062fb1a248a64bcde3f87037cdf30d6ac97",
+    "scripts/evaluate_d4_consensus_gate.py": "9e7f592f42d9ed917941fdc5b1e78323f3ce6991624bbb211e3ffaab05616443",
+    "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+    "src/puzzle_assembly/components.py": "655af23f2705e0a22cb334fb5d5b282795f8c0de35c22f265966118cce0c34b0",
+    "src/puzzle_assembly/d4_consensus.py": "9f495ab0fee98e4e7af89d06be089c480874bf29549dbb159f8dec70bf2a8539",
+    "src/puzzle_assembly/learned.py": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b",
+    "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+    "src/puzzle_assembly/postassembly_harmonizer.py": "cd67d99a43f40932821e31e732c8988edb4e930661dd37314505e5128e75aec0",
+    "src/puzzle_assembly/protocol.py": "7651d4405ce4dd35203a0cae7bfdd591621044f9e90dc522a314262727c86eca",
+    "src/puzzle_assembly/qap.py": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+    "tests/test_d4_consensus.py": "20361d9ebd6c1ae4fe56a02a1c73a1d70aeb87b5d02180a48c0fe1194892e22a",
+    "tests/test_evaluate_d4_consensus_gate.py": "c0934a40e4b8bbac3c9e0e7a7950d11cf0720ca7ccbccb388e4135d6a668efd4"
+  },
+  "correctness_tests": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_d4_consensus.py",
+      "tests/test_evaluate_d4_consensus_gate.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": ".....................                                                    [100%]\n=============================== warnings summary ===============================\n../../../../../usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: 43 warnings\n  /usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.\n    warnings.warn(\n\n../../../../../usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475\n  /usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/.pytest_cache/v/cache/nodeids: [Errno 30] Read-only file system: '/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/pytest-cache-files-rwrywepx'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n21 passed, 44 warnings in 5.53s\n"
+  },
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "final_report": {
+    "path": "/kaggle/working/d4_consensus_gate_report.json",
+    "sha256": "d65ca30a5b32134928857a209386049710c433828bc64f6a9b49756324c2f800"
+  },
+  "freshness": {
+    "excluded_hash_pinned_input_only_references": [
+      "references/d4_consensus_slow_phase_a_v2_independent_libjpeg.json",
+      "references/d4_consensus_slow_phase_a_v2_primary_kornia.json"
+    ],
+    "names": [
+      "img_002741.png",
+      "img_002175.png",
+      "img_002566.png",
+      "img_005156.png",
+      "img_004778.png",
+      "img_004535.png",
+      "img_005292.png",
+      "img_001514.png"
+    ],
+    "names_sha256": "ddc0a394fbac1f5674a1f724de1b0617e32e0e26d308c6ff5ee369d6452055be",
+    "semantic_hits": []
+  },
+  "hardware": {
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_op": -0.190330371260643
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_op": -0.07800231873989105
+      }
+    ],
+    "nvidia_smi": "Mon Jul 13 07:11:49 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   55C    P0             28W /   70W |     153MiB /  15360MiB |      2%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   51C    P0             28W /   70W |     153MiB /  15360MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A               7      C   python3                                 150MiB |\n|    1   N/A  N/A               7      C   python3                                 150MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "d4_compatibility_consensus_kaggle_wrapper",
+  "phase_a_runs": [
+    {
+      "artifact": "/kaggle/working/d4_consensus_phase_a_primary_kornia.npz",
+      "artifact_sha256": "ce426ee278f156257585d1403ed362618fb3b1b2083e28c921e7be796e1a46a3",
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/scripts/evaluate_d4_consensus_gate.py",
+        "--panel",
+        "primary_kornia",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--selected-denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--seam-denoiser",
+        "/kaggle/input/vsos-postassembly-harmonizer-runtime/assets/seam_denoiser_gpu.pt",
+        "--embedding-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--slow-phase-a-reference",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/references/d4_consensus_slow_phase_a_v2_primary_kornia.json",
+        "--manifest",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/configs/denoise_validation_quarantine_v1.json",
+        "--audit-exclusion",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/configs/assembly_audit_exclusion_v1.json",
+        "--split",
+        "edge_development",
+        "--source-offset",
+        "340",
+        "--sources",
+        "8",
+        "--device",
+        "cuda",
+        "--denoise-batch-size",
+        "512",
+        "--phase-a-artifact",
+        "/kaggle/working/d4_consensus_phase_a_primary_kornia.npz",
+        "--output",
+        "/kaggle/working/d4_consensus_phase_a_primary_kornia.json",
+        "--overwrite",
+        "--phase",
+        "phase-a"
+      ],
+      "gpu": 0,
+      "output": "/kaggle/working/d4_consensus_phase_a_primary_kornia.json",
+      "panel": "primary_kornia",
+      "phase_a": {
+        "authoritative_score_checks_passed": 16,
+        "checks": {
+          "all_8_panel_local_layouts_valid": true,
+          "all_candidates_match_sealed_slow_phase_a": true,
+          "all_candidates_use_unchanged_identity_l1_seed": true,
+          "all_d4_inverses_byte_exact": true,
+          "all_identity_fast_scores_bit_exact_to_authoritative": true,
+          "max_candidate_input_to_render_seconds_le_20": false,
+          "solver_target_blind": true
+        },
+        "different_layouts": 8,
+        "max_candidate_seconds": 22.297502165000026,
+        "passed": false,
+        "target_metrics_opened": false
+      },
+      "report_sha256": "02f1ab72d03eec368a671d7f98fb6408b392a35b7043ff92ed85d31d0e863713",
+      "returncode": 0,
+      "seconds": 300.71022605895996
+    },
+    {
+      "artifact": "/kaggle/working/d4_consensus_phase_a_independent_libjpeg.npz",
+      "artifact_sha256": "f60964e4bbcfc61a7ef19bc7fa21c8426835f6cca3a38b783c1f234599fbdcbf",
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/scripts/evaluate_d4_consensus_gate.py",
+        "--panel",
+        "independent_libjpeg",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--selected-denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--seam-denoiser",
+        "/kaggle/input/vsos-postassembly-harmonizer-runtime/assets/seam_denoiser_gpu.pt",
+        "--embedding-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--slow-phase-a-reference",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/references/d4_consensus_slow_phase_a_v2_independent_libjpeg.json",
+        "--manifest",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/configs/denoise_validation_quarantine_v1.json",
+        "--audit-exclusion",
+        "/kaggle/input/datasets/pasha883/vsos-d4-consensus-gate-code/configs/assembly_audit_exclusion_v1.json",
+        "--split",
+        "edge_development",
+        "--source-offset",
+        "340",
+        "--sources",
+        "8",
+        "--device",
+        "cuda",
+        "--denoise-batch-size",
+        "512",
+        "--phase-a-artifact",
+        "/kaggle/working/d4_consensus_phase_a_independent_libjpeg.npz",
+        "--output",
+        "/kaggle/working/d4_consensus_phase_a_independent_libjpeg.json",
+        "--overwrite",
+        "--phase",
+        "phase-a"
+      ],
+      "gpu": 1,
+      "output": "/kaggle/working/d4_consensus_phase_a_independent_libjpeg.json",
+      "panel": "independent_libjpeg",
+      "phase_a": {
+        "authoritative_score_checks_passed": 16,
+        "checks": {
+          "all_8_panel_local_layouts_valid": true,
+          "all_candidates_match_sealed_slow_phase_a": true,
+          "all_candidates_use_unchanged_identity_l1_seed": true,
+          "all_d4_inverses_byte_exact": true,
+          "all_identity_fast_scores_bit_exact_to_authoritative": true,
+          "max_candidate_input_to_render_seconds_le_20": false,
+          "solver_target_blind": true
+        },
+        "different_layouts": 8,
+        "max_candidate_seconds": 22.17251461699999,
+        "passed": false,
+        "target_metrics_opened": false
+      },
+      "report_sha256": "8964d1bf20107dfb4855fd452b20c9c31796bfb57a9f04f9f50b96fd5f354941",
+      "returncode": 0,
+      "seconds": 309.01820731163025
+    }
+  ],
+  "phase_b_runs": [],
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "scientific_status": "retire_d4_consensus",
+  "seconds": 383.8256154060364,
+  "started_unix": 1783926647.6781504,
+  "status": "complete"
+}

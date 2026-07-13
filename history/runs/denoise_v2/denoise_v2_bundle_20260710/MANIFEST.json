@@ -1,0 +1,620 @@
+{
+  "files": [
+    {
+      "bytes": 1644,
+      "path": "README.md",
+      "role": "bundle_entrypoint",
+      "sha256": "0e87536c32913ca00c097935992b6d2fc790a90cef0b5d1ffb34a0c04c55deb5",
+      "source_path": null
+    },
+    {
+      "bytes": 2393069,
+      "path": "artifacts/baselines/tile_restorer_1024_q90.pt",
+      "role": "legacy_baseline_checkpoint",
+      "sha256": "d1df5a4e4852c821d79f72063866cf1fe09fb1beff913a4fb1034466d6ead96e",
+      "source_path": "runs/denoise/tile_restorer_1024_q90.pt"
+    },
+    {
+      "bytes": 4233,
+      "path": "artifacts/model/selected_model.json",
+      "role": "frozen_selection_manifest",
+      "sha256": "ce244ce8c9759be859262fd16560f8318814022883ec52cdc380ad490a924080",
+      "source_path": "runs/denoise_v2/release/selected_model.json"
+    },
+    {
+      "bytes": 52831566,
+      "path": "artifacts/model/selected_tilenaf_synth_50k.pt",
+      "role": "selected_checkpoint",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "source_path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt"
+    },
+    {
+      "bytes": 13217860,
+      "path": "artifacts/not_promoted/real_finetune_rollback_safe_step0.pt",
+      "role": "rollback_safe_checkpoint_not_selected",
+      "sha256": "2514129d13b57c02f61348ab87bf01784ba6cb4cc7dd76319405d3766a7f273f",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v2/tilenaf_real_finetune.pt"
+    },
+    {
+      "bytes": 7116,
+      "path": "code/scripts/apply_denoise_v2.py",
+      "role": "command_line_tool",
+      "sha256": "fe2f37206fd5e8bc11df3c3a0d2c0d8c110d6024b32c7ff04a66c9a7c8cf0a5a",
+      "source_path": "scripts/apply_denoise_v2.py"
+    },
+    {
+      "bytes": 15171,
+      "path": "code/scripts/build_real_gold.py",
+      "role": "command_line_tool",
+      "sha256": "4752179f1b9a5fced6f22227b1ed0c24bf9d96ec1a94c13eccc4bc5b66439bcb",
+      "source_path": "scripts/build_real_gold.py"
+    },
+    {
+      "bytes": 23672,
+      "path": "code/scripts/denoise_tiles.py",
+      "role": "command_line_tool",
+      "sha256": "e20b0eb1cb1d345ccc08827f20f15a61df6085d7f81c0eebd9b91c57ee8bca11",
+      "source_path": "scripts/denoise_tiles.py"
+    },
+    {
+      "bytes": 1283,
+      "path": "code/scripts/doctor.sh",
+      "role": "command_line_tool",
+      "sha256": "0ae1135fcd5af86c685475dbb0f8cafaa7dec67a6d2c07edc5a1efe20e2d4b45",
+      "source_path": "scripts/doctor.sh"
+    },
+    {
+      "bytes": 3364,
+      "path": "code/scripts/evaluate_prefinetune_calibration.py",
+      "role": "command_line_tool",
+      "sha256": "ba6f245495ee7d7823812d1473c6b6567ca2579d339b947ceee1e08552409b9f",
+      "source_path": "scripts/evaluate_prefinetune_calibration.py"
+    },
+    {
+      "bytes": 3455,
+      "path": "code/scripts/evaluate_selected_final_gate.py",
+      "role": "command_line_tool",
+      "sha256": "34e725be5cb0851530b35a9e01eec475062dec72b21541736d9651511446f47f",
+      "source_path": "scripts/evaluate_selected_final_gate.py"
+    },
+    {
+      "bytes": 3568,
+      "path": "code/scripts/fine_tune_denoise_real.py",
+      "role": "command_line_tool",
+      "sha256": "93b060be353a6e64ece1820bb891b67c61b2f545b27d6c753bf55ff82cb2c794",
+      "source_path": "scripts/fine_tune_denoise_real.py"
+    },
+    {
+      "bytes": 6489,
+      "path": "code/scripts/make_denoise_splits.py",
+      "role": "command_line_tool",
+      "sha256": "7349d697c15b98677a94710da3b3f3cfa05be7458672272809b70d5a7d1d500f",
+      "source_path": "scripts/make_denoise_splits.py"
+    },
+    {
+      "bytes": 3317,
+      "path": "code/scripts/make_denoise_visual_qa.py",
+      "role": "command_line_tool",
+      "sha256": "17b22bee579f18c9c982fe9c6ea75e7cdd403cf97b96362622f63729d9fb9eb5",
+      "source_path": "scripts/make_denoise_visual_qa.py"
+    },
+    {
+      "bytes": 16571,
+      "path": "code/scripts/package_denoise_v2_release.py",
+      "role": "command_line_tool",
+      "sha256": "17ef04dc1e01a555084538485986da83b9a21a80597c92e820feac85c47e0bea",
+      "source_path": "scripts/package_denoise_v2_release.py"
+    },
+    {
+      "bytes": 1997,
+      "path": "code/scripts/train_denoise_v2.py",
+      "role": "command_line_tool",
+      "sha256": "6f8bcb8126557ebb5746b1e9b06d338bddbcde93e4881c4259012730e474fc4b",
+      "source_path": "scripts/train_denoise_v2.py"
+    },
+    {
+      "bytes": 421,
+      "path": "code/src/puzzle_denoise_v2/__init__.py",
+      "role": "python_source",
+      "sha256": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7",
+      "source_path": "src/puzzle_denoise_v2/__init__.py"
+    },
+    {
+      "bytes": 11822,
+      "path": "code/src/puzzle_denoise_v2/degradation.py",
+      "role": "python_source",
+      "sha256": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+      "source_path": "src/puzzle_denoise_v2/degradation.py"
+    },
+    {
+      "bytes": 24239,
+      "path": "code/src/puzzle_denoise_v2/final_gate_audit.py",
+      "role": "python_source",
+      "sha256": "12f44b5adf808c86bad805a285f2d22fcab36e7c6203a5df11fbb40583ee6f92",
+      "source_path": "src/puzzle_denoise_v2/final_gate_audit.py"
+    },
+    {
+      "bytes": 10836,
+      "path": "code/src/puzzle_denoise_v2/inference.py",
+      "role": "python_source",
+      "sha256": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+      "source_path": "src/puzzle_denoise_v2/inference.py"
+    },
+    {
+      "bytes": 12031,
+      "path": "code/src/puzzle_denoise_v2/legacy_baseline.py",
+      "role": "python_source",
+      "sha256": "0b82f48d1846332462912995c6c13d9433822a8e7bec08e8b92d7f873760cfac",
+      "source_path": "src/puzzle_denoise_v2/legacy_baseline.py"
+    },
+    {
+      "bytes": 4477,
+      "path": "code/src/puzzle_denoise_v2/losses.py",
+      "role": "python_source",
+      "sha256": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34",
+      "source_path": "src/puzzle_denoise_v2/losses.py"
+    },
+    {
+      "bytes": 14113,
+      "path": "code/src/puzzle_denoise_v2/matching.py",
+      "role": "python_source",
+      "sha256": "90535d7090c211f78d7d0fb16cc289bff26ae0fd3307dfeeb648924d37f0c0ec",
+      "source_path": "src/puzzle_denoise_v2/matching.py"
+    },
+    {
+      "bytes": 3227,
+      "path": "code/src/puzzle_denoise_v2/metrics.py",
+      "role": "python_source",
+      "sha256": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36",
+      "source_path": "src/puzzle_denoise_v2/metrics.py"
+    },
+    {
+      "bytes": 7730,
+      "path": "code/src/puzzle_denoise_v2/model.py",
+      "role": "python_source",
+      "sha256": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+      "source_path": "src/puzzle_denoise_v2/model.py"
+    },
+    {
+      "bytes": 33499,
+      "path": "code/src/puzzle_denoise_v2/prefinetune_benchmark.py",
+      "role": "python_source",
+      "sha256": "4e79cbb7b96a56aac6cee77093b11c71a6980e32c1901e154cb4161bce9f487e",
+      "source_path": "src/puzzle_denoise_v2/prefinetune_benchmark.py"
+    },
+    {
+      "bytes": 25463,
+      "path": "code/src/puzzle_denoise_v2/real_pairs.py",
+      "role": "python_source",
+      "sha256": "c0f8db24fd2c503a60e95c42d901643901618494da94a9270c6a26a32dd0b180",
+      "source_path": "src/puzzle_denoise_v2/real_pairs.py"
+    },
+    {
+      "bytes": 69800,
+      "path": "code/src/puzzle_denoise_v2/real_training.py",
+      "role": "python_source",
+      "sha256": "4a09201a714534d3624f7ac26c8d68b30a824d93a47c7af1df350264bd4f2fad",
+      "source_path": "src/puzzle_denoise_v2/real_training.py"
+    },
+    {
+      "bytes": 12320,
+      "path": "code/src/puzzle_denoise_v2/real_validation.py",
+      "role": "python_source",
+      "sha256": "6f0ca30fc5c0489223048f2ffcf7088a110e20c854f038d58877f2bf76cba64f",
+      "source_path": "src/puzzle_denoise_v2/real_validation.py"
+    },
+    {
+      "bytes": 2091,
+      "path": "code/src/puzzle_denoise_v2/tiles.py",
+      "role": "python_source",
+      "sha256": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+      "source_path": "src/puzzle_denoise_v2/tiles.py"
+    },
+    {
+      "bytes": 28476,
+      "path": "code/src/puzzle_denoise_v2/training.py",
+      "role": "python_source",
+      "sha256": "0f6627adb3c11a7c5b63afc60624e604e754fee51c35e66b86e127b6208111ae",
+      "source_path": "src/puzzle_denoise_v2/training.py"
+    },
+    {
+      "bytes": 30008,
+      "path": "code/src/puzzle_denoise_v2/visual_qa.py",
+      "role": "python_source",
+      "sha256": "927709178a42a434b010a50a5cac3d9cd44652453afd784dbb4afe9712139356",
+      "source_path": "src/puzzle_denoise_v2/visual_qa.py"
+    },
+    {
+      "bytes": 4176,
+      "path": "code/tests/test_apply_denoise_v2.py",
+      "role": "test",
+      "sha256": "0fb03987d957ec53595493382ea52cc9de699456667d5f2b2a895600cca48dfc",
+      "source_path": "tests/test_apply_denoise_v2.py"
+    },
+    {
+      "bytes": 9591,
+      "path": "code/tests/test_denoise_v2.py",
+      "role": "test",
+      "sha256": "3b3cdf8b1920770be1998aeb229e7c4d2b8852f323958e84d9303bc7494ddd4a",
+      "source_path": "tests/test_denoise_v2.py"
+    },
+    {
+      "bytes": 3921,
+      "path": "code/tests/test_final_gate_audit.py",
+      "role": "test",
+      "sha256": "2fbda2e5e1d94ce206c0c15512df58f3c73e75ff51191a335bc0ef30aae871e9",
+      "source_path": "tests/test_final_gate_audit.py"
+    },
+    {
+      "bytes": 9163,
+      "path": "code/tests/test_inference.py",
+      "role": "test",
+      "sha256": "50f92b343d3521baa72d05b87694331c714fc2ac31712178641a5ddcd66c87c4",
+      "source_path": "tests/test_inference.py"
+    },
+    {
+      "bytes": 4631,
+      "path": "code/tests/test_legacy_baseline.py",
+      "role": "test",
+      "sha256": "f0b0d733618eb7fb38045ea127206b738bec44290cb78a7fcf63f571f7900eaf",
+      "source_path": "tests/test_legacy_baseline.py"
+    },
+    {
+      "bytes": 1856,
+      "path": "code/tests/test_matching.py",
+      "role": "test",
+      "sha256": "e21bcc5674c0d6b73eec1d6664e3b5a854d4d0a64c83123e8afc1fde2c2621ad",
+      "source_path": "tests/test_matching.py"
+    },
+    {
+      "bytes": 8681,
+      "path": "code/tests/test_prefinetune_benchmark.py",
+      "role": "test",
+      "sha256": "72ff3220bb482ceccdfd41e218c7a99e3e8518e86afcc1df3901fc5734ea4ea6",
+      "source_path": "tests/test_prefinetune_benchmark.py"
+    },
+    {
+      "bytes": 9132,
+      "path": "code/tests/test_real_pairs.py",
+      "role": "test",
+      "sha256": "039bcd12f495b97e983c224f596b60cadec0a135fac5c1b388f84969dbadd232",
+      "source_path": "tests/test_real_pairs.py"
+    },
+    {
+      "bytes": 13398,
+      "path": "code/tests/test_real_training.py",
+      "role": "test",
+      "sha256": "48db0d3bbe4dd222bd38f8693a53c82f45bfaa8b04e3c83d5823a63c2c167dae",
+      "source_path": "tests/test_real_training.py"
+    },
+    {
+      "bytes": 5526,
+      "path": "code/tests/test_real_validation.py",
+      "role": "test",
+      "sha256": "5a09fe3352a07357db14038f6833a1e5fd169d269dfb432a8cab4ce63554bc30",
+      "source_path": "tests/test_real_validation.py"
+    },
+    {
+      "bytes": 7015,
+      "path": "code/tests/test_visual_qa.py",
+      "role": "test",
+      "sha256": "82bb76d0a49c1d1bfffccb376d1bd6c634998ea4c966a1ac9328012089a6bb8b",
+      "source_path": "tests/test_visual_qa.py"
+    },
+    {
+      "bytes": 167200,
+      "path": "configs/denoise_splits_seed20260710.json",
+      "role": "source_split",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+      "source_path": "configs/denoise_splits_seed20260710.json"
+    },
+    {
+      "bytes": 8034,
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "role": "evaluation_partition",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+      "source_path": "configs/denoise_validation_quarantine_v1.json"
+    },
+    {
+      "bytes": 3417460,
+      "path": "data/derived_pairs/real_gold_train_512.npz",
+      "role": "derived_real_pair_train",
+      "sha256": "70d0b7b3c15fefac62d6d1bf554f0e50a0f3473ddaf01423607b78cf0cde90c2",
+      "source_path": "runs/denoise_v2/real_gold_train_512.npz"
+    },
+    {
+      "bytes": 4636171,
+      "path": "data/derived_pairs/real_gold_val.npz",
+      "role": "derived_real_pair_validation",
+      "sha256": "78795a0a0ed1ee10bddac0c31222f2a9418c41d94249aa35ba183d15508928ed",
+      "source_path": "runs/denoise_v2/real_gold_val.npz"
+    },
+    {
+      "bytes": 15091,
+      "path": "docs/ASSEMBLY_RESEARCH.md",
+      "role": "deferred_assembly_research",
+      "sha256": "bfb8b665b60a5bbe3b1cf2c131b545e1e771a5b2f895c7398f3853b1bf39dc31",
+      "source_path": "ASSEMBLY_RESEARCH.md"
+    },
+    {
+      "bytes": 5308,
+      "path": "docs/DENOISE_PIPELINE_V1_DEPRECATED.md",
+      "role": "deprecated_v1_documentation",
+      "sha256": "844b4f8b1ca6803cdf977c07c73891b78cffefff154ac433cc95c4b60f2b86cd",
+      "source_path": "DENOISE_PIPELINE.md"
+    },
+    {
+      "bytes": 18845,
+      "path": "docs/DENOISE_V2.md",
+      "role": "canonical_documentation",
+      "sha256": "22572a2983ec84490df01ad5a78b9c95eaa725d2951c5dc59dc9b67bd1405619",
+      "source_path": "DENOISE_V2.md"
+    },
+    {
+      "bytes": 3160,
+      "path": "examples/example_test_img_000000.json",
+      "role": "integration_example_report",
+      "sha256": "d8f074b0db73cc79cfeeb8b4dda7bc2b7154b494ac176ae27de3edbdfdba3ae7",
+      "source_path": "runs/denoise_v2/release/example_test_img_000000.json"
+    },
+    {
+      "bytes": 282901,
+      "path": "examples/example_test_img_000000.png",
+      "role": "integration_example_image",
+      "sha256": "0f54a11de68ecc587e455088420d9cc61c8ba90662e3547951c5ab7beb671090",
+      "source_path": "runs/denoise_v2/release/example_test_img_000000.png"
+    },
+    {
+      "bytes": 8337,
+      "path": "kaggle_jobs/denoise_v2_final_gate_cpu/evaluate.py",
+      "role": "kaggle_job",
+      "sha256": "f9028acb8fc067ea9765e056bedabf451e8ef6b30d32be1ac929afae8f2ec9b0",
+      "source_path": "kaggle_jobs/denoise_v2_final_gate_cpu/evaluate.py"
+    },
+    {
+      "bytes": 541,
+      "path": "kaggle_jobs/denoise_v2_final_gate_cpu/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "8993b9c4fb6c28234671a121b230c1ea4142208f53128bcd9375e34e1ce97c5c",
+      "source_path": "kaggle_jobs/denoise_v2_final_gate_cpu/kernel-metadata.json"
+    },
+    {
+      "bytes": 9407,
+      "path": "kaggle_jobs/denoise_v2_prefinetune_cpu/evaluate.py",
+      "role": "kaggle_job",
+      "sha256": "8b1b45a47a2a1206ec4be27ed0dfa8766cf651260234a599feb18bc4f0e343f4",
+      "source_path": "kaggle_jobs/denoise_v2_prefinetune_cpu/evaluate.py"
+    },
+    {
+      "bytes": 549,
+      "path": "kaggle_jobs/denoise_v2_prefinetune_cpu/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "414cdd418dc55160bf7449b996ecde637ab70d96f2c61ca03dfc90985a77bd5a",
+      "source_path": "kaggle_jobs/denoise_v2_prefinetune_cpu/kernel-metadata.json"
+    },
+    {
+      "bytes": 301,
+      "path": "kaggle_jobs/denoise_v2_probe/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "a1dd546b97409e6c9038f0a344350e4a802efb9558003e451e49e8e8271ac14d",
+      "source_path": "kaggle_jobs/denoise_v2_probe/kernel-metadata.json"
+    },
+    {
+      "bytes": 1701,
+      "path": "kaggle_jobs/denoise_v2_probe/probe.py",
+      "role": "kaggle_job",
+      "sha256": "ff4f5b110cbd6bf4475a8fc8041dc0abeb7c9f015ad36adccca1a07bd3e6dd59",
+      "source_path": "kaggle_jobs/denoise_v2_probe/probe.py"
+    },
+    {
+      "bytes": 517,
+      "path": "kaggle_jobs/denoise_v2_real_finetune/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "6f23c92052236b7bebbe61a1d3c5f6fda1aeddb98ef0c49c93f379a52aaa0ce5",
+      "source_path": "kaggle_jobs/denoise_v2_real_finetune/kernel-metadata.json"
+    },
+    {
+      "bytes": 14903,
+      "path": "kaggle_jobs/denoise_v2_real_finetune/train.py",
+      "role": "kaggle_job",
+      "sha256": "bb89743c5860c4b65b514e44b9531b3447cd095154ff09f9a2024d772d548458",
+      "source_path": "kaggle_jobs/denoise_v2_real_finetune/train.py"
+    },
+    {
+      "bytes": 338,
+      "path": "kaggle_jobs/denoise_v2_smoke/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "91db0f619605e4371df980ea1d274f6ac0b0aceb2cc2d4143a4844097280467a",
+      "source_path": "kaggle_jobs/denoise_v2_smoke/kernel-metadata.json"
+    },
+    {
+      "bytes": 3645,
+      "path": "kaggle_jobs/denoise_v2_smoke/train.py",
+      "role": "kaggle_job",
+      "sha256": "a99317f7fa8c347589896b9160458f6415f5987add21499b8b85cd822f4d31d5",
+      "source_path": "kaggle_jobs/denoise_v2_smoke/train.py"
+    },
+    {
+      "bytes": 354,
+      "path": "kaggle_jobs/denoise_v2_synth_50k/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "94293db1edcf3f45d653c25734a9328bf648386994ddb4968bfcaca4c7447ef5",
+      "source_path": "kaggle_jobs/denoise_v2_synth_50k/kernel-metadata.json"
+    },
+    {
+      "bytes": 3440,
+      "path": "kaggle_jobs/denoise_v2_synth_50k/train.py",
+      "role": "kaggle_job",
+      "sha256": "b142f8f0dc74d2ebf0ba500a454c150c4b4dc63243bd1143d6743dde41becd02",
+      "source_path": "kaggle_jobs/denoise_v2_synth_50k/train.py"
+    },
+    {
+      "bytes": 249,
+      "path": "kaggle_jobs/denoise_v2_torch26_probe/kernel-metadata.json",
+      "role": "kaggle_job",
+      "sha256": "49f9e047c7451899ac058bc340d7f9651b4299ecceda7b13ec08328f2f74e34f",
+      "source_path": "kaggle_jobs/denoise_v2_torch26_probe/kernel-metadata.json"
+    },
+    {
+      "bytes": 2078,
+      "path": "kaggle_jobs/denoise_v2_torch26_probe/probe.py",
+      "role": "kaggle_job",
+      "sha256": "0b9da5553f4b2bd1dd4a0d9a4f222cdcd69489f467a2e12fee188177afc43e9b",
+      "source_path": "kaggle_jobs/denoise_v2_torch26_probe/probe.py"
+    },
+    {
+      "bytes": 135,
+      "path": "remote_payload/code/dataset-metadata.json",
+      "role": "kaggle_dataset_metadata",
+      "sha256": "7d1a7828c9967d6f81a8aef757c7c9fed8ea15c8e0cdec671ab3d1b86870b0b9",
+      "source_path": "kaggle_datasets/denoise_v2_code/dataset-metadata.json"
+    },
+    {
+      "bytes": 74276,
+      "path": "remote_payload/code/denoise_v2_code.zip",
+      "role": "kaggle_code_payload",
+      "sha256": "b5c61be5d179a00adc523876ca84060a5f77183f7f910cd5039d796581d8d4f0",
+      "source_path": "kaggle_datasets/denoise_v2_code/denoise_v2_code.zip"
+    },
+    {
+      "bytes": 1010,
+      "path": "remote_payload/legacy_baseline/artifact-metadata.json",
+      "role": "kaggle_artifact_metadata",
+      "sha256": "ab6805ef7a9f2a02c23ad0aadc52b01c94343bb72e1627e313396ee4b703b856",
+      "source_path": "kaggle_datasets/denoise_v2_legacy_baseline/artifact-metadata.json"
+    },
+    {
+      "bytes": 151,
+      "path": "remote_payload/legacy_baseline/dataset-metadata.json",
+      "role": "kaggle_dataset_metadata",
+      "sha256": "0b9eab33bfc5ef8c4af2ca5bd9df4f4ee2c52e1fe9dcee50154cbdbec7deddde",
+      "source_path": "kaggle_datasets/denoise_v2_legacy_baseline/dataset-metadata.json"
+    },
+    {
+      "bytes": 147,
+      "path": "remote_payload/real_pairs/dataset-metadata.json",
+      "role": "kaggle_dataset_metadata",
+      "sha256": "038afd224e9cc7db1a6fe15525026b73431d9284fd5eabf59ac84d822408d6d0",
+      "source_path": "kaggle_datasets/denoise_v2_real_pairs/dataset-metadata.json"
+    },
+    {
+      "bytes": 2374,
+      "path": "reproducibility/AGENTS.md",
+      "role": "project_operating_rules",
+      "sha256": "bdd9861237eb1a7bc64a86511cd502ba91ac59d7834862674f02064412b0647e",
+      "source_path": "AGENTS.md"
+    },
+    {
+      "bytes": 306,
+      "path": "reproducibility/environment.yml",
+      "role": "environment_specification",
+      "sha256": "c5057ab72a2fb4878a91db9bbb61b489b8e791935aa97ca7459c68dc0397bb85",
+      "source_path": "environment.yml"
+    },
+    {
+      "bytes": 365,
+      "path": "reproducibility/pyproject.toml",
+      "role": "python_project_configuration",
+      "sha256": "6230ea799c8a68674f619e54e62166b43d592df775af1e3f4eaf36435d7229f0",
+      "source_path": "pyproject.toml"
+    },
+    {
+      "bytes": 7845,
+      "path": "results/failed_attempts/prefinetune_cpu_v1_error.log",
+      "role": "archival_failure_log",
+      "sha256": "aab4389235f42253e565b35a87b7b9c8d45a4e880e6a42023e94d1d15eb1da9b",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v1_error/vsos-denoise-v2-prefinetune-calibration-cpu.log"
+    },
+    {
+      "bytes": 25593,
+      "path": "results/failed_attempts/real_finetune_v1_error.log",
+      "role": "archival_failure_log",
+      "sha256": "dc8ae2c6beb01bf673ed745388de6ba96457214eb773eefbafb384db11ef2022",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v1_error/vsos-denoise-v2-real-finetune.log"
+    },
+    {
+      "bytes": 2898,
+      "path": "results/final_audit.json",
+      "role": "final_release_audit",
+      "sha256": "bffe7eb6fde235fe3de69a3ee0f330655d0cd1eafbb30d2f5001ac6754be0748",
+      "source_path": "runs/denoise_v2/release/final_audit.json"
+    },
+    {
+      "bytes": 9780,
+      "path": "results/final_gate/evaluation.log",
+      "role": "one_shot_final_gate_log",
+      "sha256": "496de0a52b1adbc14118e925d7bfee8648a37bf9bdd1e2a74dae7d37d90585d6",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/final_gate_cpu_v1/vsos-denoise-v2-one-shot-final-gate-cpu.log"
+    },
+    {
+      "bytes": 15968,
+      "path": "results/final_gate/selected_final_gate_report.json",
+      "role": "one_shot_final_gate_report",
+      "sha256": "afc5b311c3234048c5d28d1d5cb6d9745c4e4578b34de001bb2ae0fd86066264",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/final_gate_cpu_v1/selected_final_gate_report.json"
+    },
+    {
+      "bytes": 10818,
+      "path": "results/prefinetune_calibration/evaluation.log",
+      "role": "clean_calibration_log",
+      "sha256": "f9361c088ba42eb4eb0cf29e29cdc5474a286856c236fdf361690d1744698f73",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v3_current/vsos-denoise-v2-prefinetune-calibration-cpu.log"
+    },
+    {
+      "bytes": 61000,
+      "path": "results/prefinetune_calibration/prefinetune_calibration_report.json",
+      "role": "clean_calibration_report",
+      "sha256": "9db9f7bfbde54b3f79844086aaf38247146bf435b94ab696cbf85382afda9a59",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v3_current/prefinetune_calibration_report.json"
+    },
+    {
+      "bytes": 114042,
+      "path": "results/real_finetune/real_finetune_result.json",
+      "role": "real_finetune_report_not_promoted",
+      "sha256": "e63e505531631904e3cc9cb316309ce3300c0298e00d16fd23c9583fecf52371",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v2/real_finetune_result.json"
+    },
+    {
+      "bytes": 223163,
+      "path": "results/real_finetune/training.log",
+      "role": "real_finetune_log_not_promoted",
+      "sha256": "005d9d4c025304988a511e32d09b12aeabc9140fd9c40e5646bc3f22745ce671",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v2/vsos-denoise-v2-real-finetune.log"
+    },
+    {
+      "bytes": 15269,
+      "path": "results/synthetic_50k/synth_50k_result.json",
+      "role": "synthetic_training_report",
+      "sha256": "b6ae2af3508f65a451d1a68f66de98d10802aa08e304d1494d30075c4183d5f5",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/synth/synth_50k_result.json"
+    },
+    {
+      "bytes": 105653,
+      "path": "results/synthetic_50k/training.log",
+      "role": "synthetic_training_log",
+      "sha256": "48b261a25c5fde942c6500ec0cafbfeab7229c17f6fc608a6a774178b0c36cd5",
+      "source_path": "runs/denoise_v2/release_readback/20260710T074500Z/synth/vsos-denoise-v2-synthetic-50k.log"
+    },
+    {
+      "bytes": 8553,
+      "path": "visual_qa/synthetic50k_calibration.json",
+      "role": "visual_qa_report",
+      "sha256": "01f0a5f531249b487699a0aaf9187a4936735327e1e5f54d293e8f328a6ca6bc",
+      "source_path": "runs/denoise_v2/visual_qa/synthetic50k_calibration.json"
+    },
+    {
+      "bytes": 107398,
+      "path": "visual_qa/synthetic50k_calibration.png",
+      "role": "visual_qa_contact_sheet",
+      "sha256": "4e00e184720fa298fb0243d39b4df83890700896d7ce8db25e268cc6329bdc97",
+      "source_path": "runs/denoise_v2/visual_qa/synthetic50k_calibration.png"
+    }
+  ],
+  "final_gate_passed": true,
+  "kind": "denoise_v2_unified_release_bundle",
+  "raw_dataset_included": false,
+  "release_utc": "2026-07-10T09:24:18Z",
+  "schema_version": 1,
+  "selected_checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+  "tile_assembly_included": false
+}

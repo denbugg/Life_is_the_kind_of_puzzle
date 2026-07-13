@@ -1,0 +1,24 @@
+{
+  "id": "pasha883/vsos-tilenaf-latent-edge-stage1-t4x2",
+  "id_no": 126943053,
+  "title": "VSOS TileNAF Latent Edge Stage1 T4x2",
+  "code_file": "vsos-tilenaf-latent-edge-stage1-t4x2.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-masked-gap-gate-code",
+    "pasha883/vsos-tilenaf-latent-edge-overlay-v1"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+  "machine_shape": "NvidiaTeslaT4"
+}

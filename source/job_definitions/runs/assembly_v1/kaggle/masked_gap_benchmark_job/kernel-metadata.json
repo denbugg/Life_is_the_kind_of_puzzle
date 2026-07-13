@@ -1,0 +1,14 @@
+{
+  "id": "pasha883/vsos-masked-gap-target-free-ddp-t4x2-benchmark-v2",
+  "title": "VSOS Masked Gap Target-Free DDP T4x2 Benchmark V2",
+  "code_file": "run_masked_gap_benchmark.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-masked-gap-ddp-benchmark-code-v2"
+  ]
+}

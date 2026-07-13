@@ -1,0 +1,13 @@
+{
+  "archive": "submission.zip",
+  "archive_sha256": "099d1c5fe69cda8519a4f19750cb3a481ac87999c294a35e19691a849d4c6096",
+  "baseline_leaderboard_score": 0.2167844489529071,
+  "candidate": "rgb_plus_bounded_luminance_gain",
+  "leaderboard_score_precision": "rounded_to_three_decimals_as_reported_by_user",
+  "reported_at_local_date": "2026-07-13",
+  "reported_by": "user",
+  "reported_leaderboard_score": 0.218,
+  "displayed_point_delta_vs_exact_baseline": 0.0012155510470929,
+  "inferred_lower_bound_delta_if_round_half_up_to_three_decimals": 0.0007155510470929,
+  "lower_bound_assumption": "The platform displays an ordinary round-to-nearest value at three decimal places; exact candidate score is unavailable."
+}

@@ -1,0 +1,31 @@
+{
+  "kind": "assembly_v1_l1v2_gpu_full_wrapper",
+  "probe": {
+    "arch_list": [
+      "sm_50",
+      "sm_60",
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90"
+    ],
+    "capabilities": [
+      [
+        6,
+        0
+      ]
+    ],
+    "compiled_cuda": "12.4",
+    "cuda_available": true,
+    "device_count": 1,
+    "devices": [
+      "Tesla P100-PCIE-16GB"
+    ],
+    "matmul_mean": -0.039772797375917435,
+    "torch": "2.6.0+cu124"
+  },
+  "schema_version": 1,
+  "seconds": 1041.8500561714172,
+  "training_report": "/kaggle/working/l1v2_gpu_full.json"
+}

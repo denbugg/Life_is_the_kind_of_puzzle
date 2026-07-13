@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "kind": "candidate_graph_oracle_v2_kaggle_reservation_receipt",
+  "datasets": {
+    "code": {
+      "slug": "pasha883/vsos-candidate-graph-oracle-v2-code",
+      "reserved_version": 1,
+      "status": "ready",
+      "placeholder_sha256": "b3a3c9ab36aeb25f339e052e52c0bdb864e2f368b451e8b0672d66606c582d35"
+    },
+    "input": {
+      "slug": "pasha883/vsos-candidate-graph-oracle-v2-inputs",
+      "reserved_version": 1,
+      "status": "ready",
+      "placeholder_sha256": "200b1d6a5d55253e727fbc0258847e92de28ddca293fd10a846fc9828fd237d1"
+    },
+    "runtime": {
+      "slug": "pasha883/vsos-candidate-graph-oracle-v2-runtime",
+      "reserved_version": 1,
+      "status": "ready",
+      "placeholder_sha256": "b3a3c9ab36aeb25f339e052e52c0bdb864e2f368b451e8b0672d66606c582d35"
+    }
+  },
+  "kernel": {
+    "slug": "pasha883/vsos-candidate-graph-oracle-v2-phase-a-t4x2",
+    "kernel_id": 126840275,
+    "reserved_version": 1,
+    "is_private": true,
+    "placeholder_source_sha256": "57b0fa10eb188fd925204b948ace6af2e30f24a585abb39e4a82bd5220e6019f"
+  },
+  "contains_fixture_pixels": false,
+  "safe_for_submission": false
+}

@@ -1,0 +1,12 @@
+{
+  "error": "expected exactly one hash-pinned latent_edge_embedding_overlay_v1.zip, got []",
+  "error_type": "RuntimeError",
+  "kind": "tilenaf_latent_edge_kaggle_wrapper",
+  "qap_run": false,
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 53.37137460708618,
+  "started_unix": 1783946435.4084542,
+  "status": "failed",
+  "steps": []
+}

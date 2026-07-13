@@ -1,0 +1,108 @@
+{
+  "best_gate": {
+    "base": "qap_w4_b0.05_i25",
+    "candidate": "anneal_qap_w4_b0.05_i25_p0p000",
+    "changed_layouts": 0,
+    "checks": {
+      "mean_adjacency_delta_at_least_0_020": false,
+      "mean_manhattan_reduction_at_least_10pct": false,
+      "mean_ssim_delta_at_least_0_010": false,
+      "no_exact_panel_has_negative_mean_ssim_delta": true,
+      "ssim_wins_at_least_75pct": false
+    },
+    "mean_adjacency_delta": 0.0,
+    "mean_manhattan_reduction_fraction": 0.0,
+    "mean_ssim_delta": 0.0,
+    "mean_ssim_delta_by_panel": {
+      "independent_libjpeg": 0.0,
+      "primary_kornia": 0.0
+    },
+    "median_ssim_delta": 0.0,
+    "pairs": 8,
+    "passed": false,
+    "required_wins": 6,
+    "ssim_losses": 0,
+    "ssim_ties": 8,
+    "ssim_wins": 0
+  },
+  "command": [
+    "/usr/bin/python3",
+    "/kaggle/working/protected_anneal_code/scripts/evaluate_anneal_gate.py",
+    "--data-root",
+    "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "--denoiser",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "--embedding-checkpoint",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+    "--manifest",
+    "/kaggle/working/protected_anneal_code/configs/denoise_splits_seed20260710.json",
+    "--quarantine",
+    "/kaggle/working/protected_anneal_code/configs/denoise_validation_quarantine_v1.json",
+    "--exact-sources",
+    "4",
+    "--evaluations",
+    "6000",
+    "--restarts",
+    "1",
+    "--protection-strengths",
+    "0,0.10,0.25",
+    "--device",
+    "cuda:0",
+    "--output",
+    "/kaggle/working/protected_anneal_exact_gate.json",
+    "--overwrite"
+  ],
+  "decision": {
+    "hard_pivot_if_failed": "Do not spend real16 target access or a longer annealing budget; pivot to a better learned compatibility/global assignment model.",
+    "next_if_passed": "Repeat exact8 with two anneal seeds; only then freeze every real16 input layout before attaching targets.",
+    "promoted_candidate": null
+  },
+  "gate_status": "scientific_gate_failed_stop_annealing",
+  "hardware": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "matmul_means": [
+      0.07131263613700867,
+      0.029151733964681625
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "inputs": {
+    "base_qap_sha256": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "embedding_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "overlay_module_sha256": "b143f47d0af8570f40029bc821f5919e95cde2c6e2734746fa05564c8e61a21d",
+    "overlay_script_sha256": "98c80bfba996cb6bb2067f55ae38a9058aafb8b5e531d9bc7bb11798351180fd"
+  },
+  "kind": "protected_anneal_exact_gate_wrapper",
+  "output": "/kaggle/working/protected_anneal_exact_gate.json",
+  "output_sha256": "a7e9f879c081fd09a576e9adde9015518fe6c2e19d22c515d36f3fb018900b93",
+  "returncode": 0,
+  "run_seconds": 202.68116385400003,
+  "schema_version": 1,
+  "seconds": 297.588666239,
+  "status": "complete"
+}

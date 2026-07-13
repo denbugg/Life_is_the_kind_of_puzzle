@@ -1,0 +1,677 @@
+{
+  "anti_leakage": {
+    "fixed_variant_selected_globally": true,
+    "layout_report_is_frozen": true,
+    "target_opened_after_layout_and_render_frozen": true
+  },
+  "kind": "fixed_input_only_layout_renderer_evaluation",
+  "layout_report": "runs/assembly_v1/real_cal/real_cal_64_selecteddenoise_classical.json",
+  "layout_report_sha256": "00a552eba7731b30e03b19de2c9594779344533aaee54eb5ca3446d9ecf52d48",
+  "layout_variant": "denoised_component_fusion__denoised_render",
+  "macro": {
+    "mae": 72.86281704902649,
+    "predicted_layout_ssim": 0.19237197320620616,
+    "psnr": 8.875621392694029
+  },
+  "renderer_denoiser": "runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+  "renderer_denoiser_sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+  "renderer_metadata": {
+    "allow_unpromoted": false,
+    "best_ssim": 0.7974008119332896,
+    "best_step": null,
+    "best_validation": {
+      "boundary_mae": 14.698953156204611,
+      "gradient_mae": 5.533273226197004,
+      "interior_mae": 14.136025080605158,
+      "libjpeg_boundary_mae": 14.412865377632535,
+      "libjpeg_gradient_mae": 4.78823689540692,
+      "libjpeg_interior_mae": 13.95735012755102,
+      "libjpeg_mae": 14.189662905092593,
+      "libjpeg_ordered_image_ssim": 0.7138202646924556,
+      "libjpeg_psnr": 22.983816129529462,
+      "libjpeg_signed_bias_b": -2.1155088975694443,
+      "libjpeg_signed_bias_g": -1.971374782986111,
+      "libjpeg_signed_bias_r": -1.6091362847222221,
+      "libjpeg_tile_ssim": 0.8192853622297793,
+      "mae": 14.42311839916088,
+      "ordered_image_ssim": 0.7120719679309384,
+      "paired_kornia_boundary_mae": 14.338663648329701,
+      "paired_kornia_gradient_mae": 4.715325368542885,
+      "paired_kornia_interior_mae": 13.878117913832199,
+      "paired_kornia_mae": 14.112996238425925,
+      "paired_kornia_ordered_image_ssim": 0.7170644736455459,
+      "paired_kornia_psnr": 23.0367494649957,
+      "paired_kornia_signed_bias_b": -1.8422276475694443,
+      "paired_kornia_signed_bias_g": -1.763288845486111,
+      "paired_kornia_signed_bias_r": -1.3626432291666666,
+      "paired_kornia_tile_ssim": 0.8225776487618983,
+      "psnr": 22.738143882114322,
+      "signed_bias_b": -1.503000217013889,
+      "signed_bias_g": -1.3839081488715277,
+      "signed_bias_r": -1.3469422743055555,
+      "step": 500,
+      "tile_ssim": 0.7974008119332896
+    },
+    "checkpoint": "runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+    "checkpoint_is_latest": false,
+    "checkpoint_resolved": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+    "checkpoint_sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+    "device": "mps",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "model_name": "tile-naf",
+    "promotion_issues": [],
+    "resolved_device_fingerprint": {
+      "capability": [
+        6,
+        0
+      ],
+      "index": 0,
+      "machine": "x86_64",
+      "name": "Tesla P100-PCIE-16GB",
+      "total_memory": 17059545088,
+      "type": "cuda"
+    },
+    "rolled_back": false,
+    "runtime_versions": {
+      "cuda": "12.4",
+      "jpeg_codec": "6.2",
+      "kornia": "0.8.3",
+      "libjpeg_turbo": "True",
+      "libjpeg_turbo_version": "3.1.1",
+      "numpy": "2.0.2",
+      "opencv": "4.13.0",
+      "pillow": "11.3.0",
+      "python": "3.12.13",
+      "scipy": "1.16.3",
+      "skimage": "0.25.2",
+      "torch": "2.6.0+cu124"
+    },
+    "schema_version": 2,
+    "source_code_sha256": "9ec0df1e456659bb8e3afe322d6f2bbd022680ddf2d76e2e0c9e41eb8eda4529",
+    "state": "ema",
+    "step": 500,
+    "training_data_sha256": "73e6ab61535bc50f51fd9f5d78bf8a93551cfb1d54d331b5d994db13f8107fde",
+    "validation_data_sha256": "053bfdb1d01c145f8138d5ef2b6ce805ffc3e726b5a9c71599115ab52bfcf060"
+  },
+  "schema_version": 1,
+  "source_names": [
+    "img_003877.png",
+    "img_005080.png",
+    "img_004383.png",
+    "img_006582.png",
+    "img_004810.png",
+    "img_006306.png",
+    "img_005844.png",
+    "img_004191.png",
+    "img_001281.png",
+    "img_003971.png",
+    "img_006070.png",
+    "img_005710.png",
+    "img_005224.png",
+    "img_006489.png",
+    "img_002514.png",
+    "img_004878.png",
+    "img_005077.png",
+    "img_003036.png",
+    "img_002418.png",
+    "img_004015.png",
+    "img_006284.png",
+    "img_005226.png",
+    "img_006996.png",
+    "img_004575.png",
+    "img_004721.png",
+    "img_004345.png",
+    "img_005348.png",
+    "img_003864.png",
+    "img_003596.png",
+    "img_001404.png",
+    "img_002336.png",
+    "img_004569.png",
+    "img_004358.png",
+    "img_001663.png",
+    "img_004738.png",
+    "img_005848.png",
+    "img_005320.png",
+    "img_001907.png",
+    "img_003275.png",
+    "img_004936.png",
+    "img_003159.png",
+    "img_005828.png",
+    "img_005306.png",
+    "img_002988.png",
+    "img_005835.png",
+    "img_001130.png",
+    "img_006506.png",
+    "img_003005.png",
+    "img_006107.png",
+    "img_003529.png",
+    "img_005730.png",
+    "img_004202.png",
+    "img_006249.png",
+    "img_006418.png",
+    "img_005632.png",
+    "img_006964.png",
+    "img_002297.png",
+    "img_004000.png",
+    "img_006826.png",
+    "img_001261.png",
+    "img_001452.png",
+    "img_001274.png",
+    "img_001517.png",
+    "img_004811.png"
+  ],
+  "sources": [
+    {
+      "metrics": {
+        "mae": 77.1007080078125,
+        "predicted_layout_ssim": 0.18801664072354307,
+        "psnr": 8.024930415243405
+      },
+      "source": "img_003877.png"
+    },
+    {
+      "metrics": {
+        "mae": 49.79515075683594,
+        "predicted_layout_ssim": 0.2742680492240415,
+        "psnr": 11.95227558742195
+      },
+      "source": "img_005080.png"
+    },
+    {
+      "metrics": {
+        "mae": 69.88185119628906,
+        "predicted_layout_ssim": 0.11585106634316117,
+        "psnr": 9.236505136173552
+      },
+      "source": "img_004383.png"
+    },
+    {
+      "metrics": {
+        "mae": 73.17320251464844,
+        "predicted_layout_ssim": 0.10203258441296992,
+        "psnr": 8.965190764622557
+      },
+      "source": "img_006582.png"
+    },
+    {
+      "metrics": {
+        "mae": 39.36297607421875,
+        "predicted_layout_ssim": 0.3330786054713097,
+        "psnr": 12.702864068378775
+      },
+      "source": "img_004810.png"
+    },
+    {
+      "metrics": {
+        "mae": 61.38616180419922,
+        "predicted_layout_ssim": 0.16393817772844943,
+        "psnr": 10.331691543402323
+      },
+      "source": "img_006306.png"
+    },
+    {
+      "metrics": {
+        "mae": 76.32488250732422,
+        "predicted_layout_ssim": 0.21659515545245425,
+        "psnr": 8.261533317013637
+      },
+      "source": "img_005844.png"
+    },
+    {
+      "metrics": {
+        "mae": 65.98609161376953,
+        "predicted_layout_ssim": 0.20023633918594705,
+        "psnr": 9.773072533643552
+      },
+      "source": "img_004191.png"
+    },
+    {
+      "metrics": {
+        "mae": 86.28282165527344,
+        "predicted_layout_ssim": 0.22369555638651997,
+        "psnr": 7.600841234863759
+      },
+      "source": "img_001281.png"
+    },
+    {
+      "metrics": {
+        "mae": 77.45469665527344,
+        "predicted_layout_ssim": 0.12545111544312829,
+        "psnr": 8.567221843804933
+      },
+      "source": "img_003971.png"
+    },
+    {
+      "metrics": {
+        "mae": 71.30775451660156,
+        "predicted_layout_ssim": 0.10207651875634975,
+        "psnr": 9.138356043960659
+      },
+      "source": "img_006070.png"
+    },
+    {
+      "metrics": {
+        "mae": 65.66930389404297,
+        "predicted_layout_ssim": 0.08453506033251623,
+        "psnr": 9.8059952626818
+      },
+      "source": "img_005710.png"
+    },
+    {
+      "metrics": {
+        "mae": 51.058536529541016,
+        "predicted_layout_ssim": 0.21265563530826315,
+        "psnr": 10.9052045414043
+      },
+      "source": "img_005224.png"
+    },
+    {
+      "metrics": {
+        "mae": 108.73159790039062,
+        "predicted_layout_ssim": 0.16429256740737933,
+        "psnr": 5.630031338544457
+      },
+      "source": "img_006489.png"
+    },
+    {
+      "metrics": {
+        "mae": 90.04273223876953,
+        "predicted_layout_ssim": 0.10978154541010594,
+        "psnr": 7.181873393614044
+      },
+      "source": "img_002514.png"
+    },
+    {
+      "metrics": {
+        "mae": 65.60320281982422,
+        "predicted_layout_ssim": 0.18032733897918607,
+        "psnr": 9.618412280021085
+      },
+      "source": "img_004878.png"
+    },
+    {
+      "metrics": {
+        "mae": 86.58663177490234,
+        "predicted_layout_ssim": 0.32840643254792873,
+        "psnr": 7.369949365661837
+      },
+      "source": "img_005077.png"
+    },
+    {
+      "metrics": {
+        "mae": 87.56004333496094,
+        "predicted_layout_ssim": 0.23599538074355753,
+        "psnr": 6.940077608563017
+      },
+      "source": "img_003036.png"
+    },
+    {
+      "metrics": {
+        "mae": 65.47589111328125,
+        "predicted_layout_ssim": 0.21285692736954118,
+        "psnr": 9.73968387045293
+      },
+      "source": "img_002418.png"
+    },
+    {
+      "metrics": {
+        "mae": 71.47784423828125,
+        "predicted_layout_ssim": 0.21251020653175692,
+        "psnr": 8.582263167330973
+      },
+      "source": "img_004015.png"
+    },
+    {
+      "metrics": {
+        "mae": 61.03562545776367,
+        "predicted_layout_ssim": 0.2368696090652844,
+        "psnr": 9.963047717337668
+      },
+      "source": "img_006284.png"
+    },
+    {
+      "metrics": {
+        "mae": 72.41474914550781,
+        "predicted_layout_ssim": 0.25178258290390354,
+        "psnr": 8.540083157123155
+      },
+      "source": "img_005226.png"
+    },
+    {
+      "metrics": {
+        "mae": 58.16116714477539,
+        "predicted_layout_ssim": 0.16178646447573383,
+        "psnr": 10.844586723980509
+      },
+      "source": "img_006996.png"
+    },
+    {
+      "metrics": {
+        "mae": 69.13453674316406,
+        "predicted_layout_ssim": 0.20364147463001503,
+        "psnr": 9.181952862346687
+      },
+      "source": "img_004575.png"
+    },
+    {
+      "metrics": {
+        "mae": 74.86317443847656,
+        "predicted_layout_ssim": 0.23597891103058802,
+        "psnr": 8.67231405171711
+      },
+      "source": "img_004721.png"
+    },
+    {
+      "metrics": {
+        "mae": 59.998050689697266,
+        "predicted_layout_ssim": 0.19081329990371684,
+        "psnr": 10.503898351425086
+      },
+      "source": "img_004345.png"
+    },
+    {
+      "metrics": {
+        "mae": 67.59872436523438,
+        "predicted_layout_ssim": 0.24107471303493203,
+        "psnr": 9.56090615940505
+      },
+      "source": "img_005348.png"
+    },
+    {
+      "metrics": {
+        "mae": 82.39619445800781,
+        "predicted_layout_ssim": 0.1501169496361713,
+        "psnr": 7.940688456352597
+      },
+      "source": "img_003864.png"
+    },
+    {
+      "metrics": {
+        "mae": 71.77810668945312,
+        "predicted_layout_ssim": 0.24754879457999437,
+        "psnr": 8.479637666792772
+      },
+      "source": "img_003596.png"
+    },
+    {
+      "metrics": {
+        "mae": 72.91702270507812,
+        "predicted_layout_ssim": 0.18051642347200636,
+        "psnr": 8.81457018948868
+      },
+      "source": "img_001404.png"
+    },
+    {
+      "metrics": {
+        "mae": 66.3287124633789,
+        "predicted_layout_ssim": 0.13242139600829192,
+        "psnr": 9.756908494997237
+      },
+      "source": "img_002336.png"
+    },
+    {
+      "metrics": {
+        "mae": 70.02680206298828,
+        "predicted_layout_ssim": 0.2681654691846795,
+        "psnr": 8.771773721046012
+      },
+      "source": "img_004569.png"
+    },
+    {
+      "metrics": {
+        "mae": 72.35255432128906,
+        "predicted_layout_ssim": 0.19899689425713185,
+        "psnr": 8.885766517998064
+      },
+      "source": "img_004358.png"
+    },
+    {
+      "metrics": {
+        "mae": 67.98377227783203,
+        "predicted_layout_ssim": 0.1786128340102681,
+        "psnr": 9.748784386112355
+      },
+      "source": "img_001663.png"
+    },
+    {
+      "metrics": {
+        "mae": 80.4863052368164,
+        "predicted_layout_ssim": 0.2271031627666983,
+        "psnr": 7.942834709242427
+      },
+      "source": "img_004738.png"
+    },
+    {
+      "metrics": {
+        "mae": 68.44353485107422,
+        "predicted_layout_ssim": 0.12413646826376233,
+        "psnr": 9.65529142410628
+      },
+      "source": "img_005848.png"
+    },
+    {
+      "metrics": {
+        "mae": 43.13177490234375,
+        "predicted_layout_ssim": 0.29025970548214336,
+        "psnr": 12.820105562567822
+      },
+      "source": "img_005320.png"
+    },
+    {
+      "metrics": {
+        "mae": 94.72396087646484,
+        "predicted_layout_ssim": 0.21470749442037265,
+        "psnr": 6.705862802826063
+      },
+      "source": "img_001907.png"
+    },
+    {
+      "metrics": {
+        "mae": 63.54634094238281,
+        "predicted_layout_ssim": 0.10273136579451696,
+        "psnr": 9.584863402408137
+      },
+      "source": "img_003275.png"
+    },
+    {
+      "metrics": {
+        "mae": 55.07350540161133,
+        "predicted_layout_ssim": 0.26441502519448185,
+        "psnr": 10.421470364191501
+      },
+      "source": "img_004936.png"
+    },
+    {
+      "metrics": {
+        "mae": 91.1192398071289,
+        "predicted_layout_ssim": 0.09848657936579693,
+        "psnr": 7.208041274560463
+      },
+      "source": "img_003159.png"
+    },
+    {
+      "metrics": {
+        "mae": 79.52754211425781,
+        "predicted_layout_ssim": 0.22707630457257819,
+        "psnr": 8.117290143617925
+      },
+      "source": "img_005828.png"
+    },
+    {
+      "metrics": {
+        "mae": 72.40755462646484,
+        "predicted_layout_ssim": 0.18551042338735402,
+        "psnr": 8.543390857665152
+      },
+      "source": "img_005306.png"
+    },
+    {
+      "metrics": {
+        "mae": 83.40569305419922,
+        "predicted_layout_ssim": 0.14729837037625748,
+        "psnr": 7.803115837428188
+      },
+      "source": "img_002988.png"
+    },
+    {
+      "metrics": {
+        "mae": 83.24005889892578,
+        "predicted_layout_ssim": 0.228912955341396,
+        "psnr": 7.550041825405637
+      },
+      "source": "img_005835.png"
+    },
+    {
+      "metrics": {
+        "mae": 87.92693328857422,
+        "predicted_layout_ssim": 0.18056879827499617,
+        "psnr": 7.153315493052167
+      },
+      "source": "img_001130.png"
+    },
+    {
+      "metrics": {
+        "mae": 75.58197021484375,
+        "predicted_layout_ssim": 0.11030140880987148,
+        "psnr": 8.78574248942167
+      },
+      "source": "img_006506.png"
+    },
+    {
+      "metrics": {
+        "mae": 84.61479949951172,
+        "predicted_layout_ssim": 0.07081154451604546,
+        "psnr": 7.914235990897258
+      },
+      "source": "img_003005.png"
+    },
+    {
+      "metrics": {
+        "mae": 78.3263168334961,
+        "predicted_layout_ssim": 0.31722087334914245,
+        "psnr": 8.526132464589939
+      },
+      "source": "img_006107.png"
+    },
+    {
+      "metrics": {
+        "mae": 96.92935180664062,
+        "predicted_layout_ssim": 0.16033030992573927,
+        "psnr": 6.678140098888711
+      },
+      "source": "img_003529.png"
+    },
+    {
+      "metrics": {
+        "mae": 79.55726623535156,
+        "predicted_layout_ssim": 0.16555703196869317,
+        "psnr": 7.940823545473966
+      },
+      "source": "img_005730.png"
+    },
+    {
+      "metrics": {
+        "mae": 73.8747329711914,
+        "predicted_layout_ssim": 0.18346586452180258,
+        "psnr": 8.55537428682309
+      },
+      "source": "img_004202.png"
+    },
+    {
+      "metrics": {
+        "mae": 60.99345016479492,
+        "predicted_layout_ssim": 0.24000504028630779,
+        "psnr": 9.799297170938816
+      },
+      "source": "img_006249.png"
+    },
+    {
+      "metrics": {
+        "mae": 64.40142059326172,
+        "predicted_layout_ssim": 0.12763444363657728,
+        "psnr": 9.486498384494142
+      },
+      "source": "img_006418.png"
+    },
+    {
+      "metrics": {
+        "mae": 76.09256744384766,
+        "predicted_layout_ssim": 0.17610922913395502,
+        "psnr": 8.760001197135892
+      },
+      "source": "img_005632.png"
+    },
+    {
+      "metrics": {
+        "mae": 89.39069366455078,
+        "predicted_layout_ssim": 0.23874933002809098,
+        "psnr": 6.802946550628944
+      },
+      "source": "img_006964.png"
+    },
+    {
+      "metrics": {
+        "mae": 55.71121597290039,
+        "predicted_layout_ssim": 0.24074078377617272,
+        "psnr": 10.210696552145224
+      },
+      "source": "img_002297.png"
+    },
+    {
+      "metrics": {
+        "mae": 78.83821105957031,
+        "predicted_layout_ssim": 0.145392365282112,
+        "psnr": 8.316291497183846
+      },
+      "source": "img_004000.png"
+    },
+    {
+      "metrics": {
+        "mae": 60.72687530517578,
+        "predicted_layout_ssim": 0.18806204900705836,
+        "psnr": 10.08648782762142
+      },
+      "source": "img_006826.png"
+    },
+    {
+      "metrics": {
+        "mae": 75.371337890625,
+        "predicted_layout_ssim": 0.18678480883618206,
+        "psnr": 8.93718224997469
+      },
+      "source": "img_001261.png"
+    },
+    {
+      "metrics": {
+        "mae": 58.38774490356445,
+        "predicted_layout_ssim": 0.33061408998063424,
+        "psnr": 10.454907896297831
+      },
+      "source": "img_001452.png"
+    },
+    {
+      "metrics": {
+        "mae": 83.93115997314453,
+        "predicted_layout_ssim": 0.2893999159148028,
+        "psnr": 7.385388617657816
+      },
+      "source": "img_001274.png"
+    },
+    {
+      "metrics": {
+        "mae": 86.47679901123047,
+        "predicted_layout_ssim": 0.13113092252607725,
+        "psnr": 7.735714427483764
+      },
+      "source": "img_001517.png"
+    },
+    {
+      "metrics": {
+        "mae": 73.73065948486328,
+        "predicted_layout_ssim": 0.05336290050674863,
+        "psnr": 8.165392414762637
+      },
+      "source": "img_004811.png"
+    }
+  ]
+}

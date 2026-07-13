@@ -1,0 +1,1753 @@
+{
+  "all_layouts_frozen_before_render_metrics": true,
+  "config_sha256": "372bda4598d86865bec49db9ac329948ffb02b1be1bd5f4ec7f9fa707f7b610e",
+  "correct_layout_ceiling_is_separate_evidence": true,
+  "created_utc": "2026-07-12T14:59:34Z",
+  "development_only": true,
+  "gate": {
+    "evaluable": true,
+    "kind": "small8_advance_rule",
+    "passed": true,
+    "per_panel": {
+      "independent_libjpeg": {
+        "checks": {
+          "large_regressions_at_most_1": true,
+          "mean_ssim_delta_above_zero": true,
+          "seam_error_nonregression": true,
+          "wins_at_least_5_of_8": true
+        },
+        "passed": true
+      },
+      "primary_kornia": {
+        "checks": {
+          "large_regressions_at_most_1": true,
+          "mean_ssim_delta_above_zero": true,
+          "seam_error_nonregression": true,
+          "wins_at_least_5_of_8": true
+        },
+        "passed": true
+      }
+    },
+    "submission_promotion_allowed": false,
+    "valid_permutation_count": 16
+  },
+  "kind": "postassembly_actual_qap_layout_report",
+  "layout_refinement_performed": false,
+  "panel_macro": {
+    "independent_libjpeg": {
+      "bilateral_offset_on_frozen_qap_w4": {
+        "boundary_band_mae": 68.38635742252721,
+        "mae": 68.66167824074074,
+        "ssim": 0.19149073957946738,
+        "target_referenced_seam_error": 0.09220568994506015,
+        "untargeted_seam_discontinuity": 0.08152694894382874
+      },
+      "fixed_alpha_0_5_on_frozen_qap_w4": {
+        "boundary_band_mae": 69.56488867461431,
+        "mae": 69.78313259548611,
+        "ssim": 0.18469466090417588,
+        "target_referenced_seam_error": 0.09699648337595908,
+        "untargeted_seam_discontinuity": 0.08658196279719617
+      },
+      "layout": {
+        "right_down_adjacency_recall": 0.060122282608695655,
+        "strict_position_accuracy": 0.0023871527777777775,
+        "valid_permutation_rate": 1.0
+      },
+      "naive_5x5_on_frozen_qap_w4": {
+        "boundary_band_mae": 66.68592633406799,
+        "mae": 66.69033817997686,
+        "ssim": 0.1957267339197858,
+        "target_referenced_seam_error": 0.09201368908070476,
+        "untargeted_seam_discontinuity": 0.08157779642654164
+      },
+      "production_seam_tilenaf_on_frozen_qap_w4": {
+        "boundary_band_mae": 69.55625960061444,
+        "mae": 69.7732199435764,
+        "ssim": 0.18498181949167664,
+        "target_referenced_seam_error": 0.09695927465188973,
+        "untargeted_seam_discontinuity": 0.08655696457326892
+      },
+      "raw_on_frozen_qap_w4": {
+        "boundary_band_mae": 67.75863742236025,
+        "mae": 67.70085268373842,
+        "ssim": 0.10444325037663316,
+        "target_referenced_seam_error": 0.11989160776025386,
+        "untargeted_seam_discontinuity": 0.11179585375816994
+      },
+      "seam_graph_rgb_on_frozen_qap_w4": {
+        "boundary_band_mae": 68.629086522407,
+        "mae": 68.85928367332176,
+        "ssim": 0.19769806187758665,
+        "target_referenced_seam_error": 0.08449989491569573,
+        "untargeted_seam_discontinuity": 0.07242618197641375
+      },
+      "selected_tilenaf_on_frozen_qap_w4": {
+        "boundary_band_mae": 69.57473400036733,
+        "mae": 69.7940872757523,
+        "ssim": 0.1845797590153021,
+        "target_referenced_seam_error": 0.09703847269584162,
+        "untargeted_seam_discontinuity": 0.08662874751349815
+      },
+      "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+        "boundary_band_mae": 69.87513200844855,
+        "mae": 70.09714934172453,
+        "ssim": 0.17788868957526915,
+        "target_referenced_seam_error": 0.10309981676849483,
+        "untargeted_seam_discontinuity": 0.09352366172918443
+      }
+    },
+    "primary_kornia": {
+      "bilateral_offset_on_frozen_qap_w4": {
+        "boundary_band_mae": 67.64004531072598,
+        "mae": 67.88027180989583,
+        "ssim": 0.19954262397873523,
+        "target_referenced_seam_error": 0.09260898426399547,
+        "untargeted_seam_discontinuity": 0.08145286450933031
+      },
+      "fixed_alpha_0_5_on_frozen_qap_w4": {
+        "boundary_band_mae": 68.80653666182462,
+        "mae": 68.99367024739584,
+        "ssim": 0.192872749714366,
+        "target_referenced_seam_error": 0.09730711849957374,
+        "untargeted_seam_discontinuity": 0.08650770815572606
+      },
+      "layout": {
+        "right_down_adjacency_recall": 0.06453804347826086,
+        "strict_position_accuracy": 0.003038194444444444,
+        "valid_permutation_rate": 1.0
+      },
+      "naive_5x5_on_frozen_qap_w4": {
+        "boundary_band_mae": 65.96387194867428,
+        "mae": 65.89024124710647,
+        "ssim": 0.2032094229116112,
+        "target_referenced_seam_error": 0.09247065039784029,
+        "untargeted_seam_discontinuity": 0.08152130991285403
+      },
+      "production_seam_tilenaf_on_frozen_qap_w4": {
+        "boundary_band_mae": 68.79883269050958,
+        "mae": 68.98391511140046,
+        "ssim": 0.19314986936723078,
+        "target_referenced_seam_error": 0.09727456456616462,
+        "untargeted_seam_discontinuity": 0.0864773891138581
+      },
+      "raw_on_frozen_qap_w4": {
+        "boundary_band_mae": 67.50163366977226,
+        "mae": 67.4012208839699,
+        "ssim": 0.10986542738364981,
+        "target_referenced_seam_error": 0.11939141387231222,
+        "untargeted_seam_discontinuity": 0.11096730842095293
+      },
+      "seam_graph_rgb_on_frozen_qap_w4": {
+        "boundary_band_mae": 67.72506918703667,
+        "mae": 67.89957573784721,
+        "ssim": 0.2061964259681959,
+        "target_referenced_seam_error": 0.08501719090413942,
+        "untargeted_seam_discontinuity": 0.07261414967557071
+      },
+      "selected_tilenaf_on_frozen_qap_w4": {
+        "boundary_band_mae": 68.81540053346023,
+        "mae": 69.00499113859954,
+        "ssim": 0.19275821314580488,
+        "target_referenced_seam_error": 0.09734317277635693,
+        "untargeted_seam_discontinuity": 0.08655857783934831
+      },
+      "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+        "boundary_band_mae": 69.00569827773325,
+        "mae": 69.20279296875,
+        "ssim": 0.1870073132360768,
+        "target_referenced_seam_error": 0.10295396419437339,
+        "untargeted_seam_discontinuity": 0.09296001764232263
+      }
+    }
+  },
+  "phase_a_manifest_sha256": "9c8eed53a6ad25af9b8944e982d30ba9a2197bd8a089275366adcbed3b1977d2",
+  "primary_comparison": {
+    "independent_libjpeg": {
+      "large_regressions_below_minus_0_01": 0,
+      "mean_ssim_delta": 0.013003400973410774,
+      "mean_target_referenced_seam_error_delta": -0.012496588460263334,
+      "paired_bootstrap_95_ci": [
+        0.009638008797316546,
+        0.017802084373142464
+      ],
+      "source_count": 8,
+      "wins_ties_losses": [
+        8,
+        0,
+        0
+      ]
+    },
+    "primary_kornia": {
+      "large_regressions_below_minus_0_01": 0,
+      "mean_ssim_delta": 0.013323676253829915,
+      "mean_target_referenced_seam_error_delta": -0.012289927595434316,
+      "paired_bootstrap_95_ci": [
+        0.009861443740408746,
+        0.017055486519305864
+      ],
+      "source_count": 8,
+      "wins_ties_losses": [
+        8,
+        0,
+        0
+      ]
+    }
+  },
+  "record_count": 16,
+  "records": [
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.234375,
+          "confidence_mean": 0.6841549227177764,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.45395539244987093,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.831487273197634,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 7.562196236731378,
+          "residual_q90": 37.72588437879766
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.16898148148148148,
+          "confidence_mean": 0.6841549227177763,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4023007852957548,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.1486473861866955,
+          "placebo": true,
+          "placebo_seed": 10959865742042616537,
+          "residual_median": 10.335667842022177,
+          "residual_q90": 41.43503107288071
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.08876811594202899,
+        "strict_position_accuracy": 0.0,
+        "valid_permutation": true
+      },
+      "layout_sha256": "c6959503df8f3eb40989d224cc338fd56eab976ba75791b8dddb226c72b34681",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 66.62209477058705,
+          "mae": 67.21120804398149,
+          "ssim": 0.1924378948740838,
+          "target_referenced_seam_error": 0.1001143198825424,
+          "untargeted_seam_discontinuity": 0.08936067301316662
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 67.74978711681025,
+          "mae": 68.28231481481481,
+          "ssim": 0.1852980655468078,
+          "target_referenced_seam_error": 0.10537054797764517,
+          "untargeted_seam_discontinuity": 0.09511964810078621
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 64.3439858411808,
+          "mae": 64.51808159722222,
+          "ssim": 0.19581996744144373,
+          "target_referenced_seam_error": 0.09831160604338354,
+          "untargeted_seam_discontinuity": 0.08750278251397177
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 67.73316135710947,
+          "mae": 68.26316550925925,
+          "ssim": 0.18557250772378767,
+          "target_referenced_seam_error": 0.10531460168608507,
+          "untargeted_seam_discontinuity": 0.09503824476650564
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 66.17577055366326,
+          "mae": 66.4889134837963,
+          "ssim": 0.10473108207132666,
+          "target_referenced_seam_error": 0.12464093729279152,
+          "untargeted_seam_discontinuity": 0.11646946338922042
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 66.49820510251787,
+          "mae": 66.92841724537037,
+          "ssim": 0.1978914882253303,
+          "target_referenced_seam_error": 0.09101342710997443,
+          "untargeted_seam_discontinuity": 0.0791168182248745
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 67.77003606491685,
+          "mae": 68.30382378472223,
+          "ssim": 0.1851338015880634,
+          "target_referenced_seam_error": 0.10544241972151179,
+          "untargeted_seam_discontinuity": 0.09522787013356067
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 67.70444299739532,
+          "mae": 68.23145688657408,
+          "ssim": 0.1784157067333634,
+          "target_referenced_seam_error": 0.1107616391967415,
+          "untargeted_seam_discontinuity": 0.1009778464525907
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_005775.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.2482638888888889,
+          "confidence_mean": 0.6744178542995831,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4488888199929989,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.807051139150361,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 7.701328213519356,
+          "residual_q90": 39.19883042279541
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.16435185185185186,
+          "confidence_mean": 0.6744178542995831,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.3998707324554245,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.082074480131705,
+          "placebo": true,
+          "placebo_seed": 2310545935518035334,
+          "residual_median": 10.47962451316032,
+          "residual_q90": 41.621154995139115
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.0661231884057971,
+        "strict_position_accuracy": 0.003472222222222222,
+        "valid_permutation": true
+      },
+      "layout_sha256": "f5dc888ab734719d17e79b82f0f0a66d3e9ad93fa53fa12432c101756691b375",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 72.60014693114272,
+          "mae": 73.59911892361112,
+          "ssim": 0.1640935087704166,
+          "target_referenced_seam_error": 0.09973045135928768,
+          "untargeted_seam_discontinuity": 0.08973187221748602
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 73.91916282642089,
+          "mae": 74.840546875,
+          "ssim": 0.15670189684429342,
+          "target_referenced_seam_error": 0.1056257696315241,
+          "untargeted_seam_discontinuity": 0.09597139338827318
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 70.55207707206304,
+          "mae": 71.27613136574074,
+          "ssim": 0.16933595132339932,
+          "target_referenced_seam_error": 0.09784562375674909,
+          "untargeted_seam_discontinuity": 0.0880446623093682
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 73.90115123889667,
+          "mae": 74.81848524305556,
+          "ssim": 0.15707417483116862,
+          "target_referenced_seam_error": 0.10556461352657005,
+          "untargeted_seam_discontinuity": 0.09590656673297339
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 71.43100497562278,
+          "mae": 72.17799479166666,
+          "ssim": 0.09797224879349731,
+          "target_referenced_seam_error": 0.12653494127119447,
+          "untargeted_seam_discontinuity": 0.11862585251491901
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 72.36327055366326,
+          "mae": 73.31403211805555,
+          "ssim": 0.168870456962292,
+          "target_referenced_seam_error": 0.09158674339300937,
+          "untargeted_seam_discontinuity": 0.08030856303874206
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 73.94047619047619,
+          "mae": 74.86598813657407,
+          "ssim": 0.15644213124228026,
+          "target_referenced_seam_error": 0.10569296438382116,
+          "untargeted_seam_discontinuity": 0.09605670408259923
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 74.32135343618513,
+          "mae": 75.27155815972222,
+          "ssim": 0.15315580946915552,
+          "target_referenced_seam_error": 0.11147733731173629,
+          "untargeted_seam_discontinuity": 0.1022688737330681
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_005775.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.17418981481481483,
+          "confidence_mean": 0.7910192232215114,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.5850215217116017,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.216842873255147,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 4.163085328697981,
+          "residual_q90": 24.00728177308053
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.07465277777777778,
+          "confidence_mean": 0.7910192232215114,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.5366009591066886,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.107444485356786,
+          "placebo": true,
+          "placebo_seed": 12714522804977137024,
+          "residual_median": 5.826724554711351,
+          "residual_q90": 28.44642584524187
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.042572463768115944,
+        "strict_position_accuracy": 0.005208333333333333,
+        "valid_permutation": true
+      },
+      "layout_sha256": "6fb5de865d4dd6060ab69e18948fac93edfb70a97d89a63e99b9463d89308e2c",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 65.40118045815802,
+          "mae": 65.19285300925925,
+          "ssim": 0.3257033153785605,
+          "target_referenced_seam_error": 0.0686770626124846,
+          "untargeted_seam_discontinuity": 0.06123093681917211
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 66.69758481934149,
+          "mae": 66.47018663194444,
+          "ssim": 0.3138300114312617,
+          "target_referenced_seam_error": 0.07405702377569386,
+          "untargeted_seam_discontinuity": 0.06690158188879416
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 64.01455954050624,
+          "mae": 63.55207609953704,
+          "ssim": 0.3306558449710574,
+          "target_referenced_seam_error": 0.0696080207445297,
+          "untargeted_seam_discontinuity": 0.062452697262479866
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 66.72494657049356,
+          "mae": 66.50018663194444,
+          "ssim": 0.31403135229739293,
+          "target_referenced_seam_error": 0.07402949464810078,
+          "untargeted_seam_discontinuity": 0.06687369754665151
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 65.73301526080277,
+          "mae": 65.31397858796296,
+          "ssim": 0.14635388166697652,
+          "target_referenced_seam_error": 0.1045471606517003,
+          "untargeted_seam_discontinuity": 0.0988012100975656
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 65.71615992119148,
+          "mae": 65.42432436342592,
+          "ssim": 0.3377571636515502,
+          "target_referenced_seam_error": 0.06077140759685517,
+          "untargeted_seam_discontinuity": 0.05296947522970541
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 66.67257730581714,
+          "mae": 66.44334635416666,
+          "ssim": 0.31385655412235247,
+          "target_referenced_seam_error": 0.07407235720375106,
+          "untargeted_seam_discontinuity": 0.06693183432793408
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 67.00849445668871,
+          "mae": 66.7475144675926,
+          "ssim": 0.30684453086301006,
+          "target_referenced_seam_error": 0.07988514729563323,
+          "untargeted_seam_discontinuity": 0.07344463389220422
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_006677.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.1857638888888889,
+          "confidence_mean": 0.7942681024357304,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.5972976174082354,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.387642302277145,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 4.046796877650782,
+          "residual_q90": 23.19759769855667
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.10416666666666667,
+          "confidence_mean": 0.7942681024357304,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.549063271675547,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.500397842728752,
+          "placebo": true,
+          "placebo_seed": 9071966561084128574,
+          "residual_median": 5.750553788837099,
+          "residual_q90": 27.11111696426566
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.058876811594202896,
+        "strict_position_accuracy": 0.001736111111111111,
+        "valid_permutation": true
+      },
+      "layout_sha256": "2273b29408b37c59d1267573404ed5fd45fda77c2f7f10f61ad149ae6d263509",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 55.24893975823149,
+          "mae": 54.47568865740741,
+          "ssim": 0.35045298376427375,
+          "target_referenced_seam_error": 0.06753433740646017,
+          "untargeted_seam_discontinuity": 0.061251539263048216
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 56.40432779002204,
+          "mae": 55.64833333333333,
+          "ssim": 0.3378450073419514,
+          "target_referenced_seam_error": 0.07304797764516434,
+          "untargeted_seam_discontinuity": 0.06700293644027659
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 54.03176968543378,
+          "mae": 53.032465277777774,
+          "ssim": 0.35481562610550627,
+          "target_referenced_seam_error": 0.06819900303116416,
+          "untargeted_seam_discontinuity": 0.06197978829212844
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 56.4079676751486,
+          "mae": 55.65185908564815,
+          "ssim": 0.3382682141944269,
+          "target_referenced_seam_error": 0.0730463791796912,
+          "untargeted_seam_discontinuity": 0.0669904447286161
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 55.60184582248046,
+          "mae": 54.74255353009259,
+          "ssim": 0.1568633685754082,
+          "target_referenced_seam_error": 0.10436789570900824,
+          "untargeted_seam_discontinuity": 0.09975081699346405
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 55.225263808188075,
+          "mae": 54.44157552083333,
+          "ssim": 0.3656501629688787,
+          "target_referenced_seam_error": 0.05882530548451265,
+          "untargeted_seam_discontinuity": 0.05178365065833097
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 56.40123054832031,
+          "mae": 55.643696469907404,
+          "ssim": 0.337722628095846,
+          "target_referenced_seam_error": 0.073048273657289,
+          "untargeted_seam_discontinuity": 0.06703401771336553
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 56.8337215320911,
+          "mae": 56.02202980324074,
+          "ssim": 0.3244726164346036,
+          "target_referenced_seam_error": 0.0813512953490575,
+          "untargeted_seam_discontinuity": 0.0756567324997632
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_006677.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.13252314814814814,
+          "confidence_mean": 0.5948848208946511,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4450573807097477,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.450907547119203,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 5.6326293329024555,
+          "residual_q90": 35.20624088590519
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.0943287037037037,
+          "confidence_mean": 0.5948848208946511,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4083962919707034,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 4.902710260306801,
+          "placebo": true,
+          "placebo_seed": 5203785349510681800,
+          "residual_median": 8.350666630478958,
+          "residual_q90": 38.45412069295551
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.07789855072463768,
+        "strict_position_accuracy": 0.003472222222222222,
+        "valid_permutation": true
+      },
+      "layout_sha256": "db6dd13835309f004b2c7c7734f6e974d595120ff7d41aa6395c6af71dd5164e",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 62.74830945702264,
+          "mae": 64.31122974537037,
+          "ssim": 0.11444543499099318,
+          "target_referenced_seam_error": 0.10020300511508952,
+          "untargeted_seam_discontinuity": 0.08745731505162452
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 63.81775111868029,
+          "mae": 65.31502604166667,
+          "ssim": 0.11119270086144224,
+          "target_referenced_seam_error": 0.10417525101828172,
+          "untargeted_seam_discontinuity": 0.0915015511035332
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 61.71330060776064,
+          "mae": 62.932690972222225,
+          "ssim": 0.11572669302742049,
+          "target_referenced_seam_error": 0.10246726105901297,
+          "untargeted_seam_discontinuity": 0.09029666335133087
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 63.775963400788086,
+          "mae": 65.26718171296297,
+          "ssim": 0.11162391910557896,
+          "target_referenced_seam_error": 0.10409159799185375,
+          "untargeted_seam_discontinuity": 0.09140132139812446
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 62.62102200627797,
+          "mae": 63.74995949074074,
+          "ssim": 0.08177718154467448,
+          "target_referenced_seam_error": 0.12357683290707587,
+          "untargeted_seam_discontinuity": 0.11453188642606801
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 63.093752087090095,
+          "mae": 64.66771846064815,
+          "ssim": 0.11607226804865774,
+          "target_referenced_seam_error": 0.09486288718385905,
+          "untargeted_seam_discontinuity": 0.08058764326986834
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 63.86064916850331,
+          "mae": 65.36258825231481,
+          "ssim": 0.11086068022145999,
+          "target_referenced_seam_error": 0.10426636355025103,
+          "untargeted_seam_discontinuity": 0.09161089798238135
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 64.01935149936553,
+          "mae": 65.5432349537037,
+          "ssim": 0.10758197102953397,
+          "target_referenced_seam_error": 0.10898035663540778,
+          "untargeted_seam_discontinuity": 0.09787990196078432
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_004503.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.13425925925925927,
+          "confidence_mean": 0.5869484811702893,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4413191472900081,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.461492291278432,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 5.659598113337936,
+          "residual_q90": 33.41521590258264
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.09490740740740741,
+          "confidence_mean": 0.5869484811702893,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.40665699214350265,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.291211425912595,
+          "placebo": true,
+          "placebo_seed": 17430758941232518756,
+          "residual_median": 8.160141943008469,
+          "residual_q90": 37.66777212805575
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.06974637681159421,
+        "strict_position_accuracy": 0.0,
+        "valid_permutation": true
+      },
+      "layout_sha256": "4867b36644c027f9922c5ef5f1388e8e6ecaa57d161f3ac8661678e755bb0583",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.90191511387164,
+          "mae": 60.79494068287037,
+          "ssim": 0.1292756805763143,
+          "target_referenced_seam_error": 0.0976307781566733,
+          "untargeted_seam_discontinuity": 0.08631080089040448
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.193423161691044,
+          "mae": 62.03052806712963,
+          "ssim": 0.12641727999715358,
+          "target_referenced_seam_error": 0.10050097091976887,
+          "untargeted_seam_discontinuity": 0.08937470398787534
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 57.698507313163695,
+          "mae": 59.225102719907404,
+          "ssim": 0.12686645487424528,
+          "target_referenced_seam_error": 0.09862348441792175,
+          "untargeted_seam_discontinuity": 0.08787777067348679
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.17052360916316,
+          "mae": 62.00313657407408,
+          "ssim": 0.1268058476680138,
+          "target_referenced_seam_error": 0.1003222387989012,
+          "untargeted_seam_discontinuity": 0.08918709150326797
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 59.18146830962399,
+          "mae": 60.71397569444444,
+          "ssim": 0.08129917505957264,
+          "target_referenced_seam_error": 0.12003267973856209,
+          "untargeted_seam_discontinuity": 0.11210287013356067
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 59.2478628197422,
+          "mae": 61.152093460648146,
+          "ssim": 0.13394459091175523,
+          "target_referenced_seam_error": 0.09097648479681728,
+          "untargeted_seam_discontinuity": 0.07827389409870229
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.215767548253524,
+          "mae": 62.05742042824074,
+          "ssim": 0.12617659815824855,
+          "target_referenced_seam_error": 0.10067194752297055,
+          "untargeted_seam_discontinuity": 0.08957480818414322
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.84567638415815,
+          "mae": 62.636399016203704,
+          "ssim": 0.1129324562875127,
+          "target_referenced_seam_error": 0.10628421900161031,
+          "untargeted_seam_discontinuity": 0.09636615515771525
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_004503.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.2355324074074074,
+          "confidence_mean": 0.6497835633052468,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.43086716632975736,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 7.139474612376631,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 7.544423519656935,
+          "residual_q90": 36.875163312414344
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.2025462962962963,
+          "confidence_mean": 0.6497835633052468,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.3984837393809829,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.4456053318193645,
+          "placebo": true,
+          "placebo_seed": 16854236171181697989,
+          "residual_median": 9.38555684106941,
+          "residual_q90": 37.47710831908138
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.08152173913043478,
+        "strict_position_accuracy": 0.001736111111111111,
+        "valid_permutation": true
+      },
+      "layout_sha256": "20ce95ac69400f4370e6e63453db1268ff26bcbf7f279eaf1e35254e109e174e",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 77.44927953649903,
+          "mae": 78.58216435185186,
+          "ssim": 0.16157401697254184,
+          "target_referenced_seam_error": 0.10625130245334849,
+          "untargeted_seam_discontinuity": 0.09233346357866819
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 78.41070593735391,
+          "mae": 79.48406539351852,
+          "ssim": 0.1552300322450105,
+          "target_referenced_seam_error": 0.11122187884815762,
+          "untargeted_seam_discontinuity": 0.09765664961636829
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 75.83542877178922,
+          "mae": 76.60302662037037,
+          "ssim": 0.16616668817732383,
+          "target_referenced_seam_error": 0.10542767831770389,
+          "untargeted_seam_discontinuity": 0.09172521786492374
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 78.43075035063113,
+          "mae": 79.50465133101852,
+          "ssim": 0.15541115960202292,
+          "target_referenced_seam_error": 0.11119529695936345,
+          "untargeted_seam_discontinuity": 0.09764297385620915
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 76.58815868563414,
+          "mae": 77.13149594907408,
+          "ssim": 0.09366700829893122,
+          "target_referenced_seam_error": 0.13143494837548547,
+          "untargeted_seam_discontinuity": 0.1201377640428152
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 77.43668186068257,
+          "mae": 78.46461516203703,
+          "ssim": 0.1705206528164347,
+          "target_referenced_seam_error": 0.0977041299611632,
+          "untargeted_seam_discontinuity": 0.08251414937955859
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 78.39112068389768,
+          "mae": 79.46409288194444,
+          "ssim": 0.15522705761085667,
+          "target_referenced_seam_error": 0.11123644264469074,
+          "untargeted_seam_discontinuity": 0.09768068580089041
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 78.69610715955386,
+          "mae": 79.75400462962963,
+          "ssim": 0.15218860860930716,
+          "target_referenced_seam_error": 0.11715739556692242,
+          "untargeted_seam_discontinuity": 0.10448493890309747
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_005795.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.25752314814814814,
+          "confidence_mean": 0.642222801792278,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4395388006256407,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.96017702825892,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 7.168575780289293,
+          "residual_q90": 37.428688795872596
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.17939814814814814,
+          "confidence_mean": 0.642222801792278,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.3971733713728627,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.24773562459415,
+          "placebo": true,
+          "placebo_seed": 704394866734525428,
+          "residual_median": 10.494727516591972,
+          "residual_q90": 39.437902028099224
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.08786231884057971,
+        "strict_position_accuracy": 0.001736111111111111,
+        "valid_permutation": true
+      },
+      "layout_sha256": "1bfc30d0054bcb2668af0bd0fcdee1c08ea54a0748c336ed032bb4a42f7b580c",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 87.91857426701395,
+          "mae": 87.27632233796297,
+          "ssim": 0.14857167609891617,
+          "target_referenced_seam_error": 0.10881257696315241,
+          "untargeted_seam_discontinuity": 0.09535935871933314
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 89.03131469979296,
+          "mae": 88.28425202546296,
+          "ssim": 0.1431921899665446,
+          "target_referenced_seam_error": 0.11366072274320357,
+          "untargeted_seam_discontinuity": 0.10050304300464148
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 86.06261687704534,
+          "mae": 85.16786313657407,
+          "ssim": 0.1534967998379889,
+          "target_referenced_seam_error": 0.10850069858861419,
+          "untargeted_seam_discontinuity": 0.09532821824381926
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 89.04098210111535,
+          "mae": 88.29407552083333,
+          "ssim": 0.14331170840753832,
+          "target_referenced_seam_error": 0.11356659088756275,
+          "untargeted_seam_discontinuity": 0.10043235530927347
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 86.47146947839444,
+          "mae": 85.47600694444445,
+          "ssim": 0.08078772244770431,
+          "target_referenced_seam_error": 0.13514842047930284,
+          "untargeted_seam_discontinuity": 0.12423617031353605
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 88.59378548053162,
+          "mae": 87.81321180555555,
+          "ssim": 0.15285585193799647,
+          "target_referenced_seam_error": 0.09996767547598749,
+          "untargeted_seam_discontinuity": 0.08512248981718291
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 89.02040756695385,
+          "mae": 88.27481915509259,
+          "ssim": 0.14321794553158218,
+          "target_referenced_seam_error": 0.11375751870796628,
+          "untargeted_seam_discontinuity": 0.10058278867102396
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 89.16341498029787,
+          "mae": 88.45471498842592,
+          "ssim": 0.1394312778954552,
+          "target_referenced_seam_error": 0.11947659136118215,
+          "untargeted_seam_discontinuity": 0.10685220706640144
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_005795.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.18518518518518517,
+          "confidence_mean": 0.6603041878272466,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.46037415697089906,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.481795074516374,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 6.214251338872671,
+          "residual_q90": 29.359910739229434
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.1417824074074074,
+          "confidence_mean": 0.6603041878272465,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4153812821998215,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.9299814934303186,
+          "placebo": true,
+          "placebo_seed": 6480484654974605037,
+          "residual_median": 8.477651663817253,
+          "residual_q90": 31.83344692877056
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.06884057971014493,
+        "strict_position_accuracy": 0.005208333333333333,
+        "valid_permutation": true
+      },
+      "layout_sha256": "ff51d207112e16c690964c7e7915cf25f20eb08a64937b09ef8a6d9555497ad9",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 57.085645829159155,
+          "mae": 56.70469618055556,
+          "ssim": 0.18374311811648458,
+          "target_referenced_seam_error": 0.08979166666666667,
+          "untargeted_seam_discontinuity": 0.07928294022923178
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.65722049689441,
+          "mae": 58.25029658564815,
+          "ssim": 0.17662399624584402,
+          "target_referenced_seam_error": 0.09445829781187838,
+          "untargeted_seam_discontinuity": 0.08439856256512267
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 55.49292893875643,
+          "mae": 54.77096064814815,
+          "ssim": 0.18758634122867004,
+          "target_referenced_seam_error": 0.09130156531211518,
+          "untargeted_seam_discontinuity": 0.08106872217486027
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.69588592800374,
+          "mae": 58.284620949074075,
+          "ssim": 0.17671598822954485,
+          "target_referenced_seam_error": 0.09442934782608696,
+          "untargeted_seam_discontinuity": 0.08437659846547314
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 57.39801642957323,
+          "mae": 56.822892071759256,
+          "ssim": 0.10824572180295146,
+          "target_referenced_seam_error": 0.11752368096997254,
+          "untargeted_seam_discontinuity": 0.10936067301316663
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 57.46724938222133,
+          "mae": 57.09622685185185,
+          "ssim": 0.1886225423986656,
+          "target_referenced_seam_error": 0.08228574642417354,
+          "untargeted_seam_discontinuity": 0.07046154210476462
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.61929806985908,
+          "mae": 58.217841435185186,
+          "ssim": 0.17668096019342236,
+          "target_referenced_seam_error": 0.09448416927157337,
+          "untargeted_seam_discontinuity": 0.0844369849389031
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.91466723435517,
+          "mae": 58.522052951388886,
+          "ssim": 0.17345553262126365,
+          "target_referenced_seam_error": 0.1007300843042531,
+          "untargeted_seam_discontinuity": 0.09157792223169461
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_002630.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.2309027777777778,
+          "confidence_mean": 0.6455814247414231,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.44457036125421273,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.680137505192043,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 6.660738987864823,
+          "residual_q90": 28.301404625559027
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.1388888888888889,
+          "confidence_mean": 0.6455814247414231,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4133066742647805,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.904402857569142,
+          "placebo": true,
+          "placebo_seed": 14794789943712814026,
+          "residual_median": 8.529481687202164,
+          "residual_q90": 31.536756735188803
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.06159420289855073,
+        "strict_position_accuracy": 0.001736111111111111,
+        "valid_permutation": true
+      },
+      "layout_sha256": "433d28a57276a760a34f034ba968a93db6a616bd5a758af8b88b22f04cd23359",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.67040673211781,
+          "mae": 58.55713252314815,
+          "ssim": 0.1720112665399028,
+          "target_referenced_seam_error": 0.09085630387420669,
+          "untargeted_seam_discontinuity": 0.08027641612200435
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.02139684765912,
+          "mae": 59.84971788194444,
+          "ssim": 0.16484345825576888,
+          "target_referenced_seam_error": 0.09602503078526096,
+          "untargeted_seam_discontinuity": 0.08561825092355783
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 56.97374023241835,
+          "mae": 56.59509259259259,
+          "ssim": 0.17702209510163325,
+          "target_referenced_seam_error": 0.09239385005209813,
+          "untargeted_seam_discontinuity": 0.08190584446338922
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.07076905095839,
+          "mae": 59.898599537037036,
+          "ssim": 0.16495009604729163,
+          "target_referenced_seam_error": 0.09608038505257174,
+          "untargeted_seam_discontinuity": 0.0856869849389031
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.256970880918985,
+          "mae": 57.92666377314815,
+          "ssim": 0.10383717498366014,
+          "target_referenced_seam_error": 0.11909136118215402,
+          "untargeted_seam_discontinuity": 0.11121737946386284
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 59.53547218326321,
+          "mae": 59.436804108796295,
+          "ssim": 0.17508995798971508,
+          "target_referenced_seam_error": 0.08356961021123425,
+          "untargeted_seam_discontinuity": 0.07152635691957943
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 59.97502587991718,
+          "mae": 59.80364438657407,
+          "ssim": 0.16482842809160872,
+          "target_referenced_seam_error": 0.0959886212939282,
+          "untargeted_seam_discontinuity": 0.08558728805531875
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.43430675215388,
+          "mae": 60.295308159722225,
+          "ssim": 0.1610354427458349,
+          "target_referenced_seam_error": 0.10198807663161884,
+          "untargeted_seam_discontinuity": 0.09234287676423227
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_002630.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.2332175925925926,
+          "confidence_mean": 0.6737024829540854,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.442343199376933,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.928377710378386,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 8.076822014096614,
+          "residual_q90": 36.73533017052508
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.16608796296296297,
+          "confidence_mean": 0.6737024829540853,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.42319595841336405,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.166569232597282,
+          "placebo": true,
+          "placebo_seed": 14991645203148781859,
+          "residual_median": 9.624512120236588,
+          "residual_q90": 42.606520280185215
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.07427536231884058,
+        "strict_position_accuracy": 0.0,
+        "valid_permutation": true
+      },
+      "layout_sha256": "f47868b8dd5ea2d7fcd3718dd2afeb8f289de6cdf47f36e92087420dc60e1638",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 87.0153234154812,
+          "mae": 87.11269241898148,
+          "ssim": 0.17765972472282124,
+          "target_referenced_seam_error": 0.10693568248555461,
+          "untargeted_seam_discontinuity": 0.09210334375296012
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 88.23083633874307,
+          "mae": 88.2234765625,
+          "ssim": 0.1714413212386465,
+          "target_referenced_seam_error": 0.11250426257459506,
+          "untargeted_seam_discontinuity": 0.09803554513592877
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 85.2594252988713,
+          "mae": 85.05184751157407,
+          "ssim": 0.18252257713904088,
+          "target_referenced_seam_error": 0.10588193852420195,
+          "untargeted_seam_discontinuity": 0.0911902647532443
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 88.22383623856274,
+          "mae": 88.21485966435185,
+          "ssim": 0.17155789859858228,
+          "target_referenced_seam_error": 0.11246098560197025,
+          "untargeted_seam_discontinuity": 0.09800363502889078
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 86.41372386963201,
+          "mae": 86.11937065972222,
+          "ssim": 0.10051840505530979,
+          "target_referenced_seam_error": 0.1315368949512172,
+          "untargeted_seam_discontinuity": 0.11974910012314104
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 86.71252003606492,
+          "mae": 86.7040697337963,
+          "ssim": 0.18420151660712847,
+          "target_referenced_seam_error": 0.09894945296959363,
+          "untargeted_seam_discontinuity": 0.08261680638438951
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 88.2390010351967,
+          "mae": 88.23381365740741,
+          "ssim": 0.17142370495320694,
+          "target_referenced_seam_error": 0.11256151131950365,
+          "untargeted_seam_discontinuity": 0.09810262148337597
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 88.31237060041408,
+          "mae": 88.38287615740741,
+          "ssim": 0.16868268725882438,
+          "target_referenced_seam_error": 0.11843326702661741,
+          "untargeted_seam_discontinuity": 0.10469025291275931
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_001823.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.22569444444444445,
+          "confidence_mean": 0.6704909642447255,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4447923989722217,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.900801953704983,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 7.363211540885601,
+          "residual_q90": 34.08349880243495
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.16145833333333334,
+          "confidence_mean": 0.6704909642447255,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.417653349039573,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.209716676951933,
+          "placebo": true,
+          "placebo_seed": 5389277579757482912,
+          "residual_median": 8.872527526822338,
+          "residual_q90": 38.29483674470681
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.06974637681159421,
+        "strict_position_accuracy": 0.005208333333333333,
+        "valid_permutation": true
+      },
+      "layout_sha256": "d48fedf85e0a40b9472363a9f63ea4244179d7a9f8161706f7001f2ff9bff354",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 69.75108528684966,
+          "mae": 70.16976851851852,
+          "ssim": 0.21227905218843132,
+          "target_referenced_seam_error": 0.10481499242208961,
+          "untargeted_seam_discontinuity": 0.09099939613526571
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 70.78174881453283,
+          "mae": 71.10377314814815,
+          "ssim": 0.20595106074258984,
+          "target_referenced_seam_error": 0.10960257412143601,
+          "untargeted_seam_discontinuity": 0.09618351567680213
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 68.00901622921258,
+          "mae": 68.12280960648148,
+          "ssim": 0.21705866313408897,
+          "target_referenced_seam_error": 0.10287356730131667,
+          "untargeted_seam_discontinuity": 0.08943295917400777
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 70.75792259400254,
+          "mae": 71.08181423611111,
+          "ssim": 0.20597644822888028,
+          "target_referenced_seam_error": 0.1095761106374917,
+          "untargeted_seam_discontinuity": 0.09619304726721607
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 69.62498330327924,
+          "mae": 69.36838686342593,
+          "ssim": 0.11231586120881269,
+          "target_referenced_seam_error": 0.1298714715354741,
+          "untargeted_seam_discontinuity": 0.11806058776167472
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 69.5528868630201,
+          "mae": 69.83315827546296,
+          "ssim": 0.22012214914305805,
+          "target_referenced_seam_error": 0.09717089371980676,
+          "untargeted_seam_discontinuity": 0.08169419579425974
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 70.8064182194617,
+          "mae": 71.12554542824074,
+          "ssim": 0.2061491401462291,
+          "target_referenced_seam_error": 0.10962980723690442,
+          "untargeted_seam_discontinuity": 0.0961899095386947
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 70.915952881854,
+          "mae": 71.28536892361112,
+          "ssim": 0.20053524040102974,
+          "target_referenced_seam_error": 0.11538824950269963,
+          "untargeted_seam_discontinuity": 0.1031930235862461
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_001823.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.11226851851851852,
+          "confidence_mean": 0.6999609392098416,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.5218924202211536,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.479365074251867,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 4.157633227632642,
+          "residual_q90": 26.293083443532776
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.07233796296296297,
+          "confidence_mean": 0.6999609392098416,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.49970484032390605,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 4.902968219801784,
+          "placebo": true,
+          "placebo_seed": 6620911101424443249,
+          "residual_median": 5.752410686940468,
+          "residual_q90": 29.193080913237072
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.04891304347826087,
+        "strict_position_accuracy": 0.001736111111111111,
+        "valid_permutation": true
+      },
+      "layout_sha256": "dac4c0118e327fbfd339d558f259a9cea81c5f5310c5f0a759bd9bae8e5e96b8",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 53.16420807453416,
+          "mae": 52.940779803240744,
+          "ssim": 0.2010662867207157,
+          "target_referenced_seam_error": 0.07809220185658805,
+          "untargeted_seam_discontinuity": 0.0666814672728995
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 54.4143750417418,
+          "mae": 54.14673611111111,
+          "ssim": 0.19537222920561392,
+          "target_referenced_seam_error": 0.08187162546177892,
+          "untargeted_seam_discontinuity": 0.07093806242303684
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 51.284169839043614,
+          "mae": 50.82993489583333,
+          "ssim": 0.2038281570343977,
+          "target_referenced_seam_error": 0.07778695415364213,
+          "untargeted_seam_discontinuity": 0.06646893056739604
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 54.34052544580244,
+          "mae": 54.072413194444444,
+          "ssim": 0.19607538464552485,
+          "target_referenced_seam_error": 0.08171953443213034,
+          "untargeted_seam_discontinuity": 0.07078703703703704
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 53.86031523408803,
+          "mae": 53.1993822337963,
+          "ssim": 0.11587618525135601,
+          "target_referenced_seam_error": 0.10391843089892962,
+          "untargeted_seam_discontinuity": 0.09595884247418775
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 53.4416324383891,
+          "mae": 53.14493200231482,
+          "ssim": 0.2039039305725039,
+          "target_referenced_seam_error": 0.07303436108743014,
+          "untargeted_seam_discontinuity": 0.06001036042436298
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 54.48620433446871,
+          "mae": 54.22097222222222,
+          "ssim": 0.19489091957155588,
+          "target_referenced_seam_error": 0.0820124088282656,
+          "untargeted_seam_discontinuity": 0.07110264516434593
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 54.35646663995191,
+          "mae": 54.07562210648148,
+          "ssim": 0.18787369904345227,
+          "target_referenced_seam_error": 0.08685670645069622,
+          "untargeted_seam_discontinuity": 0.07646354314672729
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_006298.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.1371527777777778,
+          "confidence_mean": 0.6916018724280603,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.518070015027206,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.779238450075356,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 4.708633819553421,
+          "residual_q90": 25.95101276284233
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.0787037037037037,
+          "confidence_mean": 0.6916018724280603,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4962781558666822,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.076556850485781,
+          "placebo": true,
+          "placebo_seed": 13879329397241157140,
+          "residual_median": 5.768013076553164,
+          "residual_q90": 29.07789092040754
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.03985507246376811,
+        "strict_position_accuracy": 0.005208333333333333,
+        "valid_permutation": true
+      },
+      "layout_sha256": "a86b4bd97549f9bc6d8e78c41be9ad36cb24ed913e7b0c82c16cb634b4cb136f",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 59.867528217458094,
+          "mae": 60.04795862268519,
+          "ssim": 0.16973485510889305,
+          "target_referenced_seam_error": 0.07691271194468126,
+          "untargeted_seam_discontinuity": 0.06601088140570238
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 61.043327990382686,
+          "mae": 61.214311342592595,
+          "ssim": 0.1621503225531122,
+          "target_referenced_seam_error": 0.08178471630197973,
+          "untargeted_seam_discontinuity": 0.07110513166619305
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.495279002203965,
+          "mae": 58.495419560185184,
+          "ssim": 0.17464357409621414,
+          "target_referenced_seam_error": 0.07788274367718102,
+          "untargeted_seam_discontinuity": 0.0670260253859998
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.992958158017764,
+          "mae": 61.162663483796294,
+          "ssim": 0.1628191924863072,
+          "target_referenced_seam_error": 0.08162848110258597,
+          "untargeted_seam_discontinuity": 0.07096405228758171
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 58.54163327322514,
+          "mae": 58.37887008101852,
+          "ssim": 0.10199671528063421,
+          "target_referenced_seam_error": 0.10540825992232643,
+          "untargeted_seam_discontinuity": 0.09779263758643554
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 60.728624023241835,
+          "mae": 60.88117766203704,
+          "ssim": 0.17044402465048866,
+          "target_referenced_seam_error": 0.07180774604527801,
+          "untargeted_seam_discontinuity": 0.059348181301506105
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 61.09768833901022,
+          "mae": 61.267662037037034,
+          "ssim": 0.1615798594163275,
+          "target_referenced_seam_error": 0.08195693615610494,
+          "untargeted_seam_discontinuity": 0.07129534905749739
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 61.04911340412743,
+          "mae": 61.15559751157407,
+          "ssim": 0.1589089306572056,
+          "target_referenced_seam_error": 0.08669863597612959,
+          "untargeted_seam_discontinuity": 0.07712589987685896
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_006298.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.19502314814814814,
+          "confidence_mean": 0.6780594189556239,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.5170990763183789,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.401528085847157,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 4.6372007050334645,
+          "residual_q90": 30.053311341149673
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.13252314814814814,
+          "confidence_mean": 0.6780594189556239,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.44981089939119756,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.720832654033397,
+          "placebo": true,
+          "placebo_seed": 17851667016683159857,
+          "residual_median": 8.31127202566029,
+          "residual_q90": 34.927219413044426
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.03351449275362319,
+        "strict_position_accuracy": 0.006944444444444444,
+        "valid_permutation": true
+      },
+      "layout_sha256": "b8b4bd8bd99d0be438e7d310518c0f9e1ef0b67cf76d83b60e86d14e1b179224",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 71.63432094436652,
+          "mae": 70.98655092592593,
+          "ssim": 0.23971120005368088,
+          "target_referenced_seam_error": 0.0908066330396893,
+          "untargeted_seam_discontinuity": 0.08317277635691958
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 72.47403242503172,
+          "mae": 71.77725983796296,
+          "ssim": 0.23399364094030117,
+          "target_referenced_seam_error": 0.09479806052855926,
+          "untargeted_seam_discontinuity": 0.08751006441223833
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 69.767176751486,
+          "mae": 68.86331163194444,
+          "ssim": 0.24336911427353544,
+          "target_referenced_seam_error": 0.088980179028133,
+          "untargeted_seam_discontinuity": 0.08146520081462537
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 72.4655922326855,
+          "mae": 71.76424189814814,
+          "ssim": 0.23421074473541173,
+          "target_referenced_seam_error": 0.09495565738372644,
+          "untargeted_seam_discontinuity": 0.0876956048119731
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 71.22304731850664,
+          "mae": 70.38377459490741,
+          "ssim": 0.12775395337767234,
+          "target_referenced_seam_error": 0.11795242493132518,
+          "untargeted_seam_discontinuity": 0.11272952780145876
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 71.43435266813597,
+          "mae": 70.76630208333333,
+          "ssim": 0.25060184542529634,
+          "target_referenced_seam_error": 0.0815161149000663,
+          "untargeted_seam_discontinuity": 0.07263640238704176
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 72.48431760502237,
+          "mae": 71.79345052083333,
+          "ssim": 0.23399202690552146,
+          "target_referenced_seam_error": 0.09466970967130814,
+          "untargeted_seam_discontinuity": 0.0873750828833949
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 73.03368563414145,
+          "mae": 72.36558159722222,
+          "ssim": 0.2210157697298595,
+          "target_referenced_seam_error": 0.10082711707871554,
+          "untargeted_seam_discontinuity": 0.09416110163872311
+        }
+      },
+      "panel": "primary_kornia",
+      "source": "img_001905.png"
+    },
+    {
+      "diagnostics": {
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "clipped_fraction": 0.19733796296296297,
+          "confidence_mean": 0.6640549505386814,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.5204324503730832,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 6.272919502048016,
+          "placebo": false,
+          "placebo_seed": null,
+          "residual_median": 4.724326328634924,
+          "residual_q90": 29.87765824349838
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "clipped_fraction": 0.10127314814814815,
+          "confidence_mean": 0.6640549505386814,
+          "confidence_min": 0.05,
+          "edge_count": 1104.0,
+          "final_weight_mean": 0.4504643570487284,
+          "max_abs_offset": 12.0,
+          "mean_abs_offset": 5.378009392288256,
+          "placebo": true,
+          "placebo_seed": 3789549433052508264,
+          "residual_median": 8.193334545437605,
+          "residual_q90": 34.506427197600395
+        }
+      },
+      "layout_metrics": {
+        "right_down_adjacency_recall": 0.02717391304347826,
+        "strict_position_accuracy": 0.0,
+        "valid_permutation": true
+      },
+      "layout_sha256": "70f5781857ea0236114ed47b0eeff4009c9c91ae8a245231dea3fd9c92982bfb",
+      "metrics": {
+        "bilateral_offset_on_frozen_qap_w4": {
+          "boundary_band_mae": 84.13226307353236,
+          "mae": 84.37249565972222,
+          "ssim": 0.18550689358859118,
+          "target_referenced_seam_error": 0.09135336743393009,
+          "untargeted_seam_discontinuity": 0.08227532679738563
+        },
+        "fixed_alpha_0_5_on_frozen_qap_w4": {
+          "boundary_band_mae": 85.12440726641287,
+          "mae": 85.29359809027778,
+          "ssim": 0.18045607153199317,
+          "target_referenced_seam_error": 0.09572410485933504,
+          "untargeted_seam_discontinuity": 0.0868967272899498
+        },
+        "naive_5x5_on_frozen_qap_w4": {
+          "boundary_band_mae": 81.66440426100314,
+          "mae": 81.60782118055556,
+          "ssim": 0.19257470688521014,
+          "target_referenced_seam_error": 0.08979054182059298,
+          "untargeted_seam_discontinuity": 0.08102710287013357
+        },
+        "production_seam_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 85.10780237761304,
+          "mae": 85.27512586805555,
+          "ssim": 0.18064887406978655,
+          "target_referenced_seam_error": 0.0958893980297433,
+          "untargeted_seam_discontinuity": 0.0870951738183196
+        },
+        "raw_on_frozen_qap_w4": {
+          "boundary_band_mae": 82.95972333533695,
+          "mae": 82.82236979166667,
+          "ssim": 0.10047373666377586,
+          "target_referenced_seam_error": 0.11867783224400871,
+          "untargeted_seam_discontinuity": 0.11258051529790661
+        },
+        "seam_graph_rgb_on_frozen_qap_w4": {
+          "boundary_band_mae": 83.78552644760569,
+          "mae": 84.00221643518519,
+          "ssim": 0.19460730045650906,
+          "target_referenced_seam_error": 0.08209470019892014,
+          "untargeted_seam_discontinuity": 0.07135212418300654
+        },
+        "selected_tilenaf_on_frozen_qap_w4": {
+          "boundary_band_mae": 85.14085771054565,
+          "mae": 85.31392216435185,
+          "ssim": 0.1805213414402946,
+          "target_referenced_seam_error": 0.09556171260774841,
+          "untargeted_seam_discontinuity": 0.08670911480534242
+        },
+        "shuffled_neighbor_placebo_on_frozen_qap_w4": {
+          "boundary_band_mae": 85.43751669672076,
+          "mae": 85.6562181712963,
+          "ssim": 0.17263774271135598,
+          "target_referenced_seam_error": 0.10213412901392442,
+          "untargeted_seam_discontinuity": 0.09438352514919011
+        }
+      },
+      "panel": "independent_libjpeg",
+      "source": "img_001905.png"
+    }
+  ],
+  "render_manifest_sha256": "7032f7c18042ff75bffee6a2a01f111c7bd0353682732e5a468a1736d597f5b8",
+  "same_layout_for_all_arms": true,
+  "schema_version": 1,
+  "source_count": 8,
+  "source_names": [
+    "img_005775.png",
+    "img_006677.png",
+    "img_004503.png",
+    "img_005795.png",
+    "img_002630.png",
+    "img_001823.png",
+    "img_006298.png",
+    "img_001905.png"
+  ],
+  "source_names_sha256": "ded8f791da9a6ec905ba089b5258baf38068ee5a986964e02dec056d9a12db68",
+  "status": "small8_pass_run_unchanged_full32",
+  "submission_promotion_allowed": false
+}

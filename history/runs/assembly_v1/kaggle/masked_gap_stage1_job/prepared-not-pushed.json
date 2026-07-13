@@ -1,0 +1,12 @@
+{
+  "kind": "masked_gap_stage_job_manifest_v1",
+  "stage": "stage1_train_prepare_calibration_b",
+  "status": "prepared_not_pushed",
+  "outputs_must_be_uploaded_as_separate_datasets": [
+    "masked_gap_gate.pt plus training_report.json",
+    "calibration_b_input_only.zip",
+    "calibration_b_labels_only.zip"
+  ],
+  "capacity_result_dataset": "pasha883/vsos-masked-gap-ddp-capacity-result-v2",
+  "unresolved_runtime_hashes": []
+}

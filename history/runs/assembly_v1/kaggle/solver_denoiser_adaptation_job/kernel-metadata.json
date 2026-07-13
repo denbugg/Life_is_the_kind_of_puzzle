@@ -1,0 +1,11 @@
+{
+  "id": "pasha883/vsos-solver-denoiser-adaptation-staged",
+  "title": "VSOS Solver Denoiser Adaptation Staged",
+  "code_file": "run_solver_denoiser_adaptation.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false
+}

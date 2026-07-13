@@ -1,0 +1,2187 @@
+{
+  "anti_leakage": {
+    "phase_a_data_root": "input-only staging root",
+    "phase_a_train_entries": [
+      "inputs"
+    ],
+    "phase_b_cuda_visible_devices": "0",
+    "phase_b_process_count": 1
+  },
+  "assets": {
+    "denoiser": {
+      "bytes": 52831566,
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "hbt": {
+      "bytes": 1784962,
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    },
+    "manifest": {
+      "bytes": 167200,
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "bytes": 8034,
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    }
+  },
+  "code": {
+    "base": {
+      "mode": "direct",
+      "source_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code"
+    },
+    "base_hashes": {
+      "configs/denoise_splits_seed20260710.json": {
+        "bytes": 167200,
+        "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+      },
+      "configs/denoise_validation_quarantine_v1.json": {
+        "bytes": 8034,
+        "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+      },
+      "src/puzzle_assembly/__init__.py": {
+        "bytes": 940,
+        "sha256": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5"
+      },
+      "src/puzzle_assembly/compatibility.py": {
+        "bytes": 17232,
+        "sha256": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f"
+      },
+      "src/puzzle_assembly/components.py": {
+        "bytes": 62251,
+        "sha256": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367"
+      },
+      "src/puzzle_assembly/cpsat.py": {
+        "bytes": 21487,
+        "sha256": "b368a884c886273156a0fee3ef00a1e4e6e7766daa5ea09531983162e8199abf"
+      },
+      "src/puzzle_assembly/geometry.py": {
+        "bytes": 2292,
+        "sha256": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86"
+      },
+      "src/puzzle_assembly/learned.py": {
+        "bytes": 57336,
+        "sha256": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b"
+      },
+      "src/puzzle_assembly/line_seam.py": {
+        "bytes": 18384,
+        "sha256": "56c3065fb36427a96c3fbddda515fc28f49dcfd8e0b3a5a721dd8fd28603305d"
+      },
+      "src/puzzle_assembly/metrics.py": {
+        "bytes": 6855,
+        "sha256": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69"
+      },
+      "src/puzzle_assembly/panels.py": {
+        "bytes": 3052,
+        "sha256": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f"
+      },
+      "src/puzzle_assembly/particle.py": {
+        "bytes": 31006,
+        "sha256": "a4aebf628bbdf91fd64fecaaf2b32c7720bb244a911ead4cbab5c29611406fb3"
+      },
+      "src/puzzle_assembly/protocol.py": {
+        "bytes": 2428,
+        "sha256": "b711ad6d28a2fe60329e3e8236e58adbfbceea8ca4c8bf85e9a057e7619e24f4"
+      },
+      "src/puzzle_assembly/qap.py": {
+        "bytes": 24613,
+        "sha256": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32"
+      },
+      "src/puzzle_assembly/solvers.py": {
+        "bytes": 66678,
+        "sha256": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e"
+      },
+      "src/puzzle_assembly/spatial_prior.py": {
+        "bytes": 2988,
+        "sha256": "01901fb3ea8ed584b8ebdbe286973beaa3acd5a74d6fbec83783d6a67912de3a"
+      },
+      "src/puzzle_denoise_v2/__init__.py": {
+        "bytes": 421,
+        "sha256": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7"
+      },
+      "src/puzzle_denoise_v2/degradation.py": {
+        "bytes": 11822,
+        "sha256": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75"
+      },
+      "src/puzzle_denoise_v2/final_gate_audit.py": {
+        "bytes": 24239,
+        "sha256": "12f44b5adf808c86bad805a285f2d22fcab36e7c6203a5df11fbb40583ee6f92"
+      },
+      "src/puzzle_denoise_v2/inference.py": {
+        "bytes": 10836,
+        "sha256": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da"
+      },
+      "src/puzzle_denoise_v2/legacy_baseline.py": {
+        "bytes": 12031,
+        "sha256": "0b82f48d1846332462912995c6c13d9433822a8e7bec08e8b92d7f873760cfac"
+      },
+      "src/puzzle_denoise_v2/losses.py": {
+        "bytes": 4477,
+        "sha256": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34"
+      },
+      "src/puzzle_denoise_v2/matching.py": {
+        "bytes": 14113,
+        "sha256": "90535d7090c211f78d7d0fb16cc289bff26ae0fd3307dfeeb648924d37f0c0ec"
+      },
+      "src/puzzle_denoise_v2/metrics.py": {
+        "bytes": 3227,
+        "sha256": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36"
+      },
+      "src/puzzle_denoise_v2/model.py": {
+        "bytes": 7730,
+        "sha256": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11"
+      },
+      "src/puzzle_denoise_v2/prefinetune_benchmark.py": {
+        "bytes": 33499,
+        "sha256": "4e79cbb7b96a56aac6cee77093b11c71a6980e32c1901e154cb4161bce9f487e"
+      },
+      "src/puzzle_denoise_v2/real_pairs.py": {
+        "bytes": 25463,
+        "sha256": "c0f8db24fd2c503a60e95c42d901643901618494da94a9270c6a26a32dd0b180"
+      },
+      "src/puzzle_denoise_v2/real_training.py": {
+        "bytes": 69800,
+        "sha256": "4a09201a714534d3624f7ac26c8d68b30a824d93a47c7af1df350264bd4f2fad"
+      },
+      "src/puzzle_denoise_v2/real_validation.py": {
+        "bytes": 12320,
+        "sha256": "6f0ca30fc5c0489223048f2ffcf7088a110e20c854f038d58877f2bf76cba64f"
+      },
+      "src/puzzle_denoise_v2/tiles.py": {
+        "bytes": 2091,
+        "sha256": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7"
+      },
+      "src/puzzle_denoise_v2/training.py": {
+        "bytes": 30187,
+        "sha256": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+      },
+      "src/puzzle_denoise_v2/visual_qa.py": {
+        "bytes": 30008,
+        "sha256": "927709178a42a434b010a50a5cac3d9cd44652453afd784dbb4afe9712139356"
+      }
+    },
+    "overlay_hashes": {
+      "configs/qap_weight_confirmation_v1.json": {
+        "bytes": 7638,
+        "sha256": "30732463fb200bdff8f909ef06be6cb6c4e7859692e01c9d33c5d55175ffe262"
+      },
+      "scripts/evaluate_qap_weight_confirmation.py": {
+        "bytes": 51336,
+        "sha256": "4083d11146f62a91d007a553cfb1ae0ec943141e7a0b3a4639fac3d2f1d9559a"
+      },
+      "tests/test_qap_weight_confirmation.py": {
+        "bytes": 18938,
+        "sha256": "f2962e8de01639272acc272e8260a27373f1ccce30b5163228d4ba67bd14e3d4"
+      }
+    },
+    "overlay_root": "/kaggle/input/datasets/pasha883/vsos-qap-weight-confirmation-code",
+    "overlay_source": {
+      "mode": "direct_dataset_files"
+    },
+    "staged_overlay_hashes": {
+      "configs/qap_weight_confirmation_v1.json": {
+        "bytes": 7638,
+        "sha256": "30732463fb200bdff8f909ef06be6cb6c4e7859692e01c9d33c5d55175ffe262"
+      },
+      "scripts/evaluate_qap_weight_confirmation.py": {
+        "bytes": 51336,
+        "sha256": "4083d11146f62a91d007a553cfb1ae0ec943141e7a0b3a4639fac3d2f1d9559a"
+      },
+      "tests/test_qap_weight_confirmation.py": {
+        "bytes": 18938,
+        "sha256": "f2962e8de01639272acc272e8260a27373f1ccce30b5163228d4ba67bd14e3d4"
+      }
+    }
+  },
+  "completed_unix": 1783802694.0763044,
+  "config": {
+    "payload": {
+      "assets": {
+        "denoiser": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+        "denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+        "hbt": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+        "hbt_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+        "manifest": "configs/denoise_splits_seed20260710.json",
+        "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+        "quarantine": "configs/denoise_validation_quarantine_v1.json",
+        "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+      },
+      "baseline": {
+        "hbt_weight": 4.0,
+        "label": "qap_w4_b0.05_i25",
+        "score": "denoised_C1_HBTw4_rank_fusion"
+      },
+      "candidate": {
+        "hbt_weight": 1.0,
+        "label": "qap_w1_b0.05_i25",
+        "score": "denoised_C1_HBTw1_rank_fusion"
+      },
+      "candidate_evidence": {
+        "candidate_was_not_reselected_after_old_real16_scoring": true,
+        "old_major_promotion_gate_passed": false,
+        "old_major_promotion_threshold": 0.005,
+        "old_real16_all_five_variants_were_target_scored": true,
+        "real16_calibration_bootstrap_95_ci": [
+          0.00017481806287029863,
+          0.003975690918244345
+        ],
+        "real16_calibration_losses": 3,
+        "real16_calibration_mean_delta": 0.002046263980019114,
+        "real16_calibration_names_sha256": "189a55e96ed1315138423a1300a4574f39d58824829b50ca601e2082eeeda04d",
+        "real16_calibration_source_count": 16,
+        "real16_calibration_wins": 13,
+        "selection_before_old_real16_target_access": "exact.selection.promoted_label_before_real_targets == qap_w1_b0.05_i25",
+        "source_report": "runs/assembly_v1/kaggle/upgrade_matrix_203_output/v1/upgrade_matrix_203.json",
+        "source_report_sha256": "27581dd51bf54b029dc7ee6b021f9b107fb1dae06947aa5d7d6c25e0223ee8a5"
+      },
+      "candidate_was_fixed_before_this_protocol": true,
+      "common_solver": {
+        "qap_boundary_weight": 0.05,
+        "qap_initial_weight": 0.75,
+        "qap_iterations": 25,
+        "qap_noise_scale": 1.0,
+        "qap_noisy_components": 3,
+        "qap_refine_swaps": 8,
+        "qap_refine_weak_cells": 32,
+        "qap_restarts": 2,
+        "qap_seed_formula": "sha256(filename)[:4]_little + 7001",
+        "renderer": "selected_tilenaf_synth_50k_ema_uint8",
+        "seed_score": "denoised_hbt_l1",
+        "soft_cycle_keep_fraction": 0.5,
+        "soft_cycle_keep_per_tile": 1,
+        "soft_cycle_loop_weight": 1.0,
+        "soft_cycle_reciprocal_weight": 0.35,
+        "soft_cycle_top_k": 8
+      },
+      "created_utc": "2026-07-11T20:20:00Z",
+      "kind": "fixed_qap_weight_confirmation",
+      "next_diagnostic_if_not_promoted": {
+        "count": 32,
+        "kind": "candidate_graph_oracle_ceiling",
+        "must_not_tune_or_reopen_qap_weight": true,
+        "names_sha256": "149ca83873e5e2e79e6458098c5c758b935af5d9131e093f5eb34fef82b76634",
+        "offset": 128,
+        "purpose": "measure whether a cycle-factor graph can recover a useful layout from the existing C1/HBT candidate union",
+        "split": "edge_development"
+      },
+      "original_real_confirmation": {
+        "assembler_fresh": true,
+        "count": 64,
+        "exposure_evidence": {
+          "dense_original_real_input_gate_opened": false,
+          "dense_real_gate": null,
+          "dense_reserved_gate_report": "runs/assembly_v1/kaggle/dense_pair_residual_pilot_output/verified_v1/dense_pair_residual_pilot/dense_pair_residual_report.json",
+          "dense_reserved_gate_report_sha256": "b435b213e51a3e1f5baca82190a53aad1e8c28b1060984dbb0da1bab92efe119",
+          "dense_status": "stop_cheap_selection_retrieval",
+          "old_real16_new_confirmation_overlap_count": 0,
+          "upstream_denoiser_gate_report": "runs/denoise_v2/release_readback/20260710T074500Z/final_gate_cpu_v1/selected_final_gate_report.json",
+          "upstream_denoiser_gate_report_sha256": "afc5b311c3234048c5d28d1d5cb6d9745c4e4578b34de001bb2ae0fd86066264"
+        },
+        "failure_behavior": "retain_qap_w4_submission",
+        "gate": {
+          "large_regressions_max": 6,
+          "large_regressions_operator": "<=",
+          "logic": "all_of",
+          "mean_ssim_delta_min": 0.005,
+          "mean_ssim_delta_operator": ">=",
+          "ssim_bootstrap_95_lower_gt": 0.0,
+          "ssim_bootstrap_95_lower_operator": ">",
+          "valid_permutation_count": 64,
+          "valid_permutation_operator": "==",
+          "wins_min": 40,
+          "wins_operator": ">="
+        },
+        "globally_fresh": false,
+        "metric": {
+          "bootstrap_method": "two_sided_percentile",
+          "bootstrap_quantiles": [
+            0.025,
+            0.975
+          ],
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 20260711,
+          "bootstrap_unit": "paired_whole_source_delta_candidate_minus_baseline",
+          "call": "skimage.metrics.structural_similarity(target_rgb_uint8, frozen_render_rgb_uint8, channel_axis=2, data_range=255)",
+          "expected_shape": [
+            480,
+            480,
+            3
+          ],
+          "large_regression_definition": "delta < -0.01",
+          "loss_definition": "delta < -tie_tolerance",
+          "name": "RGB_SSIM",
+          "tie_definition": "abs(delta) <= tie_tolerance",
+          "tie_tolerance": 1e-12,
+          "win_definition": "delta > tie_tolerance"
+        },
+        "names_sha256": "e5fb7fc6b3d24e9c080b4f33224b863c181e72452de4e54e602a80a321c13251",
+        "offset": 128,
+        "phase_a": {
+          "artifacts": "both valid layouts and exact denoised RGB PNG bytes for every source",
+          "durability": "atomic write, file fsync, rename, and parent-directory fsync before canonical manifest finalization",
+          "input_visibility": "runner-provided root physically exposes train/inputs only and has no train/targets path",
+          "integrity": "canonical manifest binds source order, input hashes, layouts, layout hashes, relative contained render paths, render byte hashes, config hash, code hash, and both checkpoint hashes",
+          "prediction_envelope": "independently anchored from pinned config and authoritative source slice, not from mutable shard claims",
+          "target_paths_must_not_be_constructed_or_read": true
+        },
+        "phase_b": {
+          "postcondition": "rehash config, code, checkpoints, manifest, layouts, renders, and target-access marker after all scoring",
+          "precondition": "reconstruct and verify the complete canonical Phase-A envelope and every artifact hash",
+          "scoring": "reload and decode exactly the frozen PNG bytes already hashed in Phase A",
+          "target_access_marker": "atomically write and fsync TARGET_ACCESS_STARTED.json before the first target path construction or read",
+          "toctou_failure_behavior": "fail closed and report no accepted metric"
+        },
+        "positive_ci_but_mean_below_0.005_behavior": "report_confirmed_small_gain_without_promotion_and_do_not_retune_weight",
+        "post_phase_b_mutation_policy": "no_weight_retuning_no_per_source_routing_no_threshold_changes",
+        "split": "assembly_incremental_gate",
+        "success_behavior": "eligible_for_one_sealed_final_audit_but_not_yet_for_submission",
+        "upstream_exposure_note": "targets were previously opened by the frozen denoiser gate, but not by an assembly solver"
+      },
+      "safe_for_submission_before_gate": false,
+      "schema_version": 1,
+      "sealed_sets": {
+        "assembly_final_audit_0_64_sha256": "c281ef844bed9fbfd452b896c2961164ded794fca65d010f1b4adea7f58bff33",
+        "assembly_final_audit_64_128_sha256": "9aa995c9bc628bd17ae2d55d0ef8852d5b5e19ef241f8834c8d1b8bd0358429a",
+        "audit_exclusion_ledger": "configs/assembly_audit_exclusion_v1.json",
+        "audit_exclusion_ledger_sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+        "must_remain_unopened": true
+      },
+      "status": "precommitted_before_new_64_source_confirmation_input_or_target_pixel_access"
+    },
+    "sha256": "30732463fb200bdff8f909ef06be6cb6c4e7859692e01c9d33c5d55175ffe262"
+  },
+  "configured_asset_aliases": {
+    "denoiser": "/kaggle/working/.qap_weight_confirmation_staging/code/runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "hbt": "/kaggle/working/.qap_weight_confirmation_staging/code/runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+    "manifest": "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_splits_seed20260710.json",
+    "quarantine": "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_validation_quarantine_v1.json"
+  },
+  "eligible_for_final_audit": false,
+  "hardware": {
+    "cuda_runtime": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_probe": 268326208.0,
+        "total_memory": 15636037632
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_probe": 268326208.0,
+        "total_memory": 15636037632
+      }
+    ],
+    "libraries": {
+      "numpy": "2.0.2",
+      "pillow": "11.3.0",
+      "scipy": "1.16.3",
+      "skimage": "0.25.2"
+    },
+    "nvidia_smi": [
+      "0, Tesla T4, 15360 MiB, 580.159.04",
+      "1, Tesla T4, 15360 MiB, 580.159.04"
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "kernel": {
+    "dataset_sources": [
+      "pasha883/vsos-ai-initiative-pazzle",
+      "pasha883/vsos-assembly-v1-runtime",
+      "pasha883/vsos-solver-rework-night-code",
+      "pasha883/vsos-qap-weight-confirmation-code"
+    ],
+    "enable_gpu": true,
+    "enable_internet": false,
+    "id": "pasha883/vsos-fixed-qap-weight-confirmation-t4x2",
+    "is_private": true,
+    "machine_shape": "NvidiaTeslaT4",
+    "metadata_sha256": "0fbbea001b9640f98a9e7938990cefafd657df566bf4d7c1cbee0264b9cc8d87"
+  },
+  "kind": "qap_weight_confirmation_kaggle_wrapper",
+  "phase_a": {
+    "finalized_envelope_sha256": "14bfb479132d7942e8ed20ba1648eaa54181d78b4ee0addde98640eeedf9716b",
+    "finalized_manifest_sha256": "14bfb479132d7942e8ed20ba1648eaa54181d78b4ee0addde98640eeedf9716b",
+    "finalized_runner_tree_sha256": "d530f3e06bf8db2a617a52c0e43aa4d3653c953d2b4d4e500c040517402ddf31",
+    "frozen_archive": {
+      "bytes": 38304258,
+      "member_count": 259,
+      "members": [
+        {
+          "bytes": 122602,
+          "path": "finalized/FROZEN_INPUT_ONLY_MANIFEST.json",
+          "sha256": "14bfb479132d7942e8ed20ba1648eaa54181d78b4ee0addde98640eeedf9716b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/FROZEN_INPUT_ONLY_MANIFEST.json"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001155.baseline.layout.npy",
+          "sha256": "cddadba56a6d65815dfd3be730106a1323a6dfe1600898c3764d702d9f43079b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001155.baseline.layout.npy"
+        },
+        {
+          "bytes": 281448,
+          "path": "finalized/artifacts/img_001155.baseline.png",
+          "sha256": "15efce346954f3919775b37b7df3567327dd6c4006e78870aaf5868d1f272128",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001155.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001155.candidate.layout.npy",
+          "sha256": "ebaa482acaaadbc7f58a8e28d3d2c0a5df1ef75f653dbef15179a5a8fdaea7c5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001155.candidate.layout.npy"
+        },
+        {
+          "bytes": 282092,
+          "path": "finalized/artifacts/img_001155.candidate.png",
+          "sha256": "01f08386f777318067f4bf3a46e3d3e720f34df8b42219665cd2c08f333aff01",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001155.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001353.baseline.layout.npy",
+          "sha256": "e46f197d2d798586904fb374f7566a48833781128148f8a56af19f6382b057cc",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001353.baseline.layout.npy"
+        },
+        {
+          "bytes": 275113,
+          "path": "finalized/artifacts/img_001353.baseline.png",
+          "sha256": "1773c7493bb115efe03cb8510ad3c5459c48b522ec41f4a7fcb0ea48fcafacdb",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001353.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001353.candidate.layout.npy",
+          "sha256": "d3b7295d375548085f8912e2af0cc6e66f3beba8921bf0a02e9e98330d13375c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001353.candidate.layout.npy"
+        },
+        {
+          "bytes": 275125,
+          "path": "finalized/artifacts/img_001353.candidate.png",
+          "sha256": "576f63291da3d7b0c5322f7b11d8df46d0d6f393d55a2fea1731a81f3b5d764e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001353.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001612.baseline.layout.npy",
+          "sha256": "cd588b057a407dd9f0ad93cfb317c1d15b4e595b4acada1e9fcf9c2858123b49",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001612.baseline.layout.npy"
+        },
+        {
+          "bytes": 271714,
+          "path": "finalized/artifacts/img_001612.baseline.png",
+          "sha256": "b2135eb3d6f76d27533746c7e7c34208cb7851d84eda91071a239eb01f282587",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001612.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001612.candidate.layout.npy",
+          "sha256": "d8e8e35c9a0446511de15550bdef037f62a712ddf76a50d79c816c61d6fa357b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001612.candidate.layout.npy"
+        },
+        {
+          "bytes": 271689,
+          "path": "finalized/artifacts/img_001612.candidate.png",
+          "sha256": "86b6654e1c52bfab66106b47cd27aad6577f039c5c7bf26fb373a01b6ea90164",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001612.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001632.baseline.layout.npy",
+          "sha256": "986ea24ab384561811c6f4c322991ed5292088fcb5ffbaa7a5cb4039af34fdef",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001632.baseline.layout.npy"
+        },
+        {
+          "bytes": 303175,
+          "path": "finalized/artifacts/img_001632.baseline.png",
+          "sha256": "1230cad53c6789580df454a1775283bc3f511497a0c8cb35b3fa3fc10998b21d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001632.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001632.candidate.layout.npy",
+          "sha256": "503e9c257b084ce0962a6f163b34124dd8768dc2124f8192b238db0742af4830",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001632.candidate.layout.npy"
+        },
+        {
+          "bytes": 302819,
+          "path": "finalized/artifacts/img_001632.candidate.png",
+          "sha256": "d30cfbd3baa257f904de0c0cf1c1e2172222282866aabca5cc3e293ae89812df",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001632.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001865.baseline.layout.npy",
+          "sha256": "53fd60891839e5be4e80725c5a7f0e485750b09f2f8fa363c0005433c53fa970",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001865.baseline.layout.npy"
+        },
+        {
+          "bytes": 281535,
+          "path": "finalized/artifacts/img_001865.baseline.png",
+          "sha256": "ee825c924d2916d580966ee2ff66d20d3107dcd1157b4604bc0866c7920af7bf",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001865.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_001865.candidate.layout.npy",
+          "sha256": "489f4c52abd9372cd9f1c16cff05c2af245e0273a94673d0749aa5f3810d098b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001865.candidate.layout.npy"
+        },
+        {
+          "bytes": 281364,
+          "path": "finalized/artifacts/img_001865.candidate.png",
+          "sha256": "dc28a9404222e4e9fec8af4f2d11ac87ece13193913d9c6465c9cabd5839a3a3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_001865.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002096.baseline.layout.npy",
+          "sha256": "2878e2f07109fcd1393db917db39dcf19b0adfca65a14e358fadd3def2c2575b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002096.baseline.layout.npy"
+        },
+        {
+          "bytes": 272703,
+          "path": "finalized/artifacts/img_002096.baseline.png",
+          "sha256": "dcee0416695dd66f06fbfd84ffcd14c5fe3c0d184dc6833cbeb66f508ff42b45",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002096.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002096.candidate.layout.npy",
+          "sha256": "59d5c809b7f2571cb93e162027d166795339975732c56f4c4c43564d5cd8bbc6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002096.candidate.layout.npy"
+        },
+        {
+          "bytes": 272872,
+          "path": "finalized/artifacts/img_002096.candidate.png",
+          "sha256": "ae9e23e4568bafa905fd42efe53c415b1b00c5410a705bcc697f31312da9c020",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002096.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002155.baseline.layout.npy",
+          "sha256": "47f9952463bf9a7ed261a3d867a82248c01ac9293ec1337d801378021c786371",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002155.baseline.layout.npy"
+        },
+        {
+          "bytes": 366842,
+          "path": "finalized/artifacts/img_002155.baseline.png",
+          "sha256": "6039185bcf5be69c2ee02ae0e1302e428456ad8ceba4d0ca30a0d10b8f2fbc41",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002155.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002155.candidate.layout.npy",
+          "sha256": "60168eeb879258052a0fb1cdb5b71c64b9d470c9d1442b34385394d5318acd75",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002155.candidate.layout.npy"
+        },
+        {
+          "bytes": 366917,
+          "path": "finalized/artifacts/img_002155.candidate.png",
+          "sha256": "64a8776f5b553cc7c1d6d63c238e21da35595047b4248ab5c4723e5ca0d16555",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002155.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002185.baseline.layout.npy",
+          "sha256": "b9c922312536cc5fe973fa9e4e7207bff199b9f43e3abdd13732b7c515d40b7f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002185.baseline.layout.npy"
+        },
+        {
+          "bytes": 265035,
+          "path": "finalized/artifacts/img_002185.baseline.png",
+          "sha256": "7985d44b34af12674c5f87cec23157c5229ea2a46d340e1a57b188a818229d53",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002185.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002185.candidate.layout.npy",
+          "sha256": "67c374b21dcd5135467633c03ecaef24fb32ce3c25616f9b7bd7aa984243faca",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002185.candidate.layout.npy"
+        },
+        {
+          "bytes": 265089,
+          "path": "finalized/artifacts/img_002185.candidate.png",
+          "sha256": "7fb15016bded4a34a814d2e3ab0e9923c8aeeadb2f66eb5292502d6c5b4fda8f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002185.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002222.baseline.layout.npy",
+          "sha256": "58d0dd1b2a9cccf950a196e1332d83c19ed4890a6914bfaa9acaa0ea2fd32276",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002222.baseline.layout.npy"
+        },
+        {
+          "bytes": 263369,
+          "path": "finalized/artifacts/img_002222.baseline.png",
+          "sha256": "e3e6b50d37c18e8569cac8691e691e2e211128b6691120164f80c03a460e1914",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002222.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002222.candidate.layout.npy",
+          "sha256": "67e36917b20dd781663e04f554c701f4c73e47e360f5cef01e069c1ce467c805",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002222.candidate.layout.npy"
+        },
+        {
+          "bytes": 262627,
+          "path": "finalized/artifacts/img_002222.candidate.png",
+          "sha256": "50b8acd5a41b87038b34c0f33109ac5641bf9a447740fa04b4435fb3b0652d88",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002222.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002243.baseline.layout.npy",
+          "sha256": "c6107e4b7aa463c84dcc70a4ecf9413dd0b9174bdedfce1b865f134757503e8a",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002243.baseline.layout.npy"
+        },
+        {
+          "bytes": 257306,
+          "path": "finalized/artifacts/img_002243.baseline.png",
+          "sha256": "70910ee9c7cc951765f23c4712cd3996c3381f7044c705a8591c2564a0536040",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002243.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002243.candidate.layout.npy",
+          "sha256": "f15f3e124af658d93983edd99c3ea75114714de237ad98a0af9d27efd9fcea19",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002243.candidate.layout.npy"
+        },
+        {
+          "bytes": 257261,
+          "path": "finalized/artifacts/img_002243.candidate.png",
+          "sha256": "9ad906fa08c34bf49ff4e01d8ecb2ee9de81539e12ae3b0a2b3aff876f89f794",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002243.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002244.baseline.layout.npy",
+          "sha256": "f8e830ce7a068a28b3c4bcec52c55f07a5cf7ac2433b6ef06843aa5f99067b12",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002244.baseline.layout.npy"
+        },
+        {
+          "bytes": 274712,
+          "path": "finalized/artifacts/img_002244.baseline.png",
+          "sha256": "73c02c76dc3f4be52b7f47421d396e3ceca89b75b82e24a024e61eeff6fa0f9a",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002244.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002244.candidate.layout.npy",
+          "sha256": "54b06d60b22726b4d7b50a6cdebadb168c8e70535a3417818abbd9d5300aece4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002244.candidate.layout.npy"
+        },
+        {
+          "bytes": 275258,
+          "path": "finalized/artifacts/img_002244.candidate.png",
+          "sha256": "f63d3209716f26dc553127a53136c8e1e155f7a75f394e324697e59c7853033c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002244.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002295.baseline.layout.npy",
+          "sha256": "d43a76c2ed77fdbaf66a710a3bbb644d992f53b6e85e0e43fd863d1333fb7578",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002295.baseline.layout.npy"
+        },
+        {
+          "bytes": 309618,
+          "path": "finalized/artifacts/img_002295.baseline.png",
+          "sha256": "3495a21544d1784233cd0c20b67d7a1cc23fe9e46646c57effaf9ac6ee056ba4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002295.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002295.candidate.layout.npy",
+          "sha256": "c45b5ddec276a00a89a59881bc27e1d65defcaef874601eda85a4eac31761377",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002295.candidate.layout.npy"
+        },
+        {
+          "bytes": 309628,
+          "path": "finalized/artifacts/img_002295.candidate.png",
+          "sha256": "31366fe4500fd5c507218d8dba240e1fc0a27e5cf0e72f153d04428cf107f5dc",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002295.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002499.baseline.layout.npy",
+          "sha256": "7753c43515f938bb0c76e8c0214a3e4d9c6158663dcf049ce68ab3574c6ac418",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002499.baseline.layout.npy"
+        },
+        {
+          "bytes": 303590,
+          "path": "finalized/artifacts/img_002499.baseline.png",
+          "sha256": "00aa4864c2f28063fb5b9d4598d8dcfb080fd6dd0726383a8babad27dc54e69e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002499.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002499.candidate.layout.npy",
+          "sha256": "3c261f385f99ffc8db8b205fd5e9ae0ec3f0bbececc4d8d3d22abc17d94c96cd",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002499.candidate.layout.npy"
+        },
+        {
+          "bytes": 303880,
+          "path": "finalized/artifacts/img_002499.candidate.png",
+          "sha256": "6db89f3b92d8bf5fb37142242345a0c449d5bb38729093af7eae8c97a4f31c2c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002499.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002539.baseline.layout.npy",
+          "sha256": "a4f82b2530d974bf90ccccaff2b792108931bbd07a0671ed351cf9bf09402ee6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002539.baseline.layout.npy"
+        },
+        {
+          "bytes": 252539,
+          "path": "finalized/artifacts/img_002539.baseline.png",
+          "sha256": "3039963cfb29d63d88698d2477b62c103fe2175d9bc9fec928119d44bb2d2bb0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002539.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002539.candidate.layout.npy",
+          "sha256": "c11f247ee974e82016bc506d11990a170d93d1c83a06fea3ecc43c8b188c43b3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002539.candidate.layout.npy"
+        },
+        {
+          "bytes": 252234,
+          "path": "finalized/artifacts/img_002539.candidate.png",
+          "sha256": "90466f2bcb19da92c275bee18e5d5c563aca425a260e457c8a649bd130c15da5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002539.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002557.baseline.layout.npy",
+          "sha256": "0353e86c3973eef9c39b1df9b26f1fbdfba090094b10ac44751d63218551cfe5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002557.baseline.layout.npy"
+        },
+        {
+          "bytes": 324168,
+          "path": "finalized/artifacts/img_002557.baseline.png",
+          "sha256": "5169c346d5fae7c1173b97accd8672fbb00269cef85e240413d58509d533adaa",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002557.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002557.candidate.layout.npy",
+          "sha256": "8af0a29ce112a1540a50d57e5bc61c0caf55bfa4d245c7eb47982fe1405e10f4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002557.candidate.layout.npy"
+        },
+        {
+          "bytes": 324320,
+          "path": "finalized/artifacts/img_002557.candidate.png",
+          "sha256": "684df70eb289f68d38f777075978610e2a13c80182a96b6d1d2c87c8c4bbfef8",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002557.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002652.baseline.layout.npy",
+          "sha256": "567af1897f62cae690f7a10f62694d5a0a9e09e2d1bf64fe16d2fb36c3a8afd0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002652.baseline.layout.npy"
+        },
+        {
+          "bytes": 294128,
+          "path": "finalized/artifacts/img_002652.baseline.png",
+          "sha256": "5de6b57dccc07ed4df2341fee7b0c7dc390f685ef2049beb201d000984fa553e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002652.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002652.candidate.layout.npy",
+          "sha256": "ebcb94c51e33d784e47a1c1565055a4f761a09ca6fd865909d320a235cce136b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002652.candidate.layout.npy"
+        },
+        {
+          "bytes": 293918,
+          "path": "finalized/artifacts/img_002652.candidate.png",
+          "sha256": "265506d2ee1692d1e1664bf430e3a13fdc98e1dd938c9f16bfaaf686b614f1d0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002652.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002666.baseline.layout.npy",
+          "sha256": "8a634dd4d95c3d8b0dc0f9966dababf498348b0418ebab84a38900da2d65b731",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002666.baseline.layout.npy"
+        },
+        {
+          "bytes": 255965,
+          "path": "finalized/artifacts/img_002666.baseline.png",
+          "sha256": "0d0c0ac9536604b90a762b65cebe57f5461a4224dd273af13ae79256a1419d7e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002666.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002666.candidate.layout.npy",
+          "sha256": "aa99790cae1cc2e44de19e77fe7ae876ec77752875fc5a11cfc1f26c5913c628",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002666.candidate.layout.npy"
+        },
+        {
+          "bytes": 255953,
+          "path": "finalized/artifacts/img_002666.candidate.png",
+          "sha256": "5fefdfdd29123fe9489ce947a3370b22dbc75df15ca636a796cbafc479e1e17f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002666.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002747.baseline.layout.npy",
+          "sha256": "72f0d3f540b3e45c5c7afc59faa42d774e7e16f80c0daa973354d2cd449a6873",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002747.baseline.layout.npy"
+        },
+        {
+          "bytes": 283577,
+          "path": "finalized/artifacts/img_002747.baseline.png",
+          "sha256": "a5054a8b9ec60067886f70320eacd03286b5c87d0ffdfe8ce4cdd97cc46cc052",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002747.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002747.candidate.layout.npy",
+          "sha256": "58b937b10652cf590eae0b731258dc386fe7993f0c663ab584547f27f3f507d5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002747.candidate.layout.npy"
+        },
+        {
+          "bytes": 283788,
+          "path": "finalized/artifacts/img_002747.candidate.png",
+          "sha256": "9ebea2e0878eae12f9d363675853c48476277f60593a66e33f65e4a75163df4e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002747.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002822.baseline.layout.npy",
+          "sha256": "c98f9a3d3ddd74a9690a247ea5bb1dd29cbf610e7ac9ac60cc172af608c3adef",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002822.baseline.layout.npy"
+        },
+        {
+          "bytes": 262009,
+          "path": "finalized/artifacts/img_002822.baseline.png",
+          "sha256": "36388c29d7cd80ee5961c95d3bbedbd239ba01cc260a1b3d10bc55ee2b252809",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002822.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002822.candidate.layout.npy",
+          "sha256": "3cc9dfed139eb0f2ee53e9d5b0cfdaf10e500d9be300f6a43c42c207520590a8",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002822.candidate.layout.npy"
+        },
+        {
+          "bytes": 261742,
+          "path": "finalized/artifacts/img_002822.candidate.png",
+          "sha256": "7b0f62891fac3d50e880bf1f03fa897cf955d8e93d4a1fe3793304c8f1884b91",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002822.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002973.baseline.layout.npy",
+          "sha256": "87a41cf3659bd432006fa8fb1a352acd546aebe3d475a0e5e14b7f8c9abc4255",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002973.baseline.layout.npy"
+        },
+        {
+          "bytes": 232946,
+          "path": "finalized/artifacts/img_002973.baseline.png",
+          "sha256": "5f3544e5c570d27341c4d4e860f85ab7e4c48df062890a6419cce6ec2c7311e1",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002973.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_002973.candidate.layout.npy",
+          "sha256": "a2bc9c3219d9b46e0eade975933ec008b1b82d09d664ee4437c44a33c52f0279",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002973.candidate.layout.npy"
+        },
+        {
+          "bytes": 233167,
+          "path": "finalized/artifacts/img_002973.candidate.png",
+          "sha256": "3dba94758b8f7eb40609062ed86ed2d14aa54318a3139712eda631141ff4ea97",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_002973.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003023.baseline.layout.npy",
+          "sha256": "082dddc051c1bc1903e5eb2940ac227d1b04321307c06cf2c4a06f324f0983e0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003023.baseline.layout.npy"
+        },
+        {
+          "bytes": 316905,
+          "path": "finalized/artifacts/img_003023.baseline.png",
+          "sha256": "74e9327342af0bea37cc0f3a7dd1c7869cb115c0dfff1b8c02f1412a29dcfe7e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003023.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003023.candidate.layout.npy",
+          "sha256": "02955d7ceb5184bdc769c301295284a0f85cce6e53e7ce8c8ffe5b35ebab83f9",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003023.candidate.layout.npy"
+        },
+        {
+          "bytes": 316902,
+          "path": "finalized/artifacts/img_003023.candidate.png",
+          "sha256": "a284ab2a337ef7cc3fe917c399509ebb1179f289d0f146487eef9a5b5707132d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003023.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003145.baseline.layout.npy",
+          "sha256": "8aaa69536491796e962bfead0e42d6d432fc9a86ab2320f73e9ffd1632de200a",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003145.baseline.layout.npy"
+        },
+        {
+          "bytes": 296935,
+          "path": "finalized/artifacts/img_003145.baseline.png",
+          "sha256": "853bb98057eddff4a6bb7be224efda9fac8e23ba143f4f80ff318b982ba1f220",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003145.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003145.candidate.layout.npy",
+          "sha256": "1d204fd64a9404aa8416d17a82b6ec7286222fa49043823d40931a71b4b56239",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003145.candidate.layout.npy"
+        },
+        {
+          "bytes": 297217,
+          "path": "finalized/artifacts/img_003145.candidate.png",
+          "sha256": "84d4215470bef53f6e1ff31379ffdcd97c9efc8de7ede8ab22e3f76982cae428",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003145.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003278.baseline.layout.npy",
+          "sha256": "65a1dc7032a147e13d7f0c8eca1335058eeb35ecc474849dfe21aa1396c41817",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003278.baseline.layout.npy"
+        },
+        {
+          "bytes": 323745,
+          "path": "finalized/artifacts/img_003278.baseline.png",
+          "sha256": "aa40b220f996960a047c747751375216b1aefd9e6866acc28a89b2f496be0031",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003278.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003278.candidate.layout.npy",
+          "sha256": "0040c9fba3b23030b9952386da8552b352ae8810741f32d8fedac9efd20e2a9a",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003278.candidate.layout.npy"
+        },
+        {
+          "bytes": 323876,
+          "path": "finalized/artifacts/img_003278.candidate.png",
+          "sha256": "c5e02d7a33ceb093290085161c823aace96531ec1aaec734f29f076c6b223e52",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003278.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003309.baseline.layout.npy",
+          "sha256": "900e69b7eeabff5c6ae4a6be71fb41787a43c42d119d27df0dcf7b4e0ee3f753",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003309.baseline.layout.npy"
+        },
+        {
+          "bytes": 277660,
+          "path": "finalized/artifacts/img_003309.baseline.png",
+          "sha256": "29261301733e51edd357866fa363a689a193c1b42ef8f07aa92597dac4b4ab10",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003309.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003309.candidate.layout.npy",
+          "sha256": "e69dffc511f9cda749b03346ac3128f71ee47f1b27ec8089b07e6df6bfe533f1",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003309.candidate.layout.npy"
+        },
+        {
+          "bytes": 278106,
+          "path": "finalized/artifacts/img_003309.candidate.png",
+          "sha256": "35a3788ea5100458779b0fc4ddd66565c71549c0c2ea92bc7f5940fc1e233d4f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003309.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003433.baseline.layout.npy",
+          "sha256": "c20d1c200f8645202b0fa02b15e734d3917493912bcf3ef5cf7d9a9264f180f2",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003433.baseline.layout.npy"
+        },
+        {
+          "bytes": 304915,
+          "path": "finalized/artifacts/img_003433.baseline.png",
+          "sha256": "61e2f4b384977a0b0b0f5ecbf6a456e573c4ded7171261849890a46661cb30af",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003433.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003433.candidate.layout.npy",
+          "sha256": "e266034209d90f1ceed99bd82b246ec90c23e72ac3b77c8f79236e3b6ae8c3fc",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003433.candidate.layout.npy"
+        },
+        {
+          "bytes": 304970,
+          "path": "finalized/artifacts/img_003433.candidate.png",
+          "sha256": "d72c9048f0819c38922614cecdc678a47f709339c46ab902d67f43b62341f374",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003433.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003458.baseline.layout.npy",
+          "sha256": "48b28274383600f409ec8b2d8152fbf7acafc0e0319ab80ba148ef54690a133b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003458.baseline.layout.npy"
+        },
+        {
+          "bytes": 288105,
+          "path": "finalized/artifacts/img_003458.baseline.png",
+          "sha256": "2c4217483ac1c6f2b3d21bc4e16441a71a635567e3d7837a5aab9c7e1598806b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003458.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003458.candidate.layout.npy",
+          "sha256": "b69b8932328e1af05ea96bc2b077a95f8f1bfc0d14841afc74612dd8f0137047",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003458.candidate.layout.npy"
+        },
+        {
+          "bytes": 288421,
+          "path": "finalized/artifacts/img_003458.candidate.png",
+          "sha256": "b4baa98d0889119aa48ac41c44034dc9b0b4fe6e7d307b7dd71afb6e6af4daf0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003458.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003474.baseline.layout.npy",
+          "sha256": "38840eefb3eac6280f17ea047d22150738141e0e1af3743b6146a0fda017729d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003474.baseline.layout.npy"
+        },
+        {
+          "bytes": 382928,
+          "path": "finalized/artifacts/img_003474.baseline.png",
+          "sha256": "321feb3afbbec524653b4cf8ab399b1330387f664df68bccd9c170e67e43846d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003474.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003474.candidate.layout.npy",
+          "sha256": "13cd98a16e201fda6d5931f3f0fe07680adbc30ea722d184715f7d852e5910de",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003474.candidate.layout.npy"
+        },
+        {
+          "bytes": 382907,
+          "path": "finalized/artifacts/img_003474.candidate.png",
+          "sha256": "545be8643a6e8321211e424a0205501a2bab2cf6df62a61513685577522f9414",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003474.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003548.baseline.layout.npy",
+          "sha256": "8d9f264ca51ec083e67f35d5cb0e056ab061f396b9f43a835d52547377a2b5b3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003548.baseline.layout.npy"
+        },
+        {
+          "bytes": 268814,
+          "path": "finalized/artifacts/img_003548.baseline.png",
+          "sha256": "da247ca35e6d2c9f1e210886aee507b122597bb5b6c70be94d42d7d203a7975f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003548.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003548.candidate.layout.npy",
+          "sha256": "2f119cb318ee0012610057784a95420110123dad3ebc6001066b8bc41f11c79c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003548.candidate.layout.npy"
+        },
+        {
+          "bytes": 269063,
+          "path": "finalized/artifacts/img_003548.candidate.png",
+          "sha256": "ddfd8c478bc33e3b887335779284f95961c3d37446a6dd5ed5652bdbbc99a0db",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003548.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003632.baseline.layout.npy",
+          "sha256": "798db463fd1d20d40dddac2191aef6426398622b54cd9df90ea852af425ed859",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003632.baseline.layout.npy"
+        },
+        {
+          "bytes": 246576,
+          "path": "finalized/artifacts/img_003632.baseline.png",
+          "sha256": "0103de7a894b6edfb6d8c0a17d7a965c6ca1b78b7c3cbd22b02a56526cc1b3ec",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003632.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003632.candidate.layout.npy",
+          "sha256": "55b90e6fb1e4e59d4359f9af9115b2b5c3762e6ccdf6b69c7c4ea587c21e5f55",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003632.candidate.layout.npy"
+        },
+        {
+          "bytes": 246687,
+          "path": "finalized/artifacts/img_003632.candidate.png",
+          "sha256": "2589e2088fc330967fb13338c6f8b2763d24a422a55afb49de5d74f2bec0f942",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003632.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003687.baseline.layout.npy",
+          "sha256": "61b40615518bc5235c60f62463a753b8afa7b3c7a444b7235f7ab913eaacd442",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003687.baseline.layout.npy"
+        },
+        {
+          "bytes": 289802,
+          "path": "finalized/artifacts/img_003687.baseline.png",
+          "sha256": "06ec2443ae8d8cd480d4f1fbcf5d18e4f50089c8bff6b542cd127f0a3c0304bd",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003687.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003687.candidate.layout.npy",
+          "sha256": "371cc3804b872c45c53946b2c14963d4ec9256272ba3e191dceaa0e6d4afeb3b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003687.candidate.layout.npy"
+        },
+        {
+          "bytes": 289866,
+          "path": "finalized/artifacts/img_003687.candidate.png",
+          "sha256": "1520ea907a829910e20668ceb8903a0f6d527f729baa83dbb62095631c0414a4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003687.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003807.baseline.layout.npy",
+          "sha256": "40dfc834f3e6040ac3117693e8fd992fe37610ecfdac1851a1fefae006e762a8",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003807.baseline.layout.npy"
+        },
+        {
+          "bytes": 318643,
+          "path": "finalized/artifacts/img_003807.baseline.png",
+          "sha256": "a8a7c018eeaaf71139c47c4c9a8d5ba2cf4215029387a7349750daff51c1de1c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003807.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003807.candidate.layout.npy",
+          "sha256": "e801c94528007815e54dcb1b773260430acf3fc120ab4a62dd2ec667a3dcddf3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003807.candidate.layout.npy"
+        },
+        {
+          "bytes": 318573,
+          "path": "finalized/artifacts/img_003807.candidate.png",
+          "sha256": "d28ef5a4019a8ee63078fd7cf7c5d25edad7a45783e733c49d19ad82b75f7185",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003807.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003925.baseline.layout.npy",
+          "sha256": "206bf0296bc1b495abd80333b7aa6deddec1a315fe5038290f81a7d7e7679f31",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003925.baseline.layout.npy"
+        },
+        {
+          "bytes": 296906,
+          "path": "finalized/artifacts/img_003925.baseline.png",
+          "sha256": "8eec7cf798964b6b9426da4a356bf9fce55f7598fe004202cda81e207fe722ce",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003925.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003925.candidate.layout.npy",
+          "sha256": "226122a97b207a0bc4dfd7dd5564b268bbb3a15e5b4b25f17a81b39a037a135d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003925.candidate.layout.npy"
+        },
+        {
+          "bytes": 297029,
+          "path": "finalized/artifacts/img_003925.candidate.png",
+          "sha256": "c225a485bae2006641c3019416b3e6644f5656771203ceba0ee62c455a9b1166",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003925.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003961.baseline.layout.npy",
+          "sha256": "96728eb24a9f5957032f4a4c7650dc90f34e86e170cfc238f64b3e6ba57da0ee",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003961.baseline.layout.npy"
+        },
+        {
+          "bytes": 261430,
+          "path": "finalized/artifacts/img_003961.baseline.png",
+          "sha256": "4b0d155f6886dc1071d3de8d8660bc33e3a24dec364e8de525a6918ff5394fef",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003961.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_003961.candidate.layout.npy",
+          "sha256": "6c92129e7a9ee0c4896c68994e08ab254f1ff6dd391a47e3e4d49b3cbcb5d0a5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003961.candidate.layout.npy"
+        },
+        {
+          "bytes": 261648,
+          "path": "finalized/artifacts/img_003961.candidate.png",
+          "sha256": "c6e7359838feac3224367f934e77b23f620c82986d61590dc970816a157b6721",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_003961.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004013.baseline.layout.npy",
+          "sha256": "0e7947d7b785bb804a90fb16cce7d2cf4c9850a2651fa73c9b104a51e31563b6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004013.baseline.layout.npy"
+        },
+        {
+          "bytes": 319731,
+          "path": "finalized/artifacts/img_004013.baseline.png",
+          "sha256": "ef23794166615d6e0e8df2b750c99d46070fd4011a7b6fcef795372068a89cd3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004013.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004013.candidate.layout.npy",
+          "sha256": "9018ba94a024119b2c29d9275e45d8e61460f2764a80bfc0eddbb42f484ee1b7",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004013.candidate.layout.npy"
+        },
+        {
+          "bytes": 320225,
+          "path": "finalized/artifacts/img_004013.candidate.png",
+          "sha256": "70b711fb7beebff98b5de407b8589bfc11c49c163881300f8f23e89506e7cdd9",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004013.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004146.baseline.layout.npy",
+          "sha256": "8b719715357f377f1d143599b65a5c126bf170adcaf806489e2a8784ad724159",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004146.baseline.layout.npy"
+        },
+        {
+          "bytes": 271956,
+          "path": "finalized/artifacts/img_004146.baseline.png",
+          "sha256": "47917926f2d2fc53789abca589c27eb9e38b319c706b994edf99770d8abeceb8",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004146.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004146.candidate.layout.npy",
+          "sha256": "5937cab9b37caa480cf035fb3043f8ccbe52352f73d76c1742b2afd00ff1c8ef",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004146.candidate.layout.npy"
+        },
+        {
+          "bytes": 272032,
+          "path": "finalized/artifacts/img_004146.candidate.png",
+          "sha256": "af91aa9464cc113e3a95c42a6c358eb6a6e2acb0c88a3d5218fe60baca3c86b7",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004146.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004148.baseline.layout.npy",
+          "sha256": "cac18219afba3b68543f796b8809da479ad960f7b5e6dd7e7c796b18a8f87195",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004148.baseline.layout.npy"
+        },
+        {
+          "bytes": 311060,
+          "path": "finalized/artifacts/img_004148.baseline.png",
+          "sha256": "f3e2cdb79ed62b9bfda2be32925b0119ed5ce0bcde08dac14fcf36aaf8fe85a2",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004148.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004148.candidate.layout.npy",
+          "sha256": "d5db7e11a87962f289096a9efff351c0af6a9fe6e48640b28da2a7cdf4932aac",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004148.candidate.layout.npy"
+        },
+        {
+          "bytes": 311563,
+          "path": "finalized/artifacts/img_004148.candidate.png",
+          "sha256": "dd33e5fa6ec8ac8bf5d0d18f50788e053b0bf0fd1574d5151fe9c33e57bd0887",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004148.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004239.baseline.layout.npy",
+          "sha256": "3496795bc114fbef85f29cd53e7feb3a757fef3c9e9933e0506357ad62d2ad7a",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004239.baseline.layout.npy"
+        },
+        {
+          "bytes": 329033,
+          "path": "finalized/artifacts/img_004239.baseline.png",
+          "sha256": "4412898a4a4344ea82fbf5b0b64f737bb9e62da96a8f2c575ad6f57d0d994c35",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004239.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004239.candidate.layout.npy",
+          "sha256": "9a8d59f3f7f7627d44129b873670820500ae0b2a2ef90dd39d2b0cf93ce4b987",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004239.candidate.layout.npy"
+        },
+        {
+          "bytes": 329222,
+          "path": "finalized/artifacts/img_004239.candidate.png",
+          "sha256": "51f41b9bbecc5b46f36a39c30b6cf69fba3065f9e0c4447f0ef0dfa69d08edf7",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004239.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004261.baseline.layout.npy",
+          "sha256": "10b848a20955d5133307482cda5b71c34317c7d0b943a5777fd5fad979c47cab",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004261.baseline.layout.npy"
+        },
+        {
+          "bytes": 361393,
+          "path": "finalized/artifacts/img_004261.baseline.png",
+          "sha256": "09b2c8a94c5e3d59d9d607179b5828614d9453ff45c96eeaf6422ce7e3866eab",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004261.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004261.candidate.layout.npy",
+          "sha256": "dfd5f090d83817d3aa91854aafb5642cf68b164db17606cb2a809e705d16b710",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004261.candidate.layout.npy"
+        },
+        {
+          "bytes": 361182,
+          "path": "finalized/artifacts/img_004261.candidate.png",
+          "sha256": "337490d56665130d836efb5887fbc8ebf50b7d4022790dbd71d6aa07bb20040c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004261.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004326.baseline.layout.npy",
+          "sha256": "971b98f0f83ae983752a35c0303d8af488fe230d8eab5460af9de3d666e9a62d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004326.baseline.layout.npy"
+        },
+        {
+          "bytes": 289273,
+          "path": "finalized/artifacts/img_004326.baseline.png",
+          "sha256": "647f19e484e0e67aadbe57a0034b02834c11119c1cc8d8940d05d052282a6379",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004326.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004326.candidate.layout.npy",
+          "sha256": "2852e54cf8ec3fa6c49b2a95e67e3fa3178937d85d16a8a3f131c6b174fbfea4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004326.candidate.layout.npy"
+        },
+        {
+          "bytes": 289215,
+          "path": "finalized/artifacts/img_004326.candidate.png",
+          "sha256": "9c61640c0d9c82c18e5d94a51b7d5190e0e78b4a51ed7f50011761c1a1677ba3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004326.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004454.baseline.layout.npy",
+          "sha256": "497965d12641ec630ffccf6aa1d8f7706f8e11f980664433c573f037c1776f08",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004454.baseline.layout.npy"
+        },
+        {
+          "bytes": 305099,
+          "path": "finalized/artifacts/img_004454.baseline.png",
+          "sha256": "ff21123901159d07c46c7cf12d93b4d66700364703a3e91f47bf700d58be7fa9",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004454.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004454.candidate.layout.npy",
+          "sha256": "4bee91a8cd7700617cf9255defbcf0f0c98a97388f0f57e8bdcacfee4b1af746",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004454.candidate.layout.npy"
+        },
+        {
+          "bytes": 305674,
+          "path": "finalized/artifacts/img_004454.candidate.png",
+          "sha256": "fc83bdf4f88767a51553940bd608f31140e750d60257390e8b1e756e16b94ac1",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004454.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004668.baseline.layout.npy",
+          "sha256": "daebb9fbe9333f6c23c8751741f7ced1f405e9b8c1f78e53d9151f50273122b6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004668.baseline.layout.npy"
+        },
+        {
+          "bytes": 290226,
+          "path": "finalized/artifacts/img_004668.baseline.png",
+          "sha256": "6d48e4d00f3fe6fadfa25da0b5406a4cd12e366edfba4d59b8cbbe017e7110e4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004668.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004668.candidate.layout.npy",
+          "sha256": "356471cc82b97d41e07ecde8e130f721ddb9077e380bc9cca44e90837a07bc16",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004668.candidate.layout.npy"
+        },
+        {
+          "bytes": 290426,
+          "path": "finalized/artifacts/img_004668.candidate.png",
+          "sha256": "c36ad43289b3e2c9950a8338bdb995ae8a48f498965556173f9de33e83dccae3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004668.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004697.baseline.layout.npy",
+          "sha256": "5f7c68924f3b5fd0d44c7360ffef94fd1241eb1f26da00426949059da3077517",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004697.baseline.layout.npy"
+        },
+        {
+          "bytes": 324771,
+          "path": "finalized/artifacts/img_004697.baseline.png",
+          "sha256": "ed2b7b795d4078f39b1204a6dd9afd36981ef75c4a934f83098e028aca703ad6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004697.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_004697.candidate.layout.npy",
+          "sha256": "964535cfe32b33fef5fc96ab3aa36e29d6c791d2026731f893a29d8253ba229d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004697.candidate.layout.npy"
+        },
+        {
+          "bytes": 325113,
+          "path": "finalized/artifacts/img_004697.candidate.png",
+          "sha256": "4a0acc4ea5578bd899636ff75d0f80a520cfdd3f8560c893810ef5a420fe0cdb",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_004697.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005011.baseline.layout.npy",
+          "sha256": "51d117c05327e202bfba26971ecab942585d84844966d6e1ffce751c5e39f6f3",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005011.baseline.layout.npy"
+        },
+        {
+          "bytes": 271471,
+          "path": "finalized/artifacts/img_005011.baseline.png",
+          "sha256": "cca4a4b22696e9cbd92c0e3c1b1f81e39c8461173b287888d9d7a07415c794d5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005011.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005011.candidate.layout.npy",
+          "sha256": "8f039d924690dda0221ca577b6168be5eac5ba163570fcb8bac47c4e80f77755",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005011.candidate.layout.npy"
+        },
+        {
+          "bytes": 271064,
+          "path": "finalized/artifacts/img_005011.candidate.png",
+          "sha256": "1975157c77d52b3ff724ab1ea380ff6212ed2c237263a7faca72563810fd3217",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005011.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005014.baseline.layout.npy",
+          "sha256": "00b39ad32a4a439635c4e2afd2828203cde9b38dcc9a8908154f2330529a8a0c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005014.baseline.layout.npy"
+        },
+        {
+          "bytes": 344147,
+          "path": "finalized/artifacts/img_005014.baseline.png",
+          "sha256": "ac8e0d3baa567a7f9736fe3da9fb142cd1dc78013c3c38232fe310036dfe9743",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005014.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005014.candidate.layout.npy",
+          "sha256": "d3b6e3e6913ed67d4422199ea0b013ea782d09c5364c1c82338b7159d2c8c451",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005014.candidate.layout.npy"
+        },
+        {
+          "bytes": 344470,
+          "path": "finalized/artifacts/img_005014.candidate.png",
+          "sha256": "132f050bdc23a2def18cddad7044a263b06c329fe5bd13ab9072ce5486811732",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005014.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005152.baseline.layout.npy",
+          "sha256": "fa95efc265a503ea6148b23b9d151a6bd027cf5107d3c4cd25631af9398f809d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005152.baseline.layout.npy"
+        },
+        {
+          "bytes": 341536,
+          "path": "finalized/artifacts/img_005152.baseline.png",
+          "sha256": "da130ab71893b5abd0163a3841ab7116e9e472fafb983c34091f5288047f472f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005152.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005152.candidate.layout.npy",
+          "sha256": "18bd0f2295f3320e9530368e6ecf369a09b9429d2ddaa175cc70ac3a600ad9c4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005152.candidate.layout.npy"
+        },
+        {
+          "bytes": 341571,
+          "path": "finalized/artifacts/img_005152.candidate.png",
+          "sha256": "03360ed81fb5a717235c90b33dff3470db0e891ce15274ebe01b5d5d3dbbda06",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005152.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005231.baseline.layout.npy",
+          "sha256": "2c9c5926c191612d7e2141189a970fa0a415feb2344c849a4f9a9271d9c7cbc5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005231.baseline.layout.npy"
+        },
+        {
+          "bytes": 318896,
+          "path": "finalized/artifacts/img_005231.baseline.png",
+          "sha256": "d6064ef7e2cd9e50f6996f8ab8851624030d5376bde4d63d6b15f1799514d39b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005231.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005231.candidate.layout.npy",
+          "sha256": "36f155668dc9b81d75f97b644aea16b4be4f8b1ef27315523d8b321411642805",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005231.candidate.layout.npy"
+        },
+        {
+          "bytes": 318877,
+          "path": "finalized/artifacts/img_005231.candidate.png",
+          "sha256": "ff407bb8db91460b23cf1b9ec663cb114fc86039647ea485dd3176f7506ac9af",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005231.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005238.baseline.layout.npy",
+          "sha256": "0cbd993d3c581fd77b227327e3a8284652b199c96adc38ede68d2da7aa1ea5f4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005238.baseline.layout.npy"
+        },
+        {
+          "bytes": 318534,
+          "path": "finalized/artifacts/img_005238.baseline.png",
+          "sha256": "df236b2247ad7c3d29df8888e429e309815d80e591f081c2b3bb3bc9899dee5d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005238.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005238.candidate.layout.npy",
+          "sha256": "3201861487501c8546460e5ebb7432369309856494ce9da723d73c53375d9b49",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005238.candidate.layout.npy"
+        },
+        {
+          "bytes": 318572,
+          "path": "finalized/artifacts/img_005238.candidate.png",
+          "sha256": "2f651d1ae2073dcb44cbe15d05b24958f65310d82f785ad4835162983c377f21",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005238.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005262.baseline.layout.npy",
+          "sha256": "3f8826fa9d1aecbc49809207d667eb1837f33a5a52ee993c07ebea661f72f701",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005262.baseline.layout.npy"
+        },
+        {
+          "bytes": 301954,
+          "path": "finalized/artifacts/img_005262.baseline.png",
+          "sha256": "b77e56c8c27a94bbbf5f972242bf95f004c7e2fa393d9e62dbf3da6000658618",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005262.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005262.candidate.layout.npy",
+          "sha256": "445e2b4262f6dd7c92b872d806b3bfd625b3d0fa521de098c240abacaed0b3ad",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005262.candidate.layout.npy"
+        },
+        {
+          "bytes": 301889,
+          "path": "finalized/artifacts/img_005262.candidate.png",
+          "sha256": "495632aeeb324b7d5432eb5d6a478324701456c158d73085dc9915b9da077fd6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005262.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005266.baseline.layout.npy",
+          "sha256": "8b0f452d99cdeb6c5d1e2eeeff7619dca88fe8f1148a59b5377455aa2a51b78c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005266.baseline.layout.npy"
+        },
+        {
+          "bytes": 357607,
+          "path": "finalized/artifacts/img_005266.baseline.png",
+          "sha256": "8ed258ecff71a2693cdff01fff7a5f43e6f5141a7e32e730aa8664b2decadfb2",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005266.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005266.candidate.layout.npy",
+          "sha256": "92a1c4eadce867f4b7d404c7c44038de47e3d24834bdf01983b9c11bf9eea944",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005266.candidate.layout.npy"
+        },
+        {
+          "bytes": 358126,
+          "path": "finalized/artifacts/img_005266.candidate.png",
+          "sha256": "abe802a81a3cb54e62d3d7ad882ea43313db8ddd75c1897b703b92b5e360ac3e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005266.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005625.baseline.layout.npy",
+          "sha256": "cd820fe4326550c897964c14ed758de2b41d0b6dd49751190207c3c764fba434",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005625.baseline.layout.npy"
+        },
+        {
+          "bytes": 284420,
+          "path": "finalized/artifacts/img_005625.baseline.png",
+          "sha256": "35e9fcdf6bf84e904b3949f25960aaabfdea3107229acc1b63e7b9da283d39ec",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005625.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005625.candidate.layout.npy",
+          "sha256": "47aded6bf3a4fe11a2267b32ed8a93ecc3b3d4d145acc09846fd55977be3f736",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005625.candidate.layout.npy"
+        },
+        {
+          "bytes": 283586,
+          "path": "finalized/artifacts/img_005625.candidate.png",
+          "sha256": "482bba9707a6ed9a2b020bc420f07d40f678a245921bdc700d1f1b1e9283a843",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005625.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005736.baseline.layout.npy",
+          "sha256": "43bad14556f2e62fb9c81a89b9c336af53dd25578dabb33df33044370241a3a5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005736.baseline.layout.npy"
+        },
+        {
+          "bytes": 282524,
+          "path": "finalized/artifacts/img_005736.baseline.png",
+          "sha256": "48543adbc1048930c6c3596f67c3296eaa2745c8449880106126e61ae752cb39",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005736.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005736.candidate.layout.npy",
+          "sha256": "f22e0402a26e5aec944471baccd64a9c2106a908c153caf7375093c2c01bb515",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005736.candidate.layout.npy"
+        },
+        {
+          "bytes": 282068,
+          "path": "finalized/artifacts/img_005736.candidate.png",
+          "sha256": "21764d65061c52fcdf92c3cb7d241bad658619b154c626ba1d3a78f584bfa55a",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005736.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005783.baseline.layout.npy",
+          "sha256": "13bf42572e8fef77784610f2d919e4dad6f319dac02bec147bc950e10ba37539",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005783.baseline.layout.npy"
+        },
+        {
+          "bytes": 337373,
+          "path": "finalized/artifacts/img_005783.baseline.png",
+          "sha256": "4ffb691e03538fbd7f904ac6e073bb8eac245f88c2b640472d92718481d6d2f4",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005783.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_005783.candidate.layout.npy",
+          "sha256": "7bce9f8b2eba4f29978784691a500a6ece667c0196cb80f07cc8b9d385fb365f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005783.candidate.layout.npy"
+        },
+        {
+          "bytes": 337558,
+          "path": "finalized/artifacts/img_005783.candidate.png",
+          "sha256": "f1ad8709534ab91af68ae4d97419c057fe23611a4962a67c211933fb1847291d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_005783.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006003.baseline.layout.npy",
+          "sha256": "9b77e937d7c51953a2b9892362f62453504460e673a76e9e4084259b6db00b05",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006003.baseline.layout.npy"
+        },
+        {
+          "bytes": 287368,
+          "path": "finalized/artifacts/img_006003.baseline.png",
+          "sha256": "0911adff645b980d1727a44d25dc04c6ddb58b861ead46f3c421cdd238d680c7",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006003.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006003.candidate.layout.npy",
+          "sha256": "453e7106eed09d4cafd7fa96db677cc6f3a6b9c717304948c1d5a95ac12202e5",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006003.candidate.layout.npy"
+        },
+        {
+          "bytes": 287202,
+          "path": "finalized/artifacts/img_006003.candidate.png",
+          "sha256": "cc2b6288109dda25349570fe03d9e0c57f4ca832b82a94b4301be6dab63d58a2",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006003.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006013.baseline.layout.npy",
+          "sha256": "c7a2fb8d638cf61e567069930252b6767000b9bc9b0d9d39f83319ca93016fca",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006013.baseline.layout.npy"
+        },
+        {
+          "bytes": 299463,
+          "path": "finalized/artifacts/img_006013.baseline.png",
+          "sha256": "2cc98f620ba7e109a0b786b23822c0a9d4253b66f30eb86f263ab4d62bd0202c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006013.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006013.candidate.layout.npy",
+          "sha256": "74af5c5c5adc3ec0fa72857cf0024a87886b41d2930083e5eb9bdfb95c55ec2f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006013.candidate.layout.npy"
+        },
+        {
+          "bytes": 299965,
+          "path": "finalized/artifacts/img_006013.candidate.png",
+          "sha256": "1f2b28a4d5b473b903349f8a7dce9f6c9f33ef7d0c03b1c69fc3a00ad5e4eaae",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006013.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006025.baseline.layout.npy",
+          "sha256": "ae8f5c78eb7c7e8e6debfdb6b2c0a03bb95c3c69b86f68d50e76ddae75dd1ca0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006025.baseline.layout.npy"
+        },
+        {
+          "bytes": 299426,
+          "path": "finalized/artifacts/img_006025.baseline.png",
+          "sha256": "32fc59ea24ecca941bb9eb2ba21cb9f0340301f52569a6742ba27866a53b428e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006025.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006025.candidate.layout.npy",
+          "sha256": "9232844bb45adb3740b4f1006e66ca6e16d47fac017598defb132a18494ac471",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006025.candidate.layout.npy"
+        },
+        {
+          "bytes": 299514,
+          "path": "finalized/artifacts/img_006025.candidate.png",
+          "sha256": "d8a2802c48b2e9119593afcef89f5b47e2c60e84698cbf64cb67b410c2e5c060",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006025.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006180.baseline.layout.npy",
+          "sha256": "818e877f1e8a5c2a45068f4bc92ce0ad1805c6a925528914ba2f06eea8ca74bd",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006180.baseline.layout.npy"
+        },
+        {
+          "bytes": 265319,
+          "path": "finalized/artifacts/img_006180.baseline.png",
+          "sha256": "072a5848dc4b1ab07ff9a3a30c68463df99db02df5946ac87dbc84cf8305e37f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006180.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006180.candidate.layout.npy",
+          "sha256": "aa3b5bcc3648931ef94071f4d659712e483ab8c25ccef339c97475fed0af66fa",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006180.candidate.layout.npy"
+        },
+        {
+          "bytes": 265100,
+          "path": "finalized/artifacts/img_006180.candidate.png",
+          "sha256": "b00144f375b8ebdcb320e8052f86101b4477a457d1bba99862c781f23baee626",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006180.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006223.baseline.layout.npy",
+          "sha256": "483bbc8af2f8ebcabdf77835f5f49c6e989f4ca5058928ef461c63d64bf3311b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006223.baseline.layout.npy"
+        },
+        {
+          "bytes": 299288,
+          "path": "finalized/artifacts/img_006223.baseline.png",
+          "sha256": "df88f3b2326b9c996edca52007aa171b2af74a2b886fad00a29620017de3c85e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006223.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006223.candidate.layout.npy",
+          "sha256": "78f9bfd1a0b3c343e44f9f6d1a54fcff98a062c6c4ad5c227b5d0db49759ae8b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006223.candidate.layout.npy"
+        },
+        {
+          "bytes": 299305,
+          "path": "finalized/artifacts/img_006223.candidate.png",
+          "sha256": "9954acc263b9d2f80131a47863f406a50ec94d9c2b273065f0be3c386f788aa2",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006223.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006243.baseline.layout.npy",
+          "sha256": "3a09b519c14c01433dbde246162577c76bf82636b1e5aa8fca4f3e8b42631fd2",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006243.baseline.layout.npy"
+        },
+        {
+          "bytes": 303927,
+          "path": "finalized/artifacts/img_006243.baseline.png",
+          "sha256": "8ddb435487c86ed98470fd66ac2c6527848fe373a2f6f56d251b0845f0106c2b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006243.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006243.candidate.layout.npy",
+          "sha256": "778a921626a4642b05190d87cdade50a73149dc3a1618dad0fc73eb30149b07b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006243.candidate.layout.npy"
+        },
+        {
+          "bytes": 304069,
+          "path": "finalized/artifacts/img_006243.candidate.png",
+          "sha256": "c08c02abd3a9f7222727e94c6b54b5a21285e841a2f9fecc5207786986c4373e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006243.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006348.baseline.layout.npy",
+          "sha256": "d40647dfdbbf67e44d13e21e6a16ca27129456b2da48fa704a8230908f0c8ccf",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006348.baseline.layout.npy"
+        },
+        {
+          "bytes": 253666,
+          "path": "finalized/artifacts/img_006348.baseline.png",
+          "sha256": "6413ce7e28aa8778716226edfaf1ad2ce4da02b46e99e8c3abca6a1b293e2f66",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006348.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006348.candidate.layout.npy",
+          "sha256": "730faafb2a799167423d16f4afdc99123241fecf9dabd88a4d0fa30ff1f81906",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006348.candidate.layout.npy"
+        },
+        {
+          "bytes": 253802,
+          "path": "finalized/artifacts/img_006348.candidate.png",
+          "sha256": "ce22472f9c46f66f14135e68e614f19bea6a5e6aaffe75feb54f697f4cd16721",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006348.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006522.baseline.layout.npy",
+          "sha256": "907e4f47cdea94aa2addad1ed91e03716439a70cecc3865b5eb3e2ea558c173f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006522.baseline.layout.npy"
+        },
+        {
+          "bytes": 293797,
+          "path": "finalized/artifacts/img_006522.baseline.png",
+          "sha256": "e89a99fd44fb912ff97ebd532575331a78db6d9d3ac2bbeb4ff8432d1f3d673b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006522.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006522.candidate.layout.npy",
+          "sha256": "7c7e0301959576c70e210cfefe2f1b1b9650d50d4c86bd1c0ff9f45ce41641aa",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006522.candidate.layout.npy"
+        },
+        {
+          "bytes": 294175,
+          "path": "finalized/artifacts/img_006522.candidate.png",
+          "sha256": "e97e33ad4e7004131fb28dc09a175c683f61e71b02e3338778e1431ad142c233",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006522.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006686.baseline.layout.npy",
+          "sha256": "bf7fe1795a760bb00f74f7fd6e939854908311f8bcefc765885b2177e86749a6",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006686.baseline.layout.npy"
+        },
+        {
+          "bytes": 328935,
+          "path": "finalized/artifacts/img_006686.baseline.png",
+          "sha256": "b1492ccbf6786bb247558d03372fa5faf204396085847d80e75c3f16c84a3eef",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006686.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006686.candidate.layout.npy",
+          "sha256": "501d5f60d94c5da9ee27b68915b213b50048107e3486d844ae3a7c8d5d9d1286",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006686.candidate.layout.npy"
+        },
+        {
+          "bytes": 328821,
+          "path": "finalized/artifacts/img_006686.candidate.png",
+          "sha256": "a2c0987ccc7497d8ad2cfdfe055613e7cca98990d115ce6ae38f59d79250d58d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006686.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006699.baseline.layout.npy",
+          "sha256": "f992a9ee66a3b347fd02fa347b90b9ec5de70883883e44cf6fd14f7e794df66f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006699.baseline.layout.npy"
+        },
+        {
+          "bytes": 285627,
+          "path": "finalized/artifacts/img_006699.baseline.png",
+          "sha256": "5d16af70258411e1e3a5869d88aaa94ac7f630bac46263fc31602343f779c72b",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006699.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006699.candidate.layout.npy",
+          "sha256": "3f4cfe2441f1c471c3e4c7cf6faa93202160a48fffd3fcbe5584c25c6fa747ea",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006699.candidate.layout.npy"
+        },
+        {
+          "bytes": 285661,
+          "path": "finalized/artifacts/img_006699.candidate.png",
+          "sha256": "f272165f7585cb2870a5adecd7d1ee59dd3e82a573baf180147abd329fc6952c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006699.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006950.baseline.layout.npy",
+          "sha256": "805160884a5c6688d8869e1f127a26a5c406bf77efa3b4fb3e4eab7b4e60968d",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006950.baseline.layout.npy"
+        },
+        {
+          "bytes": 293856,
+          "path": "finalized/artifacts/img_006950.baseline.png",
+          "sha256": "a869f514a88f6f0320b44a6d4c3fdf3e433747ae3282f8da338f8b13e3ed912c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006950.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006950.candidate.layout.npy",
+          "sha256": "20351629393335e6ab695d309044e3514970a67fef5f92b6078f7cd09f027f7f",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006950.candidate.layout.npy"
+        },
+        {
+          "bytes": 293590,
+          "path": "finalized/artifacts/img_006950.candidate.png",
+          "sha256": "6415e752d7136d469657e9e3942161279fd528c1f904e43d56513ddeb460a195",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006950.candidate.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006952.baseline.layout.npy",
+          "sha256": "6d99187d8ff59cdafb02ed58dd3da720885e01d578b6eb33f96b332d9bc9b40c",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006952.baseline.layout.npy"
+        },
+        {
+          "bytes": 335346,
+          "path": "finalized/artifacts/img_006952.baseline.png",
+          "sha256": "5dbb51a680e0dc5738f84b0e33a01154154d8e995bd455e6f9464f4301591b20",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006952.baseline.png"
+        },
+        {
+          "bytes": 2432,
+          "path": "finalized/artifacts/img_006952.candidate.layout.npy",
+          "sha256": "16570fe143cd8669e77c8677fc14850ed7582b8e27f2b7eec139a04434238c81",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006952.candidate.layout.npy"
+        },
+        {
+          "bytes": 335121,
+          "path": "finalized/artifacts/img_006952.candidate.png",
+          "sha256": "cc677d1e00b94caea96f4ffb1b8c3418f5b6c4514c3250d4688b56a04240543e",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a/artifacts/img_006952.candidate.png"
+        },
+        {
+          "bytes": 61473,
+          "path": "shard0/FROZEN_INPUT_ONLY_SHARD_MANIFEST.json",
+          "sha256": "32c9d2508f4fe3b71924aabf48b08cde173676dd251e49313545a831a4d169e0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/archive_shard_manifests/shard0/FROZEN_INPUT_ONLY_SHARD_MANIFEST.json"
+        },
+        {
+          "bytes": 61480,
+          "path": "shard1/FROZEN_INPUT_ONLY_SHARD_MANIFEST.json",
+          "sha256": "b19b05575977f671af559188f37789d954daa0eefa26d46fdf9bf2b3d1e1afd0",
+          "source_path": "/kaggle/working/.qap_weight_confirmation_staging/archive_shard_manifests/shard1/FROZEN_INPUT_ONLY_SHARD_MANIFEST.json"
+        }
+      ],
+      "path": "qap_weight_confirmation_phase_a_frozen.zip",
+      "sha256": "5f37369fbe3d943158fdef6dc04fb2f124cd305f6ae32191eb2ee47d6e512751"
+    },
+    "names_sha256": "e5fb7fc6b3d24e9c080b4f33224b863c181e72452de4e54e602a80a321c13251",
+    "physical_gpus": [
+      0,
+      1
+    ],
+    "process_count": 2,
+    "relocation_readback": {
+      "manifest_sha256": "14bfb479132d7942e8ed20ba1648eaa54181d78b4ee0addde98640eeedf9716b",
+      "shard_manifests_included": 2,
+      "source_count": 64,
+      "validated_from_extracted_tree_only": true
+    },
+    "shard_envelope_sha256s": [
+      "32c9d2508f4fe3b71924aabf48b08cde173676dd251e49313545a831a4d169e0",
+      "b19b05575977f671af559188f37789d954daa0eefa26d46fdf9bf2b3d1e1afd0"
+    ],
+    "shard_runner_tree_sha256s": [
+      "490fd985057821dddd149b32343aa1121b8a6185a0bd60309327cd0de013a157",
+      "8d3daeea62acccc772973b20ec4f33c3101cf999c88031959d32404076eaf489"
+    ],
+    "source_count": 64,
+    "target_paths_or_pixels_read": false
+  },
+  "phase_a_finalized_runner_tree_sha256_after": "d530f3e06bf8db2a617a52c0e43aa4d3653c953d2b4d4e500c040517402ddf31",
+  "phase_a_shard_runner_tree_sha256s_after": [
+    "490fd985057821dddd149b32343aa1121b8a6185a0bd60309327cd0de013a157",
+    "8d3daeea62acccc772973b20ec4f33c3101cf999c88031959d32404076eaf489"
+  ],
+  "report": {
+    "bootstrap_95_ci": [
+      0.00021955405123965814,
+      0.0025803167439955037
+    ],
+    "eligible_for_final_audit": false,
+    "gate_passed": false,
+    "losses": 29,
+    "mean_ssim_delta": 0.0013747350422199476,
+    "path": "qap_weight_confirmation_report.json",
+    "safe_for_submission": false,
+    "sha256": "229f3751b85f26f9066c7fae0ed055f5a308354db1a408f0bcee88e8fa5189e7",
+    "status": "confirmed_small_gain_no_promotion",
+    "ties": 0,
+    "wins": 35
+  },
+  "runner": {
+    "path": "/kaggle/src/script.py",
+    "sha256": "6ddefd9207f273ff6b16dfe991e133cf72e2d1f153c6ac08b8ce0f09bfa46883"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "started_unix": 1783802256.7470896,
+  "status": "complete",
+  "steps": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_qap_weight_confirmation.py"
+      ],
+      "label": "focused QAP-confirmation tests",
+      "log": "qap_weight_confirmation_tests.log",
+      "log_sha256": "8d27d6f2502a864727ea8eaef978c83fb6509b41ecdec939e18cd231c132eac3",
+      "returncode": 0,
+      "seconds": 30.354611833000035,
+      "timed_out": false,
+      "timeout_seconds": 1200
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/scripts/evaluate_qap_weight_confirmation.py",
+        "--action",
+        "phase-a",
+        "--rank",
+        "0",
+        "--world-size",
+        "2",
+        "--device",
+        "cuda:0",
+        "--phase-a-dir",
+        "/kaggle/working/.qap_weight_confirmation_staging/phase_a_shard0",
+        "--data-root",
+        "/kaggle/working/.qap_weight_confirmation_staging/input_only_data",
+        "--config",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/qap_weight_confirmation_v1.json",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_validation_quarantine_v1.json"
+      ],
+      "label": "input-only Phase A shard 0 on physical GPU 0",
+      "log": "qap_weight_phase_a_gpu0.log",
+      "log_sha256": "14aa51f7faf9b303706f3b05896eea97282d6849737eb6545108fdf634703674",
+      "returncode": 0,
+      "seconds": 350.91301015399995,
+      "timed_out": false,
+      "timeout_seconds": 10800
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/scripts/evaluate_qap_weight_confirmation.py",
+        "--action",
+        "phase-a",
+        "--rank",
+        "1",
+        "--world-size",
+        "2",
+        "--device",
+        "cuda:0",
+        "--phase-a-dir",
+        "/kaggle/working/.qap_weight_confirmation_staging/phase_a_shard1",
+        "--data-root",
+        "/kaggle/working/.qap_weight_confirmation_staging/input_only_data",
+        "--config",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/qap_weight_confirmation_v1.json",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_validation_quarantine_v1.json"
+      ],
+      "label": "input-only Phase A shard 1 on physical GPU 1",
+      "log": "qap_weight_phase_a_gpu1.log",
+      "log_sha256": "f853b12e31ff2727fdeb8ee021f70c105e776dd15ce1b3e6872def55c8ed7d9c",
+      "returncode": 0,
+      "seconds": 359.6392761530001,
+      "timed_out": false,
+      "timeout_seconds": 10800
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/scripts/evaluate_qap_weight_confirmation.py",
+        "--action",
+        "finalize-phase-a",
+        "--phase-a-dirs",
+        "/kaggle/working/.qap_weight_confirmation_staging/phase_a_shard0",
+        "/kaggle/working/.qap_weight_confirmation_staging/phase_a_shard1",
+        "--phase-a-envelope-sha256s",
+        "32c9d2508f4fe3b71924aabf48b08cde173676dd251e49313545a831a4d169e0",
+        "b19b05575977f671af559188f37789d954daa0eefa26d46fdf9bf2b3d1e1afd0",
+        "--finalized-phase-a-dir",
+        "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a",
+        "--config",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/qap_weight_confirmation_v1.json",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_validation_quarantine_v1.json"
+      ],
+      "label": "canonical CPU-only Phase-A finalization",
+      "log": "qap_weight_finalize_phase_a.log",
+      "log_sha256": "e0208a604801b3ffdfb1d97f5d3cafbe2572dba9200ae577f289981e0e83774f",
+      "returncode": 0,
+      "seconds": 7.890343242999734,
+      "timed_out": false,
+      "timeout_seconds": 1800
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/scripts/evaluate_qap_weight_confirmation.py",
+        "--action",
+        "phase-b",
+        "--finalized-phase-a-dir",
+        "/kaggle/working/.qap_weight_confirmation_staging/finalized_phase_a",
+        "--phase-a-envelope-sha256",
+        "14bfb479132d7942e8ed20ba1648eaa54181d78b4ee0addde98640eeedf9716b",
+        "--device",
+        "cuda:0",
+        "--output",
+        "/kaggle/working/.qap_weight_confirmation_staging/result/qap_weight_confirmation_report.json",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--config",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/qap_weight_confirmation_v1.json",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/.qap_weight_confirmation_staging/code/configs/denoise_validation_quarantine_v1.json"
+      ],
+      "label": "canonical target-attaching Phase B on physical GPU 0",
+      "log": "qap_weight_phase_b_gpu0.log",
+      "log_sha256": "ad9b3f915b6507b7b7c37a6f84676ae2f1d1606f60ab6d7fc0ab758ee12955d8",
+      "returncode": 0,
+      "seconds": 20.98799756399967,
+      "timed_out": false,
+      "timeout_seconds": 3600
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "pasha883/vsos-candidate-graph-oracle-phase-a-t4x2",
+  "id_no": 126834780,
+  "title": "VSOS Candidate Graph Oracle Phase A T4x2",
+  "code_file": "vsos-candidate-graph-oracle-phase-a-t4x2.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_tpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "pasha883/vsos-candidate-graph-oracle-code",
+    "pasha883/vsos-candidate-graph-oracle-inputs",
+    "pasha883/vsos-candidate-graph-oracle-runtime"
+  ],
+  "kernel_sources": [],
+  "competition_sources": [],
+  "model_sources": [],
+  "docker_image": "gcr.io/kaggle-private-byod/python@sha256:37c64f7dd9c54116ecd1bcc88817c5469b88387388fade02bfa8bf3fc647d461",
+  "machine_shape": "None"
+}

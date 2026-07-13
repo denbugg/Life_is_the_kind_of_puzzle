@@ -1,0 +1,125 @@
+{
+  "experiments": [
+    {
+      "epochs": 2,
+      "input_mode": "rgb_norm",
+      "name": "hbt_d320_denoised_rgb_norm",
+      "train_sources": 1024,
+      "view": "denoised"
+    },
+    {
+      "epochs": 2,
+      "input_mode": "rgb_sobel",
+      "name": "hbt_d320_denoised_rgb_sobel",
+      "train_sources": 2048,
+      "view": "denoised"
+    },
+    {
+      "epochs": 2,
+      "input_mode": "rgb_sobel",
+      "name": "hbt_d320_raw_rgb_sobel",
+      "train_sources": 2048,
+      "view": "raw"
+    },
+    {
+      "epochs": 1,
+      "input_mode": "sobel_only",
+      "name": "hbt_d320_denoised_sobel_only",
+      "train_sources": 512,
+      "view": "denoised"
+    },
+    {
+      "epochs": 1,
+      "input_mode": "sobel_only",
+      "name": "hbt_d320_raw_sobel_only",
+      "train_sources": 512,
+      "view": "raw"
+    },
+    {
+      "epochs": 1,
+      "input_mode": "binary_edges",
+      "name": "hbt_d320_denoised_binary_edges",
+      "train_sources": 512,
+      "view": "denoised"
+    },
+    {
+      "epochs": 1,
+      "input_mode": "binary_edges",
+      "name": "hbt_d320_raw_binary_edges",
+      "train_sources": 512,
+      "view": "raw"
+    }
+  ],
+  "kind": "assembly_v1_edge2vec_gradient_factorial_gpu",
+  "probe": {
+    "arch_list": [
+      "sm_50",
+      "sm_60",
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90"
+    ],
+    "capabilities": [
+      [
+        6,
+        0
+      ]
+    ],
+    "compiled_cuda": "12.4",
+    "cuda_available": true,
+    "device_count": 1,
+    "devices": [
+      "Tesla P100-PCIE-16GB"
+    ],
+    "matmul_mean": -0.1145678460597992,
+    "torch": "2.6.0+cu124"
+  },
+  "reports": [
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_denoised_rgb_norm.pt",
+      "name": "hbt_d320_denoised_rgb_norm",
+      "report": "/kaggle/working/hbt_d320_denoised_rgb_norm.json",
+      "seconds": 797.9229176044464
+    },
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_denoised_rgb_sobel.pt",
+      "name": "hbt_d320_denoised_rgb_sobel",
+      "report": "/kaggle/working/hbt_d320_denoised_rgb_sobel.json",
+      "seconds": 1548.4079308509827
+    },
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_raw_rgb_sobel.pt",
+      "name": "hbt_d320_raw_rgb_sobel",
+      "report": "/kaggle/working/hbt_d320_raw_rgb_sobel.json",
+      "seconds": 850.082736492157
+    },
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_denoised_sobel_only.pt",
+      "name": "hbt_d320_denoised_sobel_only",
+      "report": "/kaggle/working/hbt_d320_denoised_sobel_only.json",
+      "seconds": 202.27888011932373
+    },
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_raw_sobel_only.pt",
+      "name": "hbt_d320_raw_sobel_only",
+      "report": "/kaggle/working/hbt_d320_raw_sobel_only.json",
+      "seconds": 119.27357983589172
+    },
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_denoised_binary_edges.pt",
+      "name": "hbt_d320_denoised_binary_edges",
+      "report": "/kaggle/working/hbt_d320_denoised_binary_edges.json",
+      "seconds": 204.47889590263367
+    },
+    {
+      "checkpoint": "/kaggle/working/hbt_d320_raw_binary_edges.pt",
+      "name": "hbt_d320_raw_binary_edges",
+      "report": "/kaggle/working/hbt_d320_raw_binary_edges.json",
+      "seconds": 115.78070092201233
+    }
+  ],
+  "schema_version": 1,
+  "seconds": 4034.4357907772064
+}

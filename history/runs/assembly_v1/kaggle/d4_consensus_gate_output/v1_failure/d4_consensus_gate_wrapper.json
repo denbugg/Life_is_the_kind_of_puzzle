@@ -1,0 +1,10 @@
+{
+  "error": "RuntimeError('expected exactly one hash-pinned asset seam_denoiser_gpu.pt, got []')",
+  "kind": "d4_compatibility_consensus_kaggle_wrapper",
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 58.062912940979004,
+  "started_unix": 1783925376.586656,
+  "status": "failed",
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 402, in main\n    seam = find_asset(\"seam_denoiser_gpu.pt\")\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/src/script.py\", line 80, in find_asset\n    return exactly_one(matches, f\"hash-pinned asset {name}\")\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/src/script.py\", line 73, in exactly_one\n    raise RuntimeError(f\"expected exactly one {label}, got {values}\")\nRuntimeError: expected exactly one hash-pinned asset seam_denoiser_gpu.pt, got []\n"
+}

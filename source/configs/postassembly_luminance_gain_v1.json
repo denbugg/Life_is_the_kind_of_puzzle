@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "kind": "postassembly_luminance_gain_separate_development_candidate",
+  "status": "precommitted_before_selected_slice_pixel_access",
+  "created_utc": "2026-07-12T14:42:00Z",
+  "base_protocol": {
+    "path": "configs/postassembly_rgb_offset_v1.json",
+    "sha256": "e004c27e4d7ceba5e00b5068c6c5737253e505532a9e86b3edd584543401745b"
+  },
+  "scope": {
+    "development_only": true,
+    "may_promote_submission": false,
+    "candidate_name": "seam_graph_rgb_plus_bounded_luminance_gain",
+    "baseline": "seam_graph_rgb_on_blend",
+    "target_pixels_available_to_gain_estimator": false,
+    "reason_for_separate_config": "avoid silently folding a second degree of freedom into the primary RGB-offset candidate"
+  },
+  "method": {
+    "input": "uint8 output of the frozen seam_graph_rgb_on_blend method",
+    "extrapolation_band": 3,
+    "confidence_scale": 0.08,
+    "confidence_floor": 0.05,
+    "ridge": 0.5,
+    "huber_delta": 0.025,
+    "irls_steps": 4,
+    "max_fractional_gain": 0.04,
+    "luminance_floor": 12.0,
+    "luminance_ceiling": 243.0,
+    "global_gauge": "median log gain equals zero",
+    "application": "one scalar multiplicative gain per tile, shared by RGB, rounded once to uint8"
+  },
+  "frozen_gate": {
+    "requires_full_32_source_run": true,
+    "both_panels_required": true,
+    "per_panel_mean_ssim_delta_minimum": 0.005,
+    "per_panel_paired_bootstrap_lower_must_exceed": 0.0,
+    "per_panel_mean_target_referenced_seam_error_delta_maximum": 0.0,
+    "pass_behavior": "gain may replace RGB-only candidate for one new source-disjoint confirmation; never combine best-of-slice selection"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "valid": true,
+  "source": "local_mps_selected_scoring_seam_render",
+  "archive": "submission.zip",
+  "archive_bytes": 206710224,
+  "archive_sha256": "79b0ad3275f22bfe5fa7d071e6d30c13c750e3a7b02aabe0ae70c700a9342bed",
+  "count": 700,
+  "checks": {
+    "zip_crc_test": "passed",
+    "unique_root_png_names": "passed",
+    "exact_reference_filename_set": "passed",
+    "all_images_decode": "passed",
+    "all_images_rgb": "passed",
+    "all_images_480x480": "passed",
+    "builder_report_hash_match": "passed"
+  },
+  "pipeline": {
+    "scoring_view": "selected_tilenaf_denoised",
+    "score": "denoised_C1_equal_rank_fusion",
+    "solver": "reciprocal_component_loops_no_refine",
+    "render_view": "seam_denoiser_denoised"
+  }
+}

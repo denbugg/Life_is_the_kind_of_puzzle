@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "kind": "solver_denoiser_adaptation_protocol",
+  "status": "stopped_upstream_no_checkpoint_reusable_staging_only",
+  "created_utc": "2026-07-12T16:10:00Z",
+  "objective": "Measure whether the new 5x5-trained denoiser improves rendering or neighbour evidence, then conditionally adapt the production HBT scorer without changing the solver family.",
+  "production_evidence": {
+    "user_reported_leaderboard_ssim": 0.2167844489529071,
+    "leaderboard_value_is_external_and_not_locally_recomputable": true,
+    "layout_change_in_that_submission": false,
+    "interpretation": "The leaderboard gain does not establish a sorting gain; the production layout generator remains frozen and current new evidence is post-assembly colour and seam correction."
+  },
+  "upstream_new_denoiser_result": {
+    "kind": "denoise_block5x5_development_selection",
+    "artifact": "runs/denoise_v2/kaggle_block5x5_readback/output_v2/block5x5_selection.json",
+    "artifact_sha256": "932276b13e4ae4f0c09ba384cbff0cac9e7c49ab3b1b6b25f2dce5647c342a0c",
+    "decision": "stop_no_development_signal",
+    "selected_variant": null,
+    "selected_checkpoint": null,
+    "selected_checkpoint_sha256": null,
+    "frozen_gate_accessed": false,
+    "permits_adaptation": false,
+    "bound_action": "Do not pin a runtime config, push a Kaggle scorer job, or train a scorer for either rejected 5x5 candidate."
+  },
+  "authoritative_inputs": {
+    "manifest": {
+      "path": "configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    },
+    "old_denoiser": {
+      "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "state": "ema"
+    },
+    "production_hbt": {
+      "path": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+      "input_mode": "rgb_sobel",
+      "embedding_dim": 320
+    },
+    "new_denoiser": {
+      "path": null,
+      "sha256": null,
+      "state": "ema",
+      "required_before_launch": true
+    }
+  },
+  "launch_interlock": {
+    "gpu_training_authorized_now": false,
+    "kaggle_push_authorized_now": false,
+    "requires_nonempty_new_denoiser_path_and_sha256": true,
+    "requires_recorded_candidate_graph_oracle_verdict": true,
+    "accepted_oracle_verdict_values": [
+      "pass",
+      "fail",
+      "inconclusive"
+    ],
+    "candidate_graph_oracle_verdict": null,
+    "requires_root_launch_signal": true,
+    "root_launch_signal": null,
+    "permanently_closed_for_this_5x5_run": true,
+    "reason": "The 5x5 selection artifact has no selected checkpoint and records stop_no_development_signal; the scorer workstream is retained only as a reusable future protocol."
+  },
+  "anti_leakage": {
+    "split_unit": "whole_source_image",
+    "filename_as_feature": false,
+    "target_or_permutation_at_inference": false,
+    "candidate_graph_oracle_artifacts_consumed": false,
+    "test_pixels_consumed": false,
+    "same_source_panel_and_nuisance_seed_for_every_view": true,
+    "same_renderer_for_sorting_contrasts": true,
+    "renderer_only_contrast_uses_identical_frozen_layout": true,
+    "candidate_selection_before_original_input_target_access": true
+  },
+  "source_partitions": {
+    "scorer_training": {
+      "split": "edge_train",
+      "offset": 0,
+      "count": 512,
+      "names_sha256": "ff8109f3d16268608e438f7444e14e52772782e445c5c2b65e78384ba8e88571",
+      "parent_2048_names_sha256": "87ae92351a9c5cf34f35c131ec2c7d77a476336a192f7c572af354e6fea1b18d",
+      "use": "multi_view_scorer_training_only"
+    },
+    "exact_selection": {
+      "split": "edge_development",
+      "offset": 256,
+      "count": 32,
+      "names_sha256": "3d9294916f418a01d9e5686d86ac928b44e45b0e5924b49e2c98ef6899cbabcd",
+      "names": [
+        "img_004700.png",
+        "img_004589.png",
+        "img_005420.png",
+        "img_005947.png",
+        "img_003608.png",
+        "img_005034.png",
+        "img_000911.png",
+        "img_003227.png",
+        "img_005981.png",
+        "img_002819.png",
+        "img_003063.png",
+        "img_004475.png",
+        "img_005329.png",
+        "img_002430.png",
+        "img_003010.png",
+        "img_000894.png",
+        "img_006606.png",
+        "img_004591.png",
+        "img_001974.png",
+        "img_003653.png",
+        "img_003280.png",
+        "img_004113.png",
+        "img_006693.png",
+        "img_006470.png",
+        "img_004388.png",
+        "img_006703.png",
+        "img_005692.png",
+        "img_001910.png",
+        "img_002738.png",
+        "img_000465.png",
+        "img_006924.png",
+        "img_003656.png"
+      ],
+      "panels": [
+        "primary_kornia",
+        "independent_libjpeg"
+      ],
+      "freshness_limit": "Source-disjoint from scorer training but inside the upstream denoiser training split; development evidence only."
+    },
+    "original_input_transfer": {
+      "split": null,
+      "offset": null,
+      "count": 64,
+      "names_sha256": null,
+      "allocation_required_after_exact_candidate_freeze": true,
+      "automatic_access_forbidden": true,
+      "purpose": "One-shot Phase-A input-only layouts followed by separate target scoring; root must allocate an unconsumed slice."
+    }
+  },
+  "panel_seeds": {
+    "master": 2026071220,
+    "training_balanced": 2026071221,
+    "training_hard_negative": 2026071222,
+    "training_confirmation": 2026071223,
+    "bootstrap": 2026071224,
+    "derivation": "first_64_bits_of_SHA256(master:stage:source:replica)"
+  },
+  "production_layout": {
+    "scoring_tiles": "old_selected_tilenaf_ema_uint8",
+    "classical_score": "denoised_C1_equal_rank_fusion",
+    "hbt_score": "production_hbt",
+    "hbt_weight": 4.0,
+    "soft_cycle_score": "production_hbt",
+    "soft_cycle_top_k": 8,
+    "soft_cycle_keep_per_tile": 1,
+    "soft_cycle_keep_fraction": 0.5,
+    "soft_cycle_loop_weight": 1.0,
+    "soft_cycle_reciprocal_weight": 0.35,
+    "qap_iterations": 25,
+    "qap_restarts": 2,
+    "qap_boundary_weight": 0.05,
+    "qap_initial_weight": 0.75,
+    "qap_noisy_components": 3,
+    "qap_noise_scale": 1.0,
+    "qap_refine_swaps": 8,
+    "qap_refine_weak_cells": 32,
+    "qap_seed": "little_endian_uint32(SHA256(source_name)[:4]) + 7001",
+    "frozen_for_all_arms": true
+  },
+  "comparison_arms": {
+    "A_renderer_only": {
+      "layout": "production layout generated from old denoiser and production HBT",
+      "baseline_renderer": "old denoiser",
+      "candidate_renderer": "new denoiser",
+      "sorting_change": false,
+      "purpose": "Isolate pixel restoration on byte-identical position_to_slot layouts."
+    },
+    "B_new_scoring_view": {
+      "layout": "unchanged production soft-cycle and QAP with old HBT applied to the new-denoised tiles",
+      "renderer_for_both_layouts": "new denoiser",
+      "retrained_parameters": false,
+      "purpose": "Measure zero-training domain transfer of the old HBT and C1 scores."
+    },
+    "C_retrained_multiview": {
+      "layout": "unchanged production soft-cycle and QAP with a warm-start shared HBT over dirty, old-denoised, and new-denoised views",
+      "renderer_for_all_layouts": "new denoiser",
+      "training_allowed_only_after_A_B_screen": true,
+      "qap_allowed_only_after_pair_retrieval_gate": true,
+      "purpose": "Adapt border retrieval without changing solver hyperparameters or adding contextual refinement."
+    }
+  },
+  "early_metrics": {
+    "directed_neighbor": [
+      "top1",
+      "top5",
+      "top10",
+      "mrr"
+    ],
+    "mutual_pair": [
+      "mutual_precision",
+      "mutual_correct_coverage",
+      "mutual_proposal_coverage"
+    ],
+    "candidate_graph": [
+      "candidate_recall_at_32",
+      "candidate_lcc_at_32"
+    ],
+    "full_solver": [
+      "combined_adjacency",
+      "strict_position_accuracy",
+      "predicted_layout_ssim"
+    ]
+  },
+  "screen_gate": {
+    "A_renderer_only": {
+      "balanced_mean_ssim_delta_min": 0.002,
+      "both_panels_mean_ssim_delta_positive": true,
+      "paired_source_bootstrap_lower_gt": 0.0,
+      "boundary_band_mae_nonworse": true,
+      "failure_behavior": "Keep the new denoiser out of rendering even if its isolated tile metric improved."
+    },
+    "B_new_scoring_view": {
+      "balanced_top1_delta_min": 0.005,
+      "both_panels_top10_delta_min": -0.002,
+      "balanced_mutual_precision_delta_min": 0.0,
+      "balanced_candidate_recall_at_32_delta_min": 0.0,
+      "qap_combined_adjacency_delta_min": 0.005,
+      "qap_ssim_same_renderer_delta_min": 0.002,
+      "failure_behavior": "Use the new denoiser only as renderer; retain old-denoised scoring view."
+    }
+  },
+  "training": {
+    "architecture": "production pooled HBT shared over three views with old-denoised residual anchor and learned dirty/new scalar gates",
+    "warm_start": "production_hbt_all_weights",
+    "panels": [
+      "primary_kornia",
+      "independent_libjpeg"
+    ],
+    "independent_corruption_per_tile": true,
+    "epochs": 2,
+    "sources_per_epoch": 512,
+    "denoise_batch_size": 512,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0,
+    "outside_weight": 0.2,
+    "variants": {
+      "balanced": {
+        "seed": 2026071221,
+        "loss": "infonce",
+        "learning_rate": 0.0001,
+        "dirty_view_dropout": 0.15,
+        "new_view_dropout": 0.15,
+        "freeze_encoder_sources": 64
+      },
+      "hard_negative": {
+        "seed": 2026071222,
+        "loss": "hard_triplet",
+        "triplet_margin": 0.2,
+        "cross_entropy_weight": 0.25,
+        "learning_rate": 0.00005,
+        "dirty_view_dropout": 0.25,
+        "new_view_dropout": 0.1,
+        "freeze_encoder_sources": 64
+      }
+    },
+    "confirmation_seed": {
+      "enabled_initially": false,
+      "enable_only_if_one_variant_passes_stage1": true,
+      "seed": 2026071223
+    }
+  },
+  "stage1_pair_retrieval_gate": {
+    "scope": "all 32 exact_selection sources on both panels",
+    "comparator": "max per metric of production old-denoised HBT and zero-train new-denoised old-HBT",
+    "balanced_top1_delta_min": 0.01,
+    "balanced_top5_delta_min": 0.005,
+    "both_panels_top10_delta_min": 0.0,
+    "balanced_mutual_precision_delta_min": 0.0,
+    "balanced_mutual_correct_coverage_delta_min": 0.005,
+    "balanced_candidate_recall_at_32_delta_min": 0.005,
+    "both_panels_candidate_lcc_at_32_min": 128,
+    "selection": [
+      "descending balanced top1",
+      "descending balanced mutual precision",
+      "descending balanced candidate recall at 32",
+      "ascending variant name"
+    ],
+    "failure_behavior": "Stop before QAP and before any mutual-cycle or hyperedge model."
+  },
+  "stage2_frozen_qap_gate": {
+    "scope": "the same 32 exact_selection sources and both panels; no source or nuisance reselection",
+    "layout_algorithms_and_random_seeds_identical": true,
+    "candidate_comparator": "must beat both production old-view layout and zero-train new-view layout under the same new-denoiser renderer",
+    "balanced_combined_adjacency_delta_min": 0.01,
+    "both_panels_combined_adjacency_delta_positive": true,
+    "balanced_full_image_ssim_delta_min": 0.003,
+    "both_panels_full_image_ssim_delta_positive": true,
+    "paired_source_bootstrap_lower_gt": 0.0,
+    "large_ssim_regressions_below_minus_0_01_max": 3,
+    "success_behavior": "Freeze one candidate and request a root-allocated one-shot original-input transfer panel; not submission-ready.",
+    "failure_behavior": "Retain production scorer and use the new denoiser only in arms that independently passed."
+  },
+  "optional_higher_order": {
+    "enabled_before_pair_gate": false,
+    "eligible_after_stage1": [
+      "mutual_pair_conflict_resolution",
+      "cycle_consistency_reranking",
+      "bounded_2x2_hyperedge_verification"
+    ],
+    "separate_gate_required": true,
+    "must_not_change_stage2_candidate_after_target_scoring": true
+  },
+  "stop_and_pivot": {
+    "max_initial_train_variants": 2,
+    "max_initial_gpu_processes": 2,
+    "max_confirmation_seeds_after_stage1_pass": 1,
+    "stop_if_new_view_top1_delta_below_minus_0_005_on_both_panels": true,
+    "stop_if_any_panel_top10_delta_below_minus_0_01": true,
+    "stop_if_no_variant_passes_stage1": true,
+    "stop_if_stage2_adjacency_or_ssim_gate_fails": true,
+    "do_not_respond_by_scaling_transformer_or_qap_search": true,
+    "pivot_targets": [
+      "candidate_generation",
+      "relative_position_modeling",
+      "denoiser_border_objective"
+    ]
+  }
+}

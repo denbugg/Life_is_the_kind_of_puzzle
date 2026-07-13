@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "denoise_block5x5_kaggle_launch_receipt",
+  "created_utc": "2026-07-12T15:37:30Z",
+  "kernel": {
+    "slug": "pasha883/vsos-denoise-true-block5x5-t4x2",
+    "kernel_id": 126839926,
+    "version": 2,
+    "kernel_session_id": 334584570,
+    "machine_shape": "NvidiaTeslaT4",
+    "gpu_count_required_by_wrapper": 2,
+    "internet_enabled": false,
+    "server_readback_metadata": "runs/denoise_v2/kaggle_block5x5_readback/code_v2/kernel-metadata.json",
+    "server_readback_metadata_sha256": "d28e0213161a680f4f5380981ef77889101a77fa5a2e5d48529c49b1a93f6ac2",
+    "server_readback_code": "runs/denoise_v2/kaggle_block5x5_readback/code_v2/vsos-denoise-true-block5x5-t4x2.py",
+    "server_readback_code_sha256": "384434a8cfc59557a0ede95e9e3798b2a5d24782993490613ec09d0c4070646e",
+    "server_readback_matches_local_wrapper": true
+  },
+  "code_dataset": {
+    "slug": "pasha883/vsos-denoise-block5x5-code",
+    "dataset_id": 11141701,
+    "version": 2,
+    "private": true,
+    "deterministic_source_zip_sha256": "839e5c11023a4ff02a49478c522762366089ac542b3dd71f15b39f58dc393e46",
+    "auto_extracted_manifest_sha256": "89263beabf5ca58c93da0a4c6f8260ffa8ee07b52f3fc09855ca2f079a0c982d",
+    "server_readback_metadata": "runs/denoise_v2/kaggle_block5x5_readback/dataset_v2/dataset-metadata.json",
+    "server_readback_metadata_sha256": "0a90b6c17ff8e96ff4ea381255d638ea5d3aa983b46e67f5aa8f99ba8727ee18"
+  },
+  "protocol": {
+    "path": "configs/denoise_block5x5_v1.json",
+    "sha256": "6f6fd7f1fd0e35661cb804f40261ae301163f746861574d032b9ff92a3f0a01b",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "initial_checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+  },
+  "superseded_version": {
+    "version": 1,
+    "kernel_session_id": 334583739,
+    "reason": "code dataset v1 lacked one transitive puzzle_assembly import needed only by the late QAP gate",
+    "metrics_observed_before_supersession": false,
+    "cancel_response_error_message": "",
+    "cancelled": true,
+    "output_zip_bytes_at_cancellation": 22,
+    "output_files": []
+  },
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-denoise-block5x5-code"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "assets": {
+    "denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "hbt": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    },
+    "model": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-component-sync-code/runs/assembly_v1/full_union_tabular/v1/full_union_tabular.joblib",
+      "sha256": "c5929a76c843f7541119f622bf1c5b6774006ad79e3811407e36edfe60bd0f10"
+    },
+    "report": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-component-sync-code/runs/assembly_v1/full_union_tabular/v1/report.json",
+      "sha256": "d8a896dd3f22f138ed9ffac5a7d84bb04ee2af8ea653ce55750e02eacdd0ced5"
+    }
+  },
+  "bundle_root": "/kaggle/input/datasets/pasha883/vsos-component-sync-code",
+  "command": [
+    "/usr/bin/python3",
+    "/kaggle/input/datasets/pasha883/vsos-component-sync-code/scripts/evaluate_hgb_component_sync.py",
+    "--model",
+    "/kaggle/input/datasets/pasha883/vsos-component-sync-code/runs/assembly_v1/full_union_tabular/v1/full_union_tabular.joblib",
+    "--tabular-report",
+    "/kaggle/input/datasets/pasha883/vsos-component-sync-code/runs/assembly_v1/full_union_tabular/v1/report.json",
+    "--data-root",
+    "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "--denoiser",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "--embedding-checkpoint",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+    "--manifest",
+    "/kaggle/input/datasets/pasha883/vsos-component-sync-code/configs/denoise_splits_seed20260710.json",
+    "--quarantine",
+    "/kaggle/input/datasets/pasha883/vsos-component-sync-code/configs/denoise_validation_quarantine_v1.json",
+    "--device",
+    "cuda",
+    "--denoise-batch-size",
+    "512",
+    "--calibration-iterations",
+    "10",
+    "--skip-v4",
+    "--output",
+    "/kaggle/working/component_sync_calibration_report.json",
+    "--overwrite"
+  ],
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "hardware": {
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_op": 0.008126696571707726
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_op": -0.04167311266064644
+      }
+    ],
+    "nvidia_smi": "Sun Jul 12 23:11:38 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   39C    P0             26W /   70W |     153MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   38C    P0             26W /   70W |     153MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A               7      C   python3                                 150MiB |\n|    1   N/A  N/A               7      C   python3                                 150MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "component_sync_calibration_kaggle_wrapper",
+  "output": {
+    "path": "/kaggle/working/component_sync_calibration_report.json",
+    "sha256": "9b686b6fd0c3773ee255d37a7378c4f0a19a74ef9f04a555ea0c2ef09ed7a84d"
+  },
+  "result_status": null,
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 939.2674522399902,
+  "selected": null,
+  "started_unix": 1783897833.1130402,
+  "status": "complete"
+}

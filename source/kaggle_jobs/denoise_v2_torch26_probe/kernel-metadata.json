@@ -1,0 +1,10 @@
+{
+  "id": "rusyalain/vsos-denoise-v2-torch-26-probe",
+  "title": "VSOS Denoise V2 Torch 26 Probe",
+  "code_file": "probe.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true
+}

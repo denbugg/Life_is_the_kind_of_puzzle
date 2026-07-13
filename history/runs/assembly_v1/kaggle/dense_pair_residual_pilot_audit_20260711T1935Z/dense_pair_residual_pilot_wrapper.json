@@ -1,0 +1,263 @@
+{
+  "assets": {
+    "audit_exclusion": {
+      "path": "/kaggle/working/dense_pair_base/configs/assembly_audit_exclusion_v1.json",
+      "sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6"
+    },
+    "denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "hbt": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    },
+    "manifest": {
+      "path": "/kaggle/working/dense_pair_base/configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "path": "/kaggle/working/dense_pair_base/configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    }
+  },
+  "base": {
+    "mode": "direct",
+    "source_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "working_root": "/kaggle/working/dense_pair_base"
+  },
+  "base_hashes": {
+    "configs/denoise_splits_seed20260710.json": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "configs/denoise_validation_quarantine_v1.json": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "src/puzzle_assembly/__init__.py": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5",
+    "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+    "src/puzzle_assembly/components.py": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367",
+    "src/puzzle_assembly/geometry.py": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86",
+    "src/puzzle_assembly/learned.py": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b",
+    "src/puzzle_assembly/metrics.py": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69",
+    "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+    "src/puzzle_assembly/protocol.py": "b711ad6d28a2fe60329e3e8236e58adbfbceea8ca4c8bf85e9a057e7619e24f4",
+    "src/puzzle_assembly/qap.py": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "src/puzzle_assembly/solvers.py": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e",
+    "src/puzzle_denoise_v2/__init__.py": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7",
+    "src/puzzle_denoise_v2/degradation.py": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+    "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+    "src/puzzle_denoise_v2/losses.py": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34",
+    "src/puzzle_denoise_v2/metrics.py": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36",
+    "src/puzzle_denoise_v2/model.py": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+    "src/puzzle_denoise_v2/tiles.py": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+    "src/puzzle_denoise_v2/training.py": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+  },
+  "completed_unix": 1783797840.574185,
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "hardware": {
+    "cuda_runtime": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_probe": 0.49999427795410156,
+        "total_memory": 15636037632
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_probe": 0.49999427795410156,
+        "total_memory": 15636037632
+      }
+    ],
+    "nvidia_smi": [
+      "Tesla T4, 15360 MiB, 580.159.04",
+      "Tesla T4, 15360 MiB, 580.159.04"
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "dense_pair_residual_kaggle_wrapper",
+  "overlay": {
+    "mode": "direct",
+    "root": "/kaggle/input/datasets/pasha883/vsos-dense-pair-residual-code",
+    "staged_hashes": {
+      "configs/assembly_audit_exclusion_v1.json": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+      "scripts/train_evaluate_dense_pair_residual.py": "3141acc7ac4d58a29e76bfa558f070504f0d352cf5fd480243362b6807d00d7d",
+      "src/puzzle_assembly/dense_pair_residual.py": "38ef49942500a4d044c6faeb4807e207f5ee28ce7c73af0a82c3302d06fecbfc",
+      "src/puzzle_assembly/protocol.py": "7651d4405ce4dd35203a0cae7bfdd591621044f9e90dc522a314262727c86eca",
+      "tests/test_dense_pair_residual.py": "7b4729c54652c47e0fd1955fd0796814901c304941293d848999c645fdf0e20d",
+      "tests/test_dense_pair_trainer.py": "50e47e1c0c5c684535658f7b93f3300d01676689a553129dbf92538a6d211078"
+    }
+  },
+  "pilot_report": {
+    "gate_opened": {
+      "original_real_input": false,
+      "synthetic_transfer": false,
+      "true_confirmation": false,
+      "true_final_audit": false
+    },
+    "path": "/kaggle/working/dense_pair_residual_pilot/dense_pair_residual_report.json",
+    "sha256": "b435b213e51a3e1f5baca82190a53aad1e8c28b1060984dbb0da1bab92efe119",
+    "status": "stop_cheap_selection_retrieval"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "started_unix": 1783796744.91818,
+  "status": "complete",
+  "steps": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_dense_pair_residual.py",
+        "tests/test_dense_pair_trainer.py"
+      ],
+      "label": "dense-pair unit tests",
+      "log": "/kaggle/working/dense_pair_residual_tests.log",
+      "log_sha256": "9244152bd424f3f2b929a1b268abc9cee295dac66d011dad5b24cc4b867044fc",
+      "returncode": 0,
+      "seconds": 19.97169074600015,
+      "timed_out": false,
+      "timeout_seconds": 900
+    },
+    {
+      "command": [
+        "torchrun",
+        "--standalone",
+        "--nproc_per_node=2",
+        "scripts/train_evaluate_dense_pair_residual.py",
+        "--action",
+        "pilot",
+        "--output-dir",
+        "/kaggle/working/dense_pair_residual_smoke",
+        "--smoke",
+        "--full-model-smoke",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/dense_pair_base/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/dense_pair_base/configs/denoise_validation_quarantine_v1.json",
+        "--audit-exclusion",
+        "/kaggle/working/dense_pair_base/configs/assembly_audit_exclusion_v1.json",
+        "--selection-offset",
+        "96",
+        "--holdout-offset",
+        "112",
+        "--real-gate-offset",
+        "128",
+        "--final-audit-offset",
+        "0",
+        "--confirmation-offset",
+        "64",
+        "--panels",
+        "primary_kornia,independent_libjpeg"
+      ],
+      "label": "2xT4 full-model one-step smoke",
+      "log": "/kaggle/working/dense_pair_residual_smoke.log",
+      "log_sha256": "e074a321fae0d6e8e2a3a2e654c08d64904a71f474a2ceb6f972ef1ee69859b8",
+      "report": {
+        "gate_opened": {
+          "original_real_input": false,
+          "synthetic_transfer": false,
+          "true_confirmation": false,
+          "true_final_audit": false
+        },
+        "path": "/kaggle/working/dense_pair_residual_smoke/dense_pair_residual_report.json",
+        "sha256": "1e4d70dc2a74baf2a5d78b2b41e69df0ce8e36f061784d9dddd3bfcc4239988e",
+        "status": "stop_cheap_selection_retrieval"
+      },
+      "returncode": 0,
+      "seconds": 34.5739590579999,
+      "timed_out": false,
+      "timeout_seconds": 3600
+    },
+    {
+      "command": [
+        "torchrun",
+        "--standalone",
+        "--nproc_per_node=2",
+        "scripts/train_evaluate_dense_pair_residual.py",
+        "--action",
+        "pilot",
+        "--output-dir",
+        "/kaggle/working/dense_pair_residual_pilot",
+        "--train-sources",
+        "256",
+        "--train-offset",
+        "4096",
+        "--epochs",
+        "2",
+        "--queries-per-source",
+        "48",
+        "--selection-sources",
+        "32",
+        "--holdout-sources",
+        "16",
+        "--real-gate-sources",
+        "64",
+        "--final-audit-sources",
+        "64",
+        "--confirmation-sources",
+        "64",
+        "--quick-sources",
+        "32",
+        "--evaluation-replicas",
+        "1",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/dense_pair_base/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/dense_pair_base/configs/denoise_validation_quarantine_v1.json",
+        "--audit-exclusion",
+        "/kaggle/working/dense_pair_base/configs/assembly_audit_exclusion_v1.json",
+        "--selection-offset",
+        "96",
+        "--holdout-offset",
+        "112",
+        "--real-gate-offset",
+        "128",
+        "--final-audit-offset",
+        "0",
+        "--confirmation-offset",
+        "64",
+        "--panels",
+        "primary_kornia,independent_libjpeg"
+      ],
+      "label": "bounded dense-pair residual pilot",
+      "log": "/kaggle/working/dense_pair_residual_pilot.log",
+      "log_sha256": "17b7829e5ab584d3b98e2b73bb40be401caef6f74194b715d104d4acfcbbcc4d",
+      "report": {
+        "gate_opened": {
+          "original_real_input": false,
+          "synthetic_transfer": false,
+          "true_confirmation": false,
+          "true_final_audit": false
+        },
+        "path": "/kaggle/working/dense_pair_residual_pilot/dense_pair_residual_report.json",
+        "sha256": "b435b213e51a3e1f5baca82190a53aad1e8c28b1060984dbb0da1bab92efe119",
+        "status": "stop_cheap_selection_retrieval"
+      },
+      "returncode": 0,
+      "seconds": 960.8316998299999,
+      "timed_out": false,
+      "timeout_seconds": 10800
+    }
+  ]
+}

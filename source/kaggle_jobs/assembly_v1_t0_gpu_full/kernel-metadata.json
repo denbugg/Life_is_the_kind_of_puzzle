@@ -1,0 +1,14 @@
+{
+  "id": "pasha883/vsos-assembly-v1-t0-gpu-full",
+  "title": "VSOS Assembly V1 T0 GPU Full",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime"
+  ]
+}

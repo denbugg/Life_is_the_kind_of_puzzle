@@ -1,0 +1,8 @@
+{
+  "error": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 134, in main\n    raise RuntimeError(\"focused tests failed\")\nRuntimeError: focused tests failed\n",
+  "kind": "dual_lambdarank_qap_diagnostic_kaggle_wrapper",
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 59.09660458564758,
+  "status": "error"
+}

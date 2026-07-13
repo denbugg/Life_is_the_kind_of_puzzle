@@ -1,0 +1,77 @@
+{
+  "allowed_npz_keys": [
+    "clean_slot_tiles",
+    "slot_to_target"
+  ],
+  "kind": "masked_gap_label_manifest_v1",
+  "names": [
+    "img_003860.png",
+    "img_004883.png",
+    "img_002131.png",
+    "img_001441.png"
+  ],
+  "names_sha256": "1f6fb483add0d647d30f1584f23488f25920eeb3192c782c5075d735cf43e492",
+  "panels": [
+    "primary_kornia",
+    "independent_libjpeg"
+  ],
+  "records": [
+    {
+      "file": "img_003860__primary_kornia.labels.npz",
+      "name": "img_003860.png",
+      "panel": "primary_kornia",
+      "seed": 14971368204626542359,
+      "sha256": "ffd08f3ae20cdc3e90e4dce4d4c4edb88e599cd278c60f5334c3b72388e96cac"
+    },
+    {
+      "file": "img_003860__independent_libjpeg.labels.npz",
+      "name": "img_003860.png",
+      "panel": "independent_libjpeg",
+      "seed": 13054548932649323811,
+      "sha256": "61cceb9dfd1179422e904e222f624aa7bcdad4176929734bf31e963c43c1dda0"
+    },
+    {
+      "file": "img_004883__primary_kornia.labels.npz",
+      "name": "img_004883.png",
+      "panel": "primary_kornia",
+      "seed": 5430360085752771762,
+      "sha256": "1fa7892156beb328c89f0e762809bbd92a3269d76d2bdc3de32cad68ccd4010d"
+    },
+    {
+      "file": "img_004883__independent_libjpeg.labels.npz",
+      "name": "img_004883.png",
+      "panel": "independent_libjpeg",
+      "seed": 16921587900397330119,
+      "sha256": "ed8b46c47abc625a81b5946d9e24ca1d34e7f9aaf4bd144ea3f7f8dd8d6825c6"
+    },
+    {
+      "file": "img_002131__primary_kornia.labels.npz",
+      "name": "img_002131.png",
+      "panel": "primary_kornia",
+      "seed": 18198490508854350247,
+      "sha256": "d15c17984ad7480658c408bc0f24fa2b136386a2d69000553515b0895cc378b9"
+    },
+    {
+      "file": "img_002131__independent_libjpeg.labels.npz",
+      "name": "img_002131.png",
+      "panel": "independent_libjpeg",
+      "seed": 11819745212333464648,
+      "sha256": "1a7cda189a1a8f043d6a8cb1ceb3adc606afef461ad38359cde644643ff48e8d"
+    },
+    {
+      "file": "img_001441__primary_kornia.labels.npz",
+      "name": "img_001441.png",
+      "panel": "primary_kornia",
+      "seed": 8369426498143865609,
+      "sha256": "db8c6c151b0212629df6564de1e0b8b1d73db07b3e3a1ad8aea5b0302ed114a8"
+    },
+    {
+      "file": "img_001441__independent_libjpeg.labels.npz",
+      "name": "img_001441.png",
+      "panel": "independent_libjpeg",
+      "seed": 12163259483814804755,
+      "sha256": "ab21de3fb8fee5b5f24eeccfd5d8c57a56d1d1dbe565fa729dbe1f9b9f1914d5"
+    }
+  ],
+  "split": "calibration_b"
+}

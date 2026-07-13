@@ -1,0 +1,64 @@
+{
+  "capacity_report_sha256": "4fe36a4cf8fd637b519aa18da8a5b1c6ca762458fbebba3e33b226ebe3d09843",
+  "capacity_wrapper_report_sha256": "b46d30c4486f0d2b2502f01993a181ac002bbdcc7c121ec30e60857a4fa2bb04",
+  "checkpoint_sha256": "79447dce4c5943abceb1ec166685a6724fb0b7c10446d20d4a1b11be74afdf48",
+  "code_manifest": {
+    "file_sha256": {
+      "configs/denoise_splits_seed20260710.json": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+      "configs/denoise_validation_quarantine_v1.json": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+      "scripts/train_evaluate_masked_gap.py": "078cc975700e4b570ae3c4239910075fefecdacf82ac5f1f2cfab2b8062cbc35",
+      "src/puzzle_assembly/__init__.py": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5",
+      "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+      "src/puzzle_assembly/components.py": "655af23f2705e0a22cb334fb5d5b282795f8c0de35c22f265966118cce0c34b0",
+      "src/puzzle_assembly/geometry.py": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86",
+      "src/puzzle_assembly/learned.py": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b",
+      "src/puzzle_assembly/masked_gap.py": "8d9be68835d026d64ca4a2dbb5801dedcebc1aeaf31c5e1ff8624720ce957b41",
+      "src/puzzle_assembly/metrics.py": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69",
+      "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+      "src/puzzle_assembly/protocol.py": "7651d4405ce4dd35203a0cae7bfdd591621044f9e90dc522a314262727c86eca",
+      "src/puzzle_assembly/solvers.py": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e",
+      "src/puzzle_denoise_v2/__init__.py": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7",
+      "src/puzzle_denoise_v2/degradation.py": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+      "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+      "src/puzzle_denoise_v2/losses.py": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34",
+      "src/puzzle_denoise_v2/metrics.py": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36",
+      "src/puzzle_denoise_v2/model.py": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+      "src/puzzle_denoise_v2/tiles.py": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+      "src/puzzle_denoise_v2/training.py": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+    },
+    "kind": "masked_gap_recursive_code_manifest_v1"
+  },
+  "code_manifest_sha256": "1583053a4276ba9b30368dcc6af00f24cd0fe091bfaff93090c41c01b0c3675b",
+  "hardware": {
+    "cuda": "12.8",
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_op": -0.01673530787229538
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_op": 0.13288098573684692
+      }
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "holdout_prepared": false,
+  "input_only_archive_sha256": "adbcaf4ae8f606004e229fcf81afbaab8d409b5580f0fa66030017f32a5b9b7d",
+  "kind": "masked_gap_stage1_train_prepare_v1",
+  "label_only_archive_created": true,
+  "qap_run": false,
+  "safe_for_submission": false,
+  "status": "complete",
+  "training_report_sha256": "9fca7d84cf8a0c552e6dc971f4c50af2648973c44ba56f752d1c71b6b5746a01"
+}

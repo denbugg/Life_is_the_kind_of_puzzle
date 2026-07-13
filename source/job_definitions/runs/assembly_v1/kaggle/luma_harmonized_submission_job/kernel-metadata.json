@@ -1,0 +1,16 @@
+{
+  "id": "pasha883/vsos-luma-harmonized-submission-t4x2",
+  "title": "VSOS Luma Harmonized Submission T4x2",
+  "code_file": "run_luma_harmonized_submission.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-postassembly-harmonizer-runtime/1",
+    "pasha883/vsos-luma-harmonized-submission-code"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "authorized_record_count": 8,
+  "checkpoint_sha256": "79447dce4c5943abceb1ec166685a6724fb0b7c10446d20d4a1b11be74afdf48",
+  "core_code_sha256": "8d9be68835d026d64ca4a2dbb5801dedcebc1aeaf31c5e1ff8624720ce957b41",
+  "evaluator_code_sha256": "078cc975700e4b570ae3c4239910075fefecdacf82ac5f1f2cfab2b8062cbc35",
+  "generator_state_sha256": "9a58208fdaa18589562259c3faf0625cd372ead9c2a5fe3d7713b7b130bfa697",
+  "input_manifest_sha256": "fbe74bfa263bfdea43c53941c8fddaf30468cfc89aee5ccee74697f9aef3ea8a",
+  "kind": "masked_gap_global_phase_b_authorization_v1",
+  "matrix_manifest_sha256": "aabf4b34af90f4ce51a5fbaef161e4bac7764a217407ea82aa881dd8b613c7b1",
+  "panels": [
+    "primary_kornia",
+    "independent_libjpeg"
+  ],
+  "phase_a_artifact_sha256": "a1ab46b9efa81c8a76a355342d1b150bdcf84a5fae4c38d5cc93828710487f20",
+  "phase_a_report_sha256": "a2dc227f7b669deab90f324abe84688264930be9416d8d2618f4baed5b20b05a",
+  "phase_b_authorized": true,
+  "scientific_config_sha256": "c44cde1f19204ec4805c410f2714daf3bda0dad4d88d4ff5761b1b518c9e795a",
+  "source_names_sha256": "1f6fb483add0d647d30f1584f23488f25920eeb3192c782c5075d735cf43e492",
+  "split": "calibration_b",
+  "training_ledger_sha256": "aaf8f9bd65f742ac28e1d206628ec01b23be8d086bbafa13f61efc1055b1b489",
+  "upstream_asset_sha256": {
+    "embedding": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "restorer": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+  }
+}

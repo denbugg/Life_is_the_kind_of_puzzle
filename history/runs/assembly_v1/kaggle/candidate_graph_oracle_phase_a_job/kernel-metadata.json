@@ -1,0 +1,36 @@
+{
+  "id": "pasha883/vsos-candidate-graph-oracle-phase-a-t4x2",
+  "id_no": 126834780,
+  "title": "VSOS Candidate Graph Oracle Phase A T4x2",
+  "code_file": "run_phase_a.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-candidate-graph-oracle-code/2",
+    "pasha883/vsos-candidate-graph-oracle-inputs/2",
+    "pasha883/vsos-candidate-graph-oracle-runtime/2"
+  ],
+  "oracle_launch_expectation": {
+    "kernel_id": 126834780,
+    "kernel_slug": "pasha883/vsos-candidate-graph-oracle-phase-a-t4x2",
+    "kernel_version": 2,
+    "dataset_versions": {
+      "code": {
+        "slug": "pasha883/vsos-candidate-graph-oracle-code",
+        "version": 2
+      },
+      "input": {
+        "slug": "pasha883/vsos-candidate-graph-oracle-inputs",
+        "version": 2
+      },
+      "runtime": {
+        "slug": "pasha883/vsos-candidate-graph-oracle-runtime",
+        "version": 2
+      }
+    }
+  }
+}

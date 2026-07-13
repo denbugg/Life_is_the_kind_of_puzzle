@@ -1,0 +1,207 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "py_compile",
+        "/kaggle/working/layout_energy_code/src/puzzle_assembly/layout_energy_transformer.py",
+        "/kaggle/working/layout_energy_code/scripts/train_evaluate_layout_energy.py",
+        "/kaggle/working/layout_energy_code/tests/test_layout_energy_transformer.py"
+      ],
+      "label": "pycompile",
+      "returncode": 0,
+      "seconds": 0.13710103000005347
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "/kaggle/working/layout_energy_code/tests/test_layout_energy_transformer.py"
+      ],
+      "label": "pytest",
+      "returncode": 0,
+      "seconds": 11.55304615700004
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/working/layout_energy_code/scripts/train_evaluate_layout_energy.py",
+        "--synthetic-smoke",
+        "--device",
+        "cuda:0",
+        "--smoke-steps",
+        "2",
+        "--output-dir",
+        "/kaggle/working/layout_energy_smoke",
+        "--overwrite"
+      ],
+      "label": "single_gpu_synthetic_smoke",
+      "returncode": 0,
+      "seconds": 12.15899815299997
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/kaggle/working/layout_energy_code/scripts/train_evaluate_layout_energy.py",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--manifest",
+        "/kaggle/working/layout_energy_code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/layout_energy_code/configs/denoise_validation_quarantine_v1.json",
+        "--amp",
+        "fp16",
+        "--amp-init-scale",
+        "1024",
+        "--max-consecutive-amp-skips",
+        "8",
+        "--max-total-amp-skips",
+        "32",
+        "--train-sources",
+        "512",
+        "--selection-sources",
+        "16",
+        "--holdout-sources",
+        "16",
+        "--epochs",
+        "4",
+        "--negatives-per-source",
+        "4",
+        "--eval-negatives",
+        "8",
+        "--eval-replicas",
+        "2",
+        "--d-model",
+        "256",
+        "--heads",
+        "8",
+        "--local-layers",
+        "6",
+        "--window-size",
+        "6",
+        "--global-layers",
+        "2",
+        "--global-tokens",
+        "6",
+        "--feedforward-dim",
+        "1024",
+        "--repair-steps",
+        "6",
+        "--repair-beam-width",
+        "3",
+        "--repair-hot-positions",
+        "32",
+        "--repair-proposals",
+        "64",
+        "--score-batch-size",
+        "6",
+        "--gate-min-relative-repair-error-reduction",
+        "0.25",
+        "--gate-min-control-win-fraction",
+        "0.60",
+        "--output-dir",
+        "/kaggle/working/layout_energy_pilot",
+        "--overwrite"
+      ],
+      "label": "torchrun_t4x2_full_default",
+      "returncode": 0,
+      "seconds": 2537.168155667
+    }
+  ],
+  "hardware": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "fp16_loss": 1024.214111328125,
+        "fp16_matmul_mean": -0.018523182719945908,
+        "fp16_matmul_shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "peak_allocated": 23199744,
+        "total_memory": 15636037632
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "fp16_loss": 1020.1589965820312,
+        "fp16_matmul_mean": 0.007169235497713089,
+        "fp16_matmul_shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "peak_allocated": 23199744,
+        "total_memory": 15636037632
+      }
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "hardware_seconds": 7.836041992999981,
+  "inputs": {
+    "base_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "model_sha256": "ebcaab5ecd77dc54e7a7c1f9bf7c282931b4ccbddda414b28e9f07872aa7e6e1",
+    "overlay_archive": null,
+    "overlay_archive_sha256": null,
+    "overlay_root": "/kaggle/input/datasets/pasha883/vsos-layout-energy-pilot-code",
+    "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "runner_sha256": "caff2877d0bbb40d1b7023edc26e805ead9d00f24a12c4181af2422a8d7fec4f",
+    "tests_sha256": "144405eff3238bfb6b46879a467ca9473720adf81d009d385397931c16181c2c",
+    "trainer_sha256": "4206f121398015405aed1f6fb7438fd9d1bd3d1a98662ae0664d9028d96331d1"
+  },
+  "kind": "layout_energy_t4x2_pilot_wrapper",
+  "pilot": {
+    "checkpoint": "/kaggle/working/layout_energy_pilot/layout_energy_checkpoint.pt",
+    "checkpoint_sha256": "039cd7638731006665a62064f658211fd288d8cdcae6df79347a2f038f5cb717",
+    "hashes": "/kaggle/working/layout_energy_pilot/SHA256SUMS.txt",
+    "hashes_sha256": "a6ae4c1833d8ad05c907ecdd9793fc1f5c0340ea0fc740b7e85998b3b2acc222",
+    "holdout_gate_passed": false,
+    "report": "/kaggle/working/layout_energy_pilot/layout_energy_report.json",
+    "report_sha256": "21ba1c9686191b4e104e1a97afb67e5bdd8f1a5d37c1152c20624f6fbd594d1a",
+    "resume_checkpoint": "/kaggle/working/layout_energy_pilot/layout_energy_resume_epoch.pt",
+    "resume_checkpoint_sha256": "0211907315f2aa8e3516e127a4e9eb432498d914f7e9e7dd4062ebde84b321e3",
+    "selected_epoch": 4,
+    "selection_gate_passed": false,
+    "status": "holdout_gate_failed"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 2628.172778219,
+  "smoke": {
+    "report": "/kaggle/working/layout_energy_smoke/layout_energy_report.json",
+    "report_sha256": "bae2b394e1b63e3b3ccd8238b820bb34db08b4c05132e0b0c610fa16e9b8eccb",
+    "status": "smoke_passed"
+  },
+  "status": "complete"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "pasha883/vsos-group-switch-synthetic-cpu",
+  "title": "VSOS Group Switch Synthetic CPU",
+  "code_file": "run_group_switch_synth.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-group-switch-sync-code"
+  ]
+}

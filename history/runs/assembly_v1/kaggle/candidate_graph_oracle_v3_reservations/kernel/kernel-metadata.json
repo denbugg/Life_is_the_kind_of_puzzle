@@ -1,0 +1,10 @@
+{
+  "id": "pasha883/vsos-candidate-graph-oracle-v3-phase-a-t4x2",
+  "title": "VSOS Candidate Graph Oracle V3 Phase A T4x2",
+  "code_file": "reserve_kernel.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false
+}

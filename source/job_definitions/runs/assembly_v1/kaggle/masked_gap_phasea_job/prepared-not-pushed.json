@@ -1,0 +1,7 @@
+{
+  "kind": "masked_gap_stage_job_manifest_v1",
+  "stage": "isolated_phase_a_authorize",
+  "status": "prepared_not_pushed",
+  "forbidden_datasets": ["puzzle", "pazzle", "labels", "targets"],
+  "unresolved_runtime_hashes": ["CHECKPOINT_SHA256", "INPUT_ONLY_ARCHIVE_SHA256"]
+}

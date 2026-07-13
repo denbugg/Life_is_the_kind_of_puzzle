@@ -1,0 +1,65 @@
+{
+  "gate": {
+    "evaluable": true,
+    "kind": "small8_advance_rule",
+    "passed": true,
+    "per_panel": {
+      "independent_libjpeg": {
+        "checks": {
+          "large_regressions_at_most_1": true,
+          "mean_ssim_delta_above_zero": true,
+          "seam_error_nonregression": true,
+          "wins_at_least_5_of_8": true
+        },
+        "passed": true
+      },
+      "primary_kornia": {
+        "checks": {
+          "large_regressions_at_most_1": true,
+          "mean_ssim_delta_above_zero": true,
+          "seam_error_nonregression": true,
+          "wins_at_least_5_of_8": true
+        },
+        "passed": true
+      }
+    },
+    "submission_promotion_allowed": false,
+    "valid_permutation_count": 16
+  },
+  "primary_comparison": {
+    "independent_libjpeg": {
+      "large_regressions_below_minus_0_01": 0,
+      "mean_ssim_delta": 0.013003400973410774,
+      "mean_target_referenced_seam_error_delta": -0.012496588460263334,
+      "paired_bootstrap_95_ci": [
+        0.009638008797316546,
+        0.017802084373142464
+      ],
+      "source_count": 8,
+      "wins_ties_losses": [
+        8,
+        0,
+        0
+      ]
+    },
+    "primary_kornia": {
+      "large_regressions_below_minus_0_01": 0,
+      "mean_ssim_delta": 0.013323676253829915,
+      "mean_target_referenced_seam_error_delta": -0.012289927595434316,
+      "paired_bootstrap_95_ci": [
+        0.009861443740408746,
+        0.017055486519305864
+      ],
+      "source_count": 8,
+      "wins_ties_losses": [
+        8,
+        0,
+        0
+      ]
+    }
+  },
+  "report": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_small8_score_20260712T1512Z/report.json",
+  "report_sha256": "f024f11e2dcf7c445358c06bf375705cd7fd5d9a261dca5568a769c25107e40e",
+  "source_count": 8,
+  "status": "small8_pass_run_unchanged_full32"
+}

@@ -1,0 +1,383 @@
+{
+  "commands": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "py_compile",
+        "/kaggle/working/pair_transformer_code/src/puzzle_assembly/pair_transformer.py",
+        "/kaggle/working/pair_transformer_code/scripts/train_evaluate_pair_transformer.py",
+        "/kaggle/working/pair_transformer_code/tests/test_pair_transformer.py",
+        "/kaggle/working/pair_transformer_code/runs/assembly_v1/kaggle/pair_transformer_pilot_job/run_pair_transformer_pilot.py"
+      ],
+      "label": "pycompile",
+      "returncode": 0,
+      "seconds": 0.14224675499997375,
+      "status": "passed"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "/kaggle/working/pair_transformer_code/tests/test_pair_transformer.py"
+      ],
+      "label": "pytest_22",
+      "passed_count": 22,
+      "returncode": 0,
+      "seconds": 18.261063688000036,
+      "status": "passed",
+      "stderr_tail": "",
+      "stdout_tail": "......................                                                   [100%]\n=============================== warnings summary ===============================\n../../../usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: 43 warnings\n  /usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.\n    warnings.warn(\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n22 passed, 43 warnings in 14.20s\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/working/pair_transformer_code/scripts/train_evaluate_pair_transformer.py",
+        "--action",
+        "pilot",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--manifest",
+        "/kaggle/working/pair_transformer_code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/pair_transformer_code/configs/denoise_validation_quarantine_v1.json",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--pseudo-gold",
+        "/kaggle/input/datasets/pasha883/vsos-real-gold-512/real_gold_train_512.npz",
+        "--amp-init-scale",
+        "1024",
+        "--max-amp-skips",
+        "4",
+        "--smoke",
+        "--output-dir",
+        "/kaggle/working/pair_transformer_smoke",
+        "--overwrite"
+      ],
+      "label": "single_gpu_smoke_actual_assets",
+      "returncode": 0,
+      "seconds": 50.64295410300002,
+      "status": "passed"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "torch.distributed.run",
+        "--standalone",
+        "--nproc_per_node=2",
+        "/kaggle/working/pair_transformer_code/scripts/train_evaluate_pair_transformer.py",
+        "--action",
+        "pilot",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--manifest",
+        "/kaggle/working/pair_transformer_code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/pair_transformer_code/configs/denoise_validation_quarantine_v1.json",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--pseudo-gold",
+        "/kaggle/input/datasets/pasha883/vsos-real-gold-512/real_gold_train_512.npz",
+        "--amp-init-scale",
+        "1024",
+        "--max-amp-skips",
+        "4",
+        "--train-sources",
+        "512",
+        "--epochs",
+        "3",
+        "--quick-val-sources",
+        "2",
+        "--calibration-sources",
+        "4",
+        "--validation-sources",
+        "8",
+        "--validation-replicas",
+        "2",
+        "--solver-sources",
+        "4",
+        "--queries-per-source",
+        "48",
+        "--negatives",
+        "31",
+        "--groups-per-step",
+        "4",
+        "--candidate-top-k",
+        "48",
+        "--candidate-reverse-top-k",
+        "8",
+        "--iterative-passes",
+        "2",
+        "--qap-iterations",
+        "12",
+        "--qap-restarts",
+        "1",
+        "--output-dir",
+        "/kaggle/working/pair_transformer_pilot",
+        "--overwrite"
+      ],
+      "label": "torchrun_t4x2_default_512x3",
+      "returncode": 1,
+      "seconds": 3814.121167991,
+      "status": "failed"
+    }
+  ],
+  "error": "torchrun_t4x2_default_512x3 failed with return code 1",
+  "error_type": "RuntimeError",
+  "hardware": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "fp16_left_grad_mean": -8.210711257561343e-07,
+        "fp16_loss": 1024.214111328125,
+        "fp16_matmul_shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "fp16_product_mean": -0.018523182719945908,
+        "index": 0,
+        "name": "Tesla T4",
+        "peak_allocated_bytes": 35783680,
+        "total_memory": 15636037632
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "fp16_left_grad_mean": 1.5541484117420623e-06,
+        "fp16_loss": 1020.1589965820312,
+        "fp16_matmul_shape": [
+          1024,
+          1024,
+          1024
+        ],
+        "fp16_product_mean": 0.007169235497713089,
+        "index": 1,
+        "name": "Tesla T4",
+        "peak_allocated_bytes": 35783680,
+        "total_memory": 15636037632
+      }
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "hardware_seconds": 6.530742985000018,
+  "inputs": {
+    "base_archive": null,
+    "base_archive_sha256": null,
+    "base_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "denoiser": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "exact_mounts": {
+      "pair_overlay": "/kaggle/input/datasets/pasha883/vsos-pair-transformer-pilot-code",
+      "puzzle": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+      "real_gold_512": "/kaggle/input/datasets/pasha883/vsos-real-gold-512",
+      "runtime": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime",
+      "solver_rework": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code"
+    },
+    "hbt": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+    "hbt_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "manifest": "/kaggle/working/pair_transformer_code/configs/denoise_splits_seed20260710.json",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "overlay_archive": null,
+    "overlay_archive_sha256": null,
+    "overlay_files_sha256": {
+      "scripts/train_evaluate_pair_transformer.py": "37f4585ff42eeeaf31a8142f2068d86debe1bc169358cc2f21277fd7aa6f3473",
+      "src/puzzle_assembly/pair_transformer.py": "99e14f3741528cf277a5b10fb0a01fac761debc5370fd55fd81f6235a0ae303b",
+      "tests/test_pair_transformer.py": "2a66d5b588b43f8d56b12b4faffeec262ddef746eabf8dab0ece0049e8343b7d"
+    },
+    "overlay_root": "/kaggle/input/datasets/pasha883/vsos-pair-transformer-pilot-code",
+    "pseudo_gold": "/kaggle/input/datasets/pasha883/vsos-real-gold-512/real_gold_train_512.npz",
+    "pseudo_gold_sha256": "70d0b7b3c15fefac62d6d1bf554f0e50a0f3473ddaf01423607b78cf0cde90c2",
+    "quarantine": "/kaggle/working/pair_transformer_code/configs/denoise_validation_quarantine_v1.json",
+    "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "runner_sha256": "252ee71f62afb448efc0ba5698c9e4568b6d3c6b3cb26d3ab8295ddbf0eca9b7",
+    "runtime_root": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime",
+    "verified_pins": {
+      "archive_sha256": {
+        "base": null,
+        "overlay": null
+      },
+      "runtime_assets_sha256": {
+        "denoiser": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+        "hbt": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+        "manifest": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+        "pseudo_gold": "70d0b7b3c15fefac62d6d1bf554f0e50a0f3473ddaf01423607b78cf0cde90c2",
+        "quarantine": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+      },
+      "transitive_code_sha256": {
+        "scripts/train_evaluate_pair_transformer.py": "37f4585ff42eeeaf31a8142f2068d86debe1bc169358cc2f21277fd7aa6f3473",
+        "src/puzzle_assembly/__init__.py": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5",
+        "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+        "src/puzzle_assembly/components.py": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367",
+        "src/puzzle_assembly/geometry.py": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86",
+        "src/puzzle_assembly/learned.py": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b",
+        "src/puzzle_assembly/metrics.py": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69",
+        "src/puzzle_assembly/pair_transformer.py": "99e14f3741528cf277a5b10fb0a01fac761debc5370fd55fd81f6235a0ae303b",
+        "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+        "src/puzzle_assembly/protocol.py": "b711ad6d28a2fe60329e3e8236e58adbfbceea8ca4c8bf85e9a057e7619e24f4",
+        "src/puzzle_assembly/qap.py": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+        "src/puzzle_assembly/solvers.py": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e",
+        "src/puzzle_denoise_v2/__init__.py": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7",
+        "src/puzzle_denoise_v2/degradation.py": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+        "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+        "src/puzzle_denoise_v2/losses.py": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34",
+        "src/puzzle_denoise_v2/metrics.py": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36",
+        "src/puzzle_denoise_v2/model.py": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+        "src/puzzle_denoise_v2/tiles.py": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+        "src/puzzle_denoise_v2/training.py": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+      }
+    }
+  },
+  "kind": "pair_transformer_t4x2_pilot_wrapper",
+  "network_access_required": false,
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 3940.939327878,
+  "smoke": {
+    "best_checkpoint": "/kaggle/working/pair_transformer_smoke/pair_transformer_best.pt",
+    "best_checkpoint_sha256": "535bb45702082bb7d97126a28190bc233ccebf7e1d68285ba1e8a4b3085ae2df",
+    "calibrated_checkpoint": "/kaggle/working/pair_transformer_smoke/pair_transformer_calibrated.pt",
+    "calibrated_checkpoint_sha256": "b2bd1db7db1a37a04ccf7c92a2a1db41d73f1efba0c564125d4102e3a852e5cb",
+    "checkpoint_contracts": {
+      "best_checkpoint": {
+        "kind": "puzzle_full_tile_pair_transformer",
+        "model_config": {
+          "band_tokens": 4,
+          "cnn_channels": 32,
+          "dropout": 0.1,
+          "feedforward_dim": 128,
+          "gradient_checkpointing": true,
+          "heads": 4,
+          "layers": 2,
+          "model_dim": 64,
+          "patch_grid": 3,
+          "side_band": 6
+        },
+        "model_state_strictly_loaded": true,
+        "safe_for_submission": false,
+        "schema_version": 1,
+        "sha256": "535bb45702082bb7d97126a28190bc233ccebf7e1d68285ba1e8a4b3085ae2df"
+      },
+      "calibrated_checkpoint": {
+        "kind": "puzzle_full_tile_pair_transformer",
+        "model_config": {
+          "band_tokens": 4,
+          "cnn_channels": 32,
+          "dropout": 0.1,
+          "feedforward_dim": 128,
+          "gradient_checkpointing": true,
+          "heads": 4,
+          "layers": 2,
+          "model_dim": 64,
+          "patch_grid": 3,
+          "side_band": 6
+        },
+        "model_state_strictly_loaded": true,
+        "safe_for_submission": false,
+        "schema_version": 1,
+        "sha256": "b2bd1db7db1a37a04ccf7c92a2a1db41d73f1efba0c564125d4102e3a852e5cb"
+      },
+      "latest_checkpoint": {
+        "kind": "puzzle_full_tile_pair_transformer",
+        "model_config": {
+          "band_tokens": 4,
+          "cnn_channels": 32,
+          "dropout": 0.1,
+          "feedforward_dim": 128,
+          "gradient_checkpointing": true,
+          "heads": 4,
+          "layers": 2,
+          "model_dim": 64,
+          "patch_grid": 3,
+          "side_band": 6
+        },
+        "model_state_strictly_loaded": true,
+        "resume_state": {
+          "amp_skips": 0,
+          "attempted_optimizer_steps": 4,
+          "best_checkpoint_sha256": "535bb45702082bb7d97126a28190bc233ccebf7e1d68285ba1e8a4b3085ae2df",
+          "completed_epoch": 0,
+          "next_epoch": 1,
+          "successful_optimizer_steps": 4,
+          "world_size": 1
+        },
+        "safe_for_submission": false,
+        "schema_version": 1,
+        "sha256": "9562a8cc48e9d78bb06bcbd60646edfbe0f4da90fb6b62bc2d5b703ebc9c146f"
+      }
+    },
+    "continuation_gates": {
+      "aggregate_qap_adjacency_delta_vs_no_neural_envelope_ge_0.01": false,
+      "aggregate_qap_ssim_delta_vs_no_neural_envelope_ge_0.005": false,
+      "aggregate_recall_at_1_delta_ge_0.02": false,
+      "aggregate_recall_at_32_delta_ge_minus_0.005": true,
+      "aggregate_softcycle_adjacency_delta_ge_0.01": true,
+      "every_panel_replica_positive_qap_ssim_vs_no_neural_envelope": false,
+      "every_panel_replica_positive_r1": false
+    },
+    "continue_to_1024_source_two_seed_run": false,
+    "hashes": "/kaggle/working/pair_transformer_smoke/SHA256SUMS.txt",
+    "hashes_sha256": "f57bb2431779897b39c31aad2c0b566fa444d5eb553c61484ad256a0bdf3d4dd",
+    "latest_checkpoint": "/kaggle/working/pair_transformer_smoke/pair_transformer_latest.pt",
+    "latest_checkpoint_sha256": "9562a8cc48e9d78bb06bcbd60646edfbe0f4da90fb6b62bc2d5b703ebc9c146f",
+    "report": "/kaggle/working/pair_transformer_smoke/pair_transformer_report.json",
+    "report_sha256": "9b0a18dc14fcd440f027c41082e24ba0d20880d0e6ff22fb77669103516fd8e9",
+    "safe_for_submission": false,
+    "sha256_manifest": {
+      "pair_transformer_best.pt": "535bb45702082bb7d97126a28190bc233ccebf7e1d68285ba1e8a4b3085ae2df",
+      "pair_transformer_calibrated.pt": "b2bd1db7db1a37a04ccf7c92a2a1db41d73f1efba0c564125d4102e3a852e5cb",
+      "pair_transformer_latest.pt": "9562a8cc48e9d78bb06bcbd60646edfbe0f4da90fb6b62bc2d5b703ebc9c146f",
+      "pair_transformer_report.json": "9b0a18dc14fcd440f027c41082e24ba0d20880d0e6ff22fb77669103516fd8e9"
+    },
+    "status": "stop_or_redesign",
+    "training_telemetry": {
+      "amp_skips": 0,
+      "attempted_steps": 4,
+      "best_checkpoint": "/kaggle/working/pair_transformer_smoke/pair_transformer_best.pt",
+      "best_checkpoint_sha256": "535bb45702082bb7d97126a28190bc233ccebf7e1d68285ba1e8a4b3085ae2df",
+      "by_rank": [
+        {
+          "model_seconds": 0.31518276799999967,
+          "pairs_per_second": 101.5283932020041,
+          "peak_cuda_allocated_bytes": 529675264,
+          "peak_cuda_reserved_bytes": 692060160,
+          "rank": 0,
+          "training_pairs": 32
+        }
+      ],
+      "latest_checkpoint": "/kaggle/working/pair_transformer_smoke/pair_transformer_latest.pt",
+      "latest_checkpoint_sha256": "9562a8cc48e9d78bb06bcbd60646edfbe0f4da90fb6b62bc2d5b703ebc9c146f",
+      "optimizer_steps": 4,
+      "resume_used_previous_fallback": false,
+      "resumed_from": null,
+      "start_epoch": 0
+    }
+  },
+  "status": "error",
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 1226, in main\n    execute(wrapper)\n  File \"/kaggle/src/script.py\", line 1198, in execute\n    run_checked(\n  File \"/kaggle/src/script.py\", line 525, in run_checked\n    raise RuntimeError(f\"{label} failed with return code {completed.returncode}\")\nRuntimeError: torchrun_t4x2_default_512x3 failed with return code 1\n"
+}

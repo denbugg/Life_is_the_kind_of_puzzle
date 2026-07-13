@@ -1,0 +1,58 @@
+{
+  "aggregate": {
+    "adjacency_wins": 0,
+    "mean_adjacency_delta": 0.0,
+    "mean_baseline_adjacency": 0.0480072463768116,
+    "mean_baseline_ssim": 0.21424393876834524,
+    "mean_residual_adjacency": 0.0480072463768116,
+    "mean_residual_ssim": 0.21424393876834524,
+    "mean_ssim_delta": 0.0,
+    "records": 1,
+    "ssim_wins": 0
+  },
+  "hgb_weight": 0.25,
+  "kind": "full_union_hgb_qap_residual_evaluation",
+  "model": "runs/assembly_v1/full_union_tabular/v1/full_union_tabular.joblib",
+  "model_sha256": "c5929a76c843f7541119f622bf1c5b6774006ad79e3811407e36edfe60bd0f10",
+  "panels": {
+    "independent_libjpeg": {
+      "mean_adjacency_delta": 0.0,
+      "mean_baseline_ssim": 0.21424393876834524,
+      "mean_residual_ssim": 0.21424393876834524,
+      "mean_ssim_delta": 0.0,
+      "records": 1
+    },
+    "primary_kornia": {
+      "mean_adjacency_delta": NaN,
+      "mean_baseline_ssim": NaN,
+      "mean_residual_ssim": NaN,
+      "mean_ssim_delta": NaN,
+      "records": 0
+    }
+  },
+  "qap": {
+    "initial": "frozen qap_w4 layout",
+    "iterations": 1,
+    "restarts": 1
+  },
+  "records": [
+    {
+      "baseline": {
+        "adjacency": 0.0480072463768116,
+        "ssim": 0.21424393876834524
+      },
+      "opaque_id": "00e4d63ae5655880b13678f73e1097c3",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.0480072463768116,
+        "qap_objective": 77.94287768595386,
+        "qap_restart": 0,
+        "ssim": 0.21424393876834524
+      },
+      "source_name": "img_002002.png"
+    }
+  ],
+  "schema_version": 1,
+  "seconds": 0.8658297061920166,
+  "selection_basis": "edge_development calibration MRR"
+}

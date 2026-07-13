@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "kind": "legacy_tile_restorer_1024_q90",
+  "distribution": "private_kaggle_dataset_only",
+  "checkpoint": {
+    "filename": "tile_restorer_1024_q90.pt",
+    "bytes": 2393069,
+    "sha256": "d1df5a4e4852c821d79f72063866cf1fe09fb1beff913a4fb1034466d6ead96e",
+    "safe_load": "torch.load(weights_only=True)"
+  },
+  "model": {
+    "class": "puzzle_denoise_v2.legacy_baseline.TileRestorer",
+    "width": 64,
+    "depth": 8,
+    "grid": 24,
+    "tile": 20,
+    "state_entries": 36,
+    "parameter_count": 594371,
+    "state_dtype": "torch.float32"
+  },
+  "source": {
+    "architecture_reference": "scripts/denoise_tiles.py",
+    "architecture_reference_sha256": "e20b0eb1cb1d345ccc08827f20f15a61df6085d7f81c0eebd9b91c57ee8bca11",
+    "strict_loader": "src/puzzle_denoise_v2/legacy_baseline.py",
+    "strict_loader_sha256": "8ab579172a714441791538f878f4290cd10b3ba03e5a0c0074be2c84e06522f4"
+  },
+  "intended_use": "Read-only legacy baseline evaluation against a fixed validation panel."
+}

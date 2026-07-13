@@ -1,0 +1,1087 @@
+{
+  "benchmark_source_sha256": "2ee1f73992df440c90949e71edca9aa5e5a7289b5811486852a25ab79def07c5",
+  "candidates": [
+    {
+      "allocator_cleared_before_capacity": true,
+      "capacity": {
+        "generator_blocks": 6,
+        "ranker_blocks": 5,
+        "width": 64
+      },
+      "capacity_key": "w64_g6_r5",
+      "ddp_all_reduce_cost_measured_in_training_rates": true,
+      "ddp_buckets_in_peak_memory": true,
+      "devices": [
+        {
+          "actual_tensor_op": -0.023162856698036194,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 0,
+          "name": "Tesla T4"
+        },
+        {
+          "actual_tensor_op": -0.038144685328006744,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 1,
+          "name": "Tesla T4"
+        }
+      ],
+      "feasible": false,
+      "isolated_fresh_process_pair": true,
+      "max_peak_reserved_bytes": 2357198848,
+      "memory_threshold_inclusive_pass": true,
+      "parameter_counts": {
+        "generator": 448259,
+        "pipeline": 1208325,
+        "ranker_per_arm": 380033
+      },
+      "peak_allocated_bytes_per_gpu": [
+        1718868992,
+        1718868992
+      ],
+      "peak_reserved_bytes_per_gpu": [
+        2357198848,
+        2357198848
+      ],
+      "per_rank": [
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 6,
+            "ranker_blocks": 5,
+            "width": 64
+          },
+          "capacity_key": "w64_g6_r5",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 9.007724215999986,
+            "generator_train": 1.1314630490000468,
+            "joint_two_rankers_train": 4.6325486470000214
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 448259,
+            "pipeline": 1208325,
+            "ranker_per_arm": 380033
+          },
+          "peak_allocated_bytes": 1718868992,
+          "peak_reserved_bytes": 2357198848,
+          "rank": 0,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 710881280,
+              "peak_reserved_bytes": 2357198848
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 1067644416,
+              "peak_reserved_bytes": 1109393408
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 1718868992,
+              "peak_reserved_bytes": 1778384896
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 2273.604243302916,
+            "generator_train_pairs_per_second": 2262.5573166197973,
+            "joint_ranker_train_pairs_per_arm_per_second": 1105.2231482373413
+          }
+        },
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 6,
+            "ranker_blocks": 5,
+            "width": 64
+          },
+          "capacity_key": "w64_g6_r5",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 8.950383498000008,
+            "generator_train": 1.1314410609999754,
+            "joint_two_rankers_train": 4.632375233999994
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 448259,
+            "pipeline": 1208325,
+            "ranker_per_arm": 380033
+          },
+          "peak_allocated_bytes": 1718868992,
+          "peak_reserved_bytes": 2357198848,
+          "rank": 1,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 710881280,
+              "peak_reserved_bytes": 2357198848
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 1067644416,
+              "peak_reserved_bytes": 1109393408
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 1718868992,
+              "peak_reserved_bytes": 1778384896
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 2288.1701107641165,
+            "generator_train_pairs_per_second": 2262.6012863077945,
+            "joint_ranker_train_pairs_per_arm_per_second": 1105.264522273803
+          }
+        }
+      ],
+      "per_rank_throughput": {
+        "dense_pipeline_pairs_per_second": [
+          2273.604243302916,
+          2288.1701107641165
+        ],
+        "generator_train_pairs_per_second": [
+          2262.5573166197973,
+          2262.6012863077945
+        ],
+        "joint_ranker_train_pairs_per_arm_per_second": [
+          1105.2231482373413,
+          1105.264522273803
+        ]
+      },
+      "projected_hours_with_1p35_safety": 8.173109114165046,
+      "projected_seconds_before_safety": 21794.957637773452,
+      "projected_seconds_with_1p35_safety": 29423.192810994162,
+      "projection_components_seconds_before_safety": {
+        "all_dense_generator_plus_two_rankers_seconds": 5826.871602224991,
+        "fixed_source_preparation_reserve_seconds": 3600.0,
+        "generator_train_seconds": 93.68514045720387,
+        "two_rankers_train_seconds": 12274.400895091258
+      },
+      "rank_imbalance_ratio": {
+        "dense_pipeline_pairs_per_second": 1.0064065096219386,
+        "generator_train_pairs_per_second": 1.0000194336239236,
+        "joint_ranker_train_pairs_per_arm_per_second": 1.0000374350071546
+      },
+      "status": "complete",
+      "throughput_2gpu": {
+        "dense_pipeline_pairs_per_second": 4547.208486605832,
+        "generator_train_pairs_per_second": 4525.114633239595,
+        "joint_ranker_train_pairs_per_arm_per_second": 2210.4462964746826
+      },
+      "throughput_aggregation": "2*minimum_per_rank_rate",
+      "time_threshold_inclusive_pass": false
+    },
+    {
+      "allocator_cleared_before_capacity": true,
+      "capacity": {
+        "generator_blocks": 4,
+        "ranker_blocks": 4,
+        "width": 48
+      },
+      "capacity_key": "w48_g4_r4",
+      "ddp_all_reduce_cost_measured_in_training_rates": true,
+      "ddp_buckets_in_peak_memory": true,
+      "devices": [
+        {
+          "actual_tensor_op": 0.09453344345092773,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 0,
+          "name": "Tesla T4"
+        },
+        {
+          "actual_tensor_op": -0.01727355271577835,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 1,
+          "name": "Tesla T4"
+        }
+      ],
+      "feasible": false,
+      "isolated_fresh_process_pair": true,
+      "max_peak_reserved_bytes": 1608515584,
+      "memory_threshold_inclusive_pass": true,
+      "parameter_counts": {
+        "generator": 169923,
+        "pipeline": 516869,
+        "ranker_per_arm": 173473
+      },
+      "peak_allocated_bytes_per_gpu": [
+        1082739712,
+        1082739712
+      ],
+      "peak_reserved_bytes_per_gpu": [
+        1608515584,
+        1608515584
+      ],
+      "per_rank": [
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 4,
+            "ranker_blocks": 4,
+            "width": 48
+          },
+          "capacity_key": "w48_g4_r4",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 5.5224935520000145,
+            "generator_train": 0.6580139949999761,
+            "joint_two_rankers_train": 2.954640170999994
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 169923,
+            "pipeline": 516869,
+            "ranker_per_arm": 173473
+          },
+          "peak_allocated_bytes": 1082739712,
+          "peak_reserved_bytes": 1608515584,
+          "rank": 0,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 569208320,
+              "peak_reserved_bytes": 1608515584
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 602255360,
+              "peak_reserved_bytes": 648019968
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 1082739712,
+              "peak_reserved_bytes": 1170210816
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 3708.469698906757,
+            "generator_train_pairs_per_second": 3890.4947606776855,
+            "joint_ranker_train_pairs_per_arm_per_second": 1732.867524869244
+          }
+        },
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 4,
+            "ranker_blocks": 4,
+            "width": 48
+          },
+          "capacity_key": "w48_g4_r4",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 5.482769752000024,
+            "generator_train": 0.6579672180000102,
+            "joint_two_rankers_train": 2.9546210560000077
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 169923,
+            "pipeline": 516869,
+            "ranker_per_arm": 173473
+          },
+          "peak_allocated_bytes": 1082739712,
+          "peak_reserved_bytes": 1608515584,
+          "rank": 1,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 569208320,
+              "peak_reserved_bytes": 1608515584
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 602255360,
+              "peak_reserved_bytes": 648019968
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 1082739712,
+              "peak_reserved_bytes": 1170210816
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 3735.33832832014,
+            "generator_train_pairs_per_second": 3890.771348429034,
+            "joint_ranker_train_pairs_per_arm_per_second": 1732.8787357020672
+          }
+        }
+      ],
+      "per_rank_throughput": {
+        "dense_pipeline_pairs_per_second": [
+          3708.469698906757,
+          3735.33832832014
+        ],
+        "generator_train_pairs_per_second": [
+          3890.4947606776855,
+          3890.771348429034
+        ],
+        "joint_ranker_train_pairs_per_arm_per_second": [
+          1732.867524869244,
+          1732.8787357020672
+        ]
+      },
+      "projected_hours_with_1p35_safety": 5.645797939619097,
+      "projected_seconds_before_safety": 15055.461172317591,
+      "projected_seconds_with_1p35_safety": 20324.87258262875,
+      "projection_components_seconds_before_safety": {
+        "all_dense_generator_plus_two_rankers_seconds": 3572.363016450009,
+        "fixed_source_preparation_reserve_seconds": 3600.0,
+        "generator_train_seconds": 54.48355878599803,
+        "two_rankers_train_seconds": 7828.614597081584
+      },
+      "rank_imbalance_ratio": {
+        "dense_pipeline_pairs_per_second": 1.0072452066741449,
+        "generator_train_pairs_per_second": 1.0000710932075128,
+        "joint_ranker_train_pairs_per_arm_per_second": 1.0000064695267596
+      },
+      "status": "complete",
+      "throughput_2gpu": {
+        "dense_pipeline_pairs_per_second": 7416.939397813514,
+        "generator_train_pairs_per_second": 7780.989521355371,
+        "joint_ranker_train_pairs_per_arm_per_second": 3465.735049738488
+      },
+      "throughput_aggregation": "2*minimum_per_rank_rate",
+      "time_threshold_inclusive_pass": false
+    },
+    {
+      "allocator_cleared_before_capacity": true,
+      "capacity": {
+        "generator_blocks": 3,
+        "ranker_blocks": 3,
+        "width": 32
+      },
+      "capacity_key": "w32_g3_r3",
+      "ddp_all_reduce_cost_measured_in_training_rates": true,
+      "ddp_buckets_in_peak_memory": true,
+      "devices": [
+        {
+          "actual_tensor_op": 0.0071440190076828,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 0,
+          "name": "Tesla T4"
+        },
+        {
+          "actual_tensor_op": -0.045076653361320496,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 1,
+          "name": "Tesla T4"
+        }
+      ],
+      "feasible": true,
+      "isolated_fresh_process_pair": true,
+      "max_peak_reserved_bytes": 1031798784,
+      "memory_threshold_inclusive_pass": true,
+      "parameter_counts": {
+        "generator": 57859,
+        "pipeline": 177285,
+        "ranker_per_arm": 59713
+      },
+      "peak_allocated_bytes_per_gpu": [
+        636357632,
+        636357632
+      ],
+      "peak_reserved_bytes_per_gpu": [
+        1031798784,
+        1031798784
+      ],
+      "per_rank": [
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 3,
+            "ranker_blocks": 3,
+            "width": 32
+          },
+          "capacity_key": "w32_g3_r3",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 2.65325898399999,
+            "generator_train": 0.3806189680000216,
+            "joint_two_rankers_train": 1.501867582999978
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 57859,
+            "pipeline": 177285,
+            "ranker_per_arm": 59713
+          },
+          "peak_allocated_bytes": 636357632,
+          "peak_reserved_bytes": 1031798784,
+          "rank": 0,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 427632640,
+              "peak_reserved_bytes": 1031798784
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 369024000,
+              "peak_reserved_bytes": 438304768
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 636357632,
+              "peak_reserved_bytes": 740294656
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 7718.809254392814,
+            "generator_train_pairs_per_second": 6725.8865564468,
+            "joint_ranker_train_pairs_per_arm_per_second": 3409.0888291048996
+          }
+        },
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 3,
+            "ranker_blocks": 3,
+            "width": 32
+          },
+          "capacity_key": "w32_g3_r3",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 2.6519628209999837,
+            "generator_train": 0.38064239999999927,
+            "joint_two_rankers_train": 1.5018251490000125
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 57859,
+            "pipeline": 177285,
+            "ranker_per_arm": 59713
+          },
+          "peak_allocated_bytes": 636357632,
+          "peak_reserved_bytes": 1031798784,
+          "rank": 1,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 427632640,
+              "peak_reserved_bytes": 1031798784
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 369024000,
+              "peak_reserved_bytes": 438304768
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 636357632,
+              "peak_reserved_bytes": 740294656
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 7722.581869483956,
+            "generator_train_pairs_per_second": 6725.472516987085,
+            "joint_ranker_train_pairs_per_arm_per_second": 3409.185152751732
+          }
+        }
+      ],
+      "per_rank_throughput": {
+        "dense_pipeline_pairs_per_second": [
+          7718.809254392814,
+          7722.581869483956
+        ],
+        "generator_train_pairs_per_second": [
+          6725.8865564468,
+          6725.472516987085
+        ],
+        "joint_ranker_train_pairs_per_arm_per_second": [
+          3409.0888291048996,
+          3409.185152751732
+        ]
+      },
+      "projected_hours_with_1p35_safety": 3.4976971664669008,
+      "projected_seconds_before_safety": 9327.192443911736,
+      "projected_seconds_with_1p35_safety": 12591.709799280843,
+      "projection_components_seconds_before_safety": {
+        "all_dense_generator_plus_two_rankers_seconds": 1716.3269052749936,
+        "fixed_source_preparation_reserve_seconds": 3600.0,
+        "generator_train_seconds": 31.517190719999938,
+        "two_rankers_train_seconds": 3979.348347916741
+      },
+      "rank_imbalance_ratio": {
+        "dense_pipeline_pairs_per_second": 1.0004887560978393,
+        "generator_train_pairs_per_second": 1.0000615628803282,
+        "joint_ranker_train_pairs_per_arm_per_second": 1.0000282549536434
+      },
+      "status": "complete",
+      "throughput_2gpu": {
+        "dense_pipeline_pairs_per_second": 15437.618508785628,
+        "generator_train_pairs_per_second": 13450.94503397417,
+        "joint_ranker_train_pairs_per_arm_per_second": 6818.177658209799
+      },
+      "throughput_aggregation": "2*minimum_per_rank_rate",
+      "time_threshold_inclusive_pass": true
+    },
+    {
+      "allocator_cleared_before_capacity": true,
+      "capacity": {
+        "generator_blocks": 2,
+        "ranker_blocks": 2,
+        "width": 24
+      },
+      "capacity_key": "w24_g2_r2",
+      "ddp_all_reduce_cost_measured_in_training_rates": true,
+      "ddp_buckets_in_peak_memory": true,
+      "devices": [
+        {
+          "actual_tensor_op": 0.002125401049852371,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 0,
+          "name": "Tesla T4"
+        },
+        {
+          "actual_tensor_op": 0.17024461925029755,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 1,
+          "name": "Tesla T4"
+        }
+      ],
+      "feasible": true,
+      "isolated_fresh_process_pair": true,
+      "max_peak_reserved_bytes": 606076928,
+      "memory_threshold_inclusive_pass": true,
+      "parameter_counts": {
+        "generator": 22563,
+        "pipeline": 70085,
+        "ranker_per_arm": 23761
+      },
+      "peak_allocated_bytes_per_gpu": [
+        414571008,
+        414571008
+      ],
+      "peak_reserved_bytes_per_gpu": [
+        606076928,
+        606076928
+      ],
+      "per_rank": [
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 2,
+            "ranker_blocks": 2,
+            "width": 24
+          },
+          "capacity_key": "w24_g2_r2",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 1.5416942070000346,
+            "generator_train": 0.2593524800000182,
+            "joint_two_rankers_train": 0.8883136899999613
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 22563,
+            "pipeline": 70085,
+            "ranker_per_arm": 23761
+          },
+          "peak_allocated_bytes": 414571008,
+          "peak_reserved_bytes": 606076928,
+          "rank": 0,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 360449024,
+              "peak_reserved_bytes": 606076928
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 253110272,
+              "peak_reserved_bytes": 285212672
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 414571008,
+              "peak_reserved_bytes": 446693376
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 13284.087017393547,
+            "generator_train_pairs_per_second": 9870.736535851982,
+            "joint_ranker_train_pairs_per_arm_per_second": 5763.729702285938
+          }
+        },
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 2,
+            "ranker_blocks": 2,
+            "width": 24
+          },
+          "capacity_key": "w24_g2_r2",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 1.5425659619999692,
+            "generator_train": 0.2593367710000507,
+            "joint_two_rankers_train": 0.8883909380000432
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 22563,
+            "pipeline": 70085,
+            "ranker_per_arm": 23761
+          },
+          "peak_allocated_bytes": 414571008,
+          "peak_reserved_bytes": 606076928,
+          "rank": 1,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 360449024,
+              "peak_reserved_bytes": 606076928
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 253110272,
+              "peak_reserved_bytes": 285212672
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 414571008,
+              "peak_reserved_bytes": 446693376
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 13276.579740841195,
+            "generator_train_pairs_per_second": 9871.334443350108,
+            "joint_ranker_train_pairs_per_arm_per_second": 5763.228530365481
+          }
+        }
+      ],
+      "per_rank_throughput": {
+        "dense_pipeline_pairs_per_second": [
+          13284.087017393547,
+          13276.579740841195
+        ],
+        "generator_train_pairs_per_second": [
+          9870.736535851982,
+          9871.334443350108
+        ],
+        "joint_ranker_train_pairs_per_arm_per_second": [
+          5763.729702285938,
+          5763.228530365481
+        ]
+      },
+      "projected_hours_with_1p35_safety": 2.614950889251617,
+      "projected_seconds_before_safety": 6973.202371337646,
+      "projected_seconds_with_1p35_safety": 9413.823201305822,
+      "projection_components_seconds_before_safety": {
+        "all_dense_generator_plus_two_rankers_seconds": 997.8473566687301,
+        "fixed_source_preparation_reserve_seconds": 3600.0,
+        "generator_train_seconds": 21.474385344001508,
+        "two_rankers_train_seconds": 2353.8806293249145
+      },
+      "rank_imbalance_ratio": {
+        "dense_pipeline_pairs_per_second": 1.000565452601415,
+        "generator_train_pairs_per_second": 1.0000605737470507,
+        "joint_ranker_train_pairs_per_arm_per_second": 1.0000869602719755
+      },
+      "status": "complete",
+      "throughput_2gpu": {
+        "dense_pipeline_pairs_per_second": 26553.15948168239,
+        "generator_train_pairs_per_second": 19741.473071703964,
+        "joint_ranker_train_pairs_per_arm_per_second": 11526.457060730962
+      },
+      "throughput_aggregation": "2*minimum_per_rank_rate",
+      "time_threshold_inclusive_pass": true
+    },
+    {
+      "allocator_cleared_before_capacity": true,
+      "capacity": {
+        "generator_blocks": 2,
+        "ranker_blocks": 2,
+        "width": 16
+      },
+      "capacity_key": "w16_g2_r2",
+      "ddp_all_reduce_cost_measured_in_training_rates": true,
+      "ddp_buckets_in_peak_memory": true,
+      "devices": [
+        {
+          "actual_tensor_op": 0.06265589594841003,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 0,
+          "name": "Tesla T4"
+        },
+        {
+          "actual_tensor_op": 0.23801541328430176,
+          "capability": [
+            7,
+            5
+          ],
+          "index": 1,
+          "name": "Tesla T4"
+        }
+      ],
+      "feasible": true,
+      "isolated_fresh_process_pair": true,
+      "max_peak_reserved_bytes": 471859200,
+      "memory_threshold_inclusive_pass": true,
+      "parameter_counts": {
+        "generator": 10435,
+        "pipeline": 32645,
+        "ranker_per_arm": 11105
+      },
+      "peak_allocated_bytes_per_gpu": [
+        326592512,
+        326592512
+      ],
+      "peak_reserved_bytes_per_gpu": [
+        471859200,
+        471859200
+      ],
+      "per_rank": [
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 2,
+            "ranker_blocks": 2,
+            "width": 16
+          },
+          "capacity_key": "w16_g2_r2",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 1.0930683640000325,
+            "generator_train": 0.22014252900004294,
+            "joint_two_rankers_train": 0.6560448559999941
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 10435,
+            "pipeline": 32645,
+            "ranker_per_arm": 11105
+          },
+          "peak_allocated_bytes": 326592512,
+          "peak_reserved_bytes": 471859200,
+          "rank": 0,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 296200704,
+              "peak_reserved_bytes": 471859200
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 203532800,
+              "peak_reserved_bytes": 222298112
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 326592512,
+              "peak_reserved_bytes": 362807296
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 18736.248046786754,
+            "generator_train_pairs_per_second": 11628.829793263167,
+            "joint_ranker_train_pairs_per_arm_per_second": 7804.3444029382745
+          }
+        },
+        {
+          "allocator_cleared_before_capacity": true,
+          "capacity": {
+            "generator_blocks": 2,
+            "ranker_blocks": 2,
+            "width": 16
+          },
+          "capacity_key": "w16_g2_r2",
+          "ddp_buckets_in_peak_memory": true,
+          "elapsed_seconds": {
+            "dense_generator_plus_two_rankers": 1.0938111309999954,
+            "generator_train": 0.21956353399997397,
+            "joint_two_rankers_train": 0.6560529660000043
+          },
+          "fresh_process_pair_per_capacity": true,
+          "measured_ddp_all_reduce": true,
+          "parameter_counts": {
+            "generator": 10435,
+            "pipeline": 32645,
+            "ranker_per_arm": 11105
+          },
+          "peak_allocated_bytes": 326592512,
+          "peak_reserved_bytes": 471859200,
+          "rank": 1,
+          "stage_memory": {
+            "dense_generator_plus_two_rankers": {
+              "peak_allocated_bytes": 296200704,
+              "peak_reserved_bytes": 471859200
+            },
+            "generator_train": {
+              "peak_allocated_bytes": 203532800,
+              "peak_reserved_bytes": 222298112
+            },
+            "joint_two_rankers_train": {
+              "peak_allocated_bytes": 326592512,
+              "peak_reserved_bytes": 362807296
+            }
+          },
+          "synthetic_tensor_shape_hw": [
+            20,
+            40
+          ],
+          "synthetic_tensors_finite": true,
+          "throughput": {
+            "dense_pipeline_pairs_per_second": 18723.524948293918,
+            "generator_train_pairs_per_second": 11659.495333138077,
+            "joint_ranker_train_pairs_per_arm_per_second": 7804.247927140636
+          }
+        }
+      ],
+      "per_rank_throughput": {
+        "dense_pipeline_pairs_per_second": [
+          18736.248046786754,
+          18723.524948293918
+        ],
+        "generator_train_pairs_per_second": [
+          11628.829793263167,
+          11659.495333138077
+        ],
+        "joint_ranker_train_pairs_per_arm_per_second": [
+          7804.3444029382745,
+          7804.247927140636
+        ]
+      },
+      "projected_hours_with_1p35_safety": 2.2740243058051637,
+      "projected_seconds_before_safety": 6064.064815480437,
+      "projected_seconds_with_1p35_safety": 8186.48750089859,
+      "projection_components_seconds_before_safety": {
+        "all_dense_generator_plus_two_rankers_seconds": 707.559075365622,
+        "fixed_source_preparation_reserve_seconds": 3600.0,
+        "generator_train_seconds": 18.227801401203557,
+        "two_rankers_train_seconds": 1738.2779387136113
+      },
+      "rank_imbalance_ratio": {
+        "dense_pipeline_pairs_per_second": 1.0006795247437634,
+        "generator_train_pairs_per_second": 1.0026370271489118,
+        "joint_ranker_train_pairs_per_arm_per_second": 1.0000123619596069
+      },
+      "status": "complete",
+      "throughput_2gpu": {
+        "dense_pipeline_pairs_per_second": 37447.049896587836,
+        "generator_train_pairs_per_second": 23257.659586526333,
+        "joint_ranker_train_pairs_per_arm_per_second": 15608.495854281273
+      },
+      "throughput_aggregation": "2*minimum_per_rank_rate",
+      "time_threshold_inclusive_pass": true
+    }
+  ],
+  "contract": {
+    "batches": {
+      "ddp_dense_pairs_per_gpu": 512,
+      "ddp_generator_per_gpu": 128,
+      "ddp_ranker_groups_per_gpu": 4,
+      "ddp_ranker_pairs_per_arm_per_gpu": 256
+    },
+    "capacities_largest_first": [
+      {
+        "generator_blocks": 6,
+        "ranker_blocks": 5,
+        "width": 64
+      },
+      {
+        "generator_blocks": 4,
+        "ranker_blocks": 4,
+        "width": 48
+      },
+      {
+        "generator_blocks": 3,
+        "ranker_blocks": 3,
+        "width": 32
+      },
+      {
+        "generator_blocks": 2,
+        "ranker_blocks": 2,
+        "width": 24
+      },
+      {
+        "generator_blocks": 2,
+        "ranker_blocks": 2,
+        "width": 16
+      }
+    ],
+    "optimizers": {
+      "direct_ranker": "separate AdamW(lr=3e-4, weight_decay=1e-4)",
+      "generator": "separate AdamW(lr=3e-4, weight_decay=1e-4)",
+      "inpaint_ranker": "separate AdamW(lr=3e-4, weight_decay=1e-4)",
+      "ranker_grad_scaler": "one shared CUDA GradScaler",
+      "ranker_microsteps": "view0 no_sync backward plus view1 synchronized backward",
+      "ranker_update": "separate unscale, max_norm=1.0 clip, and step per ranker"
+    },
+    "selection": {
+      "fixed_source_preparation_reserve_seconds_before_safety": 3600,
+      "max_peak_bytes_per_gpu": 13500000000,
+      "max_projected_hours": 5.5,
+      "max_projected_seconds": 19800.0,
+      "memory_unit": "decimal GB",
+      "rule": "largest precommitted capacity meeting both inclusive thresholds",
+      "safety_factor": 1.35,
+      "source_preparation_reserve_scope": "TileNAF over 808 source-panels and w4 over 424; fixed one-hour reserve is added before the global 1.35 safety factor"
+    },
+    "timing": {
+      "amp_dtype": "float16",
+      "cuda_synchronize": true,
+      "data_parallel_route": "not executed by protocol v2",
+      "ddp_gradient_buckets_in_peak_memory": true,
+      "dense_repeats": 40,
+      "effective_2gpu_rate": "2*minimum(per_rank_rate); never sum unequal rates",
+      "final_decision": "largest DDP-feasible capacity in precommitted order",
+      "fresh_process_pair_per_capacity": true,
+      "generator_repeats": 20,
+      "measured_ddp_all_reduce_during_training": true,
+      "ranker_repeats": 20,
+      "two_processes_one_per_gpu": true,
+      "warmup_steps": 5
+    },
+    "workload": {
+      "all_dense_component_forwards_generator_plus_two_rankers": 79488000,
+      "all_dense_pairs_per_model": 26496000,
+      "all_source_panel_preparations_tilenaf": 808,
+      "all_source_panel_preparations_w4": 424,
+      "calibration_b_dense_pairs_per_model": 5299200,
+      "calibration_b_source_panel_preparations_tilenaf_plus_w4": 8,
+      "checkpoint_selection_dense_pairs_per_model_two_epochs": 10598400,
+      "checkpoint_selection_source_panel_preparations_tilenaf_plus_w4": 16,
+      "development_dense_pairs_per_model_per_pass": 5299200,
+      "final_dense_pairs_per_model": 10598400,
+      "final_source_panel_preparations_tilenaf_plus_w4": 16,
+      "generator_source_panel_preparations_tilenaf": 384,
+      "generator_train_true_pairs": 423936,
+      "ranker_source_panel_preparations_tilenaf_plus_w4": 384,
+      "ranker_train_pair_candidates_per_arm": 27131904,
+      "ranker_train_pair_candidates_two_arms": 54263808
+    },
+    "workload_formula": {
+      "all_dense_pairs_per_model": "checkpoint_selection_two_epochs+calibration_b+final_holdout",
+      "all_source_panel_preparations_tilenaf": "96*2_panels*2_epochs_generator + 96*2_panels*2_epochs_ranker + 4*2_panels*2_checkpoint_epochs + 4*2_calibration_b + 8*2_final",
+      "all_source_panel_preparations_w4": "ranker_train_preparations + checkpoint_selection + calibration_b + final",
+      "calibration_b_dense_pairs_per_model": "development_pass*1",
+      "checkpoint_selection_dense_pairs_per_model": "development_pass*2_ranker_epochs",
+      "development_dense_pairs_per_model_per_pass": "4*2_panels*2_directions*576*575",
+      "final_dense_pairs_per_model": "8*2_panels*2_directions*576*575",
+      "final_models": "generator+inpaint_ranker+direct_ranker",
+      "generator_train_true_pairs": "96*1104*2_panels*2_epochs",
+      "ranker_arms": 2,
+      "ranker_train_pair_candidates_per_arm": "96*1104_groups*2_outgoing_incoming*32_candidates*2_panels*2_epochs"
+    }
+  },
+  "contract_sha256": "3b396bb6fd8a2945e6cd43fc82a9b36a92d4eba7fe3de89babed88b416bc2be6",
+  "hardware": {
+    "devices": [
+      {
+        "actual_tensor_op": -0.023162856698036194,
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4"
+      },
+      {
+        "actual_tensor_op": -0.038144685328006744,
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4"
+      }
+    ],
+    "nvidia_smi_after": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Mon Jul 13 08:33:13 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   66C    P0             41W /   70W |       3MiB /  15360MiB |      8%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   67C    P0             42W /   70W |       3MiB /  15360MiB |      8%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n"
+    },
+    "nvidia_smi_before": {
+      "returncode": 0,
+      "stderr": "",
+      "stdout": "Mon Jul 13 08:31:56 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   48C    P8             13W /   70W |       3MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   47C    P8             12W /   70W |       3MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n"
+    },
+    "required": "exactly 2x Tesla T4 sm_75"
+  },
+  "kind": "masked_gap_t4x2_amp_ddp_capacity_selection_v2",
+  "launches_scientific_training": false,
+  "safe_for_submission": false,
+  "scientific_hypothesis_or_threshold_changed": false,
+  "scientific_images_labels_targets_opened": false,
+  "selected_capacity": {
+    "capacity": {
+      "generator_blocks": 3,
+      "ranker_blocks": 3,
+      "width": 32
+    },
+    "capacity_key": "w32_g3_r3",
+    "execution_route": "DDP_T4x2_AMP_v2",
+    "max_peak_reserved_bytes": 1031798784,
+    "projected_hours_with_1p35_safety": 3.4976971664669008,
+    "projected_seconds_with_1p35_safety": 12591.709799280843
+  },
+  "selection_is_engineering_only": true,
+  "status": "complete",
+  "synthetic_only": true,
+  "synthetic_optimizer_steps": true,
+  "versions": {
+    "cudnn": 91002,
+    "platform": "Linux-6.12.90+-x86_64-with-glibc2.35",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128",
+    "torch_cuda": "12.8"
+  },
+  "weights_discarded": true
+}

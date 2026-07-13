@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "kind": "component_preserving_qap_projection_stage_a_result",
+  "status": "scientific_stop",
+  "decision": "stage_a_failed_ssim_guard_do_not_run_stage_b",
+  "precommit": {
+    "path": "configs/component_preserving_qap_projection_v1.json",
+    "sha256": "45233e617619b3d06cb8fddd189c7cd4126ddf3ad279466399ae39b75a143f22"
+  },
+  "scope": {
+    "split": "edge_development",
+    "sources": [
+      "img_005666.png",
+      "img_003853.png"
+    ],
+    "panels": [
+      "primary_kornia",
+      "independent_libjpeg"
+    ],
+    "records": 4,
+    "forbidden_data_opened": false,
+    "post_projection_qap": false
+  },
+  "macro": {
+    "raw_component": {
+      "combined_adjacency": 0.12454710144927536,
+      "predicted_layout_ssim": 0.22918265888114925
+    },
+    "production_qap_comparator": {
+      "combined_adjacency": 0.07042572463768115,
+      "predicted_layout_ssim": 0.25412564175216795
+    },
+    "rigid_projection": {
+      "combined_adjacency": 0.12930253623188406,
+      "predicted_layout_ssim": 0.2470287591966202,
+      "valid_permutation_fraction": 1.0,
+      "accepted_edge_retained_fraction": 1.0,
+      "ssim_wins_vs_qap": 2,
+      "records": 4
+    },
+    "rigid_minus_qap": {
+      "combined_adjacency": 0.0588768115942029,
+      "predicted_layout_ssim": -0.007096882555547725
+    },
+    "rigid_minus_raw_component": {
+      "combined_adjacency": 0.004755434782608703,
+      "predicted_layout_ssim": 0.01784610031547098
+    }
+  },
+  "gate": {
+    "valid_permutations": {
+      "threshold": 1.0,
+      "actual": 1.0,
+      "passed": true
+    },
+    "accepted_edge_retained_fraction": {
+      "threshold": 0.9,
+      "actual": 1.0,
+      "passed": true
+    },
+    "combined_adjacency_delta_vs_qap": {
+      "threshold": 0.01,
+      "actual": 0.0588768115942029,
+      "passed": true
+    },
+    "predicted_layout_ssim_delta_vs_qap": {
+      "threshold": -0.003,
+      "actual": -0.007096882555547725,
+      "passed": false
+    },
+    "all_passed": false
+  },
+  "records": [
+    {
+      "panel": "primary_kornia",
+      "source": "img_005666.png",
+      "seed": 8868392254697743588,
+      "accepted_edges": 363,
+      "retained_accepted_edges": 363,
+      "placed_component_tiles": 450,
+      "raw_component_adjacency": 0.09963768115942029,
+      "raw_component_ssim": 0.3137596416971617,
+      "qap_adjacency": 0.058876811594202896,
+      "qap_ssim": 0.35368160839555135,
+      "rigid_adjacency": 0.09239130434782608,
+      "rigid_ssim": 0.32102281249817977,
+      "rigid_minus_qap_adjacency": 0.03351449275362319,
+      "rigid_minus_qap_ssim": -0.03265879589737158,
+      "rigid_layout_sha256": "62dc60b0273c2e658cefb1d9d4abcfc8e55373b880b1c51f1e2cd9deca48b771"
+    },
+    {
+      "panel": "primary_kornia",
+      "source": "img_003853.png",
+      "seed": 6310777655424564308,
+      "accepted_edges": 393,
+      "retained_accepted_edges": 393,
+      "placed_component_tiles": 471,
+      "raw_component_adjacency": 0.1539855072463768,
+      "raw_component_ssim": 0.14907191938349387,
+      "qap_adjacency": 0.07789855072463768,
+      "qap_ssim": 0.15673494788308964,
+      "rigid_adjacency": 0.16394927536231885,
+      "rigid_ssim": 0.16671504828029718,
+      "rigid_minus_qap_adjacency": 0.08605072463768117,
+      "rigid_minus_qap_ssim": 0.00998010039720754,
+      "rigid_layout_sha256": "110015dd0d85a49365fed562fea7236077da865724e614b9eca595cd3171feaa"
+    },
+    {
+      "panel": "independent_libjpeg",
+      "source": "img_005666.png",
+      "seed": 14573887043369526337,
+      "accepted_edges": 359,
+      "retained_accepted_edges": 359,
+      "placed_component_tiles": 455,
+      "raw_component_adjacency": 0.10597826086956522,
+      "raw_component_ssim": 0.3012914766724585,
+      "qap_adjacency": 0.06340579710144928,
+      "qap_ssim": 0.33834289564912984,
+      "rigid_adjacency": 0.1068840579710145,
+      "rigid_ssim": 0.34188471921922875,
+      "rigid_minus_qap_adjacency": 0.043478260869565216,
+      "rigid_minus_qap_ssim": 0.003541823570098912,
+      "rigid_layout_sha256": "8b0ee6d891a959fadcb3aa3afb02e46c841f4f4c22e1023545e755626db697af"
+    },
+    {
+      "panel": "independent_libjpeg",
+      "source": "img_003853.png",
+      "seed": 16787557620294348921,
+      "accepted_edges": 395,
+      "retained_accepted_edges": 395,
+      "placed_component_tiles": 483,
+      "raw_component_adjacency": 0.13858695652173914,
+      "raw_component_ssim": 0.1526075977714829,
+      "qap_adjacency": 0.08152173913043478,
+      "qap_ssim": 0.16774311508090092,
+      "rigid_adjacency": 0.15398550724637683,
+      "rigid_ssim": 0.15849245678877516,
+      "rigid_minus_qap_adjacency": 0.07246376811594205,
+      "rigid_minus_qap_ssim": -0.009250658292125763,
+      "rigid_layout_sha256": "4084b589436c1c85b86dec2ca22a6d4f5bd026a087558d88a7a067e723753718"
+    }
+  ],
+  "artifacts": {
+    "primary2": {
+      "path": "runs/assembly_v1/development/component_preserving_qap_projection_v1_primary2.json",
+      "sha256": "ce8a598963b0f61803c32aeddeabb541164080cffa4a2d4f3312d4e02f0f6e47"
+    },
+    "independent2": {
+      "path": "runs/assembly_v1/development/component_preserving_qap_projection_v1_independent2.json",
+      "sha256": "1dc939d68d75dec22f1db244a258fbc938af81b30e33f7621581880597a743e2"
+    }
+  }
+}

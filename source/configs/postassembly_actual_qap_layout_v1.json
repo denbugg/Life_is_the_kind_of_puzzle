@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "kind": "postassembly_actual_qap_layout_development_protocol",
+  "status": "precommitted_before_actual_layout_target_metrics",
+  "created_utc": "2026-07-12T14:58:00Z",
+  "decision_basis": {
+    "correct_layout_rgb_small8_report": "runs/assembly_v1/postassembly_harmonizer/rgb_offset_v1_small8_20260712T1450Z/report.json",
+    "correct_layout_rgb_small8_report_sha256": "83debe51c3a3936b6c2d1875647ecc92c09d51d35ae1e52228bca0694681bbc0",
+    "correct_layout_mean_ssim_delta_primary_kornia": 0.05737107762644471,
+    "correct_layout_mean_ssim_delta_independent_libjpeg": 0.057218330573813175,
+    "interpretation": "strong oracle-layout restoration ceiling; no claim that the method helps an imperfect QAP layout",
+    "actual_qap_layout_metrics_seen_before_this_freeze": false,
+    "hyperparameters_retuned_after_correct_layout_results": false
+  },
+  "scope": {
+    "development_only": true,
+    "may_promote_submission": false,
+    "successful_full_gate_only_authorizes": "one separately frozen confirmation on a source-disjoint non-sealed development panel",
+    "layout_refinement_forbidden": true,
+    "layout_candidate_routing_forbidden": true,
+    "same_frozen_qap_w4_layout_for_every_render_arm": true,
+    "target_pixels_available_to_layout_predictor": false,
+    "target_pixels_available_to_harmonizer": false,
+    "target_metrics_computed_only_after_all_layouts_and_render_arms_are_frozen": true,
+    "correct_layout_ceiling_must_be_reported_separately": true
+  },
+  "base_harmonizer_protocol": {
+    "path": "configs/postassembly_rgb_offset_v1.json",
+    "sha256": "e004c27e4d7ceba5e00b5068c6c5737253e505532a9e86b3edd584543401745b",
+    "candidate": "seam_graph_rgb_on_blend",
+    "reuse_without_retuning": true
+  },
+  "assets": {
+    "manifest": {
+      "path": "configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    },
+    "selected_tilenaf": {
+      "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "state": "ema"
+    },
+    "production_seam_tilenaf": {
+      "path": "runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+      "state": "ema"
+    },
+    "hbt": {
+      "path": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  },
+  "source_selection": {
+    "source": "base_harmonizer_protocol.source_selection.names",
+    "count": 32,
+    "names_sha256": "98a4a6cf5035949396861378bceb49b0bb0889d72542cf3244c963b44f716729",
+    "small_smoke_count": 8,
+    "small_smoke_names_sha256": "ded8f791da9a6ec905ba089b5258baf38068ee5a986964e02dec056d9a12db68",
+    "full_count": 32,
+    "prior_target_access": "all small8 targets were already scored in the correct-layout ceiling; they are not fresh sources, only the actual-layout response is new",
+    "candidate_graph_oracle_overlap_count": 0,
+    "sealed_cal_gate_audit_test_overlap_count": 0
+  },
+  "synthetic_panels": {
+    "master_seed": 20260712,
+    "names": [
+      "primary_kornia",
+      "independent_libjpeg"
+    ],
+    "seed_formula": "per_source_seed(master_seed, 'postassembly-rgb-offset-' + panel, source_name, 0)",
+    "must_match_correct_layout_ceiling_inputs_byte_exactly": true
+  },
+  "frozen_layout_predictor": {
+    "label": "production_qap_w4_b0.05_i25",
+    "scoring_tiles": "selected_tilenaf_ema_uint8",
+    "classical_score": "denoised_C1_equal_rank_fusion",
+    "learned_score": "denoised_hbt_l1",
+    "fusion": "rank fusion C1 plus HBT weight 4.0",
+    "seed_score": "denoised_hbt_l1",
+    "soft_cycle_top_k": 8,
+    "soft_cycle_keep_per_tile": 1,
+    "soft_cycle_keep_fraction": 0.5,
+    "soft_cycle_loop_weight": 1.0,
+    "soft_cycle_reciprocal_weight": 0.35,
+    "qap_iterations": 25,
+    "qap_restarts": 2,
+    "qap_boundary_weight": 0.05,
+    "qap_initial_weight": 0.75,
+    "qap_noisy_components": 3,
+    "qap_noise_scale": 1.0,
+    "qap_refine_swaps": 8,
+    "qap_refine_weak_cells": 32,
+    "qap_seed_formula": "sha256(source_filename)[:4]_little + 7001",
+    "valid_permutation_required_for_every_record": true,
+    "layout_is_frozen_before_any_render_metric": true
+  },
+  "render_arms": {
+    "raw_on_frozen_qap_w4": "raw corrupted slot tiles indexed by the frozen position_to_slot layout",
+    "selected_tilenaf_on_frozen_qap_w4": "old selected TileNAF slot outputs indexed by the same frozen layout",
+    "production_seam_tilenaf_on_frozen_qap_w4": "production seam TileNAF slot outputs indexed by the same frozen layout",
+    "fixed_alpha_0_5_on_frozen_qap_w4": "untuned 0.5 selected plus 0.5 seam TileNAF blend on the same frozen layout",
+    "seam_graph_rgb_on_frozen_qap_w4": "base protocol's unchanged seam-graph RGB offsets applied after the fixed blend and after layout freeze",
+    "shuffled_neighbor_placebo_on_frozen_qap_w4": "same solver with seam equations shuffled within axes; never eligible",
+    "naive_5x5_on_frozen_qap_w4": "base protocol's unchanged naive control",
+    "bilateral_offset_on_frozen_qap_w4": "base protocol's unchanged bilateral control"
+  },
+  "primary_comparison": {
+    "candidate": "seam_graph_rgb_on_frozen_qap_w4",
+    "baseline": "fixed_alpha_0_5_on_frozen_qap_w4",
+    "only_pixel_render_changes": true,
+    "position_to_slot_must_be_identical": true
+  },
+  "metrics": {
+    "ordered_primary": [
+      "source_macro_full_image_ssim",
+      "boundary_band_mae",
+      "target_referenced_seam_error"
+    ],
+    "layout_diagnostics": [
+      "valid_permutation",
+      "strict_position_accuracy",
+      "right_down_adjacency_recall"
+    ],
+    "statistical_unit": "whole source image",
+    "panels_reported_separately": true,
+    "paired_bootstrap_seed": 20260720,
+    "paired_bootstrap_resamples": 10000,
+    "paired_bootstrap_interval": 0.95
+  },
+  "small8_advance_rule": {
+    "all_16_layouts_valid": true,
+    "both_panels_mean_ssim_delta_must_exceed": 0.0,
+    "both_panels_wins_minimum_of_8": 5,
+    "both_panels_large_regressions_below_minus_0_01_maximum": 1,
+    "both_panels_mean_target_referenced_seam_error_delta_maximum": 0.0,
+    "pass_behavior": "run the unchanged protocol on all frozen 32 sources",
+    "fail_behavior": "stop actual-layout harmonizer route; do not retune on small8"
+  },
+  "full32_gate": {
+    "all_64_layouts_valid": true,
+    "both_panels_required": true,
+    "per_panel_mean_ssim_delta_minimum": 0.005,
+    "per_panel_paired_bootstrap_lower_must_exceed": 0.0,
+    "per_panel_mean_target_referenced_seam_error_delta_maximum": 0.0,
+    "pass_behavior": "authorize one new source-disjoint development confirmation only",
+    "fail_behavior": "stop or redesign without retuning on these 32"
+  }
+}

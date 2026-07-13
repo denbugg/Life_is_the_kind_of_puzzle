@@ -1,0 +1,14 @@
+{
+  "id": "pasha883/vsos-assembly-v1-submission-classical-gpu",
+  "title": "VSOS Assembly V1 Submission Classical GPU",
+  "code_file": "run.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime"
+  ]
+}

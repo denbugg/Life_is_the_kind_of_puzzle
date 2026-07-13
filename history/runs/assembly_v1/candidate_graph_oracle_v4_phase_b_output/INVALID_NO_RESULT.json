@@ -1,0 +1,1 @@
+{"payload":{"accepted_aggregate_metrics":null,"error":"Phase-A render semantic binding mismatch","error_type":"RuntimeError","gate_passed":false,"kind":"candidate_graph_oracle_invalid_no_result","safe_for_submission":false,"schema_version":1},"payload_sha256":"4dd06a15332a8fd2740bc288626f9456c35b93cc9f1e07059c6ccd485509f07f"}

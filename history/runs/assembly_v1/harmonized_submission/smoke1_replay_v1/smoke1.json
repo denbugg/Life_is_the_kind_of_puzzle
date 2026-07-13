@@ -1,0 +1,263 @@
+{
+  "anti_leakage": {
+    "harmonizer_inputs": "test input pixels and restored tiles only",
+    "layout_recomputed": false,
+    "layout_source": "two frozen production submission shard reports",
+    "target_paths_or_pixels_read": false
+  },
+  "archive": {
+    "bytes": 283141,
+    "compression": "ZIP_DEFLATED",
+    "compresslevel": 6,
+    "flat_member_names": true,
+    "member_order": [
+      "img_000000.png"
+    ],
+    "member_timestamp": [
+      2026,
+      7,
+      12,
+      0,
+      0,
+      0
+    ],
+    "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/harmonized_submission/smoke1_replay_v1/smoke1.zip",
+    "sha256": "7af757183e4da8aff72e4a3c117899c181382f5d781c6fe04553847e672a0ce2",
+    "unix_mode": "100644"
+  },
+  "assets": {
+    "layout_reports": [
+      {
+        "count": 350,
+        "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/final_qap_submission_output/v1/final_qap_shard_350_700.json",
+        "sha256": "38e8a01de560ef8914f25dbe42b2c43c063bde07e3b537e71c0be28416f8dbc4"
+      },
+      {
+        "count": 350,
+        "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/final_qap_submission_output/v1/final_qap_shard_000_350.json",
+        "sha256": "541e7905dad9373a173c31db068429b20fb614d450f3cfb4439b89a0a45b2e2a"
+      }
+    ],
+    "seam_denoiser": {
+      "metadata": {
+        "allow_unpromoted": false,
+        "best_ssim": 0.7974008119332896,
+        "best_step": null,
+        "best_validation": {
+          "boundary_mae": 14.698953156204611,
+          "gradient_mae": 5.533273226197004,
+          "interior_mae": 14.136025080605158,
+          "libjpeg_boundary_mae": 14.412865377632535,
+          "libjpeg_gradient_mae": 4.78823689540692,
+          "libjpeg_interior_mae": 13.95735012755102,
+          "libjpeg_mae": 14.189662905092593,
+          "libjpeg_ordered_image_ssim": 0.7138202646924556,
+          "libjpeg_psnr": 22.983816129529462,
+          "libjpeg_signed_bias_b": -2.1155088975694443,
+          "libjpeg_signed_bias_g": -1.971374782986111,
+          "libjpeg_signed_bias_r": -1.6091362847222221,
+          "libjpeg_tile_ssim": 0.8192853622297793,
+          "mae": 14.42311839916088,
+          "ordered_image_ssim": 0.7120719679309384,
+          "paired_kornia_boundary_mae": 14.338663648329701,
+          "paired_kornia_gradient_mae": 4.715325368542885,
+          "paired_kornia_interior_mae": 13.878117913832199,
+          "paired_kornia_mae": 14.112996238425925,
+          "paired_kornia_ordered_image_ssim": 0.7170644736455459,
+          "paired_kornia_psnr": 23.0367494649957,
+          "paired_kornia_signed_bias_b": -1.8422276475694443,
+          "paired_kornia_signed_bias_g": -1.763288845486111,
+          "paired_kornia_signed_bias_r": -1.3626432291666666,
+          "paired_kornia_tile_ssim": 0.8225776487618983,
+          "psnr": 22.738143882114322,
+          "signed_bias_b": -1.503000217013889,
+          "signed_bias_g": -1.3839081488715277,
+          "signed_bias_r": -1.3469422743055555,
+          "step": 500,
+          "tile_ssim": 0.7974008119332896
+        },
+        "checkpoint": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+        "checkpoint_is_latest": false,
+        "checkpoint_resolved": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+        "checkpoint_sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+        "device": "mps",
+        "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+        "model_name": "tile-naf",
+        "promotion_issues": [],
+        "resolved_device_fingerprint": {
+          "capability": [
+            6,
+            0
+          ],
+          "index": 0,
+          "machine": "x86_64",
+          "name": "Tesla P100-PCIE-16GB",
+          "total_memory": 17059545088,
+          "type": "cuda"
+        },
+        "rolled_back": false,
+        "runtime_versions": {
+          "cuda": "12.4",
+          "jpeg_codec": "6.2",
+          "kornia": "0.8.3",
+          "libjpeg_turbo": "True",
+          "libjpeg_turbo_version": "3.1.1",
+          "numpy": "2.0.2",
+          "opencv": "4.13.0",
+          "pillow": "11.3.0",
+          "python": "3.12.13",
+          "scipy": "1.16.3",
+          "skimage": "0.25.2",
+          "torch": "2.6.0+cu124"
+        },
+        "schema_version": 2,
+        "source_code_sha256": "9ec0df1e456659bb8e3afe322d6f2bbd022680ddf2d76e2e0c9e41eb8eda4529",
+        "state": "ema",
+        "step": 500,
+        "training_data_sha256": "73e6ab61535bc50f51fd9f5d78bf8a93551cfb1d54d331b5d994db13f8107fde",
+        "validation_data_sha256": "053bfdb1d01c145f8138d5ef2b6ce805ffc3e726b5a9c71599115ab52bfcf060"
+      },
+      "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9"
+    },
+    "selected_denoiser": {
+      "metadata": {
+        "allow_unpromoted": false,
+        "best_ssim": 0.8082800069902816,
+        "best_step": null,
+        "best_validation": {
+          "boundary_mae": 14.56935402199074,
+          "gradient_mae": 5.444638551311728,
+          "interior_mae": 13.981659865913958,
+          "libjpeg_boundary_mae": 14.421931026461511,
+          "libjpeg_gradient_mae": 4.794274830957602,
+          "libjpeg_interior_mae": 13.962492766203704,
+          "libjpeg_mae": 14.196806278935185,
+          "libjpeg_ordered_image_ssim": 0.7131094332531336,
+          "libjpeg_psnr": 22.979736378138675,
+          "libjpeg_signed_bias_b": -2.017492404513889,
+          "libjpeg_signed_bias_g": -1.9056770833333334,
+          "libjpeg_signed_bias_r": -1.568976779513889,
+          "libjpeg_tile_ssim": 0.8192828992318947,
+          "mae": 14.281383885513117,
+          "ordered_image_ssim": 0.7238045820230582,
+          "paired_kornia_boundary_mae": 14.342894000771604,
+          "paired_kornia_gradient_mae": 4.720267574317738,
+          "paired_kornia_interior_mae": 13.878353381283068,
+          "paired_kornia_mae": 14.115269097222223,
+          "paired_kornia_ordered_image_ssim": 0.7164549161702867,
+          "paired_kornia_psnr": 23.033958552634516,
+          "paired_kornia_signed_bias_b": -1.748955078125,
+          "paired_kornia_signed_bias_g": -1.690519748263889,
+          "paired_kornia_signed_bias_r": -1.3206358506944444,
+          "paired_kornia_tile_ssim": 0.8226739476757541,
+          "psnr": 22.83672320634709,
+          "signed_bias_b": -1.6919364872685185,
+          "signed_bias_g": -1.6417550998263888,
+          "signed_bias_r": -1.658593388310185,
+          "step": 50000,
+          "tile_ssim": 0.8082800069902816
+        },
+        "checkpoint": "/Users/rusyalain/Documents/test/runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+        "checkpoint_is_latest": false,
+        "checkpoint_resolved": "/Users/rusyalain/Documents/test/runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+        "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+        "device": "mps",
+        "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+        "model_name": "tile-naf",
+        "promotion_issues": [],
+        "resolved_device_fingerprint": {
+          "capability": [
+            6,
+            0
+          ],
+          "index": 0,
+          "machine": "x86_64",
+          "name": "Tesla P100-PCIE-16GB",
+          "total_memory": 17059545088,
+          "type": "cuda"
+        },
+        "rolled_back": false,
+        "runtime_versions": {
+          "cuda": "12.4",
+          "jpeg_codec": "6.2",
+          "kornia": "0.8.3",
+          "libjpeg_turbo": "True",
+          "libjpeg_turbo_version": "3.1.1",
+          "numpy": "2.0.2",
+          "opencv": "4.13.0",
+          "pillow": "11.3.0",
+          "python": "3.12.13",
+          "scipy": "1.16.3",
+          "skimage": "0.25.2",
+          "torch": "2.6.0+cu124"
+        },
+        "schema_version": 2,
+        "source_code_sha256": "6b62548370f370eb65b7d0a770cc6f3241ea209d12de257cc4882ddea4b4629f",
+        "state": "ema",
+        "step": 50000,
+        "training_data_sha256": "77d9c64527c7b4e98d36b001d9e4ccc0ef678cb2a41b52f4ac26901ee9c93b2e",
+        "validation_data_sha256": "35246d3d4e9ec249e8faff8455656d9deb8601f3d38dce101655a6c1040d686d"
+      },
+      "path": "/Users/rusyalain/Documents/test/runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    }
+  },
+  "available_input_count": 700,
+  "count": 1,
+  "device": "mps",
+  "expected_count": 700,
+  "input_dir": "/Users/rusyalain/Documents/test/puzzle/test",
+  "kind": "harmonized_frozen_qap_submission_report",
+  "limit": 1,
+  "method": {
+    "harmonizer": {
+      "confidence_floor": 0.05,
+      "confidence_scale": 12.0,
+      "extrapolation_band": 3,
+      "global_gauge": "per-channel median offset equals zero",
+      "huber_delta": 4.0,
+      "irls_steps": 4,
+      "max_abs_offset": 12.0,
+      "ridge": 0.2
+    },
+    "layout": "frozen promoted QAP w4 b0.05 i25 from LB-0.203 artifact",
+    "production_seam_tilenaf_weight": 0.5,
+    "rounding": "blend rounded once to uint8, offsets rounded once to uint8",
+    "selected_tilenaf_weight": 0.5
+  },
+  "method_sha256": "dbd4029e6743ba4183983b0277c460412521f588f23fd9dc39c5f383cb958e79",
+  "offset": 0,
+  "schema_version": 1,
+  "seconds": 0.909593665972352,
+  "source_names": [
+    "img_000000.png"
+  ],
+  "source_names_sha256": "0408b478006b6e42f66d3f74f7523aec1d440fd9b15f33aa61d3afacb17e493a",
+  "sources": [
+    {
+      "denoise_seconds": 0.8295110000181012,
+      "harmonize_seconds": 0.05008533300133422,
+      "harmonizer": {
+        "clipped_fraction": 0.19560185185185186,
+        "confidence_mean": 0.7316372126692288,
+        "confidence_min": 0.05,
+        "edge_count": 1104.0,
+        "final_weight_mean": 0.524387444888876,
+        "max_abs_offset": 12.0,
+        "mean_abs_offset": 6.197162493074598,
+        "offset_sha256": "5d3da58ef3ecb964f4b241698cb7ed8b39f45480a232d7c54b0297ba8c0cc683",
+        "placebo": false,
+        "placebo_seed": null,
+        "residual_median": 5.032575182650795,
+        "residual_q90": 35.92309205878714
+      },
+      "input_pixel_sha256": "326d3ab5ff7cbdb54f8efc69d496ff117eeeb87f3eb53a5e8e9bcb738d13c9c1",
+      "layout_sha256": "d90a2f2d8afab123935a577b66bf57031520e855390d9d4ebe2d928b53618f30",
+      "output_png_sha256": "3137230abe65c57aa76eb5017fb7c1d3cc985f3e7865a8b5c7a6ea9b38ac49aa",
+      "source": "img_000000.png",
+      "total_seconds": 0.9088396249571815
+    }
+  ],
+  "status": "test_only_candidate_not_lb_scored"
+}

@@ -1,0 +1,36 @@
+{
+  "confirmation_config_sha256": "0f29d9a9aab2bd4baae9371ea8511f910fa6205f8d188163b71a6a4e6b3acac5",
+  "gate": {
+    "evaluable": true,
+    "kind": "full32_gate",
+    "passed": true,
+    "per_panel": {
+      "independent_libjpeg": {
+        "checks": {
+          "bootstrap_lower_above_zero": true,
+          "mean_ssim_delta_at_least_0_005": true,
+          "seam_error_nonregression": true
+        },
+        "passed": true
+      },
+      "primary_kornia": {
+        "checks": {
+          "bootstrap_lower_above_zero": true,
+          "mean_ssim_delta_at_least_0_005": true,
+          "seam_error_nonregression": true
+        },
+        "passed": true
+      }
+    },
+    "submission_promotion_allowed": false,
+    "valid_permutation_count": 64
+  },
+  "kind": "postassembly_actual_qap_source_disjoint_confirmation_decision",
+  "passed": true,
+  "production_integration_eligible": true,
+  "report": "runs/assembly_v1/postassembly_harmonizer/actual_qap_confirmation_v1_score_20260712T1535Z/report.json",
+  "report_sha256": "785b3106be75ee15c3698195ab182389e915d83eaf83587bd0b9d1c48f684fd5",
+  "source_names_sha256": "91d8ea6ea78b65eac69e863ce3ad98099d46328d00032f02736ebbe8c3fc9c8f",
+  "status": "source_disjoint_confirmation_passed_candidate_for_production_integration",
+  "submission_promotion_allowed_by_this_development_confirmation": false
+}

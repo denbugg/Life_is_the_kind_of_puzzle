@@ -1,0 +1,46 @@
+{
+  "artifacts": [
+    {
+      "bytes": 433365,
+      "path": "hyperedge_h0.pt",
+      "sha256": "ee23d6388e93f4e7581bc6184c82a24fd5ca8f8dd755a5a0d1e67e8523d2ebf3"
+    },
+    {
+      "bytes": 5259,
+      "path": "hyperedge_h0_training.json",
+      "sha256": "74917f3d6b0e16fce81a68c3e7eafd59aa27764e4a34085885a5c40c3961b32e"
+    },
+    {
+      "bytes": 6171,
+      "path": "hyperedge_gate_report.json",
+      "sha256": "e72405bee4baee26ff12170afb9141f5064c5dc5f3dbd48acfcb2ff09751f33c"
+    },
+    {
+      "bytes": 423914,
+      "path": "hyperedge_gate_primary.json",
+      "sha256": "58de6296b27af1bba5aa47255426ee8681b96d475409e45090128d241c6a67b2"
+    },
+    {
+      "bytes": 423739,
+      "path": "hyperedge_gate_independent.json",
+      "sha256": "4db1711fa591545a808a4f761bed8ead62c95fde63fa87544b44eef45b80b7be"
+    },
+    {
+      "bytes": 2877,
+      "path": "hyperedge_gate_primary.log",
+      "sha256": "8cf9f4e3915a0886f6c6a42ae43a8046f937a720ad95309feca239e30a7c3ec7"
+    },
+    {
+      "bytes": 2824,
+      "path": "hyperedge_gate_independent.log",
+      "sha256": "9043912c70a0231f455b19847e18fc44d13ed8e71d952beb7a61ba2ec77a16fc"
+    },
+    {
+      "bytes": 38919,
+      "path": "hyperedge_training.log",
+      "sha256": "6ae1ccb061391880aff99a79205d522544c42b88bbef7611d4082cedb97d8cec"
+    }
+  ],
+  "kind": "puzzle_hyperedge_gate_artifact_hashes",
+  "schema_version": 1
+}

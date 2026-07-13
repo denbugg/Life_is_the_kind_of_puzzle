@@ -1,0 +1,11 @@
+{
+  "id": "pasha883/vsos-candidate-graph-oracle-v4-runtime",
+  "title": "VSOS Candidate Graph Oracle V4 Runtime",
+  "isPrivate": true,
+  "licenses": [
+    {
+      "name": "other"
+    }
+  ],
+  "description": "Pixel-free private version-1 reservation for candidate-graph oracle v4 role runtime."
+}

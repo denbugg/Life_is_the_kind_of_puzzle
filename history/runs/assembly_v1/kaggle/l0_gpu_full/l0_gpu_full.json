@@ -1,0 +1,154 @@
+{
+  "args": {
+    "channels": 48,
+    "data_parallel": true,
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "denoise_batch_size": 512,
+    "denoiser": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "device": "cuda",
+    "epochs": 2,
+    "grad_clip": 1.0,
+    "hard_negatives": 15,
+    "learning_rate": 0.0003,
+    "manifest": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/assembly_v1_code/configs/denoise_splits_seed20260710.json",
+    "output": "/kaggle/working/l0_gpu_full.pt",
+    "overwrite": false,
+    "quarantine": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/assembly_v1_code/configs/denoise_validation_quarantine_v1.json",
+    "queries_per_source": 256,
+    "replica_offset": 0,
+    "seed": 20260710,
+    "side_band": 6,
+    "train_offset": 0,
+    "train_sources": 512,
+    "val_offset": 0,
+    "val_sources": 32,
+    "weight_decay": 0.0001
+  },
+  "best_validation_recall_at_1": 0.15223052536231885,
+  "checkpoint": "/kaggle/working/l0_gpu_full.pt",
+  "checkpoint_sha256": "932dfd3cae27d3fc0051ef6f714ab4d83ddd573433695bb4df171abda70dba48",
+  "denoiser_metadata": {
+    "allow_unpromoted": false,
+    "best_ssim": 0.8082800069902816,
+    "best_step": null,
+    "best_validation": {
+      "boundary_mae": 14.56935402199074,
+      "gradient_mae": 5.444638551311728,
+      "interior_mae": 13.981659865913958,
+      "libjpeg_boundary_mae": 14.421931026461511,
+      "libjpeg_gradient_mae": 4.794274830957602,
+      "libjpeg_interior_mae": 13.962492766203704,
+      "libjpeg_mae": 14.196806278935185,
+      "libjpeg_ordered_image_ssim": 0.7131094332531336,
+      "libjpeg_psnr": 22.979736378138675,
+      "libjpeg_signed_bias_b": -2.017492404513889,
+      "libjpeg_signed_bias_g": -1.9056770833333334,
+      "libjpeg_signed_bias_r": -1.568976779513889,
+      "libjpeg_tile_ssim": 0.8192828992318947,
+      "mae": 14.281383885513117,
+      "ordered_image_ssim": 0.7238045820230582,
+      "paired_kornia_boundary_mae": 14.342894000771604,
+      "paired_kornia_gradient_mae": 4.720267574317738,
+      "paired_kornia_interior_mae": 13.878353381283068,
+      "paired_kornia_mae": 14.115269097222223,
+      "paired_kornia_ordered_image_ssim": 0.7164549161702867,
+      "paired_kornia_psnr": 23.033958552634516,
+      "paired_kornia_signed_bias_b": -1.748955078125,
+      "paired_kornia_signed_bias_g": -1.690519748263889,
+      "paired_kornia_signed_bias_r": -1.3206358506944444,
+      "paired_kornia_tile_ssim": 0.8226739476757541,
+      "psnr": 22.83672320634709,
+      "signed_bias_b": -1.6919364872685185,
+      "signed_bias_g": -1.6417550998263888,
+      "signed_bias_r": -1.658593388310185,
+      "step": 50000,
+      "tile_ssim": 0.8082800069902816
+    },
+    "checkpoint": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "checkpoint_is_latest": false,
+    "checkpoint_resolved": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "device": "cuda",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "model_name": "tile-naf",
+    "promotion_issues": [],
+    "resolved_device_fingerprint": {
+      "capability": [
+        6,
+        0
+      ],
+      "index": 0,
+      "machine": "x86_64",
+      "name": "Tesla P100-PCIE-16GB",
+      "total_memory": 17059545088,
+      "type": "cuda"
+    },
+    "rolled_back": false,
+    "runtime_versions": {
+      "cuda": "12.4",
+      "jpeg_codec": "6.2",
+      "kornia": "0.8.3",
+      "libjpeg_turbo": "True",
+      "libjpeg_turbo_version": "3.1.1",
+      "numpy": "2.0.2",
+      "opencv": "4.13.0",
+      "pillow": "11.3.0",
+      "python": "3.12.13",
+      "scipy": "1.16.3",
+      "skimage": "0.25.2",
+      "torch": "2.6.0+cu124"
+    },
+    "schema_version": 2,
+    "source_code_sha256": "6b62548370f370eb65b7d0a770cc6f3241ea209d12de257cc4882ddea4b4629f",
+    "state": "ema",
+    "step": 50000,
+    "training_data_sha256": "77d9c64527c7b4e98d36b001d9e4ccc0ef678cb2a41b52f4ac26901ee9c93b2e",
+    "validation_data_sha256": "35246d3d4e9ec249e8faff8455656d9deb8601f3d38dce101655a6c1040d686d"
+  },
+  "device": "cuda",
+  "history": [
+    {
+      "epoch": 1,
+      "train": {
+        "forced_group_recall_at_1": 0.5632095336914062,
+        "loss": 1.573619186063297
+      },
+      "validation": {
+        "median_rank": 36.9921875,
+        "mrr": 0.225000233448657,
+        "q90_rank": 444.22968750000007,
+        "queries": 1104.0,
+        "recall_at_1": 0.14979619565217392,
+        "recall_at_10": 0.3697916666666667,
+        "recall_at_20": 0.4712409420289855,
+        "recall_at_32": 0.5612545289855073,
+        "recall_at_5": 0.29353487318840576
+      }
+    },
+    {
+      "epoch": 2,
+      "train": {
+        "forced_group_recall_at_1": 0.643096923828125,
+        "loss": 1.3002290180884302
+      },
+      "validation": {
+        "median_rank": 37.234375,
+        "mrr": 0.22602024686006408,
+        "q90_rank": 444.22968750000007,
+        "queries": 1104.0,
+        "recall_at_1": 0.15223052536231885,
+        "recall_at_10": 0.3672158061594203,
+        "recall_at_20": 0.4663722826086957,
+        "recall_at_32": 0.5612545289855073,
+        "recall_at_5": 0.29220448369565216
+      }
+    }
+  ],
+  "kind": "puzzle_seam_pair_l0_training_report",
+  "model_config": {
+    "channels": 48,
+    "side_band": 6
+  },
+  "schema_version": 1,
+  "seconds": 735.0289524500001
+}

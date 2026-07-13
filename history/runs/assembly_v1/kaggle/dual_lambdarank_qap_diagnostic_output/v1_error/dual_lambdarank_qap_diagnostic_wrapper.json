@@ -1,0 +1,8 @@
+{
+  "error": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 64, in main\n    bundle = one(\"dual_lambdarank_qap_diagnostic_bundle.zip\")\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/src/script.py\", line 36, in one\n    raise RuntimeError(f\"expected one {pattern}, found {matches}\")\nRuntimeError: expected one dual_lambdarank_qap_diagnostic_bundle.zip, found []\n",
+  "kind": "dual_lambdarank_qap_diagnostic_kaggle_wrapper",
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 22.562641382217407,
+  "status": "error"
+}

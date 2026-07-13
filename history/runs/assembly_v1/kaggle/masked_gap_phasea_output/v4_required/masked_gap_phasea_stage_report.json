@@ -1,0 +1,46 @@
+{
+  "authorization_sha256": "7802414dac0c655102c45d0cd370dda778b13dadc7642ff8340539e4dbc05227",
+  "checkpoint_sha256": "79447dce4c5943abceb1ec166685a6724fb0b7c10446d20d4a1b11be74afdf48",
+  "code_manifest_sha256": "1583053a4276ba9b30368dcc6af00f24cd0fe091bfaff93090c41c01b0c3675b",
+  "hardware": [
+    {
+      "capability": [
+        7,
+        5
+      ],
+      "index": 0,
+      "name": "Tesla T4"
+    },
+    {
+      "capability": [
+        7,
+        5
+      ],
+      "index": 1,
+      "name": "Tesla T4"
+    }
+  ],
+  "input_manifest_sha256": "fbe74bfa263bfdea43c53941c8fddaf30468cfc89aee5ccee74697f9aef3ea8a",
+  "isolation": {
+    "dataset_sources": [
+      "pasha883/vsos-masked-gap-gate-code",
+      "pasha883/vsos-masked-gap-stage1-checkpoint-v1",
+      "pasha883/vsos-masked-gap-calb-input-v1"
+    ],
+    "labels_mounted": false,
+    "mount_layout": "kaggle_datasets_hierarchy",
+    "mounted_names": [
+      "pasha883/vsos-masked-gap-calb-input-v1",
+      "pasha883/vsos-masked-gap-gate-code",
+      "pasha883/vsos-masked-gap-stage1-checkpoint-v1"
+    ],
+    "puzzle_mounted": false
+  },
+  "kind": "masked_gap_isolated_phase_a_v1",
+  "labels_mounted": false,
+  "phase_a_artifact_sha256": "a1ab46b9efa81c8a76a355342d1b150bdcf84a5fae4c38d5cc93828710487f20",
+  "phase_a_report_sha256": "a2dc227f7b669deab90f324abe84688264930be9416d8d2618f4baed5b20b05a",
+  "puzzle_mounted": false,
+  "status": "complete",
+  "target_metrics_opened": false
+}

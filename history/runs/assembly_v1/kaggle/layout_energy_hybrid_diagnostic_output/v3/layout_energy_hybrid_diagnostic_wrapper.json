@@ -1,0 +1,114 @@
+{
+  "assets": {
+    "archive": null,
+    "checkpoint": "039cd7638731006665a62064f658211fd288d8cdcae6df79347a2f038f5cb717",
+    "code_mount_mode": "kaggle_expanded_direct_files",
+    "expected_source_archive_sha256": "346cf65e58a7971a54abaf7dcb1d1bf202d9b40afe70d6c5826ac7cac5679771",
+    "layouts": "d5eb0f71668be726cea84f6b8a2c9e6ea42c551fe72dbaff60d90aa13d6f4b00"
+  },
+  "code_sha256": {
+    "scripts/evaluate_layout_energy_hybrid.py": "7311a05790c63234bd7b4cc76b8227bf9f7055189463efe8ce0ff6d3181fb020",
+    "scripts/export_frozen_real16_layouts.py": "b3ed2de08e23ccca4ed609f526849dc3f020e3ba381860d722734a6a5176b4fa",
+    "src/puzzle_assembly/__init__.py": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5",
+    "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+    "src/puzzle_assembly/components.py": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367",
+    "src/puzzle_assembly/geometry.py": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86",
+    "src/puzzle_assembly/layout_energy_hybrid.py": "05e476e0d9c5bcbcaef636f1f6c530f38842a6b8b4799da29cf9eec6832eb3bd",
+    "src/puzzle_assembly/layout_energy_transformer.py": "ebcaab5ecd77dc54e7a7c1f9bf7c282931b4ccbddda414b28e9f07872aa7e6e1",
+    "src/puzzle_assembly/metrics.py": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69",
+    "src/puzzle_assembly/solvers.py": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e",
+    "src/puzzle_denoise_v2/__init__.py": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7",
+    "src/puzzle_denoise_v2/degradation.py": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+    "src/puzzle_denoise_v2/model.py": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+    "src/puzzle_denoise_v2/tiles.py": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+    "tests/test_layout_energy_hybrid.py": "bfebd11f2ca929bae20c3a1a04194992927a75d4a7aa575867b2384498b50d60"
+  },
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "elapsed_seconds": 111.90911729699997,
+  "hardware": {
+    "capability_0": [
+      7,
+      5
+    ],
+    "cuda": "12.8",
+    "device_0": "Tesla T4",
+    "device_count": 2,
+    "fp16_matmul_mean": 0.02332146465778351,
+    "peak_allocated": 11403264,
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "layout_energy_hybrid_diagnostic_wrapper",
+  "safe_for_submission": false,
+  "status": "complete",
+  "telemetry": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_layout_energy_hybrid.py",
+        "-k",
+        "not target_scoring_reads_an_immutable_prediction_artifact"
+      ],
+      "label": "seven_pre_prediction_contract_tests_without_target_paths",
+      "returncode": 0,
+      "seconds": 14.326445248000027
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "scripts/evaluate_layout_energy_hybrid.py",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-layout-energy-hybrid-diagnostic-code/layout_energy_checkpoint.pt",
+        "--frozen-layouts",
+        "/kaggle/input/datasets/pasha883/vsos-layout-energy-hybrid-diagnostic-code/frozen_real16_hbt_qap_layouts.json",
+        "--output-dir",
+        "/kaggle/working/layout_energy_hybrid_diagnostic",
+        "--expected-checkpoint-sha256",
+        "039cd7638731006665a62064f658211fd288d8cdcae6df79347a2f038f5cb717",
+        "--expected-layout-manifest-sha256",
+        "d5eb0f71668be726cea84f6b8a2c9e6ea42c551fe72dbaff60d90aa13d6f4b00",
+        "--device",
+        "cuda:0",
+        "--require-t4",
+        "--suspect-k",
+        "8,16,32",
+        "--proposal-budget",
+        "96",
+        "--rerank-budget",
+        "4",
+        "--score-batch-size",
+        "5",
+        "--bootstrap-samples",
+        "5000",
+        "--limit",
+        "16"
+      ],
+      "label": "frozen_real16_inference_only_diagnostic",
+      "returncode": 0,
+      "seconds": 75.98835339399989
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_layout_energy_hybrid.py::test_target_scoring_reads_an_immutable_prediction_artifact"
+      ],
+      "label": "post_prediction_target_scoring_contract_test",
+      "returncode": 0,
+      "seconds": 6.090696450999985
+    }
+  ],
+  "validation": {
+    "actionable_signal": false,
+    "predictions_sha256": "8a6fbb3f9c696725fa37fc1b89e2eb9d34b3ca68d74878e8d1f7ce08d8f7ec5c",
+    "report_sha256": "36fd481cc8362174db121b5eee5b1a2201c32d1979128dcb910aa7269cfb1b37",
+    "status": "no_actionable_signal"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "rusyalain/vsos-denoise-v2-smoke",
+  "title": "VSOS Denoise V2 Smoke",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "rusyalain/vsos-denoise-v2-code"
+  ]
+}

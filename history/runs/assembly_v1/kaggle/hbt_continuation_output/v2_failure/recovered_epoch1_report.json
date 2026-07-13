@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "kind": "hbt_continuation_recovered_epoch1",
+  "status": "selection_screen_failed_epoch2_infrastructure_incomplete",
+  "safe_for_submission": false,
+  "baseline": {
+    "checkpoint_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "selection": {
+      "mrr": 0.32185246888548136,
+      "recall_at_1": 0.22384511260315776,
+      "recall_at_32": 0.7038892796263099
+    }
+  },
+  "candidate": {
+    "checkpoint": "hbt_continuation/hbt_d320_denoised_rgb_sobel_cont.pt",
+    "checkpoint_sha256": "18d79abe4c571afdbd1f02db1b7c2ee2579a408de0e052aa87eff8316cf22f80",
+    "epoch": 1,
+    "selection": {
+      "mrr": 0.328905435744673,
+      "recall_at_1": 0.2296761805191636,
+      "recall_at_32": 0.7107110638171434
+    },
+    "selection_delta": {
+      "mrr": 0.007052966859191635,
+      "recall_at_1": 0.005831067916005847,
+      "recall_at_32": 0.006821784190833519
+    }
+  },
+  "selection_screen": {
+    "gates": {
+      "mrr": {
+        "minimum": 0.33185246888548135,
+        "passed": false,
+        "value": 0.328905435744673
+      },
+      "recall_at_1": {
+        "minimum": 0.23384511260315777,
+        "passed": false,
+        "value": 0.2296761805191636
+      },
+      "recall_at_32": {
+        "minimum": 0.6988892796263099,
+        "passed": true,
+        "value": 0.7107110638171434
+      }
+    },
+    "passed": false
+  },
+  "training_contract": {
+    "epochs_requested": 2,
+    "kind": "weights_only_finetune_optimizer_reset",
+    "learning_rate": 0.0001,
+    "replica_offset": 2,
+    "train_slice": [2048, 4096],
+    "train_sources": 2048,
+    "validation_slice": [0, 32]
+  },
+  "runtime": {
+    "device_count": 2,
+    "devices": ["Tesla T4", "Tesla T4"],
+    "epoch1_seconds": 2328.09735998,
+    "epoch2_completed_sources": 149,
+    "epoch2_requested_sources": 2048,
+    "exit_code": -9,
+    "torch": "2.10.0+cu128"
+  },
+  "provenance": {
+    "candidate_init_checkpoint_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "candidate_train_names_exact_edge_train_2048_4096": true,
+    "candidate_val_names_exact_edge_development_0_32": true,
+    "fresh_gate_opened": false,
+    "fresh_gate_slice": [96, 128],
+    "kaggle_log_sha256": "9f23e73026f1239c9df820489dfaa0be67096251c050fd38061335052c61c8bc",
+    "training_log_sha256": "d3566bbb9969d6e7c519d2e62f66558c416a6518e0754d8c36f2c2a192ab5920"
+  },
+  "decision": "do_not_promote_do_not_run_untouched_or_qap_gate"
+}

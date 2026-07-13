@@ -1,0 +1,17 @@
+{
+  "id": "pasha883/vsos-positional-diffusion-pilot-t4x2",
+  "title": "VSOS Positional Diffusion Pilot T4x2",
+  "code_file": "run_positional_diffusion_pilot.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-solver-rework-night-code",
+    "pasha883/vsos-positional-diffusion-pilot-code"
+  ]
+}

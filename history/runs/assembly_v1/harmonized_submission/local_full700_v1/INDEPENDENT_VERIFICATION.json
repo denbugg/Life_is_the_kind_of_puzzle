@@ -1,0 +1,52 @@
+{
+  "builder_report": {
+    "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/harmonized_submission/local_full700_v1/HARMONIZED_SUBMISSION_REPORT.json",
+    "sha256": "e422c1b0fdf8bb3f21d9a640daad7313ea75dfae031d130bc81d9b55f0c69b55"
+  },
+  "checks": {
+    "all_700_pngs_decode_rgb_480x480": true,
+    "all_input_and_layout_hashes_match_frozen_lb_artifact": true,
+    "all_member_hashes_match_builder_report": true,
+    "archive_metadata_canonical": true,
+    "layout_recomputed": false,
+    "target_paths_or_pixels_read": false
+  },
+  "kind": "harmonized_submission_independent_verification",
+  "layout_reports": [
+    {
+      "count": 350,
+      "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/final_qap_submission_output/v1/final_qap_shard_350_700.json",
+      "sha256": "38e8a01de560ef8914f25dbe42b2c43c063bde07e3b537e71c0be28416f8dbc4"
+    },
+    {
+      "count": 350,
+      "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/final_qap_submission_output/v1/final_qap_shard_000_350.json",
+      "sha256": "541e7905dad9373a173c31db068429b20fb614d450f3cfb4439b89a0a45b2e2a"
+    }
+  ],
+  "leaderboard_score": null,
+  "members_sha256": "b445670eee1b8a0c4d0a78aa8a87ee52705e0e82f0f85045a67bc06004775a5c",
+  "old_submission": {
+    "known_user_lb_score": 0.203,
+    "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/kaggle/final_qap_submission_output/v1/submission.zip",
+    "sha256": "1eeae828dd893198c07ac502d29aa5eeebd54bf6b818293d3b7e3f67ecb59607"
+  },
+  "safe_for_submission": true,
+  "schema_version": 1,
+  "status": "verified_candidate_ready_not_lb_scored",
+  "submission": {
+    "bytes": 208479894,
+    "member_count": 700,
+    "path": "/Users/rusyalain/Documents/test/runs/assembly_v1/harmonized_submission/local_full700_v1/submission.zip",
+    "sha256": "28554bc4563a0b1468ded11a1c4f037fdbf96c77ecadd4187fa0bd796c7a3123"
+  },
+  "target_free_comparison_to_old_renderer": {
+    "changed_images": 700,
+    "mean_absolute_pixel_delta": 6.452203645833333,
+    "mean_changed_pixel_fraction": 0.9989486111111111,
+    "mean_untargeted_seam_delta": -0.014648775751037258,
+    "median_absolute_pixel_delta": 6.590964988425926,
+    "new_mean_untargeted_seam_discontinuity": 0.07258918984127896,
+    "old_mean_untargeted_seam_discontinuity": 0.08723796559231622
+  }
+}

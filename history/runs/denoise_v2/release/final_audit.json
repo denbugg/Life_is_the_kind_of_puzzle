@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "kind": "denoise_v2_final_release_audit",
+  "created_utc": "2026-07-10T09:24:18Z",
+  "selection": {
+    "manifest": "runs/denoise_v2/release/selected_model.json",
+    "manifest_sha256": "ce244ce8c9759be859262fd16560f8318814022883ec52cdc380ad490a924080",
+    "checkpoint": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "selection_was_frozen_before_final_gate": true,
+    "model_choice_changed_after_final_gate": false
+  },
+  "one_shot_final_gate": {
+    "kernel": "rusyalain/vsos-denoise-v2-one-shot-final-gate-cpu",
+    "report": "runs/denoise_v2/release_readback/20260710T074500Z/final_gate_cpu_v1/selected_final_gate_report.json",
+    "report_sha256": "afc5b311c3234048c5d28d1d5cb6d9745c4e4578b34de001bb2ae0fd86066264",
+    "code_sha256": "9025301a3760c2ae5d520c88bd3c92cc8befa5eb687025088b4981ce135dccde",
+    "quarantine_sources": 93,
+    "calibration_sources": 257,
+    "frozen_gate_sources": 350,
+    "pairs_per_source_per_panel": 8,
+    "primary_pairs": 2800,
+    "sensitivity_pairs": 2800,
+    "training_or_tuning_launched": false,
+    "passes_final_gate": true,
+    "failed_checks": [],
+    "primary_source_macro_tile_ssim": {
+      "raw": 0.6756984354873364,
+      "opencv_nlm": 0.720414891648688,
+      "legacy_q90": 0.771004056104286,
+      "selected_ema": 0.8109774667377658
+    },
+    "selected_minus_legacy_primary_95pct_source_bootstrap": [
+      0.038103707712192625,
+      0.04184708899179042
+    ],
+    "sensitivity_source_macro_tile_ssim": {
+      "raw": 0.6513348243018641,
+      "opencv_nlm": 0.7069456886909108,
+      "legacy_q90": 0.7568437890773956,
+      "selected_ema": 0.7993701899137398
+    },
+    "selected_minus_legacy_sensitivity_95pct_source_bootstrap": [
+      0.040650880499591244,
+      0.044449262228952
+    ]
+  },
+  "integration": {
+    "example_input": "puzzle/test/img_000000.png",
+    "example_output": "runs/denoise_v2/release/example_test_img_000000.png",
+    "example_output_sha256": "0f54a11de68ecc587e455088420d9cc61c8ba90662e3547951c5ab7beb671090",
+    "example_report": "runs/denoise_v2/release/example_test_img_000000.json",
+    "example_report_sha256": "d8f074b0db73cc79cfeeb8b4dda7bc2b7154b494ac176ae27de3edbdfdba3ae7",
+    "device": "mps",
+    "seconds": 0.6526019170123618,
+    "tile_order_preserved": true
+  },
+  "verification": {
+    "pytest_passed": 75,
+    "pytest_failed": 0,
+    "compileall_passed": true,
+    "doctor_preflight": "complete",
+    "kaggle_auth": "ok",
+    "mps_available": true,
+    "release_sha256sums_passed": true,
+    "final_gate_sha256sums_passed": true,
+    "remote_code_payload_sha256_entries_passed": 19
+  },
+  "scope": {
+    "tile_assembly_trained": false,
+    "tile_assembly_status": "deferred by user request",
+    "additional_experiments_started_after_final_gate": false
+  }
+}

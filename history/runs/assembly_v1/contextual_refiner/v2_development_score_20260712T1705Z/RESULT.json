@@ -1,0 +1,8 @@
+{
+  "gate_pixels_opened": false,
+  "phase_a_manifest_sha256": "df07f3ac3f21e704a2bfb7239aaa829950f11dd7b62e9c4de4d7d664473e7be8",
+  "report": "runs/assembly_v1/contextual_refiner/v2_development_score_20260712T1705Z/report.json",
+  "report_sha256": "aff44fde45d2f8d099fe8196e2433662be0c7ec62523979a4f06b8919935c609",
+  "selected_candidate": null,
+  "status": "no_eligible_candidate_stop_gate_sealed"
+}

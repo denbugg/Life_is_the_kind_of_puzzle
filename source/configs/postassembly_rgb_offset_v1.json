@@ -1,0 +1,230 @@
+{
+  "schema_version": 1,
+  "kind": "postassembly_rgb_offset_development_protocol",
+  "status": "precommitted_before_selected_slice_pixel_access",
+  "created_utc": "2026-07-12T14:40:28Z",
+  "scope": {
+    "purpose": "Measure whether target-blind per-tile colour reconciliation improves an already correct layout after restoration.",
+    "development_only": true,
+    "may_promote_submission": false,
+    "successful_gate_only_authorizes": "one separately frozen source-disjoint confirmation; it does not authorize submission",
+    "layout": "synthetic oracle correct order, fixed before target scoring",
+    "target_pixels_available_to_harmonizer": false,
+    "target_pixels_available_only_to_separate_scorer": true,
+    "no_training": true,
+    "no_kaggle_or_gpu_required": true
+  },
+  "authoritative_inputs": {
+    "manifest": {
+      "path": "configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    },
+    "audit_exclusion": {
+      "path": "configs/assembly_audit_exclusion_v1.json",
+      "sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6"
+    },
+    "selected_tilenaf": {
+      "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "state": "ema"
+    },
+    "production_seam_tilenaf": {
+      "path": "runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+      "state": "ema"
+    }
+  },
+  "source_selection": {
+    "split": "edge_development",
+    "selection_rule": "starting at authoritative edge_development index 160, take the first 32 names with no exact basename hit in the precommit metadata scan",
+    "scan_roots": [
+      "configs",
+      "scripts",
+      "tests",
+      "runs/assembly_v1"
+    ],
+    "scan_file_types": [
+      "json",
+      "md",
+      "py"
+    ],
+    "scan_exclusions": [
+      "configs/denoise_splits_seed20260710.json and bundled verbatim copies",
+      "configs/candidate_graph_oracle_ceiling_v1.json",
+      "protocol.py copies that define splits",
+      "binary files and archives"
+    ],
+    "metadata_scan_utc": "2026-07-12T14:34:00Z",
+    "metadata_scan_opened_pixels": false,
+    "known_prior_exact_range_excluded": "edge_development[0:128]",
+    "candidate_graph_oracle_range_excluded": "edge_development[128:160]",
+    "candidate_graph_oracle_source_names_sha256": "149ca83873e5e2e79e6458098c5c758b935af5d9131e093f5eb34fef82b76634",
+    "scanned_seen_names_skipped_before_last_selected_index": [
+      "img_000837.png",
+      "img_003773.png",
+      "img_000146.png",
+      "img_006772.png",
+      "img_002597.png",
+      "img_000223.png",
+      "img_000609.png",
+      "img_000026.png"
+    ],
+    "first_selected_index": 160,
+    "last_selected_index": 199,
+    "count": 32,
+    "names": [
+      "img_005775.png",
+      "img_006677.png",
+      "img_004503.png",
+      "img_005795.png",
+      "img_002630.png",
+      "img_001823.png",
+      "img_006298.png",
+      "img_001905.png",
+      "img_005194.png",
+      "img_006044.png",
+      "img_002567.png",
+      "img_006665.png",
+      "img_002105.png",
+      "img_005504.png",
+      "img_002013.png",
+      "img_001078.png",
+      "img_002136.png",
+      "img_004435.png",
+      "img_006497.png",
+      "img_006832.png",
+      "img_006787.png",
+      "img_005051.png",
+      "img_000999.png",
+      "img_003059.png",
+      "img_001451.png",
+      "img_006805.png",
+      "img_004876.png",
+      "img_002063.png",
+      "img_001238.png",
+      "img_004027.png",
+      "img_006705.png",
+      "img_003720.png"
+    ],
+    "names_sha256_serialization": "sha256(UTF8('\\n'.join(names))) with no final newline",
+    "names_sha256": "98a4a6cf5035949396861378bceb49b0bb0889d72542cf3244c963b44f716729",
+    "disjointness_required": {
+      "candidate_graph_oracle_edge_development_128_160": true,
+      "assembly_cal": true,
+      "assembly_incremental_gate": true,
+      "assembly_audit_exposed": true,
+      "assembly_final_audit": true,
+      "test": true,
+      "manifest_excluded_test_overlap": true
+    },
+    "freshness_limit": "All sources are inside the selected denoiser's 4,900-source training split, so this remains development-only even though the exact post-assembly records were absent from the metadata scan."
+  },
+  "synthetic_panels": {
+    "master_seed": 20260712,
+    "names": [
+      "primary_kornia",
+      "independent_libjpeg"
+    ],
+    "seed_formula": "per_source_seed(master_seed, 'postassembly-rgb-offset-' + panel, source_name, replica)",
+    "replicas_per_source": 1,
+    "corruption": "puzzle_assembly.panels.make_exact_panel",
+    "corruption_is_independent_per_tile": true,
+    "same_sources_in_both_panels": true
+  },
+  "renderer_baselines": {
+    "raw_corrupted": "ordered corrupted uint8 tiles",
+    "selected_tilenaf": "selected TileNAF EMA output",
+    "production_seam_tilenaf": "production seam TileNAF EMA output",
+    "fixed_alpha_0_5_no_target_tuning": {
+      "selected_tilenaf_weight": 0.5,
+      "production_seam_tilenaf_weight": 0.5,
+      "alpha_was_not_tuned_on_any_target": true,
+      "role": "frozen primary comparison baseline"
+    }
+  },
+  "methods": {
+    "naive_5x5_on_blend": {
+      "radius_tiles": 2,
+      "strength": 0.5,
+      "max_abs_rgb_offset": 12.0,
+      "role": "naive local-average falsification baseline"
+    },
+    "bilateral_offset_on_blend": {
+      "radius_tiles": 2,
+      "sigma_spatial": 1.5,
+      "sigma_colour": 30.0,
+      "strength": 0.5,
+      "max_abs_rgb_offset": 12.0,
+      "role": "edge-aware local-average baseline"
+    },
+    "seam_graph_rgb_on_blend": {
+      "extrapolation_band": 3,
+      "confidence_scale": 12.0,
+      "confidence_floor": 0.05,
+      "ridge": 0.2,
+      "huber_delta": 4.0,
+      "irls_steps": 4,
+      "max_abs_offset": 12.0,
+      "global_gauge": "per-channel median offset equals zero",
+      "role": "primary candidate"
+    },
+    "shuffled_neighbor_placebo_on_blend": {
+      "same_solver_as_primary": true,
+      "shuffle": "permute seam equations within horizontal and vertical edge groups",
+      "seed_formula": "per_source_seed(master_seed, 'postassembly-placebo-' + panel, source_name, 0)",
+      "role": "negative control; never eligible"
+    }
+  },
+  "luminance_gain": {
+    "enabled": false,
+    "reason": "must remain a separately configured candidate to avoid an unreported compound method"
+  },
+  "lln_diagnostic": {
+    "role": "nondeployable same-clean repeated-corruption ceiling only",
+    "k_values": [
+      1,
+      2,
+      4,
+      8,
+      25
+    ],
+    "operation": "recover the correct tile order for each independent corruption replica, average matching raw uint8 tile observations in float64, then round once",
+    "uses_multiple_observations_unavailable_at_test_time": true,
+    "may_enter_candidate_gate": false
+  },
+  "metrics": {
+    "ordered_primary": [
+      "source_macro_full_image_ssim",
+      "boundary_band_mae",
+      "target_referenced_seam_error"
+    ],
+    "secondary": [
+      "untargeted_seam_discontinuity",
+      "mae"
+    ],
+    "ssim": "skimage.metrics.structural_similarity(channel_axis=2,data_range=255)",
+    "boundary_band_pixels_each_side": 2,
+    "target_referenced_seam_error": "mean abs error between predicted and target one-pixel RGB gradients across every internal 20px grid seam, divided by 255",
+    "statistical_unit": "whole source image",
+    "panel_aggregation": "source macro; panels reported separately",
+    "paired_bootstrap_seed": 20260719,
+    "paired_bootstrap_resamples": 10000,
+    "paired_bootstrap_interval": 0.95
+  },
+  "frozen_gate": {
+    "candidate": "seam_graph_rgb_on_blend",
+    "baseline": "fixed_alpha_0_5_no_target_tuning",
+    "requires_full_32_source_run": true,
+    "both_panels_required": true,
+    "per_panel_mean_ssim_delta_minimum": 0.005,
+    "per_panel_paired_bootstrap_lower_must_exceed": 0.0,
+    "per_panel_mean_target_referenced_seam_error_delta_maximum": 0.0,
+    "small_or_partial_run_behavior": "report provisional metrics but gate_evaluable=false",
+    "pass_behavior": "authorize one new frozen source-disjoint confirmation only",
+    "fail_behavior": "stop or redesign the analytic harmonizer; do not tune on this slice repeatedly"
+  }
+}

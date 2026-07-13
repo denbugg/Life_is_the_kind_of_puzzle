@@ -1,0 +1,52 @@
+{
+  "best_step": 2500,
+  "checkpoint": "/kaggle/working/contextual_refiner_smoke_best.pt",
+  "checkpoint_sha256": "88bddc0c973df2651b80219903cfc8051f69f846752ebd0b2169eeff8c4f344e",
+  "gate": {
+    "all_layouts_unchanged": true,
+    "continuation_to_10000_allowed": false,
+    "passed": false,
+    "per_panel": {
+      "independent_libjpeg": {
+        "checks": {
+          "actual_bootstrap_lower_above_zero": false,
+          "actual_face_roi_nonregression": false,
+          "actual_mean_ssim_delta_at_least_0_002": false,
+          "actual_no_large_regression": false,
+          "actual_seam_error_nonregression": true,
+          "actual_texture_ratio_at_most_1_01": true,
+          "candidate_beats_context_placebo_by_0_001": true,
+          "correct_bootstrap_lower_above_zero": true,
+          "correct_boundary_mae_nonregression": true,
+          "correct_mean_ssim_delta_at_least_0_005": true,
+          "correct_no_large_regression": false,
+          "correct_texture_ratio_at_most_1_01": true,
+          "zero_confidence_exact_identity": true
+        },
+        "passed": false
+      },
+      "primary_kornia": {
+        "checks": {
+          "actual_bootstrap_lower_above_zero": false,
+          "actual_face_roi_nonregression": false,
+          "actual_mean_ssim_delta_at_least_0_002": false,
+          "actual_no_large_regression": false,
+          "actual_seam_error_nonregression": true,
+          "actual_texture_ratio_at_most_1_01": true,
+          "candidate_beats_context_placebo_by_0_001": true,
+          "correct_bootstrap_lower_above_zero": true,
+          "correct_boundary_mae_nonregression": true,
+          "correct_mean_ssim_delta_at_least_0_005": true,
+          "correct_no_large_regression": false,
+          "correct_texture_ratio_at_most_1_01": true,
+          "zero_confidence_exact_identity": true
+        },
+        "passed": false
+      }
+    },
+    "submission_promotion_allowed": false
+  },
+  "report": "/kaggle/working/contextual_refiner_smoke_report.json",
+  "report_sha256": "2c3c33fa8530da79790c43ab9b6099f64119f6a5550ca4b1390f37963dc0d599",
+  "status": "smoke_gate_failed_stop_or_pivot"
+}

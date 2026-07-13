@@ -1,0 +1,15 @@
+{
+  "id": "pasha883/vsos-layout-energy-hybrid-diagnostic-t4",
+  "title": "VSOS Layout Energy Hybrid Diagnostic T4",
+  "code_file": "run_layout_energy_hybrid_diagnostic.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-layout-energy-hybrid-diagnostic-code"
+  ]
+}

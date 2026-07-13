@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "kind": "exposed_development_seam_confidence_geometry_diagnostic",
+  "created_utc": "2026-07-12T16:25:00Z",
+  "status": "diagnostic_only_not_a_promotion_gate",
+  "scope": {
+    "source_count": 32,
+    "panel_count": 2,
+    "record_count": 64,
+    "predicted_layout_edge_count": 70656,
+    "correct_directed_adjacency_count": 4443,
+    "correct_directed_adjacency_rate": 0.06288213315217392,
+    "targets_opened": false,
+    "truth_derivation": "slot_to_target = numpy.random.default_rng(panel_seed).permutation(576), using the already exposed synthetic panel seed",
+    "layout_changed": false,
+    "allowed_use": "diagnose candidate layout-confidence features on an already exposed development panel",
+    "forbidden_use": "tune a submission or claim confirmation without a new source-disjoint gate"
+  },
+  "inputs": {
+    "render_manifest": {
+      "path": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_full32_score_20260712T1520Z/render_manifest.json",
+      "sha256": "345b4749d827589e724c8bc8ae024847364e70f0ed8b82a63fd0b94eddb6d4a5"
+    },
+    "phase_a_manifest": {
+      "path": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_full32_phase_a_20260712T1515Z/manifest.json",
+      "sha256": "a3dc47aea00aa9ab2935d061bb2210aa03583eb61571cd8a9f473daae5c6049d"
+    },
+    "harmonizer_code": {
+      "path": "src/puzzle_assembly/postassembly_harmonizer.py",
+      "sha256": "cd67d99a43f40932821e31e732c8988edb4e930661dd37314505e5128e75aec0"
+    },
+    "render_arm": "fixed_alpha_0_5_on_frozen_qap_w4",
+    "confidence_definition": "SeamGraphConfig base confidence from robust tangent-wise spread in _rgb_seam_equations"
+  },
+  "aggregate": {
+    "confidence_auc_for_correct_adjacency": 0.4320686947194225,
+    "mean_confidence_correct": 0.6475220628293831,
+    "mean_confidence_wrong": 0.6847609795255566,
+    "correct_rate_within_top_confidence_50_percent": 0.04537477355072464,
+    "correct_rate_within_top_confidence_25_percent": 0.027966485507246376,
+    "correct_rate_within_top_confidence_10_percent": 0.018964053212567222,
+    "correct_rate_within_top_confidence_5_percent": 0.015284460798188508,
+    "negative_seam_delta_magnitude_auc": 0.5322311867028934,
+    "negative_confidence_auc": 0.5679313052805774
+  },
+  "panels": {
+    "primary_kornia": {
+      "edge_count": 35328,
+      "correct_count": 2253,
+      "correct_rate": 0.06377377717391304,
+      "confidence_auc_for_correct_adjacency": 0.4319629525627877,
+      "mean_confidence_correct": 0.6519415390559329,
+      "mean_confidence_wrong": 0.6885693009212205
+    },
+    "independent_libjpeg": {
+      "edge_count": 35328,
+      "correct_count": 2190,
+      "correct_rate": 0.061990489130434784,
+      "confidence_auc_for_correct_adjacency": 0.43205887183828745,
+      "mean_confidence_correct": 0.6429754509853572,
+      "mean_confidence_wrong": 0.6809598982846372
+    }
+  },
+  "decision": {
+    "seam_graph_confidence_is_layout_confidence": false,
+    "interpretation": "Smooth but incorrect joins often have higher tangent-consistency confidence than true textured joins.",
+    "next_candidate_features": [
+      "HBT and C1 reciprocal row and column ranks",
+      "outgoing and incoming score margins",
+      "soft-cycle closure support",
+      "frozen QAP local objective contribution"
+    ],
+    "image_only_seam_confidence_role": "retain only as confidence for RGB offset equations"
+  }
+}

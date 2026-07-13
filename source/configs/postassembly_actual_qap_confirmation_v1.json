@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "kind": "postassembly_actual_qap_source_disjoint_confirmation",
+  "status": "precommitted_before_confirmation_pixel_or_metric_access",
+  "created_utc": "2026-07-12T15:25:00Z",
+  "decision_basis": {
+    "actual_layout_protocol": "configs/postassembly_actual_qap_layout_v1.json",
+    "actual_layout_protocol_sha256": "372bda4598d86865bec49db9ac329948ffb02b1be1bd5f4ec7f9fa707f7b610e",
+    "actual_layout_full32_report": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_full32_score_20260712T1520Z/report.json",
+    "actual_layout_full32_report_sha256": "f2f5a1699e5efe165f42989eb860241c43573a6e0e677efe0f0255ffe184228e",
+    "full32_gate_passed": true,
+    "mean_ssim_delta_primary_kornia": 0.012862418935899112,
+    "mean_ssim_delta_independent_libjpeg": 0.013110697499736548,
+    "wins_per_panel": 32,
+    "hyperparameters_retuned_after_full32": false
+  },
+  "implementation": {
+    "frozen_runner": "scripts/evaluate_postassembly_actual_layout.py",
+    "frozen_runner_sha256": "7ae6a87a04b225a7f8a799e59f3bcf913d2110532a988fc9dd6d5ca68487f746",
+    "wrapper": "scripts/run_postassembly_actual_confirmation.py",
+    "reuse_actual_layout_protocol_without_retuning": true,
+    "layout_refinement_forbidden": true,
+    "candidate_routing_forbidden": true,
+    "same_qap_w4_layout_for_all_render_arms": true,
+    "luminance_gain_included": false
+  },
+  "source_selection": {
+    "split": "edge_development",
+    "selection_rule": "starting at authoritative edge_development index 200, take the first 32 names with no exact basename hit in the precommit metadata scan",
+    "scan_roots": [
+      "configs",
+      "scripts",
+      "tests",
+      "runs/assembly_v1"
+    ],
+    "scan_file_types": [
+      "json",
+      "md",
+      "py"
+    ],
+    "scan_exclusions": [
+      "authoritative denoise manifest and verbatim copies",
+      "candidate graph oracle config",
+      "protocol.py split definitions",
+      "binary files and archives"
+    ],
+    "metadata_scan_utc": "2026-07-12T15:24:00Z",
+    "metadata_scan_opened_pixels": false,
+    "scanned_seen_names_skipped_before_last_selected_index": [
+      "img_001553.png",
+      "img_000783.png",
+      "img_003731.png",
+      "img_000050.png",
+      "img_006272.png",
+      "img_000620.png",
+      "img_003932.png",
+      "img_002128.png",
+      "img_000328.png",
+      "img_000608.png"
+    ],
+    "first_selected_index": 201,
+    "last_selected_index": 241,
+    "count": 32,
+    "names": [
+      "img_004974.png",
+      "img_003547.png",
+      "img_005958.png",
+      "img_001886.png",
+      "img_003111.png",
+      "img_000950.png",
+      "img_005605.png",
+      "img_006302.png",
+      "img_004730.png",
+      "img_003898.png",
+      "img_002067.png",
+      "img_003340.png",
+      "img_003127.png",
+      "img_006707.png",
+      "img_001406.png",
+      "img_005683.png",
+      "img_004874.png",
+      "img_006273.png",
+      "img_003698.png",
+      "img_005184.png",
+      "img_006632.png",
+      "img_003544.png",
+      "img_006512.png",
+      "img_004072.png",
+      "img_006392.png",
+      "img_006905.png",
+      "img_005973.png",
+      "img_004570.png",
+      "img_006329.png",
+      "img_006975.png",
+      "img_002294.png",
+      "img_001925.png"
+    ],
+    "names_sha256_serialization": "sha256(UTF8('\\n'.join(names))) with no final newline",
+    "names_sha256": "91d8ea6ea78b65eac69e863ce3ad98099d46328d00032f02736ebbe8c3fc9c8f",
+    "disjoint_from_actual_layout_full32_count": 0,
+    "disjoint_from_candidate_graph_oracle_count": 0,
+    "disjoint_from_cal_incremental_audit_test_count": 0,
+    "freshness_limit": "all sources remain inside the selected denoiser training split; this is a source-disjoint development confirmation, not a final audit"
+  },
+  "scientific_contract": {
+    "effective_protocol": "exact deep copy of configs/postassembly_actual_qap_layout_v1.json with only the source list replaced by this confirmation list",
+    "panels": [
+      "primary_kornia",
+      "independent_libjpeg"
+    ],
+    "layout": "unchanged production QAP w4 b0.05 i25",
+    "baseline": "fixed_alpha_0_5_on_frozen_qap_w4",
+    "candidate": "seam_graph_rgb_on_frozen_qap_w4",
+    "placebo_required": true,
+    "raw_old_seam_baselines_required": true,
+    "all_64_layouts_must_be_valid": true,
+    "all_layouts_and_render_arms_frozen_before_target_metrics": true
+  },
+  "frozen_gate": {
+    "both_panels_required": true,
+    "per_panel_mean_ssim_delta_minimum": 0.005,
+    "per_panel_paired_bootstrap_lower_must_exceed": 0.0,
+    "per_panel_mean_target_referenced_seam_error_delta_maximum": 0.0,
+    "all_64_layouts_valid": true,
+    "pass_behavior": "source-disjoint development confirmation succeeds; candidate is eligible for production integration and test-only inference, but this is not a sealed final-audit or leaderboard claim",
+    "fail_behavior": "retain current renderer and close the unchanged RGB-harmonizer route without retuning on confirmation"
+  }
+}

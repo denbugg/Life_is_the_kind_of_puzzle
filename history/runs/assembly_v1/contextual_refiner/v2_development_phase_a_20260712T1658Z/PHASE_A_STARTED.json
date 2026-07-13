@@ -1,0 +1,8 @@
+{
+  "config_sha256": "3bb76c418001368909c2f461b9b1904488f5ea4b595c6d8885a82bb617069003",
+  "created_utc": "2026-07-12T17:07:10Z",
+  "gate_pixels_opened": false,
+  "kind": "contextual_confidence_v2_development_phase_a_started",
+  "source_count": 32,
+  "target_metrics_computed": false
+}

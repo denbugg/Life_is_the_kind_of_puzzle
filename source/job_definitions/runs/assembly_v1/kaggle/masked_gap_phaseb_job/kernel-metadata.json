@@ -1,0 +1,18 @@
+{
+  "id": "pasha883/vsos-masked-gap-isolated-phase-b",
+  "title": "VSOS Masked Gap Isolated Phase B",
+  "code_file": "run_phaseb_isolated.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-masked-gap-gate-code",
+    "pasha883/vsos-masked-gap-stage1-checkpoint-v1",
+    "pasha883/vsos-masked-gap-calb-input-v1",
+    "pasha883/vsos-masked-gap-calb-labels-v1",
+    "pasha883/vsos-masked-gap-calb-phasea-v1"
+  ]
+}

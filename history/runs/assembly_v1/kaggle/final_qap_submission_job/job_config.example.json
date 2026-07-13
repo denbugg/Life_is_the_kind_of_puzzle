@@ -1,0 +1,16 @@
+{
+  "builder_args": {
+    "line_seam": false,
+    "qap_boundary_weight": 0.05,
+    "qap_initial_weight": 0.75,
+    "qap_iterations": 25,
+    "qap_noise_scale": 1.0,
+    "qap_noisy_components": 3,
+    "qap_refine_swaps": 8,
+    "qap_refine_weak_cells": 32,
+    "qap_restarts": 2,
+    "qap_score": "l1w4",
+    "soft_cycle_score": "l1",
+    "soft_cycle_topk": 8
+  }
+}

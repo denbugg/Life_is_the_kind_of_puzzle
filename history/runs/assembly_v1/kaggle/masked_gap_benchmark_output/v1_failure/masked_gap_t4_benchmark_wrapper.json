@@ -1,0 +1,12 @@
+{
+  "error": "RuntimeError('expected exactly one hash-pinned benchmark code bundle, got []')",
+  "kind": "masked_gap_t4x2_benchmark_wrapper_v1",
+  "launches_scientific_training": false,
+  "safe_for_submission": false,
+  "scientific_images_labels_targets_opened": false,
+  "status": "failed",
+  "synthetic_only": true,
+  "synthetic_optimizer_steps": true,
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 279, in main\n    wrapper = run()\n              ^^^^^\n  File \"/kaggle/src/script.py\", line 224, in run\n    benchmark, bundle = extract_benchmark()\n                        ^^^^^^^^^^^^^^^^^^^\n  File \"/kaggle/src/script.py\", line 67, in extract_benchmark\n    raise RuntimeError(\nRuntimeError: expected exactly one hash-pinned benchmark code bundle, got []\n",
+  "weights_discarded": true
+}

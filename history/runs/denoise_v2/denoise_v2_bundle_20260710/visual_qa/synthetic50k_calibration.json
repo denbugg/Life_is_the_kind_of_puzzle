@@ -1,0 +1,249 @@
+{
+  "config": {
+    "batch_size": 64,
+    "checkpoint": "runs/denoise_v2/release_readback/20260710T074500Z/synth/tilenaf_synth_50k.pt",
+    "data_root": "puzzle",
+    "device": "cpu",
+    "expected_checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "expected_quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "expected_val_pairs_sha256": "78795a0a0ed1ee10bddac0c31222f2a9418c41d94249aa35ba183d15508928ed",
+    "manifest": "configs/denoise_splits_seed20260710.json",
+    "output_png": "runs/denoise_v2/visual_qa/synthetic50k_calibration.png",
+    "overwrite": false,
+    "pair_count": 12,
+    "quarantine_artifact": "configs/denoise_validation_quarantine_v1.json",
+    "report_json": "runs/denoise_v2/visual_qa/synthetic50k_calibration.json",
+    "selection_seed": 20260710,
+    "state": "ema",
+    "tile_scale": 6,
+    "val_pairs": "runs/denoise_v2/real_gold_val.npz"
+  },
+  "inputs": {
+    "checkpoint": {
+      "best_step": null,
+      "checkpoint": "runs/denoise_v2/release_readback/20260710T074500Z/synth/tilenaf_synth_50k.pt",
+      "checkpoint_is_latest": false,
+      "checkpoint_resolved": "/Users/rusyalain/Documents/test/runs/denoise_v2/release_readback/20260710T074500Z/synth/tilenaf_synth_50k.pt",
+      "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "device": "cpu",
+      "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+      "model_name": "tile-naf",
+      "resolved_device_fingerprint": {
+        "capability": [
+          6,
+          0
+        ],
+        "index": 0,
+        "machine": "x86_64",
+        "name": "Tesla P100-PCIE-16GB",
+        "total_memory": 17059545088,
+        "type": "cuda"
+      },
+      "rolled_back": false,
+      "runtime_versions": {
+        "cuda": "12.4",
+        "jpeg_codec": "6.2",
+        "kornia": "0.8.3",
+        "libjpeg_turbo": "True",
+        "libjpeg_turbo_version": "3.1.1",
+        "numpy": "2.0.2",
+        "opencv": "4.13.0",
+        "pillow": "11.3.0",
+        "python": "3.12.13",
+        "scipy": "1.16.3",
+        "skimage": "0.25.2",
+        "torch": "2.6.0+cu124"
+      },
+      "schema_version": 2,
+      "source_code_sha256": "6b62548370f370eb65b7d0a770cc6f3241ea209d12de257cc4882ddea4b4629f",
+      "state": "ema",
+      "step": 50000
+    },
+    "data_root": "/Users/rusyalain/Documents/test/puzzle",
+    "manifest": "/Users/rusyalain/Documents/test/configs/denoise_splits_seed20260710.json",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "validation_pairs": "/Users/rusyalain/Documents/test/runs/denoise_v2/real_gold_val.npz",
+    "validation_pairs_sha256": "78795a0a0ed1ee10bddac0c31222f2a9418c41d94249aa35ba183d15508928ed",
+    "validation_quarantine": "/Users/rusyalain/Documents/test/configs/denoise_validation_quarantine_v1.json",
+    "validation_quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+  },
+  "kind": "denoise_calibration_visual_qa_contact_sheet",
+  "outputs": {
+    "contact_sheet_pixels_sha256": "e9287000434394be6e5004029fe6ebc00e48856936fed812ec0362dc86e006a3",
+    "contact_sheet_png": "/Users/rusyalain/Documents/test/runs/denoise_v2/visual_qa/synthetic50k_calibration.png",
+    "contact_sheet_png_sha256": "4e00e184720fa298fb0243d39b4df83890700896d7ce8db25e268cc6329bdc97",
+    "report_json": "/Users/rusyalain/Documents/test/runs/denoise_v2/visual_qa/synthetic50k_calibration.json"
+  },
+  "protocol": {
+    "calibration_only": true,
+    "frozen_gate_passed_to_model": false,
+    "frozen_gate_pixels_materialized": false,
+    "name": "contamination_aware_quarantine_v1",
+    "one_pair_per_distinct_source": true,
+    "primary_confidence_floor": 1.5,
+    "quarantined_pixels_materialized": false,
+    "selection_ranking": "ascending SHA256 of selection seed, visual-qa-source, and source name",
+    "selection_seed": 20260710,
+    "split_seed": 20260710
+  },
+  "rendering": {
+    "layout": "corrupt | restored | clean",
+    "pillow_version": "12.3.0",
+    "resampling": "nearest",
+    "tile_scale": 6,
+    "tile_size": 20
+  },
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "pillow": "12.3.0",
+    "python": "3.11.15",
+    "torch": "2.12.1"
+  },
+  "schema_version": 1,
+  "selection": {
+    "rows": [
+      {
+        "clean_tile_index": 301,
+        "confidence": 1.643677830696106,
+        "input_slot": 453,
+        "pair_row": 6960,
+        "source_index": 27,
+        "source_name": "img_004345.png"
+      },
+      {
+        "clean_tile_index": 421,
+        "confidence": 1.7933427095413208,
+        "input_slot": 384,
+        "pair_row": 127115,
+        "source_index": 504,
+        "source_name": "img_003674.png"
+      },
+      {
+        "clean_tile_index": 304,
+        "confidence": 2.4224660396575928,
+        "input_slot": 403,
+        "pair_row": 117402,
+        "source_index": 466,
+        "source_name": "img_003615.png"
+      },
+      {
+        "clean_tile_index": 389,
+        "confidence": 1.6841211318969727,
+        "input_slot": 549,
+        "pair_row": 59033,
+        "source_index": 233,
+        "source_name": "img_002059.png"
+      },
+      {
+        "clean_tile_index": 124,
+        "confidence": 1.6367162466049194,
+        "input_slot": 324,
+        "pair_row": 67211,
+        "source_index": 266,
+        "source_name": "img_001166.png"
+      },
+      {
+        "clean_tile_index": 469,
+        "confidence": 1.5946178436279297,
+        "input_slot": 434,
+        "pair_row": 141612,
+        "source_index": 562,
+        "source_name": "img_005226.png"
+      },
+      {
+        "clean_tile_index": 315,
+        "confidence": 1.670896053314209,
+        "input_slot": 391,
+        "pair_row": 42622,
+        "source_index": 169,
+        "source_name": "img_004247.png"
+      },
+      {
+        "clean_tile_index": 325,
+        "confidence": 2.26387095451355,
+        "input_slot": 55,
+        "pair_row": 151061,
+        "source_index": 600,
+        "source_name": "img_003920.png"
+      },
+      {
+        "clean_tile_index": 324,
+        "confidence": 2.6370694637298584,
+        "input_slot": 357,
+        "pair_row": 115131,
+        "source_index": 456,
+        "source_name": "img_003715.png"
+      },
+      {
+        "clean_tile_index": 327,
+        "confidence": 2.1462631225585938,
+        "input_slot": 125,
+        "pair_row": 115544,
+        "source_index": 458,
+        "source_name": "img_002516.png"
+      },
+      {
+        "clean_tile_index": 424,
+        "confidence": 1.6868213415145874,
+        "input_slot": 199,
+        "pair_row": 168050,
+        "source_index": 668,
+        "source_name": "img_003322.png"
+      },
+      {
+        "clean_tile_index": 490,
+        "confidence": 1.9369269609451294,
+        "input_slot": 112,
+        "pair_row": 157864,
+        "source_index": 627,
+        "source_name": "img_001125.png"
+      }
+    ],
+    "selection_sha256": "fd582aefa8036b1ec363279e34c5da0e91957a188e92776e59e274df7d01c0e1",
+    "source_indices": [
+      27,
+      504,
+      466,
+      233,
+      266,
+      562,
+      169,
+      600,
+      456,
+      458,
+      668,
+      627
+    ],
+    "source_names": [
+      "img_004345.png",
+      "img_003674.png",
+      "img_003615.png",
+      "img_002059.png",
+      "img_001166.png",
+      "img_005226.png",
+      "img_004247.png",
+      "img_003920.png",
+      "img_003715.png",
+      "img_002516.png",
+      "img_003322.png",
+      "img_001125.png"
+    ]
+  },
+  "source_partition": {
+    "calibration_source_count": 257,
+    "calibration_source_names_sha256": "b08d4cd0b6efbceb42abc9894ee600bf79db49fc4c2f1e9e7445156b756631cc",
+    "frozen_gate_source_count": 350,
+    "frozen_gate_source_names_sha256": "21894d5c253c9e40bdfce188b92ee94a60d78a13c85d0fe94abd5ecd3ae5c71f",
+    "manifest_validation_source_count": 700,
+    "quarantine_source_count": 93,
+    "quarantine_source_names_sha256": "f9cf2df9dfa78ddbfda2e72433f35d25e982e65b20335ab3f1e50c0bb79cfcf7",
+    "selected_calibration_source_count": 12
+  },
+  "tile_pixels": {
+    "clean_sha256": "72dc21bbaf9c39d9a5044003b935e9c6f1a24ad0ec3155d7895f3b538802c292",
+    "corrupt_restored_clean_sha256": "593be3c0cf9da5a38787e68dae4666fd8ec72df23b3def0f32e52e89250d4088",
+    "corrupt_sha256": "72c0c38c567412ac71b59542c6d777319b027e76ac134f0db1b7224a8f299e53",
+    "restored_sha256": "ca4772f2534bd055becf50a558c6b1f1af988ad261001b65423dfb871a5d09e5"
+  },
+  "visual_qa_code_sha256": "7cbd0d66fb8a8d53f0d54163e46689b69efe21f837db408c5e0705ee110d80af"
+}

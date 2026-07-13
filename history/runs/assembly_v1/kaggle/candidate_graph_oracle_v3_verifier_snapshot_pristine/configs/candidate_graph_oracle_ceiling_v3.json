@@ -1,0 +1,1010 @@
+{
+  "schema_version": 1,
+  "kind": "candidate_graph_oracle_ceiling",
+  "status": "semantic_protocol_precommitted_before_fixture_pixel_access",
+  "created_utc": "2026-07-12T19:30:00Z",
+  "protocol_instance_id": "4f3da49d17e8adba46b1359d2cc81a19",
+  "decision_basis": {
+    "trigger": "fixed qap_w1 confirmation did not pass the precommitted promotion gate",
+    "qap_confirmation_config": "configs/qap_weight_confirmation_v1.json",
+    "qap_confirmation_config_sha256": "30732463fb200bdff8f909ef06be6cb6c4e7859692e01c9d33c5d55175ffe262",
+    "qap_confirmation_report": "runs/assembly_v1/kaggle/qap_weight_confirmation_output/v3_raw/qap_weight_confirmation_report.json",
+    "qap_confirmation_report_sha256": "229f3751b85f26f9066c7fae0ed055f5a308354db1a408f0bcee88e8fa5189e7",
+    "qap_confirmation_status": "confirmed_small_gain_no_promotion",
+    "qap_w1_mean_ssim_delta": 0.0013747350422199476,
+    "qap_w1_bootstrap_95_ci": [
+      0.00021955405123965814,
+      0.0025803167439955037
+    ],
+    "qap_w1_wins_of_64": 35,
+    "precommitted_major_gain_required": 0.005,
+    "qap_w1_promoted": false,
+    "purpose": "measure whether the frozen C1/HBT/layout candidate graph contains enough correct geometry for a cycle-factor graph synchronizer",
+    "not_a_weight_search": true,
+    "not_a_submission_gate": true,
+    "recovery_from_invalid_no_result": {
+      "retired_protocol_instance_id": "2f1f4192e57d39cb1626e7f1eb2ae292",
+      "incident": "runs/assembly_v1/candidate_graph_oracle_v1_invalid_no_result/INCIDENT.md",
+      "incident_sha256": "41b309bc4146355e4d34b930776c917ea1231ba12e8dee89259ec6fcca4b15f3",
+      "retired_disposition": "INVALID_NO_RESULT",
+      "retired_label_access_absent": true,
+      "retired_accepted_aggregate_metrics": null,
+      "same_source_slice_and_panels_required": true,
+      "fresh_protocol_instance_secret_fixture_and_output_roots_required": true
+    },
+    "recovery_from_stranded_v2_phase_a": {
+      "retired_protocol_instance_id": "85d1021af567cc277cc1fddb61583b24",
+      "incident": "runs/assembly_v1/candidate_graph_oracle_v2_stranded_phase_a_no_result/INCIDENT.md",
+      "incident_sha256": "f4cc3200d1e318bbeb751fd6197bc0ebc2e7d874cde673018d09adf05d496fea",
+      "retired_disposition": "STRANDED_PHASE_A_NO_RESULT",
+      "retired_label_access_absent": true,
+      "retired_accepted_aggregate_metrics": null,
+      "raw_push_response_was_not_durable": true,
+      "fresh_protocol_instance_secret_fixture_and_output_roots_required": true
+    }
+  },
+  "frozen_contract": {
+    "protocol_instance": {
+      "value_source": "top-level protocol_instance_id",
+      "exact_value": "4f3da49d17e8adba46b1359d2cc81a19",
+      "regex": "^[0-9a-f]{32}$",
+      "immutable": true,
+      "must_be_bound_by_every_manifest_marker_lock_report_and_verifier": true
+    },
+    "invalid_no_result_recovery": {
+      "retired_protocol_instance_id": "2f1f4192e57d39cb1626e7f1eb2ae292",
+      "retired_fully_pinned_config_sha256": "6aec4736747ec5350a5bfb27d9f0b1d688e0522e1d74c603afd3e25d201e12f5",
+      "incident_path": "runs/assembly_v1/candidate_graph_oracle_v1_invalid_no_result/INCIDENT.md",
+      "incident_sha256": "41b309bc4146355e4d34b930776c917ea1231ba12e8dee89259ec6fcca4b15f3",
+      "rank0_failure_log_sha256": "71882dac54eeaf98287bc5d96c3ed566dde95cc7872a53ec6a7778c35cbc3c27",
+      "invalid_result_envelope_sha256": "e9446c88518b60a2c7db97c00c7d7459a322ae0c32f4e1c62ee14f6ef059bf49",
+      "unit_test_log_sha256": "593e67e46d25204a7d8456e681f54adeefc421cdde86307796818cefcb0eaca1",
+      "failure_class": "builder manifest scalar descriptor shape mismatch before any candidate graph derivation",
+      "retired_phase_a_accepted_metrics": false,
+      "retired_label_access_claim_present": false,
+      "retired_fixture_label_root_must_never_be_opened_listed_statted_hashed_or_passed": true,
+      "retired_protocol_artifacts_are_immutable_evidence": true,
+      "replacement_requires_new_protocol_id_config_ledger_fixture_roots_output_roots_secret_and_kaggle_slugs": true,
+      "source_slice_and_panels_remain_exactly_precommitted": true,
+      "replacement_is_the_only_metric_bearing_run_authorized_by_this_instance": true
+    },
+    "source_selection": {
+      "authoritative_manifest": "configs/denoise_splits_seed20260710.json",
+      "authoritative_manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+      "quarantine": "configs/denoise_validation_quarantine_v1.json",
+      "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+      "split": "edge_development",
+      "offset": 128,
+      "count": 32,
+      "slice_notation": "edge_development[128:160]",
+      "source_order_rule": "source_names_for_split output order, then Python slice [128:160]",
+      "source_names_sha256": "149ca83873e5e2e79e6458098c5c758b935af5d9131e093f5eb34fef82b76634",
+      "source_names_hash_serialization": "sha256(UTF8('\\n'.join(source_names))) with no final newline",
+      "source_count_must_equal": 32,
+      "panels_in_label_order": [
+        "primary_kornia",
+        "independent_libjpeg"
+      ],
+      "records_per_panel": 32,
+      "total_fixture_records": 64,
+      "same_source_set_in_both_panels": true
+    },
+    "prior_exposure_audit": {
+      "performed_utc": "2026-07-12T09:48:00Z",
+      "audit_was_metadata_only": true,
+      "image_pixels_opened_by_protocol_author": false,
+      "searched_roots": [
+        "configs",
+        "runs/assembly_v1",
+        "scripts",
+        "tests"
+      ],
+      "excluded_from_text_search": [
+        "PNG files",
+        "NPZ files",
+        "ZIP files",
+        "authoritative denoise manifest and verbatim bundled copies"
+      ],
+      "known_previous_exact_assembly_development_range": "edge_development[0:128]",
+      "overlap_with_known_previous_exact_range": 0,
+      "frozen_hbt_checkpoint_metadata": {
+        "train_name_count": 2048,
+        "validation_name_count": 32,
+        "slice_train_overlap_count": 0,
+        "slice_validation_overlap_count": 0,
+        "inspection_read_image_pixels": false
+      },
+      "frozen_denoiser_checkpoint_metadata": {
+        "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+        "configured_train_images": 4900,
+        "edge_development_slice_is_within_denoiser_train_split": true,
+        "slice_training_overlap_count": 32,
+        "slice_training_overlap_total": 32,
+        "inspection_read_image_pixels": false,
+        "interpretation": "restoration is upstream-frozen and equal across compared layouts, but this diagnostic is not source-disjoint from denoiser training"
+      },
+      "non_manifest_name_hits": [
+        {
+          "source": "img_000393.png",
+          "path": "runs/assembly_v1/spatial_prior/spatial_prior_512.json",
+          "json_path": "train_sources[236]",
+          "role": "legacy spatial-prior training metadata",
+          "legacy_artifact_used_by_this_protocol": false
+        },
+        {
+          "source": "img_002947.png",
+          "path": "runs/assembly_v1/l1_real_pseudo/full_512x1.json",
+          "json_path": "train_names[296]",
+          "role": "legacy real-pseudo L1 training metadata",
+          "legacy_artifact_used_by_this_protocol": false
+        },
+        {
+          "source": "img_002947.png",
+          "path": "runs/assembly_v1/real_cal/real_cal_16_l1realpseudo_t0full.json",
+          "json_path": "embedding_metadata.train_names[296]",
+          "role": "copied metadata for the same legacy L1 checkpoint",
+          "legacy_artifact_used_by_this_protocol": false
+        }
+      ],
+      "globally_fresh": false,
+      "freshness_claim": "no claim beyond disjointness from the documented edge_development[0:128] exact assembly evaluations and absence of current-route result records for these 32 names",
+      "interpretation": "this is a development diagnostic, never a sealed final-audit claim"
+    },
+    "assets": {
+      "denoiser": {
+        "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+        "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+        "state": "ema",
+        "output": "uint8 denoised slot tiles"
+      },
+      "hbt": {
+        "path": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+        "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+        "score_name": "denoised_hbt_l1"
+      },
+      "known_code_sha256": {
+        "src/puzzle_assembly/__init__.py": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5",
+        "src/puzzle_assembly/protocol.py": "7651d4405ce4dd35203a0cae7bfdd591621044f9e90dc522a314262727c86eca",
+        "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+        "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+        "src/puzzle_assembly/components.py": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367",
+        "src/puzzle_assembly/geometry.py": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86",
+        "src/puzzle_assembly/learned.py": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b",
+        "src/puzzle_assembly/qap.py": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+        "src/puzzle_assembly/metrics.py": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69",
+        "src/puzzle_assembly/solvers.py": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e",
+        "src/puzzle_denoise_v2/__init__.py": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7",
+        "src/puzzle_denoise_v2/degradation.py": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+        "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+        "src/puzzle_denoise_v2/losses.py": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34",
+        "src/puzzle_denoise_v2/metrics.py": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36",
+        "src/puzzle_denoise_v2/model.py": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11",
+        "src/puzzle_denoise_v2/tiles.py": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7",
+        "src/puzzle_denoise_v2/training.py": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+      },
+      "private_function_contract": {
+        "module": "src/puzzle_assembly/components.py",
+        "module_sha256": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367",
+        "required_symbols": [
+          "grow_components",
+          "_place_components_beam",
+          "_complete_with_hungarian"
+        ],
+        "symbol_presence_and_module_hash_must_be_verified_before_fixture_and_phase_a": true
+      }
+    },
+    "runtime_environment": {
+      "environment_lock_runtime_pin": "top-level runtime_pins.environment_lock_sha256",
+      "fixture_preparation_and_phase_b": {
+        "environment": "/Users/rusyalain/Documents/test/.conda",
+        "python": "3.11.15",
+        "torch": "2.12.1",
+        "numpy": "2.4.6",
+        "scipy": "1.17.1",
+        "scikit_image": "0.26.0",
+        "pillow": "12.3.0",
+        "opencv": "5.0.0",
+        "kornia": "0.8.3",
+        "device": "cpu",
+        "same_exact_versions_required_for_preparation_recomposition_and_phase_b": true
+      },
+      "kaggle_phase_a": {
+        "python": "3.12.13",
+        "torch": "2.10.0+cu128",
+        "cuda_runtime": "12.8",
+        "numpy": "2.0.2",
+        "scipy": "1.16.3",
+        "scikit_image": "0.25.2",
+        "pillow": "11.3.0",
+        "opencv": "4.13.0",
+        "kornia": "0.8.3",
+        "device": "2x Tesla T4 sm_75"
+      },
+      "phase_a_denoiser_and_scores_run_on_kaggle_t4": true,
+      "phase_b_uses_only_frozen_phase_a_denoised_tiles_and_matrices": true,
+      "version_or_device_mismatch_behavior": "fail before pixel access or artifact derivation"
+    },
+    "synthetic_corruption": {
+      "master_seed": 20260711,
+      "master_seed_integer_range": "0 <= seed < 2**64",
+      "panel_seed_formula": "per_source_seed(20260711, 'candidate-graph-oracle-' + panel_name, source_name, 0)",
+      "panel_seed_dtype_and_range": "Python int serialized as canonical unsigned decimal; 0 <= panel_seed < 2**64",
+      "panel_builder": "puzzle_assembly.panels.make_exact_panel",
+      "clean_target_shape": [
+        480,
+        480,
+        3
+      ],
+      "clean_target_dtype": "uint8 RGB",
+      "tile_grid": [
+        24,
+        24
+      ],
+      "tile_shape": [
+        20,
+        20,
+        3
+      ],
+      "primary_kornia_contract": "make_exact_panel primary_kornia using SyntheticTileDegrader variant_weights=(1,0,0), CPU torch.Generator seeded by panel_seed",
+      "independent_libjpeg_contract": "make_exact_panel independent_libjpeg using the same sampled parameters/noise and pillow_libjpeg_degrade",
+      "public_panel_permutation_is_not_sufficient_blinding": true
+    },
+    "opaque_fixture_blinding": {
+      "mandatory": true,
+      "threat": "source_name plus public per_source_seed makes the make_exact_panel slot_to_target permutation reconstructible",
+      "secret_generation": "one 32-byte master secret from Python secrets.token_bytes(32), generated once by fixture preparation and never printed",
+      "per_record_shuffle_seed": "uint64_big(HMAC_SHA256(master_secret, UTF8('shuffle:' + source_name + ':' + panel_name))[0:8])",
+      "per_record_opaque_id": "lowercase hex(HMAC_SHA256(master_secret, UTF8('id:' + source_name + ':' + panel_name))[0:16])",
+      "opaque_id_regex": "^[0-9a-f]{32}$",
+      "opaque_slot_permutation": "numpy.random.Generator(numpy.random.PCG64(per_record_shuffle_seed)).permutation(576).astype(int32)",
+      "per_record_shuffle_seed_dtype_and_range": "Python int serialized as canonical unsigned decimal; 0 <= seed < 2**64",
+      "application": "opaque_slot_tiles = exact_panel.slot_tiles[opaque_slot_permutation]; composed_slot_to_target = exact_panel.slot_to_target[opaque_slot_permutation]",
+      "input_only_side_may_store": [
+        "opaque fixture id",
+        "opaque slot_tiles uint8",
+        "fixed opaque nuisance seed",
+        "relative contained path and byte hash"
+      ],
+      "input_only_side_must_not_store_or_log": [
+        "source name",
+        "panel name",
+        "panel seed or corruption stage string",
+        "master secret or shuffle seed",
+        "opaque_slot_permutation",
+        "public or composed slot_to_target",
+        "target path or target hash",
+        "label path or label manifest path"
+      ],
+      "label_side_must_store": [
+        "opaque fixture id",
+        "source name",
+        "panel name",
+        "panel seed",
+        "opaque_slot_permutation int32[576]",
+        "composed_slot_to_target int32[576]",
+        "clean target RGB uint8[480,480,3]",
+        "relative contained label path and byte hash"
+      ],
+      "secret_storage": "fixture master secret is allowed only in the physically separate label root and is never mounted or copied into Phase A",
+      "label_only_master_secret_schema": {
+        "relative_path": "FIXTURE_MASTER_SECRET.bin",
+        "byte_length": 32,
+        "file_mode": "0600",
+        "creation": "single anchored os.open with O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW and mode 0600, followed by exact-length write, file fsync, fchmod 0600, fstat checks, and label-root directory fsync",
+        "required_fstat": "regular file, st_nlink == 1, st_size == 32, owner read/write only",
+        "forbidden_channels": [
+          "environment variables",
+          "command arguments",
+          "stdout or stderr",
+          "logs, reports, exception text, repr, traceback locals, or metrics",
+          "temporary files, swap files, shared memory files, input root, control root, Phase-A root, or Kaggle output"
+        ],
+        "label_manifest_binds_secret_file_sha256": true,
+        "input_manifest_or_fixture_lock_may_bind_secret_hash": false
+      },
+      "opaque_nuisance_seed": "uint64_big(SHA256(UTF8('qap:' + opaque_id))[0:8])",
+      "opaque_nuisance_seed_dtype_and_range": "Python int and NPZ uint64 scalar; 0 <= seed < 2**64",
+      "opaque_nuisance_seed_is_not_the_filename_production_seed": true,
+      "record_unlinkability": "opaque ids are unique secret-derived values per source-panel record; the public input manifest contains no source/panel metadata or shared seed, and all 64 opaque nuisance seeds must be unique",
+      "same_source_panels_must_not_be_linkable_from_manifest_metadata": true,
+      "bijection_checks": "64 unique opaque ids, exactly one label per input id, every permutation valid, exactly 32 records per hidden panel"
+    },
+    "fixture_preparation": {
+      "must_complete_before_phase_a": true,
+      "builder_runtime_pin": "top-level runtime_pins.fixture_builder_sha256",
+      "preparation_start_marker": "atomically and durably write FIXTURE_PIXEL_ACCESS_STARTED.json before first target path construction or pixel read",
+      "physical_output_roots": [
+        "fixture_input_root",
+        "fixture_label_root",
+        "fixture_control_root"
+      ],
+      "root_separation": "three distinct resolved directories; no symlinks, hardlinks, shared resolved inodes, ancestor containment, or cross-root relative paths",
+      "fixture_input_manifest_binds": [
+        "top-level protocol_instance_id",
+        "top-level frozen_contract_sha256",
+        "exact evaluator SHA-256",
+        "exact tests SHA-256",
+        "exact fixture-builder SHA-256",
+        "exact fixture-builder-tests SHA-256",
+        "exact pin-finalizer, lifecycle-tool, and result-verifier SHA-256 hashes",
+        "exact Kaggle Phase-A runner/kernel-metadata, crash-safe launcher, and local Phase-B runner SHA-256 hashes",
+        "exact environment-lock SHA-256",
+        "64 opaque ids, nuisance seeds, relative contained input paths, byte sizes, and SHA-256 hashes"
+      ],
+      "exact_common_manifest_binding_field_names": [
+        "protocol_instance_id",
+        "frozen_contract_sha256",
+        "evaluator_sha256",
+        "tests_sha256",
+        "fixture_builder_sha256",
+        "fixture_builder_tests_sha256",
+        "pin_finalizer_sha256",
+        "lifecycle_tool_sha256",
+        "result_verifier_sha256",
+        "environment_lock_sha256",
+        "phase_a_runner_sha256",
+        "phase_a_kernel_metadata_sha256",
+        "phase_a_launcher_sha256",
+        "phase_b_runner_sha256"
+      ],
+      "exact_crosslink_field_names": {
+        "label_to_input": "fixture_input_manifest_sha256",
+        "lock_to_input": "fixture_input_manifest_sha256",
+        "lock_to_label": "fixture_label_manifest_sha256",
+        "lock_to_prep_marker": "prep_marker_sha256"
+      },
+      "fixture_input_manifest_must_not_reference": [
+        "fixture label root or path",
+        "fixture label manifest path or SHA-256",
+        "fixture master secret path or SHA-256",
+        "source names, panel names, corruption seeds, truth permutations, target paths, or target hashes"
+      ],
+      "fixture_label_manifest_binds": [
+        "top-level protocol_instance_id",
+        "top-level frozen_contract_sha256",
+        "exact evaluator SHA-256",
+        "exact tests SHA-256",
+        "exact fixture-builder SHA-256",
+        "exact fixture-builder-tests SHA-256",
+        "exact pin-finalizer, lifecycle-tool, and result-verifier SHA-256 hashes",
+        "exact Kaggle Phase-A runner/kernel-metadata and local Phase-B runner SHA-256 hashes",
+        "exact environment-lock SHA-256",
+        "fixture input manifest SHA-256 as the sole manifest crosslink direction",
+        "64 opaque-id label mappings, relative contained label paths, byte sizes, and SHA-256 hashes"
+      ],
+      "fixture_lock_binds": [
+        "top-level protocol_instance_id",
+        "top-level frozen_contract_sha256",
+        "exact evaluator SHA-256",
+        "exact tests SHA-256",
+        "exact fixture-builder SHA-256",
+        "exact fixture-builder-tests SHA-256",
+        "exact pin-finalizer, lifecycle-tool, and result-verifier SHA-256 hashes",
+        "exact Kaggle Phase-A runner/kernel-metadata and local Phase-B runner SHA-256 hashes",
+        "exact environment-lock SHA-256",
+        "fixture input manifest SHA-256",
+        "fixture label manifest SHA-256",
+        "preparation start marker SHA-256"
+      ],
+      "manifest_crosslink_order": "input manifest -> no label reference; label manifest -> input manifest SHA-256; lock -> input and label manifest SHA-256; no backward crosslink or whole-config hash",
+      "whole_config_sha256_in_fixture_manifests_or_lock": "forbidden_to_break_the_pin_cycle",
+      "preparation_completion": "fixture lock is the last preparation artifact; after it is atomically durable, pin the input-manifest, label-manifest, and lock hashes in top-level runtime_pins and then acquire SEALED.json",
+      "fixture_artifacts_are_immutable_after_completion": true
+    },
+    "filesystem_integrity": {
+      "root_opening": "open every declared root once as an anchored directory fd with O_RDONLY|O_DIRECTORY|O_NOFOLLOW; all later access is relative openat-style access from that fd",
+      "path_rules": "UTF-8 POSIX relative normalized components only; reject empty components, '.', '..', absolute paths, backslashes, NULs, alternate separators, case-fold collisions, and duplicate canonical paths",
+      "file_opening": "O_RDONLY|O_NOFOLLOW relative to the anchored root fd, then fstat the opened descriptor rather than trusting a pre-open stat",
+      "required_file_fstat": "regular file, st_nlink == 1, expected size, expected owner policy, and device/inode not seen under another listed path or root",
+      "forbidden_entries": "symlinks, hardlinks, sockets, FIFOs, devices, mount escapes, sparse aliases, duplicate inodes, and any unlisted file or directory",
+      "directory_enumeration": "recursive anchored enumeration must equal the exact manifest allowlist plus explicitly named durable markers; reject every missing or extra entry",
+      "write_rules": "same-directory temporary regular file created O_CREAT|O_EXCL|O_NOFOLLOW, fstat st_nlink==1, complete write, file fsync, atomic os.replace without following links, reopen-and-hash, then parent-directory fsync",
+      "secret_exception": "the master secret uses its stricter direct O_EXCL 0600 creation contract and never uses a temporary file",
+      "checks_repeat": "before and after fixture preparation, Phase A, Phase B, and independent verification"
+    },
+    "physical_job_isolation": {
+      "phase_a_and_phase_b_are_distinct_fresh_processes": true,
+      "phase_a_execution": "private Kaggle 2xT4 job",
+      "phase_b_execution": "fresh local CPU process in the pinned repo .conda",
+      "shared_writable_working_directory": false,
+      "phase_a_runner_runtime_pin": "top-level runtime_pins.phase_a_runner_sha256",
+      "phase_b_runner_runtime_pin": "top-level runtime_pins.phase_b_runner_sha256",
+      "phase_a_mount_allowlist": [
+        "fixture input dataset",
+        "pinned code/runtime dataset",
+        "pinned denoiser and HBT assets",
+        "fresh empty Phase-A output root"
+      ],
+      "phase_a_mount_denylist": [
+        "fixture label dataset",
+        "fixture control dataset",
+        "original puzzle train or target dataset",
+        "any previous Phase-B or oracle output"
+      ],
+      "phase_b_filesystem_allowlist": [
+        "pinned code/runtime dataset",
+        "immutable fixture input root",
+        "immutable fixture label root",
+        "immutable independently sealed downloaded Phase-A output root",
+        "persistent external lifecycle ledger root",
+        "fresh empty Phase-B output root"
+      ],
+      "phase_b_pre_marker_label_rule": "the physically separate label root exists on the host but before LABEL_ACCESS and TARGET_ACCESS_STARTED no process may join, resolve, stat, list, open, hash, or pass a label-root/manifest/record path; host presence is not claimed as pre-marker invisibility",
+      "phase_b_post_marker_label_rule": "after the durable external LABEL_ACCESS claim and local TARGET_ACCESS_STARTED marker, construct the single pinned label-root path and allow only anchored manifest-listed access",
+      "phase_b_mount_denylist": [
+        "original puzzle train or target dataset",
+        "any writable Phase-A dataset",
+        "any alternate label or fixture version"
+      ],
+      "internet": false,
+      "phase_a_kernel_private": true,
+      "phase_a_must_complete_download_and_be_independently_sealed_before_phase_b_start": true,
+      "phase_a_runner_report_binds_kaggle_kernel_slug_version_job_id_mount_slugs_and_dataset_versions": true,
+      "phase_b_runner_report_binds_local_environment_lock_process_id_input_roots_and_phase_a_artifact_hash": true
+    },
+    "persistent_lifecycle_ledger": {
+      "protocol_key": "top-level protocol_instance_id",
+      "storage": "top-level runtime_pin_mutation_policy.transition_ledger_root; persistent external control root outside every ephemeral job and outside the input/label/Phase-A/Phase-B roots",
+      "tool_runtime_pin": "top-level runtime_pins.lifecycle_tool_sha256",
+      "claim_creation": "anchored O_CREAT|O_EXCL|O_NOFOLLOW regular-file creation, st_nlink==1, fsync file and directory; claims are append-only and never deleted, replaced, truncated, or reused even after failure",
+      "ordered_markers": [
+        "PREP.json",
+        "SEALED.json",
+        "PHASE_A.json",
+        "LABEL_ACCESS.json"
+      ],
+      "canonical_file_bytes": "UTF8(json.dumps(payload, sort_keys=True, separators=(',', ':'), ensure_ascii=True) + '\\n')",
+      "exact_payload_keys_only": [
+        "schema_version",
+        "kind",
+        "protocol_instance_id",
+        "state",
+        "frozen_contract_sha256",
+        "config_sha256_or_null",
+        "predecessor_sha256"
+      ],
+      "fixed_payload_values": {
+        "schema_version": 1,
+        "kind": "candidate_graph_oracle_lifecycle",
+        "protocol_instance_id": "top-level protocol_instance_id",
+        "frozen_contract_sha256": "top-level frozen_contract_sha256"
+      },
+      "PREP": "state PREP, predecessor_sha256=null, config_sha256_or_null=SHA-256 of the pre-fixture whole config after every code/test/runner/kernel/environment pin is filled and while fixture hashes remain null; claim exactly once before fixture start marker or first target path construction",
+      "SEALED": "state SEALED, predecessor_sha256=SHA-256 of exact PREP.json bytes, config_sha256_or_null=final fully pinned whole-config SHA-256; claim exactly once after fixture manifests, fixture lock, and final config are independently verified",
+      "PHASE_A": "state PHASE_A, predecessor_sha256=SHA-256 of exact SEALED.json bytes, config_sha256_or_null=same final fully pinned config SHA-256; claim exactly once before submitting or running Phase A",
+      "LABEL_ACCESS": "state LABEL_ACCESS, predecessor_sha256=SHA-256 of exact PHASE_A.json bytes, config_sha256_or_null=same final fully pinned config SHA-256; claim exactly once after immutable Phase-A verification and immediately before TARGET_ACCESS_STARTED and any label identifier/path construction",
+      "transition_receipts": "every report and independent verifier binds all applicable claim byte hashes and confirms strict state order",
+      "one_run_rule": "an existing PREP claim for this protocol_instance_id permanently forbids a second fixture preparation or oracle run; a failed or partial run remains consumed"
+    },
+    "common_solver": {
+      "renderer": "selected_tilenaf_synth_50k_ema_uint8",
+      "seed_score": "denoised_hbt_l1",
+      "soft_cycle": {
+        "top_k": 8,
+        "keep_per_tile": 1,
+        "proposal_keep_fraction": 0.5,
+        "loop_weight": 1.0,
+        "reciprocal_weight": 0.35
+      },
+      "qap": {
+        "iterations": 25,
+        "restarts": 2,
+        "boundary_weight": 0.05,
+        "initial_weight": 0.75,
+        "noisy_components": 3,
+        "noise_scale": 1.0,
+        "refine_swaps": 8,
+        "refine_weak_cells": 32,
+        "seed_formula_at_fixture_preparation": "uint64_big(SHA256(UTF8('qap:' + opaque_id))[0:8])",
+        "seed_role": "fixed per-record opaque nuisance seed for paired algorithm comparison; deliberately not the reversible filename-derived production seed",
+        "phase_a_receives_only_opaque_id_and_fixed_opaque_nuisance_seed": true,
+        "seed_uniqueness_required_across_64_records": true
+      },
+      "baseline": {
+        "label": "qap_w4_b0.05_i25",
+        "score": "denoised_C1_HBTw4_rank_fusion",
+        "hbt_weight": 4.0
+      },
+      "nonpromoted_layout_source": {
+        "label": "qap_w1_b0.05_i25",
+        "score": "denoised_C1_HBTw1_rank_fusion",
+        "hbt_weight": 1.0,
+        "purpose": "candidate graph expansion only",
+        "eligible_for_promotion": false
+      }
+    },
+    "scores": {
+      "all_scores_are_costs_lower_is_better": true,
+      "denoised_C1_equal_rank_fusion": {
+        "excluded_component_suffix": "_c2",
+        "component_names_sorted": [
+          "denoised_lab_l1_w2",
+          "denoised_mgc",
+          "denoised_pbc",
+          "denoised_rgb_l1_w1",
+          "denoised_rgb_l1_w2",
+          "denoised_rgb_l1_w4",
+          "denoised_tone_l1_w2"
+        ],
+        "component_weights": "equal after row-wise rank_normalize",
+        "score_name": "denoised_C1_equal_rank_fusion"
+      },
+      "hbt": "denoised_hbt_l1",
+      "w1": "equal rank fusion of C1 and HBT with HBT weight 1.0",
+      "w4": "equal rank fusion of C1 and HBT with HBT weight 4.0",
+      "diagonal": "positive infinity and never eligible",
+      "matrix_dtype_frozen_by_phase_a": "float32"
+    },
+    "candidate_graph": {
+      "directions": {
+        "0": {
+          "name": "right",
+          "dx": 1,
+          "dy": 0
+        },
+        "1": {
+          "name": "down",
+          "dx": 0,
+          "dy": 1
+        }
+      },
+      "edge_key": "(direction_uint8, first_slot_uint16, second_slot_uint16)",
+      "self_edges_forbidden": true,
+      "deduplication": "one edge per key; bitwise OR all origin bits",
+      "canonical_edge_order": "ascending direction, first_slot, second_slot",
+      "rank_ties": "numpy.argsort(kind='stable'), hence smaller slot index first for exact ties",
+      "origins": [
+        {
+          "bit": 0,
+          "mask": 1,
+          "name": "C1_OUT32",
+          "definition": "for every direction and first slot, first 32 finite non-self columns of the C1 row"
+        },
+        {
+          "bit": 1,
+          "mask": 2,
+          "name": "HBT_OUT32",
+          "definition": "for every direction and first slot, first 32 finite non-self columns of the HBT row"
+        },
+        {
+          "bit": 2,
+          "mask": 4,
+          "name": "C1_IN8",
+          "definition": "for every direction and destination column, first 8 finite non-self source rows of the C1 column, retained as source->destination"
+        },
+        {
+          "bit": 3,
+          "mask": 8,
+          "name": "HBT_IN8",
+          "definition": "for every direction and destination column, first 8 finite non-self source rows of the HBT column, retained as source->destination"
+        },
+        {
+          "bit": 4,
+          "mask": 16,
+          "name": "SOFTCYCLE_LAYOUT",
+          "definition": "all 552 right and 552 down directed adjacencies in softcycle_l1_k8 position_to_slot"
+        },
+        {
+          "bit": 5,
+          "mask": 32,
+          "name": "QAP_W4_LAYOUT",
+          "definition": "all 552 right and 552 down directed adjacencies in qap_w4_b0.05_i25 position_to_slot"
+        },
+        {
+          "bit": 6,
+          "mask": 64,
+          "name": "QAP_W1_LAYOUT",
+          "definition": "all 552 right and 552 down directed adjacencies in qap_w1_b0.05_i25 position_to_slot"
+        }
+      ],
+      "origin_mask_dtype": "uint8",
+      "exact_pre_dedup_origin_occurrence_counts_per_record": {
+        "C1_OUT32": 36864,
+        "HBT_OUT32": 36864,
+        "C1_IN8": 9216,
+        "HBT_IN8": 9216,
+        "SOFTCYCLE_LAYOUT": 1104,
+        "QAP_W4_LAYOUT": 1104,
+        "QAP_W1_LAYOUT": 1104,
+        "total": 95472
+      },
+      "exact_pre_dedup_count_formulas": {
+        "OUT32": "2 directions * 576 source rows * 32 finite non-self destinations",
+        "IN8": "2 directions * 576 destination columns * 8 finite non-self sources",
+        "LAYOUT": "24*23 right + 23*24 down = 1104"
+      },
+      "pre_dedup_counts_must_be_asserted_before_union": true,
+      "post_dedup_assertions": "all keys unique and canonically sorted; every origin occurrence survives in the matching edge origin bit; OR-popcount and per-bit totals reconcile with the seven pre-dedup streams",
+      "required_frozen_edge_fields": [
+        "direction",
+        "first_slot",
+        "second_slot",
+        "origin_mask",
+        "c1_cost_float32",
+        "hbt_cost_float32",
+        "w1_cost_float32",
+        "w4_cost_float32"
+      ],
+      "truth_edge_definition_phase_b": "right iff composed_slot_to_target[second] == composed_slot_to_target[first] + 1 and both targets share a target row; down iff second target == first target + 24",
+      "ground_truth_directed_adjacencies_per_record": 1104
+    },
+    "phase_a_input_only": {
+      "physical_visibility": "fresh process receives only the fixture input root, pinned code/config/checkpoints, and a fresh output root; original train root and label root are not mounted, symlinked, environment-addressable, or present under any ancestor",
+      "target_or_label_paths_must_not_be_constructed_or_read": true,
+      "input_manifest_forbidden_metadata_is_rechecked": true,
+      "required_per_record_artifacts": [
+        "canonical candidate graph with origin mask and four costs",
+        "full C1, HBT, w1, and w4 right/down float32 matrices",
+        "denoised slot tiles uint8[576,20,20,3]",
+        "softcycle, qap_w4, and qap_w1 position_to_slot int32[576]",
+        "fixed opaque nuisance seed"
+      ],
+      "layout_validity": "every frozen layout must be an exact permutation of 0..575",
+      "artifact_paths": "POSIX relative, normalized, contained below the Phase-A root, no absolute path, '..', symlink, hardlink escape, or duplicate resolved inode",
+      "durability": "write temp file in same directory, file fsync, atomic os.replace, then parent-directory fsync; finalize canonical manifest last with the same sequence",
+      "manifest_binds": [
+        "top-level protocol_instance_id",
+        "64 opaque fixture ids in canonical lexicographic order",
+        "fixture input manifest hash",
+        "each input artifact byte hash",
+        "each Phase-A artifact relative path, byte size, and SHA-256",
+        "array dtype, shape, C-order byte hash, and semantic label",
+        "all layout and edge hashes",
+        "final whole-config SHA-256 supplied out-of-band at Phase-A start and the frozen_contract SHA-256",
+        "evaluator hash",
+        "all code and checkpoint hashes"
+      ],
+      "hash_cycle_rule": "fixture manifests and fixture lock never bind the whole-config SHA-256; Phase A receives the final whole-config SHA-256 out-of-band after all runtime pins are filled, verifies it before work, and binds it only into the Phase-A output manifest",
+      "phase_a_output_self_hash": "the Phase-A manifest is canonicalized without its self_sha256 field, hashes that payload, stores the digest as self_sha256, and the verifier recomputes it exactly",
+      "phase_a_must_refuse_unpinned_runtime_or_fixture_hashes": true,
+      "no_metrics_using_truth_or_clean_target": true
+    },
+    "phase_b_label_scoring": {
+      "pre_marker_actions": "verify the complete Phase-A envelope, config, code, checkpoints, fixture input manifest, all relative-path containment, and every Phase-A artifact hash without constructing a label path",
+      "target_access_marker": "atomically write, file-fsync, rename, and parent-directory-fsync TARGET_ACCESS_STARTED.json before constructing the first label-root, label-manifest, or label-record path",
+      "label_access_after_marker_only": true,
+      "label_join": "exact opaque fixture id only; reject missing, duplicate, extra, or reordered ids",
+      "independent_fixture_recomposition_after_marker": {
+        "mandatory_before_any_metric": true,
+        "secret": "read exact 32-byte label-only master secret under the strict secret schema",
+        "opaque_id": "recompute HMAC_SHA256(master_secret, UTF8('id:' + source_name + ':' + panel_name))[0:16].hex() and require exact match",
+        "panel_seed": "recompute per_source_seed(20260711, 'candidate-graph-oracle-' + panel_name, source_name, 0), require 0 <= value < 2**64, and require exact label value",
+        "panel": "rerun make_exact_panel(clean_target, panel=panel_name, seed=panel_seed) under the pinned environment and code",
+        "opaque_shuffle_seed": "recompute uint64_big(HMAC_SHA256(master_secret, UTF8('shuffle:' + source_name + ':' + panel_name))[0:8]), require 0 <= value < 2**64",
+        "opaque_permutation": "rerun numpy.random.Generator(numpy.random.PCG64(opaque_shuffle_seed)).permutation(576).astype(int32) and require exact label permutation",
+        "input_bytes": "require regenerated exact_panel.slot_tiles[opaque_permutation] uint8 C-order array bytes and array hash to match the decoded immutable input artifact; independently verify the original serialized fixture artifact hash without requiring NPZ container regeneration",
+        "composed_truth": "require exact_panel.slot_to_target[opaque_permutation] int32 bytes and hash to match the label composed_slot_to_target",
+        "opaque_nuisance_seed": "recompute uint64_big(SHA256(UTF8('qap:' + opaque_id))[0:8]), require 0 <= value < 2**64 and exact match to fixture input and Phase-A records",
+        "source_panel_bijection": "require authoritative slice membership/order, exactly the two frozen panel names per source, 64 unique opaque ids, and 64 unique nuisance seeds",
+        "failure": "fail closed before metrics and emit no accepted aggregate"
+      },
+      "phase_a_artifacts_are_read_only": true,
+      "true_edge_filter": "retain exactly candidate edges satisfying the phase-b truth_edge_definition; truth may not change scores, add edges, alter order, choose translations, or construct absolute position costs",
+      "component_growth": {
+        "function": "puzzle_assembly.components.grow_components",
+        "proposal_order": "ascending w4_cost, then descending popcount(origin_mask), then direction, first_slot, second_slot",
+        "proposal_geometry": "right=(dx=1,dy=0), down=(dx=0,dy=1)",
+        "proposal_fields_not_used_for_order": {
+          "margin": 0.0,
+          "reciprocal": false,
+          "in_loop": false
+        },
+        "all_retained_edges_must_be_true_and_coordinate_consistent": true
+      },
+      "gate_driving_oracle_packer": {
+        "label": "oracle_filter_beam8_hungarian_qap25",
+        "truth_use": "truth filters candidate edges only",
+        "absolute_truth_coordinates_forbidden": true,
+        "compatibility": "frozen denoised_C1_HBTw4_rank_fusion",
+        "place_function": "puzzle_assembly.components._place_components_beam",
+        "beam_width": 8,
+        "beam_components": 8,
+        "translations_per_state": 8,
+        "boundary_weight": 0.05,
+        "placement_costs": null,
+        "complete_function": "puzzle_assembly.components._complete_with_hungarian",
+        "complete_boundary_weight": 0.05,
+        "complete_placement_costs": null,
+        "post_completion_refine": "unconditional directional_qap on frozen w4 using completed layout as initial",
+        "qap_iterations": 25,
+        "qap_restarts": 2,
+        "qap_boundary_weight": 0.05,
+        "qap_initial_weight": 0.75,
+        "qap_noisy_components": 3,
+        "qap_noise_scale": 1.0,
+        "qap_refine_swaps": 8,
+        "qap_refine_weak_cells": 32,
+        "qap_seed": "same fixed per-record opaque nuisance seed frozen in Phase A",
+        "contributes_to_gate": true
+      },
+      "target_assisted_translation_diagnostic": {
+        "label": "absolute_true_component_translation_ceiling",
+        "purpose": "non-gating diagnostic upper bound only",
+        "eligible_components": "true-edge components with size at least 2",
+        "singleton_placement_from_truth_forbidden": true,
+        "absolute target coordinates_may_be_used_for_non_singletons": true,
+        "remaining_tiles": "complete with frozen w4 _complete_with_hungarian, boundary_weight 0.05, placement_costs=None",
+        "post_completion_qap": false,
+        "contributes_to_gate": false,
+        "cannot_select_or_tune_any_algorithm": true
+      },
+      "render": "assemble exact same frozen denoised uint8 slot tiles under each valid position_to_slot layout; no target-dependent restoration or pixel blending",
+      "ssim_call": "skimage.metrics.structural_similarity(clean_target_rgb_uint8, frozen_denoised_render_rgb_uint8, channel_axis=2, data_range=255)",
+      "expected_render_shape": [
+        480,
+        480,
+        3
+      ],
+      "toctou_postcondition": "rehash config, evaluator, all code/checkpoints, fixture input and label manifests, every input/label/Phase-A artifact, and target-access marker after scoring; any mismatch invalidates every metric",
+      "no_training_or_parameter_mutation": true
+    },
+    "truth_geometry_assertions": {
+      "composed_slot_to_target": "int32 exact permutation 0..575 with a verified inverse target_to_slot",
+      "right_true_edge_count": 552,
+      "down_true_edge_count": 552,
+      "total_true_directed_edge_count": 1104,
+      "right_inverse": "for every non-left-boundary target tile, target_to_slot[p-1] -> target_to_slot[p] is the unique corresponding right truth edge; symmetric assertion for every non-right-boundary tile",
+      "down_inverse": "for every non-top-boundary target tile, target_to_slot[p-24] -> target_to_slot[p] is the unique corresponding down truth edge; symmetric assertion for every non-bottom-boundary tile",
+      "boundary_degrees": "each slot has exactly the expected subset of left/right/up/down neighbours from its target row and column; corners degree2, non-corner borders degree3, interior degree4",
+      "candidate_truth_intersection": "every retained right/down oracle edge must occur in the exact truth sets and preserve inverse/boundary assertions",
+      "failure": "any count, uniqueness, inverse, or boundary mismatch invalidates the entire result"
+    },
+    "metrics": {
+      "unit": "whole opaque source-panel fixture record",
+      "panel_aggregation": "source-macro mean over exactly 32 records, separately after Phase-B label reveal",
+      "balanced_macro": "arithmetic mean of the two panel-level means, giving each panel weight 0.5",
+      "candidate_union_recall": "count(candidate_edge_keys intersect true_directed_edge_keys) / 1104",
+      "origin_recall": "for each origin bit, count(true edge keys whose mask contains the bit) / 1104",
+      "oracle_true_component_sizes": "sizes returned by grow_components on candidate intersect truth edges, including singleton components",
+      "oracle_largest_connected_component": "maximum oracle_true_component_sizes for each record",
+      "oracle_non_singleton_covered_tile_fraction": "tiles in true-edge components of size>=2 divided by 576",
+      "candidate_restricted_attainable_adjacency_fraction": "candidate_union_recall; it is the fraction of all true directed adjacencies explicitly available to a downstream candidate-restricted model",
+      "layout_metrics": "puzzle_assembly.metrics.layout_metrics against composed_slot_to_target",
+      "combined_adjacency": "mean of right_adjacency and down_adjacency from layout_metrics",
+      "denoised_render_ssim": "the exact RGB SSIM call frozen above",
+      "gate_delta_reference": "frozen qap_w4_b0.05_i25 algorithm/hyperparameters for the same opaque fixture record and its fixed opaque nuisance seed; this is not a filename-seed production-layout reproduction claim",
+      "required_record_labels": [
+        "softcycle_l1_k8",
+        "qap_w4_b0.05_i25",
+        "qap_w1_b0.05_i25",
+        "oracle_filter_beam8_hungarian_qap25",
+        "absolute_true_component_translation_ceiling"
+      ],
+      "required_report_fields": [
+        "per-record opaque id and hidden panel revealed only in Phase B",
+        "candidate counts and origin masks",
+        "union and per-origin recall",
+        "component sizes and largest component",
+        "baseline and gate-driving layout hashes, validity, adjacency, and SSIM",
+        "paired adjacency and SSIM deltas",
+        "target-assisted diagnostic metrics clearly marked non-gating",
+        "panel aggregates and balanced macro",
+        "every individual gate check"
+      ]
+    },
+    "gate": {
+      "logic": "all required integrity and validity checks AND all panel floors AND balanced-macro material-headroom disjunction",
+      "integrity": {
+        "fixture_record_count": 64,
+        "records_per_panel": 32,
+        "candidate_graph_count": 64,
+        "valid_baseline_permutation_count": 64,
+        "valid_oracle_packer_permutation_count": 64,
+        "artifact_hash_or_toctou_failures_max": 0,
+        "opaque_id_join_errors_max": 0
+      },
+      "each_panel_all_of": {
+        "mean_candidate_union_recall_operator": ">=",
+        "mean_candidate_union_recall_min": 0.65,
+        "median_oracle_largest_connected_component_operator": ">=",
+        "median_oracle_largest_connected_component_min_tiles": 128,
+        "mean_oracle_packer_combined_adjacency_delta_operator": ">=",
+        "mean_oracle_packer_combined_adjacency_delta_min": 0.0,
+        "mean_oracle_packer_denoised_render_ssim_delta_operator": ">=",
+        "mean_oracle_packer_denoised_render_ssim_delta_min": 0.0
+      },
+      "balanced_macro_any_of": {
+        "logic": "any_of",
+        "clauses": [
+          {
+            "metric": "balanced_macro_mean_oracle_packer_combined_adjacency_delta",
+            "operator": ">=",
+            "threshold": 0.1
+          },
+          {
+            "metric": "balanced_macro_mean_oracle_packer_denoised_render_ssim_delta",
+            "operator": ">=",
+            "threshold": 0.02
+          }
+        ],
+        "mean_oracle_packer_combined_adjacency_delta_operator": ">=",
+        "mean_oracle_packer_combined_adjacency_delta_min": 0.1,
+        "mean_oracle_packer_denoised_render_ssim_delta_operator": ">=",
+        "mean_oracle_packer_denoised_render_ssim_delta_min": 0.02
+      },
+      "exact_boolean_formula": "integrity_pass AND for_all(panel in [primary_kornia,independent_libjpeg], recall_mean(panel)>=0.65 AND median_LCC(panel)>=128 AND adjacency_delta_mean(panel)>=0.0 AND ssim_delta_mean(panel)>=0.0) AND (balanced_macro_adjacency_delta>=0.10 OR balanced_macro_ssim_delta>=0.02)",
+      "target_assisted_translation_diagnostic_contributes": false,
+      "pass_behavior": "candidate graph has sufficient ceiling to authorize a separately precommitted cycle-factor graph synchronizer experiment; no solver or submission is promoted",
+      "fail_behavior": "do not build the cycle-factor synchronizer from this graph; retain qap_w4 and pivot candidate generation or relative-position modeling without reopening QAP weights",
+      "mixed_behavior": "any missing panel, negative panel delta, integrity failure, or threshold ambiguity is a failure",
+      "safe_for_submission": false
+    },
+    "post_result_policy": {
+      "qap_weight_reopening_forbidden": true,
+      "candidate_top_k_reopening_forbidden": true,
+      "incoming_top_k_reopening_forbidden": true,
+      "origin_addition_or_removal_after_label_access_forbidden": true,
+      "panel_or_source_routing_forbidden": true,
+      "threshold_changes_after_label_access_forbidden": true,
+      "only_one_run_of_this_frozen_graph_on_this_slice": true,
+      "result_is_development_evidence_only": true
+    },
+    "sealed_sets": {
+      "audit_exclusion_ledger": "configs/assembly_audit_exclusion_v1.json",
+      "audit_exclusion_ledger_sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+      "assembly_final_audit_0_64_names_sha256": "c281ef844bed9fbfd452b896c2961164ded794fca65d010f1b4adea7f58bff33",
+      "assembly_final_audit_64_128_names_sha256": "9aa995c9bc628bd17ae2d55d0ef8852d5b5e19ef241f8834c8d1b8bd0358429a",
+      "must_remain_unopened": true,
+      "this_protocol_must_not_mount_or_read_any_audit_source": true
+    },
+    "fail_closed_semantics": {
+      "default_status": "invalid_no_result",
+      "conditions": [
+        "any source slice or name hash mismatch",
+        "any required runtime or fixture pin is null or mismatched at Phase A start",
+        "any runtime path/schema drift, partial pin transition, repin, non-hex pin, or frozen-contract/protocol-instance mutation",
+        "any missing, repeated, reordered, malformed, or hash-inconsistent PREP/SEALED/PHASE_A/LABEL_ACCESS lifecycle claim",
+        "any pinned package, Python, CUDA, device, runner, kernel metadata, or environment-lock mismatch",
+        "fixture roots are not physically separated",
+        "input-only metadata leaks any forbidden field",
+        "opaque shuffle or opaque-id bijection check fails",
+        "any panel, shuffle, or opaque nuisance seed is outside unsigned 64-bit range or any opaque id/nuisance seed is duplicated",
+        "any fixture manifest or lock binds the whole-config hash or violates one-way crosslink order",
+        "any independent Phase-B HMAC, panel, opaque permutation, input-byte, composed-truth, or nuisance-seed recomputation mismatch",
+        "label path is constructed or read before durable marker",
+        "any absolute, escaping, symlinked, hardlinked, missing, extra, duplicate, or unhashed artifact",
+        "any nonfinite score or unexpected dtype/shape",
+        "any origin stream pre-dedup count or origin-mask reconciliation mismatch",
+        "any truth count other than 552 right, 552 down, and 1104 total, or any inverse/boundary mismatch",
+        "any invalid layout or candidate self-edge",
+        "any code, checkpoint, manifest, artifact, or marker hash changes",
+        "any missing record, panel, metric, or gate check",
+        "any attempt to use absolute target coordinates in the gate-driving packer",
+        "any target-assisted diagnostic contribution to the gate",
+        "any QAP weight or candidate-policy mutation"
+      ],
+      "on_failure": "atomically emit an error report with no accepted aggregate metrics, gate_passed=false, safe_for_submission=false, and preserve all evidence",
+      "exceptions_never_imply_pass": true
+    }
+  },
+  "frozen_contract_sha256": "5e7b8c1515c0d216e995b711cabbc59d5508518d688b80172c8a1bbe3e362ba4",
+  "runtime_pins": {
+    "evaluator_path": "scripts/evaluate_candidate_graph_oracle.py",
+    "evaluator_sha256": "7723d18b86d1181954117a2c813da0cb45948ccd415f47c2d2dce6575e8a3377",
+    "tests_path": "tests/test_candidate_graph_oracle.py",
+    "tests_sha256": "a6c526a01217f96049f6a007b39146afb0dc55baf8a79fd5de284ce4fcd4ff37",
+    "fixture_builder_path": "scripts/build_candidate_graph_oracle_fixtures.py",
+    "fixture_builder_sha256": "68845ed93db08928f16d5b4d3c16f8905cedc6e48f673528a14db7f8f692ecb8",
+    "fixture_builder_tests_path": "tests/test_build_candidate_graph_oracle_fixtures.py",
+    "fixture_builder_tests_sha256": "321747dc2ce82c4a448a13fbc9f7fb26b85af07c78ba9b293b663289a1691f56",
+    "pin_finalizer_path": "scripts/finalize_candidate_graph_oracle_protocol.py",
+    "pin_finalizer_sha256": "7cfc95c894732c987c8ed51bf3943bcdff9afa9a1de5b24b42ed3965e76729f6",
+    "lifecycle_tool_path": "scripts/update_candidate_graph_oracle_ledger.py",
+    "lifecycle_tool_sha256": "1d21370ec52b253956d53781650c3fa696875c3689be50b37a5fba367cddc80b",
+    "result_verifier_path": "scripts/verify_candidate_graph_oracle_result.py",
+    "result_verifier_sha256": "f0df97c42e0354b37ec626828a81347c526d3d580fff5dcdc6fb4e1c068af4d8",
+    "environment_lock_path": "configs/candidate_graph_oracle_environment_lock_v1.json",
+    "environment_lock_sha256": "010c22f6467424a4b0bf90189e55e40e1fb98d2c706aa1b13cb04520d4975d7f",
+    "phase_a_runner_path": "runs/assembly_v1/kaggle/candidate_graph_oracle_v3_phase_a_job/run_phase_a.py",
+    "phase_a_runner_sha256": "4dd0497701131d450aae57614e3b8a33ae75ff080e04fcf5037f3728b827ccc9",
+    "phase_a_kernel_metadata_path": "runs/assembly_v1/kaggle/candidate_graph_oracle_v3_phase_a_job/kernel-metadata.json",
+    "phase_a_kernel_metadata_sha256": "bc9260285acb285579ef3088aa1cdc31795a8796e1d54e72fdb93db84fc3b2d9",
+    "phase_a_launcher_path": "scripts/push_candidate_graph_oracle_phase_a.py",
+    "phase_a_launcher_sha256": "cb0e308fbc309de4e96f684ad405f2cf23d40a7bf2ab675afea374a7a0fff243",
+    "phase_b_runner_path": "scripts/run_candidate_graph_oracle_phase_b.py",
+    "phase_b_runner_sha256": "fe9cbd73da14c972a77ff19d0da7427f536801c4f23d089002262d51324fc952",
+    "fixture_input_manifest_sha256": "6de4502908ccdbb74c262d63495792cc844f0faceb09f567ffcc8bd8dee9f444",
+    "fixture_input_manifest_relative_path": "fixture_input/fixture_input_manifest.json",
+    "fixture_label_manifest_sha256": "55fbdc1de956c1e6d98e5d2db6a582a787d31268e1c81109d4db903f5b46814a",
+    "fixture_label_manifest_relative_path": "fixture_label/fixture_label_manifest.json",
+    "fixture_lock_sha256": "337e10f4f21dabb8f19208e0b9d50be3d3526d96193758c4ddccf703ef142fdc",
+    "fixture_lock_relative_path": "fixture_control/fixture_lock.json",
+    "fixture_prep_marker_relative_path": "fixture_control/FIXTURE_PIXEL_ACCESS_STARTED.json",
+    "phase_a_must_not_start_until_all_non_path_values_are_non_null": true
+  },
+  "runtime_pin_mutation_policy": {
+    "frozen_contract_is_immutable": true,
+    "protocol_instance_id_is_immutable": true,
+    "runtime_pin_paths_are_immutable": true,
+    "top_level_immutable_fields": [
+      "schema_version",
+      "kind",
+      "status",
+      "created_utc",
+      "protocol_instance_id",
+      "decision_basis",
+      "frozen_contract",
+      "frozen_contract_sha256",
+      "runtime_pin_mutation_policy",
+      "safe_for_submission"
+    ],
+    "runtime_pins_schema_and_key_order_are_immutable": true,
+    "only_null_sha256_values_may_transition_once_to_lowercase_64_hex": true,
+    "transition_ledger_root": "runs/assembly_v1/protocol_ledgers/candidate_graph_oracle/4f3da49d17e8adba46b1359d2cc81a19",
+    "code_pin_fields": [
+      {
+        "path_field": "evaluator_path",
+        "sha256_field": "evaluator_sha256"
+      },
+      {
+        "path_field": "tests_path",
+        "sha256_field": "tests_sha256"
+      },
+      {
+        "path_field": "fixture_builder_path",
+        "sha256_field": "fixture_builder_sha256"
+      },
+      {
+        "path_field": "fixture_builder_tests_path",
+        "sha256_field": "fixture_builder_tests_sha256"
+      },
+      {
+        "path_field": "pin_finalizer_path",
+        "sha256_field": "pin_finalizer_sha256"
+      },
+      {
+        "path_field": "lifecycle_tool_path",
+        "sha256_field": "lifecycle_tool_sha256"
+      },
+      {
+        "path_field": "result_verifier_path",
+        "sha256_field": "result_verifier_sha256"
+      },
+      {
+        "path_field": "environment_lock_path",
+        "sha256_field": "environment_lock_sha256"
+      },
+      {
+        "path_field": "phase_a_runner_path",
+        "sha256_field": "phase_a_runner_sha256"
+      },
+      {
+        "path_field": "phase_a_kernel_metadata_path",
+        "sha256_field": "phase_a_kernel_metadata_sha256"
+      },
+      {
+        "path_field": "phase_a_launcher_path",
+        "sha256_field": "phase_a_launcher_sha256"
+      },
+      {
+        "path_field": "phase_b_runner_path",
+        "sha256_field": "phase_b_runner_sha256"
+      }
+    ],
+    "fixture_pin_fields": [
+      {
+        "path_field": "fixture_input_manifest_relative_path",
+        "sha256_field": "fixture_input_manifest_sha256"
+      },
+      {
+        "path_field": "fixture_label_manifest_relative_path",
+        "sha256_field": "fixture_label_manifest_sha256"
+      },
+      {
+        "path_field": "fixture_lock_relative_path",
+        "sha256_field": "fixture_lock_sha256"
+      }
+    ],
+    "pre_fixture_transition": "all and only code_pin_fields SHA values transition together from null to verified lowercase 64-hex before PREP.json and before pixel access",
+    "post_fixture_transition": "all and only fixture_pin_fields transition together from null to verified lowercase 64-hex after durable fixture lock and before SEALED.json",
+    "partial_pin_transition_forbidden": true,
+    "all_code_test_runner_kernel_metadata_and_environment_hashes_must_be_pinned_before_fixture_pixel_access": true,
+    "fixture_manifest_and_lock_hashes_may_be_pinned_once_after_fixture_preparation_but_before_phase_a": true,
+    "every_pin_transition_requires_recomputing_and_recording_the_whole_config_file_sha256": true,
+    "no_pin_may_change_after_phase_a_starts": true,
+    "evaluator_hardcode_policy": "evaluator hardcodes and verifies only top-level frozen_contract_sha256; it must never hardcode or require the mutable whole-config SHA-256",
+    "fixture_binding_policy": "fixture input/label manifests and fixture lock bind protocol_instance_id, frozen_contract_sha256, and every code_pin_fields SHA-256 value, never whole-config SHA-256",
+    "phase_a_final_config_policy": "final whole-config SHA-256 is supplied out-of-band only after every runtime pin is populated, verified at Phase-A start, and bound into the self-hashed Phase-A output manifest"
+  },
+  "safe_for_submission": false
+}

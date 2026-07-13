@@ -1,0 +1,13 @@
+{
+  "id": "rusyalain/vsos-denoise-v2-probe",
+  "title": "VSOS Denoise V2 Probe",
+  "code_file": "probe.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle"
+  ]
+}

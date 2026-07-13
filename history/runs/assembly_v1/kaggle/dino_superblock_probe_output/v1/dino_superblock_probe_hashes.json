@@ -1,0 +1,26 @@
+{
+  "artifacts": [
+    {
+      "bytes": 50607,
+      "path": "dino_superblock_probe.log",
+      "sha256": "88769f259e47ecb11bb5e1740e428f9c1f573fa93c103e2f10336a762402b972"
+    },
+    {
+      "bytes": 646878,
+      "path": "dino_superblock_probe_report.json",
+      "sha256": "0d1e95b7ff5635642907936c26b1f4055decebc645c7c9d8c4aad816b0969555"
+    },
+    {
+      "bytes": 1506441,
+      "path": "dino_superblock_head.pt",
+      "sha256": "a79887bc9aa7bc4cd067f9d8d75399caa7ad6dcd20f2dc2b156ded466ce8859c"
+    },
+    {
+      "bytes": 4606,
+      "path": "dino_superblock_probe_wrapper.json",
+      "sha256": "7ffb53bad127e696caf68b298164774efcf085982e9807d3cab1d44972708d26"
+    }
+  ],
+  "kind": "puzzle_dino_superblock_probe_artifact_hashes",
+  "schema_version": 1
+}

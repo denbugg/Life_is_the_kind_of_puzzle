@@ -1,0 +1,19 @@
+{
+  "id": "pasha883/vsos-pair-transformer-best-eval-t4",
+  "title": "VSOS Pair Transformer Best Eval T4",
+  "code_file": "run_pair_transformer_best_eval.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-solver-rework-night-code",
+    "pasha883/vsos-real-gold-512",
+    "pasha883/vsos-pair-transformer-pilot-code",
+    "pasha883/vsos-pair-transformer-best-epoch1"
+  ]
+}

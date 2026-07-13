@@ -1,0 +1,26 @@
+{
+  "kind": "assembly_v1_l0_gpu_smoke_wrapper",
+  "probe": {
+    "arch_list": [
+      "sm_50",
+      "sm_60",
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90"
+    ],
+    "capability": [
+      7,
+      5
+    ],
+    "compiled_cuda": "12.4",
+    "cuda_available": true,
+    "device": "Tesla T4",
+    "matmul_mean": 0.012884944677352905,
+    "torch": "2.6.0+cu124"
+  },
+  "schema_version": 1,
+  "seconds": 280.6201853752136,
+  "training_report": "/kaggle/working/l0_gpu_smoke.json"
+}

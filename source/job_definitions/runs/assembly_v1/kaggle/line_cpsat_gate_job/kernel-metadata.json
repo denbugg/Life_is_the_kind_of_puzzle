@@ -1,0 +1,15 @@
+{
+  "id": "pasha883/vsos-line-cp-sat-gate",
+  "title": "VSOS Line CP SAT Gate",
+  "code_file": "run_line_cpsat_gate.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-solver-rework-night-code"
+  ]
+}

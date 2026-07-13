@@ -1,0 +1,370 @@
+{
+  "anti_leakage": {
+    "layout_recomputed": false,
+    "only_test_pixels_and_frozen_layout_reports_used": true,
+    "target_paths_or_pixels_read": false
+  },
+  "bundle": {
+    "manifest": {
+      "assets": {
+        "layout_report_sha256": [
+          "38e8a01de560ef8914f25dbe42b2c43c063bde07e3b537e71c0be28416f8dbc4",
+          "541e7905dad9373a173c31db068429b20fb614d450f3cfb4439b89a0a45b2e2a"
+        ],
+        "seam_denoiser_sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+        "selected_denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+      },
+      "kind": "harmonized_submission_runtime_bundle_manifest",
+      "member_count": 50,
+      "members": [
+        {
+          "bytes": 52823182,
+          "path": "assets/seam_denoiser_gpu.pt",
+          "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9"
+        },
+        {
+          "bytes": 52831566,
+          "path": "assets/selected_tilenaf_synth_50k.pt",
+          "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+        },
+        {
+          "bytes": 5265901,
+          "path": "layouts/final_qap_shard_000_350.json",
+          "sha256": "541e7905dad9373a173c31db068429b20fb614d450f3cfb4439b89a0a45b2e2a"
+        },
+        {
+          "bytes": 5254036,
+          "path": "layouts/final_qap_shard_350_700.json",
+          "sha256": "38e8a01de560ef8914f25dbe42b2c43c063bde07e3b537e71c0be28416f8dbc4"
+        },
+        {
+          "bytes": 19550,
+          "path": "scripts/build_harmonized_submission.py",
+          "sha256": "5777a774b8be7d718b469b32cd7a678c15a7075e84057bd79285e9a53e6cd6f9"
+        },
+        {
+          "bytes": 940,
+          "path": "src/puzzle_assembly/__init__.py",
+          "sha256": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5"
+        },
+        {
+          "bytes": 31028,
+          "path": "src/puzzle_assembly/anneal_refine.py",
+          "sha256": "b143f47d0af8570f40029bc821f5919e95cde2c6e2734746fa05564c8e61a21d"
+        },
+        {
+          "bytes": 13710,
+          "path": "src/puzzle_assembly/axis_refine.py",
+          "sha256": "93babba47c4176930485af2ab36bc2c3d86d48dd20e2f751a4230df5d1dff662"
+        },
+        {
+          "bytes": 17232,
+          "path": "src/puzzle_assembly/compatibility.py",
+          "sha256": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f"
+        },
+        {
+          "bytes": 62251,
+          "path": "src/puzzle_assembly/components.py",
+          "sha256": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367"
+        },
+        {
+          "bytes": 31145,
+          "path": "src/puzzle_assembly/context_reorg.py",
+          "sha256": "57e8e727eb4df0db3a0df23f55aa287927dbfd369940746566c65075a20f1982"
+        },
+        {
+          "bytes": 14505,
+          "path": "src/puzzle_assembly/contextual_refiner.py",
+          "sha256": "5ab4a18be6689ff722b45a8fa73aeae820ed26e420a213cbf4cb4ab31ca1523a"
+        },
+        {
+          "bytes": 4994,
+          "path": "src/puzzle_assembly/contextual_refiner_training.py",
+          "sha256": "c25e83536c73fa2e7fc7df04dbe684845b080f3ed3db537a8442edfd7d0fe2de"
+        },
+        {
+          "bytes": 21487,
+          "path": "src/puzzle_assembly/cpsat.py",
+          "sha256": "b368a884c886273156a0fee3ef00a1e4e6e7766daa5ea09531983162e8199abf"
+        },
+        {
+          "bytes": 25436,
+          "path": "src/puzzle_assembly/dense_pair_residual.py",
+          "sha256": "38ef49942500a4d044c6faeb4807e207f5ee28ce7c73af0a82c3302d06fecbfc"
+        },
+        {
+          "bytes": 17572,
+          "path": "src/puzzle_assembly/dino_superblock.py",
+          "sha256": "8c9c2fc23a6864ea8d7b4b8c60406dc965d575d5075a716a9716dac3d5163be9"
+        },
+        {
+          "bytes": 2292,
+          "path": "src/puzzle_assembly/geometry.py",
+          "sha256": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86"
+        },
+        {
+          "bytes": 27878,
+          "path": "src/puzzle_assembly/hyperedge.py",
+          "sha256": "ec3e2362daf5fb5dd447bff011c8fd3f137c121340f6f816b683b36c580c9ac5"
+        },
+        {
+          "bytes": 16272,
+          "path": "src/puzzle_assembly/layout_energy_hybrid.py",
+          "sha256": "05e476e0d9c5bcbcaef636f1f6c530f38842a6b8b4799da29cf9eec6832eb3bd"
+        },
+        {
+          "bytes": 43536,
+          "path": "src/puzzle_assembly/layout_energy_transformer.py",
+          "sha256": "ebcaab5ecd77dc54e7a7c1f9bf7c282931b4ccbddda414b28e9f07872aa7e6e1"
+        },
+        {
+          "bytes": 57336,
+          "path": "src/puzzle_assembly/learned.py",
+          "sha256": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b"
+        },
+        {
+          "bytes": 18384,
+          "path": "src/puzzle_assembly/line_seam.py",
+          "sha256": "56c3065fb36427a96c3fbddda515fc28f49dcfd8e0b3a5a721dd8fd28603305d"
+        },
+        {
+          "bytes": 6855,
+          "path": "src/puzzle_assembly/metrics.py",
+          "sha256": "84857ef92c382cc0964c21bfec67c13308014a1674aebf8686b17514784dae69"
+        },
+        {
+          "bytes": 39016,
+          "path": "src/puzzle_assembly/pair_transformer.py",
+          "sha256": "99e14f3741528cf277a5b10fb0a01fac761debc5370fd55fd81f6235a0ae303b"
+        },
+        {
+          "bytes": 3052,
+          "path": "src/puzzle_assembly/panels.py",
+          "sha256": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f"
+        },
+        {
+          "bytes": 31006,
+          "path": "src/puzzle_assembly/particle.py",
+          "sha256": "a4aebf628bbdf91fd64fecaaf2b32c7720bb244a911ead4cbab5c29611406fb3"
+        },
+        {
+          "bytes": 35687,
+          "path": "src/puzzle_assembly/positional_diffusion.py",
+          "sha256": "25a4ace2f3aaa8e1371ca54a7e65efaddd8db9aafd37a78deb299290a914fae3"
+        },
+        {
+          "bytes": 23270,
+          "path": "src/puzzle_assembly/postassembly_harmonizer.py",
+          "sha256": "cd67d99a43f40932821e31e732c8988edb4e930661dd37314505e5128e75aec0"
+        },
+        {
+          "bytes": 3137,
+          "path": "src/puzzle_assembly/protocol.py",
+          "sha256": "7651d4405ce4dd35203a0cae7bfdd591621044f9e90dc522a314262727c86eca"
+        },
+        {
+          "bytes": 24613,
+          "path": "src/puzzle_assembly/qap.py",
+          "sha256": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32"
+        },
+        {
+          "bytes": 66678,
+          "path": "src/puzzle_assembly/solvers.py",
+          "sha256": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e"
+        },
+        {
+          "bytes": 2988,
+          "path": "src/puzzle_assembly/spatial_prior.py",
+          "sha256": "01901fb3ea8ed584b8ebdbe286973beaa3acd5a74d6fbec83783d6a67912de3a"
+        },
+        {
+          "bytes": 33163,
+          "path": "src/puzzle_assembly/vit_sinkhorn.py",
+          "sha256": "cc7e1a71aa538eb867c1f8ce35fdc52e5ba5b4438db139b824967a13d1f2f964"
+        },
+        {
+          "bytes": 421,
+          "path": "src/puzzle_denoise_v2/__init__.py",
+          "sha256": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7"
+        },
+        {
+          "bytes": 29178,
+          "path": "src/puzzle_denoise_v2/block5x5.py",
+          "sha256": "4726051fb3bd23d63bf8358ab2b507c1923adc2e171d8881e249f1b85d9b3fb9"
+        },
+        {
+          "bytes": 11822,
+          "path": "src/puzzle_denoise_v2/degradation.py",
+          "sha256": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75"
+        },
+        {
+          "bytes": 24239,
+          "path": "src/puzzle_denoise_v2/final_gate_audit.py",
+          "sha256": "12f44b5adf808c86bad805a285f2d22fcab36e7c6203a5df11fbb40583ee6f92"
+        },
+        {
+          "bytes": 10836,
+          "path": "src/puzzle_denoise_v2/inference.py",
+          "sha256": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da"
+        },
+        {
+          "bytes": 12031,
+          "path": "src/puzzle_denoise_v2/legacy_baseline.py",
+          "sha256": "0b82f48d1846332462912995c6c13d9433822a8e7bec08e8b92d7f873760cfac"
+        },
+        {
+          "bytes": 4477,
+          "path": "src/puzzle_denoise_v2/losses.py",
+          "sha256": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34"
+        },
+        {
+          "bytes": 14113,
+          "path": "src/puzzle_denoise_v2/matching.py",
+          "sha256": "90535d7090c211f78d7d0fb16cc289bff26ae0fd3307dfeeb648924d37f0c0ec"
+        },
+        {
+          "bytes": 3227,
+          "path": "src/puzzle_denoise_v2/metrics.py",
+          "sha256": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36"
+        },
+        {
+          "bytes": 7730,
+          "path": "src/puzzle_denoise_v2/model.py",
+          "sha256": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11"
+        },
+        {
+          "bytes": 33499,
+          "path": "src/puzzle_denoise_v2/prefinetune_benchmark.py",
+          "sha256": "4e79cbb7b96a56aac6cee77093b11c71a6980e32c1901e154cb4161bce9f487e"
+        },
+        {
+          "bytes": 25463,
+          "path": "src/puzzle_denoise_v2/real_pairs.py",
+          "sha256": "c0f8db24fd2c503a60e95c42d901643901618494da94a9270c6a26a32dd0b180"
+        },
+        {
+          "bytes": 69800,
+          "path": "src/puzzle_denoise_v2/real_training.py",
+          "sha256": "4a09201a714534d3624f7ac26c8d68b30a824d93a47c7af1df350264bd4f2fad"
+        },
+        {
+          "bytes": 12320,
+          "path": "src/puzzle_denoise_v2/real_validation.py",
+          "sha256": "6f0ca30fc5c0489223048f2ffcf7088a110e20c854f038d58877f2bf76cba64f"
+        },
+        {
+          "bytes": 2091,
+          "path": "src/puzzle_denoise_v2/tiles.py",
+          "sha256": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7"
+        },
+        {
+          "bytes": 30187,
+          "path": "src/puzzle_denoise_v2/training.py",
+          "sha256": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+        },
+        {
+          "bytes": 30008,
+          "path": "src/puzzle_denoise_v2/visual_qa.py",
+          "sha256": "927709178a42a434b010a50a5cac3d9cd44652453afd784dbb4afe9712139356"
+        }
+      ],
+      "safe_for_submission": false,
+      "schema_version": 1
+    },
+    "manifest_sha256": "fadfd1df59a7a28d417f9b3de33784f5a5fe76f362197f8bdc4e4bbe1eeda3cc",
+    "root": "/kaggle/input/datasets/pasha883/vsos-postassembly-harmonizer-runtime",
+    "validated_member_count": 50
+  },
+  "created_utc": "2026-07-13T00:35:20Z",
+  "environment": {
+    "cuda_runtime": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_checksum": 66672640.0
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_checksum": 66672640.0
+      }
+    ],
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "harmonized_submission_kaggle_run",
+  "leaderboard_score": null,
+  "preflight": {
+    "gpu": 0,
+    "label": "harmonized_preflight_000_001",
+    "limit": 1,
+    "log": "/kaggle/working/harmonized_preflight_000_001.log",
+    "log_sha256": "b3fc06581021dc9e1d41821b23b13773c7d97308598473dbcab4fa8e2f394b44",
+    "method_sha256": "f77c000f9afc52edfed236a021b5c2e0366d049199a59026fdab43075cd6f121",
+    "offset": 0,
+    "output": "/kaggle/working/harmonized_preflight_000_001.zip",
+    "output_bytes": 278455,
+    "output_sha256": "c529a1014c220516aebe4623a30c679e505f9030e2cee1d7a2b85d47960335dc",
+    "report": "/kaggle/working/harmonized_preflight_000_001.json",
+    "report_sha256": "b07a0493e3c94a64f25ba9441de50a25c9e7af982493fe0ef25cf9bb6cf5dcc9",
+    "seconds": 11.157441255000094,
+    "source_names_sha256": "0408b478006b6e42f66d3f74f7523aec1d440fd9b15f33aa61d3afacb17e493a"
+  },
+  "preflight_replay_byte_identical": true,
+  "safe_for_submission": true,
+  "schema_version": 1,
+  "seconds": 443.64509549700006,
+  "shards": [
+    {
+      "gpu": 0,
+      "label": "harmonized_shard_000_350",
+      "limit": 350,
+      "log": "/kaggle/working/harmonized_shard_000_350.log",
+      "log_sha256": "fd9b83c70a84995958cdce1d19630546d1915e8777d5d35528971ddacd821a64",
+      "method_sha256": "f77c000f9afc52edfed236a021b5c2e0366d049199a59026fdab43075cd6f121",
+      "offset": 0,
+      "output": "/kaggle/working/harmonized_shard_000_350.zip",
+      "output_bytes": 102607796,
+      "output_sha256": "027143832ed3d106af6584a36381824a93f2b14d9c2166245be20e20527d6559",
+      "report": "/kaggle/working/harmonized_shard_000_350.json",
+      "report_sha256": "78ffdc8d42390ab38c8c59859a40774ccce868d0472f49da0a99f4a2b3f33b84",
+      "seconds": 410.98013800599983,
+      "source_names_sha256": "5f67451d51c2e66e6815705b2642d231c960a63fb6c727faf02a922e1045b5e9"
+    },
+    {
+      "gpu": 1,
+      "label": "harmonized_shard_350_700",
+      "limit": 350,
+      "log": "/kaggle/working/harmonized_shard_350_700.log",
+      "log_sha256": "e8dfa03f0e3701d6d344aeb7f1edb919eb54c68d937d749bdfbeee2d913444a2",
+      "method_sha256": "f77c000f9afc52edfed236a021b5c2e0366d049199a59026fdab43075cd6f121",
+      "offset": 350,
+      "output": "/kaggle/working/harmonized_shard_350_700.zip",
+      "output_bytes": 103599191,
+      "output_sha256": "47b5016c594fb771347869fac0dec10e9f6abb2e4646b9563561797b3120f22d",
+      "report": "/kaggle/working/harmonized_shard_350_700.json",
+      "report_sha256": "854230ad09f3b3fa79d034dcb93ba37c1b966d26a7a048465260c5c1baa7b45a",
+      "seconds": 402.37373550200005,
+      "source_names_sha256": "d6cc22b2dc6933012fe2c1660703bb04740553e36d2532de403759ba0eeda811"
+    }
+  ],
+  "source_names_sha256": "4a756a18a18cf6c039c1fa6f622ca258f5f91f1cbf99aa9103490f3e0345217d",
+  "status": "candidate_ready_not_lb_scored",
+  "submission": {
+    "bytes": 206206965,
+    "path": "submission.zip",
+    "sha256": "099d1c5fe69cda8519a4f19750cb3a481ac87999c294a35e19691a849d4c6096"
+  },
+  "submission_manifest_sha256": "f69dc50212d8eab781e8f9178bf2571edb17ae46507528998a325286f7fd7b0c",
+  "test_dir": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle/test"
+}

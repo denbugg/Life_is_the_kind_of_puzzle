@@ -1,0 +1,1 @@
+{"payload":{"accepted_aggregate_metrics":null,"error":"opaque fixture array dtype/shape drift","error_type":"RuntimeError","gate_passed":false,"kind":"candidate_graph_oracle_invalid_no_result","safe_for_submission":false,"schema_version":1},"payload_sha256":"ea394a022d3060c7ab66ad994c4d5f647b1ccb6bf9b548bdb589e8dbba6c551a"}

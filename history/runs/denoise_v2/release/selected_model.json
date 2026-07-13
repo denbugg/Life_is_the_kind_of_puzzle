@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "kind": "denoise_v2_selected_model",
+  "created_utc": "2026-07-10T08:55:24Z",
+  "selected": {
+    "checkpoint": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "model_name": "tile-naf",
+    "state": "ema",
+    "step": 50000,
+    "tile_order_preserved": true,
+    "reason": "bounded real-pair fine-tune produced no calibration-eligible candidate and returned the exact synthetic EMA rollback"
+  },
+  "synthetic_training": {
+    "kernel": "rusyalain/vsos-denoise-v2-synthetic-50k",
+    "result": "runs/denoise_v2/release_readback/20260710T074500Z/synth/synth_50k_result.json",
+    "result_sha256": "b6ae2af3508f65a451d1a68f66de98d10802aa08e304d1494d30075c4183d5f5",
+    "source_code_sha256": "6b62548370f370eb65b7d0a770cc6f3241ea209d12de257cc4882ddea4b4629f",
+    "raw_tile_ssim": 0.5630164474284047,
+    "best_tile_ssim": 0.8082800069902816,
+    "best_step": 50000,
+    "paired_kornia_tile_ssim": 0.8226739476757541,
+    "independent_libjpeg_tile_ssim": 0.8192828992318947
+  },
+  "clean_cpu_spending_gate": {
+    "kernel": "rusyalain/vsos-denoise-v2-prefinetune-calibration-cpu",
+    "kernel_version": 3,
+    "report": "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v3_current/prefinetune_calibration_report.json",
+    "report_sha256": "9db9f7bfbde54b3f79844086aaf38247146bf435b94ab696cbf85382afda9a59",
+    "benchmark_code_sha256": "2b43b9774f2f505e09c146b4a0934f40adf9c36ca3ff2c8c693b72a459de52e5",
+    "quarantine_sources": 93,
+    "calibration_sources": 257,
+    "sealed_gate_sources": 350,
+    "primary_pairs": 2056,
+    "sensitivity_pairs": 2056,
+    "primary_source_macro_tile_ssim": {
+      "raw": 0.6773607194669535,
+      "opencv_nlm": 0.7169312951401166,
+      "legacy_q90": 0.7682083075167795,
+      "synthetic_ema": 0.8075045449775826
+    },
+    "synthetic_minus_legacy_primary_95pct_source_bootstrap": [
+      0.03698882028481201,
+      0.04162229075760562
+    ],
+    "proceed_to_finetune": true
+  },
+  "bounded_real_pair_fine_tune": {
+    "kernel": "rusyalain/vsos-denoise-v2-real-finetune",
+    "kernel_version": 2,
+    "result": "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v2/real_finetune_result.json",
+    "result_sha256": "e63e505531631904e3cc9cb316309ce3300c0298e00d16fd23c9583fecf52371",
+    "fine_tune_code_sha256": "12ba1a0f93311afd67c31080b29617daafd54ffb0a5edb2b9e2dfbff4b8fb04c",
+    "updates": 4000,
+    "evaluations": 8,
+    "seconds": 1926.9880895610002,
+    "calibration_candidate_created": false,
+    "frozen_gate_opened": false,
+    "rolled_back": true,
+    "verified_output_contract": "rollback_safe",
+    "rollback_checkpoint": "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v2/tilenaf_real_finetune.pt",
+    "rollback_checkpoint_sha256": "2514129d13b57c02f61348ab87bf01784ba6cb4cc7dd76319405d3766a7f273f",
+    "rollback_model_and_ema_equal_selected_synthetic_ema": true,
+    "final_calibration_primary_tile_ssim": 0.8093328522248211,
+    "primary_tile_ssim_delta": 0.0018283319443170853,
+    "primary_source_bootstrap_lower": 0.0014614834031900091,
+    "required_primary_tile_ssim_delta": 0.003,
+    "failed_checks": [
+      "real_primary_delta_at_least_0_003"
+    ],
+    "synthetic_safety_passed": true
+  },
+  "visual_qa": {
+    "contact_sheet": "runs/denoise_v2/visual_qa/synthetic50k_calibration.png",
+    "contact_sheet_sha256": "4e00e184720fa298fb0243d39b4df83890700896d7ce8db25e268cc6329bdc97",
+    "report": "runs/denoise_v2/visual_qa/synthetic50k_calibration.json",
+    "report_sha256": "01f0a5f531249b487699a0aaf9187a4936735327e1e5f54d293e8f328a6ca6bc",
+    "selection_sha256": "fd582aefa8036b1ec363279e34c5da0e91957a188e92776e59e274df7d01c0e1",
+    "calibration_sources": 12,
+    "observation": "strong noise and JPEG suppression with clearer boundaries; residual oversmoothing of fine texture and occasional small colour shifts"
+  },
+  "policy": {
+    "promotion_threshold_relaxed_after_results": false,
+    "assembly_gpu_training_started": false,
+    "assembly_decision": "deferred to a later gradual phase because denoise fine-tune was not promoted and remaining GPU quota is preserved"
+  }
+}

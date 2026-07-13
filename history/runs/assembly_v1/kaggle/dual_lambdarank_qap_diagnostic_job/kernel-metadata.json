@@ -1,0 +1,19 @@
+{
+  "id": "pasha883/vsos-dual-lambdarank-qap-diagnostic-t4",
+  "title": "VSOS Dual LambdaRank QAP Diagnostic T4",
+  "code_file": "run_dual_lambdarank_qap_diagnostic.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-dual-lambdarank-qap-diagnostic-code"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": []
+}

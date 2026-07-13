@@ -1,0 +1,16 @@
+{
+  "id": "pasha883/vsos-pt-hgb-anneal-screen-t4x2",
+  "title": "VSOS PT HGB Anneal Screen T4x2",
+  "code_file": "run_pt_hgb_anneal_screen.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-pt-hgb-anneal-code"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "rusyalain/vsos-denoise-v2-real-finetune",
+  "title": "VSOS Denoise V2 Real Finetune",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "rusyalain/vsos-denoise-v2-code",
+    "rusyalain/vsos-denoise-v2-real-pairs",
+    "rusyalain/vsos-denoise-legacy-baseline"
+  ],
+  "kernel_sources": [
+    "rusyalain/vsos-denoise-v2-synthetic-50k"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "pasha883/vsos-harmonized-qap-submission-t4x2",
+  "title": "VSOS Harmonized QAP Submission T4x2",
+  "code_file": "run_harmonized_submission.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-postassembly-harmonizer-runtime/1"
+  ]
+}

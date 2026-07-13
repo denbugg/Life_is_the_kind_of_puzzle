@@ -1,0 +1,37 @@
+{
+  "artifacts": [
+    {
+      "bytes": 204691118,
+      "path": "submission.zip",
+      "sha256": "1eeae828dd893198c07ac502d29aa5eeebd54bf6b818293d3b7e3f67ecb59607"
+    },
+    {
+      "bytes": 106054,
+      "path": "final_submission_manifest.json",
+      "sha256": "c36a941e2740dac70d69678eda46052333c111c803802f9bfc31d1afe26844e0"
+    },
+    {
+      "bytes": 26527,
+      "path": "final_qap_submission_report.json",
+      "sha256": "0fd2a7bba4543ab437f2e6df278e9fc72c1548c34d28579724e607b8fbfbb97f"
+    },
+    {
+      "bytes": 276904,
+      "path": "final_qap_preflight_000_001.zip",
+      "sha256": "5e34d25e449ee34ea1d164b577e7f90aba0a1a636834fd1708e9d966b398f9bd"
+    },
+    {
+      "bytes": 101851286,
+      "path": "final_qap_shard_000_350.zip",
+      "sha256": "6ff51c568743a4dae80185f24b93f20accd5e99b335a154e1f1c02580b50c679"
+    },
+    {
+      "bytes": 102839854,
+      "path": "final_qap_shard_350_700.zip",
+      "sha256": "4da04b30d4a9e18160c55f511502d60b93df7d2c38593894b1ea87872a74a2e5"
+    }
+  ],
+  "deterministic": true,
+  "kind": "vsos_final_artifact_hashes",
+  "schema_version": 1
+}

@@ -1,0 +1,1587 @@
+{
+  "kind": "qap_real16_tuning_grid",
+  "probe": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "matmul_means": [
+      -0.0734868198633194,
+      -0.05046064406633377
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "records": [
+    {
+      "gpu": 0,
+      "macro": {
+        "component_cross_c1__denoised_render": {
+          "mae": 71.87302923202515,
+          "predicted_layout_ssim": 0.16713242820813767,
+          "psnr": 9.055092738836036
+        },
+        "component_cross_c1__raw_render": {
+          "mae": 70.52610278129578,
+          "predicted_layout_ssim": 0.10385244992485342,
+          "psnr": 9.274059514961085
+        },
+        "component_cross_c1_dn2__denoised_render": {
+          "mae": 70.85382962226868,
+          "predicted_layout_ssim": 0.16930615426650333,
+          "psnr": 9.174533250729525
+        },
+        "component_cross_c1_dn2__raw_render": {
+          "mae": 69.46801280975342,
+          "predicted_layout_ssim": 0.10608226274848956,
+          "psnr": 9.39461887008287
+        },
+        "component_cross_l1w4__denoised_render": {
+          "mae": 71.2265260219574,
+          "predicted_layout_ssim": 0.1692051253372855,
+          "psnr": 9.143513699105277
+        },
+        "component_cross_l1w4__raw_render": {
+          "mae": 69.95181822776794,
+          "predicted_layout_ssim": 0.1031952312611126,
+          "psnr": 9.359412388669078
+        },
+        "component_cross_l1w4_q50__denoised_render": {
+          "mae": 71.99626159667969,
+          "predicted_layout_ssim": 0.16847334878073011,
+          "psnr": 9.036326037151493
+        },
+        "component_cross_l1w4_q50__raw_render": {
+          "mae": 70.70642304420471,
+          "predicted_layout_ssim": 0.10399220009084828,
+          "psnr": 9.246307760398384
+        },
+        "component_l1__denoised_render": {
+          "mae": 71.18475246429443,
+          "predicted_layout_ssim": 0.14634874119895191,
+          "psnr": 9.125580870207244
+        },
+        "component_l1__raw_render": {
+          "mae": 69.87785792350769,
+          "predicted_layout_ssim": 0.093276119100492,
+          "psnr": 9.33981585255769
+        },
+        "component_l1_mutual2__denoised_render": {
+          "mae": 71.86528778076172,
+          "predicted_layout_ssim": 0.1487894949812753,
+          "psnr": 9.089611202781514
+        },
+        "component_l1_mutual2__raw_render": {
+          "mae": 70.56558847427368,
+          "predicted_layout_ssim": 0.0947546217464438,
+          "psnr": 9.305241831436366
+        },
+        "component_l1_placebeam__denoised_render": {
+          "mae": 71.83255696296692,
+          "predicted_layout_ssim": 0.1439149132355356,
+          "psnr": 9.053594992446083
+        },
+        "component_l1_placebeam__raw_render": {
+          "mae": 70.48685669898987,
+          "predicted_layout_ssim": 0.0919274990153435,
+          "psnr": 9.267829477850572
+        },
+        "component_l1_q50__denoised_render": {
+          "mae": 72.63402104377747,
+          "predicted_layout_ssim": 0.13812907699060398,
+          "psnr": 8.99209403653781
+        },
+        "component_l1_q50__raw_render": {
+          "mae": 70.99490809440613,
+          "predicted_layout_ssim": 0.08843626463419933,
+          "psnr": 9.230638206304167
+        },
+        "component_l1compact__denoised_render": {
+          "mae": 72.7187933921814,
+          "predicted_layout_ssim": 0.16404410191590404,
+          "psnr": 8.998908208508436
+        },
+        "component_l1compact__raw_render": {
+          "mae": 71.24326968193054,
+          "predicted_layout_ssim": 0.09953471435549778,
+          "psnr": 9.223611846259255
+        },
+        "component_l1compact_outside__denoised_render": {
+          "mae": 71.83481049537659,
+          "predicted_layout_ssim": 0.16774982922740406,
+          "psnr": 9.060009475379342
+        },
+        "component_l1compact_outside__raw_render": {
+          "mae": 70.46676015853882,
+          "predicted_layout_ssim": 0.10258570813472158,
+          "psnr": 9.27611841705507
+        },
+        "component_l1compact_q50__denoised_render": {
+          "mae": 72.69481015205383,
+          "predicted_layout_ssim": 0.1669202377354656,
+          "psnr": 9.03204188803213
+        },
+        "component_l1compact_q50__raw_render": {
+          "mae": 71.24379324913025,
+          "predicted_layout_ssim": 0.10212005906644528,
+          "psnr": 9.253139597296737
+        },
+        "component_l1fusion__denoised_render": {
+          "mae": 73.11262106895447,
+          "predicted_layout_ssim": 0.16554136020503424,
+          "psnr": 8.9843069377307
+        },
+        "component_l1fusion__raw_render": {
+          "mae": 71.53495693206787,
+          "predicted_layout_ssim": 0.10129747253841943,
+          "psnr": 9.219408544566079
+        },
+        "component_l1fusion_q50__denoised_render": {
+          "mae": 71.05299639701843,
+          "predicted_layout_ssim": 0.17152960079116986,
+          "psnr": 9.119384510129457
+        },
+        "component_l1fusion_q50__raw_render": {
+          "mae": 69.64246320724487,
+          "predicted_layout_ssim": 0.10458020880994907,
+          "psnr": 9.344786073883022
+        },
+        "component_l1w2__denoised_render": {
+          "mae": 70.79063725471497,
+          "predicted_layout_ssim": 0.17222001443221063,
+          "psnr": 9.157138343029686
+        },
+        "component_l1w2__raw_render": {
+          "mae": 69.43084645271301,
+          "predicted_layout_ssim": 0.10539111571015419,
+          "psnr": 9.379418482672781
+        },
+        "component_l1w2_q50__denoised_render": {
+          "mae": 71.9813449382782,
+          "predicted_layout_ssim": 0.1675480708329786,
+          "psnr": 9.071661249234616
+        },
+        "component_l1w2_q50__raw_render": {
+          "mae": 70.45767712593079,
+          "predicted_layout_ssim": 0.10372146081276715,
+          "psnr": 9.30306685215809
+        },
+        "component_l1w4__denoised_render": {
+          "mae": 71.78408312797546,
+          "predicted_layout_ssim": 0.16572732478582905,
+          "psnr": 9.061444935385193
+        },
+        "component_l1w4__raw_render": {
+          "mae": 70.37623333930969,
+          "predicted_layout_ssim": 0.10160772917258584,
+          "psnr": 9.28333685020872
+        },
+        "component_l1w4_q50__denoised_render": {
+          "mae": 71.95769238471985,
+          "predicted_layout_ssim": 0.16750678424630247,
+          "psnr": 9.02145895529653
+        },
+        "component_l1w4_q50__raw_render": {
+          "mae": 70.47595286369324,
+          "predicted_layout_ssim": 0.10263135244971158,
+          "psnr": 9.255470180817866
+        },
+        "denoised_component_binary__denoised_render": {
+          "mae": 72.49565935134888,
+          "predicted_layout_ssim": 0.1360034552819937,
+          "psnr": 9.027848558267738
+        },
+        "denoised_component_binary__raw_render": {
+          "mae": 71.09168314933777,
+          "predicted_layout_ssim": 0.0869270486983374,
+          "psnr": 9.24825400053635
+        },
+        "denoised_component_edgefusion__denoised_render": {
+          "mae": 72.69904232025146,
+          "predicted_layout_ssim": 0.1375492586575779,
+          "psnr": 9.000993658811478
+        },
+        "denoised_component_edgefusion__raw_render": {
+          "mae": 71.21975183486938,
+          "predicted_layout_ssim": 0.08843648807473573,
+          "psnr": 9.223698633968882
+        },
+        "denoised_component_fusion__denoised_render": {
+          "mae": 70.61657500267029,
+          "predicted_layout_ssim": 0.1742160220985331,
+          "psnr": 9.22791672097299
+        },
+        "denoised_component_fusion__raw_render": {
+          "mae": 69.24360609054565,
+          "predicted_layout_ssim": 0.105769092355668,
+          "psnr": 9.454685148038507
+        },
+        "denoised_component_fusionedge__denoised_render": {
+          "mae": 73.59535789489746,
+          "predicted_layout_ssim": 0.1608715788895581,
+          "psnr": 8.958750056546886
+        },
+        "denoised_component_fusionedge__raw_render": {
+          "mae": 72.09702515602112,
+          "predicted_layout_ssim": 0.09866301857145224,
+          "psnr": 9.185911357999988
+        },
+        "denoised_component_pbc__denoised_render": {
+          "mae": 73.20103073120117,
+          "predicted_layout_ssim": 0.1711075046000261,
+          "psnr": 8.979124437542337
+        },
+        "denoised_component_pbc__raw_render": {
+          "mae": 71.70214676856995,
+          "predicted_layout_ssim": 0.10424709297581573,
+          "psnr": 9.206455462400005
+        },
+        "denoised_component_sobel__denoised_render": {
+          "mae": 72.04990983009338,
+          "predicted_layout_ssim": 0.13979262971911643,
+          "psnr": 9.05364581893734
+        },
+        "denoised_component_sobel__raw_render": {
+          "mae": 70.59732580184937,
+          "predicted_layout_ssim": 0.08873085700560021,
+          "psnr": 9.28343038510463
+        },
+        "denoised_lp_fusion_q50__denoised_render": {
+          "mae": 71.11795830726624,
+          "predicted_layout_ssim": 0.17354914451123388,
+          "psnr": 9.186378887728429
+        },
+        "denoised_lp_fusion_q50__raw_render": {
+          "mae": 69.70882654190063,
+          "predicted_layout_ssim": 0.10576322608926858,
+          "psnr": 9.409007593094561
+        },
+        "identity__denoised_render": {
+          "mae": 72.1757287979126,
+          "predicted_layout_ssim": 0.1325690625965134,
+          "psnr": 9.034234185614572
+        },
+        "identity__raw_render": {
+          "mae": 70.6804358959198,
+          "predicted_layout_ssim": 0.08523135098211207,
+          "psnr": 9.266075273361928
+        },
+        "qap_component_l1fusion_q50__denoised_render": {
+          "mae": 70.5993390083313,
+          "predicted_layout_ssim": 0.18043895527970996,
+          "psnr": 9.163980985893172
+        },
+        "qap_component_l1fusion_q50__raw_render": {
+          "mae": 69.37996649742126,
+          "predicted_layout_ssim": 0.1085761408073509,
+          "psnr": 9.376737985542395
+        },
+        "qap_denoised_component_fusion__denoised_render": {
+          "mae": 70.52115535736084,
+          "predicted_layout_ssim": 0.17749370842287437,
+          "psnr": 9.243096581749347
+        },
+        "qap_denoised_component_fusion__raw_render": {
+          "mae": 69.16403293609619,
+          "predicted_layout_ssim": 0.1079201372635259,
+          "psnr": 9.465705303352518
+        },
+        "qap_softcycle_l1_k8__denoised_render": {
+          "mae": 69.84171748161316,
+          "predicted_layout_ssim": 0.1823296281288696,
+          "psnr": 9.241743571572052
+        },
+        "qap_softcycle_l1_k8__raw_render": {
+          "mae": 68.54646372795105,
+          "predicted_layout_ssim": 0.10908722842469495,
+          "psnr": 9.471103277170961
+        },
+        "raw_component_binary__denoised_render": {
+          "mae": 71.74488377571106,
+          "predicted_layout_ssim": 0.13640869625872862,
+          "psnr": 9.067919908227314
+        },
+        "raw_component_binary__raw_render": {
+          "mae": 70.31293940544128,
+          "predicted_layout_ssim": 0.08758850538806841,
+          "psnr": 9.28850315784515
+        },
+        "raw_component_edgefusion__denoised_render": {
+          "mae": 72.32369756698608,
+          "predicted_layout_ssim": 0.13500881986925603,
+          "psnr": 9.047469419184091
+        },
+        "raw_component_edgefusion__raw_render": {
+          "mae": 70.82403755187988,
+          "predicted_layout_ssim": 0.08733332487596066,
+          "psnr": 9.27641646490901
+        },
+        "raw_component_fusion__denoised_render": {
+          "mae": 71.41850996017456,
+          "predicted_layout_ssim": 0.16270444505396423,
+          "psnr": 9.123218514175292
+        },
+        "raw_component_fusion__raw_render": {
+          "mae": 69.94520044326782,
+          "predicted_layout_ssim": 0.1035992509827128,
+          "psnr": 9.354482014248838
+        },
+        "raw_component_fusionedge__denoised_render": {
+          "mae": 71.15811276435852,
+          "predicted_layout_ssim": 0.16182651982619523,
+          "psnr": 9.134235552971328
+        },
+        "raw_component_fusionedge__raw_render": {
+          "mae": 69.79924392700195,
+          "predicted_layout_ssim": 0.10347846267052371,
+          "psnr": 9.365541561842521
+        },
+        "raw_component_pbc__denoised_render": {
+          "mae": 71.85578680038452,
+          "predicted_layout_ssim": 0.16440068695786944,
+          "psnr": 9.10364634947191
+        },
+        "raw_component_pbc__raw_render": {
+          "mae": 70.44747710227966,
+          "predicted_layout_ssim": 0.10565303052617642,
+          "psnr": 9.328903050960397
+        },
+        "raw_component_sobel__denoised_render": {
+          "mae": 71.85080599784851,
+          "predicted_layout_ssim": 0.13603910894793547,
+          "psnr": 9.063189236611079
+        },
+        "raw_component_sobel__raw_render": {
+          "mae": 70.4827823638916,
+          "predicted_layout_ssim": 0.08694792117894302,
+          "psnr": 9.283760832550147
+        },
+        "raw_lp_fusion_q50__denoised_render": {
+          "mae": 69.43179368972778,
+          "predicted_layout_ssim": 0.1735606893552324,
+          "psnr": 9.30434648151373
+        },
+        "raw_lp_fusion_q50__raw_render": {
+          "mae": 68.10196089744568,
+          "predicted_layout_ssim": 0.1106034661680356,
+          "psnr": 9.53637622342184
+        },
+        "softcycle_l1_k8__denoised_render": {
+          "mae": 70.17743945121765,
+          "predicted_layout_ssim": 0.1654311400188839,
+          "psnr": 9.206667577062369
+        },
+        "softcycle_l1_k8__raw_render": {
+          "mae": 68.85199284553528,
+          "predicted_layout_ssim": 0.10203767868121605,
+          "psnr": 9.428151141240736
+        }
+      },
+      "name": "qap_l1w4_multiseed_real16",
+      "output": "/kaggle/working/qap_l1w4_multiseed_real16.json",
+      "returncode": 0,
+      "seconds": 857.971776305,
+      "sha256": "2c486b433cd93654cb9eee7a155b0605da094dc5d4d47ef5b65bb99fcde75117",
+      "source_names": [
+        "img_003877.png",
+        "img_005080.png",
+        "img_004383.png",
+        "img_006582.png",
+        "img_004810.png",
+        "img_006306.png",
+        "img_005844.png",
+        "img_004191.png",
+        "img_001281.png",
+        "img_003971.png",
+        "img_006070.png",
+        "img_005710.png",
+        "img_005224.png",
+        "img_006489.png",
+        "img_002514.png",
+        "img_004878.png"
+      ]
+    },
+    {
+      "gpu": 0,
+      "macro": {
+        "component_cross_c1__denoised_render": {
+          "mae": 71.87302923202515,
+          "predicted_layout_ssim": 0.16713242820813767,
+          "psnr": 9.055092738836036
+        },
+        "component_cross_c1__raw_render": {
+          "mae": 70.52610278129578,
+          "predicted_layout_ssim": 0.10385244992485342,
+          "psnr": 9.274059514961085
+        },
+        "component_cross_c1_dn2__denoised_render": {
+          "mae": 70.85382962226868,
+          "predicted_layout_ssim": 0.16930615426650333,
+          "psnr": 9.174533250729525
+        },
+        "component_cross_c1_dn2__raw_render": {
+          "mae": 69.46801280975342,
+          "predicted_layout_ssim": 0.10608226274848956,
+          "psnr": 9.39461887008287
+        },
+        "component_cross_l1w4__denoised_render": {
+          "mae": 71.2265260219574,
+          "predicted_layout_ssim": 0.1692051253372855,
+          "psnr": 9.143513699105277
+        },
+        "component_cross_l1w4__raw_render": {
+          "mae": 69.95181822776794,
+          "predicted_layout_ssim": 0.1031952312611126,
+          "psnr": 9.359412388669078
+        },
+        "component_cross_l1w4_q50__denoised_render": {
+          "mae": 71.99626159667969,
+          "predicted_layout_ssim": 0.16847334878073011,
+          "psnr": 9.036326037151493
+        },
+        "component_cross_l1w4_q50__raw_render": {
+          "mae": 70.70642304420471,
+          "predicted_layout_ssim": 0.10399220009084828,
+          "psnr": 9.246307760398384
+        },
+        "component_l1__denoised_render": {
+          "mae": 71.18475246429443,
+          "predicted_layout_ssim": 0.14634874119895191,
+          "psnr": 9.125580870207244
+        },
+        "component_l1__raw_render": {
+          "mae": 69.87785792350769,
+          "predicted_layout_ssim": 0.093276119100492,
+          "psnr": 9.33981585255769
+        },
+        "component_l1_mutual2__denoised_render": {
+          "mae": 71.86528778076172,
+          "predicted_layout_ssim": 0.1487894949812753,
+          "psnr": 9.089611202781514
+        },
+        "component_l1_mutual2__raw_render": {
+          "mae": 70.56558847427368,
+          "predicted_layout_ssim": 0.0947546217464438,
+          "psnr": 9.305241831436366
+        },
+        "component_l1_placebeam__denoised_render": {
+          "mae": 71.83255696296692,
+          "predicted_layout_ssim": 0.1439149132355356,
+          "psnr": 9.053594992446083
+        },
+        "component_l1_placebeam__raw_render": {
+          "mae": 70.48685669898987,
+          "predicted_layout_ssim": 0.0919274990153435,
+          "psnr": 9.267829477850572
+        },
+        "component_l1_q50__denoised_render": {
+          "mae": 72.63402104377747,
+          "predicted_layout_ssim": 0.13812907699060398,
+          "psnr": 8.99209403653781
+        },
+        "component_l1_q50__raw_render": {
+          "mae": 70.99490809440613,
+          "predicted_layout_ssim": 0.08843626463419933,
+          "psnr": 9.230638206304167
+        },
+        "component_l1compact__denoised_render": {
+          "mae": 72.7187933921814,
+          "predicted_layout_ssim": 0.16404410191590404,
+          "psnr": 8.998908208508436
+        },
+        "component_l1compact__raw_render": {
+          "mae": 71.24326968193054,
+          "predicted_layout_ssim": 0.09953471435549778,
+          "psnr": 9.223611846259255
+        },
+        "component_l1compact_outside__denoised_render": {
+          "mae": 71.83481049537659,
+          "predicted_layout_ssim": 0.16774982922740406,
+          "psnr": 9.060009475379342
+        },
+        "component_l1compact_outside__raw_render": {
+          "mae": 70.46676015853882,
+          "predicted_layout_ssim": 0.10258570813472158,
+          "psnr": 9.27611841705507
+        },
+        "component_l1compact_q50__denoised_render": {
+          "mae": 72.69481015205383,
+          "predicted_layout_ssim": 0.1669202377354656,
+          "psnr": 9.03204188803213
+        },
+        "component_l1compact_q50__raw_render": {
+          "mae": 71.24379324913025,
+          "predicted_layout_ssim": 0.10212005906644528,
+          "psnr": 9.253139597296737
+        },
+        "component_l1fusion__denoised_render": {
+          "mae": 73.11262106895447,
+          "predicted_layout_ssim": 0.16554136020503424,
+          "psnr": 8.9843069377307
+        },
+        "component_l1fusion__raw_render": {
+          "mae": 71.53495693206787,
+          "predicted_layout_ssim": 0.10129747253841943,
+          "psnr": 9.219408544566079
+        },
+        "component_l1fusion_q50__denoised_render": {
+          "mae": 71.05299639701843,
+          "predicted_layout_ssim": 0.17152960079116986,
+          "psnr": 9.119384510129457
+        },
+        "component_l1fusion_q50__raw_render": {
+          "mae": 69.64246320724487,
+          "predicted_layout_ssim": 0.10458020880994907,
+          "psnr": 9.344786073883022
+        },
+        "component_l1w2__denoised_render": {
+          "mae": 70.79063725471497,
+          "predicted_layout_ssim": 0.17222001443221063,
+          "psnr": 9.157138343029686
+        },
+        "component_l1w2__raw_render": {
+          "mae": 69.43084645271301,
+          "predicted_layout_ssim": 0.10539111571015419,
+          "psnr": 9.379418482672781
+        },
+        "component_l1w2_q50__denoised_render": {
+          "mae": 71.9813449382782,
+          "predicted_layout_ssim": 0.1675480708329786,
+          "psnr": 9.071661249234616
+        },
+        "component_l1w2_q50__raw_render": {
+          "mae": 70.45767712593079,
+          "predicted_layout_ssim": 0.10372146081276715,
+          "psnr": 9.30306685215809
+        },
+        "component_l1w4__denoised_render": {
+          "mae": 71.78408312797546,
+          "predicted_layout_ssim": 0.16572732478582905,
+          "psnr": 9.061444935385193
+        },
+        "component_l1w4__raw_render": {
+          "mae": 70.37623333930969,
+          "predicted_layout_ssim": 0.10160772917258584,
+          "psnr": 9.28333685020872
+        },
+        "component_l1w4_q50__denoised_render": {
+          "mae": 71.95769238471985,
+          "predicted_layout_ssim": 0.16750678424630247,
+          "psnr": 9.02145895529653
+        },
+        "component_l1w4_q50__raw_render": {
+          "mae": 70.47595286369324,
+          "predicted_layout_ssim": 0.10263135244971158,
+          "psnr": 9.255470180817866
+        },
+        "denoised_component_binary__denoised_render": {
+          "mae": 72.49565935134888,
+          "predicted_layout_ssim": 0.1360034552819937,
+          "psnr": 9.027848558267738
+        },
+        "denoised_component_binary__raw_render": {
+          "mae": 71.09168314933777,
+          "predicted_layout_ssim": 0.0869270486983374,
+          "psnr": 9.24825400053635
+        },
+        "denoised_component_edgefusion__denoised_render": {
+          "mae": 72.69904232025146,
+          "predicted_layout_ssim": 0.1375492586575779,
+          "psnr": 9.000993658811478
+        },
+        "denoised_component_edgefusion__raw_render": {
+          "mae": 71.21975183486938,
+          "predicted_layout_ssim": 0.08843648807473573,
+          "psnr": 9.223698633968882
+        },
+        "denoised_component_fusion__denoised_render": {
+          "mae": 70.61657500267029,
+          "predicted_layout_ssim": 0.1742160220985331,
+          "psnr": 9.22791672097299
+        },
+        "denoised_component_fusion__raw_render": {
+          "mae": 69.24360609054565,
+          "predicted_layout_ssim": 0.105769092355668,
+          "psnr": 9.454685148038507
+        },
+        "denoised_component_fusionedge__denoised_render": {
+          "mae": 73.59535789489746,
+          "predicted_layout_ssim": 0.1608715788895581,
+          "psnr": 8.958750056546886
+        },
+        "denoised_component_fusionedge__raw_render": {
+          "mae": 72.09702515602112,
+          "predicted_layout_ssim": 0.09866301857145224,
+          "psnr": 9.185911357999988
+        },
+        "denoised_component_pbc__denoised_render": {
+          "mae": 73.20103073120117,
+          "predicted_layout_ssim": 0.1711075046000261,
+          "psnr": 8.979124437542337
+        },
+        "denoised_component_pbc__raw_render": {
+          "mae": 71.70214676856995,
+          "predicted_layout_ssim": 0.10424709297581573,
+          "psnr": 9.206455462400005
+        },
+        "denoised_component_sobel__denoised_render": {
+          "mae": 72.04990983009338,
+          "predicted_layout_ssim": 0.13979262971911643,
+          "psnr": 9.05364581893734
+        },
+        "denoised_component_sobel__raw_render": {
+          "mae": 70.59732580184937,
+          "predicted_layout_ssim": 0.08873085700560021,
+          "psnr": 9.28343038510463
+        },
+        "denoised_lp_fusion_q50__denoised_render": {
+          "mae": 71.11795830726624,
+          "predicted_layout_ssim": 0.17354914451123388,
+          "psnr": 9.186378887728429
+        },
+        "denoised_lp_fusion_q50__raw_render": {
+          "mae": 69.70882654190063,
+          "predicted_layout_ssim": 0.10576322608926858,
+          "psnr": 9.409007593094561
+        },
+        "identity__denoised_render": {
+          "mae": 72.1757287979126,
+          "predicted_layout_ssim": 0.1325690625965134,
+          "psnr": 9.034234185614572
+        },
+        "identity__raw_render": {
+          "mae": 70.6804358959198,
+          "predicted_layout_ssim": 0.08523135098211207,
+          "psnr": 9.266075273361928
+        },
+        "qap_softcycle_l1_k8__denoised_render": {
+          "mae": 69.83117771148682,
+          "predicted_layout_ssim": 0.1813051141609191,
+          "psnr": 9.255793133557692
+        },
+        "qap_softcycle_l1_k8__raw_render": {
+          "mae": 68.42311906814575,
+          "predicted_layout_ssim": 0.10966675975294538,
+          "psnr": 9.485579698958748
+        },
+        "raw_component_binary__denoised_render": {
+          "mae": 71.74488377571106,
+          "predicted_layout_ssim": 0.13640869625872862,
+          "psnr": 9.067919908227314
+        },
+        "raw_component_binary__raw_render": {
+          "mae": 70.31293940544128,
+          "predicted_layout_ssim": 0.08758850538806841,
+          "psnr": 9.28850315784515
+        },
+        "raw_component_edgefusion__denoised_render": {
+          "mae": 72.32369756698608,
+          "predicted_layout_ssim": 0.13500881986925603,
+          "psnr": 9.047469419184091
+        },
+        "raw_component_edgefusion__raw_render": {
+          "mae": 70.82403755187988,
+          "predicted_layout_ssim": 0.08733332487596066,
+          "psnr": 9.27641646490901
+        },
+        "raw_component_fusion__denoised_render": {
+          "mae": 71.41850996017456,
+          "predicted_layout_ssim": 0.16270444505396423,
+          "psnr": 9.123218514175292
+        },
+        "raw_component_fusion__raw_render": {
+          "mae": 69.94520044326782,
+          "predicted_layout_ssim": 0.1035992509827128,
+          "psnr": 9.354482014248838
+        },
+        "raw_component_fusionedge__denoised_render": {
+          "mae": 71.15811276435852,
+          "predicted_layout_ssim": 0.16182651982619523,
+          "psnr": 9.134235552971328
+        },
+        "raw_component_fusionedge__raw_render": {
+          "mae": 69.79924392700195,
+          "predicted_layout_ssim": 0.10347846267052371,
+          "psnr": 9.365541561842521
+        },
+        "raw_component_pbc__denoised_render": {
+          "mae": 71.85578680038452,
+          "predicted_layout_ssim": 0.16440068695786944,
+          "psnr": 9.10364634947191
+        },
+        "raw_component_pbc__raw_render": {
+          "mae": 70.44747710227966,
+          "predicted_layout_ssim": 0.10565303052617642,
+          "psnr": 9.328903050960397
+        },
+        "raw_component_sobel__denoised_render": {
+          "mae": 71.85080599784851,
+          "predicted_layout_ssim": 0.13603910894793547,
+          "psnr": 9.063189236611079
+        },
+        "raw_component_sobel__raw_render": {
+          "mae": 70.4827823638916,
+          "predicted_layout_ssim": 0.08694792117894302,
+          "psnr": 9.283760832550147
+        },
+        "raw_lp_fusion_q50__denoised_render": {
+          "mae": 69.43179368972778,
+          "predicted_layout_ssim": 0.1735606893552324,
+          "psnr": 9.30434648151373
+        },
+        "raw_lp_fusion_q50__raw_render": {
+          "mae": 68.10196089744568,
+          "predicted_layout_ssim": 0.1106034661680356,
+          "psnr": 9.53637622342184
+        },
+        "softcycle_l1_k8__denoised_render": {
+          "mae": 70.17743945121765,
+          "predicted_layout_ssim": 0.1654311400188839,
+          "psnr": 9.206667577062369
+        },
+        "softcycle_l1_k8__raw_render": {
+          "mae": 68.85199284553528,
+          "predicted_layout_ssim": 0.10203767868121605,
+          "psnr": 9.428151141240736
+        }
+      },
+      "name": "qap_l1w4_heavy_real16",
+      "output": "/kaggle/working/qap_l1w4_heavy_real16.json",
+      "returncode": 0,
+      "seconds": 826.516389847,
+      "sha256": "2a2871922f171c99829bc0254b3c3ee20a27fe4739611c63658e55579f4e5520",
+      "source_names": [
+        "img_003877.png",
+        "img_005080.png",
+        "img_004383.png",
+        "img_006582.png",
+        "img_004810.png",
+        "img_006306.png",
+        "img_005844.png",
+        "img_004191.png",
+        "img_001281.png",
+        "img_003971.png",
+        "img_006070.png",
+        "img_005710.png",
+        "img_005224.png",
+        "img_006489.png",
+        "img_002514.png",
+        "img_004878.png"
+      ]
+    },
+    {
+      "gpu": 1,
+      "macro": {
+        "component_cross_c1__denoised_render": {
+          "mae": 71.87302923202515,
+          "predicted_layout_ssim": 0.16713242820813767,
+          "psnr": 9.055092738836036
+        },
+        "component_cross_c1__raw_render": {
+          "mae": 70.52610278129578,
+          "predicted_layout_ssim": 0.10385244992485342,
+          "psnr": 9.274059514961085
+        },
+        "component_cross_c1_dn2__denoised_render": {
+          "mae": 70.85382962226868,
+          "predicted_layout_ssim": 0.16930615426650333,
+          "psnr": 9.174533250729525
+        },
+        "component_cross_c1_dn2__raw_render": {
+          "mae": 69.46801280975342,
+          "predicted_layout_ssim": 0.10608226274848956,
+          "psnr": 9.39461887008287
+        },
+        "component_cross_l1w4__denoised_render": {
+          "mae": 71.2265260219574,
+          "predicted_layout_ssim": 0.1692051253372855,
+          "psnr": 9.143513699105277
+        },
+        "component_cross_l1w4__raw_render": {
+          "mae": 69.95181822776794,
+          "predicted_layout_ssim": 0.1031952312611126,
+          "psnr": 9.359412388669078
+        },
+        "component_cross_l1w4_q50__denoised_render": {
+          "mae": 71.99626159667969,
+          "predicted_layout_ssim": 0.16847334878073011,
+          "psnr": 9.036326037151493
+        },
+        "component_cross_l1w4_q50__raw_render": {
+          "mae": 70.70642304420471,
+          "predicted_layout_ssim": 0.10399220009084828,
+          "psnr": 9.246307760398384
+        },
+        "component_l1__denoised_render": {
+          "mae": 71.18475246429443,
+          "predicted_layout_ssim": 0.14634874119895191,
+          "psnr": 9.125580870207244
+        },
+        "component_l1__raw_render": {
+          "mae": 69.87785792350769,
+          "predicted_layout_ssim": 0.093276119100492,
+          "psnr": 9.33981585255769
+        },
+        "component_l1_mutual2__denoised_render": {
+          "mae": 71.86528778076172,
+          "predicted_layout_ssim": 0.1487894949812753,
+          "psnr": 9.089611202781514
+        },
+        "component_l1_mutual2__raw_render": {
+          "mae": 70.56558847427368,
+          "predicted_layout_ssim": 0.0947546217464438,
+          "psnr": 9.305241831436366
+        },
+        "component_l1_placebeam__denoised_render": {
+          "mae": 71.83255696296692,
+          "predicted_layout_ssim": 0.1439149132355356,
+          "psnr": 9.053594992446083
+        },
+        "component_l1_placebeam__raw_render": {
+          "mae": 70.48685669898987,
+          "predicted_layout_ssim": 0.0919274990153435,
+          "psnr": 9.267829477850572
+        },
+        "component_l1_q50__denoised_render": {
+          "mae": 72.63402104377747,
+          "predicted_layout_ssim": 0.13812907699060398,
+          "psnr": 8.99209403653781
+        },
+        "component_l1_q50__raw_render": {
+          "mae": 70.99490809440613,
+          "predicted_layout_ssim": 0.08843626463419933,
+          "psnr": 9.230638206304167
+        },
+        "component_l1compact__denoised_render": {
+          "mae": 72.7187933921814,
+          "predicted_layout_ssim": 0.16404410191590404,
+          "psnr": 8.998908208508436
+        },
+        "component_l1compact__raw_render": {
+          "mae": 71.24326968193054,
+          "predicted_layout_ssim": 0.09953471435549778,
+          "psnr": 9.223611846259255
+        },
+        "component_l1compact_outside__denoised_render": {
+          "mae": 71.83481049537659,
+          "predicted_layout_ssim": 0.16774982922740406,
+          "psnr": 9.060009475379342
+        },
+        "component_l1compact_outside__raw_render": {
+          "mae": 70.46676015853882,
+          "predicted_layout_ssim": 0.10258570813472158,
+          "psnr": 9.27611841705507
+        },
+        "component_l1compact_q50__denoised_render": {
+          "mae": 72.69481015205383,
+          "predicted_layout_ssim": 0.1669202377354656,
+          "psnr": 9.03204188803213
+        },
+        "component_l1compact_q50__raw_render": {
+          "mae": 71.24379324913025,
+          "predicted_layout_ssim": 0.10212005906644528,
+          "psnr": 9.253139597296737
+        },
+        "component_l1fusion__denoised_render": {
+          "mae": 73.11262106895447,
+          "predicted_layout_ssim": 0.16554136020503424,
+          "psnr": 8.9843069377307
+        },
+        "component_l1fusion__raw_render": {
+          "mae": 71.53495693206787,
+          "predicted_layout_ssim": 0.10129747253841943,
+          "psnr": 9.219408544566079
+        },
+        "component_l1fusion_q50__denoised_render": {
+          "mae": 71.05299639701843,
+          "predicted_layout_ssim": 0.17152960079116986,
+          "psnr": 9.119384510129457
+        },
+        "component_l1fusion_q50__raw_render": {
+          "mae": 69.64246320724487,
+          "predicted_layout_ssim": 0.10458020880994907,
+          "psnr": 9.344786073883022
+        },
+        "component_l1w2__denoised_render": {
+          "mae": 70.79063725471497,
+          "predicted_layout_ssim": 0.17222001443221063,
+          "psnr": 9.157138343029686
+        },
+        "component_l1w2__raw_render": {
+          "mae": 69.43084645271301,
+          "predicted_layout_ssim": 0.10539111571015419,
+          "psnr": 9.379418482672781
+        },
+        "component_l1w2_q50__denoised_render": {
+          "mae": 71.9813449382782,
+          "predicted_layout_ssim": 0.1675480708329786,
+          "psnr": 9.071661249234616
+        },
+        "component_l1w2_q50__raw_render": {
+          "mae": 70.45767712593079,
+          "predicted_layout_ssim": 0.10372146081276715,
+          "psnr": 9.30306685215809
+        },
+        "component_l1w4__denoised_render": {
+          "mae": 71.78408312797546,
+          "predicted_layout_ssim": 0.16572732478582905,
+          "psnr": 9.061444935385193
+        },
+        "component_l1w4__raw_render": {
+          "mae": 70.37623333930969,
+          "predicted_layout_ssim": 0.10160772917258584,
+          "psnr": 9.28333685020872
+        },
+        "component_l1w4_q50__denoised_render": {
+          "mae": 71.95769238471985,
+          "predicted_layout_ssim": 0.16750678424630247,
+          "psnr": 9.02145895529653
+        },
+        "component_l1w4_q50__raw_render": {
+          "mae": 70.47595286369324,
+          "predicted_layout_ssim": 0.10263135244971158,
+          "psnr": 9.255470180817866
+        },
+        "denoised_component_binary__denoised_render": {
+          "mae": 72.49565935134888,
+          "predicted_layout_ssim": 0.1360034552819937,
+          "psnr": 9.027848558267738
+        },
+        "denoised_component_binary__raw_render": {
+          "mae": 71.09168314933777,
+          "predicted_layout_ssim": 0.0869270486983374,
+          "psnr": 9.24825400053635
+        },
+        "denoised_component_edgefusion__denoised_render": {
+          "mae": 72.69904232025146,
+          "predicted_layout_ssim": 0.1375492586575779,
+          "psnr": 9.000993658811478
+        },
+        "denoised_component_edgefusion__raw_render": {
+          "mae": 71.21975183486938,
+          "predicted_layout_ssim": 0.08843648807473573,
+          "psnr": 9.223698633968882
+        },
+        "denoised_component_fusion__denoised_render": {
+          "mae": 70.61657500267029,
+          "predicted_layout_ssim": 0.1742160220985331,
+          "psnr": 9.22791672097299
+        },
+        "denoised_component_fusion__raw_render": {
+          "mae": 69.24360609054565,
+          "predicted_layout_ssim": 0.105769092355668,
+          "psnr": 9.454685148038507
+        },
+        "denoised_component_fusionedge__denoised_render": {
+          "mae": 73.59535789489746,
+          "predicted_layout_ssim": 0.1608715788895581,
+          "psnr": 8.958750056546886
+        },
+        "denoised_component_fusionedge__raw_render": {
+          "mae": 72.09702515602112,
+          "predicted_layout_ssim": 0.09866301857145224,
+          "psnr": 9.185911357999988
+        },
+        "denoised_component_pbc__denoised_render": {
+          "mae": 73.20103073120117,
+          "predicted_layout_ssim": 0.1711075046000261,
+          "psnr": 8.979124437542337
+        },
+        "denoised_component_pbc__raw_render": {
+          "mae": 71.70214676856995,
+          "predicted_layout_ssim": 0.10424709297581573,
+          "psnr": 9.206455462400005
+        },
+        "denoised_component_sobel__denoised_render": {
+          "mae": 72.04990983009338,
+          "predicted_layout_ssim": 0.13979262971911643,
+          "psnr": 9.05364581893734
+        },
+        "denoised_component_sobel__raw_render": {
+          "mae": 70.59732580184937,
+          "predicted_layout_ssim": 0.08873085700560021,
+          "psnr": 9.28343038510463
+        },
+        "denoised_lp_fusion_q50__denoised_render": {
+          "mae": 71.11795830726624,
+          "predicted_layout_ssim": 0.17354914451123388,
+          "psnr": 9.186378887728429
+        },
+        "denoised_lp_fusion_q50__raw_render": {
+          "mae": 69.70882654190063,
+          "predicted_layout_ssim": 0.10576322608926858,
+          "psnr": 9.409007593094561
+        },
+        "identity__denoised_render": {
+          "mae": 72.1757287979126,
+          "predicted_layout_ssim": 0.1325690625965134,
+          "psnr": 9.034234185614572
+        },
+        "identity__raw_render": {
+          "mae": 70.6804358959198,
+          "predicted_layout_ssim": 0.08523135098211207,
+          "psnr": 9.266075273361928
+        },
+        "qap_component_cross_l1w4_q50__denoised_render": {
+          "mae": 71.9070725440979,
+          "predicted_layout_ssim": 0.17505090952289235,
+          "psnr": 9.033404366302026
+        },
+        "qap_component_cross_l1w4_q50__raw_render": {
+          "mae": 70.6340880393982,
+          "predicted_layout_ssim": 0.10690620209507806,
+          "psnr": 9.246206194295237
+        },
+        "qap_softcycle_l1_k8__denoised_render": {
+          "mae": 69.82134938240051,
+          "predicted_layout_ssim": 0.18230531160345234,
+          "psnr": 9.247187488396868
+        },
+        "qap_softcycle_l1_k8__raw_render": {
+          "mae": 68.42406702041626,
+          "predicted_layout_ssim": 0.11045547137243675,
+          "psnr": 9.47586384076098
+        },
+        "raw_component_binary__denoised_render": {
+          "mae": 71.74488377571106,
+          "predicted_layout_ssim": 0.13640869625872862,
+          "psnr": 9.067919908227314
+        },
+        "raw_component_binary__raw_render": {
+          "mae": 70.31293940544128,
+          "predicted_layout_ssim": 0.08758850538806841,
+          "psnr": 9.28850315784515
+        },
+        "raw_component_edgefusion__denoised_render": {
+          "mae": 72.32369756698608,
+          "predicted_layout_ssim": 0.13500881986925603,
+          "psnr": 9.047469419184091
+        },
+        "raw_component_edgefusion__raw_render": {
+          "mae": 70.82403755187988,
+          "predicted_layout_ssim": 0.08733332487596066,
+          "psnr": 9.27641646490901
+        },
+        "raw_component_fusion__denoised_render": {
+          "mae": 71.41850996017456,
+          "predicted_layout_ssim": 0.16270444505396423,
+          "psnr": 9.123218514175292
+        },
+        "raw_component_fusion__raw_render": {
+          "mae": 69.94520044326782,
+          "predicted_layout_ssim": 0.1035992509827128,
+          "psnr": 9.354482014248838
+        },
+        "raw_component_fusionedge__denoised_render": {
+          "mae": 71.15811276435852,
+          "predicted_layout_ssim": 0.16182651982619523,
+          "psnr": 9.134235552971328
+        },
+        "raw_component_fusionedge__raw_render": {
+          "mae": 69.79924392700195,
+          "predicted_layout_ssim": 0.10347846267052371,
+          "psnr": 9.365541561842521
+        },
+        "raw_component_pbc__denoised_render": {
+          "mae": 71.85578680038452,
+          "predicted_layout_ssim": 0.16440068695786944,
+          "psnr": 9.10364634947191
+        },
+        "raw_component_pbc__raw_render": {
+          "mae": 70.44747710227966,
+          "predicted_layout_ssim": 0.10565303052617642,
+          "psnr": 9.328903050960397
+        },
+        "raw_component_sobel__denoised_render": {
+          "mae": 71.85080599784851,
+          "predicted_layout_ssim": 0.13603910894793547,
+          "psnr": 9.063189236611079
+        },
+        "raw_component_sobel__raw_render": {
+          "mae": 70.4827823638916,
+          "predicted_layout_ssim": 0.08694792117894302,
+          "psnr": 9.283760832550147
+        },
+        "raw_lp_fusion_q50__denoised_render": {
+          "mae": 69.43179368972778,
+          "predicted_layout_ssim": 0.1735606893552324,
+          "psnr": 9.30434648151373
+        },
+        "raw_lp_fusion_q50__raw_render": {
+          "mae": 68.10196089744568,
+          "predicted_layout_ssim": 0.1106034661680356,
+          "psnr": 9.53637622342184
+        },
+        "softcycle_l1_k8__denoised_render": {
+          "mae": 70.17743945121765,
+          "predicted_layout_ssim": 0.1654311400188839,
+          "psnr": 9.206667577062369
+        },
+        "softcycle_l1_k8__raw_render": {
+          "mae": 68.85199284553528,
+          "predicted_layout_ssim": 0.10203767868121605,
+          "psnr": 9.428151141240736
+        }
+      },
+      "name": "qap_cross_multiseed_real16",
+      "output": "/kaggle/working/qap_cross_multiseed_real16.json",
+      "returncode": 0,
+      "seconds": 805.1688647439998,
+      "sha256": "1aa5df6d6cca404dd91a5075495822eee6f9e6a92a5f7cb189657630de2d9fd7",
+      "source_names": [
+        "img_003877.png",
+        "img_005080.png",
+        "img_004383.png",
+        "img_006582.png",
+        "img_004810.png",
+        "img_006306.png",
+        "img_005844.png",
+        "img_004191.png",
+        "img_001281.png",
+        "img_003971.png",
+        "img_006070.png",
+        "img_005710.png",
+        "img_005224.png",
+        "img_006489.png",
+        "img_002514.png",
+        "img_004878.png"
+      ]
+    },
+    {
+      "gpu": 1,
+      "macro": {
+        "component_cross_c1__denoised_render": {
+          "mae": 71.87302923202515,
+          "predicted_layout_ssim": 0.16713242820813767,
+          "psnr": 9.055092738836036
+        },
+        "component_cross_c1__raw_render": {
+          "mae": 70.52610278129578,
+          "predicted_layout_ssim": 0.10385244992485342,
+          "psnr": 9.274059514961085
+        },
+        "component_cross_c1_dn2__denoised_render": {
+          "mae": 70.85382962226868,
+          "predicted_layout_ssim": 0.16930615426650333,
+          "psnr": 9.174533250729525
+        },
+        "component_cross_c1_dn2__raw_render": {
+          "mae": 69.46801280975342,
+          "predicted_layout_ssim": 0.10608226274848956,
+          "psnr": 9.39461887008287
+        },
+        "component_cross_l1w4__denoised_render": {
+          "mae": 71.2265260219574,
+          "predicted_layout_ssim": 0.1692051253372855,
+          "psnr": 9.143513699105277
+        },
+        "component_cross_l1w4__raw_render": {
+          "mae": 69.95181822776794,
+          "predicted_layout_ssim": 0.1031952312611126,
+          "psnr": 9.359412388669078
+        },
+        "component_cross_l1w4_q50__denoised_render": {
+          "mae": 71.99626159667969,
+          "predicted_layout_ssim": 0.16847334878073011,
+          "psnr": 9.036326037151493
+        },
+        "component_cross_l1w4_q50__raw_render": {
+          "mae": 70.70642304420471,
+          "predicted_layout_ssim": 0.10399220009084828,
+          "psnr": 9.246307760398384
+        },
+        "component_l1__denoised_render": {
+          "mae": 71.18475246429443,
+          "predicted_layout_ssim": 0.14634874119895191,
+          "psnr": 9.125580870207244
+        },
+        "component_l1__raw_render": {
+          "mae": 69.87785792350769,
+          "predicted_layout_ssim": 0.093276119100492,
+          "psnr": 9.33981585255769
+        },
+        "component_l1_mutual2__denoised_render": {
+          "mae": 71.86528778076172,
+          "predicted_layout_ssim": 0.1487894949812753,
+          "psnr": 9.089611202781514
+        },
+        "component_l1_mutual2__raw_render": {
+          "mae": 70.56558847427368,
+          "predicted_layout_ssim": 0.0947546217464438,
+          "psnr": 9.305241831436366
+        },
+        "component_l1_placebeam__denoised_render": {
+          "mae": 71.83255696296692,
+          "predicted_layout_ssim": 0.1439149132355356,
+          "psnr": 9.053594992446083
+        },
+        "component_l1_placebeam__raw_render": {
+          "mae": 70.48685669898987,
+          "predicted_layout_ssim": 0.0919274990153435,
+          "psnr": 9.267829477850572
+        },
+        "component_l1_q50__denoised_render": {
+          "mae": 72.63402104377747,
+          "predicted_layout_ssim": 0.13812907699060398,
+          "psnr": 8.99209403653781
+        },
+        "component_l1_q50__raw_render": {
+          "mae": 70.99490809440613,
+          "predicted_layout_ssim": 0.08843626463419933,
+          "psnr": 9.230638206304167
+        },
+        "component_l1compact__denoised_render": {
+          "mae": 72.7187933921814,
+          "predicted_layout_ssim": 0.16404410191590404,
+          "psnr": 8.998908208508436
+        },
+        "component_l1compact__raw_render": {
+          "mae": 71.24326968193054,
+          "predicted_layout_ssim": 0.09953471435549778,
+          "psnr": 9.223611846259255
+        },
+        "component_l1compact_outside__denoised_render": {
+          "mae": 71.83481049537659,
+          "predicted_layout_ssim": 0.16774982922740406,
+          "psnr": 9.060009475379342
+        },
+        "component_l1compact_outside__raw_render": {
+          "mae": 70.46676015853882,
+          "predicted_layout_ssim": 0.10258570813472158,
+          "psnr": 9.27611841705507
+        },
+        "component_l1compact_q50__denoised_render": {
+          "mae": 72.69481015205383,
+          "predicted_layout_ssim": 0.1669202377354656,
+          "psnr": 9.03204188803213
+        },
+        "component_l1compact_q50__raw_render": {
+          "mae": 71.24379324913025,
+          "predicted_layout_ssim": 0.10212005906644528,
+          "psnr": 9.253139597296737
+        },
+        "component_l1fusion__denoised_render": {
+          "mae": 73.11262106895447,
+          "predicted_layout_ssim": 0.16554136020503424,
+          "psnr": 8.9843069377307
+        },
+        "component_l1fusion__raw_render": {
+          "mae": 71.53495693206787,
+          "predicted_layout_ssim": 0.10129747253841943,
+          "psnr": 9.219408544566079
+        },
+        "component_l1fusion_q50__denoised_render": {
+          "mae": 71.05299639701843,
+          "predicted_layout_ssim": 0.17152960079116986,
+          "psnr": 9.119384510129457
+        },
+        "component_l1fusion_q50__raw_render": {
+          "mae": 69.64246320724487,
+          "predicted_layout_ssim": 0.10458020880994907,
+          "psnr": 9.344786073883022
+        },
+        "component_l1w2__denoised_render": {
+          "mae": 70.79063725471497,
+          "predicted_layout_ssim": 0.17222001443221063,
+          "psnr": 9.157138343029686
+        },
+        "component_l1w2__raw_render": {
+          "mae": 69.43084645271301,
+          "predicted_layout_ssim": 0.10539111571015419,
+          "psnr": 9.379418482672781
+        },
+        "component_l1w2_q50__denoised_render": {
+          "mae": 71.9813449382782,
+          "predicted_layout_ssim": 0.1675480708329786,
+          "psnr": 9.071661249234616
+        },
+        "component_l1w2_q50__raw_render": {
+          "mae": 70.45767712593079,
+          "predicted_layout_ssim": 0.10372146081276715,
+          "psnr": 9.30306685215809
+        },
+        "component_l1w4__denoised_render": {
+          "mae": 71.78408312797546,
+          "predicted_layout_ssim": 0.16572732478582905,
+          "psnr": 9.061444935385193
+        },
+        "component_l1w4__raw_render": {
+          "mae": 70.37623333930969,
+          "predicted_layout_ssim": 0.10160772917258584,
+          "psnr": 9.28333685020872
+        },
+        "component_l1w4_q50__denoised_render": {
+          "mae": 71.95769238471985,
+          "predicted_layout_ssim": 0.16750678424630247,
+          "psnr": 9.02145895529653
+        },
+        "component_l1w4_q50__raw_render": {
+          "mae": 70.47595286369324,
+          "predicted_layout_ssim": 0.10263135244971158,
+          "psnr": 9.255470180817866
+        },
+        "denoised_component_binary__denoised_render": {
+          "mae": 72.49565935134888,
+          "predicted_layout_ssim": 0.1360034552819937,
+          "psnr": 9.027848558267738
+        },
+        "denoised_component_binary__raw_render": {
+          "mae": 71.09168314933777,
+          "predicted_layout_ssim": 0.0869270486983374,
+          "psnr": 9.24825400053635
+        },
+        "denoised_component_edgefusion__denoised_render": {
+          "mae": 72.69904232025146,
+          "predicted_layout_ssim": 0.1375492586575779,
+          "psnr": 9.000993658811478
+        },
+        "denoised_component_edgefusion__raw_render": {
+          "mae": 71.21975183486938,
+          "predicted_layout_ssim": 0.08843648807473573,
+          "psnr": 9.223698633968882
+        },
+        "denoised_component_fusion__denoised_render": {
+          "mae": 70.61657500267029,
+          "predicted_layout_ssim": 0.1742160220985331,
+          "psnr": 9.22791672097299
+        },
+        "denoised_component_fusion__raw_render": {
+          "mae": 69.24360609054565,
+          "predicted_layout_ssim": 0.105769092355668,
+          "psnr": 9.454685148038507
+        },
+        "denoised_component_fusionedge__denoised_render": {
+          "mae": 73.59535789489746,
+          "predicted_layout_ssim": 0.1608715788895581,
+          "psnr": 8.958750056546886
+        },
+        "denoised_component_fusionedge__raw_render": {
+          "mae": 72.09702515602112,
+          "predicted_layout_ssim": 0.09866301857145224,
+          "psnr": 9.185911357999988
+        },
+        "denoised_component_pbc__denoised_render": {
+          "mae": 73.20103073120117,
+          "predicted_layout_ssim": 0.1711075046000261,
+          "psnr": 8.979124437542337
+        },
+        "denoised_component_pbc__raw_render": {
+          "mae": 71.70214676856995,
+          "predicted_layout_ssim": 0.10424709297581573,
+          "psnr": 9.206455462400005
+        },
+        "denoised_component_sobel__denoised_render": {
+          "mae": 72.04990983009338,
+          "predicted_layout_ssim": 0.13979262971911643,
+          "psnr": 9.05364581893734
+        },
+        "denoised_component_sobel__raw_render": {
+          "mae": 70.59732580184937,
+          "predicted_layout_ssim": 0.08873085700560021,
+          "psnr": 9.28343038510463
+        },
+        "denoised_lp_fusion_q50__denoised_render": {
+          "mae": 71.11795830726624,
+          "predicted_layout_ssim": 0.17354914451123388,
+          "psnr": 9.186378887728429
+        },
+        "denoised_lp_fusion_q50__raw_render": {
+          "mae": 69.70882654190063,
+          "predicted_layout_ssim": 0.10576322608926858,
+          "psnr": 9.409007593094561
+        },
+        "identity__denoised_render": {
+          "mae": 72.1757287979126,
+          "predicted_layout_ssim": 0.1325690625965134,
+          "psnr": 9.034234185614572
+        },
+        "identity__raw_render": {
+          "mae": 70.6804358959198,
+          "predicted_layout_ssim": 0.08523135098211207,
+          "psnr": 9.266075273361928
+        },
+        "qap_softcycle_l1_k8__denoised_render": {
+          "mae": 69.64448380470276,
+          "predicted_layout_ssim": 0.18281991502795386,
+          "psnr": 9.27427100746052
+        },
+        "qap_softcycle_l1_k8__raw_render": {
+          "mae": 68.29447412490845,
+          "predicted_layout_ssim": 0.110247459259039,
+          "psnr": 9.504438969877521
+        },
+        "raw_component_binary__denoised_render": {
+          "mae": 71.74488377571106,
+          "predicted_layout_ssim": 0.13640869625872862,
+          "psnr": 9.067919908227314
+        },
+        "raw_component_binary__raw_render": {
+          "mae": 70.31293940544128,
+          "predicted_layout_ssim": 0.08758850538806841,
+          "psnr": 9.28850315784515
+        },
+        "raw_component_edgefusion__denoised_render": {
+          "mae": 72.32369756698608,
+          "predicted_layout_ssim": 0.13500881986925603,
+          "psnr": 9.047469419184091
+        },
+        "raw_component_edgefusion__raw_render": {
+          "mae": 70.82403755187988,
+          "predicted_layout_ssim": 0.08733332487596066,
+          "psnr": 9.27641646490901
+        },
+        "raw_component_fusion__denoised_render": {
+          "mae": 71.41850996017456,
+          "predicted_layout_ssim": 0.16270444505396423,
+          "psnr": 9.123218514175292
+        },
+        "raw_component_fusion__raw_render": {
+          "mae": 69.94520044326782,
+          "predicted_layout_ssim": 0.1035992509827128,
+          "psnr": 9.354482014248838
+        },
+        "raw_component_fusionedge__denoised_render": {
+          "mae": 71.15811276435852,
+          "predicted_layout_ssim": 0.16182651982619523,
+          "psnr": 9.134235552971328
+        },
+        "raw_component_fusionedge__raw_render": {
+          "mae": 69.79924392700195,
+          "predicted_layout_ssim": 0.10347846267052371,
+          "psnr": 9.365541561842521
+        },
+        "raw_component_pbc__denoised_render": {
+          "mae": 71.85578680038452,
+          "predicted_layout_ssim": 0.16440068695786944,
+          "psnr": 9.10364634947191
+        },
+        "raw_component_pbc__raw_render": {
+          "mae": 70.44747710227966,
+          "predicted_layout_ssim": 0.10565303052617642,
+          "psnr": 9.328903050960397
+        },
+        "raw_component_sobel__denoised_render": {
+          "mae": 71.85080599784851,
+          "predicted_layout_ssim": 0.13603910894793547,
+          "psnr": 9.063189236611079
+        },
+        "raw_component_sobel__raw_render": {
+          "mae": 70.4827823638916,
+          "predicted_layout_ssim": 0.08694792117894302,
+          "psnr": 9.283760832550147
+        },
+        "raw_lp_fusion_q50__denoised_render": {
+          "mae": 69.43179368972778,
+          "predicted_layout_ssim": 0.1735606893552324,
+          "psnr": 9.30434648151373
+        },
+        "raw_lp_fusion_q50__raw_render": {
+          "mae": 68.10196089744568,
+          "predicted_layout_ssim": 0.1106034661680356,
+          "psnr": 9.53637622342184
+        },
+        "softcycle_l1_k8__denoised_render": {
+          "mae": 70.17743945121765,
+          "predicted_layout_ssim": 0.1654311400188839,
+          "psnr": 9.206667577062369
+        },
+        "softcycle_l1_k8__raw_render": {
+          "mae": 68.85199284553528,
+          "predicted_layout_ssim": 0.10203767868121605,
+          "psnr": 9.428151141240736
+        }
+      },
+      "name": "qap_l1w4_boundary_real16",
+      "output": "/kaggle/working/qap_l1w4_boundary_real16.json",
+      "returncode": 0,
+      "seconds": 718.955638161,
+      "sha256": "cc1b694b1501ba9b02e5618ad838e155ae40af7990bbbf4542b281fc21adec60",
+      "source_names": [
+        "img_003877.png",
+        "img_005080.png",
+        "img_004383.png",
+        "img_006582.png",
+        "img_004810.png",
+        "img_006306.png",
+        "img_005844.png",
+        "img_004191.png",
+        "img_001281.png",
+        "img_003971.png",
+        "img_006070.png",
+        "img_005710.png",
+        "img_005224.png",
+        "img_006489.png",
+        "img_002514.png",
+        "img_004878.png"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "seconds": 1733.8563788610002,
+  "settings": [
+    {
+      "boundary": 0.0,
+      "initial_weight": 0.75,
+      "iterations": 25,
+      "name": "qap_l1w4_multiseed_real16",
+      "noise_scale": 1.0,
+      "noisy_components": 3,
+      "restarts": 2,
+      "score": "l1w4",
+      "seeds": "softcycle_l1_k8,component_l1fusion_q50,denoised_component_fusion"
+    },
+    {
+      "boundary": 0.0,
+      "initial_weight": 0.75,
+      "iterations": 25,
+      "name": "qap_cross_multiseed_real16",
+      "noise_scale": 1.0,
+      "noisy_components": 3,
+      "restarts": 2,
+      "score": "cross_l1w4",
+      "seeds": "softcycle_l1_k8,component_cross_l1w4_q50"
+    },
+    {
+      "boundary": 0.0,
+      "initial_weight": 0.5,
+      "iterations": 40,
+      "name": "qap_l1w4_heavy_real16",
+      "noise_scale": 0.5,
+      "noisy_components": 5,
+      "restarts": 4,
+      "score": "l1w4",
+      "seeds": "softcycle_l1_k8"
+    },
+    {
+      "boundary": 0.05,
+      "initial_weight": 0.75,
+      "iterations": 25,
+      "name": "qap_l1w4_boundary_real16",
+      "noise_scale": 1.0,
+      "noisy_components": 3,
+      "restarts": 2,
+      "score": "l1w4",
+      "seeds": "softcycle_l1_k8"
+    }
+  ]
+}

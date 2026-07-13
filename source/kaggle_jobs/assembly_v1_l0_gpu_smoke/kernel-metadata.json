@@ -1,0 +1,14 @@
+{
+  "id": "pasha883/vsos-assembly-v1-l0-gpu-smoke",
+  "title": "VSOS Assembly V1 L0 GPU Smoke",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime"
+  ]
+}

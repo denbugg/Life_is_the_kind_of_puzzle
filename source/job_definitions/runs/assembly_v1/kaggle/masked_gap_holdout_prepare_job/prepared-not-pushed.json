@@ -1,0 +1,12 @@
+{
+  "kind": "masked_gap_stage_job_manifest_v1",
+  "stage": "holdout_prepare_after_passing_calibration_b",
+  "status": "prepared_not_pushed",
+  "outputs_must_be_uploaded_as_separate_datasets": [
+    "holdout_input_only.zip",
+    "holdout_labels_only.zip"
+  ],
+  "unresolved_runtime_hashes": [
+    "PASSING_CALIBRATION_B_REPORT_SHA256"
+  ]
+}

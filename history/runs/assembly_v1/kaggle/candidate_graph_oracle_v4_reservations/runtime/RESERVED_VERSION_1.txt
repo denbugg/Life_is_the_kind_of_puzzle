@@ -1,0 +1,5 @@
+Candidate-graph oracle v4 private dataset version-1 reservation only.
+protocol_instance_id=6c0fe4e8524ce39d830d9a5bee118d8b
+role=runtime
+contains_fixture_pixels=false
+safe_for_submission=false

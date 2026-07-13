@@ -1,0 +1,90 @@
+{
+  "assets": {
+    "hbt": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    },
+    "seam": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-postassembly-harmonizer-runtime/assets/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9"
+    },
+    "selected": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    }
+  },
+  "bundle_root": "/kaggle/input/datasets/pasha883/vsos-actual-qap-luma-code",
+  "calibration_report_sha256": "9593b8809d2b0e6a0f928e7b0cf41e47f4406e5dd3d8151ea6b75a521c65bbee",
+  "command": [
+    "/usr/bin/python3",
+    "/kaggle/input/datasets/pasha883/vsos-actual-qap-luma-code/scripts/evaluate_actual_qap_luma_gain.py",
+    "--data-root",
+    "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "--selected-denoiser",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "--seam-denoiser",
+    "/kaggle/input/datasets/pasha883/vsos-postassembly-harmonizer-runtime/assets/seam_denoiser_gpu.pt",
+    "--embedding-checkpoint",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+    "--manifest",
+    "/kaggle/input/datasets/pasha883/vsos-actual-qap-luma-code/configs/denoise_splits_seed20260710.json",
+    "--quarantine",
+    "/kaggle/input/datasets/pasha883/vsos-actual-qap-luma-code/configs/denoise_validation_quarantine_v1.json",
+    "--split",
+    "assembly_incremental_gate",
+    "--source-offset",
+    "0",
+    "--sources",
+    "32",
+    "--device",
+    "cuda",
+    "--batch-size",
+    "512",
+    "--denoise-batch-size",
+    "512",
+    "--baseline-iterations",
+    "25",
+    "--output",
+    "/kaggle/working/actual_qap_luma_confirmation_report.json",
+    "--overwrite"
+  ],
+  "confirmation_passed": true,
+  "evaluator_selected": "rgb_plus_bounded_luminance_gain",
+  "hardware": {
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_op": -0.06281422823667526
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_op": -0.09478491544723511
+      }
+    ],
+    "nvidia_smi": "Mon Jul 13 00:11:21 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             26W /   70W |     153MiB /  15360MiB |      1%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   40C    P0             27W /   70W |     153MiB /  15360MiB |      3%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A               7      C   python3                                 150MiB |\n|    1   N/A  N/A               7      C   python3                                 150MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "actual_qap_luma_source_disjoint_confirmation_wrapper",
+  "output": {
+    "path": "/kaggle/working/actual_qap_luma_confirmation_report.json",
+    "sha256": "aeac52ebdde35581a974ac863ccb9f7af22f4c4153b667ccb81f68c884b158c1"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 759.8997399806976,
+  "started_unix": 1783901426.963253,
+  "status": "complete"
+}

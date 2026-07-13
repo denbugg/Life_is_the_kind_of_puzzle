@@ -1,0 +1,60 @@
+{
+  "output": "/kaggle/working/tilenaf_smoke_1000.pt",
+  "raw_validation": {
+    "tile_ssim": 0.5556724540636611,
+    "psnr": 20.60021653110904,
+    "mae": 18.874178873697918,
+    "boundary_mae": 19.261800130208332,
+    "interior_mae": 18.470736341411566,
+    "gradient_mae": 9.290871924684758,
+    "signed_bias_r": 1.261025390625,
+    "signed_bias_g": 2.288802490234375,
+    "signed_bias_b": 3.477777099609375
+  },
+  "best_ssim": 0.7434850606680137,
+  "history": [
+    {
+      "step": 500,
+      "tile_ssim": 0.7199090564639752,
+      "psnr": 21.66184724904567,
+      "mae": 16.300546468098958,
+      "boundary_mae": 16.569465188419116,
+      "interior_mae": 16.02065147348002,
+      "gradient_mae": 6.994839852316337,
+      "signed_bias_r": -1.204462890625,
+      "signed_bias_g": -1.3582275390625,
+      "signed_bias_b": -1.173326416015625,
+      "libjpeg_tile_ssim": 0.7319817486334776,
+      "libjpeg_psnr": 22.042853304404414,
+      "libjpeg_mae": 15.570826822916667,
+      "libjpeg_boundary_mae": 15.812219158496733,
+      "libjpeg_interior_mae": 15.319581738945578,
+      "libjpeg_gradient_mae": 6.078070175438597,
+      "libjpeg_signed_bias_r": -2.01369140625,
+      "libjpeg_signed_bias_g": -2.671025390625,
+      "libjpeg_signed_bias_b": -1.104658203125
+    },
+    {
+      "step": 1000,
+      "tile_ssim": 0.7434850606680137,
+      "psnr": 21.831013487890946,
+      "mae": 15.935710856119792,
+      "boundary_mae": 16.20713018280229,
+      "interior_mae": 15.653213189572703,
+      "gradient_mae": 6.674653919956141,
+      "signed_bias_r": -1.1206591796875,
+      "signed_bias_g": -1.4613916015625,
+      "signed_bias_b": -1.279017333984375,
+      "libjpeg_tile_ssim": 0.7743953532564705,
+      "libjpeg_psnr": 22.2179141471163,
+      "libjpeg_mae": 15.285260416666667,
+      "libjpeg_boundary_mae": 15.526679942810457,
+      "libjpeg_interior_mae": 15.033987032312925,
+      "libjpeg_gradient_mae": 5.617732319078947,
+      "libjpeg_signed_bias_r": -1.83119140625,
+      "libjpeg_signed_bias_g": -2.535498046875,
+      "libjpeg_signed_bias_b": -0.926318359375
+    }
+  ],
+  "seconds": 322.64444821000006
+}

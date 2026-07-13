@@ -1,0 +1,6 @@
+{
+  "kind": "dual_lambdarank_qap_target_access_event",
+  "marker_precedes_first_target_path_construction": true,
+  "phase_a_manifest_sha256": "1b3abe19f8b026ae41531a5716e33198f48bb3655583a38395e1fe902b659f3f",
+  "target_access_started": true
+}

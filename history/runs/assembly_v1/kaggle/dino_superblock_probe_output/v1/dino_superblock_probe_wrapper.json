@@ -1,0 +1,128 @@
+{
+  "hard_runtime_cap": {
+    "internal_cap_seconds": 2520,
+    "resolved_subprocess_timeout_seconds": 2597.937707553,
+    "subprocess_timeout_seconds": 2640.0,
+    "timed_out": false,
+    "wall_seconds": 2700.0
+  },
+  "input_hashes": {
+    "authoritative_reference": "92233fc5343aac3049ce0327417b645998bf477c6db91a4a852659312949ced6",
+    "denoiser": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "dino_superblock_module": "8c9c2fc23a6864ea8d7b4b8c60406dc965d575d5075a716a9716dac3d5163be9",
+    "embedding": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "manifest": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "payload": "64045be1bcb26926704d10daf34b0668baf2db54ed9d0fc91da56aebfd4b96f3",
+    "qap_module": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "quarantine": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "train_evaluate_script": "4c178cdfc41e6b716cd64f9f71b4864a0bcc337c3da2cd6b56425b4fa8469525"
+  },
+  "kind": "puzzle_dino_vits14_superblock_probe_kaggle_wrapper",
+  "mounts": {
+    "base_code_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "code_root": "/kaggle/working/dino_superblock_code",
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "payload": "/kaggle/working/embedded_dino_superblock_payload.zip",
+    "runtime_root": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime"
+  },
+  "probe": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "cuda_available": true,
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "tensor_probe_means": [
+      0.040357980877161026,
+      -0.10639631748199463
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "result": {
+    "accepted": false,
+    "checkpoint": "/kaggle/working/dino_superblock_head.pt",
+    "checkpoint_sha256": "a79887bc9aa7bc4cd067f9d8d75399caa7ad6dcd20f2dc2b156ded466ce8859c",
+    "dino": {
+      "architecture": "DINOv2 ViT-S/14",
+      "backend": "torch_hub",
+      "cache_checkpoint_candidates": [
+        {
+          "bytes": 88283115,
+          "path": "/kaggle/working/dino_model_cache/torch/hub/checkpoints/dinov2_vits14_pretrain.pth",
+          "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+        }
+      ],
+      "fallback_diagnostics": {},
+      "feature_dim": 768,
+      "frozen_parameter_count": 22056576,
+      "identifier": "facebookresearch/dinov2:dinov2_vits14",
+      "state_dict_sha256": "105f6c60aae15fee9c29f86dccefbcbdc1443fc40f1d0e9a5850513be1e34dbf"
+    },
+    "report": "/kaggle/working/dino_superblock_probe_report.json",
+    "report_sha256": "0d1e95b7ff5635642907936c26b1f4055decebc645c7c9d8c4aad816b0969555",
+    "status": "development_gate_failed"
+  },
+  "run": {
+    "command": [
+      "/usr/bin/python3",
+      "/kaggle/working/dino_superblock_code/scripts/train_evaluate_dino_superblock.py",
+      "--data-root",
+      "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+      "--denoiser",
+      "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "--embedding-checkpoint",
+      "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "--manifest",
+      "/kaggle/working/dino_superblock_code/configs/denoise_splits_seed20260710.json",
+      "--quarantine",
+      "/kaggle/working/dino_superblock_code/configs/denoise_validation_quarantine_v1.json",
+      "--authoritative-reference",
+      "/kaggle/working/dino_superblock_code/reference/qap_l1w4_boundary_real16_manifest.json",
+      "--train-sources",
+      "512",
+      "--dev-sources",
+      "64",
+      "--exact-sources",
+      "8",
+      "--real-sources",
+      "16",
+      "--runtime-cap-seconds",
+      "2520",
+      "--device",
+      "cuda",
+      "--output",
+      "/kaggle/working/dino_superblock_head.pt",
+      "--report",
+      "/kaggle/working/dino_superblock_probe_report.json",
+      "--overwrite"
+    ],
+    "log": "/kaggle/working/dino_superblock_probe.log",
+    "log_sha256": "88769f259e47ecb11bb5e1740e428f9c1f573fa93c103e2f10336a762402b972",
+    "returncode": 0,
+    "seconds": 833.14050974,
+    "timed_out": false,
+    "timeout_seconds": 2597.937707553
+  },
+  "schema_version": 1,
+  "seconds": 905.380791578
+}

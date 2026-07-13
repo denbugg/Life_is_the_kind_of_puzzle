@@ -1,0 +1,189 @@
+{
+  "assets": {
+    "denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "hbt": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  },
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "hardware": {
+    "cuda": "12.8",
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_probe": -0.07906045019626617,
+        "total_memory": 15636037632
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_probe": 0.006036223843693733,
+        "total_memory": 15636037632
+      }
+    ],
+    "nvidia_smi": [
+      "Tesla T4, 15360 MiB, 580.159.04",
+      "Tesla T4, 15360 MiB, 580.159.04"
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "tilenaf_latent_edge_kaggle_wrapper",
+  "qap_run": false,
+  "result": {
+    "checkpoint_sha256": "01a63b08e4f1dabb6e475b690ea6f4b57aa19f87e24d25c3d0f641972e634e9f",
+    "holdout_opened": false,
+    "path": "/kaggle/working/latent_edge_pilot/latent_edge_embedding_report.json",
+    "selected_alpha": 0.1,
+    "selection_passed": false,
+    "sha256": "16279686ed179a5a0f9ceb8764ecc027500560f9d11962e4dca1727e8e14b05f",
+    "status": "stop_selection_retrieval"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 408.45946860313416,
+  "staging": {
+    "base_file_count": 21,
+    "base_manifest_sha256": "1583053a4276ba9b30368dcc6af00f24cd0fe091bfaff93090c41c01b0c3675b",
+    "base_root": "/kaggle/input/datasets/pasha883/vsos-masked-gap-gate-code",
+    "overlay_hashes": {
+      "scripts/train_evaluate_latent_edge_embedding.py": "2d8e7ee2a3ae2014ed5eb3818328e6262c2facefeb158949780b87fe0290b19a",
+      "src/puzzle_assembly/latent_edge_embedding.py": "55230824629c36781305211ea642724b6ae99adaf445d0942e4b8b326cebf04e",
+      "src/puzzle_denoise_v2/model.py": "d111d106352715cdebbbf24fd6c99facd0b3c9520951abf588a6c6bc03c7feba",
+      "tests/test_latent_edge_embedding.py": "418b7ca5cee17232f5e4ea93c0ae247674384278493da418c3d6ad67bc21e5bb",
+      "tests/test_latent_edge_trainer.py": "5afe50b66c4e915c96030ecb93a24530eb65484a46d0df467069d56ae2d31de6"
+    },
+    "overlay_root": "/kaggle/input/datasets/pasha883/vsos-tilenaf-latent-edge-overlay-v1",
+    "staging": "/kaggle/working/latent_edge_staging"
+  },
+  "started_unix": 1783947237.6564498,
+  "status": "complete",
+  "steps": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "tests/test_latent_edge_embedding.py",
+        "tests/test_latent_edge_trainer.py"
+      ],
+      "label": "overlay unit tests",
+      "log": "/kaggle/working/latent_edge_tests.log",
+      "log_sha256": "c0678d79971899d3eb60e3a9dd0485a3161511d36af48de4adaf66cb797c8c7e",
+      "returncode": 0,
+      "seconds": 9.391805565999903,
+      "timed_out": false,
+      "timeout_seconds": 900
+    },
+    {
+      "command": [
+        "torchrun",
+        "--standalone",
+        "--nproc_per_node=2",
+        "scripts/train_evaluate_latent_edge_embedding.py",
+        "--output-dir",
+        "/kaggle/working/latent_edge_smoke",
+        "--smoke",
+        "--selection-split",
+        "edge_development",
+        "--selection-offset",
+        "96",
+        "--holdout-offset",
+        "112",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/latent_edge_staging/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/latent_edge_staging/configs/denoise_validation_quarantine_v1.json",
+        "--no-amp"
+      ],
+      "label": "2xT4 end-to-end smoke",
+      "log": "/kaggle/working/latent_edge_smoke.log",
+      "log_sha256": "75ea132d0c434bddd0747181796ac0ae06b21ac9c54049eca0c5392da60b7abd",
+      "report": {
+        "checkpoint_sha256": "00aaacbd01c7d62246aa61d2ba8d397c5fc2fc04c64627d4b3438bdb31689d83",
+        "holdout_opened": false,
+        "path": "/kaggle/working/latent_edge_smoke/latent_edge_embedding_report.json",
+        "selected_alpha": 0.0,
+        "selection_passed": false,
+        "sha256": "baee93e81e3a8539aedcccbdb743e70360095ee93255e2583c9c3bd724a2d439",
+        "status": "stop_selection_retrieval"
+      },
+      "returncode": 0,
+      "seconds": 25.78752743500013,
+      "timed_out": false,
+      "timeout_seconds": 3600
+    },
+    {
+      "command": [
+        "torchrun",
+        "--standalone",
+        "--nproc_per_node=2",
+        "scripts/train_evaluate_latent_edge_embedding.py",
+        "--output-dir",
+        "/kaggle/working/latent_edge_pilot",
+        "--train-offset",
+        "4096",
+        "--train-sources",
+        "256",
+        "--epochs",
+        "2",
+        "--selection-sources",
+        "16",
+        "--holdout-sources",
+        "16",
+        "--selection-split",
+        "assembly_incremental_gate",
+        "--selection-offset",
+        "192",
+        "--holdout-offset",
+        "208",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--hbt-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/working/latent_edge_staging/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/working/latent_edge_staging/configs/denoise_validation_quarantine_v1.json",
+        "--no-amp"
+      ],
+      "label": "bounded latent-edge Stage-1 pilot",
+      "log": "/kaggle/working/latent_edge_pilot.log",
+      "log_sha256": "268ee3451e8ad9dc8cf0e16691be1c4fbe5b899f41b2cb5d9e6d57eb0c58ee77",
+      "report": {
+        "checkpoint_sha256": "01a63b08e4f1dabb6e475b690ea6f4b57aa19f87e24d25c3d0f641972e634e9f",
+        "holdout_opened": false,
+        "path": "/kaggle/working/latent_edge_pilot/latent_edge_embedding_report.json",
+        "selected_alpha": 0.1,
+        "selection_passed": false,
+        "sha256": "16279686ed179a5a0f9ceb8764ecc027500560f9d11962e4dca1727e8e14b05f",
+        "status": "stop_selection_retrieval"
+      },
+      "returncode": 0,
+      "seconds": 328.4106497790001,
+      "timed_out": false,
+      "timeout_seconds": 18000
+    }
+  ]
+}

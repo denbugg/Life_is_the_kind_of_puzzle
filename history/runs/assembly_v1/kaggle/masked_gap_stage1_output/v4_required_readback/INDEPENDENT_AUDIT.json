@@ -1,0 +1,75 @@
+{
+  "kind": "masked_gap_stage1_independent_audit_v1",
+  "status": "pass",
+  "kernel": "pasha883/vsos-masked-gap-stage1-train-prepare",
+  "kernel_version": 1,
+  "checkpoint": {
+    "bytes": 802541,
+    "sha256": "79447dce4c5943abceb1ec166685a6724fb0b7c10446d20d4a1b11be74afdf48",
+    "all_tensor_states_finite": true,
+    "state_groups": [
+      "generator_state",
+      "inpaint_ranker_state",
+      "direct_ranker_state"
+    ]
+  },
+  "training_report": {
+    "bytes": 28743,
+    "sha256": "9fca7d84cf8a0c552e6dc971f4c50af2648973c44ba56f752d1c71b6b5746a01",
+    "capacity_key": "w32_g3_r3",
+    "generator_optimizer_steps_per_rank": 1728,
+    "inpaint_optimizer_steps_per_rank": 52992,
+    "direct_optimizer_steps_per_rank": 52992,
+    "ranker_initial_state_byte_identical": true,
+    "generator_frozen_during_ranker_training": true,
+    "two_rank_model_states_synchronized": true,
+    "split_intersections_empty": true,
+    "historical_exposure_intersections_empty": true
+  },
+  "hardware": {
+    "device_count": 2,
+    "device_name": "Tesla T4",
+    "capability": [
+      7,
+      5
+    ],
+    "torch": "2.10.0+cu128",
+    "cuda": "12.8",
+    "real_tensor_ops_recorded": true
+  },
+  "calibration_b_input_only": {
+    "bytes": 21232478,
+    "sha256": "adbcaf4ae8f606004e229fcf81afbaab8d409b5580f0fa66030017f32a5b9b7d",
+    "crc_ok": true,
+    "records": 8,
+    "source_names_sha256": "1f6fb483add0d647d30f1584f23488f25920eeb3192c782c5075d735cf43e492",
+    "target_or_label_fields_attached": false,
+    "panel_seed_attached": false,
+    "panel_seed_derivation_available": false,
+    "npz_key_contract_ok": true,
+    "w4_only_positive_infinity_on_self_diagonal": true,
+    "all_other_values_finite": true
+  },
+  "calibration_b_labels_only": {
+    "bytes": 3906118,
+    "sha256": "71151882012fa67e7bb79c3af30412de056b1f126cf9029807992879fcac6f35",
+    "crc_ok": true,
+    "records": 8,
+    "source_names_sha256": "1f6fb483add0d647d30f1584f23488f25920eeb3192c782c5075d735cf43e492",
+    "npz_key_contract_ok": true,
+    "secret_seed_mapping_file_absent": true,
+    "all_values_finite": true
+  },
+  "stage_contract": {
+    "holdout_prepared": false,
+    "qap_run": false,
+    "safe_for_submission": false,
+    "input_and_labels_physically_separable": true
+  },
+  "output_readback": {
+    "bulk_download_incomplete": true,
+    "required_file_pattern_readback_complete": true,
+    "required_files_hash_verified": true,
+    "kernel_log_sha256": "d240229f8e9b1f516a1563160b3cf4064738ddc717c996a96cce7569b1f84137"
+  }
+}

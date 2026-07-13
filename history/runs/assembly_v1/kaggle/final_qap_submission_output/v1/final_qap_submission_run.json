@@ -1,0 +1,262 @@
+{
+  "assets": [
+    {
+      "bytes": 52831566,
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    {
+      "bytes": 1784962,
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  ],
+  "code_contract": [
+    {
+      "bytes": 30446,
+      "path": "scripts/build_assembly_submission.py",
+      "sha256": "8433c0e545edfeb49f2512208a3ea062fb1a248a64bcde3f87037cdf30d6ac97"
+    },
+    {
+      "bytes": 940,
+      "path": "src/puzzle_assembly/__init__.py",
+      "sha256": "09e051b7555471aafca03cd666d789f033aca47f1c82f6e2af9c0cce50afe9d5"
+    },
+    {
+      "bytes": 17232,
+      "path": "src/puzzle_assembly/compatibility.py",
+      "sha256": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f"
+    },
+    {
+      "bytes": 62251,
+      "path": "src/puzzle_assembly/components.py",
+      "sha256": "53fcc7c4fd23956db884ee45060e47f8e94a931c16e497e426d67549621bd367"
+    },
+    {
+      "bytes": 2292,
+      "path": "src/puzzle_assembly/geometry.py",
+      "sha256": "1e16bec6fb98a33060558d5d28062334d9114b12424733ef103a40393ef1ba86"
+    },
+    {
+      "bytes": 57336,
+      "path": "src/puzzle_assembly/learned.py",
+      "sha256": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b"
+    },
+    {
+      "bytes": 18384,
+      "path": "src/puzzle_assembly/line_seam.py",
+      "sha256": "56c3065fb36427a96c3fbddda515fc28f49dcfd8e0b3a5a721dd8fd28603305d"
+    },
+    {
+      "bytes": 24613,
+      "path": "src/puzzle_assembly/qap.py",
+      "sha256": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32"
+    },
+    {
+      "bytes": 66678,
+      "path": "src/puzzle_assembly/solvers.py",
+      "sha256": "23f9e32200748349d0da8558b7b44053a758e1c1eb306d8f31ce59feae03fe8e"
+    },
+    {
+      "bytes": 421,
+      "path": "src/puzzle_denoise_v2/__init__.py",
+      "sha256": "30849e0f937ba4a50e85ce2eee0d2b930db06fbcc0b7dff84547e121ef2f30b7"
+    },
+    {
+      "bytes": 11822,
+      "path": "src/puzzle_denoise_v2/degradation.py",
+      "sha256": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75"
+    },
+    {
+      "bytes": 10836,
+      "path": "src/puzzle_denoise_v2/inference.py",
+      "sha256": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da"
+    },
+    {
+      "bytes": 4477,
+      "path": "src/puzzle_denoise_v2/losses.py",
+      "sha256": "56776289cd51e49a28ce54bc4762d144d87c7efbf6d4ca56668fc3b019dbbf34"
+    },
+    {
+      "bytes": 3227,
+      "path": "src/puzzle_denoise_v2/metrics.py",
+      "sha256": "e8275fb096276a63b7114be1a74b24009dc2143dddf299ce5eaceac401a27d36"
+    },
+    {
+      "bytes": 7730,
+      "path": "src/puzzle_denoise_v2/model.py",
+      "sha256": "37db32fb83ece0f122757bdbec19ffc6a17c5e5e00ef92a26328247d95c55d11"
+    },
+    {
+      "bytes": 2091,
+      "path": "src/puzzle_denoise_v2/tiles.py",
+      "sha256": "21270e283e50ea0b155ef194de889222fb0c4f6954437eb1526342c006eefaa7"
+    },
+    {
+      "bytes": 30187,
+      "path": "src/puzzle_denoise_v2/training.py",
+      "sha256": "6719ee6a62434cd8a00fafb92b28f6a10941cdbf5c83573fc6556b33e5eba56e"
+    }
+  ],
+  "config_provenance": {
+    "base": "embedded DEFAULT_CONFIG"
+  },
+  "config_sha256": "0e5cdb3e87d377a5f58e362da17d162c0b46a4480d28f101a772ebff902816ec",
+  "deterministic_replay": {
+    "byte_identical": true,
+    "layout_identical": true,
+    "layout_sha256": "d90a2f2d8afab123935a577b66bf57031520e855390d9d4ebe2d928b53618f30",
+    "png_bytes": 276693,
+    "png_sha256": "7e3df408c0d3ee3a12cbdf178f9f8016493d224fc7b7e12045ac49c4a93897a4",
+    "source": "img_000000.png"
+  },
+  "deterministic_report": {
+    "bytes": 26527,
+    "path": "/kaggle/working/final_qap_submission_report.json",
+    "sha256": "0fd2a7bba4543ab437f2e6df278e9fc72c1548c34d28579724e607b8fbfbb97f"
+  },
+  "hardware": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "cuda_available": true,
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "nvidia_smi_returncode": 0,
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "tensor_probe_means": [
+      -0.09200285375118256,
+      -0.013904298655688763
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "vsos_final_qap_submission_run",
+  "manifest": {
+    "bytes": 106054,
+    "path": "/kaggle/working/final_submission_manifest.json",
+    "sha256": "c36a941e2740dac70d69678eda46052333c111c803802f9bfc31d1afe26844e0"
+  },
+  "mounts": {
+    "code_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "runtime_root": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime"
+  },
+  "preflight": {
+    "builder_report_contract": {
+      "first_layout_sha256": "d90a2f2d8afab123935a577b66bf57031520e855390d9d4ebe2d928b53618f30",
+      "layout_hashes_sha256": "3699cab075879b8541f532264eca38dac774250e87fbc0fc5ef80813537f9cbf",
+      "pipeline": "promoted_directional_qap",
+      "report": "/kaggle/working/final_qap_preflight_000_001.json",
+      "source_count": 1
+    },
+    "first_member": {
+      "bytes": 276693,
+      "name": "img_000000.png",
+      "sha256": "7e3df408c0d3ee3a12cbdf178f9f8016493d224fc7b7e12045ac49c4a93897a4"
+    },
+    "gpu": 0,
+    "limit": 1,
+    "log": "/kaggle/working/final_qap_preflight_000_001.log",
+    "log_sha256": "369ab4fd7d49e901d92ab3751ad28ef802fb7747938e42326ae6acde663cc5df",
+    "member_count": 1,
+    "members_sha256": "2eae5790877cd83865cd9dadd0c84e2e415ab630b544db6641d7a009f1e88627",
+    "offset": 0,
+    "output": "/kaggle/working/final_qap_preflight_000_001.zip",
+    "output_bytes": 276904,
+    "output_sha256": "5e34d25e449ee34ea1d164b577e7f90aba0a1a636834fd1708e9d966b398f9bd",
+    "phase": "preflight",
+    "report": "/kaggle/working/final_qap_preflight_000_001.json",
+    "report_sha256": "d871b0046c100b9bbfeabaf46fffb42485e31647b457c3be58e802a0ec5f88ad",
+    "seconds": 24.245045348999952,
+    "shard": -1,
+    "source_names_sha256": "0039eb464fe3211f32200ad28a9727676621cbb43db242e09501045b7be0dc99"
+  },
+  "schema_version": 1,
+  "seconds": 4923.541259044,
+  "shards": [
+    {
+      "builder_report_contract": {
+        "first_layout_sha256": "d90a2f2d8afab123935a577b66bf57031520e855390d9d4ebe2d928b53618f30",
+        "layout_hashes_sha256": "17b388c0a76f8d45567954282254fbd6fb3d25c202482d2ee6bf3798e1abc1bb",
+        "pipeline": "promoted_directional_qap",
+        "report": "/kaggle/working/final_qap_shard_000_350.json",
+        "source_count": 350
+      },
+      "first_member": {
+        "bytes": 276693,
+        "name": "img_000000.png",
+        "sha256": "7e3df408c0d3ee3a12cbdf178f9f8016493d224fc7b7e12045ac49c4a93897a4"
+      },
+      "gpu": 0,
+      "limit": 350,
+      "log": "/kaggle/working/final_qap_shard_000_350.log",
+      "log_sha256": "e66298639de5f09876b806e12bc00d71ecade2d3077842118b1f3433136edaa7",
+      "member_count": 350,
+      "members_sha256": "1951e9ee24b200aa3e39663b2067b61fe77aa1bb0f37da94809caf7048b71d74",
+      "offset": 0,
+      "output": "/kaggle/working/final_qap_shard_000_350.zip",
+      "output_bytes": 101851286,
+      "output_sha256": "6ff51c568743a4dae80185f24b93f20accd5e99b335a154e1f1c02580b50c679",
+      "phase": "shard",
+      "report": "/kaggle/working/final_qap_shard_000_350.json",
+      "report_sha256": "541e7905dad9373a173c31db068429b20fb614d450f3cfb4439b89a0a45b2e2a",
+      "seconds": 4807.713716986,
+      "shard": 0,
+      "source_names_sha256": "c95b4d7cb46e64d55ebc082efb530009052407a09bdda2521ce2b666adc46181"
+    },
+    {
+      "builder_report_contract": {
+        "first_layout_sha256": "5024892d5d6e6f37a7ff7419c2ba56c63579006e9d79315b77d91d5a52df5ca6",
+        "layout_hashes_sha256": "6d8c10806f916afcbbf06e2b61bc97823b44d5da9378e696e6e13fd77163379f",
+        "pipeline": "promoted_directional_qap",
+        "report": "/kaggle/working/final_qap_shard_350_700.json",
+        "source_count": 350
+      },
+      "first_member": {
+        "bytes": 318746,
+        "name": "img_001543.png",
+        "sha256": "f55bd81fc22d642ce7b1679fa94ac3c213c7aeb89fcece91fd63e7d12fd91a24"
+      },
+      "gpu": 1,
+      "limit": 350,
+      "log": "/kaggle/working/final_qap_shard_350_700.log",
+      "log_sha256": "a6419ad4c19d45671317ce29898b5f58a0809937f243393e3dcd521ba9b3e608",
+      "member_count": 350,
+      "members_sha256": "61c1141fdb3b3e3d8daa9359c3dedd2204ba03d3146f01ec76ec81c643ce6941",
+      "offset": 350,
+      "output": "/kaggle/working/final_qap_shard_350_700.zip",
+      "output_bytes": 102839854,
+      "output_sha256": "4da04b30d4a9e18160c55f511502d60b93df7d2c38593894b1ea87872a74a2e5",
+      "phase": "shard",
+      "report": "/kaggle/working/final_qap_shard_350_700.json",
+      "report_sha256": "38e8a01de560ef8914f25dbe42b2c43c063bde07e3b537e71c0be28416f8dbc4",
+      "seconds": 4799.74798969,
+      "shard": 1,
+      "source_names_sha256": "a477af6897fea9767294a4578547922d1358817ee827d7eb0f5c55bb928b92cf"
+    }
+  ],
+  "submission": {
+    "bytes": 204691118,
+    "path": "/kaggle/working/submission.zip",
+    "sha256": "1eeae828dd893198c07ac502d29aa5eeebd54bf6b818293d3b7e3f67ecb59607"
+  }
+}

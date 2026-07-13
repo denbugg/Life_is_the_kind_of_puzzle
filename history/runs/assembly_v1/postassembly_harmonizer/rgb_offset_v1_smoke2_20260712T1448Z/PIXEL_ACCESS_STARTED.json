@@ -1,0 +1,7 @@
+{
+  "config_sha256": "e004c27e4d7ceba5e00b5068c6c5737253e505532a9e86b3edd584543401745b",
+  "created_utc": "2026-07-12T14:47:27Z",
+  "gain_config_sha256": null,
+  "kind": "postassembly_harmonizer_pixel_access_marker",
+  "source_count": 2
+}

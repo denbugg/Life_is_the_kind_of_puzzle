@@ -1,0 +1,1924 @@
+{
+  "schema_version": 2,
+  "kind": "tile_assembly_research_and_future_execution_plan",
+  "status": "research_complete_hypotheses_unexecuted",
+  "implementation_status": "contract_only",
+  "created_utc": "2026-07-10T10:30:00Z",
+  "review_completed_date": "2026-07-10",
+  "canonical_document": "TILE_ASSEMBLY_HANDOFF.md",
+  "execution_owner": "future_agent",
+  "research_phase_launched_training_or_evaluation": false,
+  "geometry": {
+    "grid_rows": 24,
+    "grid_columns": 24,
+    "tile_size": 20,
+    "tile_count": 576,
+    "orientation_fixed": true,
+    "right_edges_per_source": 552,
+    "down_edges_per_source": 552,
+    "outside_sides_per_source": 96,
+    "canonical_candidate_pairs_right_down": 662400
+  },
+  "pinned_inputs": {
+    "source_manifest": {
+      "path": "configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "validation_quarantine": {
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    },
+    "audit_exclusion": {
+      "path": "configs/assembly_audit_exclusion_v1.json",
+      "sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+      "excluded_names_sha256": "e367e075dab570b8dfaa6b44d472e05884d5ca2f0ab198716db1aa3a983a1d8c",
+      "final_audit_names_sha256": "ad0bbe3e5627fa30891df91c4b145e1ae63b1536c1225c8bc493153d7551d8a7"
+    },
+    "denoiser_checkpoint": {
+      "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "policy": "frozen_slot_preserving"
+    },
+    "denoiser_selection": {
+      "path": "runs/denoise_v2/release/selected_model.json",
+      "sha256": "ce244ce8c9759be859262fd16560f8318814022883ec52cdc380ad490a924080"
+    },
+    "assembly_environment_spec": {
+      "path": "environment.yml",
+      "sha256": "7c025c0b8c17cca413b20bfbd5329b238f768f1967d14c7cee2d6ad6cd85ea20",
+      "required_additions": ["scipy=1.16.3", "pandas", "pyarrow", "psutil"]
+    },
+    "real_pseudo_gold_diagnostic": {
+      "path": "runs/denoise_v2/real_gold_val.npz",
+      "sha256": "78795a0a0ed1ee10bddac0c31222f2a9418c41d94249aa35ba183d15508928ed",
+      "role": "secondary_diagnostic_only",
+      "may_enter_promotion_boolean": false,
+      "rematching_allowed": false
+    }
+  },
+  "anti_leakage_invariants": {
+    "outer_split_unit": "perceptual_duplicate_cluster",
+    "statistical_and_bootstrap_unit": "source_image",
+    "all_current_clusters_singleton": true,
+    "tiles_edges_and_replicas_follow_source": true,
+    "test_filename_overlaps_excluded": true,
+    "denoiser_frozen": true,
+    "predictor_receives_target_paths": false,
+    "predictor_receives_target_pixels": false,
+    "predictor_receives_pseudo_maps": false,
+    "predictor_uses_filename_as_feature": false,
+    "real_full_permutation_ground_truth_available": false,
+    "real_target_only_end_to_end_scoring_exact": true,
+    "target_aware_metrics_run_in_separate_scorer": true,
+    "gate_or_audit_can_change_candidate": false
+  },
+  "splits": {
+    "edge_train": {
+      "count": 4500,
+      "source": "source_manifest.splits.train",
+      "derivation": "first 4500 after ascending SHA256('assembly-v1:20260710:' + source_name), source_name tie break",
+      "use": "compatibility_training"
+    },
+    "edge_development": {
+      "count": 400,
+      "source": "source_manifest.splits.train",
+      "derivation": "remaining 400 after edge_train derivation",
+      "use": "training_diagnostics_early_stopping_and_hard_negative_policy",
+      "promotion_evidence": false,
+      "note": "sources were already seen by denoiser training"
+    },
+    "assembly_cal": {
+      "count": 257,
+      "source": "source_manifest.splits.val minus validation_quarantine.quarantine_names",
+      "derivation": "rank ascending SHA256('20260710:' + source_name), source_name tie break; first 257",
+      "names_sha256": "b08d4cd0b6efbceb42abc9894ee600bf79db49fc4c2f1e9e7445156b756631cc",
+      "decisions_allowed": true
+    },
+    "assembly_incremental_gate": {
+      "count": 350,
+      "source": "source_manifest.splits.val minus validation_quarantine.quarantine_names",
+      "derivation": "same ranking as assembly_cal; remaining 350",
+      "names_sha256": "21894d5c253c9e40bdfce188b92ee94a60d78a13c85d0fe94abd5ecd3ae5c71f",
+      "open_policy": "once_after_complete_assembler_candidate_freeze",
+      "globally_unseen": false,
+      "unseen_with_respect_to_assembler": true
+    },
+    "assembly_excluded": {
+      "count": 93,
+      "source": "validation_quarantine.quarantine_names",
+      "names_sha256": "f9cf2df9dfa78ddbfda2e72433f35d25e982e65b20335ab3f1e50c0bb79cfcf7",
+      "decisions_allowed": false
+    },
+    "assembly_audit_exposed": {
+      "count": 32,
+      "source": "audit_exclusion.excluded_names",
+      "names_sha256": "e367e075dab570b8dfaa6b44d472e05884d5ca2f0ab198716db1aa3a983a1d8c",
+      "use": "development_only",
+      "final_claims_allowed": false
+    },
+    "assembly_final_audit": {
+      "count": 668,
+      "source": "source_manifest.splits.audit minus audit_exclusion.excluded_names",
+      "names_sha256": "ad0bbe3e5627fa30891df91c4b145e1ae63b1536c1225c8bc493153d7551d8a7",
+      "open_policy": "once_after_incremental_gate_success",
+      "candidate_changes_allowed": false
+    },
+    "test": {
+      "count": 700,
+      "use": "release_inference_only",
+      "decisions_allowed": false
+    }
+  },
+  "seeds": {
+    "master": 20260710,
+    "training": [
+      20260710,
+      20260711,
+      20260712
+    ],
+    "full_training_seeds_required_for_promotion": 3,
+    "checkpoint_selection": "median_ranked_seed_on_assembly_cal_primary_metric",
+    "best_of_n_selection_forbidden": true,
+    "paired_bootstrap": 20260719,
+    "paired_bootstrap_resamples": 10000,
+    "paired_resample_alignment": "same_source_indices_for_candidate_baseline_directions_and_linked_panels",
+    "per_source_derivation": "first_64_bits_of_SHA256(master:stage:source:replica)",
+    "numpy_bit_generator": "PCG64"
+  },
+  "corruption_protocol": {
+    "independent_per_tile_parameters": true,
+    "primary_kornia": {
+      "implementation": "src/puzzle_denoise_v2/degradation.py:SyntheticTileDegrader",
+      "source_sha256_at_research_freeze": "7e314081c143a1c7846a9777eaea8716092a85595f856769efd3704a2c583a75",
+      "variant_weights": [1.0, 0.0, 0.0],
+      "operation_order": [
+        "contrast_about_mean_luminance",
+        "additive_brightness",
+        "gaussian_noise",
+        "gaussian_blur_3x3",
+        "kornia_jpeg"
+      ],
+      "brightness_uniform_inclusive_real_bounds": [-30.0, 30.0],
+      "contrast_uniform_inclusive_real_bounds": [0.7, 1.3],
+      "noise_sigma_uniform_inclusive_real_bounds": [40.0, 55.0],
+      "blur_sigma_uniform_inclusive_real_bounds": [0.75, 0.95],
+      "jpeg_quality_uniform_integers": [35, 50],
+      "quantization_boundaries": [
+        "after_combined_contrast_plus_brightness_photometric_block",
+        "after_noise",
+        "after_blur",
+        "after_kornia_jpeg"
+      ],
+      "quantize_between_contrast_and_brightness": false,
+      "clamp_range": [0, 255]
+    },
+    "independent_libjpeg": {
+      "same_saved_parameters_and_noise_as_primary": true,
+      "photometric": "Pillow",
+      "blur": "OpenCV GaussianBlur 3x3 BORDER_REFLECT_101",
+      "jpeg": "Pillow_libjpeg",
+      "jpeg_subsampling": 2,
+      "jpeg_optimize": false,
+      "jpeg_progressive": false,
+      "quantization_boundaries": [
+        "Pillow_contrast_uint8_then_rounded_brightness",
+        "after_noise",
+        "OpenCV_blur_uint8_output",
+        "Pillow_JPEG_decode_uint8"
+      ]
+    },
+    "protocol_must_hash": [
+      "degrader_source",
+      "full_parameters",
+      "panel_seed",
+      "runtime_lock",
+      "kornia_version",
+      "pillow_version",
+      "opencv_version",
+      "jpeg_codec_and_version"
+    ],
+    "replica_policy": {
+      "assembly_cal_cheap_compatibility_replicas_per_source": 3,
+      "assembly_cal_expensive_full_assembly_replicas_per_source": 1,
+      "incremental_gate_replicas_per_panel_source": 1,
+      "final_audit_replicas_per_panel_source": 1,
+      "aggregation": "average_replicas_within_source_before_source_macro"
+    },
+    "panels": [
+      {
+        "id": "clean_shuffle",
+        "purpose": "global_solver_ceiling"
+      },
+      {
+        "id": "primary_kornia",
+        "purpose": "main_exact_corruption_domain"
+      },
+      {
+        "id": "independent_libjpeg",
+        "purpose": "independent_exact_corruption_engine"
+      },
+      {
+        "id": "stress_extrema",
+        "purpose": "predeclared_corruption_range_corners",
+        "recipes": "Cartesian_product_of_low_high_endpoints_for_brightness_contrast_noise_blur_and_jpeg",
+        "recipe_count": 32,
+        "assignment": "seeded_recipe_permutation_cycled_across_576_tiles",
+        "occurrences_per_recipe_per_replica": 18,
+        "variant": 0,
+        "operation_order_matches_primary": true
+      }
+    ]
+  },
+  "views": {
+    "tile_representations": [
+      "raw",
+      "frozen_denoised",
+      "signed_or_normalized_raw_minus_denoised_residual"
+    ],
+    "factorial_cells": {
+      "A": {
+        "compatibility": "raw",
+        "render": "raw"
+      },
+      "B": {
+        "compatibility": "denoised",
+        "render": "raw"
+      },
+      "C": {
+        "compatibility": "raw",
+        "render": "denoised"
+      },
+      "D": {
+        "compatibility": "denoised",
+        "render": "denoised"
+      },
+      "E": {
+        "compatibility": "frozen_raw_denoised_fusion",
+        "render": "raw"
+      },
+      "F": {
+        "compatibility": "frozen_raw_denoised_fusion",
+        "render": "denoised"
+      }
+    },
+    "sorting_gain_requires_same_renderer": true,
+    "sorting_contrasts": ["B-A", "D-C", "E-A", "F-C"],
+    "render_only_contrast": "C-A_under_identical_raw_scored_layout",
+    "end_to_end_gain_reported_separately": true
+  },
+  "candidate_generation": {
+    "query_scope": "per_source_per_query_side_per_direction",
+    "exclude_self": true,
+    "dense_compute_query_chunk_sizes": [64, 128],
+    "forbid_five_dimensional_all_pairs_broadcast": true,
+    "base_rankers": [
+      "raw_pbc",
+      "raw_mgc",
+      "denoised_pbc",
+      "denoised_mgc",
+      "C2",
+      "L1_when_present"
+    ],
+    "take_per_ranker": 32,
+    "tie_break": "ascending_candidate_input_slot",
+    "deduplicated_union": "U_pre",
+    "fusion": {
+      "method": "reciprocal_rank_fusion",
+      "formula": "sum_m weight_m / (60 + rank_m)",
+      "weights": "nonnegative_and_frozen_on_assembly_cal",
+      "fusion_tie_break": "ascending_candidate_input_slot"
+    },
+    "pre_reranker_cap": 64,
+    "pre_reranker_name": "U_64",
+    "final_solver_cap": 32,
+    "final_max_directed_hypotheses": 36864,
+    "required_recall_reports": [
+      "U_pre",
+      "U_64",
+      "post_rerank_top_1_5_10_20_32"
+    ],
+    "intersection_forbidden": true,
+    "unbounded_union_to_lp_forbidden": true,
+    "no_neighbour_is_mandatory_candidate_for_every_side": true
+  },
+  "hypotheses": [
+    {
+      "id": "G1",
+      "rank": 1,
+      "name": "two_side_verified_loops_and_growing_consensus",
+      "quality_potential": "high_if_candidate_recall_and_calibrated_loop_purity_are_adequate",
+      "risk": "medium_false_bridge_catastrophe",
+      "resource_class": "cpu_profile_required",
+      "decision": "primary_component_builder"
+    },
+    {
+      "id": "G2",
+      "rank": 2,
+      "name": "sparse_successive_weighted_l1_lp",
+      "quality_potential": "high_after_reliable_components",
+      "risk": "medium_inconsistent_graph_runtime_and_snapping",
+      "resource_class": "cpu_highs_profile_required",
+      "decision": "primary_global_backend_if_runtime_gate_passes"
+    },
+    {
+      "id": "C1",
+      "rank": 3,
+      "name": "raw_denoised_classical_score_bank_and_rank_fusion",
+      "quality_potential": "medium_and_safest_immediate_gain",
+      "risk": "low_medium_score_domain_mismatch",
+      "resource_class": "cpu_chunked_all_pairs",
+      "decision": "first_experiment"
+    },
+    {
+      "id": "L0",
+      "rank": 4,
+      "name": "compact_top_k_pair_cnn_and_abstain_gate",
+      "quality_potential": "medium_if_top_k_contains_recoverable_hard_negatives",
+      "risk": "low_medium_overfit_and_calibration",
+      "resource_class": "single_gpu_bounded_steps",
+      "decision": "first_learned_experiment_if_headroom_gate_passes"
+    },
+    {
+      "id": "L1",
+      "rank": 5,
+      "name": "edge2vec_style_directional_embedding_then_L0_reranker",
+      "quality_potential": "high_practical_ceiling_if_candidate_generation_is_bottleneck",
+      "risk": "medium_domain_shift_and_hard_negative_quality",
+      "resource_class": "single_gpu_bounded_steps",
+      "decision": "conditional_after_L0_signal_or_candidate_bottleneck"
+    },
+    {
+      "id": "G0",
+      "rank": 6,
+      "name": "reciprocal_best_buddy_constrained_growth_or_mst",
+      "quality_potential": "medium_baseline_and_seed_generator",
+      "risk": "low_but_false_bridges_if_overlocked",
+      "resource_class": "cpu",
+      "decision": "mandatory_baseline_and_fallback"
+    },
+    {
+      "id": "C2",
+      "rank": 7,
+      "name": "bounded_affine_tone_and_gradient_nuisance_seam_score",
+      "quality_potential": "medium_if_independent_tone_shift_is_dominant",
+      "risk": "medium_flat_region_false_matches",
+      "resource_class": "cpu_chunked",
+      "decision": "stage_1_challenger"
+    },
+    {
+      "id": "L2",
+      "rank": 8,
+      "name": "weak_outside_row_column_semantic_unary",
+      "quality_potential": "low_medium_anchoring_help",
+      "risk": "high_shortcut_and_semantic_domain_shift",
+      "resource_class": "cpu_features_or_bounded_gpu_head",
+      "decision": "unary_only_never_direct_placement"
+    },
+    {
+      "id": "G3",
+      "rank": 9,
+      "name": "psqp_projected_power_relaxation",
+      "quality_potential": "medium_high_challenger_ceiling",
+      "risk": "high_local_optimum",
+      "resource_class": "cpu_strict_timeout",
+      "decision": "one_frozen_challenger"
+    },
+    {
+      "id": "G4",
+      "rank": 10,
+      "name": "multi_phase_relaxation_labeling",
+      "quality_potential": "medium_high_feasible_layout_ceiling",
+      "risk": "high_early_anchoring_and_dense_updates",
+      "resource_class": "cpu_strict_timeout",
+      "decision": "one_frozen_challenger"
+    },
+    {
+      "id": "R1",
+      "rank": 11,
+      "name": "frontier_beam_completion",
+      "quality_potential": "low_medium_cleanup",
+      "risk": "medium_early_choice_propagation",
+      "resource_class": "cpu_bounded",
+      "decision": "completion_only"
+    },
+    {
+      "id": "R2",
+      "rank": 12,
+      "name": "weak_cell_hungarian_projection_and_repair",
+      "quality_potential": "low_medium_cleanup",
+      "risk": "low_when_neighbourhood_is_fixed",
+      "resource_class": "cpu_bounded",
+      "decision": "validity_and_holes_only"
+    },
+    {
+      "id": "R3",
+      "rank": 13,
+      "name": "locked_block_shifts_and_swaps",
+      "quality_potential": "low_medium_cleanup",
+      "risk": "medium_input_objective_mismatch",
+      "resource_class": "cpu_bounded",
+      "decision": "post_layout_refinement"
+    },
+    {
+      "id": "R4",
+      "rank": 14,
+      "name": "segment_preserving_genetic_or_annealing_refinement",
+      "quality_potential": "low_medium_cleanup_ceiling",
+      "risk": "high_seed_variance",
+      "resource_class": "cpu_fixed_evaluations_per_seed",
+      "decision": "seeded_challenger_only"
+    },
+    {
+      "id": "X0",
+      "rank": 15,
+      "name": "sparse_edge_gnn",
+      "quality_potential": "conditional_small_gain",
+      "risk": "high_imbalance_and_oversmoothing",
+      "resource_class": "single_gpu_bounded_steps",
+      "decision": "reconsider_only_after_strong_sparse_graph",
+      "all_576_sparse_nodes_allowed": true
+    },
+    {
+      "id": "X1",
+      "rank": 16,
+      "name": "component_transformer",
+      "quality_potential": "conditional_medium_high",
+      "risk": "high_data_and_compute",
+      "resource_class": "single_gpu_bounded_steps",
+      "decision": "only_after_64_96_supernode_profile_gate"
+    },
+    {
+      "id": "X2",
+      "rank": 17,
+      "name": "full_576_token_transformer_sinkhorn",
+      "quality_potential": "high_theoretical",
+      "risk": "very_high_compute_and_domain",
+      "resource_class": "multi_gpu_literature_regime",
+      "decision": "defer"
+    },
+    {
+      "id": "X3",
+      "rank": 18,
+      "name": "full_diffusion_placement",
+      "quality_potential": "high_theoretical",
+      "risk": "very_high_compute_and_domain",
+      "resource_class": "multi_gpu_research_project",
+      "decision": "defer"
+    },
+    {
+      "id": "X4",
+      "rank": 19,
+      "name": "full_milp_cp_sat_or_qap_linearization",
+      "quality_potential": "exact_objective_in_theory",
+      "risk": "prohibitive_full_scale",
+      "resource_class": "component_or_local_only",
+      "decision": "reject_at_576"
+    }
+  ],
+  "quality_scenarios": [
+    {
+      "id": "low",
+      "condition": "true_neighbours_often_absent_from_top_k_or_false_loops_bridge_repeated_texture",
+      "implication": "global_solver_cannot_recover_good_image_keep_cheap_baseline"
+    },
+    {
+      "id": "credible",
+      "condition": "dual_view_candidate_recall_and_high_precision_components_improve_but_ambiguous_regions_remain",
+      "implication": "continuity_improves_without_near_perfect_claim"
+    },
+    {
+      "id": "upside",
+      "condition": "high_candidate_recall_extremely_low_false_lock_bound_and_successful_lp_completion",
+      "implication": "only_measured_exact_layout_and_target_only_metrics_can_establish"
+    }
+  ],
+  "recommended_cascade": [
+    "C1",
+    "C2_ablation",
+    "L0_if_headroom",
+    "L1_if_candidate_bottleneck",
+    "G0",
+    "G1_soft_or_hard_by_calibration",
+    "G2_if_runtime_gate",
+    "R2_and_R3_bounded",
+    "denoised_final_render_if_same_layout_render_gate"
+  ],
+  "solver_contracts": {
+    "G1": {
+      "verified_loop_edges": [
+        "a_right_b",
+        "a_down_c",
+        "b_down_d",
+        "c_right_d"
+      ],
+      "distinct_tiles_required": 4,
+      "all_edges_survive_final_cap": true,
+      "edge_gate": "reciprocal_or_calibrated_precision_gate",
+      "seed": "highest_sum_of_clipped_calibrated_log_odds",
+      "seed_tie_break": "lexicographic_input_slot_tuple",
+      "no_loop_behavior": "no_hard_seed_return_soft_edges_to_G2",
+      "state": "DSU_with_relative_integer_coordinates",
+      "merge_support": "at_least_two_geometrically_distinct_seams_or_new_closed_verified_loop",
+      "merge_order": "descending_aggregate_then_candidate_slot_direction_component_root",
+      "termination": "grid_full_or_no_admissible_merge",
+      "reject": [
+        "duplicate_tile",
+        "coordinate_collision",
+        "direction_contradiction",
+        "incompatible_component_translation",
+        "component_span_above_24",
+        "no_feasible_in_bounds_translation",
+        "single_unverified_bridge"
+      ],
+      "relative_perfect_definition": "all_tile_offsets_equal_ground_truth_up_to_one_common_translation"
+    },
+    "hard_locks": {
+      "fit_confirm_split": {
+        "source": "assembly_cal",
+        "ranking": "ascending SHA256('assembly-lock-v1:' + source_name), source_name tie break",
+        "lock_fit_count": 128,
+        "lock_confirm_count": 129
+      },
+      "predeclared_probability_bins": [
+        [0.995, 0.9975],
+        [0.9975, 0.999],
+        [0.999, 1.0]
+      ],
+      "probability_bin_closure": "left_closed_right_open_except_final_bin_closed",
+      "predeclared_support_types": [
+        "reciprocal",
+        "two_seam",
+        "closed_2x2_loop",
+        "outside"
+      ],
+      "fit_role": "calibration_and_threshold_fit_only",
+      "confirm_role": "one_open_no_retry_hard_lock_decision",
+      "bound": "source_level_one_sided_simultaneous_95_percent_with_Bonferroni_across_strata_and_engines",
+      "engine_aggregation": "use_worst_engine_precision_lower_and_lock_count_upper",
+      "logic": "all_of",
+      "conditions": [
+        {
+          "metric": "precision_lower_simultaneous",
+          "operator": ">=",
+          "value": 0.995
+        },
+        {
+          "formula": "N_hard_mean_upper_95 * (1 - precision_lower_simultaneous)",
+          "operator": "<=",
+          "value": 0.25
+        },
+        {
+          "metric": "exact_synthetic_contradictions_or_collisions",
+          "operator": "==",
+          "value": 0
+        }
+      ],
+      "pseudo_gold_participates": false,
+      "failure_behavior": "edge_stratum_becomes_reversible_soft_evidence"
+    },
+    "outside_unary": {
+      "mandatory": true,
+      "source": "learned_head_or_calibrated_classical_fallback",
+      "probability_clip": [0.0001, 0.9999],
+      "outer_cell_side_cost": "-log(p_out(i,s))",
+      "inner_cell_side_cost": "-log(1-p_out(i,s))",
+      "consumes_tile_top_k": false,
+      "weak_evidence_behavior": "enumerate_translations_do_not_hard_anchor"
+    },
+    "G2": {
+      "backend": "scipy_1_16_3_linprog_highs",
+      "retrieval_cache_cap_per_query_direction": 32,
+      "retrieval_cache_max_directed_edges": 36864,
+      "active_k_candidates": [1, 2, 4, 8],
+      "active_k_selection": "highest_independent_libjpeg_source_macro_G2_adjacency_on_assembly_cal_then_smaller_k",
+      "active_max_directed_soft_edges": 9216,
+      "confident_no_neighbour_removes_tile_edges": true,
+      "confident_no_neighbour_rule": "p_out>=0.995_and_outside_stratum_passes_same_lock_confirm_simultaneous_error_bound",
+      "unconfirmed_no_neighbour_behavior": "keep_as_soft_option_and_do_not_remove_tile_edges",
+      "probability_clip": [0.0001, 0.9999],
+      "base_weight": "a_e=clip(-log(1-p_e),0.05,6)",
+      "query_side_mass": "m_s=clip(1-p_out(s),0.05,1)",
+      "outgoing_normalization": "w_e=m_s*a_e/sum_outgoing_query_side(a)",
+      "soft_outside_effect": "reduces_but_never_silently_deletes_tile_edge_constraints",
+      "variables": "continuous x_i,y_i,u_ex,u_ey",
+      "objective": "min sum_e w_e*(u_ex+u_ey)",
+      "constraints": [
+        "-u_ex <= (x_j-x_i)-d_ex <= u_ex",
+        "-u_ey <= (y_j-y_i)-d_ey <= u_ey",
+        "u_ex,u_ey >= 0",
+        "-23 <= x_i,y_i <= 23"
+      ],
+      "directions": {
+        "right": [1, 0],
+        "down": [0, 1]
+      },
+      "anchor": "smallest_input_slot_in_each_connected_active_graph_component_has_x_y_zero",
+      "hard_equalities": "G1_DSU_offsets_from_passing_hard_lock_strata_only",
+      "tile_level_rounds": [
+        {
+          "round": 1,
+          "weights": "base_outgoing_normalized_weights",
+          "prune_after_if_residual_gt": 2.0,
+          "next_round_reweight": "clip(a_e/(0.25+r_e),0.05,6)_then_normalize_outgoing_sum_to_m_s"
+        },
+        {
+          "round": 2,
+          "prune_after_if_residual_gt": 1.0,
+          "next_round_reweight": "clip(a_e/(0.25+r_e),0.05,6)_then_normalize_outgoing_sum_to_m_s"
+        },
+        {
+          "round": 3,
+          "final_tile_level_solve": true
+        }
+      ],
+      "residual": "abs((x_j-x_i)-d_ex)+abs((y_j-y_i)-d_ey)",
+      "component_solve_after_hard_compression": 1,
+      "lp_total_timeout_seconds": 10,
+      "required_trace": [
+        "edge_ids_and_weights",
+        "pruned_edge_ids",
+        "residuals_and_thresholds",
+        "objective",
+        "anchors",
+        "solver_status",
+        "iterations",
+        "wall_time"
+      ],
+      "failure_fallback": "G0_plus_R2"
+    },
+    "component_to_permutation": {
+      "hard_component_policy": "indivisible_integer_offset_shape_no_dissolve",
+      "hard_feasible_translations": "all_in_bounds_translations",
+      "soft_translations_retained": 64,
+      "soft_dissolve_action": true,
+      "translation_cost_inputs": [
+        "clipped_seam_negative_log_probability",
+        "outside_unary",
+        "weak_L2",
+        "LP_coordinate_L1"
+      ],
+      "cost_normalization": {
+        "NLL_divisor": 9.21034,
+        "C_seam": "mean_cross_component_or_contact_edge_NLL_divisor; 0.5_if_no_contact_except_first_component",
+        "C_out": "mean_four_side_cell_geometry_outside_or_inside_NLL_divisor",
+        "C_L2": "mean_row_column_band_NLL_divisor_or_zero_if_absent",
+        "C_lp": "mean_min(L1_distance,46)/46",
+        "disconnected_LP_shift": "first_placed_component_sets_shift_then_fixed"
+      },
+      "cost_coefficients": {
+        "seam": 0.55,
+        "outside": 0.2,
+        "L2": 0.1,
+        "LP": 0.15
+      },
+      "beam_aggregation": "maintain_global_term_sums_and_counts_over_all_placed_tiles_and_contacts",
+      "soft_dissolve_cost": "0.25*(component_tile_count/576)*mean_internal_calibrated_probability",
+      "component_order": "hard_first_then_soft; descending_tile_count_confidence_root_slot",
+      "beam_width": 256,
+      "beam_tie_break": "lexicographic_vector_of_component_anchors",
+      "beam_timeout_seconds": 5,
+      "no_complete_hard_state_behavior": "G0_plus_R2_fallback",
+      "unplaced_soft_behavior": "dissolve_to_singletons",
+      "singleton_assignment": "Hungarian_remaining_tiles_to_remaining_cells",
+      "singleton_unary": "fixed_neighbour_-log_p_edge + outside_unary + weak_L2 + LP_coordinate_L1",
+      "singleton_and_R3_cost": "same_normalized_terms_and_coefficients_as_component_translation; no_fixed_contact_C_seam=0.5",
+      "assignment_tie_break": "input_slot_then_cell_index",
+      "hungarian_timeout_seconds": 2,
+      "repair": "bounded_deterministic_R3",
+      "repair_timeout_seconds": 3,
+      "final_assertions": [
+        "576_unique_input_slots",
+        "576_unique_output_positions",
+        "all_coordinates_in_bounds",
+        "all_hard_offsets_preserved"
+      ],
+      "acceptance_tests": [
+        "colliding_components",
+        "out_of_bounds_shape",
+        "disconnected_LP_graph",
+        "two_competing_hard_components",
+        "timeout_fallback",
+        "hard_offset_preservation"
+      ]
+    },
+    "refinement_objective_allowed_inputs": [
+      "frozen_input_compatibility",
+      "calibrated_outside_probability",
+      "weak_L2_unary"
+    ],
+    "refinement_objective_forbidden_inputs": [
+      "SSIM",
+      "target_pixels",
+      "target_seams",
+      "pseudo_gold",
+      "ambiguity_labels"
+    ],
+    "component_profile_thresholds": [64, 96],
+    "component_threshold_applies_to": [
+      "component_transformer",
+      "component_CP_SAT"
+    ],
+    "component_threshold_does_not_apply_to": "sparse_GNN"
+  },
+  "baseline_registry": [
+    {
+      "id": "identity_raw",
+      "layout": "input_slot_order",
+      "render": "raw"
+    },
+    {
+      "id": "identity_denoised",
+      "layout": "input_slot_order",
+      "render": "denoised"
+    },
+    {
+      "id": "seeded_random",
+      "layout": "PCG64_protocol_seed_permutation",
+      "render": "raw"
+    },
+    {
+      "id": "rgb_l1_simple_greedy",
+      "compatibility": "raw_rgb_border_l1",
+      "solver": "deterministic_simple_greedy"
+    },
+    {
+      "id": "raw_C1_G0_R2",
+      "compatibility": "raw_C1",
+      "solver": "G0_with_R2_validity_fallback",
+      "role": "mandatory_classical_fallback"
+    },
+    {
+      "id": "ground_truth_compatibility_same_solver",
+      "panels": "exact_synthetic_only",
+      "solvers": ["G0", "G1", "G2"],
+      "role": "isolate_solver_from_scorer"
+    },
+    {
+      "id": "oracle_layout_raw_and_denoised",
+      "panels": "exact_synthetic_only",
+      "role": "rendering_ceiling"
+    },
+    {
+      "id": "simple_learned_L0",
+      "role": "learned_floor_if_learned_stage_opens"
+    }
+  ],
+  "metric_registry": {
+    "aggregation": {
+      "tie_policy": "ascending_candidate_input_slot",
+      "right_true_neighbour_queries_per_source": 552,
+      "down_true_neighbour_queries_per_source": 552,
+      "right_boundary_queries_excluded_from_recall": 24,
+      "down_boundary_queries_excluded_from_recall": 24,
+      "outside_task_sides_per_source": 96,
+      "direction_combination": "per_source_combined_is_mean_of_right_and_down",
+      "replicas": "average_within_source_before_source_macro",
+      "final_aggregation": "source_macro",
+      "delta_definition": "candidate_minus_named_frozen_baseline_on_identical_source_replica",
+      "regression_definition": "max(0,-delta)",
+      "ssim_regression_renderer": "raw_for_final_layout_gate; denoised_evaluated_only_in_separate_render_gate",
+      "edge_micro_average_forbidden": true,
+      "bootstrap_unit": "source_image",
+      "outer_split_unit": "perceptual_duplicate_cluster"
+    },
+    "compatibility": [
+      "source_macro_recall_at_1_5_10_20_32",
+      "mrr",
+      "median_and_q90_true_neighbor_rank",
+      "within_source_auprc",
+      "within_source_auroc",
+      "hard_negative_auroc_auprc_on_frozen_raw_pbc_top32_mistakes",
+      "reciprocal_best_buddy_precision_recall_coverage",
+      "best_second_margin",
+      "outside_side_auroc_auprc_f1",
+      "brier_nll_ece_15_equal_frequency_bins",
+      "risk_coverage_and_precision_at_25_50_75_percent"
+    ],
+    "exact_layout": [
+      "valid_permutation_rate",
+      "strict_position_accuracy",
+      "row_accuracy",
+      "column_accuracy",
+      "mean_median_q90_manhattan_displacement",
+      "fraction_within_manhattan_one",
+      "right_down_adjacency_precision",
+      "right_down_adjacency_recall",
+      "exact_solved_image_rate",
+      "boundary_and_corner_accuracy",
+      "largest_correct_relative_component",
+      "largest_anchored_component",
+      "relative_perfect_component_coverage",
+      "component_count_and_size_thresholds"
+    ],
+    "adjacency_consistency": "for_valid_full_permutation_predicted_and_true_counts_are_1104_so_precision_equals_recall; differences_only_for_explicit_partial_graph",
+    "invalid_prediction_policy": {
+      "conditions": [
+        "missing_source",
+        "malformed_array",
+        "duplicate_slot",
+        "out_of_range_slot",
+        "incomplete_prediction"
+      ],
+      "valid_permutation": false,
+      "all_exact_layout_metrics": 0,
+      "promotion_gate": "fail",
+      "drop_from_denominator": false
+    },
+    "ambiguity_diagnostic": {
+      "role": "target_only_secondary_diagnostic",
+      "equivalence": "clean_tile_uint8_RGB_MAE <= 1.0 and tile_SSIM >= 0.995",
+      "correctness": "predicted_tile_in_ground_truth_tile_equivalence_class",
+      "promotion_primary": false
+    },
+    "image_quality": {
+      "primary_name": "predicted_layout_ssim",
+      "ssim": "skimage.metrics.structural_similarity(channel_axis=2,data_range=255)",
+      "other": [
+        "psnr",
+        "mae",
+        "target_referenced_seam_error",
+        "mean_median_q10",
+        "fraction_ssim_regression_gt_0_01"
+      ],
+      "seam_error": "mean_over_internal_boundary_RGB_pairs(abs((P_after-P_before)-(T_after-T_before))/255) over vertical and horizontal 20px grid seams",
+      "semantic_strata_computed_by": "target_only_scorer",
+      "semantic_strata_forbidden_in_predictor": true
+    },
+    "image_decomposition_panels": [
+      "clean_tiles_plus_predicted_layout",
+      "corrupted_tiles_plus_oracle_layout",
+      "denoised_tiles_plus_oracle_layout",
+      "corrupted_tiles_plus_predicted_layout",
+      "denoised_tiles_plus_predicted_layout"
+    ],
+    "target_only_semantic_strata": [
+      "smooth_sky_wall_snow",
+      "repeated_texture",
+      "thin_lines",
+      "faces",
+      "high_residual_energy",
+      "extreme_brightness_or_contrast",
+      "blur",
+      "heavy_noise",
+      "jpeg"
+    ],
+    "resources": [
+      "denoise_score_component_solver_repair_render_total_wall_time",
+      "p50_p90_p95_max",
+      "peak_rss",
+      "gpu_peak_allocated",
+      "cache_bytes",
+      "hardware_runtime_dependency_and_codec_fingerprint"
+    ]
+  },
+  "baseline_and_primary_solver_freeze": {
+    "timing": "after_classical_stage_and_full_257_source_runtime_profile_before_learned_training",
+    "eligible": "classical_candidates_with_valid_permutation_rate_1_and_runtime_gate_pass",
+    "selection_order": [
+      "descending_real_raw_render_predicted_layout_ssim",
+      "descending_independent_libjpeg_source_macro_adjacency",
+      "ascending_mean_total_runtime",
+      "ascending_candidate_id"
+    ],
+    "empty_eligible_fallback_chain": ["raw_C1_G0_R2", "rgb_l1_simple_greedy"],
+    "fallback_selection": "first_route_passing_validity_and_full_257_source_runtime_gates",
+    "no_fallback_passes": "create_no_production_baseline_and_stop_as_protocol_runtime_failure",
+    "freeze_before": "any_learned_or_final_candidate_hash",
+    "primary_solver_id": "solver_inside_production_frozen_baseline",
+    "other_solvers": "mandatory_report_only_never_average_or_posthoc_select"
+  },
+  "gain_contracts": [
+    {
+      "id": "C1_fusion",
+      "candidate": "fused_raw_denoised_C1",
+      "baseline": "best_single_raw_C1_score",
+      "solver": "frozen_G0",
+      "renderer": "raw_for_both",
+      "panels": ["primary_kornia", "independent_libjpeg"],
+      "metrics": ["source_macro_recall_at_1", "adjacency"],
+      "ci": "paired_source_bootstrap"
+    },
+    {
+      "id": "denoised_compatibility",
+      "candidate_cells_evaluated_separately": ["B", "E"],
+      "baseline_cell": "A",
+      "solver": "frozen_primary_solver_id",
+      "other_solver_role": "G0_G1_G2_report_only",
+      "renderer": "raw_for_both",
+      "metrics_by_panel": {
+        "primary_kornia": ["recall_at_1", "mrr", "adjacency", "predicted_layout_ssim"],
+        "independent_libjpeg": ["recall_at_1", "mrr", "adjacency", "predicted_layout_ssim"],
+        "real_inputs": ["target_only_predicted_layout_ssim"]
+      },
+      "pseudo_gold": "separate_secondary_diagnostic_without_boolean",
+      "ci": "paired_source_bootstrap"
+    },
+    {
+      "id": "denoised_rendering",
+      "candidate": "final_frozen_calibration_layout_denoised_render",
+      "baseline": "same_final_frozen_calibration_layout_raw_render",
+      "solver": "identical_frozen_layout",
+      "renderer": "as_named",
+      "panel": "real_target_only",
+      "metric": "predicted_layout_ssim",
+      "ci": "paired_source_bootstrap"
+    },
+    {
+      "id": "learned_scorer",
+      "candidate": "L0_or_L1",
+      "baseline": "frozen_C1",
+      "solver": "frozen_primary_solver_id",
+      "other_solver_role": "G0_G1_G2_report_only",
+      "renderer": "same_raw_for_sorting_claim",
+      "metrics_by_panel": {
+        "primary_kornia": ["recall_at_1", "mrr", "adjacency", "predicted_layout_ssim"],
+        "independent_libjpeg": ["recall_at_1", "mrr", "adjacency", "predicted_layout_ssim"],
+        "real_inputs": ["target_only_predicted_layout_ssim"]
+      },
+      "pseudo_gold": "separate_secondary_diagnostic_without_boolean",
+      "ci": "paired_source_bootstrap_per_seed"
+    },
+    {
+      "id": "final_cascade",
+      "candidate": "one_frozen_candidate",
+      "baseline": "production_frozen_baseline_selected_on_assembly_cal",
+      "solver": "frozen_production_solver",
+      "renderer": "same_raw_and_same_denoised_comparisons_separate",
+      "metrics_by_panel": {
+        "exact_synthetic_engines": ["adjacency", "predicted_layout_ssim"],
+        "real_inputs": ["target_only_predicted_layout_ssim"]
+      },
+      "ci": "paired_source_bootstrap"
+    }
+  ],
+  "promotion_gates": {
+    "learned_headroom": {
+      "logic": "all_of",
+      "conditions": [
+        {
+          "metric": "recall_at_10_minus_recall_at_1_pp",
+          "operator": ">=",
+          "value": 8.0
+        },
+        {
+          "logic": "any_of",
+          "conditions": [
+            {
+              "metric": "oracle_top10_adjacency_gain_pp",
+              "operator": ">=",
+              "value": 2.0
+            },
+            {
+              "metric": "oracle_top10_predicted_layout_ssim_gain",
+              "operator": ">=",
+              "value": 0.005
+            }
+          ]
+        },
+        {
+          "metric": "U_pre_recall_and_size_reported",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "metric": "U_64_recall_and_size_reported",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "metric": "post_cap_recall_at_1_5_10_20_32_reported",
+          "operator": "==",
+          "value": true
+        }
+      ]
+    },
+    "cheap_cpu_fusion": {
+      "logic": "any_of",
+      "conditions": [
+        {
+          "metric": "recall_at_1_gain_pp",
+          "operator": ">=",
+          "value": 1.0
+        },
+        {
+          "metric": "fixed_G0_adjacency_gain_pp",
+          "operator": ">=",
+          "value": 0.5
+        }
+      ]
+    },
+    "denoised_compatibility_each_exact_engine": {
+      "logic": "all_of",
+      "same_renderer": "raw",
+      "conditions": [
+        {
+          "logic": "any_of",
+          "conditions": [
+            {
+              "logic": "all_of",
+              "conditions": [
+                {
+                  "metric": "recall_at_1_gain_pp",
+                  "operator": ">=",
+                  "value": 1.0
+                },
+                {
+                  "metric": "recall_at_1_paired_CI_lower",
+                  "operator": ">",
+                  "value": 0.0
+                }
+              ]
+            },
+            {
+              "logic": "all_of",
+              "conditions": [
+                {
+                  "metric": "mrr_gain",
+                  "operator": ">=",
+                  "value": 0.01
+                },
+                {
+                  "metric": "mrr_paired_CI_lower",
+                  "operator": ">",
+                  "value": 0.0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "metric": "recall_at_10_regression_pp",
+          "operator": "<=",
+          "value": 0.5
+        },
+        {
+          "metric": "fixed_solver_raw_render_predicted_layout_ssim_gain",
+          "operator": ">=",
+          "value": 0.002
+        },
+        {
+          "metric": "valid_permutation_rate_regression",
+          "operator": "<=",
+          "value": 0.0
+        }
+      ]
+    },
+    "denoised_rendering": {
+      "logic": "all_of",
+      "timing": "after_final_calibration_layout_freeze_before_gate",
+      "layout": "identical_final_frozen_permutation",
+      "candidate": "denoised_render",
+      "baseline": "raw_render",
+      "conditions": [
+        {
+          "metric": "real_predicted_layout_ssim_gain",
+          "operator": ">=",
+          "value": 0.002
+        },
+        {
+          "metric": "real_predicted_layout_ssim_paired_CI_lower",
+          "operator": ">",
+          "value": 0.0
+        },
+        {
+          "metric": "fraction_real_sources_ssim_regression_gt_0_01",
+          "operator": "<=",
+          "value": 0.1
+        }
+      ],
+      "failure_behavior": "select_raw_renderer_without_rejecting_layout_solver"
+    },
+    "learned_scorer": {
+      "logic": "all_of",
+      "conditions": [
+        {
+          "metric": "full_fixed_seed_runs_completed",
+          "operator": "==",
+          "value": 3
+        },
+        {
+          "metric": "median_recall_at_1_gain_pp",
+          "operator": ">=",
+          "value": 1.0
+        },
+        {
+          "metric": "median_mrr_gain",
+          "operator": ">=",
+          "value": 0.01
+        },
+        {
+          "metric": "worst_seed_recall_at_1_gain_pp",
+          "operator": ">=",
+          "value": 0.0
+        },
+        {
+          "metric": "best_buddy_precision_regression_at_matched_coverage",
+          "operator": "<=",
+          "value": 0.0
+        },
+        {
+          "metric": "median_fixed_solver_adjacency_gain_pp",
+          "operator": ">=",
+          "value": 1.0
+        },
+        {
+          "metric": "median_real_target_only_predicted_layout_ssim_gain",
+          "operator": ">=",
+          "value": 0.002
+        },
+        {
+          "metric": "per_seed_paired_CI_and_seed_spread_reported",
+          "operator": "==",
+          "value": true
+        },
+        {
+          "metric": "median_fixed_solver_adjacency_paired_CI_lower",
+          "operator": ">",
+          "value": 0.0
+        },
+        {
+          "metric": "median_real_predicted_layout_ssim_paired_CI_lower",
+          "operator": ">",
+          "value": 0.0
+        }
+      ],
+      "fewer_than_three_seed_status": "provisional_not_promotable"
+    },
+    "hard_locks": {
+      "fit_confirm_split": "solver_contracts.hard_locks.fit_confirm_split",
+      "multiplicity": "Bonferroni_across_predeclared_strata_and_both_exact_engines",
+      "engine_aggregation": "worst_engine",
+      "logic": "all_of",
+      "conditions": [
+        {
+          "metric": "precision_lower_simultaneous",
+          "operator": ">=",
+          "value": 0.995
+        },
+        {
+          "formula": "N_hard_mean_upper_95 * (1 - precision_lower_simultaneous)",
+          "operator": "<=",
+          "value": 0.25
+        },
+        {
+          "metric": "exact_synthetic_contradictions_or_collisions",
+          "operator": "==",
+          "value": 0
+        }
+      ],
+      "failure_behavior": "edge_stratum_becomes_reversible_soft_evidence"
+    },
+    "production_runtime": {
+      "logic": "all_of",
+      "early_smoke_sources": 20,
+      "early_smoke_source_derivation": "first 20 assembly_cal after ascending SHA256('assembly-runtime-v1:' + source_name), source_name tie break",
+      "early_smoke_can_promote": false,
+      "final_profile_sources": 257,
+      "rerun_after_final_scorer_solver_repair_renderer_and_each_fallback": true,
+      "hardware": "intended_production_hardware",
+      "concurrency": 1,
+      "includes": ["denoise", "io", "scoring", "solver", "repair", "render"],
+      "conditions": [
+        {
+          "metric": "one_sided_source_bootstrap_95_upper_mean_total_seconds_per_image",
+          "operator": "<=",
+          "value": 30.8571428571
+        },
+        {
+          "metric": "projected_700_image_hours",
+          "operator": "<=",
+          "value": 6.0
+        },
+        {
+          "metric": "peak_rss_gib",
+          "operator": "<=",
+          "value": 8.0
+        }
+      ],
+      "failure_behavior": "one_objective_preserving_optimization_then_reprofile_G0_G1_R2_R3_then_raw_C1_G0_R2_then_RGB_L1_greedy"
+    },
+    "frozen_assembly_gate_and_final_audit": {
+      "logic": "all_of",
+      "conditions": [
+        {
+          "metric": "valid_permutation_rate",
+          "operator": "==",
+          "value": 1.0
+        },
+        {
+          "metric": "independent_libjpeg_source_macro_adjacency_gain_pp",
+          "operator": ">=",
+          "value": 1.0
+        },
+        {
+          "metric": "independent_libjpeg_adjacency_paired_CI_lower",
+          "operator": ">",
+          "value": 0.0
+        },
+        {
+          "metric": "real_raw_renderer_predicted_layout_ssim_gain",
+          "operator": ">=",
+          "value": 0.002
+        },
+        {
+          "metric": "real_raw_renderer_predicted_layout_ssim_paired_CI_lower",
+          "operator": ">",
+          "value": 0.0
+        },
+        {
+          "metric": "clean_shuffle_adjacency_regression_pp",
+          "operator": "<=",
+          "value": 0.5
+        },
+        {
+          "metric": "primary_kornia_adjacency_regression_pp",
+          "operator": "<=",
+          "value": 0.5
+        },
+        {
+          "metric": "independent_libjpeg_adjacency_regression_pp",
+          "operator": "<=",
+          "value": 0.5
+        },
+        {
+          "metric": "stress_extrema_adjacency_regression_pp",
+          "operator": "<=",
+          "value": 0.5
+        },
+        {
+          "metric": "fraction_real_sources_raw_renderer_ssim_regression_gt_0_01",
+          "operator": "<=",
+          "value": 0.1
+        },
+        {
+          "metric": "projected_700_image_hours_at_concurrency_1",
+          "operator": "<=",
+          "value": 6.0
+        },
+        {
+          "metric": "one_sided_source_bootstrap_95_upper_mean_total_seconds_per_image",
+          "operator": "<=",
+          "value": 30.8571428571
+        },
+        {
+          "metric": "peak_rss_gib",
+          "operator": "<=",
+          "value": 8.0
+        }
+      ],
+      "renderer_policy": "denoised_only_if_promotion_gates.denoised_rendering_passes_else_raw",
+      "invalid_or_missing_prediction_behavior": "reject_and_release_named_frozen_baseline",
+      "apply_independently_to": ["assembly_incremental_gate", "assembly_final_audit"],
+      "audit_candidate_changes_allowed": false
+    }
+  },
+  "learned_budget": {
+    "U_32_definition": "first_32_entries_of_frozen_U_64_RRF_order_with_input_slot_tie_break",
+    "effective_query_sides_per_optimizer_step": 256,
+    "positives_per_query": 1,
+    "within_source_negatives_per_query": 31,
+    "pair_relations_per_optimizer_step": 8192,
+    "microbatch_query_sides": 64,
+    "gradient_accumulation_steps": 4,
+    "precision": "AMP_after_device_smoke_FP16_on_P100_BF16_only_if_supported",
+    "L0_smoke": {
+      "optimizer_steps_max": 5000,
+      "profile_steps": 500,
+      "candidate_ablation": "U_32",
+      "predeclared_queries": 1
+    },
+    "L0_full": {
+      "optimizer_steps_max_per_seed": 30000,
+      "seeds": [20260710, 20260711, 20260712],
+      "predeclared_runs": 3
+    },
+    "L1_full_if_opened": {
+      "optimizer_steps_max_per_seed": 50000,
+      "seeds": [20260710, 20260711, 20260712],
+      "predeclared_runs": 3,
+      "RRF_insertion_weight": 1.0,
+      "post_solver_weight_tuning_allowed": false,
+      "mining_refresh_steps": [10000, 25000],
+      "mining_candidate_pool": "frozen_U_64_only",
+      "mining_source_count": 512,
+      "mining_source_derivation": "first_512_edge_train_after_SHA256('assembly-L1-mine:' + source_name)",
+      "max_scored_pairs_per_refresh": 18087936,
+      "persist_per_query": 32
+    },
+    "L0_negative_refresh": "none_use_frozen_C1_U_32",
+    "median_seed_ranking": [
+      "descending_independent_libjpeg_source_macro_adjacency_gain_under_frozen_primary_solver_raw_renderer",
+      "descending_recall_at_1_gain",
+      "ascending_numeric_seed"
+    ],
+    "deployed_seed": "middle_entry_of_three_after_median_seed_ranking",
+    "query_budget": "one_L0_smoke_one_three_seed_L0_and_at_most_one_three_seed_L1",
+    "wall_time_estimates_claimed": false
+  },
+  "execution_dag": [
+    {
+      "node": "protocol_and_baselines",
+      "depends_on": [],
+      "when": "always",
+      "else_route": "stop_on_protocol_failure"
+    },
+    {
+      "node": "C1",
+      "depends_on": ["protocol_and_baselines"],
+      "when": "protocol_valid",
+      "else_route": "rgb_l1_simple_greedy"
+    },
+    {
+      "node": "C2",
+      "depends_on": ["C1"],
+      "when": "predeclared_stage_1_ablation",
+      "else_route": "C1"
+    },
+    {
+      "node": "G0",
+      "depends_on": ["C1"],
+      "when": "always_after_C1",
+      "else_route": "rgb_l1_simple_greedy"
+    },
+    {
+      "node": "G1",
+      "depends_on": ["C1", "G0"],
+      "when": "final_candidate_graph_available",
+      "else_route": "G0_plus_R2"
+    },
+    {
+      "node": "G2",
+      "depends_on": ["G1"],
+      "when": "capped_graph_available_and_clean_shuffle_solver_ceiling_valid",
+      "else_route": "G0_or_G1_plus_R2",
+      "production_requires": "promotion_gates.production_runtime"
+    },
+    {
+      "node": "L0",
+      "depends_on": ["C1", "G0"],
+      "requires_completed_or_documented_fallback": ["G1", "G2"],
+      "when": "promotion_gates.learned_headroom",
+      "else_route": "frozen_classical_cascade"
+    },
+    {
+      "node": "L1",
+      "depends_on": ["L0"],
+      "when": "L0_signal_exists_and_candidate_generation_remains_bottleneck",
+      "else_route": "L0_or_frozen_classical_cascade"
+    },
+    {
+      "node": "learned_fixed_solver_test",
+      "depends_on": ["G0", "G1", "G2"],
+      "depends_on_any": ["L0", "L1"],
+      "when": "learned_score_exists",
+      "else_route": "frozen_classical_cascade"
+    },
+    {
+      "node": "L2",
+      "depends_on": ["G0", "G1", "G2"],
+      "when": "absolute_translation_or_boundary_error_is_measured_bottleneck",
+      "else_route": "skip_L2"
+    },
+    {
+      "node": "one_global_challenger",
+      "depends_on": ["G0", "G1", "G2"],
+      "when": "calibration_headroom_and_runtime_budget_remain",
+      "else_route": "G0_G1_G2_best"
+    },
+    {
+      "node": "production_candidate",
+      "depends_on": ["G0", "G1", "G2"],
+      "requires": ["calibration_selection", "production_runtime_profile"],
+      "when": "all_calibration_gates_pass",
+      "else_route": "production_frozen_baseline"
+    },
+    {
+      "node": "assembly_incremental_gate",
+      "depends_on": ["production_candidate"],
+      "requires": ["gate_open_record"],
+      "when": "candidate_and_baseline_frozen",
+      "else_route": "production_frozen_baseline"
+    },
+    {
+      "node": "assembly_final_audit",
+      "depends_on": ["assembly_incremental_gate"],
+      "requires": ["audit_open_record"],
+      "when": "incremental_gate_passed",
+      "else_route": "production_frozen_baseline"
+    }
+  ],
+  "hypothesis_validation_routes": {
+    "C1": {
+      "execution_state": "planned_primary",
+      "stage": "stage_1",
+      "entry_condition": "protocol_and_baseline_smokes_pass",
+      "fixed_baseline": "rgb_l1_simple_greedy",
+      "test_panels": ["clean_shuffle", "primary_kornia", "independent_libjpeg", "stress_extrema", "real_target_only"],
+      "promotion_or_stop_gate": [
+        "promotion_gates.cheap_cpu_fusion",
+        "gain_contracts.C1_fusion"
+      ]
+    },
+    "C2": {
+      "execution_state": "planned_challenger",
+      "stage": "stage_1",
+      "entry_condition": "C1_exists",
+      "fixed_baseline": "C1_without_C2",
+      "test_panels": ["primary_kornia", "independent_libjpeg", "smooth_and_repeated_texture_strata"],
+      "promotion_or_stop_gate": "retain_only_if_recall_or_fixed_G0_adjacency_improves_without_flat_strata_regression"
+    },
+    "L0": {
+      "execution_state": "conditional",
+      "stage": "stage_3_and_stage_3b",
+      "entry_condition": "promotion_gates.learned_headroom",
+      "fixed_baseline": "frozen_C1",
+      "test_panels": ["primary_kornia", "independent_libjpeg", "real_target_only"],
+      "promotion_or_stop_gate": "promotion_gates.learned_scorer"
+    },
+    "L1": {
+      "execution_state": "conditional",
+      "stage": "stage_3_and_stage_3b",
+      "entry_condition": "L0_signal_and_candidate_generation_bottleneck",
+      "fixed_baseline": "frozen_L0_or_C1_as_declared_before_run",
+      "test_panels": ["primary_kornia", "independent_libjpeg", "real_target_only"],
+      "promotion_or_stop_gate": "promotion_gates.learned_scorer_else_stop_learned_generator"
+    },
+    "L2": {
+      "execution_state": "conditional",
+      "stage": "stage_4",
+      "entry_condition": "strong_relative_adjacency_but_absolute_translation_or_boundary_error_bottleneck",
+      "fixed_baseline": "same_frozen_relative_layout_without_L2",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "positive_exact_position_and_same_renderer_real_SSIM_CI_with_adjacency_nonregression"
+    },
+    "G0": {
+      "execution_state": "mandatory",
+      "stage": "stage_2",
+      "entry_condition": "C1_exists",
+      "fixed_baseline": "rgb_l1_simple_greedy",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "always_preserve_as_validity_fallback"
+    },
+    "G1": {
+      "execution_state": "planned_primary",
+      "stage": "stage_2",
+      "entry_condition": "frozen_candidate_graph_exists",
+      "fixed_baseline": "G0_same_score",
+      "test_panels": ["clean_shuffle", "primary_kornia", "independent_libjpeg", "stress_extrema", "real_target_only"],
+      "promotion_or_stop_gate": "component_purity_coverage_and_fixed_score_layout_gain; hard_edges_require_hard_lock_gate"
+    },
+    "G2": {
+      "execution_state": "planned_primary_if_feasible",
+      "stage": "stage_2_stage_2b_stage_4b",
+      "entry_condition": "capped_graph_and_oracle_compatibility_solver_tests_pass",
+      "fixed_baseline": "best_G0_or_G1_same_score",
+      "test_panels": ["clean_shuffle", "ground_truth_compatibility", "primary_kornia", "independent_libjpeg", "stress_extrema", "real_target_only"],
+      "promotion_or_stop_gate": "layout_gain_plus_promotion_gates.production_runtime_else_research_only"
+    },
+    "G3": {
+      "execution_state": "planned_first_global_challenger",
+      "stage": "stage_4",
+      "entry_condition": "scorer_frozen_and_global_solver_headroom_remains",
+      "fixed_baseline": "best_frozen_G0_G1_G2",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "same_primary_layout_gain_and_runtime_gate; if_fail_open_one_G4"
+    },
+    "G4": {
+      "execution_state": "conditional_second_global_challenger",
+      "stage": "stage_4",
+      "entry_condition": "G3_single_config_failed",
+      "fixed_baseline": "best_frozen_G0_G1_G2",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "same_primary_layout_gain_and_runtime_gate_else_stop_classical_challengers"
+    },
+    "R1": {
+      "execution_state": "planned_ablation",
+      "stage": "stage_2",
+      "entry_condition": "frontier_has_two_or_three_fixed_neighbours",
+      "fixed_baseline": "same_layout_without_R1",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "same_renderer_layout_gain_with_locked_edge_nonregression"
+    },
+    "R2": {
+      "execution_state": "mandatory_fallback",
+      "stage": "stage_2",
+      "entry_condition": "holes_or_invalid_assignment_remain",
+      "fixed_baseline": "pre_repair_layout",
+      "test_panels": ["all_exact_panels"],
+      "promotion_or_stop_gate": "valid_permutation_rate_1_and_no_hard_offset_break"
+    },
+    "R3": {
+      "execution_state": "planned_ablation",
+      "stage": "stage_2",
+      "entry_condition": "valid_layout_exists",
+      "fixed_baseline": "same_layout_before_R3",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "input_only_objective_improves_and_exact_layout_or_real_SSIM_does_not_regress"
+    },
+    "R4": {
+      "execution_state": "conditional_high_variance",
+      "stage": "stage_4",
+      "entry_condition": "strong_segments_with_bounded_local_error_after_R3",
+      "fixed_baseline": "same_seed_layout_without_R4",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "fixed_seed_evaluation_budget; stop_on_seed_spread_or_no_two_point_adjacency_gain"
+    },
+    "X0": {
+      "execution_state": "deferred_conditional_smoke",
+      "stage": "stage_4",
+      "entry_condition": "candidate_recall_is_adequate_but_sparse_graph_context_is_measured_bottleneck",
+      "fixed_baseline": "frozen_best_non_GNN_score_and_primary_solver",
+      "test_panels": ["primary_kornia", "independent_libjpeg", "real_target_only"],
+      "promotion_or_stop_gate": "one_bounded_smoke_then_same_primary_solver_gate_or_defer"
+    },
+    "X1": {
+      "execution_state": "deferred",
+      "stage": "stage_4",
+      "entry_condition": "64_or_96_supernode_profile_and_budget_pass",
+      "fixed_baseline": "best_component_solver",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "same_layout_and_runtime_gate_else_defer"
+    },
+    "X2": {
+      "execution_state": "rejected_current_budget",
+      "stage": "none",
+      "entry_condition": "reopen_only_with_material_multi_GPU_budget_and_large_training_corpus",
+      "fixed_baseline": "production_frozen_baseline",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "not_authorized_by_current_plan"
+    },
+    "X3": {
+      "execution_state": "rejected_current_budget",
+      "stage": "none",
+      "entry_condition": "reopen_only_as_separate_multi_GPU_research_project",
+      "fixed_baseline": "production_frozen_baseline",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "not_authorized_by_current_plan"
+    },
+    "X4": {
+      "execution_state": "rejected_at_576_conditional_component_only",
+      "stage": "stage_4_component_subproblem_only",
+      "entry_condition": "64_or_96_supernode_CP_SAT_profile_passes",
+      "fixed_baseline": "best_component_beam",
+      "test_panels": ["all_exact_panels", "real_target_only"],
+      "promotion_or_stop_gate": "component_level_same_layout_and_runtime_gate; full_scale_forbidden"
+    }
+  },
+  "stages": [
+    {
+      "id": "stage_0",
+      "name": "protocol_freeze_and_preflight",
+      "actions": [
+        "run_scripts_doctor_sh",
+        "verify_pandas_pyarrow_psutil_and_pinned_scipy_highs",
+        "kaggle_nvidia_smi_framework_cuda_capability_and_real_tensor_op_if_gpu",
+        "materialize_and_hash_exact_source_lists",
+        "prove_predictor_target_isolation",
+        "run_cli_contract_acceptance_tests",
+        "run_identity_raw_identity_denoised_and_seeded_random_smokes"
+      ]
+    },
+    {
+      "id": "stage_1",
+      "name": "classical_score_bank",
+      "actions": [
+        "RGB_Lab_strip_L1_SSD",
+        "PBC_and_MGC",
+        "RGB_L1_simple_greedy_floor",
+        "C2_separate_ablation",
+        "rank_margin_and_reciprocal_features",
+        "raw_vs_denoised",
+        "deterministic_union_and_one_frozen_fusion"
+      ]
+    },
+    {
+      "id": "stage_2",
+      "name": "fixed_classical_global_solvers",
+      "actions": [
+        "simple_greedy_floor",
+        "G0",
+        "G1",
+        "G1_plus_G2",
+        "R1_completion",
+        "R2_R3_repair_ablation",
+        "ground_truth_compatibility_through_same_solvers"
+      ],
+      "separate_compatibility_blend_per_solver_forbidden": true
+    },
+    {
+      "id": "stage_2b",
+      "name": "20_source_early_runtime_smoke",
+      "can_promote": false
+    },
+    {
+      "id": "stage_2c",
+      "name": "freeze_classical_production_baseline_and_primary_solver",
+      "selection": "baseline_and_primary_solver_freeze"
+    },
+    {
+      "id": "stage_3",
+      "name": "learned_compatibility_if_headroom",
+      "actions": [
+        "L0_smoke",
+        "L0_three_seed_full_if_smoke_signal",
+        "L1_three_seed_full_only_if_candidate_bottleneck"
+      ]
+    },
+    {
+      "id": "stage_3b",
+      "name": "learned_scores_through_same_frozen_solvers",
+      "solvers": ["G0", "G1", "G2"],
+      "retuning_forbidden": [
+        "solver_threshold",
+        "fusion_weight",
+        "hard_lock_gate",
+        "renderer",
+        "repair_budget"
+      ]
+    },
+    {
+      "id": "stage_4",
+      "name": "bounded_challengers_and_deferred_routes",
+      "sequence": [
+        "one_G3_config",
+        "if_G3_fails_one_G4_config_then_stop_classical_challengers"
+      ],
+      "conditional": [
+        "L2_if_absolute_translation_bottleneck",
+        "R4_if_strong_segments_with_bounded_local_error",
+        "X0_sparse_GNN_if_graph_context_bottleneck",
+        "X1_component_transformer_after_64_96_profile",
+        "X4_component_CP_SAT_after_64_96_profile"
+      ],
+      "full_576_transformer_or_diffusion_forbidden": true
+    },
+    {
+      "id": "stage_4b",
+      "name": "final_257_source_total_pipeline_runtime_profile",
+      "gate": "promotion_gates.production_runtime",
+      "includes_final_learned_scorer_and_selected_renderer": true,
+      "repeat_for_each_fallback": true
+    },
+    {
+      "id": "stage_5",
+      "name": "freeze_incremental_gate_and_final_audit",
+      "sequence": [
+        "select_one_candidate_on_assembly_cal_against_already_frozen_baseline",
+        "freeze_hashes_and_metric_registry",
+        "append_incremental_gate_open_record",
+        "supervise_candidate_and_baseline_real_input_only_predictions",
+        "score_candidate_and_baseline_real_predictions_in_target_only_scorer",
+        "supervise_candidate_and_baseline_synthetic_input_only_predictions_for_clean_primary_independent_and_stress_panels",
+        "score_candidate_and_baseline_synthetic_predictions_with_labels_only_after_predictor_exit",
+        "combine_four_frozen_candidate_baseline_real_synthetic_reports_once",
+        "if_pass_append_final_audit_open_record",
+        "repeat_same_real_and_four_synthetic_panel_flows_on_final_668_audit_once",
+        "promote_candidate_only_if_all_gates_pass_else_release_baseline"
+      ]
+    }
+  ],
+  "runtime_and_storage": {
+    "production_concurrency": 1,
+    "production_700_image_hours_max": 6.0,
+    "one_sided_source_bootstrap_95_upper_mean_total_seconds_per_image_max": 30.8571428571,
+    "final_profile_source_count": 257,
+    "early_smoke_source_count": 20,
+    "peak_rss_gib_max": 8.0,
+    "p95_is_reported_not_a_second_gate": true,
+    "cache_path": "runs/assembly_v1/cache",
+    "cache_gib_max": 8.0,
+    "cache_policy": "content_addressed_LRU",
+    "stream_sources": true,
+    "persist": ["top_k_indices", "top_k_scores", "compact_features"],
+    "forbid_full_raw_and_denoised_all_panel_cache": true
+  },
+  "prediction_scoring_isolation": {
+    "predictor_inputs": "real_inputs.jsonl",
+    "prelaunch_access_policy": "prediction_access_policy.json",
+    "postexit_supervisor_attestation": "prediction_access_attestation.json",
+    "attestation_writer": "external_supervisor_only",
+    "supervisor_creates_mount_namespace": true,
+    "supervisor_negative_target_open_probe_must_fail": true,
+    "predictor_may_write_attestation": false,
+    "predictor_outputs": ["predictions.jsonl", "rendered_PNG", "SHA256SUMS"],
+    "predictor_exits_before_targets_mounted": true,
+    "scorer_inputs": ["real_targets.jsonl", "frozen_predictions", "frozen_output_hashes"],
+    "scorer_contains_solver_or_model": false,
+    "scorer_can_modify_predictions": false,
+    "synthetic_predictor_inputs": "materialized_corrupted_shuffled_inputs_without_labels",
+    "synthetic_scorer_inputs": "frozen_predictions_plus_labels_after_predictor_exit",
+    "synthetic_panels": ["clean_shuffle", "primary_kornia", "independent_libjpeg", "stress_extrema"],
+    "gate_combiner_inputs": [
+      "frozen_candidate_real_report",
+      "frozen_baseline_real_report",
+      "frozen_candidate_synthetic_report",
+      "frozen_baseline_synthetic_report"
+    ],
+    "gate_combiner_can_run_predictor": false,
+    "gate_combiner_can_run_scorer": false
+  },
+  "gate_attempt_policy": {
+    "ledger": "gate_attempt_ledger.jsonl",
+    "append_only": true,
+    "exclusive_create_or_versioned_storage": true,
+    "hash_chained": true,
+    "open_record_required_fields": [
+      "previous_event_sha256",
+      "attempt_id",
+      "split_and_source_list_hashes",
+      "panel_hashes",
+      "candidate_hash",
+      "named_baseline_hash",
+      "protocol_hash",
+      "code_hash",
+      "dependency_hash",
+      "metric_registry_hash",
+      "timestamp"
+    ],
+    "metric_failure_consumes_attempt": true,
+    "retryable_infrastructure_failure_enum": [
+      "storage_unavailable",
+      "worker_not_started",
+      "scheduler_preemption"
+    ],
+    "retry_phase_boundary": "strictly_before_any_prediction_or_target_read",
+    "non_retryable": [
+      "timeout",
+      "invalid_prediction",
+      "hash_failure",
+      "leakage_failure",
+      "any_metric_bearing_run"
+    ],
+    "retry_preserves_first_record": true,
+    "audit_open_requires": [
+      "incremental_gate_attempt_id",
+      "successful_incremental_gate_decision_sha256",
+      "successful_incremental_gate_report_sha256"
+    ],
+    "audit_failure_behavior": "no_promotion_release_frozen_baseline",
+    "audit_may_trigger_candidate_change": false
+  },
+  "future_cli_contract": {
+    "implementation_status": "contract_only",
+    "scripts_exist": false,
+    "scripts_have_been_run": false,
+    "common_exit_codes": {
+      "0": "success",
+      "2": "schema_or_config_error",
+      "3": "hash_or_leakage_policy_failure",
+      "4": "timeout",
+      "5": "invalid_prediction",
+      "6": "missing_dependency"
+    },
+    "idempotency": "matching_existing_output_hash_is_noop_mismatch_requires_new_versioned_path",
+    "writes": "atomic",
+    "timeout_source": "frozen_protocol",
+    "timeout_behavior": "named_fallback_not_partial_output",
+    "acceptance_tests": [
+      "exact_permutation_round_trip",
+      "deterministic_tie_handling",
+      "split_disjointness",
+      "candidate_cap",
+      "target_path_rejection",
+      "timeout_fallback",
+      "invalid_prediction_scoring",
+      "same_renderer_gain_comparison",
+      "byte_identical_rerun"
+    ],
+    "scripts": [
+      "scripts/make_assembly_protocol.py",
+      "scripts/materialize_assembly_panel.py",
+      "scripts/precompute_assembly_views.py",
+      "scripts/build_assembly_candidates.py",
+      "scripts/train_edge_reranker.py",
+      "scripts/train_edge_embedding.py",
+      "scripts/run_assembly_solver.py",
+      "scripts/score_assembly.py",
+      "scripts/freeze_assembly_candidate.py",
+      "scripts/supervise_assembly_prediction.py",
+      "scripts/score_real_assembly.py",
+      "scripts/combine_assembly_gate.py"
+    ]
+  },
+  "required_artifacts": {
+    "assembly_protocol_v1.json": [
+      "exact_source_lists_and_hashes",
+      "corruption_code_parameter_runtime_codec_hashes",
+      "complete_metric_registry",
+      "explicit_boolean_gates",
+      "named_baselines",
+      "bootstrap_timeouts_and_fallback",
+      "target_isolation_policy"
+    ],
+    "real_inputs.jsonl": [
+      "source_id",
+      "input_path_and_hash",
+      "allowed_view_hashes",
+      "no_target_or_pseudo_fields"
+    ],
+    "real_targets.jsonl": [
+      "source_id",
+      "target_path_and_hash"
+    ],
+    "prediction_access_policy.json": [
+      "immutable_allowed_mounts_and_hashes",
+      "denied_target_and_pseudo_roots",
+      "supervisor_version",
+      "negative_open_probe_path"
+    ],
+    "prediction_access_attestation.json": [
+      "supervisor_observed_mount_namespace_and_process_tree",
+      "negative_target_open_probe_failure",
+      "code_config_model_environment_protocol_hashes",
+      "prediction_and_render_aggregate_hashes",
+      "not_writable_by_predictor"
+    ],
+    "synthetic_labels.npz": [
+      "slot_to_target",
+      "position_to_slot",
+      "source_panel_replica_seeds",
+      "target_hashes",
+      "schema_and_protocol_hash"
+    ],
+    "compat_per_source.parquet": [
+      "all_registered_compatibility_metrics",
+      "candidate_stage_recall",
+      "coverage",
+      "stage_timings"
+    ],
+    "predictions.jsonl": [
+      "exactly_one_record_per_expected_source",
+      "position_to_slot_576",
+      "validity_and_confidence",
+      "component_diagnostics",
+      "timings_and_peak_memory",
+      "solver_config_model_protocol_hashes",
+      "no_target_derived_fields"
+    ],
+    "assembly_report.json": [
+      "macro_metrics_and_paired_CI",
+      "named_baselines_and_ablation_decisions",
+      "secondary_pseudo_gold_block",
+      "runtime_resource_provenance",
+      "explicit_gate_booleans_and_fallback"
+    ],
+    "candidate_and_baseline_synthetic_gate_reports.json": [
+      "frozen_clean_shuffle_metrics",
+      "frozen_primary_kornia_metrics",
+      "frozen_independent_libjpeg_metrics",
+      "frozen_stress_extrema_metrics",
+      "prediction_label_protocol_and_source_hashes"
+    ],
+    "selected_assembly.json": [
+      "all_frozen_component_hashes",
+      "selected_candidate_and_named_baseline",
+      "calibration_decision",
+      "gate_and_audit_unopened_at_creation"
+    ],
+    "gate_attempt_ledger.jsonl": [
+      "append_only_open_retry_and_decision_events"
+    ],
+    "cli_contract_tests.json": [
+      "schema_exit_idempotency_timeout_atomicity_and_isolation_results"
+    ],
+    "SHA256SUMS": [
+      "all_promoted_non_cache_artifacts"
+    ]
+  },
+  "pivot_rules": [
+    "bad_clean_shuffle_means_global_solver_problem",
+    "good_clean_bad_corrupt_means_compatibility_or_domain_problem",
+    "true_edge_absent_from_topk_means_reranker_cannot_help",
+    "strong_oracle_topk_weak_layout_means_global_solver_problem",
+    "B_worse_than_A_and_C_better_than_A_means_raw_score_denoised_render",
+    "two_honest_scorers_without_one_pp_recall_gain_stop_gpu_route",
+    "learned_retrieval_gain_without_fixed_solver_gain_stop_deepening_scorer",
+    "reciprocal_precision_below_60_percent_at_10_percent_coverage_lock_nothing",
+    "hard_lock_false_error_bound_failure_makes_edges_soft",
+    "loop_purity_below_98_percent_means_soft_seeds_only",
+    "loop_coverage_below_10_to_15_percent_means_use_soft_LP",
+    "LP_less_than_two_adjacency_points_and_over_five_times_G0_cost_means_remove_from_production",
+    "QP_or_GA_seed_spread_above_3_to_5_points_or_five_seeds_without_two_point_gain_means_stop",
+    "64_96_supernode_profile_failure_forbids_component_CP_SAT_or_transformer",
+    "pseudo_gold_gain_without_exact_or_real_target_only_gain_is_selection_bias"
+  ],
+  "research_sources": [
+    "https://openaccess.thecvf.com/content_cvpr_2016/papers/Son_Solving_Small-Piece_Jigsaw_CVPR_2016_paper.pdf",
+    "https://arxiv.org/abs/1511.04472",
+    "https://arxiv.org/abs/1711.08762",
+    "https://arxiv.org/abs/1809.04137",
+    "https://arxiv.org/abs/2203.06488",
+    "https://arxiv.org/abs/2211.07771",
+    "https://arxiv.org/abs/2303.14793",
+    "https://link.springer.com/article/10.1007/s10044-025-01484-z",
+    "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_Solving_Masked_Jigsaw_Puzzles_with_Diffusion_Vision_Transformers_CVPR_2024_paper.pdf",
+    "https://openaccess.thecvf.com/content/CVPR2024/html/Scarpellini_DiffAssemble_A_Unified_Graph-Diffusion_Model_for_2D_and_3D_Reassembly_CVPR_2024_paper.html",
+    "https://proceedings.mlr.press/v70/guo17a/guo17a.pdf"
+  ],
+  "completion_semantics": {
+    "research_ready": true,
+    "internally_reviewed": true,
+    "assembly_hypotheses_tested": false,
+    "future_execution_authorized_by_this_file": false
+  }
+}

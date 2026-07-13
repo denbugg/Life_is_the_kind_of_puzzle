@@ -1,0 +1,2 @@
+2a127a199de11b7babb03ac4ca1f59f66ffe430031b74308e6128a803766cb34  vit_sinkhorn_checkpoint.pt
+ea5ab0be15102177ec5f97fdc1e389add5b8dabce64914e0f29a6f2cdf1c7def  vit_sinkhorn_report.json

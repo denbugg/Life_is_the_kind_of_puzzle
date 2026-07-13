@@ -1,0 +1,224 @@
+{
+  "assets": {
+    "denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "embedding": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  },
+  "bundle_root": "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code",
+  "code_hashes": {
+    "configs/assembly_audit_exclusion_v1.json": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6",
+    "configs/denoise_splits_seed20260710.json": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "configs/denoise_validation_quarantine_v1.json": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "scripts/evaluate_path_cover_gate.py": "8ddd30f3b1259a9f56154750c0049b0d62b92a1f7f908de42bfb8e673fa97b3e",
+    "scripts/train_binary_edge_verifier.py": "ef3686ebc015d6647ddcc8878d3ac4b9cafb558ab4408667206da282bdaebab9",
+    "src/puzzle_assembly/compatibility.py": "aff2149b161c4fded4e5d91fbea49a8a62967886148d3ad374467331e0416a9f",
+    "src/puzzle_assembly/components.py": "655af23f2705e0a22cb334fb5d5b282795f8c0de35c22f265966118cce0c34b0",
+    "src/puzzle_assembly/learned.py": "9e3dba673aa85eaab5698dbeb63b3d94f88e3ea92b5e5979bde4b0273642697b",
+    "src/puzzle_assembly/panels.py": "783356628517e3a23b8703672bca604c3d879c875f5b5f35f87182425500280f",
+    "src/puzzle_assembly/path_cover.py": "9d2ed84621beaa90cba11158cae2a4c610c73a408311ae444b47f2490e191023",
+    "src/puzzle_assembly/qap.py": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "src/puzzle_denoise_v2/inference.py": "20767cc26270cfde7472cf33a0247b1ea6d96e5b5c8ff5d705b785ae710dd6da",
+    "tests/test_evaluate_path_cover_gate.py": "77e2095d3cea7d9eddf591cbdc8641e8dcf1001b805b8feba5c227b673e03881",
+    "tests/test_path_cover.py": "dce4a30681e1dcedc47d4fa118412afa7d7dc11958fd7370cba2648767c837ad"
+  },
+  "correctness_tests": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_path_cover.py",
+      "tests/test_evaluate_path_cover_gate.py"
+    ],
+    "returncode": 0,
+    "stderr": "",
+    "stdout": "..........................................                               [100%]\n=============================== warnings summary ===============================\n../../../../../usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: 43 warnings\n  /usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.\n    warnings.warn(\n\n../../../../../usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475\n  /usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/.pytest_cache/v/cache/nodeids: [Errno 30] Read-only file system: '/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/pytest-cache-files-mqd3tgwg'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n42 passed, 44 warnings in 6.19s\n"
+  },
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "gate": {
+    "checks": {
+      "independent_libjpeg_passed": false,
+      "primary_kornia_passed": false
+    },
+    "decision": "stop_path_cover_no_axis_signal",
+    "passed": false,
+    "scope": "axis paths only; no 2D candidate or SSIM was constructed"
+  },
+  "hardware": {
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_op": -0.13826623558998108
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_op": -0.015643902122974396
+      }
+    ],
+    "nvidia_smi": "Mon Jul 13 05:57:41 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P0             26W /   70W |     153MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   44C    P0             27W /   70W |     153MiB /  15360MiB |      5%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A               7      C   python3                                 150MiB |\n|    1   N/A  N/A               7      C   python3                                 150MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "exact_axis_path_cover_kaggle_wrapper",
+  "ortools": "9.14.6206",
+  "panel_records": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/scripts/evaluate_path_cover_gate.py",
+        "--panel",
+        "primary_kornia",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--embedding-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/configs/denoise_validation_quarantine_v1.json",
+        "--audit-exclusion",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/configs/assembly_audit_exclusion_v1.json",
+        "--split",
+        "edge_development",
+        "--source-offset",
+        "332",
+        "--sources",
+        "8",
+        "--outgoing-top-k",
+        "16",
+        "--incoming-top-k",
+        "16",
+        "--time-limit-seconds",
+        "30",
+        "--device",
+        "cuda",
+        "--denoise-batch-size",
+        "512",
+        "--output",
+        "/kaggle/working/path_cover_gate_primary_kornia.json",
+        "--overwrite"
+      ],
+      "gate": {
+        "checks": {
+          "down_fallbacks_le_1_of_8": false,
+          "down_max_rescue_only_fraction_le_0.10": false,
+          "down_mean_adjacency_delta_ge_0.02": false,
+          "down_mean_path_purity_delta_ge_0": true,
+          "down_no_source_regression_below_-0.02": true,
+          "down_valid_exact_cover_8_of_8": true,
+          "down_wins_ge_6_of_8": false,
+          "max_60_path_cover_seconds_per_source": false,
+          "right_fallbacks_le_1_of_8": false,
+          "right_max_rescue_only_fraction_le_0.10": false,
+          "right_mean_adjacency_delta_ge_0.02": false,
+          "right_mean_path_purity_delta_ge_0": false,
+          "right_no_source_regression_below_-0.02": true,
+          "right_valid_exact_cover_8_of_8": true,
+          "right_wins_ge_6_of_8": false
+        },
+        "decision": "stop_path_cover_no_axis_signal",
+        "passed": false
+      },
+      "gpu": 0,
+      "output": "/kaggle/working/path_cover_gate_primary_kornia.json",
+      "panel": "primary_kornia",
+      "returncode": 0,
+      "seconds": 1019.87415599823,
+      "sha256": "48b50cfbc9d1e5e6c9c65de3ba76c4a529bb77c04f00209971f427a63bdeb6f1"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/scripts/evaluate_path_cover_gate.py",
+        "--panel",
+        "independent_libjpeg",
+        "--data-root",
+        "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+        "--denoiser",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+        "--embedding-checkpoint",
+        "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+        "--manifest",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/configs/denoise_splits_seed20260710.json",
+        "--quarantine",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/configs/denoise_validation_quarantine_v1.json",
+        "--audit-exclusion",
+        "/kaggle/input/datasets/pasha883/vsos-exact-path-cover-gate-code/configs/assembly_audit_exclusion_v1.json",
+        "--split",
+        "edge_development",
+        "--source-offset",
+        "332",
+        "--sources",
+        "8",
+        "--outgoing-top-k",
+        "16",
+        "--incoming-top-k",
+        "16",
+        "--time-limit-seconds",
+        "30",
+        "--device",
+        "cuda",
+        "--denoise-batch-size",
+        "512",
+        "--output",
+        "/kaggle/working/path_cover_gate_independent_libjpeg.json",
+        "--overwrite"
+      ],
+      "gate": {
+        "checks": {
+          "down_fallbacks_le_1_of_8": true,
+          "down_max_rescue_only_fraction_le_0.10": false,
+          "down_mean_adjacency_delta_ge_0.02": false,
+          "down_mean_path_purity_delta_ge_0": true,
+          "down_no_source_regression_below_-0.02": true,
+          "down_valid_exact_cover_8_of_8": true,
+          "down_wins_ge_6_of_8": false,
+          "max_60_path_cover_seconds_per_source": false,
+          "right_fallbacks_le_1_of_8": false,
+          "right_max_rescue_only_fraction_le_0.10": false,
+          "right_mean_adjacency_delta_ge_0.02": false,
+          "right_mean_path_purity_delta_ge_0": false,
+          "right_no_source_regression_below_-0.02": true,
+          "right_valid_exact_cover_8_of_8": true,
+          "right_wins_ge_6_of_8": false
+        },
+        "decision": "stop_path_cover_no_axis_signal",
+        "passed": false
+      },
+      "gpu": 1,
+      "output": "/kaggle/working/path_cover_gate_independent_libjpeg.json",
+      "panel": "independent_libjpeg",
+      "returncode": 0,
+      "seconds": 1033.000539779663,
+      "sha256": "49cca7413a817d0bd028dccc0f9a2e9224c98494b3e8bfc995cf589da27c1ddb"
+    }
+  ],
+  "report": {
+    "path": "/kaggle/working/path_cover_gate_report.json",
+    "sha256": "bf41fab2a374fbcc446d941043837bfbe9008c94203c5e058e96e49b0668065d"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 1109.4464659690857,
+  "started_unix": 1783922195.7245378,
+  "status": "complete"
+}

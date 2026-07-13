@@ -1,0 +1,173 @@
+{
+  "accepted": false,
+  "config": {
+    "authoritative_v2_metric_path": "macro.qap_softcycle_l1_k8__denoised_render.predicted_layout_ssim",
+    "authoritative_v2_real16_baseline_ssim": 0.18281991502795386,
+    "authoritative_v2_report_sha256": "cc1b694b1501ba9b02e5618ad838e155ae40af7990bbbf4542b281fc21adec60",
+    "displacement_weight": 0.35,
+    "epochs": 2,
+    "eval_timeout_seconds": 1200,
+    "max_hyperedges": 64,
+    "max_per_anchor": 4,
+    "negative_ratio": 3,
+    "positives_per_source": 96,
+    "qap_boundary_weight": 0.05,
+    "qap_iterations": 25,
+    "qap_restarts": 2,
+    "seed": 20260711,
+    "target_precision": 0.9,
+    "top_k": 8,
+    "train_sources": 64,
+    "train_timeout_seconds": 2700,
+    "val_sources": 8
+  },
+  "evaluation_records": [
+    {
+      "gpu": 0,
+      "log": "/kaggle/working/hyperedge_gate_primary.log",
+      "log_sha256": "8cf9f4e3915a0886f6c6a42ae43a8046f937a720ad95309feca239e30a7c3ec7",
+      "name": "hyperedge_gate_primary",
+      "output": "/kaggle/working/hyperedge_gate_primary.json",
+      "output_sha256": "58de6296b27af1bba5aa47255426ee8681b96d475409e45090128d241c6a67b2",
+      "panel": "primary_kornia",
+      "returncode": 0,
+      "seconds": 227.03668341399998
+    },
+    {
+      "gpu": 1,
+      "log": "/kaggle/working/hyperedge_gate_independent.log",
+      "log_sha256": "9043912c70a0231f455b19847e18fc44d13ed8e71d952beb7a61ba2ec77a16fc",
+      "name": "hyperedge_gate_independent",
+      "output": "/kaggle/working/hyperedge_gate_independent.json",
+      "output_sha256": "4db1711fa591545a808a4f761bed8ead62c95fde63fa87544b44eef45b80b7be",
+      "panel": "independent_libjpeg",
+      "returncode": 0,
+      "seconds": 230.43991845000028
+    }
+  ],
+  "exact8": {
+    "accepted": 344,
+    "adjacency_gain": -0.026607789855072464,
+    "baseline_adjacency": 0.06102807971014493,
+    "candidate_adjacency": 0.034420289855072464,
+    "correct": 6,
+    "coverage": 0.2986111111111111,
+    "precision": 0.01744186046511628,
+    "source_names": [
+      "img_003571.png",
+      "img_006833.png",
+      "img_000878.png",
+      "img_002134.png",
+      "img_003560.png",
+      "img_000963.png",
+      "img_000534.png",
+      "img_002060.png"
+    ]
+  },
+  "gates": {
+    "authoritative_v2_baseline_reproduced": true,
+    "coverage_at_least_0_15": true,
+    "exact8_adjacency_gain_at_least_0_03": false,
+    "precision_at_least_0_90": false,
+    "real16_ssim_gain_at_least_0_015": false
+  },
+  "input_hashes": {
+    "denoiser": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "embedding_checkpoint": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "evaluator": "f9d71018e1465c5bae12065eac0db80d63d1428677d742375305abdee63ae7cc",
+    "hyperedge_module": "ec3e2362daf5fb5dd447bff011c8fd3f137c121340f6f816b683b36c580c9ac5",
+    "manifest": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "qap_module": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "quarantine": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "trainer": "c3e9ade1572d3732a7e6cbf8fd795afe001ba434271df8044ba4cd2b9b252404"
+  },
+  "kind": "puzzle_hyperedge_h0_t4x2_gate",
+  "known_risks": [
+    "synthetic exact degradation may not cover every real false-cycle texture",
+    "the 90-percent precision threshold can miss the required 15-percent coverage",
+    "greedy absolute placement of correct relative anchors can still disrupt QAP global structure",
+    "GPU0 performs denoiser and candidate preprocessing, so DataParallel scaling is limited",
+    "exact8 and real16 are intentionally small bounded gates and retain sampling variance"
+  ],
+  "mounts": {
+    "code_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "runtime_root": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime"
+  },
+  "probe": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "cuda_available": true,
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "tensor_probe_means": [
+      -0.19574284553527832,
+      -0.17583699524402618
+    ],
+    "torch": "2.10.0+cu128"
+  },
+  "real16": {
+    "authoritative_v2_baseline_ssim": 0.18281991502795386,
+    "authoritative_v2_metric_path": "macro.qap_softcycle_l1_k8__denoised_render.predicted_layout_ssim",
+    "authoritative_v2_report_local_path": "runs/assembly_v1/kaggle/qap_tuning_night_output/v2/qap_l1w4_boundary_real16.json",
+    "authoritative_v2_report_sha256": "cc1b694b1501ba9b02e5618ad838e155ae40af7990bbbf4542b281fc21adec60",
+    "baseline_reproduction_delta": 2.7755575615628914e-17,
+    "baseline_ssim": 0.1828199150279539,
+    "candidate_ssim": 0.1612238304353143,
+    "source_names": [
+      "img_003877.png",
+      "img_005080.png",
+      "img_004383.png",
+      "img_006582.png",
+      "img_004810.png",
+      "img_006306.png",
+      "img_005844.png",
+      "img_004191.png",
+      "img_001281.png",
+      "img_003971.png",
+      "img_006070.png",
+      "img_005710.png",
+      "img_005224.png",
+      "img_006489.png",
+      "img_002514.png",
+      "img_004878.png"
+    ],
+    "ssim_gain": -0.02159608459263959,
+    "target_pixels_used_for_layout_selection": false
+  },
+  "schema_version": 1,
+  "seconds": 2427.6355793969997,
+  "training": {
+    "checkpoint": "/kaggle/working/hyperedge_h0.pt",
+    "checkpoint_sha256": "ee23d6388e93f4e7581bc6184c82a24fd5ca8f8dd755a5a0d1e67e8523d2ebf3",
+    "gate_source_overlap": 0,
+    "log": "/kaggle/working/hyperedge_training.log",
+    "log_sha256": "6ae1ccb061391880aff99a79205d522544c42b88bbef7611d4082cedb97d8cec",
+    "name": "hyperedge_training",
+    "report": "/kaggle/working/hyperedge_h0_training.json",
+    "report_sha256": "74917f3d6b0e16fce81a68c3e7eafd59aa27764e4a34085885a5c40c3961b32e",
+    "returncode": 0,
+    "seconds": 2132.659048628
+  }
+}

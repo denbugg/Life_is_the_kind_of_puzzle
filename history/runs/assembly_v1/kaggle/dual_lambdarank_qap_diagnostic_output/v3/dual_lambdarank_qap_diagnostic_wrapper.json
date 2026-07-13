@@ -1,0 +1,110 @@
+{
+  "assets": {
+    "embedding": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    },
+    "selected": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    }
+  },
+  "bundle": {
+    "mode": "direct_expanded_dataset",
+    "path": "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code"
+  },
+  "evaluator": {
+    "command": [
+      "/usr/bin/python3",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/scripts/evaluate_dual_lambdarank_qap_diagnostic.py",
+      "--data-root",
+      "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+      "--denoiser",
+      "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "--embedding-checkpoint",
+      "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "--outgoing-model",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/models/outgoing_lambdarank.txt",
+      "--incoming-model",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/models/incoming_lambdarank.txt",
+      "--retrieval-report",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/models/dual_lambdarank_report.json",
+      "--manifest",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/configs/denoise_splits_seed20260710.json",
+      "--quarantine",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/configs/denoise_validation_quarantine_v1.json",
+      "--device",
+      "cuda",
+      "--denoise-batch-size",
+      "512",
+      "--output",
+      "/kaggle/working/dual_lambdarank_qap_diagnostic_report.json",
+      "--overwrite"
+    ],
+    "returncode": 0,
+    "seconds": 136.78893661499023,
+    "stderr_tail": "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/scripts/evaluate_dual_lambdarank_qap_diagnostic.py:111: DeprecationWarning: 'mode' parameter is deprecated and will be removed in Pillow 13 (2026-10-15)\n  Image.fromarray(values, mode=\"RGB\").save(buffer, format=\"PNG\", compress_level=6)\n",
+    "stdout_tail": "{\"phase\": \"A\", \"done\": 1, \"total\": 8}\n{\"phase\": \"A\", \"done\": 2, \"total\": 8}\n{\"phase\": \"A\", \"done\": 3, \"total\": 8}\n{\"phase\": \"A\", \"done\": 4, \"total\": 8}\n{\"phase\": \"A\", \"done\": 5, \"total\": 8}\n{\"phase\": \"A\", \"done\": 6, \"total\": 8}\n{\"phase\": \"A\", \"done\": 7, \"total\": 8}\n{\"phase\": \"A\", \"done\": 8, \"total\": 8}\n{\"gate\": {\"checks\": {\"mean_ssim_delta_ge_0_003\": false, \"no_ssim_delta_below_minus_0_01\": false, \"source_count_eq_8\": true, \"wins_ge_6\": false}, \"fail_behavior\": \"retire frozen dual-LambdaRank-to-QAP transfer\", \"pass_behavior\": \"development signal only; design one fresh confirmation\", \"passed\": false, \"safe_for_submission\": false}, \"status\": \"stop_no_assembly_signal\", \"summary\": {\"mean_baseline_ssim\": 0.2066357138722798, \"mean_candidate_ssim\": 0.201832486089486, \"mean_ssim_delta\": -0.004803227782793828, \"source_count\": 8, \"wins_ties_losses\": [0, 0, 8], \"worst_ssim_delta\": -0.01331462134072893}}\n"
+  },
+  "gate": {
+    "checks": {
+      "mean_ssim_delta_ge_0_003": false,
+      "no_ssim_delta_below_minus_0_01": false,
+      "source_count_eq_8": true,
+      "wins_ge_6": false
+    },
+    "fail_behavior": "retire frozen dual-LambdaRank-to-QAP transfer",
+    "pass_behavior": "development signal only; design one fresh confirmation",
+    "passed": false,
+    "safe_for_submission": false
+  },
+  "hardware": {
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4"
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4"
+      }
+    ],
+    "nvidia_smi": "Mon Jul 13 04:35:39 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   40C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   40C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "tensor_op": -0.1013176292181015,
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "dual_lambdarank_qap_diagnostic_kaggle_wrapper",
+  "report": {
+    "path": "/kaggle/working/dual_lambdarank_qap_diagnostic_report.json",
+    "sha256": "1230a1706eccd2c40828acba793c66731f70092267093c877b84ec303dff8221"
+  },
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "scientific_status": "stop_no_assembly_signal",
+  "seconds": 182.82320594787598,
+  "status": "complete",
+  "test": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "/kaggle/input/datasets/pasha883/vsos-dual-lambdarank-qap-diagnostic-code/tests/test_dual_lambdarank_qap_diagnostic.py"
+    ],
+    "returncode": 0,
+    "seconds": 14.321213483810425,
+    "stderr_tail": "",
+    "stdout_tail": "....                                                                     [100%]\n=============================== warnings summary ===============================\n../../usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: 43 warnings\n  /usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.\n    warnings.warn(\n\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:64\n  /usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'\n    prop = Group((name + Suppress(\"=\") + comma_separated(value)) | oneOf(_CONSTANTS))\n\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85\n  /usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'\n    parse = parser.parseString(pattern)\n\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../../usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89\n  /usr/local/lib/python3.12/dist-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'\n    parser.resetCache()\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n4 passed, 56 warnings in 10.12s\n"
+  }
+}

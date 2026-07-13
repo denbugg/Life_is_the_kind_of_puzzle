@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "harmonized_submission_leaderboard_result",
+  "recorded_utc": "2026-07-12T15:49:49Z",
+  "result_source": "exact score reported by the user in the Codex task",
+  "score": 0.2167844489529071,
+  "previous_best_score": 0.203,
+  "absolute_improvement": 0.0137844489529071,
+  "submission": {
+    "path": "/Users/rusyalain/Documents/test/submission_harmonized_v1.zip",
+    "sha256": "28554bc4563a0b1468ded11a1c4f037fdbf96c77ecadd4187fa0bd796c7a3123",
+    "member_count": 700
+  },
+  "independent_verification": {
+    "path": "INDEPENDENT_VERIFICATION.json",
+    "sha256": "aa7310683540f2f134dbe70ae3d25a20d4918069da7263839de3f0f5e27dc379"
+  },
+  "interpretation": "New production best. The observed leaderboard gain is consistent with the two source-disjoint development estimates for the frozen RGB seam-graph harmonizer.",
+  "safe_for_submission": true
+}

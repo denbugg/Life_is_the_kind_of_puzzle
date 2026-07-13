@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "kind": "postassembly_contextual_refiner_v2_source_allocation",
+  "status": "frozen_before_development_phase_a",
+  "created_utc": "2026-07-12T16:47:11Z",
+  "scope": {
+    "development_only": true,
+    "model_checkpoint_is_fixed": true,
+    "model_scale_up_allowed": false,
+    "layout_changes_allowed": false,
+    "target_dependent_confidence_allowed": false,
+    "assembly_final_audit_access_allowed": false,
+    "test_access_allowed": false
+  },
+  "authoritative_inputs": {
+    "manifest": {
+      "path": "configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    },
+    "audit_exclusion": {
+      "path": "configs/assembly_audit_exclusion_v1.json",
+      "sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6"
+    },
+    "fixed_checkpoint": {
+      "path": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1/contextual_refiner_smoke_best.pt",
+      "sha256": "88bddc0c973df2651b80219903cfc8051f69f846752ebd0b2169eeff8c4f344e",
+      "step": 2500
+    }
+  },
+  "consumed_v1_actual_qap_audit": {
+    "source_count": 32,
+    "source_names_sha256": "2fcb3e7b4afb67a05a51e1b32f69ab1d59c67ccce62f80f5c58516747171102b",
+    "report": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1/contextual_refiner_smoke_report.json",
+    "report_sha256": "2c3c33fa8530da79790c43ab9b6099f64119f6a5550ca4b1390f37963dc0d599",
+    "may_be_used_for_v2_selection_or_rescoring": false
+  },
+  "development": {
+    "split": "edge_development",
+    "slice": [0, 32],
+    "source_count": 32,
+    "panels": ["primary_kornia", "independent_libjpeg"],
+    "source_names_sha256": "8b3b8dd8d622a004ad65ef1592103199b1f6d352f9ee74062a87a21d4c799cd4",
+    "source_names": [
+      "img_005666.png",
+      "img_003853.png",
+      "img_004914.png",
+      "img_003121.png",
+      "img_004984.png",
+      "img_003475.png",
+      "img_005819.png",
+      "img_004784.png",
+      "img_005879.png",
+      "img_004753.png",
+      "img_003305.png",
+      "img_003554.png",
+      "img_004045.png",
+      "img_002936.png",
+      "img_001774.png",
+      "img_003137.png",
+      "img_005807.png",
+      "img_006685.png",
+      "img_004321.png",
+      "img_001636.png",
+      "img_003306.png",
+      "img_002919.png",
+      "img_003321.png",
+      "img_003155.png",
+      "img_003294.png",
+      "img_006461.png",
+      "img_005930.png",
+      "img_003162.png",
+      "img_004001.png",
+      "img_001088.png",
+      "img_000943.png",
+      "img_005136.png"
+    ],
+    "target_metrics_may_be_used_for_candidate_selection": true
+  },
+  "assembly_hypothesis_untouched_one_shot_gate": {
+    "split": "assembly_incremental_gate",
+    "slice": [32, 64],
+    "source_count": 32,
+    "panels": ["primary_kornia", "independent_libjpeg"],
+    "source_names_sha256": "4cf0a92cb68570241df524ec8057930d3dac542c617f40daf399ffd171d8eba2",
+    "source_names": [
+      "img_001829.png",
+      "img_003837.png",
+      "img_006907.png",
+      "img_002733.png",
+      "img_003528.png",
+      "img_001897.png",
+      "img_004158.png",
+      "img_001748.png",
+      "img_005874.png",
+      "img_006002.png",
+      "img_005426.png",
+      "img_002108.png",
+      "img_002246.png",
+      "img_002719.png",
+      "img_001849.png",
+      "img_003439.png",
+      "img_006043.png",
+      "img_002967.png",
+      "img_006042.png",
+      "img_005137.png",
+      "img_001278.png",
+      "img_005479.png",
+      "img_001445.png",
+      "img_005301.png",
+      "img_006211.png",
+      "img_003626.png",
+      "img_005475.png",
+      "img_003034.png",
+      "img_006414.png",
+      "img_001386.png",
+      "img_004567.png",
+      "img_006431.png"
+    ],
+    "access_state": "not_opened_by_contextual_v2_or_prior_assembly_hypotheses; names were previously allocated and pixels may have been read by denoiser evaluation",
+    "contextual_v2_pixels_may_be_opened_only_after": "confidence feature formula, candidate set, selection rule, thresholds, and gate criteria are frozen and hashed",
+    "global_pixel_virginity_claimed": false,
+    "untouched_scope": "assembly and contextual-refiner hypothesis selection only",
+    "score_each_frozen_candidate_at_most_once": true
+  },
+  "combined_allocation_sha256": "a66e98f6942b8c99d634f6fc7f6ef977ea71763c874e27b37ae2564c810871d6",
+  "cross_branch_evidence_scan": {
+    "created_utc": "2026-07-12T16:47:11Z",
+    "name_match_mode": "rg fixed-string over every reserved gate source name",
+    "filename_globs": ["*report*.json", "*result*.json", "*gate*.json", "*selection*.json"],
+    "assembly_scope": {
+      "roots": ["runs/assembly_v1"],
+      "candidate_file_count": 99,
+      "sorted_candidate_path_list_sha256": "1dd629c19488e29fda29efdac427b71b43e0d72a97f86be283da9fed8ba05665",
+      "matching_file_count": 0,
+      "interpretation": "no prior assembly, QAP, contextual-refiner, gate, result, report, or selection JSON mentions any reserved gate source"
+    },
+    "broad_repo_scope": {
+      "roots": ["runs", "configs"],
+      "candidate_file_count": 121,
+      "sorted_candidate_path_list_sha256": "c025d1df408533c6aebda65ce482569152a5908c9bac81fa0a1224d06f2dd0a9",
+      "matching_file_count": 5,
+      "matching_files": [
+        "runs/denoise_v2/denoise_v2_bundle_20260710/results/prefinetune_calibration/prefinetune_calibration_report.json",
+        "runs/denoise_v2/denoise_v2_bundle_20260710/results/real_finetune/real_finetune_result.json",
+        "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v3_current/prefinetune_calibration_report.json",
+        "runs/denoise_v2/release_readback/20260710T074500Z/prefinetune_cpu_v2/prefinetune_calibration_report.json",
+        "runs/denoise_v2/release_readback/20260710T074500Z/real_finetune_v2/real_finetune_result.json"
+      ],
+      "matching_json_paths": [
+        "source_split/sealed_gate_source_names",
+        "source_split/source_index_by_name",
+        "source_split/clean_eligible_source_names",
+        "source_split/gate_source_names"
+      ],
+      "interpretation": "all broad-scope matches are structural denoiser split ledgers; denoiser evaluation may have read these pixels, but none is an assembly/layout/contextual-refiner hypothesis record or per-source assembly metric"
+    }
+  }
+}

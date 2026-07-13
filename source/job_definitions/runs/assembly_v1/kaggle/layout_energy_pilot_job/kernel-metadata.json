@@ -1,0 +1,16 @@
+{
+  "id": "pasha883/vsos-layout-energy-pilot-t4x2",
+  "title": "VSOS Layout Energy Pilot T4x2",
+  "code_file": "run_layout_energy_pilot.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-solver-rework-night-code",
+    "pasha883/vsos-layout-energy-pilot-code"
+  ]
+}

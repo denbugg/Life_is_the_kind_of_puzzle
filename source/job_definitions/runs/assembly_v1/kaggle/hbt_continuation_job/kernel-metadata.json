@@ -1,0 +1,14 @@
+{
+  "id": "pasha883/vsos-hbt-continuation-t4x2",
+  "title": "VSOS HBT Continuation T4x2",
+  "code_file": "run_hbt_continuation.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime"
+  ]
+}

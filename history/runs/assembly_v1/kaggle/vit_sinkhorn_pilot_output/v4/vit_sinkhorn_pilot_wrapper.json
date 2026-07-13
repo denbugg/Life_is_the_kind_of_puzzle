@@ -1,0 +1,126 @@
+{
+  "checkpoint": "/kaggle/working/vit_sinkhorn_pilot/vit_sinkhorn_checkpoint.pt",
+  "checkpoint_sha256": "8e4db3fc7767f21ff0d4ced1dc522bf55309450add35d2169b3a2ad60ec0a806",
+  "hardware": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "matmul_means": [
+      0.1129702776670456,
+      0.004758656024932861
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "hashes": "/kaggle/working/vit_sinkhorn_pilot/SHA256SUMS.txt",
+  "hashes_sha256": "dddf38c2932f4f1fc153e4479ba514ba6b7c6498ffbadb847a1830e977cd396a",
+  "holdout_gate_passed": false,
+  "inputs": {
+    "denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "model_sha256": "cc7e1a71aa538eb867c1f8ce35fdc52e5ba5b4438db139b824967a13d1f2f964",
+    "pseudo_gold_sha256": "70d0b7b3c15fefac62d6d1bf554f0e50a0f3473ddaf01423607b78cf0cde90c2",
+    "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "script_sha256": "eadea65c112211955b807d1cf6bff5c5d0053f1efeb3244d87a37bc518e28c33",
+    "test_sha256": "4cf52577dc84beef2ddff9b08a0848645d0a9a58bdb5f3ed4c97607e13a821fe"
+  },
+  "kind": "vit_sinkhorn_t4x2_pilot_wrapper",
+  "pilot": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nproc_per_node=2",
+      "/kaggle/working/vit_sinkhorn_code/scripts/train_evaluate_vit_sinkhorn.py",
+      "--data-root",
+      "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+      "--manifest",
+      "/kaggle/working/vit_sinkhorn_code/configs/denoise_splits_seed20260710.json",
+      "--quarantine",
+      "/kaggle/working/vit_sinkhorn_code/configs/denoise_validation_quarantine_v1.json",
+      "--denoiser",
+      "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "--real-gold",
+      "/kaggle/input/datasets/pasha883/vsos-real-gold-512/real_gold_train_512.npz",
+      "--real-gold-source-limit",
+      "64",
+      "--real-gold-probability",
+      "0.25",
+      "--qap-prior-probability",
+      "0",
+      "--train-sources",
+      "256",
+      "--dev-sources",
+      "8",
+      "--holdout-sources",
+      "8",
+      "--epochs",
+      "3",
+      "--amp",
+      "fp16",
+      "--amp-init-scale",
+      "1024",
+      "--max-consecutive-amp-skips",
+      "8",
+      "--output-dir",
+      "/kaggle/working/vit_sinkhorn_pilot",
+      "--overwrite"
+    ],
+    "returncode": 0,
+    "seconds": 310.40929196800005
+  },
+  "pilot_status": "holdout_gate_failed",
+  "report": "/kaggle/working/vit_sinkhorn_pilot/vit_sinkhorn_report.json",
+  "report_sha256": "1541bace8c67ba0f12f1e0a0ab31420b294ef261030316dadf9e506fa1d59e1f",
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 426.883714593,
+  "selected_epoch": 3,
+  "selection_gate_passed": false,
+  "smoke": {
+    "command": [
+      "/usr/bin/python3",
+      "/kaggle/working/vit_sinkhorn_code/scripts/train_evaluate_vit_sinkhorn.py",
+      "--synthetic-smoke",
+      "--device",
+      "cuda:0",
+      "--smoke-steps",
+      "2",
+      "--output-dir",
+      "/kaggle/working/vit_sinkhorn_smoke",
+      "--overwrite"
+    ],
+    "returncode": 0,
+    "seconds": 8.50085897599996
+  },
+  "smoke_report": "/kaggle/working/vit_sinkhorn_smoke/vit_sinkhorn_report.json",
+  "smoke_report_sha256": "ea5ab0be15102177ec5f97fdc1e389add5b8dabce64914e0f29a6f2cdf1c7def",
+  "status": "complete",
+  "tests": {
+    "returncode": 0,
+    "seconds": 22.290279526000006
+  }
+}

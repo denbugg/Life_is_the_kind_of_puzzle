@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "kind": "postassembly_contextual_refiner_v2_confidence_development_protocol",
+  "status": "precommitted_before_development_phase_a",
+  "created_utc": "2026-07-12T16:55:00Z",
+  "scope": {
+    "development_only": true,
+    "fixed_layout_required": true,
+    "fixed_neural_checkpoint_required": true,
+    "gradient_updates_allowed": false,
+    "model_scale_up_allowed": false,
+    "submission_promotion_allowed": false,
+    "consumed_v1_actual_qap_may_be_rescored": false,
+    "assembly_final_audit_access_allowed": false,
+    "test_access_allowed": false
+  },
+  "allocation": {
+    "path": "configs/postassembly_contextual_refiner_v2_allocation.json",
+    "sha256": "29778c7c1f6cf15d04268bd7db96f0ca848ca3911ded18cfa67b2fb0c8b36ea5",
+    "development": "edge_development[0:32]",
+    "assembly_hypothesis_untouched_one_shot_gate": "assembly_incremental_gate[32:64]"
+  },
+  "runner": {
+    "path": "scripts/evaluate_contextual_confidence_v2.py",
+    "sha256": "d351717768e28e424eb67fc220015bfffd714ad8efca33870019f3ca0b34cf85",
+    "actions": ["freeze-development", "score-development"]
+  },
+  "fixed_assets": {
+    "contextual_checkpoint": {
+      "path": "runs/assembly_v1/kaggle/contextual_refiner_smoke_output_v1/contextual_refiner_smoke_best.pt",
+      "sha256": "88bddc0c973df2651b80219903cfc8051f69f846752ebd0b2169eeff8c4f344e",
+      "step": 2500,
+      "state": "ema_state"
+    },
+    "selected_tilenaf": {
+      "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "state": "ema"
+    },
+    "production_seam_tilenaf": {
+      "path": "runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+      "state": "ema"
+    },
+    "hbt": {
+      "path": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  },
+  "frozen_layout_predictor": {
+    "implementation_path": "scripts/evaluate_postassembly_actual_layout.py",
+    "implementation_sha256": "7ae6a87a04b225a7f8a799e59f3bcf913d2110532a988fc9dd6d5ca68487f746",
+    "source_protocol": "configs/postassembly_actual_qap_layout_v1.json:frozen_layout_predictor",
+    "label": "production_qap_w4_b0.05_i25",
+    "scoring_tiles": "selected_tilenaf_ema_uint8",
+    "classical_score": "denoised_C1_equal_rank_fusion",
+    "learned_score": "denoised_hbt_l1",
+    "fusion": "rank fusion C1 plus HBT weight 4.0",
+    "soft_cycle_top_k": 8,
+    "soft_cycle_keep_per_tile": 1,
+    "soft_cycle_keep_fraction": 0.5,
+    "soft_cycle_loop_weight": 1.0,
+    "soft_cycle_reciprocal_weight": 0.35,
+    "qap_iterations": 25,
+    "qap_restarts": 2,
+    "qap_boundary_weight": 0.05,
+    "qap_initial_weight": 0.75,
+    "qap_noisy_components": 3,
+    "qap_noise_scale": 1.0,
+    "qap_refine_swaps": 8,
+    "qap_refine_weak_cells": 32,
+    "qap_seed_formula": "sha256(source_filename)[:4]_little + 7001"
+  },
+  "synthetic_panels": {
+    "master_seed": 20260712,
+    "names": ["primary_kornia", "independent_libjpeg"],
+    "seed_formula": "per_source_seed(master_seed, 'contextual-refiner-v2-' + panel, source_name, 0)"
+  },
+  "target_blind_confidence": {
+    "code_path": "src/puzzle_assembly/contextual_confidence.py",
+    "code_sha256": "15560786946af1b9ad043b26231417b9eba84937a1863e588a1b3d70ad58e7cc",
+    "top_k": 8,
+    "scale_quantile": 0.9,
+    "map_names": [
+      "reciprocal_margin_any",
+      "reciprocal_margin_pair",
+      "rank_gap_pair",
+      "rank_gap_cycle"
+    ],
+    "forbidden_inputs": [
+      "clean or target pixels",
+      "slot_to_target or any target permutation",
+      "position or adjacency correctness",
+      "source name or filename features",
+      "image seam smoothness presented as layout confidence"
+    ],
+    "fixed_checkpoint_feature_policy": "run the checkpoint with its trained layout-confidence feature equal to one, then externally attenuate its already-quantized residual; this avoids an out-of-distribution confidence feature channel",
+    "confidence_placebo": "roll the 24x24 confidence grid by (+5,+7), preserving its histogram"
+  },
+  "candidate_set": {
+    "construction": "Cartesian product of map_names, thresholds, and strengths",
+    "thresholds": [0.0, 0.25, 0.5],
+    "strengths": [0.5, 1.0],
+    "candidate_count": 24,
+    "controls": ["analytic_identity", "fixed_ungated_v1_candidate", "rolled_confidence_placebo"],
+    "threshold_rule": "confidence below threshold becomes zero; retained confidence is not renormalized",
+    "blend_rule": "round_uint8(analytic_identity + strength * confidence * (fixed_candidate - analytic_identity))",
+    "layout_byte_identity_required": true,
+    "zero_confidence_byte_identity_required": true
+  },
+  "development_phase_a": {
+    "source_allocation": "allocation.development",
+    "target_metrics_computed": false,
+    "clean_pixels_may_only_instantiate_synthetic_corruption": true,
+    "stored_arrays_must_be_target_free": true,
+    "freeze_before_scoring": [
+      "corrupted slot tiles",
+      "selected and seam TileNAF outputs",
+      "position_to_slot",
+      "analytic identity",
+      "fixed ungated neural candidate",
+      "all four confidence maps",
+      "all 24 candidate and rolled-placebo renders"
+    ]
+  },
+  "development_selection_rule": {
+    "statistical_unit": "whole source image",
+    "panels_evaluated_separately": true,
+    "paired_bootstrap_resamples": 20000,
+    "paired_bootstrap_seed": 20260722,
+    "eligibility_each_panel": {
+      "mean_ssim_delta_vs_analytic_minimum": 0.0,
+      "paired_bootstrap_95_lower_must_exceed": 0.0,
+      "boundary_band_mae_delta_maximum": 0.0,
+      "target_referenced_seam_error_delta_maximum": 0.0,
+      "texture_gradient_mae_ratio_maximum": 1.005,
+      "face_roi_mean_ssim_delta_minimum_when_evaluable": -0.0005,
+      "source_regressions_below_minus_0_005_maximum": 0,
+      "mean_ssim_advantage_over_rolled_confidence_placebo_minimum": 0.00025
+    },
+    "primary_score": "maximum of the minimum panel mean SSIM delta among eligible candidates",
+    "tie_break_order": [
+      "lower strength",
+      "higher threshold",
+      "map order as listed in target_blind_confidence.map_names"
+    ],
+    "no_eligible_candidate_behavior": "stop v2 and do not open the assembly-hypothesis-untouched gate"
+  },
+  "one_shot_gate_freeze_requirements": {
+    "must_be_written_and_hashed_before_gate_pixels_are_opened": [
+      "selected confidence map",
+      "selected threshold",
+      "selected strength",
+      "development Phase-A manifest and score report hashes",
+      "fixed checkpoint and confidence code hashes",
+      "one-shot gate criteria"
+    ],
+    "gate_source_allocation": "allocation.assembly_hypothesis_untouched_one_shot_gate"
+  },
+  "one_shot_gate_criteria_each_panel": {
+    "mean_ssim_delta_vs_analytic_minimum": 0.0005,
+    "paired_bootstrap_95_lower_must_exceed": 0.0,
+    "wins_minimum_of_32": 18,
+    "boundary_band_mae_delta_maximum": 0.0,
+    "target_referenced_seam_error_delta_maximum": 0.0,
+    "texture_gradient_mae_ratio_maximum": 1.005,
+    "face_roi_mean_ssim_delta_minimum_when_evaluable": -0.0005,
+    "source_regressions_below_minus_0_005_maximum": 0,
+    "mean_ssim_advantage_over_rolled_confidence_placebo_minimum": 0.00025,
+    "layout_byte_identity_required": true,
+    "zero_confidence_byte_identity_required": true
+  },
+  "successful_gate_only_authorizes": "a separately frozen integration confirmation; never direct submission promotion"
+}

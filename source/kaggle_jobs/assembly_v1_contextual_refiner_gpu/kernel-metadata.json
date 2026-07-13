@@ -1,0 +1,20 @@
+{
+  "id": "pasha883/vsos-contextual-refiner-smoke-t4x2-v2",
+  "title": "VSOS Contextual Refiner Smoke T4x2 V2",
+  "code_file": "train.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-contextual-refiner-code",
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-contextual-refiner-frozen-qap-gate"
+  ],
+  "kernel_sources": [
+    "pasha883/vsos-assembly-v1-seam-denoiser-gpu"
+  ]
+}

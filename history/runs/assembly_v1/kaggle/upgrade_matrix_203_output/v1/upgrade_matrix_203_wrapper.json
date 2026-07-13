@@ -1,0 +1,100 @@
+{
+  "command": [
+    "/usr/bin/python3",
+    "/kaggle/working/upgrade_203_code/scripts/evaluate_upgrade_matrix.py",
+    "--data-root",
+    "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "--denoiser",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "--embedding-checkpoint",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+    "--manifest",
+    "/kaggle/working/upgrade_203_code/configs/denoise_splits_seed20260710.json",
+    "--quarantine",
+    "/kaggle/working/upgrade_203_code/configs/denoise_validation_quarantine_v1.json",
+    "--exact-sources",
+    "8",
+    "--real-sources",
+    "16",
+    "--exact-select-count",
+    "4",
+    "--device",
+    "cuda:0",
+    "--batch-size",
+    "512",
+    "--chunk-size",
+    "64",
+    "--output",
+    "/kaggle/working/upgrade_matrix_203.json",
+    "--frozen-layouts",
+    "/kaggle/working/upgrade_matrix_203_frozen_layouts.npz",
+    "--overwrite"
+  ],
+  "frozen_layouts": "/kaggle/working/upgrade_matrix_203_frozen_layouts.npz",
+  "frozen_layouts_sha256": "289d1a2f5c5699dc87cdca865e914c3b85618ad90ee563e5731ffe8984cad547",
+  "hardware": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "matmul_means": [
+      0.07419581711292267,
+      0.016631320118904114
+    ],
+    "python": "3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]",
+    "torch": "2.10.0+cu128"
+  },
+  "inputs": {
+    "axis_module_sha256": "93babba47c4176930485af2ab36bc2c3d86d48dd20e2f751a4230df5d1dff662",
+    "base_code_root": "/kaggle/input/datasets/pasha883/vsos-solver-rework-night-code",
+    "base_qap_sha256": "b8a5e1da67387fd04effd979270ca16925aceab23d37083eda108c6e3e349c32",
+    "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "overlay_axis_sha256": "93babba47c4176930485af2ab36bc2c3d86d48dd20e2f751a4230df5d1dff662",
+    "overlay_root": "/kaggle/input/datasets/pasha883/vsos-assembly-upgrade-203-code",
+    "overlay_script_sha256": "8c4c2927770d117d3f8d7217aeea3cb12ddbca93bb809fa03a9c8fd289345798",
+    "runtime_root": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime",
+    "script_sha256": "8c4c2927770d117d3f8d7217aeea3cb12ddbca93bb809fa03a9c8fd289345798"
+  },
+  "kind": "assembly_upgrade_203_matrix_wrapper",
+  "output": "/kaggle/working/upgrade_matrix_203.json",
+  "output_sha256": "27581dd51bf54b029dc7ee6b021f9b107fb1dae06947aa5d7d6c25e0223ee8a5",
+  "promoted_label": "qap_w1_b0.05_i25",
+  "promoted_result": {
+    "bootstrap_95_ci": [
+      0.00017481806287029863,
+      0.003975690918244345
+    ],
+    "losses": 3,
+    "mean_delta": 0.002046263980019114,
+    "mean_ssim": 0.18486617900797297,
+    "median_delta": 0.0012864074796147401,
+    "ties": 0,
+    "wins": 13
+  },
+  "promotion_status": "promotion_gate_failed",
+  "returncode": 0,
+  "run_seconds": 1193.0792518169999,
+  "schema_version": 1,
+  "seconds": 1269.7790225039998,
+  "status": "complete"
+}

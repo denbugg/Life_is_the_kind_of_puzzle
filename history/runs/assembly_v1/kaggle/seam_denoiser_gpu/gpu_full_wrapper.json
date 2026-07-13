@@ -1,0 +1,31 @@
+{
+  "checkpoint": "/kaggle/working/seam_denoiser_gpu.pt",
+  "kind": "assembly_v1_seam_denoiser_gpu_wrapper",
+  "probe": {
+    "arch_list": [
+      "sm_50",
+      "sm_60",
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90"
+    ],
+    "capabilities": [
+      [
+        6,
+        0
+      ]
+    ],
+    "compiled_cuda": "12.4",
+    "cuda_available": true,
+    "device_count": 1,
+    "devices": [
+      "Tesla P100-PCIE-16GB"
+    ],
+    "matmul_mean": 0.01992412656545639,
+    "torch": "2.6.0+cu124"
+  },
+  "schema_version": 1,
+  "seconds": 1284.0545065402985
+}

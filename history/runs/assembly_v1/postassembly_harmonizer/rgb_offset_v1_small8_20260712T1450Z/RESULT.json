@@ -1,0 +1,61 @@
+{
+  "primary_comparison": {
+    "independent_libjpeg": {
+      "fraction_ssim_regression_gt_0_01": 0.0,
+      "mean_ssim_delta": 0.057218330573813175,
+      "mean_target_referenced_seam_error_delta": -0.025715446504688835,
+      "paired_bootstrap_95_ci": [
+        0.04587377818263369,
+        0.06754449408877633
+      ],
+      "source_count": 8,
+      "wins_ties_losses": [
+        8,
+        0,
+        0
+      ]
+    },
+    "primary_kornia": {
+      "fraction_ssim_regression_gt_0_01": 0.0,
+      "mean_ssim_delta": 0.05737107762644471,
+      "mean_target_referenced_seam_error_delta": -0.02541913836790755,
+      "paired_bootstrap_95_ci": [
+        0.04711046417536273,
+        0.06684155378806468
+      ],
+      "source_count": 8,
+      "wins_ties_losses": [
+        8,
+        0,
+        0
+      ]
+    }
+  },
+  "primary_gate": {
+    "evaluable": false,
+    "passed": false,
+    "per_panel": {
+      "independent_libjpeg": {
+        "checks": {
+          "bootstrap_lower_above_zero": true,
+          "mean_ssim_delta_at_least_0_005": true,
+          "target_referenced_seam_error_nonregression": true
+        },
+        "passed": true
+      },
+      "primary_kornia": {
+        "checks": {
+          "bootstrap_lower_above_zero": true,
+          "mean_ssim_delta_at_least_0_005": true,
+          "target_referenced_seam_error_nonregression": true
+        },
+        "passed": true
+      }
+    },
+    "submission_promotion_allowed": false
+  },
+  "report": "runs/assembly_v1/postassembly_harmonizer/rgb_offset_v1_small8_20260712T1450Z/report.json",
+  "report_sha256": "83debe51c3a3936b6c2d1875647ecc92c09d51d35ae1e52228bca0694681bbc0",
+  "source_count": 8,
+  "status": "partial_smoke_no_gate"
+}

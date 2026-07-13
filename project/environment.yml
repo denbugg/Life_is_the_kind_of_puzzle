@@ -1,0 +1,28 @@
+name: puzzle-denoise
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - pillow
+  - scipy=1.16.3
+  - pandas
+  - pyarrow
+  - psutil
+  - scikit-image
+  - scikit-learn
+  - lightgbm
+  - opencv
+  - pytorch
+  - torchvision
+  - tqdm
+  - matplotlib
+  - jupyter
+  - pytest
+  - pyyaml
+  - pip
+  - pip:
+      - kaggle
+      - kornia==0.8.3
+      - ortools==9.14.6206
+      - -e .

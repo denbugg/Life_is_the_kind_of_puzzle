@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "kind": "bounded_postassembly_contextual_refiner_pilot",
+  "status": "authorized_for_bounded_kaggle_smoke_not_promotion",
+  "created_utc": "2026-07-12T15:08:53Z",
+  "scope": {
+    "development_only": true,
+    "submission_promotion_allowed": false,
+    "layout_is_frozen_and_may_not_change": true,
+    "target_pixels_available_to_deployable_model": false,
+    "target_pixels_available_to_training_loss_and_separate_scorer": true,
+    "successful_smoke_only_authorizes": "continuation to at most 10000 total updates and a new source-disjoint confirmation",
+    "candidate_graph_oracle_files_may_be_read_or_modified": false
+  },
+  "evidence_gate": {
+    "base_harmonizer_protocol": {
+      "path": "configs/postassembly_rgb_offset_v1.json",
+      "sha256": "e004c27e4d7ceba5e00b5068c6c5737253e505532a9e86b3edd584543401745b"
+    },
+    "actual_layout_protocol": {
+      "path": "configs/postassembly_actual_qap_layout_v1.json",
+      "sha256": "372bda4598d86865bec49db9ac329948ffb02b1be1bd5f4ec7f9fa707f7b610e"
+    },
+    "actual_layout_report": {
+      "path": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_full32_score_20260712T1520Z/report.json",
+      "sha256": "f2f5a1699e5efe165f42989eb860241c43573a6e0e677efe0f0255ffe184228e",
+      "status": "full32_pass_requires_new_confirmation",
+      "primary_kornia_mean_ssim_delta": 0.012862418935899112,
+      "independent_libjpeg_mean_ssim_delta": 0.013110697499736548,
+      "wins_ties_losses_each_panel": [32, 0, 0],
+      "gate_passed": true
+    }
+  },
+  "authoritative_inputs": {
+    "manifest": {
+      "path": "configs/denoise_splits_seed20260710.json",
+      "sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345"
+    },
+    "quarantine": {
+      "path": "configs/denoise_validation_quarantine_v1.json",
+      "sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215"
+    },
+    "audit_exclusion": {
+      "path": "configs/assembly_audit_exclusion_v1.json",
+      "sha256": "772e89ad4f633d2050f8ad3806cd24bffed132bcd8914951b7b8edff3f608ab6"
+    },
+    "selected_tilenaf": {
+      "path": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+      "state": "ema"
+    },
+    "production_seam_tilenaf": {
+      "path": "runs/assembly_v1/kaggle/seam_denoiser_gpu/seam_denoiser_gpu.pt",
+      "sha256": "f973c7e606a112020c527bb72277b82586df915edc829a22305e587b35aec1b9",
+      "state": "ema"
+    },
+    "frozen_actual_layout_renders": {
+      "path": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_full32_score_20260712T1520Z/frozen_renders",
+      "render_manifest": "runs/assembly_v1/postassembly_harmonizer/actual_qap_v1_full32_score_20260712T1520Z/render_manifest.json",
+      "source_count": 32,
+      "panel_count": 2,
+      "layout_must_be_identical_for_all_arms": true
+    }
+  },
+  "source_protocol": {
+    "unit_of_split": "whole source image",
+    "train": {
+      "split": "edge_train",
+      "selection": "first 512 names in authoritative source_names_for_split output",
+      "source_count": 512,
+      "corruption_panels": ["primary_kornia"],
+      "replicas_per_source": 1,
+      "may_be_used_for_gradient_updates": true
+    },
+    "correct_layout_development_gate": {
+      "split": "assembly_cal",
+      "selection": "first 32 names in authoritative source_names_for_split output",
+      "source_count": 32,
+      "corruption_panels": ["primary_kornia", "independent_libjpeg"],
+      "may_be_used_for_checkpoint_selection": true,
+      "may_be_used_for_gradient_updates": false
+    },
+    "frozen_actual_qap_gate": {
+      "selection": "exact 32 sources and 64 frozen renders from evidence_gate actual-layout report",
+      "source_count": 32,
+      "corruption_panels": ["primary_kornia", "independent_libjpeg"],
+      "score_each_checkpoint_at_most_once": true,
+      "may_be_used_for_checkpoint_selection": false,
+      "may_be_used_for_gradient_updates": false
+    },
+    "sealed": [
+      "assembly_incremental_gate outside an explicitly allocated future confirmation",
+      "assembly_audit_exposed",
+      "assembly_final_audit",
+      "puzzle/test"
+    ]
+  },
+  "input_renderer": {
+    "correct_layout_only_for_training": true,
+    "arms": [
+      "preanalytic fixed 0.5 selected/seam TileNAF blend",
+      "seam-graph RGB harmonized image",
+      "edge-aware 5x5 tile consensus residual",
+      "seam mask",
+      "target-blind seam confidence",
+      "frozen-layout confidence"
+    ],
+    "target_is_never_used_to_build_input_channels": true,
+    "uint8_rounding_before_refiner": true
+  },
+  "model": {
+    "class": "puzzle_assembly.contextual_refiner.ContextualResidualNAF",
+    "feature_channels": 13,
+    "width": 48,
+    "blocks": 12,
+    "downsample": 4,
+    "parameter_count_expected": 245766,
+    "zero_initialized_output_heads": true,
+    "base_residual_limit_rgb_255": 6.0,
+    "seam_residual_limit_rgb_255": 2.0,
+    "maximum_total_per_channel_change_rgb_255": 8.0,
+    "can_change_layout": false
+  },
+  "training": {
+    "seed": 20260712,
+    "smoke_updates": 2500,
+    "maximum_updates_after_signal": 10000,
+    "global_batch_size": 2,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0001,
+    "ema_decay": 0.999,
+    "scheduler": "cosine with 100-update linear warmup",
+    "automatic_mixed_precision": true,
+    "augmentations": [
+      "whole-image horizontal flip",
+      "whole-image vertical flip",
+      "whole-image transpose"
+    ],
+    "forbidden_augmentations": [
+      "random tile permutation used as a supervised restoration target",
+      "target-dependent input channels",
+      "geometry-changing output warps"
+    ],
+    "loss": {
+      "pixel_charbonnier": 1.0,
+      "ssim": 0.15,
+      "seam_extra": 0.5,
+      "gradient": 0.1,
+      "top_quartile_nonseam_texture": 0.1,
+      "identity_residual_regularizer": 0.02
+    }
+  },
+  "baselines_and_falsifications": [
+    "raw corrupted image in the same frozen layout",
+    "current fixed 0.5 TileNAF blend",
+    "analytic seam-graph RGB input to the neural refiner",
+    "zero-confidence identity arm",
+    "deterministically shuffled context-channel placebo",
+    "naive 5x5 and bilateral tile-offset controls"
+  ],
+  "metrics": {
+    "primary": "official RGB SSIM on uint8 output, macro-averaged by whole source then panel",
+    "paired_bootstrap_resamples": 20000,
+    "paired_bootstrap_seed": 20260712,
+    "secondary": [
+      "boundary-band MAE",
+      "target-referenced seam-gradient error",
+      "non-seam top-quartile target-gradient MAE",
+      "face-ROI SSIM from frozen target-only OpenCV Haar boxes when at least 8 sources contain a face",
+      "mean absolute RGB change",
+      "fraction of pixels at hard residual bound"
+    ]
+  },
+  "smoke_gate_2500": {
+    "correct_layout_each_panel": {
+      "mean_ssim_delta_vs_analytic_minimum": 0.005,
+      "paired_bootstrap_95_lower_must_exceed": 0.0,
+      "boundary_band_mae_delta_maximum": 0.0,
+      "texture_gradient_mae_ratio_maximum": 1.01,
+      "fraction_source_ssim_regression_below_minus_0_01_maximum": 0.0
+    },
+    "frozen_actual_qap_each_panel": {
+      "mean_ssim_delta_vs_analytic_minimum": 0.002,
+      "paired_bootstrap_95_lower_must_exceed": 0.0,
+      "target_referenced_seam_error_delta_maximum": 0.0,
+      "texture_gradient_mae_ratio_maximum": 1.01,
+      "face_roi_mean_ssim_delta_minimum_when_evaluable": -0.001,
+      "fraction_source_ssim_regression_below_minus_0_01_maximum": 0.0,
+      "layout_byte_identity_required": true
+    },
+    "placebo": {
+      "candidate_mean_ssim_advantage_over_shuffled_context_minimum": 0.001,
+      "zero_confidence_arm_must_equal_analytic_input_byte_exactly": true
+    },
+    "all_checks_required": true,
+    "submission_promotion_allowed": false
+  },
+  "stop_and_pivot": {
+    "stop_after_2500_if": [
+      "either panel has non-positive correct-layout SSIM delta",
+      "frozen actual-layout mean SSIM delta is negative",
+      "boundary, seam, texture, or face preservation gate fails materially",
+      "candidate does not beat shuffled-context placebo",
+      "output is not byte-identical in zero-confidence mode"
+    ],
+    "continue_to_at_most_10000_only_if": "all smoke_gate_2500 checks pass",
+    "defer_transformer_variant_until": "bounded NAF passes both correct-layout and frozen-QAP gates and then saturates"
+  },
+  "code": {
+    "model_path": "src/puzzle_assembly/contextual_refiner.py",
+    "model_sha256_at_design_freeze": "5ab4a18be6689ff722b45a8fa73aeae820ed26e420a213cbf4cb4ab31ca1523a",
+    "loss_path": "src/puzzle_assembly/contextual_refiner_training.py",
+    "loss_sha256_at_design_freeze": "c25e83536c73fa2e7fc7df04dbe684845b080f3ed3db537a8442edfd7d0fe2de"
+  }
+}

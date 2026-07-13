@@ -1,0 +1,14 @@
+{
+  "id": "pasha883/vsos-assembly-v1-cpu-benchmark",
+  "title": "VSOS Assembly V1 CPU Benchmark",
+  "code_file": "evaluate.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "assets": {
+    "denoiser": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+      "sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734"
+    },
+    "hbt": {
+      "path": "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+      "sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787"
+    }
+  },
+  "bundle": {
+    "files": {
+      "configs/denoise_splits_seed20260710.json": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+      "configs/denoise_validation_quarantine_v1.json": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+      "scripts/train_binary_edge_verifier.py": "ef3686ebc015d6647ddcc8878d3ac4b9cafb558ab4408667206da282bdaebab9",
+      "src/puzzle_assembly/binary_edge_verifier.py": "780ea4ca9d44007cf2bc7673880046ea4faa297ec54ba508896f31432a6fd38c"
+    }
+  },
+  "command": [
+    "/usr/bin/python3",
+    "/kaggle/input/vsos-binary-edge-verifier-code/scripts/train_binary_edge_verifier.py",
+    "--data-root",
+    "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+    "--denoiser",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/selected_tilenaf_synth_50k.pt",
+    "--embedding-checkpoint",
+    "/kaggle/input/datasets/pasha883/vsos-assembly-v1-runtime/hbt_d320_denoised_rgb_sobel.pt",
+    "--manifest",
+    "/kaggle/input/vsos-binary-edge-verifier-code/configs/denoise_splits_seed20260710.json",
+    "--quarantine",
+    "/kaggle/input/vsos-binary-edge-verifier-code/configs/denoise_validation_quarantine_v1.json",
+    "--train-sources",
+    "128",
+    "--val-sources",
+    "8",
+    "--epochs",
+    "2",
+    "--channels",
+    "64",
+    "--side-band",
+    "8",
+    "--negative-ratio",
+    "4",
+    "--batch-size",
+    "1024",
+    "--score-batch-size",
+    "4096",
+    "--denoise-batch-size",
+    "512",
+    "--device",
+    "cuda",
+    "--data-parallel",
+    "--output",
+    "/kaggle/working/binary_edge_verifier_pilot.pt",
+    "--report",
+    "/kaggle/working/binary_edge_verifier_pilot.json"
+  ],
+  "data_root": "/kaggle/input/datasets/pasha883/vsos-ai-initiative-pazzle",
+  "error": "RuntimeError: training exited with code -9",
+  "hardware": {
+    "cuda": "12.8",
+    "device_count": 2,
+    "devices": [
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 0,
+        "name": "Tesla T4",
+        "tensor_op": -0.05591271072626114
+      },
+      {
+        "capability": [
+          7,
+          5
+        ],
+        "index": 1,
+        "name": "Tesla T4",
+        "tensor_op": 0.10553731769323349
+      }
+    ],
+    "nvidia_smi": "Sun Jul 12 22:04:11 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.159.04             Driver Version: 580.159.04     CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   43C    P0             27W /   70W |     153MiB /  15360MiB |      1%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n|   1  Tesla T4                       Off |   00000000:00:05.0 Off |                    0 |\n| N/A   42C    P0             27W /   70W |     153MiB /  15360MiB |      5%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|    0   N/A  N/A               7      C   python3                                 150MiB |\n|    1   N/A  N/A               7      C   python3                                 150MiB |\n+-----------------------------------------------------------------------------------------+\n",
+    "python": "3.12.13",
+    "torch": "2.10.0+cu128"
+  },
+  "kind": "binary_edge_verifier_kaggle_wrapper",
+  "safe_for_submission": false,
+  "schema_version": 1,
+  "seconds": 2458.117344379425,
+  "started_unix": 1783893787.100946,
+  "status": "failed",
+  "tests": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "tests/test_binary_edge_verifier.py"
+    ],
+    "stdout": "..                                                                       [100%]\n=============================== warnings summary ===============================\n../../../usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: 43 warnings\n  /usr/local/lib/python3.12/dist-packages/torch/jit/_script.py:1480: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.\n    warnings.warn(\n\n../../../usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475\n  /usr/local/lib/python3.12/dist-packages/_pytest/cacheprovider.py:475: PytestCacheWarning: could not create cache path /kaggle/input/vsos-binary-edge-verifier-code/.pytest_cache/v/cache/nodeids: [Errno 30] Read-only file system: '/kaggle/input/vsos-binary-edge-verifier-code/pytest-cache-files-lgt7kr7i'\n    config.cache.set(\"cache/nodeids\", sorted(self.cached_nodeids))\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n2 passed, 44 warnings in 4.98s\n"
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"/kaggle/src/script.py\", line 202, in main\n    raise RuntimeError(f\"training exited with code {completed.returncode}\")\nRuntimeError: training exited with code -9\n"
+}

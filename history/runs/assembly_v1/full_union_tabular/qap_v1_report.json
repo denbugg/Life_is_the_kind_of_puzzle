@@ -1,0 +1,1003 @@
+{
+  "aggregate": {
+    "adjacency_wins": 29,
+    "mean_adjacency_delta": 0.0002406023550724501,
+    "mean_baseline_adjacency": 0.06235846920289856,
+    "mean_baseline_ssim": 0.19359133823894803,
+    "mean_residual_adjacency": 0.06259907155797101,
+    "mean_residual_ssim": 0.19362100016534295,
+    "mean_ssim_delta": 2.966192639491938e-05,
+    "records": 64,
+    "ssim_wins": 34
+  },
+  "hgb_weight": 0.25,
+  "kind": "full_union_hgb_qap_residual_evaluation",
+  "model": "runs/assembly_v1/full_union_tabular/v1/full_union_tabular.joblib",
+  "model_sha256": "c5929a76c843f7541119f622bf1c5b6774006ad79e3811407e36edfe60bd0f10",
+  "panels": {
+    "independent_libjpeg": {
+      "mean_adjacency_delta": 0.00016983695652173804,
+      "mean_baseline_ssim": 0.19458804524801213,
+      "mean_residual_ssim": 0.19471414460377418,
+      "mean_ssim_delta": 0.00012609935576206018,
+      "records": 32
+    },
+    "primary_kornia": {
+      "mean_adjacency_delta": 0.00031136775362318925,
+      "mean_baseline_ssim": 0.19259463122988396,
+      "mean_residual_ssim": 0.19252785572691172,
+      "mean_ssim_delta": -6.67755029722598e-05,
+      "records": 32
+    }
+  },
+  "qap": {
+    "initial": "frozen qap_w4 layout",
+    "iterations": 25,
+    "restarts": 2
+  },
+  "records": [
+    {
+      "baseline": {
+        "adjacency": 0.0480072463768116,
+        "ssim": 0.21424393876834524
+      },
+      "opaque_id": "00e4d63ae5655880b13678f73e1097c3",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.0480072463768116,
+        "qap_objective": 77.7317996623693,
+        "qap_restart": 0,
+        "ssim": 0.21425542313086396
+      },
+      "source_name": "img_002002.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06068840579710145,
+        "ssim": 0.2041013296628007
+      },
+      "opaque_id": "014a372bd55312ccd9959ed86d3154d1",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06340579710144928,
+        "qap_objective": 85.2435275456024,
+        "qap_restart": 1,
+        "ssim": 0.20391452756416498
+      },
+      "source_name": "img_005180.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.08786231884057971,
+        "ssim": 0.08496789943335605
+      },
+      "opaque_id": "061a8fea6cf9e09f26320ef5bf8d6be7",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.08605072463768115,
+        "qap_objective": 67.91885712625226,
+        "qap_restart": 0,
+        "ssim": 0.08478111614133592
+      },
+      "source_name": "img_000945.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.028985507246376812,
+        "ssim": 0.21753875855745486
+      },
+      "opaque_id": "07c486dc351d107f441e16b08fb76fcc",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.028079710144927536,
+        "qap_objective": 78.09430224485986,
+        "qap_restart": 1,
+        "ssim": 0.21770672466858246
+      },
+      "source_name": "img_006537.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.057971014492753624,
+        "ssim": 0.17931210662479924
+      },
+      "opaque_id": "11c92073090e0c1e1b35494e1d8ba7f0",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.058876811594202896,
+        "qap_objective": 84.4064663332072,
+        "qap_restart": 1,
+        "ssim": 0.17945729920581652
+      },
+      "source_name": "img_005622.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04891304347826087,
+        "ssim": 0.17409899635587045
+      },
+      "opaque_id": "134c44aa7533fbde935c5e91fd9273ed",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.050724637681159424,
+        "qap_objective": 88.07259869190166,
+        "qap_restart": 0,
+        "ssim": 0.1730460351362223
+      },
+      "source_name": "img_002947.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.022644927536231884,
+        "ssim": 0.5177624584238086
+      },
+      "opaque_id": "18287f927254a31a35bb34bbedcd7062",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.022644927536231884,
+        "qap_objective": 101.03930307640113,
+        "qap_restart": 0,
+        "ssim": 0.5181772307546205
+      },
+      "source_name": "img_001277.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07518115942028986,
+        "ssim": 0.16462337917561606
+      },
+      "opaque_id": "1aa1d9966e3c96649a40857fcddd69e5",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.07518115942028986,
+        "qap_objective": 81.07294315645122,
+        "qap_restart": 0,
+        "ssim": 0.1651884657538162
+      },
+      "source_name": "img_005714.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.05797101449275363,
+        "ssim": 0.19871127543143838
+      },
+      "opaque_id": "24ef8a2c5711eef61c7144ecbbd39ce3",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.05706521739130435,
+        "qap_objective": 71.02179618388763,
+        "qap_restart": 0,
+        "ssim": 0.19970034184517316
+      },
+      "source_name": "img_000393.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06702898550724637,
+        "ssim": 0.30287905178456603
+      },
+      "opaque_id": "2c4983ade9e3364a410bd11e29421309",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.0661231884057971,
+        "qap_objective": 62.49577512977994,
+        "qap_restart": 1,
+        "ssim": 0.3027805531741112
+      },
+      "source_name": "img_004107.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06159420289855073,
+        "ssim": 0.16390625885658275
+      },
+      "opaque_id": "3172782c80d7a8c4dca79beca846c1a3",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06431159420289856,
+        "qap_objective": 72.49688835026173,
+        "qap_restart": 1,
+        "ssim": 0.16423146071925937
+      },
+      "source_name": "img_005478.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.10054347826086957,
+        "ssim": 0.056248390946831685
+      },
+      "opaque_id": "377d689c3d4ed98e4cb3b2ad15b2a965",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.09873188405797101,
+        "qap_objective": 66.16222127910005,
+        "qap_restart": 0,
+        "ssim": 0.056774312450016885
+      },
+      "source_name": "img_004682.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07246376811594202,
+        "ssim": 0.12410750192093312
+      },
+      "opaque_id": "3ac64d20bd1733701f67b4b58ddbf053",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.07518115942028986,
+        "qap_objective": 71.66251422343775,
+        "qap_restart": 0,
+        "ssim": 0.12493295674091465
+      },
+      "source_name": "img_006080.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.05706521739130435,
+        "ssim": 0.09903176018052164
+      },
+      "opaque_id": "3bb9671bd2fbc49eb1f5b395b976f73e",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.060688405797101455,
+        "qap_objective": 79.0560279045836,
+        "qap_restart": 0,
+        "ssim": 0.09943886556242153
+      },
+      "source_name": "img_005738.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.0661231884057971,
+        "ssim": 0.21189808119731945
+      },
+      "opaque_id": "3c9d4e42ed7a4e4abb418161d2b2be57",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06702898550724637,
+        "qap_objective": 64.60003965244978,
+        "qap_restart": 1,
+        "ssim": 0.2116976848370594
+      },
+      "source_name": "img_004125.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.0625,
+        "ssim": 0.15002587299450873
+      },
+      "opaque_id": "4249804d140cd57d78f1f496807d859d",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.060688405797101455,
+        "qap_objective": 73.53175843138015,
+        "qap_restart": 0,
+        "ssim": 0.15006202098856902
+      },
+      "source_name": "img_002965.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.08333333333333334,
+        "ssim": 0.15965052685239758
+      },
+      "opaque_id": "439e9f0061801eb757722ed86bc018d2",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.08423913043478261,
+        "qap_objective": 83.59058191363292,
+        "qap_restart": 1,
+        "ssim": 0.1591395490313462
+      },
+      "source_name": "img_005714.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06521739130434782,
+        "ssim": 0.14791847948395836
+      },
+      "opaque_id": "47239a52148a2418aef0fd7ff1f53122",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06340579710144928,
+        "qap_objective": 72.7355563912628,
+        "qap_restart": 0,
+        "ssim": 0.14826922139031992
+      },
+      "source_name": "img_006276.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.0625,
+        "ssim": 0.12364054368721283
+      },
+      "opaque_id": "492f1272b654f44c6f17c62c0cb8df09",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.060688405797101455,
+        "qap_objective": 63.21458832714707,
+        "qap_restart": 0,
+        "ssim": 0.12346253834308192
+      },
+      "source_name": "img_003366.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.10144927536231885,
+        "ssim": 0.12982253573108082
+      },
+      "opaque_id": "4b4ed9de73f7a02d31fee68ac2792d52",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.10144927536231885,
+        "qap_objective": 64.18076364389563,
+        "qap_restart": 0,
+        "ssim": 0.13013426438188067
+      },
+      "source_name": "img_006858.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07155797101449275,
+        "ssim": 0.12834713096005942
+      },
+      "opaque_id": "4d20dfaf0421e4a3a6d67b13c9ad1edd",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.06974637681159421,
+        "qap_objective": 76.17973963915138,
+        "qap_restart": 0,
+        "ssim": 0.12820888619519127
+      },
+      "source_name": "img_005789.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06521739130434782,
+        "ssim": 0.09146235381251261
+      },
+      "opaque_id": "57bef43f1eb8efdc894b9230e29af1f9",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06974637681159421,
+        "qap_objective": 78.46080954145,
+        "qap_restart": 1,
+        "ssim": 0.09165716611236517
+      },
+      "source_name": "img_005738.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06431159420289856,
+        "ssim": 0.12045017836114978
+      },
+      "opaque_id": "5ce40dc33a38cc8366068acdaa856347",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06340579710144928,
+        "qap_objective": 80.11021782260214,
+        "qap_restart": 0,
+        "ssim": 0.12085894074654617
+      },
+      "source_name": "img_003406.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.024456521739130436,
+        "ssim": 0.5171077969780712
+      },
+      "opaque_id": "64a06669ae1d8159e2a437e3f6c38bcc",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.022644927536231884,
+        "qap_objective": 104.35636048313464,
+        "qap_restart": 1,
+        "ssim": 0.5173119754204959
+      },
+      "source_name": "img_001277.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06340579710144928,
+        "ssim": 0.141247931389381
+      },
+      "opaque_id": "6577b08c1aa1dc60541f771cb5d6ae5a",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.0625,
+        "qap_objective": 74.30828785136109,
+        "qap_restart": 1,
+        "ssim": 0.14158006490033695
+      },
+      "source_name": "img_002965.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.060688405797101455,
+        "ssim": 0.18012391672193126
+      },
+      "opaque_id": "65a5706dff19bbfdefcac09f996209df",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.059782608695652176,
+        "qap_objective": 84.38113660481758,
+        "qap_restart": 0,
+        "ssim": 0.1800316039866725
+      },
+      "source_name": "img_005622.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.0661231884057971,
+        "ssim": 0.2020869858232456
+      },
+      "opaque_id": "68e340cd3e462cfa9e985909c582bf51",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.06702898550724638,
+        "qap_objective": 69.15658039102273,
+        "qap_restart": 1,
+        "ssim": 0.20139739355908184
+      },
+      "source_name": "img_000393.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.05344202898550725,
+        "ssim": 0.13765781586550596
+      },
+      "opaque_id": "69cf5da1a893626d4fe28e59456ee167",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.05615942028985507,
+        "qap_objective": 71.55210165121244,
+        "qap_restart": 0,
+        "ssim": 0.1371064263644464
+      },
+      "source_name": "img_006080.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.08333333333333333,
+        "ssim": 0.24008240232416797
+      },
+      "opaque_id": "6bab4a673354e05566147947439a1f9f",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.08333333333333333,
+        "qap_objective": 71.19538200777315,
+        "qap_restart": 1,
+        "ssim": 0.24018351739590935
+      },
+      "source_name": "img_002002.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.041666666666666664,
+        "ssim": 0.23384334458458236
+      },
+      "opaque_id": "74afa52655097211a0b621fbc58313da",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.04076086956521739,
+        "qap_objective": 87.31454739051405,
+        "qap_restart": 1,
+        "ssim": 0.2341138138544614
+      },
+      "source_name": "img_002087.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.049818840579710144,
+        "ssim": 0.23603512683677208
+      },
+      "opaque_id": "76deadb9b26730f79ad694752dd25cb8",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.049818840579710144,
+        "qap_objective": 74.09363189619617,
+        "qap_restart": 1,
+        "ssim": 0.23681311126658344
+      },
+      "source_name": "img_001223.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04891304347826087,
+        "ssim": 0.25808140384944317
+      },
+      "opaque_id": "7e684cf0c786ceb2c82006124003666c",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.04891304347826087,
+        "qap_objective": 123.0763824369089,
+        "qap_restart": 0,
+        "ssim": 0.2576298916199343
+      },
+      "source_name": "img_005536.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07427536231884058,
+        "ssim": 0.12147330423289548
+      },
+      "opaque_id": "83be449ff2efd44c97079890afaa2f00",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.07246376811594203,
+        "qap_objective": 70.13052110574208,
+        "qap_restart": 0,
+        "ssim": 0.121322316863541
+      },
+      "source_name": "img_002256.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.08423913043478261,
+        "ssim": 0.1257413318350437
+      },
+      "opaque_id": "8401de988fb5be636c908701a87f937d",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.08152173913043478,
+        "qap_objective": 62.99431613059132,
+        "qap_restart": 0,
+        "ssim": 0.12599528124473539
+      },
+      "source_name": "img_003366.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.08423913043478261,
+        "ssim": 0.2164643795012943
+      },
+      "opaque_id": "85357d3b300567e0191c93d0409899f5",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.08695652173913043,
+        "qap_objective": 62.83213352599705,
+        "qap_restart": 1,
+        "ssim": 0.2147430021198858
+      },
+      "source_name": "img_004125.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07065217391304349,
+        "ssim": 0.12812102409076065
+      },
+      "opaque_id": "89cc749e2340cc6717e9f48e2beb432a",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06793478260869565,
+        "qap_objective": 70.50108011325938,
+        "qap_restart": 1,
+        "ssim": 0.128323997291615
+      },
+      "source_name": "img_006149.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04076086956521739,
+        "ssim": 0.19023237779200897
+      },
+      "opaque_id": "8a872ba79c515b7cd51923539e362c13",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.03894927536231884,
+        "qap_objective": 87.65913373527292,
+        "qap_restart": 0,
+        "ssim": 0.18920149171584097
+      },
+      "source_name": "img_005180.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07065217391304349,
+        "ssim": 0.1071322757980967
+      },
+      "opaque_id": "8c6d2e9bd6e6e84b00cfa115fd136c8e",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.07246376811594203,
+        "qap_objective": 69.25987283959111,
+        "qap_restart": 1,
+        "ssim": 0.1070666096621692
+      },
+      "source_name": "img_006149.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.05434782608695652,
+        "ssim": 0.3168273841025408
+      },
+      "opaque_id": "90585852de0f3aab618b9ff7bf26ba66",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.05525362318840579,
+        "qap_objective": 63.243811169781836,
+        "qap_restart": 1,
+        "ssim": 0.3193280943393633
+      },
+      "source_name": "img_002754.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.09420289855072464,
+        "ssim": 0.0663291823913552
+      },
+      "opaque_id": "96ae2a6ed4c56b914f3a7eec2f43663d",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.09692028985507246,
+        "qap_objective": 69.9891603262513,
+        "qap_restart": 1,
+        "ssim": 0.0659025335641726
+      },
+      "source_name": "img_000945.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.034420289855072464,
+        "ssim": 0.2627732718443742
+      },
+      "opaque_id": "9ad4fe048175b62059409754c2b0a8cc",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.034420289855072464,
+        "qap_objective": 73.90379722195212,
+        "qap_restart": 1,
+        "ssim": 0.26354675899933894
+      },
+      "source_name": "img_006537.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.0588768115942029,
+        "ssim": 0.27094861762570466
+      },
+      "opaque_id": "9d319d10106d5ab3cf4e2943fcdce0cc",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.059782608695652176,
+        "qap_objective": 70.4724300698028,
+        "qap_restart": 1,
+        "ssim": 0.27115963422826234
+      },
+      "source_name": "img_004264.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.060688405797101455,
+        "ssim": 0.2640810899169132
+      },
+      "opaque_id": "9efa4936d17386c44b53f39307245759",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.057971014492753624,
+        "qap_objective": 81.2200512554351,
+        "qap_restart": 0,
+        "ssim": 0.26337448778127587
+      },
+      "source_name": "img_002285.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04076086956521739,
+        "ssim": 0.27588915734922725
+      },
+      "opaque_id": "9f9e0eddbb69fdd1fa3ce6d9cc69cc1b",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.04076086956521739,
+        "qap_objective": 80.0103234927141,
+        "qap_restart": 1,
+        "ssim": 0.27578401761931887
+      },
+      "source_name": "img_002285.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.058876811594202896,
+        "ssim": 0.1747942838867795
+      },
+      "opaque_id": "ac34e09c72127ef6f4cb808338467ca9",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.059782608695652176,
+        "qap_objective": 83.17296482862439,
+        "qap_restart": 1,
+        "ssim": 0.17457667993850637
+      },
+      "source_name": "img_004818.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06884057971014493,
+        "ssim": 0.20441101518971458
+      },
+      "opaque_id": "af98f8f5a4a6cd90ac7e8b4e0369f1fe",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.07065217391304349,
+        "qap_objective": 78.25185311932292,
+        "qap_restart": 1,
+        "ssim": 0.20479169004259282
+      },
+      "source_name": "img_002626.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.08423913043478261,
+        "ssim": 0.1900408586202793
+      },
+      "opaque_id": "b1af39d63765bc2e5967e89f699941bb",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.08514492753623189,
+        "qap_objective": 87.2395841708174,
+        "qap_restart": 1,
+        "ssim": 0.1896086370351443
+      },
+      "source_name": "img_004818.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06340579710144928,
+        "ssim": 0.10590491738339479
+      },
+      "opaque_id": "bab995ee97c7e3931a141db456fa1bb4",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.0625,
+        "qap_objective": 72.61216589339892,
+        "qap_restart": 1,
+        "ssim": 0.10527772745041009
+      },
+      "source_name": "img_006858.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.042572463768115944,
+        "ssim": 0.347584322556205
+      },
+      "opaque_id": "bef29c623eee556862b8e760ea410721",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.044384057971014496,
+        "qap_objective": 74.21986872948473,
+        "qap_restart": 0,
+        "ssim": 0.34693557996784413
+      },
+      "source_name": "img_005242.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04891304347826087,
+        "ssim": 0.15318769064785345
+      },
+      "opaque_id": "c08fc1c591ffed297ad4cdd80df7ff89",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.04891304347826087,
+        "qap_objective": 87.63617834196775,
+        "qap_restart": 1,
+        "ssim": 0.1530392130696688
+      },
+      "source_name": "img_002947.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.042572463768115944,
+        "ssim": 0.3087752292605434
+      },
+      "opaque_id": "c0e1538633a6bb771866f2a3b11ae1af",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.043478260869565216,
+        "qap_objective": 64.24753627301543,
+        "qap_restart": 0,
+        "ssim": 0.3079509293375406
+      },
+      "source_name": "img_004107.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.09329710144927536,
+        "ssim": 0.13176861285625904
+      },
+      "opaque_id": "c3296d4105861e839770d7d389b1a563",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.09510869565217392,
+        "qap_objective": 69.63912340001552,
+        "qap_restart": 1,
+        "ssim": 0.13168908832494053
+      },
+      "source_name": "img_005789.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.049818840579710144,
+        "ssim": 0.2518528407290259
+      },
+      "opaque_id": "ce7b8d5de3f852c10eca7457d251abea",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.04891304347826087,
+        "qap_objective": 83.74359071896761,
+        "qap_restart": 0,
+        "ssim": 0.25233462149345987
+      },
+      "source_name": "img_002087.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04891304347826087,
+        "ssim": 0.15060562465778426
+      },
+      "opaque_id": "d3216b3939ad29ff06272d0d31185daf",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.05253623188405797,
+        "qap_objective": 74.75103224469349,
+        "qap_restart": 0,
+        "ssim": 0.15113186845602677
+      },
+      "source_name": "img_006276.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.09057971014492754,
+        "ssim": 0.12254151861194629
+      },
+      "opaque_id": "d9c2e5849f43dcc44542b062c7976c3e",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.08786231884057971,
+        "qap_objective": 69.11413162116659,
+        "qap_restart": 1,
+        "ssim": 0.12243195235517479
+      },
+      "source_name": "img_002256.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.042572463768115944,
+        "ssim": 0.12659288398771001
+      },
+      "opaque_id": "dc66090d6675b517e5cb0e020bb5547a",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.044384057971014496,
+        "qap_objective": 79.14748337389901,
+        "qap_restart": 0,
+        "ssim": 0.12658415814288068
+      },
+      "source_name": "img_003406.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.051630434782608696,
+        "ssim": 0.28398018370426387
+      },
+      "opaque_id": "e28bd64d4ea8dbbcb316ff854f89ac7b",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.05253623188405797,
+        "qap_objective": 63.83126718230487,
+        "qap_restart": 1,
+        "ssim": 0.2823127540174192
+      },
+      "source_name": "img_002754.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.07699275362318841,
+        "ssim": 0.18432524877152004
+      },
+      "opaque_id": "e342b050020b8e9a349931efb0d57b58",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.07880434782608696,
+        "qap_objective": 77.19335701306117,
+        "qap_restart": 0,
+        "ssim": 0.18410870619978648
+      },
+      "source_name": "img_002626.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.04619565217391304,
+        "ssim": 0.26650619729880876
+      },
+      "opaque_id": "e56b5e59c6437629c1f70a5bf282271a",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.04528985507246377,
+        "qap_objective": 70.07218642251101,
+        "qap_restart": 1,
+        "ssim": 0.26793634454821375
+      },
+      "source_name": "img_004264.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.06521739130434782,
+        "ssim": 0.31944085622138346
+      },
+      "opaque_id": "e8babdf3317e0df4de7ccae08b844276",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.06702898550724637,
+        "qap_objective": 69.35373948206544,
+        "qap_restart": 1,
+        "ssim": 0.3200711774443687
+      },
+      "source_name": "img_005242.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.0960144927536232,
+        "ssim": 0.05791313363120392
+      },
+      "opaque_id": "ef4ffda5fa8f97f2c901eed3412dded4",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.09420289855072464,
+        "qap_objective": 67.46341685109947,
+        "qap_restart": 0,
+        "ssim": 0.05816270114515193
+      },
+      "source_name": "img_004682.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.09057971014492754,
+        "ssim": 0.12083524612135137
+      },
+      "opaque_id": "f36c9f5fc40ec18e1b898dce80d28116",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.08967391304347827,
+        "qap_objective": 76.77266563109588,
+        "qap_restart": 0,
+        "ssim": 0.12097069981034714
+      },
+      "source_name": "img_005478.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.02717391304347826,
+        "ssim": 0.21992725181718575
+      },
+      "opaque_id": "f4b8f7716e9bada205c7e481459f0eed",
+      "panel": "independent_libjpeg",
+      "residual": {
+        "adjacency": 0.028079710144927536,
+        "qap_objective": 124.5702676453133,
+        "qap_restart": 0,
+        "ssim": 0.2201594013274887
+      },
+      "source_name": "img_005536.png"
+    },
+    {
+      "baseline": {
+        "adjacency": 0.05344202898550725,
+        "ssim": 0.2118288012830217
+      },
+      "opaque_id": "f4df4e4555898f8ada33e437e6dfef88",
+      "panel": "primary_kornia",
+      "residual": {
+        "adjacency": 0.05525362318840579,
+        "qap_objective": 74.17894366767723,
+        "qap_restart": 0,
+        "ssim": 0.21187847180386188
+      },
+      "source_name": "img_001223.png"
+    }
+  ],
+  "schema_version": 1,
+  "seconds": 98.36059808731079,
+  "selection_basis": "edge_development calibration MRR"
+}

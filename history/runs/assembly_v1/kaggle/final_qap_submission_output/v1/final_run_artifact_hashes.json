@@ -1,0 +1,42 @@
+{
+  "artifacts": [
+    {
+      "bytes": 9534,
+      "path": "final_qap_submission_run.json",
+      "sha256": "328ff54813bc7b210ad7d5a6b632afebfd581388da03c7f8005914226b20e7ce"
+    },
+    {
+      "bytes": 79040,
+      "path": "final_qap_preflight_000_001.json",
+      "sha256": "d871b0046c100b9bbfeabaf46fffb42485e31647b457c3be58e802a0ec5f88ad"
+    },
+    {
+      "bytes": 725,
+      "path": "final_qap_preflight_000_001.log",
+      "sha256": "369ab4fd7d49e901d92ab3751ad28ef802fb7747938e42326ae6acde663cc5df"
+    },
+    {
+      "bytes": 5265901,
+      "path": "final_qap_shard_000_350.json",
+      "sha256": "541e7905dad9373a173c31db068429b20fb614d450f3cfb4439b89a0a45b2e2a"
+    },
+    {
+      "bytes": 85337,
+      "path": "final_qap_shard_000_350.log",
+      "sha256": "e66298639de5f09876b806e12bc00d71ecade2d3077842118b1f3433136edaa7"
+    },
+    {
+      "bytes": 5254036,
+      "path": "final_qap_shard_350_700.json",
+      "sha256": "38e8a01de560ef8914f25dbe42b2c43c063bde07e3b537e71c0be28416f8dbc4"
+    },
+    {
+      "bytes": 85347,
+      "path": "final_qap_shard_350_700.log",
+      "sha256": "a6419ad4c19d45671317ce29898b5f58a0809937f243393e3dcd521ba9b3e608"
+    }
+  ],
+  "deterministic": false,
+  "kind": "vsos_final_run_artifact_hashes",
+  "schema_version": 1
+}

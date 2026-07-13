@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "kind": "denoise_block5x5_protocol",
+  "status": "frozen_before_training",
+  "created_utc": "2026-07-12T15:10:00Z",
+  "objective": "Fine-tune the frozen TileNAF initialization with true contiguous 5x5 block supervision while preserving isolated-tile inference.",
+  "inputs": {
+    "manifest": "configs/denoise_splits_seed20260710.json",
+    "manifest_sha256": "de4fd2e596efa0d157d2d4480eed5fb84812d358138a1db53c1706bfb580e345",
+    "quarantine": "configs/denoise_validation_quarantine_v1.json",
+    "quarantine_sha256": "38dfd12f60579d77999c0cdb4a648fb4ff0343a8fb5e4c421f0b29f8b7bd6215",
+    "init_checkpoint": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "init_checkpoint_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "train_split": "manifest.splits.train",
+    "train_split_unit": "whole_source_image",
+    "training_target_role": "clean source for exact synthetic per-tile corruption only"
+  },
+  "selection_policy": {
+    "base_pool": "the existing 257-source denoise calibration partition; no assembly final audit, incremental gate, oracle fixture, or test pixels",
+    "base_pool_names_sha256": "b08d4cd0b6efbceb42abc9894ee600bf79db49fc4c2f1e9e7445156b756631cc",
+    "excluded_prior_synthetic_safety_count": 24,
+    "excluded_prior_synthetic_safety_names": [
+      "img_001084.png",
+      "img_001125.png",
+      "img_001130.png",
+      "img_001166.png",
+      "img_001259.png",
+      "img_001261.png",
+      "img_001274.png",
+      "img_001275.png",
+      "img_001281.png",
+      "img_001289.png",
+      "img_001314.png",
+      "img_001325.png",
+      "img_001345.png",
+      "img_001350.png",
+      "img_001404.png",
+      "img_001433.png",
+      "img_001446.png",
+      "img_001452.png",
+      "img_001453.png",
+      "img_001517.png",
+      "img_001566.png",
+      "img_001643.png",
+      "img_001650.png",
+      "img_001657.png"
+    ],
+    "eligible_pool_count": 233,
+    "eligible_pool_names_sha256": "b4a7963a1b2e0cf3b619f0a7a90e16422162f89e68d7743de64cdb9337e6f11d",
+    "ranking": "ascending SHA256(seed:source_name), then source_name",
+    "ranking_seed": 2026071205,
+    "development_count": 16,
+    "frozen_gate_count": 32,
+    "gate_rule": "training and candidate selection may score development only; frozen_gate is scored once only if a candidate passes the predeclared development gate"
+  },
+  "source_partitions": {
+    "development": {
+      "count": 16,
+      "names_sha256": "998a695e5f1981358bdb646374cb536eb7f75f0be3bbf434f9a981b7f0a9672e",
+      "names": [
+        "img_006646.png",
+        "img_006249.png",
+        "img_005801.png",
+        "img_004823.png",
+        "img_003950.png",
+        "img_004938.png",
+        "img_006489.png",
+        "img_005002.png",
+        "img_004397.png",
+        "img_004721.png",
+        "img_005828.png",
+        "img_001896.png",
+        "img_004522.png",
+        "img_004936.png",
+        "img_005095.png",
+        "img_003297.png"
+      ]
+    },
+    "frozen_gate": {
+      "count": 32,
+      "names_sha256": "0f6f12f938e0fb44ca1706c4db25c744d5119e12aea2250abcaa9e69b88cf282",
+      "names": [
+        "img_002514.png",
+        "img_006360.png",
+        "img_002059.png",
+        "img_002084.png",
+        "img_002847.png",
+        "img_001938.png",
+        "img_005237.png",
+        "img_004834.png",
+        "img_002875.png",
+        "img_006523.png",
+        "img_005710.png",
+        "img_005020.png",
+        "img_003401.png",
+        "img_005844.png",
+        "img_001663.png",
+        "img_006542.png",
+        "img_005454.png",
+        "img_005389.png",
+        "img_005888.png",
+        "img_001787.png",
+        "img_004455.png",
+        "img_005312.png",
+        "img_004163.png",
+        "img_005526.png",
+        "img_005293.png",
+        "img_003295.png",
+        "img_005865.png",
+        "img_004613.png",
+        "img_003388.png",
+        "img_005080.png",
+        "img_006113.png",
+        "img_006820.png"
+      ]
+    }
+  },
+  "panel_seeds": {
+    "development": 2026071206,
+    "frozen_gate": 2026071207,
+    "bootstrap": 2026071208,
+    "retrieval": 2026071209,
+    "qap": 2026071210
+  },
+  "corruption": {
+    "crop_order": "sample contiguous clean 5x5 tile block, apply one whole-block dihedral, then corrupt each 20x20 tile independently",
+    "primary": "SyntheticTileDegrader variant 0 using Kornia differentiable JPEG",
+    "independent": "same clean tiles, degradation parameters, and Gaussian noise rendered by Pillow/libjpeg/OpenCV",
+    "brightness": [-30.0, 30.0],
+    "contrast": [0.7, 1.3],
+    "noise_sigma": [40.0, 55.0],
+    "blur_sigma": [0.75, 0.95],
+    "jpeg_quality_inclusive": [35, 50]
+  },
+  "training": {
+    "model": "TileNAFNet initialized from selected synthetic-50k EMA",
+    "inference_contract": "each tile is still restored independently; no neighbour pixels or target order are needed at inference",
+    "train_images": 2048,
+    "steps": 6000,
+    "block_batch_size": 8,
+    "effective_tiles_per_step": 200,
+    "learning_rate": 1e-05,
+    "weight_decay": 0.0001,
+    "ema_decay": 0.999,
+    "eval_interval": 1000,
+    "precision": "CUDA autocast float16 with GradScaler",
+    "variants": {
+      "moderate": {
+        "seed": 2026071211,
+        "tile_ssim": 0.05,
+        "tile_gradient": 0.03,
+        "tile_boundary_extra": 0.75,
+        "block_ssim": 0.08,
+        "block_gradient": 0.04,
+        "seam_gradient": 0.12,
+        "neighbour_mean": 0.03
+      },
+      "strong": {
+        "seed": 2026071212,
+        "tile_ssim": 0.06,
+        "tile_gradient": 0.05,
+        "tile_boundary_extra": 1.25,
+        "block_ssim": 0.12,
+        "block_gradient": 0.08,
+        "seam_gradient": 0.25,
+        "neighbour_mean": 0.06
+      }
+    }
+  },
+  "development_selection_gate": {
+    "balanced_macro": "arithmetic mean of primary_kornia and independent_libjpeg source-macro metrics",
+    "ordered_image_ssim_delta_min": 0.002,
+    "tile_ssim_delta_min": 0.0,
+    "boundary_mae_growth_max_fraction": 0.002,
+    "gradient_mae_growth_max_fraction": 0.002,
+    "both_panel_ordered_image_ssim_delta_positive": true,
+    "ranking": [
+      "descending balanced ordered_image_ssim delta",
+      "descending balanced tile_ssim delta",
+      "ascending variant name"
+    ],
+    "no_eligible_candidate": "stop without opening frozen_gate"
+  },
+  "promotion_gate": {
+    "balanced_tile_ssim_delta_min": 0.003,
+    "balanced_ordered_image_ssim_delta_min": 0.005,
+    "both_panel_ordered_image_ssim_delta_positive": true,
+    "boundary_mae_nonworse": true,
+    "gradient_mae_nonworse": true,
+    "source_bootstrap_lower_bound_tile_ssim_positive": true,
+    "source_bootstrap_lower_bound_ordered_image_ssim_positive": true,
+    "pbc_recall_at_1_delta_min": 0.01,
+    "qap_predicted_layout_ssim_delta_min": 0.002,
+    "qap_is_diagnostic_if_less_than_4_sources": true,
+    "comparison_baselines": [
+      "raw_copy",
+      "fixed_opencv_colored_nlm_per_tile",
+      "selected_tilenaf_synth_50k"
+    ]
+  },
+  "evaluation": {
+    "complete_tiles_per_source": 576,
+    "official_ssim": "skimage.metrics.structural_similarity(channel_axis=2,data_range=255)",
+    "bootstrap_resamples": 5000,
+    "retrieval_sources": 8,
+    "retrieval_scorer": "prediction_compatibility",
+    "qap_sources": 2,
+    "qap": {
+      "iterations": 25,
+      "restarts": 2,
+      "boundary_weight": 4.0,
+      "refine_swaps": 8,
+      "initial": "greedy_row_major"
+    }
+  },
+  "anti_leakage": {
+    "filename_as_feature": false,
+    "target_permutation_or_pseudo_map_used": false,
+    "train_validation_split_unit": "whole source image",
+    "development_gate_overlap": 0,
+    "test_filename_overlap": 0,
+    "assembly_final_audit_accessed": false,
+    "candidate_graph_oracle_files_or_fixtures_accessed": false
+  }
+}

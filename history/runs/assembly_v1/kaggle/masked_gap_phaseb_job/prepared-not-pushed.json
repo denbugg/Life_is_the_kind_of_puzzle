@@ -1,0 +1,17 @@
+{
+  "kind": "masked_gap_stage_job_manifest_v1",
+  "stage": "isolated_phase_b",
+  "status": "prepared_not_pushed",
+  "forbidden_datasets": ["puzzle", "pazzle", "train targets"],
+  "calibration_b_configuration": "remove the optional sixth dataset source and leave its SHA placeholder unresolved",
+  "holdout_configuration": "retain the sixth dataset source and pin the passing calibration-B report SHA",
+  "unresolved_runtime_hashes": [
+    "CHECKPOINT_SHA256",
+    "INPUT_ONLY_ARCHIVE_SHA256",
+    "LABEL_ONLY_ARCHIVE_SHA256",
+    "PHASE_A_REPORT_SHA256",
+    "PHASE_A_ARTIFACT_SHA256",
+    "AUTHORIZATION_SHA256",
+    "CALIBRATION_B_REPORT_SHA256_IF_HOLDOUT"
+  ]
+}

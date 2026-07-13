@@ -1,0 +1,8 @@
+{
+  "confirmation_config_sha256": "0f29d9a9aab2bd4baae9371ea8511f910fa6205f8d188163b71a6a4e6b3acac5",
+  "frozen_runner_sha256": "7ae6a87a04b225a7f8a799e59f3bcf913d2110532a988fc9dd6d5ca68487f746",
+  "kind": "postassembly_actual_confirmation_phase_a_binding",
+  "phase_a_manifest_sha256": "b0f0fc76c65ff3e46bb43132034dfd19f5e3953b71da0701677e57dbeadf9a9c",
+  "source_names_sha256": "91d8ea6ea78b65eac69e863ce3ad98099d46328d00032f02736ebbe8c3fc9c8f",
+  "wrapper_sha256": "4fafedabf5aceeb05d0a25ad04e913372e752b34741bfc2492d64380333ddaa4"
+}

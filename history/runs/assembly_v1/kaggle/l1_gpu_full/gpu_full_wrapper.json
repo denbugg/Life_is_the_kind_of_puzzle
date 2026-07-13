@@ -1,0 +1,36 @@
+{
+  "kind": "assembly_v1_l1_gpu_full_wrapper",
+  "probe": {
+    "arch_list": [
+      "sm_70",
+      "sm_75",
+      "sm_80",
+      "sm_86",
+      "sm_90",
+      "sm_100",
+      "sm_120"
+    ],
+    "capabilities": [
+      [
+        7,
+        5
+      ],
+      [
+        7,
+        5
+      ]
+    ],
+    "compiled_cuda": "12.8",
+    "cuda_available": true,
+    "device_count": 2,
+    "devices": [
+      "Tesla T4",
+      "Tesla T4"
+    ],
+    "matmul_mean": 0.060825150460004807,
+    "torch": "2.10.0+cu128"
+  },
+  "schema_version": 1,
+  "seconds": 1952.5516867637634,
+  "training_report": "/kaggle/working/l1_gpu_full.json"
+}

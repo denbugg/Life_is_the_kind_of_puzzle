@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "kind": "component_preserving_qap_projection_precommit",
+  "created_utc": "2026-07-12T17:05:00Z",
+  "research_only": true,
+  "production_or_submission_mutation": false,
+  "route": "qap_guided_rigid_softcycle_projection_v1",
+  "hypothesis": "A frozen QAP layout supplies useful coarse absolute placement while the highest-confidence half of L1 soft-cycle proposals supplies more reliable local geometry. Packing those components as rigid objects can retain local adjacency without discarding the QAP global prior.",
+  "anti_leakage": {
+    "allowed_split": "edge_development",
+    "forbidden_splits": [
+      "assembly_incremental",
+      "assembly_final",
+      "test"
+    ],
+    "target_use": "metrics_only_after_fixed_candidate_construction",
+    "selection_signal": "input_only",
+    "parameter_tuning_after_exact_metrics": false
+  },
+  "assets": {
+    "denoiser_checkpoint": "runs/denoise_v2/release/selected_tilenaf_synth_50k.pt",
+    "denoiser_sha256": "77a2d8607c9bc6b80e7aa99ed03329c1fae6bf94ee1d9a654241ab93a05cc734",
+    "embedding_checkpoint": "runs/assembly_v1/kaggle/edge2vec_gradient_gpu/hbt_d320_denoised_rgb_sobel.pt",
+    "embedding_sha256": "c2589bff58573d592227d522954a7ed6c22f6fec7ecbbea2bf0c755d7a720787",
+    "manifest": "configs/denoise_splits_seed20260710.json",
+    "quarantine": "configs/denoise_validation_quarantine_v1.json"
+  },
+  "stage_a": {
+    "source_names": [
+      "img_005666.png",
+      "img_003853.png"
+    ],
+    "panels": [
+      "primary_kornia",
+      "independent_libjpeg"
+    ],
+    "view": "denoised",
+    "master_seed": 20260710,
+    "panel_replica": 0,
+    "records": 4
+  },
+  "component_graph": {
+    "score": "denoised_l1_embedding",
+    "proposal": "soft_cycle",
+    "top_k": 8,
+    "keep_per_tile": 1,
+    "reciprocal_weight": 0.35,
+    "loop_weight": 1.0,
+    "proposal_keep_fraction": 0.5,
+    "acceptance_order": "in_loop_first_then_cost_ascending_then_margin_descending_then_first_second_dy_dx",
+    "confidence_filter_order": "in_loop_first_then_margin_descending_then_cost_ascending_then_first_second_dy_dx; keep ceil(0.5*N)",
+    "conflict_resolution": "coordinate_consistent_grow_components; reject a merge on coordinate collision or inconsistent already-connected displacement",
+    "component_order": "size_descending_then_minimum_tile_id_ascending",
+    "minimum_rigid_component_size": 2
+  },
+  "qap_reference": {
+    "score": "denoised_C1_L1w4_rank_fusion",
+    "iterations": 25,
+    "restarts": 2,
+    "boundary_weight": 0.05,
+    "initial_weight": 0.75,
+    "noisy_components": 3,
+    "noise_scale": 1.0,
+    "refine_swaps": 8,
+    "refine_weak_cells": 32,
+    "initial_layout": "full_l1_softcycle_k8_p1",
+    "seed_rule": "per_source_panel_seed_plus_7001"
+  },
+  "rigid_projection": {
+    "reference_prior": "prior[position,tile] = (abs(row(position)-row(qap_position(tile))) + abs(col(position)-col(qap_position(tile)))) / 46",
+    "reference_weight": 0.5,
+    "external_seam_score": "denoised_C1_L1w4_rank_fusion",
+    "component_beam_width": 8,
+    "beam_components": 16,
+    "translations_per_state": 8,
+    "translation_cost": "mean external oriented seam over contacts, or 0.0 on the empty board, or 0.75 on a nonempty board with no contacts, plus 0.5 * mean reference_prior over component tiles",
+    "translation_tie_break": "cost_ascending_then_contact_count_descending_then_ty_then_tx",
+    "beam_tie_break": "cumulative_cost_ascending_then_placed_tiles_descending_then_flattened_grid_lexicographic",
+    "overlap_policy": "enumerate only in-bounds rigid translations with no occupied cells; if none exists the component is skipped and its tiles remain for completion",
+    "completion": "Hungarian on remaining tiles and holes",
+    "hungarian_cost": "mean external oriented seam over existing contacts, or 0.5 with no contacts, plus 0.5 * reference_prior[position,tile] plus deterministic 1e-10*(tile*576+position)",
+    "post_projection_qap": false,
+    "deterministic": true
+  },
+  "stage_a_gate": {
+    "all_layouts_valid_permutations": true,
+    "selected_component_edges_retained_fraction_min": 0.9,
+    "mean_combined_adjacency_delta_vs_qap_min": 0.01,
+    "mean_rgb_ssim_delta_vs_qap_min": -0.003,
+    "decision": "continue_to_first4_only_if_all_conditions_pass"
+  },
+  "comparators": {
+    "raw_component_layout": "full denoised_l1_embedding soft-cycle top_k=8 keep_per_tile=1 keep_fraction=1.0 with ordinary component placement and Hungarian completion",
+    "production_qap": "the frozen boundary-QAP configuration declared above, initialized from raw_component_layout",
+    "reported_metrics": [
+      "valid_permutation",
+      "selected_accepted_edge_retained_fraction",
+      "combined_adjacency",
+      "predicted_layout_rgb_ssim"
+    ]
+  },
+  "stage_b_if_stage_a_passes": {
+    "source_count": 4,
+    "same_panels": true,
+    "same_parameters": true,
+    "promotion_gate": {
+      "mean_combined_adjacency_delta_vs_qap_min": 0.01,
+      "mean_rgb_ssim_delta_vs_qap_min": 0.003,
+      "rgb_ssim_wins_min": 5,
+      "records": 8
+    }
+  },
+  "stop_rule": "Close the route after Stage A if any gate fails; do not retune on these exact records and do not touch production or submission artifacts."
+}

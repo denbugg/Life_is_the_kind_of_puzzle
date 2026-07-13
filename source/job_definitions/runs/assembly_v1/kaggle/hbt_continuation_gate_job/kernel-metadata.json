@@ -1,0 +1,15 @@
+{
+  "id": "pasha883/vsos-hbt-continuation-gate-t4",
+  "title": "VSOS HBT Continuation Gate T4",
+  "code_file": "run_hbt_continuation_gate.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "pasha883/vsos-assembly-v1-runtime",
+    "pasha883/vsos-hbt-continuation-v1"
+  ]
+}

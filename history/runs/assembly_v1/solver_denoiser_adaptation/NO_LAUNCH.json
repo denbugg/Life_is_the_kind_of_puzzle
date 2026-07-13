@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "kind": "solver_denoiser_adaptation_no_launch_decision",
+  "created_utc": "2026-07-12T16:40:00Z",
+  "decision": "stop_upstream_no_selected_denoiser_checkpoint",
+  "protocol": "configs/solver_denoiser_adaptation_v1.json",
+  "protocol_sha256": "48824d5e1cd0426d7fc85c145704065c45b6e83e4f744c0c13f7c20f9782e9e5",
+  "upstream_selection": "runs/denoise_v2/kaggle_block5x5_readback/output_v2/block5x5_selection.json",
+  "upstream_selection_sha256": "932276b13e4ae4f0c09ba384cbff0cac9e7c49ab3b1b6b25f2dce5647c342a0c",
+  "upstream_decision": "stop_no_development_signal",
+  "upstream_selected_variant": null,
+  "upstream_selected_checkpoint": null,
+  "upstream_frozen_gate_accessed": false,
+  "gpu_training_launched": false,
+  "kaggle_job_pushed": false,
+  "original_input_transfer_opened": false,
+  "production_scorer_retained": true,
+  "production_layout_retained": "selected TileNAF -> C1 plus HBT w4 -> soft-cycle k8 -> QAP 25x2",
+  "future_reopen_condition": "Create a new protocol version only after a different denoiser has a selected checkpoint with a positive leakage-safe gate and root explicitly authorizes launch."
+}

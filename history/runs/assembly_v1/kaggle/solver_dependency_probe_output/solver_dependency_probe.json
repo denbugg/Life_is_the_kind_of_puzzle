@@ -1,0 +1,30 @@
+{
+  "modules": {
+    "numba": {
+      "available": true,
+      "version": "0.60.0"
+    },
+    "numpy": {
+      "available": true,
+      "version": "2.0.2"
+    },
+    "ortools": {
+      "available": false,
+      "error": "ModuleNotFoundError: No module named 'ortools'"
+    },
+    "scipy": {
+      "available": true,
+      "version": "1.16.3"
+    },
+    "sklearn": {
+      "available": true,
+      "version": "1.6.1"
+    },
+    "torch": {
+      "available": true,
+      "version": "2.10.0+cpu"
+    }
+  },
+  "python": "3.12.13",
+  "scipy_quadratic_assignment": true
+}
