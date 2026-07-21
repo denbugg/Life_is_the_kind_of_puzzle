@@ -1,0 +1,19 @@
+{
+  "id": "phoenix0501/pazzle-full-puzzle-solver",
+  "title": "pazzle-full-puzzle-solver",
+  "code_file": "kaggle_solve_puzzles.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [
+    "phoenix0501/pazzle-puzzle-assembly-models",
+    "phoenix0501/pazzle-ddpm-denoise-fragments-continue",
+    "phoenix0501/pazzle-rl-puzzle-assembler"
+  ]
+}

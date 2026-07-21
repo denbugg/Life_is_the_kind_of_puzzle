@@ -1,0 +1,17 @@
+{
+  "id": "phoenix0501/pazzle-rl-puzzle-assembler",
+  "title": "pazzle-rl-puzzle-assembler",
+  "code_file": "kaggle_train_rl_puzzle.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [
+    "phoenix0501/pazzle-puzzle-assembly-models"
+  ]
+}
