@@ -38,7 +38,9 @@ OUT_DIR = Path(os.getenv("OUT_DIR", "/kaggle/working"))
 VALIDATE_IMAGES = int(os.getenv("VALIDATE_IMAGES", "2"))
 SOLVE_TEST = os.getenv("SOLVE_TEST", "1") == "1"
 EDGE_BATCH = int(os.getenv("EDGE_BATCH", "4096"))
-EDGE_TOPK = int(os.getenv("EDGE_TOPK", "2"))
+RELATION_BATCH = int(os.getenv("RELATION_BATCH", "512"))
+EDGE_TOPK = int(os.getenv("EDGE_TOPK", "8"))
+RELATION_WEIGHT = float(os.getenv("RELATION_WEIGHT", "1.5"))
 SWAP_STEPS = int(os.getenv("SWAP_STEPS", "20000"))
 POSITION_WEIGHT = float(os.getenv("POSITION_WEIGHT", "0.12"))
 RESTORE_BATCH = int(os.getenv("RESTORE_BATCH", "512"))
@@ -52,6 +54,9 @@ DATA_ROOT = os.getenv("DATA_ROOT")
 ASSEMBLY_MODEL_ROOT = Path(os.getenv("ASSEMBLY_MODEL_ROOT", "/kaggle/input/pazzle-puzzle-assembly-models"))
 RESTORER_MODEL_ROOT = Path(os.getenv("RESTORER_MODEL_ROOT", "/kaggle/input/pazzle-fragment-restorer"))
 RL_MODEL_ROOT = Path(os.getenv("RL_MODEL_ROOT", "/kaggle/input/pazzle-rl-puzzle-assembler"))
+RELATION_MODEL_ROOT = Path(os.getenv(
+    "RELATION_MODEL_ROOT", "/kaggle/input/pazzle-continue-pair-on-restorer"
+))
 RL_CHECKPOINT_NAME = os.getenv("RL_CHECKPOINT_NAME", "rl_swap_actor_critic_epoch1.pt")
 SEED = int(os.getenv("SEED", "2026"))
 
@@ -83,6 +88,42 @@ class EdgeMatcher(nn.Module):
 
     def forward(self, x):
         return self.net(x)
+
+
+class SeamScorer(nn.Module):
+    def __init__(self, base=32):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Conv2d(3, base, 3, padding=1), nn.GroupNorm(8, base), nn.SiLU(),
+            nn.Conv2d(base, base, 3, padding=1), nn.GroupNorm(8, base), nn.SiLU(),
+            nn.Conv2d(base, base * 2, 4, stride=2, padding=1), nn.GroupNorm(8, base * 2), nn.SiLU(),
+            nn.Conv2d(base * 2, base * 2, 3, padding=1), nn.GroupNorm(8, base * 2), nn.SiLU(),
+            nn.Conv2d(base * 2, base * 4, 4, stride=2, padding=1), nn.GroupNorm(8, base * 4), nn.SiLU(),
+            nn.AdaptiveAvgPool2d(1), nn.Flatten(), nn.Linear(base * 4, 1),
+        )
+
+    def forward(self, x):
+        return self.net(x).squeeze(1)
+
+
+class PairRelationClassifier(nn.Module):
+    def __init__(self, base=32):
+        super().__init__()
+        self.horizontal = SeamScorer(base)
+        self.vertical = SeamScorer(base)
+        self.not_adjacent_logit = nn.Parameter(torch.zeros(()))
+
+    def forward(self, a, b):
+        horizontal = torch.cat(
+            [torch.cat([b, a], dim=3), torch.cat([a, b], dim=3)], dim=0
+        )
+        left, right = self.horizontal(horizontal).chunk(2, dim=0)
+        vertical = torch.cat(
+            [torch.cat([b, a], dim=2), torch.cat([a, b], dim=2)], dim=0
+        )
+        up, down = self.vertical(vertical).chunk(2, dim=0)
+        none = self.not_adjacent_logit.expand_as(left)
+        return torch.stack([none, left, right, up, down], dim=1)
 
 
 class PositionPrior(nn.Module):
@@ -214,6 +255,15 @@ def find_rl_checkpoint():
     return files[0]
 
 
+def find_relation_checkpoint():
+    name = "pair_relation_restorer_continued_best.pt"
+    root = resolve_model_root(RELATION_MODEL_ROOT, [name], "pair relation")
+    files = list(root.rglob(name))
+    if len(files) != 1:
+        raise RuntimeError(f"Expected one relation checkpoint, found: {files}")
+    return files[0]
+
+
 def find_data_root():
     if DATA_ROOT:
         root = Path(DATA_ROOT)
@@ -235,25 +285,27 @@ def find_data_root():
 def load_models():
     assembly_root = resolve_model_root(
         ASSEMBLY_MODEL_ROOT,
-        ["edge_matcher_epoch*.pt", "position_prior_epoch*.pt"],
+        ["position_prior_epoch*.pt"],
         "assembly",
     )
     restorer_root = resolve_model_root(
         RESTORER_MODEL_ROOT, ["fragment_restorer_epoch*.pt"], "fragment restorer"
     )
-    edge_path = find_latest(assembly_root, "edge_matcher_epoch*.pt")
     pos_path = find_latest(assembly_root, "position_prior_epoch*.pt")
-    edge_ckpt = torch.load(edge_path, map_location="cpu")
     pos_ckpt = torch.load(pos_path, map_location="cpu")
-    edge = EdgeMatcher()
     pos = PositionPrior()
-    edge.load_state_dict(edge_ckpt["model"])
     pos.load_state_dict(pos_ckpt["model"])
-    del edge_ckpt, pos_ckpt
-    edge = edge.to(DEVICE).eval()
+    del pos_ckpt
     pos = pos.to(DEVICE).eval()
-    print(f"edge_checkpoint={edge_path}")
     print(f"position_checkpoint={pos_path}")
+    relation_path = find_relation_checkpoint()
+    relation_ckpt = torch.load(relation_path, map_location="cpu")
+    relation = PairRelationClassifier()
+    relation.load_state_dict(relation_ckpt["model"])
+    relation_epoch = relation_ckpt.get("epoch")
+    del relation_ckpt
+    relation = relation.to(DEVICE).eval()
+    print(f"relation_checkpoint={relation_path} epoch={relation_epoch}")
     restorer_path = find_latest(restorer_root, "fragment_restorer_epoch*.pt")
     restorer_ckpt = torch.load(restorer_path, map_location="cpu")
     restorer_config = restorer_ckpt.get("config", {})
@@ -282,13 +334,14 @@ def load_models():
         del rl_ckpt
         rl = rl.to(DEVICE).eval()
         print(f"rl_checkpoint={rl_path} epoch={rl_epoch}")
-    return edge, pos, restorer, restorer_config, rl
+    return relation, pos, restorer, restorer_config, rl
 
 
 def validate_config():
     integer_ranges = {
         "VALIDATE_IMAGES": (VALIDATE_IMAGES, 1, None),
         "EDGE_BATCH": (EDGE_BATCH, 1, None),
+        "RELATION_BATCH": (RELATION_BATCH, 1, None),
         "EDGE_TOPK": (EDGE_TOPK, 1, N - 1),
         "SWAP_STEPS": (SWAP_STEPS, 0, None),
         "RESTORE_BATCH": (RESTORE_BATCH, 1, None),
@@ -302,6 +355,7 @@ def validate_config():
             raise ValueError(f"{name} must be {limit}, got {value}")
     for name, value in {
         "POSITION_WEIGHT": POSITION_WEIGHT,
+        "RELATION_WEIGHT": RELATION_WEIGHT,
         "RL_POLICY_BLEND": RL_POLICY_BLEND,
         "RL_VALIDATION_MIN_DELTA": RL_VALIDATION_MIN_DELTA,
     }.items():
@@ -366,20 +420,21 @@ def compatibility_scores(model, tiles, tiles_t, direction):
     candidates = np.argpartition(seam, k, axis=1)[:, :k]
     src = np.repeat(np.arange(N), k)
     dst = candidates.reshape(-1)
-    logits = []
-    for start in range(0, len(src), EDGE_BATCH):
-        ia = torch.from_numpy(src[start:start + EDGE_BATCH])
-        ib = torch.from_numpy(dst[start:start + EDGE_BATCH])
+    relation_odds = []
+    for start in range(0, len(src), RELATION_BATCH):
+        ia = torch.from_numpy(src[start:start + RELATION_BATCH])
+        ib = torch.from_numpy(dst[start:start + RELATION_BATCH])
         a = tiles_t[ia]
         b = tiles_t[ib]
-        d = torch.full((len(a), 1, TILE, TILE), 1.0 if direction == 0 else -1.0)
-        logits.append(model(torch.cat([a, b, d], 1).to(DEVICE)).flatten().float().cpu())
-    logits = torch.cat(logits).numpy()
+        logits = model(a.to(DEVICE), b.to(DEVICE)).float()
+        class_idx = 2 if direction == 0 else 4  # B right/below A.
+        relation_odds.append((logits[:, class_idx] - logits[:, 0]).cpu())
+    relation_odds = torch.cat(relation_odds).numpy()
 
     finite = seam[np.isfinite(seam)]
     scale = max(float(np.median(finite)), 1e-5)
     score = np.clip(-seam / scale, -8.0, 0.0).astype(np.float32)
-    score[src, dst] += 1.5 * np.clip(logits, -6.0, 6.0)
+    score[src, dst] += RELATION_WEIGHT * np.clip(relation_odds, -8.0, 8.0)
     np.fill_diagonal(score, -50.0)
     return score
 

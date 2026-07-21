@@ -166,3 +166,34 @@ to smoke v9 for those files, confirming reproducible inference.
    stale files or mixed checkpoints can invalidate otherwise useful experiments.
 5. Four-image smoke metrics are gates, not robust estimates. A larger fixed
    validation split is the next methodological improvement.
+
+## 8. Five-class pair-relation model
+
+A seam classifier was trained to predict where ordered tile B belongs relative
+to tile A: `not_adjacent`, `left`, `right`, `up` or `down`. Validation is split
+by source image. The clean/synthetic-degradation baseline reached:
+
+- clean accuracy `0.8943`, macro-F1 `0.8944`;
+- noisy accuracy `0.8492`, macro-F1 `0.8496`;
+- noisy binary adjacency accuracy `0.9526`.
+
+The strict end-to-end domain test used 21 images held out from both the relation
+classifier and residual restorer, with 50,000 fixed pairs per condition:
+
+| Tile source | Accuracy | Macro-F1 | Adjacency accuracy |
+|---|---:|---:|---:|
+| clean target | 0.8544 | 0.8550 | 0.9464 |
+| raw damaged | 0.2736 | 0.2149 | 0.3110 |
+| restorer epoch 8 | 0.3778 | 0.3720 | 0.4825 |
+
+This exposed a large domain gap. Fine-tuning directly on frozen restorer outputs
+raised restored accuracy to `0.5159` and macro-F1 to `0.5164`. A continuation on
+4,000 source images with LR `2e-5` and clean replay weight `0.25` reached restored
+accuracy `0.5200`, macro-F1 `0.5206`, and recovered clean accuracy to `0.8435`.
+The small final gain indicates a plateau for further identical fine-tuning.
+
+The selected checkpoint is `pair_relation_restorer_continued_best.pt`. The next
+solver replaces binary edge logits with directional log-odds (`right/down`
+versus `not_adjacent`) over an eight-candidate seam shortlist. Its Kaggle run
+`phoenix0501/pazzle-solver-relation-v1` was still running when this record was
+committed; no submission is promoted until ZIP and validation checks complete.

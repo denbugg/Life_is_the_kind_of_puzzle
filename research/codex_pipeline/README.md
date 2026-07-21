@@ -9,7 +9,7 @@ The end-to-end path is:
 1. split each 480x480 input into 576 tiles of 20x20;
 2. restore every damaged tile with `FragmentRestorer`;
 3. score absolute positions with `PositionPrior`;
-4. score right/down neighbours with `EdgeMatcher`;
+4. score `not_adjacent/left/right/up/down` with `PairRelationClassifier`;
 5. build and improve a global permutation with assignment and local search;
 6. refine swap proposals with the fully connected RL actor-critic;
 7. accept the RL result only when it does not reduce the baseline objective;
@@ -25,6 +25,10 @@ hashes. The full pre-fix solver audit is preserved in
 - `kaggle_ddpm_denoise_fragments.py`: original conditional DDPM experiment.
 - `kaggle_train_fragment_restorer.py`: supervised residual tile restorer.
 - `kaggle_train_puzzle_assembly.py`: edge matcher and position prior training.
+- `kaggle_train_pair_relation.py`: five-class pair-relation baseline.
+- `kaggle_validate_pair_on_restorer.py`: strict clean/raw/restored domain validation.
+- `kaggle_finetune_pair_on_restorer.py`: relation adaptation on restorer outputs.
+- `kaggle_continue_pair_on_restorer.py`: lower-LR continuation with clean replay.
 - `rl/kaggle_train_rl_puzzle.py`: PPO actor-critic swap-policy experiment.
 - `kaggle_solve_puzzles.py`: guarded end-to-end inference and submission build.
 - `test_solver_regressions.py`: static regression tests for critical solver
@@ -49,6 +53,7 @@ The final full inference kernel expects these Kaggle sources:
 - `phoenix0501/pazzle-puzzle-assembly-models`
 - `phoenix0501/pazzle-fragment-restorer`
 - `phoenix0501/pazzle-rl-puzzle-assembler`
+- `phoenix0501/pazzle-continue-pair-on-restorer`
 
 Push the solver from this directory after selecting the solver metadata as
 `kernel-metadata.json`:

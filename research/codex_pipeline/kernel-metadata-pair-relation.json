@@ -1,0 +1,16 @@
+{
+  "id": "phoenix0501/pazzle-pair-relation-classifier",
+  "title": "pazzle-pair-relation-classifier",
+  "code_file": "kaggle_train_pair_relation.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}
