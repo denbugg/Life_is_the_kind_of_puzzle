@@ -26,6 +26,10 @@ def load_functions(*names, globals_dict=None):
         "N": 24 * 24,
         "POSITION_WEIGHT": 0.12,
         "SWAP_STEPS": 100,
+        "GREEDY_TOPK": 4,
+        "linear_sum_assignment": lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("assignment fallback was not expected in this test")
+        ),
     }
     namespace.update(globals_dict or {})
     exec(compile(ast.Module(body=selected, type_ignores=[]), str(SOURCE), "exec"), namespace)
@@ -33,6 +37,22 @@ def load_functions(*names, globals_dict=None):
 
 
 class SolverRegressionTests(unittest.TestCase):
+    def test_greedy_graph_recovers_consistent_grid(self):
+        ns = load_functions("greedy_graph_layout")
+        n, grid = ns["N"], ns["GRID"]
+        right = np.full((n, n), -10.0, dtype=np.float32)
+        down = np.full((n, n), -10.0, dtype=np.float32)
+        for tile in range(n):
+            if tile % grid + 1 < grid:
+                right[tile, tile + 1] = 10.0
+            if tile + grid < n:
+                down[tile, tile + grid] = 10.0
+        pos = np.zeros((n, n), dtype=np.float32)
+        pos[np.arange(n), np.arange(n)] = 1.0
+        layout, stats = ns["greedy_graph_layout"](right, down, pos)
+        self.assertTrue(np.array_equal(layout, np.arange(n)))
+        self.assertEqual(stats["largest"], n)
+
     def test_optimizer_preserves_best_so_far(self):
         ns = load_functions("local_value", "layout_objective", "optimize_layout")
         n = ns["N"]

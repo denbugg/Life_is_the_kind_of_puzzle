@@ -40,11 +40,12 @@ SOLVE_TEST = os.getenv("SOLVE_TEST", "1") == "1"
 EDGE_BATCH = int(os.getenv("EDGE_BATCH", "4096"))
 RELATION_BATCH = int(os.getenv("RELATION_BATCH", "512"))
 EDGE_TOPK = int(os.getenv("EDGE_TOPK", "8"))
+GREEDY_TOPK = int(os.getenv("GREEDY_TOPK", "4"))
 RELATION_WEIGHT = float(os.getenv("RELATION_WEIGHT", "1.5"))
 SWAP_STEPS = int(os.getenv("SWAP_STEPS", "20000"))
 POSITION_WEIGHT = float(os.getenv("POSITION_WEIGHT", "0.12"))
 RESTORE_BATCH = int(os.getenv("RESTORE_BATCH", "512"))
-USE_RL = os.getenv("USE_RL", "1") == "1"
+USE_RL = os.getenv("USE_RL", "0") == "1"
 RL_PROPOSALS = int(os.getenv("RL_PROPOSALS", "48"))
 RL_STEPS = int(os.getenv("RL_STEPS", "800"))
 RL_STAGNATION = int(os.getenv("RL_STAGNATION", "120"))
@@ -343,6 +344,7 @@ def validate_config():
         "EDGE_BATCH": (EDGE_BATCH, 1, None),
         "RELATION_BATCH": (RELATION_BATCH, 1, None),
         "EDGE_TOPK": (EDGE_TOPK, 1, N - 1),
+        "GREEDY_TOPK": (GREEDY_TOPK, 1, N - 1),
         "SWAP_STEPS": (SWAP_STEPS, 0, None),
         "RESTORE_BATCH": (RESTORE_BATCH, 1, None),
         "RL_PROPOSALS": (RL_PROPOSALS, 2, N * (N - 1) // 2),
@@ -437,6 +439,108 @@ def compatibility_scores(model, tiles, tiles_t, direction):
     score[src, dst] += RELATION_WEIGHT * np.clip(relation_odds, -8.0, 8.0)
     np.fill_diagonal(score, -50.0)
     return score
+
+
+def greedy_graph_layout(right, down, pos_score):
+    """Build coordinate-consistent tile components from the best directed edges."""
+    components = {tile: {tile: (0, 0)} for tile in range(N)}
+    root_of = np.arange(N, dtype=np.int32)
+    edges = []
+    k = min(GREEDY_TOPK, N - 1)
+    for matrix, (dr, dc) in ((right, (0, 1)), (down, (1, 0))):
+        for source in range(N):
+            candidates = np.argpartition(matrix[source], -k)[-k:]
+            for target in candidates:
+                if source != int(target):
+                    edges.append((float(matrix[source, target]), source, int(target), dr, dc))
+    edges.sort(key=lambda item: item[0], reverse=True)
+
+    accepted_edges = 0
+    for _, source, target, dr, dc in edges:
+        root_a, root_b = int(root_of[source]), int(root_of[target])
+        comp_a, comp_b = components[root_a], components[root_b]
+        ar, ac = comp_a[source]
+        br, bc = comp_b[target]
+        shift = (ar + dr - br, ac + dc - bc)
+        if root_a == root_b:
+            if shift == (0, 0):
+                accepted_edges += 1
+            continue
+        translated = {
+            tile: (row + shift[0], col + shift[1])
+            for tile, (row, col) in comp_b.items()
+        }
+        occupied = set(comp_a.values())
+        if occupied.intersection(translated.values()):
+            continue
+        combined_coords = list(comp_a.values()) + list(translated.values())
+        rows = [coord[0] for coord in combined_coords]
+        cols = [coord[1] for coord in combined_coords]
+        if max(rows) - min(rows) + 1 > GRID or max(cols) - min(cols) + 1 > GRID:
+            continue
+        comp_a.update(translated)
+        for tile in translated:
+            root_of[tile] = root_a
+        del components[root_b]
+        accepted_edges += 1
+
+    layout = np.full(N, -1, dtype=np.int32)
+    occupied = np.zeros(N, dtype=bool)
+    deferred = []
+    ordered_components = sorted(components.values(), key=len, reverse=True)
+    placed_components = 0
+    largest_component = len(ordered_components[0]) if ordered_components else 0
+    for component in ordered_components:
+        min_row = min(row for row, _ in component.values())
+        min_col = min(col for _, col in component.values())
+        normalized = {
+            tile: (row - min_row, col - min_col)
+            for tile, (row, col) in component.items()
+        }
+        height = max(row for row, _ in normalized.values()) + 1
+        width = max(col for _, col in normalized.values()) + 1
+        best = None
+        for top in range(GRID - height + 1):
+            for left in range(GRID - width + 1):
+                placements = [
+                    (tile, (top + row) * GRID + left + col)
+                    for tile, (row, col) in normalized.items()
+                ]
+                if any(occupied[position] for _, position in placements):
+                    continue
+                value = sum(float(pos_score[tile, position]) for tile, position in placements)
+                if best is None or value > best[0]:
+                    best = (value, placements)
+        if best is None:
+            deferred.extend(component)
+            continue
+        for tile, position in best[1]:
+            layout[position] = tile
+            occupied[position] = True
+        placed_components += 1
+
+    remaining_tiles = np.asarray(
+        deferred + [tile for tile in range(N) if tile not in set(layout[layout >= 0])],
+        dtype=np.int32,
+    )
+    if len(remaining_tiles):
+        remaining_tiles = np.unique(remaining_tiles)
+        remaining_positions = np.flatnonzero(~occupied)
+        if len(remaining_tiles) != len(remaining_positions):
+            raise RuntimeError("Greedy component placement lost or duplicated tiles")
+        tile_idx, position_idx = linear_sum_assignment(
+            -pos_score[np.ix_(remaining_tiles, remaining_positions)]
+        )
+        layout[remaining_positions[position_idx]] = remaining_tiles[tile_idx]
+    if not np.array_equal(np.sort(layout), np.arange(N)):
+        raise RuntimeError("Greedy graph layout is not a complete permutation")
+    stats = {
+        "components": len(ordered_components),
+        "largest": largest_component,
+        "placed": placed_components,
+        "accepted_edges": accepted_edges,
+    }
+    return layout, stats
 
 
 def initial_layout(pos_score):
@@ -757,14 +861,30 @@ def select_layout_candidate(baseline_layout, candidate_layout, right, down, pos_
     return (candidate_layout if accepted else baseline_layout), baseline_value, candidate_value, accepted
 
 
-def solve_one(path, edge_model, pos_model, restorer_model, restorer_config, rl_model, seed):
+def solve_one(path, edge_model, pos_model, restorer_model, restorer_config, rl_model, seed,
+              compare_position_baseline=False):
     tiles = load_tiles(path)
     tiles_t = restore_tiles(restorer_model, tiles_tensor(tiles))
     clean_tiles = ((tiles_t.numpy().transpose(0, 2, 3, 1) + 1.0) * 127.5).round().clip(0, 255).astype(np.uint8)
     pos, row_logp, col_logp = position_scores(pos_model, tiles_t)
     right = compatibility_scores(edge_model, clean_tiles, tiles_t, 0)
     down = compatibility_scores(edge_model, clean_tiles, tiles_t, 1)
-    baseline_layout = optimize_layout(initial_layout(pos), right, down, pos, seed)
+    position_initial = initial_layout(pos)
+    greedy_initial, greedy_stats = greedy_graph_layout(right, down, pos)
+    position_value = layout_objective(position_initial, right, down, pos)
+    greedy_value = layout_objective(greedy_initial, right, down, pos)
+    selected_initial = greedy_initial if greedy_value >= position_value else position_initial
+    baseline_layout = optimize_layout(selected_initial, right, down, pos, seed)
+    position_baseline = (
+        optimize_layout(position_initial, right, down, pos, seed + 25000)
+        if compare_position_baseline else baseline_layout
+    )
+    print(
+        f"greedy_graph components={greedy_stats['components']} largest={greedy_stats['largest']} "
+        f"placed={greedy_stats['placed']} edges={greedy_stats['accepted_edges']} "
+        f"position_init={position_value:.3f} greedy_init={greedy_value:.3f} "
+        f"selected={'greedy' if greedy_value >= position_value else 'position'}"
+    )
     layout = baseline_layout
     if rl_model is not None:
         rl_layout, rl_objective, rl_steps = refine_layout_rl(
@@ -778,7 +898,7 @@ def solve_one(path, edge_model, pos_model, restorer_model, restorer_config, rl_m
             f"rl_objective={rl_objective:.3f} baseline_value={baseline_value:.3f} "
             f"candidate_value={candidate_value:.3f} accepted={int(accepted)}"
         )
-    return assemble(clean_tiles, layout), layout, assemble(clean_tiles, baseline_layout)
+    return assemble(clean_tiles, layout), layout, assemble(clean_tiles, position_baseline)
 
 
 def validate(data_root, edge_model, pos_model, restorer_model, restorer_config, rl_model):
@@ -788,7 +908,8 @@ def validate(data_root, edge_model, pos_model, restorer_model, restorer_config, 
     rl_scores, baseline_scores = [], []
     for i, path in enumerate(inputs):
         pred, _, baseline_pred = solve_one(
-            path, edge_model, pos_model, restorer_model, restorer_config, rl_model, SEED + i
+            path, edge_model, pos_model, restorer_model, restorer_config, rl_model, SEED + i,
+            compare_position_baseline=True,
         )
         target = np.asarray(Image.open(data_root / "train" / "targets" / path.name).convert("RGB"))
         rl_score = structural_similarity(target, pred, channel_axis=2, data_range=255)
@@ -797,15 +918,15 @@ def validate(data_root, edge_model, pos_model, restorer_model, restorer_config, 
         baseline_scores.append(baseline_score)
         Image.fromarray(pred).save(OUT_DIR / f"validation_{path.stem}.png")
         print(
-            f"validation file={path.name} rl_ssim={rl_score:.6f} "
-            f"baseline_ssim={baseline_score:.6f} delta={rl_score - baseline_score:+.6f}"
+            f"validation file={path.name} solver_ssim={rl_score:.6f} "
+            f"position_baseline_ssim={baseline_score:.6f} delta={rl_score - baseline_score:+.6f}"
         )
     mean_rl = float(np.mean(rl_scores))
     mean_baseline = float(np.mean(baseline_scores))
     mean_delta = mean_rl - mean_baseline
     print(
-        f"validation_mean_rl_ssim={mean_rl:.6f} "
-        f"validation_mean_baseline_ssim={mean_baseline:.6f} delta={mean_delta:+.6f}"
+        f"validation_mean_solver_ssim={mean_rl:.6f} "
+        f"validation_mean_position_baseline_ssim={mean_baseline:.6f} delta={mean_delta:+.6f}"
     )
     return {"rl_ssim": mean_rl, "baseline_ssim": mean_baseline, "delta": mean_delta}
 

@@ -10,9 +10,9 @@ The end-to-end path is:
 2. restore every damaged tile with `FragmentRestorer`;
 3. score absolute positions with `PositionPrior`;
 4. score `not_adjacent/left/right/up/down` with `PairRelationClassifier`;
-5. build and improve a global permutation with assignment and local search;
-6. refine swap proposals with the fully connected RL actor-critic;
-7. accept the RL result only when it does not reduce the baseline objective;
+5. greedily build coordinate-consistent components from directional edges;
+6. anchor components with the position prior and polish with local swaps;
+7. optionally run the legacy guarded RL refinement for comparison;
 8. assemble 480x480 PNG files and create an atomically validated ZIP.
 
 See [EXPERIMENTS.md](EXPERIMENTS.md) for the research history, metrics and

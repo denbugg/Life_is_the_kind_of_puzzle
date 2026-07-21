@@ -17,6 +17,7 @@ kernel outputs are the canonical distribution mechanism.
 | Pair/restorer fine-tuning | `phoenix0501/pazzle-finetune-pair-on-restorer` |
 | Pair/restorer continuation | `phoenix0501/pazzle-continue-pair-on-restorer` |
 | Relation-based solver v1 | `phoenix0501/pazzle-solver-relation-v1` |
+| Relation graph-greedy solver v2 | `phoenix0501/pazzle-solver-relation-greedy-v2` |
 
 ## Selected local artifacts
 

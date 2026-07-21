@@ -197,3 +197,18 @@ solver replaces binary edge logits with directional log-odds (`right/down`
 versus `not_adjacent`) over an eight-candidate seam shortlist. Its Kaggle run
 `phoenix0501/pazzle-solver-relation-v1` was still running when this record was
 committed; no submission is promoted until ZIP and validation checks complete.
+
+## 9. Relation-driven graph greedy solver
+
+The v1 inference logs showed that the legacy RL policy reached its full 800-step
+budget on every image but only half of its candidate layouts improved the new
+relation objective. The guard worked, but the policy was optimizing its old
+raw-seam objective and wasting substantial inference compute.
+
+Solver v2 disables RL by default and builds a coordinate-consistent graph from
+the strongest directional relation edges. Components reject coordinate
+collisions, contradictory cycles and shapes larger than 24x24. PositionPrior
+then anchors the components and assigns unplaced tiles; the existing local-swap
+optimizer polishes the selected greedy or position-only initialization. The two
+initializations are compared on validation, while test inference runs only the
+winner. Kaggle kernel: `phoenix0501/pazzle-solver-relation-greedy-v2`.
