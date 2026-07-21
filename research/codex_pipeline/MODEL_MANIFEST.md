@@ -23,6 +23,7 @@ kernel outputs are the canonical distribution mechanism.
 | `submission_pazzle_solver_v3.zip` | about 185 MB | `c666aa70c0385b7212544bf64f1e6988fc4bef913f345cd4b13107038f98dee3` | historical |
 | `submission_pazzle_solver_rl_v5.zip` | about 185 MB | `83b4e2c3a26507f05e51408659a680054cd28f0c0d4266a9432fe4e54c80efae` | pre-audit RL |
 | `submission_pazzle_solver_audit_fixed.zip` | about 185 MB | `617b39ec3983fb74db0761932f5961db5770f50c4d00cd5b6a588c5313fdc29e` | verified 700-file fallback |
+| `submission_pazzle_solver_restorer_rl.zip` | about 199 MB | `f21de3ef38996e9fa7e4f6c914593a2c40b68e799485169d48ed83535776f778` | verified restorer + guarded RL candidate |
 
 Every promoted submission must pass all of these checks:
 

@@ -137,10 +137,22 @@ mean of `0.176371`. The guard rejected the RL layout for `img_000002`; image 1
 illustrates that the observable assembly objective is correlated with, but not
 identical to, ground-truth SSIM.
 
-Version 10 was launched for full 700-image inference using the same settings:
-`VALIDATE_IMAGES=2`, `SOLVE_TEST=1`, `RL_STEPS=800`, `RL_PROPOSALS=48`. Its final
-archive and checksum should be appended here after the monitored Kaggle run
-finishes.
+Version 10 completed full 700-image inference using the same settings:
+`VALIDATE_IMAGES=2`, `SOLVE_TEST=1`, `RL_STEPS=800`, `RL_PROPOSALS=48`.
+
+- two-image validation RL SSIM: `0.160895`;
+- two-image baseline SSIM: `0.156745`;
+- validation delta: `+0.004150`;
+- test puzzles: `700`;
+- RL candidates accepted/rejected including validation: `425/277`;
+- Kaggle runtime: about 9024 seconds (2 h 30 min);
+- archive entries: 700 unique root-level PNG files;
+- ZIP CRC errors: none;
+- submission SHA256: `f21de3ef38996e9fa7e4f6c914593a2c40b68e799485169d48ed83535776f778`.
+
+The validation mean differs from the four-image smoke because version 10 uses
+only the first two images as a runtime gate. The per-image values are identical
+to smoke v9 for those files, confirming reproducible inference.
 
 ## Conclusions
 
