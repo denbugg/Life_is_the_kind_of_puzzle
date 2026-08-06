@@ -1,4 +1,4 @@
-"""Shared inference pipeline: load models, solve + restore a single image."""
+﻿"""Shared inference pipeline: load models, solve + restore a single image."""
 import os
 import numpy as np
 import torch
@@ -40,9 +40,19 @@ def _load_pair_ckpt(name):
 
 
 def load_pair(tag="pair", which="best"):
-    """Returns (models, ck): a LIST of PairwiseNets to ensemble. Prefers the
-    two-GPU ensemble members pair0/pair1; falls back to a single `pair` model."""
+    """Returns (models, ck): a LIST of PairwiseNets to ensemble.
+
+    Default `tag=pair` prefers the pair0/pair1 ensemble if present. Explicit
+    tags such as `pair_hard` load that checkpoint first, so eval scripts can
+    compare fine-tuned scorers without moving files around.
+    """
     models, ck0 = [], None
+    if tag != "pair":
+        for name in (f"{tag}_{which}.pt", f"{tag}_last.pt", f"{tag}_best.pt"):
+            m, ck = _load_pair_ckpt(name)
+            if m is not None:
+                print(f"pair model: {name}", flush=True)
+                return [m], ck
     for t in ("pair0", "pair1"):
         for name in (f"{t}_{which}.pt", f"{t}_last.pt", f"{t}_best.pt"):
             m, ck = _load_pair_ckpt(name)
@@ -89,3 +99,4 @@ def process(frags_np, compat, restore, solve_kw=None, pair=None, rescore_kw=None
     assembled = assemble(frags_np, place)
     out = restore_apply(restore, assembled, nlm=nlm, h=h)
     return out, place, assembled
+

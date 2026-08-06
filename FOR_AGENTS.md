@@ -1,4 +1,4 @@
-# FOR_AGENTS.md - operational runbook for the `pazzle` solution
+﻿# FOR_AGENTS.md - operational runbook for the `pazzle` solution
 
 > Read this first. This is the handoff/runbook for continuing the PAZZLE image
 > restoration solution: what the task is, where everything lives, what has already
@@ -481,3 +481,142 @@ pasha883/vsos-ai-pazzle-resume-v7
 - `eval_full.py` report on held-out val.
 - `submission.zip` with 700 PNGs.
 - Final `solution.ipynb` and presentation if required by the competition.
+
+---
+
+## 12. No-gamble pipeline update (2026-07-09)
+
+The current execution plan is `NO_GAMBLE_PIPELINE.md`. It supersedes the old
+"try more solver iterations" direction. The rule is now gated execution:
+
+```text
+matching-denoiser -> hard-negative PairwiseNet -> scorer gate -> buddies/loop solver -> solver gate -> restoration -> submission
+```
+
+Do not spend Kaggle time on final restoration or inference while placement is near
+random. The only honest remaining lever is improving adjacency signal quality.
+
+### Newly added files
+
+| file | purpose |
+|---|---|
+| `NO_GAMBLE_PIPELINE.md` | current gated runbook with thresholds and stop conditions |
+| `src/placement_metrics.py` | strict placement + directed neighbour accuracy helpers |
+| `src/match_preprocess.py` | photometric normalization + tiny `MatchDenoiser` loader/apply helpers |
+| `src/eval_neighbour.py` | evaluates `place_acc`, `neighbour_acc`, `SSIM_solve` for SA or buddies solver |
+| `src/score_with_preprocess.py` | compares scorer quality on `raw`, `norm`, `denoise`, `denoise_norm` fragments |
+| `src/train_match_denoiser.py` | trains the small denoise-for-matching model |
+| `src/mine_hard_negatives.py` | mines top false neighbours from the current scorer into `hardneg_*.npz` |
+| `src/train_pair_hard.py` | fine-tunes `PairwiseNet` on mined hard negatives |
+| `src/solve_buddies.py` | conservative best-buddies/component-growth/repair solver |
+
+`build_kaggle.py` now embeds the new files into the Kaggle notebook source cell.
+`src/solve.py` also had an unreachable duplicate return block removed; old behaviour is unchanged.
+
+### Required metric gates
+
+Continue only if the scorer improves:
+
+```text
+bb_prec >= 0.70
+R@1 >= 0.45
+median true-neighbour rank <= 5
+```
+
+If after matching-denoiser plus one hard-negative cycle the scorer remains below:
+
+```text
+bb_prec < 0.60
+R@1 < 0.35
+median rank > 10
+```
+
+then the honest geometry route should be treated as a research project, not a short
+engineering sprint.
+
+### Local command order
+
+All commands assume cwd is `<repo>` unless noted.
+
+```powershell
+# 1) Baseline scorer quality: raw vs simple photometric normalization
+python src/score_with_preprocess.py --n 12 --modes raw,norm
+
+# 2) Baseline solver/neighbour metrics with current pair checkpoint
+python src/eval_neighbour.py --n 20 --solver sa --preprocess raw --iters 500000 --restarts 1
+python src/eval_neighbour.py --n 20 --solver buddies --preprocess raw
+
+# 3) Train denoise-for-matching model
+python src/train_match_denoiser.py --steps 8000 --bs 256 --workers 6 --tag matchden
+
+# 4) Check whether denoising actually improves scorer quality
+python src/score_with_preprocess.py --n 12 --modes raw,norm,denoise,denoise_norm --denoise_tag matchden
+
+# 5) Mine hard negatives only if scorer/preprocess looks promising
+python src/mine_hard_negatives.py --n 400 --K 48 --preprocess denoise_norm --denoise_tag matchden
+
+# 6) Fine-tune PairwiseNet on hard negatives
+python src/train_pair_hard.py --hard E:/pazzle_work/cache/hardneg_train_denoise_norm_K48.npz --steps 6000 --bs 2 --M 32 --preprocess denoise_norm --denoise_tag matchden --init_tag pair --tag pair_hard
+
+# 7) Re-score with the hard-negative checkpoint by setting init/tag expectations manually if needed,
+# then evaluate buddies solver only after scorer gates improve.
+python src/solve_buddies.py --n 20 --preprocess denoise_norm --denoise_tag matchden
+```
+
+## 13. Listwise seam ranking branch (2026-07-10)
+
+Current strategy doc: `DIRECT_POSE_GRAPH_STRATEGY.md` (supersedes the plain
+no-gamble scorer loop for placement research). Key files:
+
+| file | purpose |
+|---|---|
+| `src/candidate_rank.py` | `CandidateSeamRanker` cross-encoder + canonical seam layout + listwise loss/metrics |
+| `src/train_candidate_rank.py` | trains the ranker on frozen affinity-union candidate lists (synthetic exact labels) |
+| `src/eval_candidate_rank.py` | full-graph gate: mutual-argmax reciprocal edges -> RSCM -> IRLS sync -> Hungarian placement |
+| `artifacts/candidate_rank/` | checkpoints (`rank_v1_*` = width 32/2k steps) |
+| `E:/pazzle_work/logs/candidate_rank_*.log` | training logs |
+
+Operational lessons (both cost ~20x wall-clock before the fix):
+
+1. **Checkpoint chunked pair scoring.** A full listwise step (~8-12k oriented
+   seams) holds ~10 GB of activations without gradient checkpointing and
+   spills out of the 8 GB local GPU into WDDM shared memory.
+   `score_candidate_rows(..., checkpoint_chunks=True)` caps memory at one
+   `--train-pair-batch` chunk.
+2. **Keep convolution shapes constant under `cudnn.benchmark`.** Variable
+   tail-chunk sizes made cuDNN re-autotune every step (multi-second stalls).
+   Chunks are padded to `pair_batch` and sliced after scoring.
+
+Run/eval:
+
+```powershell
+python src/train_candidate_rank.py --steps 2000 --bs 2 --rows-per-image 48 --workers 10 --train-pair-batch 2048 --device cuda --tag rank_v1
+python src/eval_candidate_rank.py --n 4 --device cuda   # gate: precision>=0.75 at coverage>>0.07; neighbour>=0.25
+```
+
+Full gate protocol with all tables: `RESULTS_CANDIDATE_RANK_GATE.md`.
+
+**Gate verdict: BRANCH CLOSED as a standalone edge solver (2026-07-10).**
+rank_v1 (163k params): p=0.74 @ coverage 0.083. Scaled control rank_v2w64
+(646k params, plateaued by step ~1600-2800): p=0.745 @ 0.092, p=0.954 @
+0.042; pose sync neighbour accuracy 0.008 (stop threshold 0.25). Capacity,
+budget, and the candidate-matched listwise formulation are all exhausted;
+the ceiling is in the degraded data, matching MGC/PairwiseNet/DirectPoseNet.
+Surviving assets: high-precision seed edges (p~0.95 x 49/img from
+`rank_v2w64_best.pt`), the affinity-union candidate graph (~0.67-0.69 direct
+recall), and `eval_candidate_rank.py` as the gate for any future edge model.
+
+### Verification already run
+
+These passed locally on 2026-07-09:
+
+```powershell
+python -m py_compile build_kaggle.py src/solve.py src/placement_metrics.py src/match_preprocess.py src/eval_neighbour.py src/score_with_preprocess.py src/train_match_denoiser.py src/mine_hard_negatives.py src/train_pair_hard.py src/solve_buddies.py
+python src/score_with_preprocess.py --help
+python src/train_match_denoiser.py --help
+python src/mine_hard_negatives.py --help
+python src/train_pair_hard.py --help
+python src/solve_buddies.py --help
+python src/eval_neighbour.py --help
+```
+

@@ -1,4 +1,4 @@
-"""Puzzle solver: from compatibility matrices R (right) and D (down), find the
+﻿"""Puzzle solver: from compatibility matrices R (right) and D (down), find the
 fragment->grid-position assignment maximizing total edge compatibility.
 Greedy corner-seeded init + numba simulated annealing over swaps.
 """
@@ -167,10 +167,10 @@ def rescore_pairwise(pair_model, frags_np, R, D, K=32, alpha=3.0, device="cuda",
 
 
 @torch.no_grad()
-def pairwise_scores_full(pair_model, frags_np, device="cuda", bs=16384):
+def pairwise_scores_full(pair_model, frags_np, device="cuda", bs=4096):
     """Full NxN pairwise compatibility (bypasses any siamese pre-filter).
     pair_model may be a single net or a LIST of nets, whose logits are averaged
-    (ensemble of independently-trained scorers → sharper compatibility)."""
+    (ensemble of independently-trained scorers â†’ sharper compatibility)."""
     models = pair_model if isinstance(pair_model, (list, tuple)) else [pair_model]
     for m in models:
         m.eval()
@@ -204,8 +204,4 @@ def solve_image(frags_np, model, device="cuda", pair_model=None, rescore_kw=None
             R, D = rescore_pairwise(pair_model, frags_np, R, D, **(rescore_kw or {}))
     place, v = solve_from_scores(R, D, **kw)
     return place, R, D, v
-    R, D = compat_scores(model, frags_np, device)
-    if pair_model is not None:
-        R, D = rescore_pairwise(pair_model, frags_np, R, D, **(rescore_kw or {}))
-    place, v = solve_from_scores(R, D, **kw)
-    return place, R, D, v
+

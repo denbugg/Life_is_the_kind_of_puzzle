@@ -1,4 +1,4 @@
-"""Rebuild kaggle_kernel/pazzle_kaggle_train.ipynb for a new run.
+﻿"""Rebuild kaggle_kernel/pazzle_kaggle_train.ipynb for a new run.
 Regenerates cell 1 (embeds current src/*.py) and cell 5 (orchestration), and
 keeps cells 0/2/3/4 verbatim -- so the W&B cell (with its embedded key) and the
 data-detection logic are preserved untouched. Never prints the key."""
@@ -11,7 +11,10 @@ NB = os.path.join(REPO, "kaggle_kernel", "pazzle_kaggle_train.ipynb")
 EMBED = ["config.py", "imgio.py", "distort.py", "recover.py", "datasets.py",
          "models.py", "solve.py", "pipeline.py", "train_pair.py",
          "train_restore.py", "eval_place.py", "eval_full.py", "infer.py",
-         "diag_scores.py"]
+         "diag_scores.py", "placement_metrics.py", "match_preprocess.py",
+         "train_match_denoiser.py", "score_with_preprocess.py",
+         "mine_hard_negatives.py", "train_pair_hard.py", "solve_buddies.py",
+         "eval_neighbour.py"]
 
 
 def cell1_source():
@@ -133,3 +136,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
