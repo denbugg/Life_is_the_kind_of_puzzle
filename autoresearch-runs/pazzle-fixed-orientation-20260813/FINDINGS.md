@@ -88,3 +88,7 @@ Increasing the online U1 hard list from M=16 to M=64 preserved rapid post-warmup
 ## OH6 full-row downstream fusion smoke (2026-08-13)
 Training against a 64-wide U1 row did not improve the decisive false tail. OH6 produced top-1 direct precision 29.17%, top-4 17.93%, and all-true recall 18.70%, all below OH4 except no metric crosses the gate. Therefore M=64 is not a remedy; the current PairwiseNet feature/scoring family has saturated around 18% top-4 precision under U1 distribution, despite fast online hard-negative training.
 
+
+## Q1 confidence calibration (2026-08-13)
+The learned scene-conditioned confidence calibrator could not establish a held-out acceptance threshold: the calibration selection was empty and all high-confidence checks failed. The diagnostic did quantify a potentially useful but sparse label-free signal: reciprocal-and-both-affinities top edges reached 33.33% precision at 14.06% row acceptance and 4.69% exact-edge coverage, with worst-image precision 27.27%. This is insufficient as a direct solver input but may serve only as optional anchors in a future global method.
+
