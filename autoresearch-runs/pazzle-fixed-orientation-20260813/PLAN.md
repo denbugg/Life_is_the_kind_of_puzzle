@@ -64,3 +64,6 @@ OH1 [online hard-negative PairwiseNet]: fine-tune one PairwiseNet with streaming
 
 OH2 [OH1 downstream precision]: replace frozen pair ensemble in the U1 union fusion evaluator with OH1 best step-50 PairwiseNet and run a one-board no-label pair/pose smoke. Gate: top-4 direct precision >=30% and all-direct recall >=20%; otherwise reject OH1 for the target pipeline regardless of online-hard auxiliary accuracy.
 
+
+OH3 [U1-aligned online hard pairs]: reuse OH1's cache-free listwise loss, but mine hard false candidates only from the currently built U1 R3∪R2L candidate row for sampled anchors. Build U1 graph per batch but score only sampled rows, avoiding full PairwiseNet cache. Expected: top-4 direct precision >=30% and recall >=20% at ≤5 s/step; falsify on timing guard or downstream gate failure.
+

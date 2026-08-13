@@ -68,3 +68,7 @@ The research-motivated interior-context continuation predictor produced a valid 
 ## OH1 online hard-negative refinement (2026-08-13)
 OH1 is the first precision trainer to satisfy the runtime constraint: after initialization, it ran 0.20–0.48 s/iteration and required no full candidate cache. Its held-out bounded-reservoir online-hard accuracy peaked at 54.69% at step 50 (46.88% at 100; 50.00% at 200). This auxiliary metric is not the assignment gate, so retain best.pt only pending an apples-to-apples U1 fusion smoke.
 
+
+## OH2 downstream fusion smoke (2026-08-13)
+OH1's bounded random-reservoir objective transferred a small top-1 improvement over U2 (direct precision 28.82% versus 25.52%) but did not improve the decisive top-4 regime: 18.36% precision and 19.16% all-true recall. Random within-board reservoirs are not sufficiently aligned with the actual U1 affinity/R2L candidate distribution. Retire OH1 as a production scorer but retain the fast training infrastructure.
+

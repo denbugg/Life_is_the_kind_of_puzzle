@@ -26,3 +26,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | E2 | Streaming generative-contrastive continuation predictor | REJECTED timing gate | First step ran but took 26.57 s/it at bs=1, rows=16+16; 100-step validation would take ~44 min, outside rapid-evidence budget. |
 
 | OH1 | Online hard-negative PairwiseNet, 200 steps | CHECKPOINT RETAINED pending fusion | First step 8.77s then 0.20–0.48s/it; best held-out online-hard acc 54.69% at step 50, no board-wide cache. |
+
+| OH2 | OH1 best PairwiseNet in U1 fusion smoke (1 DEV) | REJECTED downstream gate | top-1 precision improved 25.52%→28.82%, but top-4=18.36%, recall=19.16%; misses 30%/20% gate. |
