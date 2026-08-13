@@ -92,3 +92,7 @@ Training against a 64-wide U1 row did not improve the decisive false tail. OH6 p
 ## Q1 confidence calibration (2026-08-13)
 The learned scene-conditioned confidence calibrator could not establish a held-out acceptance threshold: the calibration selection was empty and all high-confidence checks failed. The diagnostic did quantify a potentially useful but sparse label-free signal: reciprocal-and-both-affinities top edges reached 33.33% precision at 14.06% row acceptance and 4.69% exact-edge coverage, with worst-image precision 27.27%. This is insufficient as a direct solver input but may serve only as optional anchors in a future global method.
 
+
+## G2 sparse growing-consensus diagnostic (2026-08-13)
+After routing flat U1 candidates through frozen DirectPoseNet, candidate-supported 2×2 closures were abundant but uninformative: mean closures were 572.5/4457/40921 at prefix K=8/16/32, yet direct precision rose only 1.12×/1.06×/1.03×. The strongest relative lift (K=8) retained just 1.20% all-true direct recall. Therefore the candidate graph lacks sufficiently accurate direction attribution for loop/consensus support to function as an outlier filter. Reject growing-consensus before assignment implementation.
+

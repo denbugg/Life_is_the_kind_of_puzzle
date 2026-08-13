@@ -88,3 +88,6 @@ Q1 result: REJECTED for confidence anchoring. Retain reciprocal+both-affinity ru
 
 G2 [sparse growing-consensus pre-gate]: On label-blind U1 R3∪R2L candidates, enumerate non-overlapping directional 2×2 closures a→right b, a→down c, b→down d, c→right d using proposal prefixes K={8,16,32}. Measure held-out direct precision/recall of every edge participating in ≥1 closure against same-prefix raw edges. Gate: a consensus-supported set must produce >=2x raw direct precision and retain >=10% all-true direct recall on ≥2 DEV boards; otherwise reject growing-consensus before any assignment implementation.
 
+
+G2 result: REJECTED. The structural consensus literature does not transfer through the present direct-pose routing because its directed candidate edges are near-random at the required prefix. Do not proceed to global assignment/SSIM. Return to external research for a reframe that avoids relying on noisy predicted edge directions.
+
