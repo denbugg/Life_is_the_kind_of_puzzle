@@ -106,10 +106,11 @@ def main() -> None:
     parser.add_argument("--crop", type=int, default=240)
     parser.add_argument("--base", type=int, default=32)
     parser.add_argument("--depth", type=int, default=4)
-    parser.add_argument("--lr", type=float, default=2e-4)
+    parser.add_argument("--lr", type=float, default=5e-5)
     parser.add_argument("--seed", type=int, default=2501)
     parser.add_argument("--denoise-tag", default="matchden")
     parser.add_argument("--device", default="cuda")
+    parser.add_argument("--amp", action="store_true", help="opt-in mixed precision; disabled by default because MS-SSIM powers are numerically sensitive")
     parser.add_argument("--work", type=Path, default=DEFAULT_WORK)
     parser.add_argument("--report", type=Path, default=None)
     parser.add_argument("--checkpoint", type=Path, default=None)
@@ -129,7 +130,7 @@ def main() -> None:
         raise RuntimeError("not enough FIT names")
     model = RestoreNet(base=args.base, depth=args.depth).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-5)
-    scaler = torch.amp.GradScaler("cuda", enabled=True)
+    scaler = torch.amp.GradScaler("cuda", enabled=args.amp)
     denoiser, meta = load_match_denoiser(args.denoise_tag, device=args.device)
     if denoiser is None:
         raise FileNotFoundError("frozen MatchDenoiser checkpoint not available")
@@ -149,9 +150,12 @@ def main() -> None:
         target = tensor(clean_crop, device)
         source = tensor(dirty_crop, device)
         optimizer.zero_grad(set_to_none=True)
-        with torch.autocast(device_type="cuda", dtype=torch.float16):
+        with torch.autocast(device_type="cuda", dtype=torch.float16, enabled=args.amp):
             output = model(source)
-            loss = restore_loss(output, target)
+        # MS-SSIM uses repeated correlation products and fractional powers; keep it FP32.
+        loss = restore_loss(output.float(), target.float())
+        if not torch.isfinite(loss):
+            raise FloatingPointError(f"non-finite R5 loss at step {step}")
         scaler.scale(loss).backward()
         scaler.unscale_(optimizer)
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
