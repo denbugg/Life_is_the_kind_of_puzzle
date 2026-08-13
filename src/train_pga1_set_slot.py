@@ -331,7 +331,7 @@ def main() -> None:
         summary.update({"shape": list(logits.shape), "params": params, "cuda_max_allocated": int(torch.cuda.max_memory_allocated())})
         print(json.dumps(summary, indent=2), flush=True)
         if args.report:
-            save_json(args.report, {"experiment": "PGA1_smoke", "args": vars(args), "summary": summary})
+            save_json(args.report, {"experiment": "PGA1_smoke", "args": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()}, "summary": summary})
         return
 
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
