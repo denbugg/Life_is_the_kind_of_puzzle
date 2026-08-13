@@ -45,7 +45,7 @@ def main() -> None:
     split = json.loads(args.split.read_text(encoding="utf-8"))
     expected_names = list(split["splits"][args.partition][: args.n])
     rows = []
-    for raw_line in args.log.read_text(encoding="utf-8-sig", errors="replace").splitlines():
+    for raw_line in args.log.read_text(encoding="utf-16", errors="strict").splitlines():
         start = raw_line.find('{"ordinal"')
         if start < 0:
             continue
