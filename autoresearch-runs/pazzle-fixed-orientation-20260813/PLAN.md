@@ -52,3 +52,6 @@ P2 [posterior marginalization reuse]: evaluate existing posterior_edge and candi
 
 P2 result: REJECTED early. Posterior marginalization fails its R1/brier gate. Next research-derived family: streaming interior-context / continuation compatibility, trained on clean-target adjacency without full candidate caches.
 
+
+E2 [interior-context continuation]: train the existing generative-contrastive continuation predictor with streaming exact A→B→C chains and affinity-proposed target lists, using a ≤5-minute first-step gate. Mechanism: following fragment-alignment research, interior context predicts clean continuation and retrieves the true noisy successor, rather than relying only on observed corrupted seams. Expected: all-true candidate retrieval R@1/R@5 exceeds raw candidate-ranker baselines without cache build; falsify on first-step timeout or no improvement at 200 steps.
+
