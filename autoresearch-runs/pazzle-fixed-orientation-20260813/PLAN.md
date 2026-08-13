@@ -61,3 +61,6 @@ E2 result: REJECTED timing gate, not efficacy. The full-graph continuation imple
 
 OH1 [online hard-negative PairwiseNet]: fine-tune one PairwiseNet with streaming correct-order puzzles; for each known true horizontal/vertical pair, mine only a small in-step random reservoir by the current scorer, retain its top false candidates, and apply listwise CE with the true candidate fixed at index 0. No board-wide affinity graph/cache is built. Expected: first step <5 s and U2-style top-4 precision >=30% at recall >=20% after ≤200 steps. Falsify on timing guard or no fusion gain over frozen U2.
 
+
+OH2 [OH1 downstream precision]: replace frozen pair ensemble in the U1 union fusion evaluator with OH1 best step-50 PairwiseNet and run a one-board no-label pair/pose smoke. Gate: top-4 direct precision >=30% and all-direct recall >=20%; otherwise reject OH1 for the target pipeline regardless of online-hard auxiliary accuracy.
+

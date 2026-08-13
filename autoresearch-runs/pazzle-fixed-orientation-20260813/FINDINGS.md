@@ -64,3 +64,7 @@ Existing posterior_edge marginalization did not clear its own predeclared calibr
 ## E2 continuation timing gate (2026-08-13)
 The research-motivated interior-context continuation predictor produced a valid first step (candidate coverage 76.28%, loss 4.4894) but required 26.57 s/iteration even with bs=1 and 16 reconstruction plus 16 rank rows. This would delay the first 100-step validation by roughly 44 minutes, so it was stopped before any performance claim. The mechanism remains conceptually plausible but the present full-graph implementation is computationally unsuitable; retain only the streaming/low-cost objective requirement.
 
+
+## OH1 online hard-negative refinement (2026-08-13)
+OH1 is the first precision trainer to satisfy the runtime constraint: after initialization, it ran 0.20–0.48 s/iteration and required no full candidate cache. Its held-out bounded-reservoir online-hard accuracy peaked at 54.69% at step 50 (46.88% at 100; 50.00% at 200). This auxiliary metric is not the assignment gate, so retain best.pt only pending an apples-to-apples U1 fusion smoke.
+
