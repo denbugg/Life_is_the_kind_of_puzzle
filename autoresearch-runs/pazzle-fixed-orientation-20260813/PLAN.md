@@ -34,3 +34,6 @@ U2 result: REJECTED early. Do not use frozen pair/pose fusion on U1 union withou
 
 D1 [restoration/precision]: on the frozen raw R3 candidate graph, compare raw, normalization, frozen per-tile matchden, and denoise+normalization using simple border seam ranks before retraining a scorer. Mechanism: independent brightness/noise/blur/JPEG corruptions dominate local seam similarity; supervised tile restoration removes nuisance variation while retaining candidate membership. Expected: covered true-neighbour rank/recall improves over raw by >=5 pp. Falsify: no covered improvement; then do not train a denoise-conditioned scorer.
 
+
+D1 result: REJECTED. Improved pixel L1 did not improve seam precision. Next direct lever is a longer/recalibrated listwise candidate ranker on existing sparse candidates, not pixel-space denoising.
+
