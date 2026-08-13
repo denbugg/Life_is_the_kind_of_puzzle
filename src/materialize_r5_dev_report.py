@@ -45,11 +45,14 @@ def main() -> None:
     split = json.loads(args.split.read_text(encoding="utf-8"))
     expected_names = list(split["splits"][args.partition][: args.n])
     rows = []
-    for line in args.log.read_text(encoding="utf-8", errors="replace").splitlines():
-        line = line.strip()
-        if not line.startswith('{"ordinal"'):
+    for raw_line in args.log.read_text(encoding="utf-8-sig", errors="replace").splitlines():
+        start = raw_line.find('{"ordinal"')
+        if start < 0:
             continue
-        row = json.loads(line)
+        try:
+            row = json.loads(raw_line[start:])
+        except json.JSONDecodeError:
+            continue
         if set(row) >= {"ordinal", "name", "raw_layout_ssim", "restored_layout_ssim", "delta", "board_sha256"}:
             rows.append(row)
     rows.sort(key=lambda row: row["ordinal"])
