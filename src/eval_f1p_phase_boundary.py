@@ -170,7 +170,7 @@ def main() -> None:
     fused = aggregate["phase_fused"]
     gate = bool(
         (fused["reciprocal_top1"]["precision"] >= 0.40 and fused["reciprocal_top1"]["recall_all_true"] >= 0.05)
-        or fused.get("20", {}).get("recall_all_true", 0.0) >= 0.1489
+        or fused.get("20", {}).get("recall_all_true", 0.0) >= 0.4025
     )
     output = {"experiment": "F1P_phase_derivative_boundary", "images": args.n, "band": args.band, "metrics": aggregate, "gate_pass": gate}
     args.out.parent.mkdir(parents=True, exist_ok=True)
