@@ -209,7 +209,7 @@ def main() -> None:
             "heldout_assignment_q10": float(np.quantile(agreement, 0.10)),
             "true_vs_single_hard_distractor_margin_positive_fraction": float(np.mean(margins > 0.0)),
             "source_precision_gate_requires_full_candidate_pool": "not assessed; one deterministic hard distractor is a diagnostic only",
-            "clean_source_ssim_lift_over_input_order": float(np.mean([float(row["source_canvas_ssim_posthoc"] - float(row["input_order_ssim_posthoc"]) for row in heldout])),
+            "clean_source_ssim_lift_over_input_order": float(np.mean([float(row["source_canvas_ssim_posthoc"]) - float(row["input_order_ssim_posthoc"]) for row in heldout])),
         }
     args.out.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2), flush=True)
