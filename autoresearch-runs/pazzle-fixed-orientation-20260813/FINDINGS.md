@@ -96,3 +96,7 @@ The learned scene-conditioned confidence calibrator could not establish a held-o
 ## G2 sparse growing-consensus diagnostic (2026-08-13)
 After routing flat U1 candidates through frozen DirectPoseNet, candidate-supported 2×2 closures were abundant but uninformative: mean closures were 572.5/4457/40921 at prefix K=8/16/32, yet direct precision rose only 1.12×/1.06×/1.03×. The strongest relative lift (K=8) retained just 1.20% all-true direct recall. Therefore the candidate graph lacks sufficiently accurate direction attribution for loop/consensus support to function as an outlier filter. Reject growing-consensus before assignment implementation.
 
+
+## PN1 photometric-invariant online refinement (2026-08-13)
+PN1 applied per-tile photometric normalization exclusively to the PairwiseNet scorer inputs while retaining raw U1 candidate retrieval. It completed within the same runtime budget and reached 18.75% held-out normalized U1-row hard accuracy at step 150. This auxiliary figure is not comparable in scale to raw OH3 because it changes the input domain; retain the best checkpoint only pending a fully matched normalized fusion smoke.
+

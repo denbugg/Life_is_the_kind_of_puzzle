@@ -40,3 +40,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | Q1 | Scene-conditioned confidence calibration (4 fit / 2 cal / 2 heldout) | REJECTED gate | No calibrated threshold met required confidence/coverage; best label-free reciprocal+both-affinity rule: 33.33% precision but 14.06% row coverage, only 4.69% exact-edge coverage. |
 
 | G2 | U1 sparse 2×2 growing-consensus diagnostic (2 DEV) | REJECTED pre-gate | Best prefix K=8: direct precision 3.19%→3.56% (1.12×, required 2×); recall 6.66%→1.20% (required >=10%). K=16/32 similarly fail. |
+
+| PN1 | U1-aligned online hard PairwiseNet with per-tile photometric normalization, 200 steps | CHECKPOINT RETAINED pending normalized fusion | First step 11.26s then 0.78–1.27s/it; best normalized held-out U1-row hard accuracy 18.75% at step 150. |

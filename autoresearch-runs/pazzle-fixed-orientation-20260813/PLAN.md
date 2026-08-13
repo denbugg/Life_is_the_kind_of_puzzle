@@ -91,3 +91,6 @@ G2 [sparse growing-consensus pre-gate]: On label-blind U1 R3∪R2L candidates, e
 
 G2 result: REJECTED. The structural consensus literature does not transfer through the present direct-pose routing because its directed candidate edges are near-random at the required prefix. Do not proceed to global assignment/SSIM. Return to external research for a reframe that avoids relying on noisy predicted edge directions.
 
+
+PN2 [matched normalized fusion]: evaluate PN1 best checkpoint in U1 fusion while applying the identical per-tile photometric normalization only before score_pairwise_directions; retain raw tiles for U1 retrieval and DirectPoseNet. Gate: top-4 direct precision >=23.32% (+5 p.p. vs OH4) AND all-true recall >=20%; otherwise fully retire the current PairwiseNet family and begin global-latent evidence gate.
+
