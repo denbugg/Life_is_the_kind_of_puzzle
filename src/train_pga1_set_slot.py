@@ -179,15 +179,17 @@ class TileBank:
             if ordinal % 64 == 0:
                 print(f"preloaded {ordinal}/{len(names)} clean boards", flush=True)
 
-    def synthetic_batch(self, indices: np.ndarray, step: int, seed: int, device: torch.device) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
+    def synthetic_batch(self, indices: np.ndarray, step: int, seed: int, device: torch.device, fixed_corruption: bool = False) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
         dirty_rows: list[np.ndarray] = []
         labels: list[np.ndarray] = []
         clean_rows: list[np.ndarray] = []
         for local, index in enumerate(indices.tolist()):
             clean = self.clean[index]
-            rng = np.random.default_rng((seed + 1_000_003 * step + 7_919 * index + local) % (2**32))
-            dirty = np.ascontiguousarray(distort_frags(clean, rng))
-            permutation = rng.permutation(NFRAG).astype(np.int64)
+            corruption_step = 0 if fixed_corruption else step
+            dirty_rng = np.random.default_rng((seed + 1_000_003 * corruption_step + 7_919 * index) % (2**32))
+            permutation_rng = np.random.default_rng((seed + 17_171 * step + 7_919 * index + local) % (2**32))
+            dirty = np.ascontiguousarray(distort_frags(clean, dirty_rng))
+            permutation = permutation_rng.permutation(NFRAG).astype(np.int64)
             dirty_rows.append(dirty[permutation])
             labels.append(permutation)
             clean_rows.append(clean)
@@ -299,6 +301,7 @@ def main() -> None:
     parser.add_argument("--temperature", type=float, default=0.75)
     parser.add_argument("--sinkhorn_rounds", type=int, default=8)
     parser.add_argument("--aux_weight", type=float, default=0.03)
+    parser.add_argument("--fixed_corruption", action="store_true", help="hold each board's corruption fixed while preserving random input permutation; use only for relative-overfit controls")
     parser.add_argument("--checkpoint", type=Path, default=None)
     parser.add_argument("--report", type=Path, default=None)
     args = parser.parse_args()
@@ -340,7 +343,7 @@ def main() -> None:
     started = time.time()
     for step in range(1, args.steps + 1):
         chosen = generator.integers(0, len(train_names), size=args.batch, endpoint=False)
-        tiles, labels, clean = train_bank.synthetic_batch(chosen, step=step, seed=args.seed, device=device)
+        tiles, labels, clean = train_bank.synthetic_batch(chosen, step=step, seed=args.seed, device=device, fixed_corruption=args.fixed_corruption)
         optimizer.zero_grad(set_to_none=True)
         with autocast_for(device):
             logits = model(tiles)
