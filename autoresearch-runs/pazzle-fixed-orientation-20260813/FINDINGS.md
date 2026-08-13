@@ -100,3 +100,7 @@ After routing flat U1 candidates through frozen DirectPoseNet, candidate-support
 ## PN1 photometric-invariant online refinement (2026-08-13)
 PN1 applied per-tile photometric normalization exclusively to the PairwiseNet scorer inputs while retaining raw U1 candidate retrieval. It completed within the same runtime budget and reached 18.75% held-out normalized U1-row hard accuracy at step 150. This auxiliary figure is not comparable in scale to raw OH3 because it changes the input domain; retain the best checkpoint only pending a fully matched normalized fusion smoke.
 
+
+## PN2 normalized downstream fusion smoke (2026-08-13)
+Exact train/inference matching of per-tile photometric normalization did not solve the precision bottleneck. PN2 yielded top-1 direct precision 23.09%, top-4 15.15%, and all-true recall 15.81%, all below OH4. The observed independent brightness/contrast nuisance is therefore not the dominant residual failure of the current PairwiseNet architecture. Together with OH2/OH4/OH6, this retires the present pairwise visual scorer family for this series.
+

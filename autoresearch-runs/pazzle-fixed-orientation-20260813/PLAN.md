@@ -94,3 +94,6 @@ G2 result: REJECTED. The structural consensus literature does not transfer throu
 
 PN2 [matched normalized fusion]: evaluate PN1 best checkpoint in U1 fusion while applying the identical per-tile photometric normalization only before score_pairwise_directions; retain raw tiles for U1 retrieval and DirectPoseNet. Gate: top-4 direct precision >=23.32% (+5 p.p. vs OH4) AND all-true recall >=20%; otherwise fully retire the current PairwiseNet family and begin global-latent evidence gate.
 
+
+PN2 result: REJECTED. Fully retire current PairwiseNet scorer family (raw, online random hard, U1-aligned M16/M64, and photometric-normalized variants). Do not run assignment/SSIM. Next phase is a global-latent representation evidence gate inspired by GANzzle++—but only a small, time-bounded feasibility diagnostic before any production-scale global model.
+
