@@ -55,3 +55,6 @@ P2 result: REJECTED early. Posterior marginalization fails its R1/brier gate. Ne
 
 E2 [interior-context continuation]: train the existing generative-contrastive continuation predictor with streaming exact A→B→C chains and affinity-proposed target lists, using a ≤5-minute first-step gate. Mechanism: following fragment-alignment research, interior context predicts clean continuation and retrieves the true noisy successor, rather than relying only on observed corrupted seams. Expected: all-true candidate retrieval R@1/R@5 exceeds raw candidate-ranker baselines without cache build; falsify on first-step timeout or no improvement at 200 steps.
 
+
+E2 result: REJECTED timing gate, not efficacy. The full-graph continuation implementation is too slow. New experiments must emit a validation signal in under ten minutes; reimplementation would need a sampled candidate-only path before reconsideration.
+
