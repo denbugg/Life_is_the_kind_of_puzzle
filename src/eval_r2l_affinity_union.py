@@ -118,8 +118,8 @@ def main() -> None:
     if args.n < 1 or args.affinity_k < 1 or args.r2_topk < 1:
         raise ValueError("n, affinity-k, and r2-topk must be positive")
     device = _device(args.device)
-    affinity, affinity_meta = load_frozen_affinity(args.affinity_ckpt, device)
-    affinity2, affinity_meta2 = load_frozen_affinity(args.affinity_ckpt2, device)
+    affinity, affinity_meta, _ = load_frozen_affinity(args.affinity_ckpt, device)
+    affinity2, affinity_meta2, _ = load_frozen_affinity(args.affinity_ckpt2, device)
     r2 = _load_r2(args.r2_ckpt, device)
     _, val_names = train_val_split()
     if args.n > len(val_names):
