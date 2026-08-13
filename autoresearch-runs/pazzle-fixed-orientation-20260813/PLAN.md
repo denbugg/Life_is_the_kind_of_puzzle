@@ -112,3 +112,6 @@ G3 result: REJECTED. Existing canvas generative reconstruction is insufficient. 
 
 G2b result: REJECTED. Do not pursue 2×2 cycle/consensus reranking with F1, R2L, or another local direction source. Candidate graphs possess coverage but their directed edge precision is too low. Begin a fresh external research reframe focused on supervised restoration-before-matching, frequency-domain cross-tile relation features, or a fully different task decomposition rather than more graph closure variants.
 
+
+F1P result: REJECTED. Classical illumination-invariant and phase boundary features are inferior to R0. All currently attempted local feature families, learned pairwise ranking, global critics, latent canvases, and 2×2 consensus are now falsified. Trigger a fresh external research cycle around a new decomposition: supervised clean-tile restoration or source-image retrieval/semantic prior, not another seam score.
+

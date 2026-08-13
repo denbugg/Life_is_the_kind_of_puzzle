@@ -116,3 +116,7 @@ CanvasNet learned a low-frequency image reconstruction signal (final canvas L1�
 ## G2b native-R2L consensus routing (2026-08-13)
 Replacing F1 DirectPose direction routing with R2L’s native 4×576×576 directional scores did not change the structural conclusion. On the first held-out board, support through 1,798 prefix-4 and 21,238 prefix-8 2×2 closures raised direct precision only from 3.08→3.10% and 3.26→3.28%. Since the required 2× precision lift was already falsified and prefix-16/32 enumeration was combinatorially slow, the run was stopped by timing guard. Structural 2×2 closure is now retired independent of direction source.
 
+
+## F1P phase-derivative boundary compatibility (2026-08-13)
+The independent deterministic feature family was cleanly falsified. Per-tile normalized value seams were the best F1P mode but reached only 19.72% R@20; derivative bands collapsed under the corruption; phase-fused scores reached 18.52% R@20, reciprocal precision 11.95% and reciprocal all-true recall 1.86%. Thus Fourier/phase normalization does not recover the cross-tile continuation signal missing from independently corrupted 20px tiles. No sparse accurate anchors emerge, so constrained assignment is blocked.
+
