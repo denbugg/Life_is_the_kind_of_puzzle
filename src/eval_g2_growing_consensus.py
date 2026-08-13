@@ -155,7 +155,8 @@ def main() -> None:
         tiles = sample["tiles"].to(device)
         perm = sample["perm"].to(device).long()
         candidates, valid = build_u1(tiles, affinity, affinity2, r2, args.affinity_k, args.r2_topk, device)
-        labels = candidate_direct_labels(perm.unsqueeze(0), candidates.unsqueeze(0))[0]
+        flat_candidates = candidates.reshape(1, NFRAG, -1)
+        labels = candidate_direct_labels(perm.unsqueeze(0), flat_candidates)[0].reshape_as(candidates)
         for width in prefixes:
             raw = prefix_mask(valid, width)
             supported, closures = support_2x2(candidates, raw)
