@@ -14,8 +14,17 @@ from typing import Any
 import numpy as np
 
 
+def top1_distance(row: dict[str, Any]) -> float:
+    value = row["top_distance"]
+    if isinstance(value, list):
+        if not value:
+            raise ValueError("top_distance list is empty")
+        value = value[0]
+    return float(value)
+
+
 def choose_threshold(rows: list[dict[str, Any]], target_precision: float, min_accepted: int) -> tuple[float | None, dict[str, float]]:
-    distances = np.array([float(row["top_distance"]) for row in rows], dtype=np.float64)
+    distances = np.array([top1_distance(row) for row in rows], dtype=np.float64)
     correct = np.array([int(row["rank"]) == 1 for row in rows], dtype=bool)
     choices: list[tuple[int, float, float]] = []
     for threshold in np.unique(distances):
@@ -35,7 +44,7 @@ def choose_threshold(rows: list[dict[str, Any]], target_precision: float, min_ac
 def metrics(rows: list[dict[str, Any]], threshold: float | None) -> dict[str, float]:
     if threshold is None or not rows:
         return {"accepted": 0.0, "coverage": 0.0, "precision": 0.0, "correct_accepted": 0.0}
-    distance = np.array([float(row["top_distance"]) for row in rows], dtype=np.float64)
+    distance = np.array([top1_distance(row) for row in rows], dtype=np.float64)
     correct = np.array([int(row["rank"]) == 1 for row in rows], dtype=bool)
     accepted = distance <= threshold
     return {
@@ -69,7 +78,7 @@ def main() -> None:
         per_fold.append({"fold": fold, "threshold": threshold, **calibration, **heldout_metric})
         for row in heldout:
             copied = dict(row)
-            copied["accepted_by_oof_threshold"] = bool(threshold is not None and float(row["top_distance"]) <= threshold)
+            copied["accepted_by_oof_threshold"] = bool(threshold is not None and top1_distance(row) <= threshold)
             copied["oof_threshold"] = threshold
             prediction_rows.append(copied)
 
