@@ -97,3 +97,6 @@ PN2 [matched normalized fusion]: evaluate PN1 best checkpoint in U1 fusion while
 
 PN2 result: REJECTED. Fully retire current PairwiseNet scorer family (raw, online random hard, U1-aligned M16/M64, and photometric-normalized variants). Do not run assignment/SSIM. Next phase is a global-latent representation evidence gate inspired by GANzzle++—but only a small, time-bounded feasibility diagnostic before any production-scale global model.
 
+
+GC1 [whole-board global critic, structural reframe]: Reuse train_global_critic.py to score true arrangements versus arrangements formed from exactly the same independently distorted tile bag. Mechanism: board-level edge/grid statistics expose distributed layout coherence unavailable to isolated pair rows, while same-bag negatives forbid tile-identity shortcuts. Time-bounded evidence run: smoke then 400 steps, evaluation every 100 steps on 4 held-out boards. Gate: held-out positive-vs-negative discrimination must materially exceed 0.60 pairwise accuracy (chance=0.50) by step 400; otherwise reject global-critic-based search before building a solver. Source: GANzzle++ global representation framing [16].
+
