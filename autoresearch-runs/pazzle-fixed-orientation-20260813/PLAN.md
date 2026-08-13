@@ -85,3 +85,6 @@ Q1 [scene-conditioned graph confidence]: train/evaluate the existing top-edge ca
 
 Q1 result: REJECTED for confidence anchoring. Retain reciprocal+both-affinity rule as a measured sparse anchor diagnostic, not as a production scorer. Current local scorer/calibrator queue is exhausted; continue external structural research before new architecture work.
 
+
+G2 [sparse growing-consensus pre-gate]: On label-blind U1 R3∪R2L candidates, enumerate non-overlapping directional 2×2 closures a→right b, a→down c, b→down d, c→right d using proposal prefixes K={8,16,32}. Measure held-out direct precision/recall of every edge participating in ≥1 closure against same-prefix raw edges. Gate: a consensus-supported set must produce >=2x raw direct precision and retain >=10% all-true direct recall on ≥2 DEV boards; otherwise reject growing-consensus before any assignment implementation.
+
