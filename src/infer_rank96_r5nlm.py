@@ -22,7 +22,7 @@ import numpy as np
 import torch
 from PIL import Image
 
-from config import TEST_INP
+from config import TEST_DIR
 from models import RestoreNet
 import infer_rank96 as rank96
 
@@ -161,7 +161,7 @@ def contract(args: argparse.Namespace, checkpoint_paths: dict[str, Path]) -> dic
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Offline S1: frozen rank96 plus R5-to-canonical-NLM restoration.")
-    parser.add_argument("--input-dir", type=Path, default=Path(TEST_INP))
+    parser.add_argument("--input-dir", type=Path, default=Path(TEST_DIR))
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_WORK / "png")
     parser.add_argument("--output-zip", type=Path, default=DEFAULT_WORK / "submission_rank96_r5nlm_s1.zip")
     parser.add_argument("--manifest", type=Path, default=None)
