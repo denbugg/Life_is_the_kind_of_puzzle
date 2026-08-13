@@ -18,12 +18,15 @@ from canvas_data import CanvasDataset
 from candidate_rank import DOWN, RIGHT
 from config import GRID, NFRAG
 from direct_pose import NON_DIRECT_CLASS
+from eval_direct_pose import load_direct_pose
+from eval_pair_affinity_fusion import score_direct_pose_bundle
 from eval_r2l_affinity_union import DEFAULT_AFFINITY_A, DEFAULT_AFFINITY_B, DEFAULT_R2L, _load_r2, _union_candidates
 from imgio import train_val_split
 from train_direct_pose import candidate_direct_labels
 from train_offset_pose import load_frozen_affinity, mine_affinity_candidates
 
 DIRECT_EDGES_PER_BOARD = 4 * GRID * (GRID - 1)
+DEFAULT_POSE = r"E:\\pazzle_work\\pazzle_fixed_orientation_20260813\\F1_direct_pose\\checkpoints\\orbit24_f1_best.pt"
 
 
 def parse_args() -> argparse.Namespace:
@@ -35,6 +38,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--affinity-ckpt", default=DEFAULT_AFFINITY_A)
     p.add_argument("--affinity-ckpt2", default=DEFAULT_AFFINITY_B)
     p.add_argument("--r2-ckpt", default=DEFAULT_R2L)
+    p.add_argument("--direct-pose-ckpt", default=DEFAULT_POSE)
+    p.add_argument("--pose-pair-batch", type=int, default=4096)
     p.add_argument("--seed", type=int, default=240815)
     p.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     p.add_argument("--out", type=Path, required=True)
@@ -60,10 +65,28 @@ def build_u1(
     )
     with autocast(device):
         r2_scores = r2(tiles.unsqueeze(0))[0].float()
-    candidates, valid = _union_candidates(base[0], base_valid[0], r2_scores, r2_topk)
-    # U1 primitives use (direction, tile, candidate); G2 keeps geometry explicit
-    # as (tile, direction, candidate) for closure enumeration.
-    return candidates.permute(1, 0, 2).contiguous(), valid.permute(1, 0, 2).contiguous()
+    return _union_candidates(base[0], base_valid[0], r2_scores, r2_topk)
+
+
+@torch.inference_mode()
+def make_directed_u1(
+    pose: torch.nn.Module,
+    tiles: Tensor,
+    candidates: Tensor,
+    valid: Tensor,
+    pair_batch: int,
+    device: torch.device,
+) -> tuple[Tensor, Tensor]:
+    """Split flat U1 rows into predicted U/D/L/R channels without labels."""
+    dummy = torch.full_like(candidates, NON_DIRECT_CLASS)
+    pose_scores, _ = score_direct_pose_bundle(
+        pose, tiles, candidates, valid, dummy, pair_batch=pair_batch, device=device
+    )
+    direction = pose_scores.direction
+    classes = torch.arange(4, device=device).view(1, 4, 1)
+    directed_candidates = candidates[:, None, :].expand(-1, 4, -1).contiguous()
+    directed_valid = valid[:, None, :] & direction[:, None, :].eq(classes)
+    return directed_candidates, directed_valid
 
 
 def prefix_mask(valid: Tensor, width: int) -> Tensor:
@@ -141,6 +164,7 @@ def main() -> None:
     affinity, _, _ = load_frozen_affinity(args.affinity_ckpt, device)
     affinity2, _, _ = load_frozen_affinity(args.affinity_ckpt2, device)
     r2 = _load_r2(args.r2_ckpt, device)
+    pose, _ = load_direct_pose(args.direct_pose_ckpt, device)
     _, val_names = train_val_split()
     dataset = CanvasDataset(val_names[: args.n], real_prob=0.0, seed=args.seed)
     result: dict[str, object] = {
@@ -157,9 +181,10 @@ def main() -> None:
         sample = dataset[image_index]
         tiles = sample["tiles"].to(device)
         perm = sample["perm"].to(device).long()
-        candidates, valid = build_u1(tiles, affinity, affinity2, r2, args.affinity_k, args.r2_topk, device)
-        flat_candidates = candidates.reshape(1, NFRAG, -1)
-        labels = candidate_direct_labels(perm.unsqueeze(0), flat_candidates)[0].reshape_as(candidates)
+        flat_candidates, flat_valid = build_u1(tiles, affinity, affinity2, r2, args.affinity_k, args.r2_topk, device)
+        candidates, valid = make_directed_u1(pose, tiles, flat_candidates, flat_valid, args.pose_pair_batch, device)
+        flat_labels = candidate_direct_labels(perm.unsqueeze(0), flat_candidates.unsqueeze(0))[0]
+        labels = flat_labels[:, None, :].expand_as(candidates)
         for width in prefixes:
             raw = prefix_mask(valid, width)
             supported, closures = support_2x2(candidates, raw)
