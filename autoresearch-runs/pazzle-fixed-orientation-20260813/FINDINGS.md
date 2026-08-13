@@ -72,3 +72,7 @@ OH1 is the first precision trainer to satisfy the runtime constraint: after init
 ## OH2 downstream fusion smoke (2026-08-13)
 OH1's bounded random-reservoir objective transferred a small top-1 improvement over U2 (direct precision 28.82% versus 25.52%) but did not improve the decisive top-4 regime: 18.36% precision and 19.16% all-true recall. Random within-board reservoirs are not sufficiently aligned with the actual U1 affinity/R2L candidate distribution. Retire OH1 as a production scorer but retain the fast training infrastructure.
 
+
+## OH3 U1-aligned online hard refinement (2026-08-13)
+OH3 met the runtime constraint and mined negatives from the actual U1 candidate rows rather than random board pairs. It reached 32.81% held-out U1-row online-hard accuracy at step 150 (candidate-covered rows 62.77%), with post-warmup training under 1.3 s/iteration. This auxiliary score is lower than OH1 because the negatives are materially harder and distribution-aligned. Retain best.pt pending the decisive U1 pair/pose fusion smoke.
+
