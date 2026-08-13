@@ -76,3 +76,6 @@ OH5 [full-row online listwise]: rerun OH3 with M=64 (true plus 63 hardest false 
 
 OH6 [OH5 downstream top4]: replace pair scorer in U1 fusion evaluator with OH5 best full-row checkpoint; run one-board fusion smoke. Gate remains top-4 direct precision >=30% AND recall >=20%; only a pass permits held-out multi-board confirmation.
 
+
+OH6 result: REJECTED. Retire current online PairwiseNet listwise variants as sufficient top-4 precision solution. Begin a new external research/structural-design cycle focused on top-k ranking objectives, reciprocal calibration, and global sparse matching rather than additional M/LR sweeps.
+

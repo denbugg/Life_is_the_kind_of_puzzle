@@ -84,3 +84,7 @@ U1-aligned online hard training reached the first local success at top-1: direct
 ## OH5 full-row online listwise refinement (2026-08-13)
 Increasing the online U1 hard list from M=16 to M=64 preserved rapid post-warmup iteration (0.99–1.55 s) and reached 32.81% held-out U1-row hard accuracy at step 200. The auxiliary metric is comparable to OH3, but its objective explicitly includes the broader false tail relevant to top-4. Retain best.pt pending an unchanged U1 fusion smoke.
 
+
+## OH6 full-row downstream fusion smoke (2026-08-13)
+Training against a 64-wide U1 row did not improve the decisive false tail. OH6 produced top-1 direct precision 29.17%, top-4 17.93%, and all-true recall 18.70%, all below OH4 except no metric crosses the gate. Therefore M=64 is not a remedy; the current PairwiseNet feature/scoring family has saturated around 18% top-4 precision under U1 distribution, despite fast online hard-negative training.
+

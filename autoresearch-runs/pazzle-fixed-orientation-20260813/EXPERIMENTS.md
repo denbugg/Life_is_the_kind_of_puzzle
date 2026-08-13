@@ -34,3 +34,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | OH4 | OH3 best scorer in U1 fusion smoke (1 DEV) | REJECTED downstream gate | top-1 precision=30.38%, but top-4=18.32% and recall=19.11%, below 30%/20% gate. |
 
 | OH5 | U1-aligned full-row (M=64) online hard PairwiseNet, 200 steps | CHECKPOINT RETAINED pending fusion | First step 13.97s then 0.99–1.55s/it; best U1-row online-hard acc 32.81% at step 200. |
+
+| OH6 | OH5 full-row scorer in U1 fusion smoke (1 DEV) | REJECTED downstream gate | top-1=29.17%, top-4=17.93%, recall=18.70%; worse than OH4 top-4. |
