@@ -142,3 +142,9 @@ The source-aware route is now end-to-end valid where the public source exists in
 - More importantly, source-disjoint DEV graphs 14/20 degraded covered edge top-1 by 4.93 pp and 3.43 pp. Raw rank-score message patterns do not transfer in SGT1 v1 despite capacity fit.
 - Stop cache expansion and solver/SSIM evaluation. A successor must add a transferable visual representation or a different information source, not only deeper sparse score messages.
 
+
+## R4 SSIM-first post-layout restoration: capability pass
+- The frozen MatchDenoiser is harmful as a seam ranking feature (D1) but beneficial for the actual competition objective after a fixed layout.
+- On eight source-disjoint DEV boards, unchanged rank96 input-only layouts gained +0.05585 mean SSIM from restored tile pixels; lower-95% delta +0.03681; every observed board delta was positive.
+- R4 is retained solely as a post-layout composition layer. Its local score is not a reproduction/comparison of canonical submission_rank96_v1.zip (0.2161981413457065).
+
