@@ -73,3 +73,6 @@ OH4 [OH3 downstream precision]: replace pair scorer in U1 fusion evaluator with 
 
 OH5 [full-row online listwise]: rerun OH3 with M=64 (true plus 63 hardest false candidates from U1 rows) instead of M=16, retaining nA=8 and streaming graph construction. Mechanism: train the tail relevant to downstream top-4, not just a 16-way local competition. Expected: top-4 direct precision >=30% with recall >=20%; falsify on runtime >5 s/step or OH5 fusion gate failure.
 
+
+OH6 [OH5 downstream top4]: replace pair scorer in U1 fusion evaluator with OH5 best full-row checkpoint; run one-board fusion smoke. Gate remains top-4 direct precision >=30% AND recall >=20%; only a pass permits held-out multi-board confirmation.
+

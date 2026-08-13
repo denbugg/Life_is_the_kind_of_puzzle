@@ -80,3 +80,7 @@ OH3 met the runtime constraint and mined negatives from the actual U1 candidate 
 ## OH4 downstream fusion smoke (2026-08-13)
 U1-aligned online hard training reached the first local success at top-1: direct precision 30.38%, above the 30% threshold. It still failed the target top-4 regime (18.32% precision, 19.11% all-true recall). The model separates a few easy best rows but does not suppress enough of the top false tail. This diagnoses list size, not candidate coverage, as the next concrete lever.
 
+
+## OH5 full-row online listwise refinement (2026-08-13)
+Increasing the online U1 hard list from M=16 to M=64 preserved rapid post-warmup iteration (0.99–1.55 s) and reached 32.81% held-out U1-row hard accuracy at step 200. The auxiliary metric is comparable to OH3, but its objective explicitly includes the broader false tail relevant to top-4. Retain best.pt pending an unchanged U1 fusion smoke.
+
