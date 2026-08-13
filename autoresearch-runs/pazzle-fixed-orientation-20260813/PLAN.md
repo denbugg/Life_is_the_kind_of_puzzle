@@ -100,3 +100,6 @@ PN2 result: REJECTED. Fully retire current PairwiseNet scorer family (raw, onlin
 
 GC1 [whole-board global critic, structural reframe]: Reuse train_global_critic.py to score true arrangements versus arrangements formed from exactly the same independently distorted tile bag. Mechanism: board-level edge/grid statistics expose distributed layout coherence unavailable to isolated pair rows, while same-bag negatives forbid tile-identity shortcuts. Time-bounded evidence run: smoke then 400 steps, evaluation every 100 steps on 4 held-out boards. Gate: held-out positive-vs-negative discrimination must materially exceed 0.60 pairwise accuracy (chance=0.50) by step 400; otherwise reject global-critic-based search before building a solver. Source: GANzzle++ global representation framing [16].
 
+
+GC1 result: REJECTED. No assignment/SSIM. Existing same-bag global edge/grid statistic critic is inadequate. Next architectural evidence gate must test a genuinely generative latent-canvas/set-to-slots representation (not another global critic); constrain it with a very small synthetic source-disjoint macrocell retrieval gate before any full 24×24 model.
+

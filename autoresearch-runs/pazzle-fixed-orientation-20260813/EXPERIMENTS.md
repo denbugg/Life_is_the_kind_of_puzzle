@@ -44,3 +44,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | PN1 | U1-aligned online hard PairwiseNet with per-tile photometric normalization, 200 steps | CHECKPOINT RETAINED pending normalized fusion | First step 11.26s then 0.78–1.27s/it; best normalized held-out U1-row hard accuracy 18.75% at step 150. |
 
 | PN2 | PN1 normalized PairwiseNet in matched U1 fusion smoke (1 DEV) | REJECTED downstream gate | top-4 direct precision=15.15%, recall=15.81%; below OH4 and far below 23.32%/20% gate. |
+
+| GC1 | Whole-board structural critic, 400 steps / 4 DEV | REJECTED evidence gate | Near-swap accuracy=31.25%, macro=55.56%; no corruption family reached its pre-registered threshold and learned lift over total-variation baseline failed. |

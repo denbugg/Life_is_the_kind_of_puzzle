@@ -104,3 +104,7 @@ PN1 applied per-tile photometric normalization exclusively to the PairwiseNet sc
 ## PN2 normalized downstream fusion smoke (2026-08-13)
 Exact train/inference matching of per-tile photometric normalization did not solve the precision bottleneck. PN2 yielded top-1 direct precision 23.09%, top-4 15.15%, and all-true recall 15.81%, all below OH4. The observed independent brightness/contrast nuisance is therefore not the dominant residual failure of the current PairwiseNet architecture. Together with OH2/OH4/OH6, this retires the present pairwise visual scorer family for this series.
 
+
+## GC1 whole-board global critic (2026-08-13)
+The same-bag global critic trained efficiently (0.31s/it after warmup) but failed its held-out hard-negative gate. It recognised some random-permutation cases, yet did not reliably prefer true layouts over the local and macro perturbations that a repair/search solver must distinguish: near-swap accuracy was 31.25% and macro accuracy 55.56%. The model therefore does not deliver a usable global energy for search. Reject global-critic solver development; the GANzzle-inspired reframe requires an actual latent-canvas/slot reconstruction model rather than this edge-statistics critic.
+
