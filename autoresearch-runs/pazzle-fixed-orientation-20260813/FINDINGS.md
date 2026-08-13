@@ -56,3 +56,7 @@ The scaled listwise CandidateSeamRanker allocated 12.1 GB resident / 20.6 GB com
 ## P1S micro-cache timing gate (2026-08-13)
 Even n=4/K=16 normalized hard-negative mining produced no cache within its 5-minute budget (stopped at 5m29s). The bottleneck is fixed per-board all-candidate pairwise scoring overhead, not cache scale. Retire this mining implementation for the current iteration; it cannot support rapid hard-negative precision experiments on the RTX 2070.
 
+
+## P2 posterior seam reuse (2026-08-13)
+Existing posterior_edge marginalization did not clear its own predeclared calibration gate. On 192 held-out hard rows, raw candidate-target R1 was 17.19%; posterior_k4 and analytic hybrids improved R5 (best 42.19%) but did not improve R1 (best 16.67%) and failed brier improvement. This is insufficient for the U2 precision bottleneck; reject scorer reuse rather than tune weights post hoc.
+
