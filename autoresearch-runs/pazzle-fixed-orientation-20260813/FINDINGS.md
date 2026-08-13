@@ -148,3 +148,12 @@ The source-aware route is now end-to-end valid where the public source exists in
 - On eight source-disjoint DEV boards, unchanged rank96 input-only layouts gained +0.05585 mean SSIM from restored tile pixels; lower-95% delta +0.03681; every observed board delta was positive.
 - R4 is retained solely as a post-layout composition layer. Its local score is not a reproduction/comparison of canonical submission_rank96_v1.zip (0.2161981413457065).
 
+
+## R5 result: restoration is now a stronger, transferable lever
+
+R5 establishes that a learned full-layout restoration model can transfer from a tightly bounded FIT capacity control to source-disjoint rank96 reconstructions. Its paired DEV gain over raw layout (**+0.080270**, lower-95 **+0.047606**) is larger than R4's (**+0.055252**, lower-95 **+0.036027**). Since both restorers saw the exact same inferred board on each image, the conclusion is not confounded by rank96 solver variation.
+
+The residual assignment remains the dominant failure source. The R5 model cannot repair wrongly placed semantic content, and the measured candidate-coverage ceiling remains unchanged. Thus R5 is a retained composition layer, not a replacement for candidate mining or bijective layout inference.
+
+One paired board had R5 marginally below R4 (âˆ’0.007094), so R5 should not yet be blindly stacked with R4. A full source-disjoint composition gate must compare canonical rank96+NLM, rank96+R5, and only explicitly justified R5/NLM orderings on shared inferred boards. It must report paired mean, lower-95, worst case, and an unchanged-board hash before any production render.
+

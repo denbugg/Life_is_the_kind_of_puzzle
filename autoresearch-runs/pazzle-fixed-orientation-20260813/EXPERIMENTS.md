@@ -57,3 +57,20 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | PGA1 | Global 576×576 set-to-slot Transformer + Sinkhorn/Hungarian; two-board capacity controls | REJECTED | Relative-overfit gate failed: stochastic 40.19% tile top-1; fixed-corruption 11.55% (required >=95%). No real-input DEV/E26/submission run. |
 | SGT1 | 1.08M sparse rank96 candidate-graph Transformer; fixed capacity then source-disjoint cached pilot | REJECTED | Capacity top1(covered)=100% on 2 FIT graphs, but both source-disjoint DEV caches worsened covered top1: -4.93 pp / -3.43 pp (mean -4.18 pp). No buddies/SSIM run. |
 | R4 | Frozen MatchDenoiser applied only after fixed rank96 layout; 8 source-disjoint DEV boards | CAPABILITY PASS | Raw rank96-layout SSIM 0.10620→restored 0.16205, delta +0.05585; lower-95% delta +0.03681. Retain only as post-layout auxiliary. |
+
+<!-- ORBIT-24 R5 journal entry: appended 2026-08-14 -->
+
+## R5 â€” FP32 MS-SSIM U-Net restoration and paired rank96 test
+
+**Hypothesis.** A spatial U-Net trained to invert the known per-tile corruption can improve post-layout pixel SSIM more than the frozen tiled MatchDenoiser, without changing any candidate score, tile pose, or bijective assignment.
+
+**Capacity control.** `RestoreNet(base=32, depth=4)`, trained in FP32 with MS-SSIM+L1 on two FIT scenes for 1,200 steps, reached SSIM **0.733509**, versus **0.575197** for frozen MatchDenoiser and **0.482370** for the corrupted canvas. The prior AMP path was rejected because fractional MS-SSIM operations produced NaNs; all retained R5 training/evaluation is FP32.
+
+**Source-disjoint DEV gate.** On 8 pinned DEV boards, with one frozen input-only rank96 assignment per board and target access only after layout, R5 reached mean layout SSIM **0.185030** from raw **0.104760**: mean delta **+0.080270**, minimum **+0.028620**, lower-95 delta **+0.047606**. The gate passed.
+
+**Paired R4 replacement control.** R4 and R5 were evaluated on exactly the same rank96 layout per board to eliminate run-to-run layout variation. R4 mean was **0.160012** (delta **+0.055252**, lower-95 **+0.036027**); R5 mean was **0.185030** (delta **+0.080270**, lower-95 **+0.047606**). Paired R5âˆ’R4 mean was **+0.025018**, minimum **âˆ’0.007094**, lower-95 **+0.008930**. The strict replacement gate therefore passed.
+
+**Decision: RETAIN R5 as the stronger post-layout restorer.** R5 changes pixels only on the assembled 480Ã—480 board. It does not modify candidate mining, seam scores, board assignment, source manifests, or the canonical rank96 mechanism. The next required test is a source-disjoint composition gate against canonical NLM; E26 production, test rendering, and submission ZIP generation remain blocked.
+
+**Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R5_restore_unet\r5_capacity_fp32_report.json`; `...\r5_rank96_layout_dev8.json`; `...\r5_vs_r4_rank96_dev8.json`; `R5_RESTORATION_EVIDENCE_REPORT.md`.
+
