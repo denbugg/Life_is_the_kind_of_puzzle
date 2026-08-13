@@ -75,18 +75,20 @@ def load_r5(path: Path, device: str, base: int, depth: int) -> RestoreNet:
     return model
 
 
-def restore_tiles(tiles: np.ndarray, model: RestoreNet, device: str, batch: int) -> np.ndarray:
-    if tiles.dtype != np.uint8 or tiles.ndim != 4 or tiles.shape[-1] != 3:
-        raise ValueError(f"expected uint8 tiles NHWC, got {tiles.shape} {tiles.dtype}")
-    result: list[np.ndarray] = []
+def restore_layout(layout: np.ndarray, model: RestoreNet, device: str) -> np.ndarray:
+    # RestoreNet was trained on 240×240 mosaics.  It needs a spatially coherent
+    # canvas and therefore runs after (not before) frozen rank96 assembly.
+    if layout.dtype != np.uint8 or layout.ndim != 3 or layout.shape[-1] != 3:
+        raise ValueError(f"expected uint8 HWC layout, got {layout.shape} {layout.dtype}")
+    height, width = layout.shape[:2]
+    if height % 8 or width % 8:
+        raise ValueError(f"RestoreNet depth-4 requires height/width divisible by 8, got {layout.shape}")
     with torch.no_grad():
-        for start in range(0, len(tiles), batch):
-            chunk = torch.from_numpy(tiles[start : start + batch]).to(device=device, dtype=torch.float32)
-            chunk = chunk.permute(0, 3, 1, 2).div_(255.0)
-            restored = model(chunk).clamp_(0.0, 1.0)
-            restored = restored.permute(0, 2, 3, 1).cpu().numpy()
-            result.append(np.rint(restored * 255.0).clip(0, 255).astype(np.uint8))
-    return np.concatenate(result, axis=0)
+        source = torch.from_numpy(layout).to(device=device, dtype=torch.float32)
+        source = source.permute(2, 0, 1).unsqueeze(0).div_(255.0)
+        restored = model(source).clamp_(0.0, 1.0)
+        result = restored.squeeze(0).permute(1, 2, 0).cpu().numpy()
+    return np.rint(result * 255.0).clip(0, 255).astype(np.uint8)
 
 
 def main() -> None:
@@ -96,7 +98,6 @@ def main() -> None:
     parser.add_argument("--n", type=int, default=8)
     parser.add_argument("--device", default="cuda")
     parser.add_argument("--pair-batch", type=int, default=128)
-    parser.add_argument("--tile-batch", type=int, default=64)
     parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CKPT)
     parser.add_argument("--base", type=int, default=32)
     parser.add_argument("--depth", type=int, default=4)
@@ -124,9 +125,8 @@ def main() -> None:
         target = rank96.load_rgb_strict(Path(TRAIN_TGT) / name)
         inferred = rank96.infer_one(dirty_image, models, pair_batch=args.pair_batch)
         dirty_tiles = rank96.split_upright_tiles(dirty_image)
-        restored_tiles = restore_tiles(dirty_tiles, r5, args.device, args.tile_batch)
         raw_layout = rank96.assemble_upright_tiles(dirty_tiles, inferred.board)
-        restored_layout = rank96.assemble_upright_tiles(restored_tiles, inferred.board)
+        restored_layout = restore_layout(raw_layout, r5, str(resolved_device))
         raw_ssim = float(ssim(raw_layout, target, channel_axis=2, data_range=255))
         restored_ssim = float(ssim(restored_layout, target, channel_axis=2, data_range=255))
         row = {
@@ -153,7 +153,7 @@ def main() -> None:
     passed = bool(summary["mean_delta"] > 0 and summary["lower_95_delta"] > 0)
     report = {
         "experiment": "R5_RestoreNet_on_frozen_rank96_layout",
-        "scope": "source-disjoint held-out evaluation; rank96 layout uses input only; RestoreNet changes pixels only; target used only for SSIM; no test access",
+        "scope": "source-disjoint held-out evaluation; frozen rank96 layout uses input only; RestoreNet operates on the assembled 480x480 layout and changes pixels only; target used only for SSIM; no test access",
         "split": str(args.split),
         "split_sha256": file_sha256(args.split),
         "partition": args.partition,
