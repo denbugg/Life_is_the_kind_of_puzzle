@@ -17,7 +17,7 @@ from typing import Any
 import numpy as np
 from skimage.metrics import structural_similarity as ssim
 
-from config import CACHE_DIR, TRAIN_INP, TRAIN_TGT
+from config import CACHE_DIR, CKPT_DIR, TRAIN_INP, TRAIN_TGT
 from imgio import from_frags, load, to_frags
 from match_preprocess import apply_match_denoiser_np, load_match_denoiser
 
@@ -74,9 +74,12 @@ def main() -> None:
     missing = [name for name in names if name not in perms]
     if missing:
         raise RuntimeError(f"missing cached permutation labels: {missing[:3]}")
-    denoiser, checkpoint = load_match_denoiser(args.tag, device=args.device)
-    if denoiser is None or checkpoint is None:
+    denoiser, checkpoint_metadata = load_match_denoiser(args.tag, device=args.device)
+    if denoiser is None or checkpoint_metadata is None:
         raise FileNotFoundError("frozen MatchDenoiser checkpoint not found")
+    checkpoint = next((Path(CKPT_DIR) / name for name in (f"{args.tag}_best.pt", f"{args.tag}_last.pt") if (Path(CKPT_DIR) / name).exists()), None)
+    if checkpoint is None:
+        raise FileNotFoundError("frozen MatchDenoiser checkpoint path not found")
     rows: list[dict[str, Any]] = []
     deltas: list[float] = []
     for ordinal, name in enumerate(names, 1):
@@ -110,7 +113,8 @@ def main() -> None:
         "permutation_cache": str(cache_path),
         "permutation_cache_sha256": sha256_file(cache_path),
         "denoiser_checkpoint": str(checkpoint),
-        "denoiser_checkpoint_sha256": sha256_file(Path(checkpoint)),
+        "denoiser_checkpoint_sha256": sha256_file(checkpoint),
+        "denoiser_checkpoint_metadata": checkpoint_metadata,
         "n": len(rows),
         "rows": rows,
         "summary": {
