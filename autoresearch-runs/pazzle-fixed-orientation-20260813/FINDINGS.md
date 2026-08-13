@@ -135,3 +135,10 @@ The source-aware route is now end-to-end valid where the public source exists in
 - Therefore do not compare PGA1 synthetic SSIM (0.2540/0.3762) to the historical comparable best SSIM 0.2161981413457065. PGA1 did not earn a real-input source-disjoint DEV evaluation and is retired as a naive global-slot architecture.
 - Next transformer-family work must add a distinct information source/mechanism, not scale PGA1 depth or width.
 
+
+## SGT1 sparse graph Transformer: reject after source-disjoint pilot
+- Finite-masked 1.08M edge-aware graph Transformer can memorize covered candidates (two-board fixed capacity 100% top-1 conditional on coverage), so capacity is not the bottleneck.
+- Candidate cache coverage is only 68.44% mean at K=96; SGT1 cannot recover missing edges by design.
+- More importantly, source-disjoint DEV graphs 14/20 degraded covered edge top-1 by 4.93 pp and 3.43 pp. Raw rank-score message patterns do not transfer in SGT1 v1 despite capacity fit.
+- Stop cache expansion and solver/SSIM evaluation. A successor must add a transferable visual representation or a different information source, not only deeper sparse score messages.
+
