@@ -109,3 +109,6 @@ G3 [latent-canvas set-to-macrocell evidence gate]: Reuse CanvasNet’s unordered
 
 G3 result: REJECTED. Existing canvas generative reconstruction is insufficient. Before abandoning structural consistency entirely, run one low-cost corrective diagnostic: G2b must route U1 candidate edges by R2L’s native directional retrieval scores, not the F1 DirectPose direction classifier that caused G2’s near-random directed graph. Gate G2b with the same 2×2 consensus precision/recall metric. This is a distinct causal test, not a G2 rerun.
 
+
+G2b result: REJECTED. Do not pursue 2×2 cycle/consensus reranking with F1, R2L, or another local direction source. Candidate graphs possess coverage but their directed edge precision is too low. Begin a fresh external research reframe focused on supervised restoration-before-matching, frequency-domain cross-tile relation features, or a fully different task decomposition rather than more graph closure variants.
+

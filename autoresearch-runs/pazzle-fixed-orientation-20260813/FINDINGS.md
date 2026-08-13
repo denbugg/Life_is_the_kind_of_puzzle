@@ -112,3 +112,7 @@ The same-bag global critic trained efficiently (0.31s/it after warmup) but faile
 ## G3 latent-canvas set-to-slot gate (2026-08-13)
 CanvasNet learned a low-frequency image reconstruction signal (final canvas L1≈0.224) and its oracle canvas matching was strong, but the predicted canvas did not become a usable instance-conditioned placement representation. At step 600, predicted/slot tile placement remained about 0.3% top-1 and 3.7% top-20, essentially chance-scale. Thus the immediate set-to-canvas decoder architecture does not solve the permutation inference problem under independent tile corruption. Reject this existing latent-canvas family before any 24×24 extension.
 
+
+## G2b native-R2L consensus routing (2026-08-13)
+Replacing F1 DirectPose direction routing with R2L’s native 4×576×576 directional scores did not change the structural conclusion. On the first held-out board, support through 1,798 prefix-4 and 21,238 prefix-8 2×2 closures raised direct precision only from 3.08→3.10% and 3.26→3.28%. Since the required 2× precision lift was already falsified and prefix-16/32 enumeration was combinatorially slow, the run was stopped by timing guard. Structural 2×2 closure is now retired independent of direction source.
+

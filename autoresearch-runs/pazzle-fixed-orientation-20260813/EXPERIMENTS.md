@@ -48,3 +48,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | GC1 | Whole-board structural critic, 400 steps / 4 DEV | REJECTED evidence gate | Near-swap accuracy=31.25%, macro=55.56%; no corruption family reached its pre-registered threshold and learned lift over total-variation baseline failed. |
 
 | G3 | CanvasNet global latent-canvas, 600 synthetic steps / 4 DEV | REJECTED evidence gate | predicted placement r1≈0.2–0.3%, r20≈3.7%, slot place accuracy≈0.3%; no useful lift over random/G1b despite canvas L1=0.224. |
+
+| G2b | U1 2×2 consensus routed by native R2L directions | REJECTED early / timing-bounded | Prefix-4: p 3.08%→3.10%, r=3.67%; prefix-8: p 3.26%→3.28%, r=13.04%; <1.01× lift, while remaining sweep was combinatorially slow. |
