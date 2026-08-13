@@ -14,3 +14,8 @@
 - At 200 steps the coarse 6x6 set prior remains near chance (Hungarian membership=0.0295 versus 1/36≈0.0278).
 - This is an undertrained preflight, not evidence that global context is useless: default trainer budget is 8000 steps and loss has not plateaued.
 - Next: extend same no-rotation hypothesis at a bounded 1200 steps before changing architecture.
+
+## G1b mechanism audit
+- Predicted: longer set-based global context would learn image-semantic macrocell positions and improve macro assignment.
+- Observed after 1200 steps: macro Hungarian=0.034288 and top64 group coverage=0.131510; both are only marginally above random baselines 0.027778 and 0.111111.
+- Conclusion: drop visual-only global prior. Use the high-coverage R3 relation graph itself as global evidence in a graph-conditioned fusion/assignment stage.
