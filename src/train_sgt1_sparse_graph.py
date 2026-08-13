@@ -233,6 +233,7 @@ def main() -> None:
     ap.add_argument("--work", type=Path, default=DEFAULT_WORK)
     ap.add_argument("--report", type=Path, default=None)
     ap.add_argument("--checkpoint", type=Path, default=None)
+    ap.add_argument("--mode", choices=("capacity", "pilot"), default="capacity", help="capacity enforces covered-edge memorization; pilot only reports held-out deltas")
     args = ap.parse_args()
     if not torch.cuda.is_available():
         raise RuntimeError("SGT1 is a local-GPU-only gate")
@@ -274,7 +275,12 @@ def main() -> None:
             row["delta_top1_covered"] = row["reranked"]["top1_covered"] - row["baseline"]["top1_covered"]
             per_board.append(row)
     covered_top1 = np.asarray([row["reranked"]["top1_covered"] for row in per_board], dtype=np.float64)
-    gate = bool(np.min(covered_top1) >= 0.95)
+    capacity_pass = bool(np.min(covered_top1) >= 0.95)
+    pilot_positive = bool(np.mean([row["delta_top1_covered"] for row in per_board]) > 0.0)
+    if args.mode == "capacity":
+        gate = {"condition": "each fixed cached board top1_covered >= 0.95", "passed": capacity_pass, "decision": "advance_to_source_disjoint_cache_gate" if capacity_pass else "reject_SGT1_before_cache_expansion"}
+    else:
+        gate = {"condition": "informational two-board source-disjoint pilot; full gate needs at least eight DEV caches", "passed": pilot_positive, "decision": "pilot_positive_expand_DEV_cache" if pilot_positive else "pilot_negative_stop_before_DEV_cache_expansion"}
     report = {
         "experiment": "SGT1_sparse_candidate_graph_transformer_capacity",
         "scope": "two-board fixed cached candidate graph relative-overfit only; no test access; not a DEV result",
@@ -286,7 +292,7 @@ def main() -> None:
             "min_top1_covered": float(covered_top1.min()),
             "mean_delta_top1_covered": float(np.mean([row["delta_top1_covered"] for row in per_board])),
         },
-        "gate": {"condition": "each two fixed cached boards top1_covered >= 0.95", "passed": gate, "decision": "advance_to_source_disjoint_cache_gate" if gate else "reject_SGT1_before_cache_expansion"},
+        "gate": gate,
         "elapsed_seconds": time.time() - start,
     }
     destination = args.report or args.work / "sgt1_capacity_report.json"
