@@ -64,7 +64,8 @@ def tensor(image: np.ndarray, device: torch.device) -> torch.Tensor:
 
 
 def image(t: torch.Tensor) -> np.ndarray:
-    return t.detach().clamp(0, 1).squeeze(0).permute(1, 2, 0).float().cpu().numpy().mul(255).round().byte().numpy()
+    value = t.detach().clamp(0, 1).squeeze(0).permute(1, 2, 0).float().cpu().numpy()
+    return np.rint(value * 255.0).clip(0, 255).astype(np.uint8)
 
 
 def ssim(a: np.ndarray, b: np.ndarray) -> float:
