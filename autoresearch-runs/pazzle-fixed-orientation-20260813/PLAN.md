@@ -115,3 +115,15 @@ G2b result: REJECTED. Do not pursue 2×2 cycle/consensus reranking with F1, R2L,
 
 F1P result: REJECTED. Classical illumination-invariant and phase boundary features are inferior to R0. All currently attempted local feature families, learned pairwise ranking, global critics, latent canvases, and 2×2 consensus are now falsified. Trigger a fresh external research cycle around a new decomposition: supervised clean-tile restoration or source-image retrieval/semantic prior, not another seam score.
 
+
+## SA1 â€” Source-Aware Clean-Reference Assignment [new structural lever]
+
+**Hypothesis.** A subset of PAZZLE boards originates from publicly indexed clean source photographs. For a correctly retrieved clean source, independently corrupted and shuffled 20Ã—20 input tiles can be assigned directly to the 24Ã—24 clean-source slots with a robust photometric tile-to-reference score. This replaces ambiguous neighbour-continuation inference by absolute correspondence, so the permutation recovery should be far more accurate than U1 even when seam scores are uninformative.
+
+**Mechanism.** A correct source candidate provides a unique clean 480Ã—480 reference canvas. Robust normalization and nuisance-invariant matching make each dirty input tile most compatible with its original absolute source slot; a globally bijective Hungarian assignment removes duplicated local choices. Source retrieval confidence then gates use of the clean reconstruction, avoiding harmful replacement on unmatched boards.
+
+**Evidence and isolation.** Existing `source_forensics` artefacts contain 218 exact public-source training targets and 18 independently verified clean test-source overrides. SA1 calibration will use only shuffled corrupted train inputs plus retrieved/cached candidate imagery during inference; target permutations are withheld until post-hoc scoring. The 18 test cases are deployment-only and cannot tune any parameter or threshold.
+
+**Expected delta.** On a held-out subset of exact-source training boards, a correct candidate should produce permutation top-1 recovery far above the R0 9.89% local seam baseline, with source-vs-distractor separation sufficient for a high-precision acceptance gate. Any accepted source should yield a clean-reference reconstruction with post-hoc SSIM materially above an input-order baseline.
+
+**Falsification / gates.** Reject SA1 if either (a) robust source-to-tile Hungarian assignment on exact-source labelled calibration cannot exceed 70% tile recovery or (b) score distributions of true sources and hard distractors cannot support a threshold with at least 95% source precision. Do not emit a new submission or run E26 unless the calibration gate passes and test application is limited to independently verified candidates.
