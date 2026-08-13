@@ -103,3 +103,6 @@ GC1 [whole-board global critic, structural reframe]: Reuse train_global_critic.p
 
 GC1 result: REJECTED. No assignment/SSIM. Existing same-bag global edge/grid statistic critic is inadequate. Next architectural evidence gate must test a genuinely generative latent-canvas/set-to-slots representation (not another global critic); constrain it with a very small synthetic source-disjoint macrocell retrieval gate before any full 24×24 model.
 
+
+G3 [latent-canvas set-to-macrocell evidence gate]: Reuse CanvasNet’s unordered-bag, instance-conditioned canvas reconstruction and tile-to-canvas assignment system. It differs from rejected G1b because it reconstructs an image-specific low-frequency canvas from the entire set before scoring each tile against slots, rather than applying a per-tile coordinate prior. Mechanism: joint set compression → predicted clean coarse canvas → position-conditioned tile/slot compatibility → macrocell retrieval above generic visual prior. Run 600 streaming synthetic steps (real_prob=0) with 4 DEV boards every 150 steps. Gate: predicted-canvas assignment must exceed G1b macro Hungarian 3.43% by >=5 p.p. and provide a non-random canvas-placement metric; otherwise reject existing latent-canvas family before new generative implementation.
+
