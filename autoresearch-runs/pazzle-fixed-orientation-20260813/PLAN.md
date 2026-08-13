@@ -25,3 +25,6 @@ R2L result: retain best step-600 checkpoint as a retrieval proposal source (R@20
 
 U1 [candidate recall union]: union R3 MacroAffinity top64 candidates with R2L step-600 top-8 candidates from each fixed cardinal direction, then quantify source-disjoint direct-edge coverage and candidate density before seam scoring. Mechanism: the models encode different cues (global affinity versus normalized directional boundaries), so their errors can be complementary. Expected: direct candidate coverage +3 pp or more versus R3 at <35% candidate-density increase. Falsify: coverage gain <3 pp or density increase >=35%; do not run pair/fusion scoring in that case.
 
+
+U2 [precision after U1 recall]: score the U1 candidate union with the frozen PairwiseNet ensemble and F1 DirectPoseNet using the existing no-label fusion protocol. Mechanism: R2L recovers missed true candidates, while pair/pose scores rank the modestly denser graph. Expected: all-direct recall >=20% and top-4 precision >=35%; falsify if density gain erodes top-4 precision below 35% or recall remains <20%.
+
