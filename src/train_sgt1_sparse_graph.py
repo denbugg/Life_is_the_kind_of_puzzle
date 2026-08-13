@@ -38,8 +38,22 @@ def seed_all(seed: int) -> None:
     torch.cuda.manual_seed_all(seed)
 
 
+def finite_score_summary(scores: np.ndarray, k: int) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+    """Return top-K order, finite mask, safe scores and finite-only row statistics."""
+    order = np.argsort(-scores, axis=1, kind="stable")[:, :k]
+    raw = np.take_along_axis(scores, order, axis=1)
+    finite = np.isfinite(raw)
+    counts = finite.sum(axis=1, keepdims=True).clip(min=1)
+    finite_min = np.where(finite, raw, np.inf).min(axis=1, keepdims=True)
+    finite_min[~np.isfinite(finite_min)] = -20.0
+    safe = np.where(finite, raw, finite_min - 10.0).astype(np.float32)
+    mean = np.where(finite, raw, 0.0).sum(axis=1, keepdims=True) / counts
+    variance = np.where(finite, (raw - mean) ** 2, 0.0).sum(axis=1, keepdims=True) / counts
+    return order, finite, safe, np.concatenate((mean, np.sqrt(variance) + 1e-6), axis=1).astype(np.float32)
+
+
 def mean_std_features(scores: np.ndarray, k: int) -> np.ndarray:
-    top = np.sort(scores, axis=1)[:, -k:][:, ::-1]
+    _, _, top, _ = finite_score_summary(scores, k)
     first = top[:, 0]
     second = top[:, 1] if k > 1 else top[:, 0]
     return np.stack((first, top.mean(1), top.std(1), first - second, np.median(top, 1), top[:, -1]), axis=1)
@@ -56,6 +70,7 @@ class GraphBoard:
     q_index: torch.Tensor        # (Q*K,)
     valid_query: torch.Tensor    # (Q,)
     target_index: torch.Tensor   # (Q,), -1 if true edge missing
+    candidate_valid: torch.Tensor  # (Q,K), excludes padded -inf candidates
     k: int
 
 
@@ -69,13 +84,11 @@ def load_board(path: Path, k: int, device: torch.device) -> GraphBoard:
     if not (1 <= k <= candidate_ids.shape[1]):
         raise ValueError(f"K={k} outside candidate capacity {candidate_ids.shape[1]}")
     width = candidate_ids.shape[1]
-    order = np.argsort(-candidate_scores, axis=1, kind="stable")[:, :k]
+    order, candidate_valid, score_by_query, row_stats = finite_score_summary(candidate_scores, k)
     # Each direction query inherits its candidate ids from its source tile.
     source_by_query = np.repeat(np.arange(N), DIRECTIONS)
     dst_by_query = candidate_ids[source_by_query[:, None], order]
-    score_by_query = np.take_along_axis(candidate_scores, order, axis=1)
-    row_mean = score_by_query.mean(axis=1, keepdims=True)
-    row_std = score_by_query.std(axis=1, keepdims=True) + 1e-6
+    row_mean, row_std = row_stats[:, :1], row_stats[:, 1:]
     zscore = (score_by_query - row_mean) / row_std
 
     # Dense lookup is bounded: 4*576*576 float32, used only to attach reciprocal evidence.
@@ -103,14 +116,14 @@ def load_board(path: Path, k: int, device: torch.device) -> GraphBoard:
                 continue
             valid_query[q] = True
             truth = int(inv[rr * GRID + cc])
-            where = np.flatnonzero(dst_by_query[q] == truth)
+            where = np.flatnonzero((dst_by_query[q] == truth) & candidate_valid[q])
             if len(where):
                 target_index[q] = int(where[0])
 
     query_stats = mean_std_features(candidate_scores, k).reshape(N, DIRECTIONS * 6)
     src = np.repeat(source_by_query, k)
     dst = dst_by_query.reshape(-1)
-    edge_features = np.stack((zscore.reshape(-1), reciprocal_z.reshape(-1), reciprocal_present.reshape(-1), rank.reshape(-1), score_by_query.reshape(-1)), axis=1).astype(np.float32)
+    edge_features = np.stack((zscore.reshape(-1), reciprocal_z.reshape(-1), reciprocal_present.reshape(-1), rank.reshape(-1), score_by_query.reshape(-1), candidate_valid.astype(np.float32).reshape(-1)), axis=1).astype(np.float32)
     direction = np.repeat(directions_by_query, k)
     q_index = np.repeat(np.arange(N * DIRECTIONS), k)
     return GraphBoard(
@@ -123,6 +136,7 @@ def load_board(path: Path, k: int, device: torch.device) -> GraphBoard:
         q_index=torch.from_numpy(q_index).long().to(device),
         valid_query=torch.from_numpy(valid_query).to(device),
         target_index=torch.from_numpy(target_index).long().to(device),
+        candidate_valid=torch.from_numpy(candidate_valid).to(device),
         k=k,
     )
 
@@ -155,7 +169,7 @@ class SparseGraphTransformer(nn.Module):
     def __init__(self, dim: int = 128, heads: int = 4, layers: int = 3, dropout: float = 0.05) -> None:
         super().__init__()
         self.node_in = nn.Sequential(nn.LayerNorm(24), nn.Linear(24, dim), nn.GELU(), nn.Linear(dim, dim))
-        self.edge_in = nn.Sequential(nn.LayerNorm(5), nn.Linear(5, dim), nn.GELU(), nn.Linear(dim, dim))
+        self.edge_in = nn.Sequential(nn.LayerNorm(6), nn.Linear(6, dim), nn.GELU(), nn.Linear(dim, dim))
         self.direction = nn.Embedding(DIRECTIONS, dim)
         self.blocks = nn.ModuleList([GraphBlock(dim, heads, dropout) for _ in range(layers)])
         self.out = nn.Sequential(nn.LayerNorm(dim * 3 + 1), nn.Linear(dim * 3 + 1, dim), nn.GELU(), nn.Linear(dim, 1))
@@ -172,7 +186,8 @@ class SparseGraphTransformer(nn.Module):
 
 
 def scores_to_query(scores: torch.Tensor, board: GraphBoard) -> torch.Tensor:
-    return scores.reshape(N * DIRECTIONS, board.k)
+    query = scores.reshape(N * DIRECTIONS, board.k)
+    return query.masked_fill(~board.candidate_valid, float("-inf"))
 
 
 def metrics(scores: torch.Tensor, board: GraphBoard) -> dict[str, float]:
