@@ -60,7 +60,10 @@ def build_u1(
     )
     with autocast(device):
         r2_scores = r2(tiles.unsqueeze(0))[0].float()
-    return _union_candidates(base[0], base_valid[0], r2_scores, r2_topk)
+    candidates, valid = _union_candidates(base[0], base_valid[0], r2_scores, r2_topk)
+    # U1 primitives use (direction, tile, candidate); G2 keeps geometry explicit
+    # as (tile, direction, candidate) for closure enumeration.
+    return candidates.permute(1, 0, 2).contiguous(), valid.permute(1, 0, 2).contiguous()
 
 
 def prefix_mask(valid: Tensor, width: int) -> Tensor:
