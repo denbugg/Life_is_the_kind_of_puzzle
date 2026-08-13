@@ -114,7 +114,7 @@ def main() -> None:
         "permutation_cache_sha256": sha256_file(cache_path),
         "denoiser_checkpoint": str(checkpoint),
         "denoiser_checkpoint_sha256": sha256_file(checkpoint),
-        "denoiser_checkpoint_metadata": checkpoint_metadata,
+        "denoiser_checkpoint_metadata_keys": sorted(str(key) for key in checkpoint_metadata.keys()) if isinstance(checkpoint_metadata, dict) else [type(checkpoint_metadata).__name__],
         "n": len(rows),
         "rows": rows,
         "summary": {
