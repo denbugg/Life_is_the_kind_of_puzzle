@@ -62,21 +62,24 @@ def image_tiles(path: Path) -> np.ndarray:
     )
 
 
-def exact_input_to_target_mapping(input_tiles: np.ndarray, target_tiles: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    buckets: dict[bytes, deque[int]] = defaultdict(deque)
-    for index, tile in enumerate(input_tiles):
-        buckets[tile.tobytes()].append(index)
-    target_to_input = np.full(TILES, -1, dtype=np.int64)
-    for target_index, tile in enumerate(target_tiles):
-        candidates = buckets[tile.tobytes()]
-        if not candidates:
-            raise ValueError(f"tile inventory mismatch at target tile {target_index}")
-        target_to_input[target_index] = candidates.popleft()
-    if any(bucket for bucket in buckets.values()):
-        raise ValueError("tile inventory has unmatched shuffled inputs")
-    input_to_target = np.empty(TILES, dtype=np.int64)
-    input_to_target[target_to_input] = np.arange(TILES, dtype=np.int64)
-    return target_to_input, input_to_target
+def recovered_input_to_target_mapping(input_image: np.ndarray, target_image: np.ndarray) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Use the repository's distortion-aware normalized/Hungarian label recovery.
+
+    Training inputs are independently brightness/contrast/noise/blur/JPEG distorted,
+    so byte-exact tile matching is invalid. The recovered permutation is accepted only
+    as a train-label audit record and its confidence is logged with every experiment.
+    """
+    import recover
+
+    input_to_target, target_to_input, confidence = recover.recover(input_image, target_image)
+    target_to_input = np.asarray(target_to_input, dtype=np.int64)
+    input_to_target = np.asarray(input_to_target, dtype=np.int64)
+    confidence = np.asarray(confidence, dtype=np.float32)
+    if sorted(target_to_input.tolist()) != list(range(TILES)):
+        raise ValueError("recovered target_to_input is not a bijection")
+    if sorted(input_to_target.tolist()) != list(range(TILES)):
+        raise ValueError("recovered input_to_target is not a bijection")
+    return target_to_input, input_to_target, confidence
 
 
 def true_neighbours(target_to_input: np.ndarray) -> dict[str, np.ndarray]:
@@ -194,11 +197,14 @@ def main() -> int:
     device = torch.device(args.device)
     per_direction: dict[str, list[int]] = {direction: [] for direction in DIRECTIONS}
     per_image_r20: dict[str, dict[str, float]] = {direction: {} for direction in DIRECTIONS}
+    label_confidences: list[float] = []
     started = time.perf_counter()
     for count, name in enumerate(names, start=1):
+        input_image = np.asarray(Image.open(args.input_root / name).convert("RGB"), dtype=np.uint8)
+        target_image = np.asarray(Image.open(args.target_root / name).convert("RGB"), dtype=np.uint8)
         input_tiles = image_tiles(args.input_root / name)
-        target_tiles = image_tiles(args.target_root / name)
-        target_to_input, _ = exact_input_to_target_mapping(input_tiles, target_tiles)
+        target_to_input, _, confidence = recovered_input_to_target_mapping(input_image, target_image)
+        label_confidences.extend(float(value) for value in confidence)
         truth = true_neighbours(target_to_input)
         tiles = torch.from_numpy(input_tiles).permute(0, 3, 1, 2).to(device=device, dtype=torch.float32).div_(255.0)
         for direction in DIRECTIONS:
@@ -219,6 +225,11 @@ def main() -> int:
         "image_names_sha256": hashlib.sha256("\n".join(names).encode()).hexdigest(),
         "device": torch.cuda.get_device_name(device) if device.type == "cuda" else str(device),
         "bands": args.bands,
+        "label_recovery": {
+            "method": "repository_distortion_aware_recover",
+            "mean_confidence": float(np.mean(label_confidences)),
+            "min_confidence": float(np.min(label_confidences)),
+        },
         "metrics": {},
         "elapsed_seconds": elapsed,
         "status": "PASS",
