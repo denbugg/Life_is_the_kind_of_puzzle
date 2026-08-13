@@ -1,0 +1,147 @@
+"""R4 phase-2: direct tile-restoration SSIM on frozen rank96 layouts.
+
+Rank96 placement is inferred exclusively from train input mosaics via the
+unchanged champion components.  The exact clean target is read only after
+placement for SSIM.  The MatchDenoiser changes pixels but never the inferred
+board.  Test data and submission writing are deliberately absent.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+from typing import Any
+
+import numpy as np
+import torch
+from skimage.metrics import structural_similarity as ssim
+
+from config import CKPT_DIR, TRAIN_INP, TRAIN_TGT
+from imgio import from_frags
+from match_preprocess import apply_match_denoiser_np, load_match_denoiser
+import infer_rank96 as rank96
+
+DEFAULT_WORK = Path(r"E:\pazzle_work\pazzle_fixed_orientation_20260813\R4_restoration")
+DEFAULT_SPLIT = Path(r"E:\pazzle_work\pazzle_fixed_orientation_20260813\PGA1_set_slot\source_disjoint_split_v1.json")
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        while block := handle.read(1024 * 1024):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def lower_95(values: list[float]) -> float:
+    arr = np.asarray(values, dtype=np.float64)
+    if len(arr) < 2:
+        return float(arr[0]) if len(arr) else float("nan")
+    return float(arr.mean() - 1.96 * arr.std(ddof=1) / math.sqrt(len(arr)))
+
+
+def build_config(device: str, pair_batch: int, work: Path) -> tuple[Any, dict[str, Path]]:
+    paths = rank96._default_checkpoints()
+    config = rank96.InferenceConfig(
+        input_dir=Path(TRAIN_INP),
+        output_dir=work / "rank96_unused_outputs",
+        output_zip=None,
+        ranker_checkpoint=paths["ranker"],
+        affinity_primary_checkpoint=paths["affinity_primary"],
+        affinity_secondary_checkpoint=paths["affinity_secondary"],
+        device=device,
+        pair_batch=pair_batch,
+        expected_count=700,
+    )
+    return config, paths
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--split", type=Path, default=DEFAULT_SPLIT)
+    parser.add_argument("--partition", choices=("cal", "dev"), default="dev")
+    parser.add_argument("--n", type=int, default=8)
+    parser.add_argument("--device", default="cuda")
+    parser.add_argument("--pair-batch", type=int, default=4096)
+    parser.add_argument("--denoise-tag", default="matchden")
+    parser.add_argument("--work", type=Path, default=DEFAULT_WORK)
+    parser.add_argument("--report", type=Path, default=None)
+    args = parser.parse_args()
+    if args.n < 2:
+        parser.error("--n must be at least two for the registered lower-confidence gate")
+    if args.device != "cuda" or not torch.cuda.is_available():
+        raise RuntimeError("R4 rank96-layout gate is local-GPU-only")
+    split = json.loads(args.split.read_text(encoding="utf-8"))
+    names = list(split["splits"][args.partition][: args.n])
+    if len(names) != args.n:
+        raise RuntimeError("requested split size unavailable")
+    config, champion_paths = build_config(args.device, args.pair_batch, args.work)
+    models = rank96.load_models(config, torch.device(args.device))
+    denoiser, denoiser_metadata = load_match_denoiser(args.denoise_tag, device=args.device)
+    if denoiser is None:
+        raise FileNotFoundError("frozen MatchDenoiser checkpoint not found")
+    denoiser_path = next((Path(CKPT_DIR) / candidate for candidate in (f"{args.denoise_tag}_best.pt", f"{args.denoise_tag}_last.pt") if (Path(CKPT_DIR) / candidate).is_file()), None)
+    if denoiser_path is None:
+        raise FileNotFoundError("frozen MatchDenoiser checkpoint path not found")
+
+    rows: list[dict[str, Any]] = []
+    deltas: list[float] = []
+    for ordinal, name in enumerate(names, 1):
+        dirty_image = rank96.load_rgb_strict(Path(TRAIN_INP) / name)
+        target = rank96.load_rgb_strict(Path(TRAIN_TGT) / name)
+        inferred = rank96.infer_one(dirty_image, models, pair_batch=args.pair_batch)
+        dirty_tiles = rank96.split_upright_tiles(dirty_image)
+        restored_tiles = apply_match_denoiser_np(dirty_tiles, denoiser, device=args.device)
+        raw_layout = rank96.assemble_upright_tiles(dirty_tiles, inferred.board)
+        restored_layout = rank96.assemble_upright_tiles(restored_tiles, inferred.board)
+        raw_ssim = float(ssim(raw_layout, target, channel_axis=2, data_range=255))
+        restored_ssim = float(ssim(restored_layout, target, channel_axis=2, data_range=255))
+        row = {
+            "name": name,
+            "rank96_objective": float(inferred.objective),
+            "raw_layout_ssim": raw_ssim,
+            "restored_layout_ssim": restored_ssim,
+            "delta": restored_ssim - raw_ssim,
+            "board_sha256": rank96.sha256_array(inferred.board.astype(np.int16)),
+            "candidate_ids_sha256": inferred.candidate_ids_sha256,
+            "raw_scores_sha256": inferred.raw_scores_sha256,
+        }
+        rows.append(row)
+        deltas.append(row["delta"])
+        print(json.dumps({"ordinal": ordinal, **row}), flush=True)
+
+    summary = {
+        "raw_layout_ssim_mean": float(np.mean([row["raw_layout_ssim"] for row in rows])),
+        "restored_layout_ssim_mean": float(np.mean([row["restored_layout_ssim"] for row in rows])),
+        "mean_delta": float(np.mean(deltas)),
+        "min_delta": float(np.min(deltas)),
+        "lower_95_delta": lower_95(deltas),
+    }
+    passed = bool(summary["mean_delta"] > 0 and summary["lower_95_delta"] > 0)
+    report = {
+        "experiment": "R4_frozen_matchden_rank96_layout_ssim",
+        "scope": "source-disjoint train held-out evaluation; rank96 layout uses input only; target post-hoc SSIM only; no test access",
+        "split": str(args.split),
+        "split_sha256": file_sha256(args.split),
+        "partition": args.partition,
+        "n": args.n,
+        "rank96_checkpoints": {key: {"path": str(value), "sha256": file_sha256(value)} for key, value in champion_paths.items()},
+        "denoiser_checkpoint": {"path": str(denoiser_path), "sha256": file_sha256(denoiser_path), "metadata_keys": sorted(str(key) for key in denoiser_metadata.keys()) if isinstance(denoiser_metadata, dict) else [type(denoiser_metadata).__name__]},
+        "rows": rows,
+        "summary": summary,
+        "gate": {
+            "condition": "mean restoration SSIM delta>0 and lower_95_delta>0 on unchanged rank96 layout",
+            "passed": passed,
+            "decision": "retain_R4_for_rank96_composition" if passed else "reject_R4_for_practical_layouts",
+        },
+    }
+    destination = args.report or args.work / f"r4_rank96_layout_{args.partition}_{args.n}.json"
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps(report, indent=2), encoding="utf-8")
+    print(json.dumps({"summary": summary, "gate": report["gate"], "report": str(destination)}, indent=2), flush=True)
+
+
+if __name__ == "__main__":
+    main()
