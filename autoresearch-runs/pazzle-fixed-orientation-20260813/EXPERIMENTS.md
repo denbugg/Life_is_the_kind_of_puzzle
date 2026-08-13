@@ -52,3 +52,4 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | G2b | U1 2×2 consensus routed by native R2L directions | REJECTED early / timing-bounded | Prefix-4: p 3.08%→3.10%, r=3.67%; prefix-8: p 3.26%→3.28%, r=13.04%; <1.01× lift, while remaining sweep was combinatorially slow. |
 
 | F1P | Deterministic phase/derivative boundary features, 4 DEV | REJECTED | Best norm-value R@20=19.72% vs R0=35.25%; phase-fused reciprocal p=11.95%, r=1.86%; neither sparse-anchor nor retrieval gate passes. |
+| SA1 | Clean-reference Hungarian assignment, 218 source-linked train cases / 51 held-out | CAPABILITY PASS | Held-out tile agreement 84.79% (q10 75.87%) vs pre-registered 70% gate; clean source canvas SSIM 0.9909. End-to-end source retrieval precision is not yet measured, so no production route. |

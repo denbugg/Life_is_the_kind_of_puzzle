@@ -120,3 +120,7 @@ Replacing F1 DirectPose direction routing with R2L’s native 4×576×576 direct
 ## F1P phase-derivative boundary compatibility (2026-08-13)
 The independent deterministic feature family was cleanly falsified. Per-tile normalized value seams were the best F1P mode but reached only 19.72% R@20; derivative bands collapsed under the corruption; phase-fused scores reached 18.52% R@20, reciprocal precision 11.95% and reciprocal all-true recall 1.86%. Thus Fourier/phase normalization does not recover the cross-tile continuation signal missing from independently corrupted 20px tiles. No sparse accurate anchors emerge, so constrained assignment is blocked.
 
+
+## SA1 clean-reference capability gate (2026-08-13)
+With a *correct aligned public source*, absolute tile-to-source matching works: held-out input-to-slot agreement is 84.79% with a 75.87% tenth percentile across 51 unseen source-linked boards. The clean source itself has post-hoc global RGB SSIM 0.9909 to the target and the diagnostic true-vs-one-hard-distractor compatibility margin is positive on 96.08% of held-out cases. Hence local seam ambiguity is not an intrinsic ceiling; source acquisition is the bottleneck. This does not establish all-pool source retrieval precision, so route only externally verified sources and proceed to SA2.
+
