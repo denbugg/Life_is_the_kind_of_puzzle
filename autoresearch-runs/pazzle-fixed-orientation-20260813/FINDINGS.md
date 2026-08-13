@@ -48,3 +48,7 @@ U1's coverage gain does not repair the pair/pose ranking bottleneck. On one fres
 ## D1 denoise seam diagnostic (2026-08-13)
 Frozen matchden reduced individual tile pixel L1 to clean by 0.00687 on 2 held-out boards, yet it did not improve adjacency ranking: raw border R1(all/covered)=13.7%/19.6%, denoise=13.5%/19.3%; normalization and denoise+normalization were much worse. Pixel restoration does not preserve the boundary microstructure used by this simple seam scorer. Reject D1 and avoid a denoise-conditioned scorer without a new edge-preserving restoration objective.
 
+
+## R3L stop decision (2026-08-13)
+The scaled listwise CandidateSeamRanker allocated 12.1 GB resident / 20.6 GB committed memory while building its first full hard-candidate bag and emitted no training step after approximately ten minutes. It is inconclusive rather than a negative ranking result, but this configuration cannot support rapid evidence cycles. The precision bottleneck remains; any next hard-negative test must have a small bounded cache and a pre-gated timing budget.
+

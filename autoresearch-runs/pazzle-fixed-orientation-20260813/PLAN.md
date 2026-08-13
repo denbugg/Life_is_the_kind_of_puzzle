@@ -40,3 +40,6 @@ D1 result: REJECTED. Improved pixel L1 did not improve seam precision. Next dire
 
 R3L [listwise hard-candidate precision]: scale the R3 physical-seam ranker from 200 to 800 steps with complete frozen affinity candidate rows and source-disjoint 8-board validation every 100 steps. Mechanism: the objective directly optimizes each true cardinal neighbour against affinity-mined hard negatives, targeting the precision blocker exposed by U2. Expected: top-4 direct precision >=35% with all-direct recall >=20% under the base R3 graph. Falsify: no checkpoint meets both, or precision remains <30% at recall >=20%.
 
+
+P1S [hard-negative precision micro-cache]: mine only 4 exact train boards with K=16 and a 5-minute completion budget; if saved, run 200-step PairwiseNet hard-negative fine-tune and U2-style one-board precision smoke. Mechanism: retains true affinity-mined hard negatives while eliminating the n=200/K48 preprocessing bottleneck. Expected: top-4 precision >=30% at recall >=20%; falsify on cache timeout or no precision gain over U2.
+
