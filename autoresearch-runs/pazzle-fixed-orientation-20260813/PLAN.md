@@ -43,3 +43,6 @@ R3L [listwise hard-candidate precision]: scale the R3 physical-seam ranker from 
 
 P1S [hard-negative precision micro-cache]: mine only 4 exact train boards with K=16 and a 5-minute completion budget; if saved, run 200-step PairwiseNet hard-negative fine-tune and U2-style one-board precision smoke. Mechanism: retains true affinity-mined hard negatives while eliminating the n=200/K48 preprocessing bottleneck. Expected: top-4 precision >=30% at recall >=20%; falsify on cache timeout or no precision gain over U2.
 
+
+P1S result: REJECTED timing gate. No further mine_hard_negatives branch until its algorithmic complexity is changed. Next lever must use streamed/online samples or an alternative global objective that avoids exhaustive per-board pairwise cache construction.
+

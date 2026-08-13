@@ -52,3 +52,7 @@ Frozen matchden reduced individual tile pixel L1 to clean by 0.00687 on 2 held-o
 ## R3L stop decision (2026-08-13)
 The scaled listwise CandidateSeamRanker allocated 12.1 GB resident / 20.6 GB committed memory while building its first full hard-candidate bag and emitted no training step after approximately ten minutes. It is inconclusive rather than a negative ranking result, but this configuration cannot support rapid evidence cycles. The precision bottleneck remains; any next hard-negative test must have a small bounded cache and a pre-gated timing budget.
 
+
+## P1S micro-cache timing gate (2026-08-13)
+Even n=4/K=16 normalized hard-negative mining produced no cache within its 5-minute budget (stopped at 5m29s). The bottleneck is fixed per-board all-candidate pairwise scoring overhead, not cache scale. Retire this mining implementation for the current iteration; it cannot support rapid hard-negative precision experiments on the RTX 2070.
+
