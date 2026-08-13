@@ -131,3 +131,7 @@ F1P result: REJECTED. Classical illumination-invariant and phase boundary featur
 ## SA2 — End-to-End Public Candidate Retrieval and Strict Verification
 **Mechanism.** Combining the existing permutation-invariant bag fingerprint with strict spatial SIFT verification should retrieve and authenticate a correct public source without train target access; SA1 then yields absolute tile assignment. **Expected delta.** On held-out source-linked train boards, end-to-end accepted-source precision >=95% and accepted-case permutation agreement >=70%. **Falsification.** Reject if strict verification admits <95% true sources, candidate recall is too low to yield a meaningful verified subset, or accepted SA1 recovery falls below 70%. No threshold tuning on the 18 test overrides.
 
+
+## SA3 — Source-Corpus Coverage Expansion [new structural reframe]
+**Mechanism.** Crawling additional lawful, image-rich catalogues associated with the observed source domains and using the fixed SA2 bag-retrieval plus strict-verification stack should convert more test boards from the low-information seam regime to the high-precision SA1 route. **Expected delta.** Increase independently verified test-source coverage beyond the current 18 overrides without reducing strict-verification precision. **Falsification.** Reject a catalogue if it yields no new verified test sources after bounded crawl/retrieval, or if any accepted candidate fails strict SIFT/Hungarian authentication. No submission generation; verified sources are deployment assets only.
+

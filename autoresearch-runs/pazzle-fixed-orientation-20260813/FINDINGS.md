@@ -124,3 +124,7 @@ The independent deterministic feature family was cleanly falsified. Per-tile nor
 ## SA1 clean-reference capability gate (2026-08-13)
 With a *correct aligned public source*, absolute tile-to-source matching works: held-out input-to-slot agreement is 84.79% with a 75.87% tenth percentile across 51 unseen source-linked boards. The clean source itself has post-hoc global RGB SSIM 0.9909 to the target and the diagnostic true-vs-one-hard-distractor compatibility margin is positive on 96.08% of held-out cases. Hence local seam ambiguity is not an intrinsic ceiling; source acquisition is the bottleneck. This does not establish all-pool source retrieval precision, so route only externally verified sources and proceed to SA2.
 
+
+## SA2 source acquisition and authentication gate (2026-08-13)
+The source-aware route is now end-to-end valid where the public source exists in its catalogue. Dirty-bag retrieval achieved R@1 94.24% and R@50 100% on 139 event-held-out public-source cases. OOF confidence routing accepted 92.09% at 97.66% precision; strict SIFT/Hungarian verification then achieved 100% held-out true acceptance and 0% wrong acceptance on 51 independent source-linked boards. Do not relax either threshold: coverage, not precision, is the deficit. Expand lawful source corpora; route only strict accepts to SA1; retain a non-source solver for all remaining boards.
+
