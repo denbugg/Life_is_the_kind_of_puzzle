@@ -9,3 +9,8 @@
 - Predicted: listwise hard-negative training would preserve a high-recall union while raising local ranks.
 - Observed: candidate coverage=0.688179 and reciprocal mutual coverage=0.898438; local all-true proxy R@1=0.077958 remains insufficient.
 - Conclusion: mechanism is confirmed only for candidate coverage. Keep R3 as sparse union generator; global slot evidence must arbitrate ambiguous rows.
+
+## G1a mechanism audit
+- At 200 steps the coarse 6x6 set prior remains near chance (Hungarian membership=0.0295 versus 1/36≈0.0278).
+- This is an undertrained preflight, not evidence that global context is useless: default trainer budget is 8000 steps and loss has not plateaued.
+- Next: extend same no-rotation hypothesis at a bounded 1200 steps before changing architecture.
