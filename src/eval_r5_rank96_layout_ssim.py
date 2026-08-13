@@ -114,8 +114,9 @@ def main() -> None:
 
     args.work.mkdir(parents=True, exist_ok=True)
     config, champion_paths = build_config(args.device, args.pair_batch, args.work)
-    models = rank96.load_models(config)
-    r5 = load_r5(args.checkpoint, args.device, args.base, args.depth)
+    resolved_device = rank96.resolve_device(args.device)
+    models = rank96.load_models(config, resolved_device)
+    r5 = load_r5(args.checkpoint, str(resolved_device), args.base, args.depth)
     rows: list[dict[str, Any]] = []
     deltas: list[float] = []
     for ordinal, name in enumerate(names, 1):
