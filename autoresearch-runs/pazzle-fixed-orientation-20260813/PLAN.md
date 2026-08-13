@@ -79,3 +79,6 @@ OH6 [OH5 downstream top4]: replace pair scorer in U1 fusion evaluator with OH5 b
 
 OH6 result: REJECTED. Retire current online PairwiseNet listwise variants as sufficient top-4 precision solution. Begin a new external research/structural-design cycle focused on top-k ranking objectives, reciprocal calibration, and global sparse matching rather than additional M/LR sweeps.
 
+
+Q1 [scene-conditioned graph confidence]: train/evaluate the existing top-edge calibrator on frozen candidate-ranker predictions using reciprocal margin, row entropy, rank provenance and per-scene statistics; use a small fit/calibration/held-out split. Mechanism: noisy graph matching research predicts local scores require confidence calibration with structural edge evidence. Expected: held-out selected-edge precision >=30% at a nontrivial selected-edge count and improve raw top-edge precision. Falsify on calibration failure or insufficient coverage; then do not use confidence anchoring.
+
