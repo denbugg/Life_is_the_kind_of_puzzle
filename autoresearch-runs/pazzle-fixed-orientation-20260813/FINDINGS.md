@@ -128,3 +128,10 @@ With a *correct aligned public source*, absolute tile-to-source matching works: 
 ## SA2 source acquisition and authentication gate (2026-08-13)
 The source-aware route is now end-to-end valid where the public source exists in its catalogue. Dirty-bag retrieval achieved R@1 94.24% and R@50 100% on 139 event-held-out public-source cases. OOF confidence routing accepted 92.09% at 97.66% precision; strict SIFT/Hungarian verification then achieved 100% held-out true acceptance and 0% wrong acceptance on 51 independent source-linked boards. Do not relax either threshold: coverage, not precision, is the deficit. Expand lawful source corpora; route only strict accepts to SA1; retain a non-source solver for all remaining boards.
 
+
+## PGA1 global set-slot Transformer: rejected before DEV
+- PGA1 mechanically fits the local RTX 2070 (289,872 parameters; ~258 MiB smoke) and can make a non-random synthetic assignment, but this is not a generalization result.
+- The decisive fixed-corruption/two-board control reached only 11.55% exact tile-to-slot top-1 versus the pre-registered 95% requirement (the stochastic-corruption variant reached 40.19%).
+- Therefore do not compare PGA1 synthetic SSIM (0.2540/0.3762) to the historical comparable best SSIM 0.2161981413457065. PGA1 did not earn a real-input source-disjoint DEV evaluation and is retired as a naive global-slot architecture.
+- Next transformer-family work must add a distinct information source/mechanism, not scale PGA1 depth or width.
+
