@@ -37,3 +37,6 @@ D1 [restoration/precision]: on the frozen raw R3 candidate graph, compare raw, n
 
 D1 result: REJECTED. Improved pixel L1 did not improve seam precision. Next direct lever is a longer/recalibrated listwise candidate ranker on existing sparse candidates, not pixel-space denoising.
 
+
+R3L [listwise hard-candidate precision]: scale the R3 physical-seam ranker from 200 to 800 steps with complete frozen affinity candidate rows and source-disjoint 8-board validation every 100 steps. Mechanism: the objective directly optimizes each true cardinal neighbour against affinity-mined hard negatives, targeting the precision blocker exposed by U2. Expected: top-4 direct precision >=35% with all-direct recall >=20% under the base R3 graph. Falsify: no checkpoint meets both, or precision remains <30% at recall >=20%.
+
