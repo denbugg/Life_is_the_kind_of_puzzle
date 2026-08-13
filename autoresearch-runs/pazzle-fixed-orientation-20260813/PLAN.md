@@ -46,3 +46,6 @@ P1S [hard-negative precision micro-cache]: mine only 4 exact train boards with K
 
 P1S result: REJECTED timing gate. No further mine_hard_negatives branch until its algorithmic complexity is changed. Next lever must use streamed/online samples or an alternative global objective that avoids exhaustive per-board pairwise cache construction.
 
+
+P2 [posterior marginalization reuse]: evaluate existing posterior_edge and candidate_rank checkpoints on frozen R3 hard rows without training. Mechanism: marginalizing latent clean edge hypotheses may improve calibrated true-neighbour rank despite raw pair/pose scores failing. Expected: raw-plus-posterior candidate-target R1 and R5 improve versus raw under the evaluator's predeclared checks. Falsify: status fail; do not revive this scorer family without a new objective.
+
