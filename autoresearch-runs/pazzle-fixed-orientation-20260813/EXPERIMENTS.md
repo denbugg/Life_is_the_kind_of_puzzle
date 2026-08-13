@@ -46,3 +46,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 | PN2 | PN1 normalized PairwiseNet in matched U1 fusion smoke (1 DEV) | REJECTED downstream gate | top-4 direct precision=15.15%, recall=15.81%; below OH4 and far below 23.32%/20% gate. |
 
 | GC1 | Whole-board structural critic, 400 steps / 4 DEV | REJECTED evidence gate | Near-swap accuracy=31.25%, macro=55.56%; no corruption family reached its pre-registered threshold and learned lift over total-variation baseline failed. |
+
+| G3 | CanvasNet global latent-canvas, 600 synthetic steps / 4 DEV | REJECTED evidence gate | predicted placement r1≈0.2–0.3%, r20≈3.7%, slot place accuracy≈0.3%; no useful lift over random/G1b despite canvas L1=0.224. |

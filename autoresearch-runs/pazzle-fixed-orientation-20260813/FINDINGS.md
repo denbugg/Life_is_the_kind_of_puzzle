@@ -108,3 +108,7 @@ Exact train/inference matching of per-tile photometric normalization did not sol
 ## GC1 whole-board global critic (2026-08-13)
 The same-bag global critic trained efficiently (0.31s/it after warmup) but failed its held-out hard-negative gate. It recognised some random-permutation cases, yet did not reliably prefer true layouts over the local and macro perturbations that a repair/search solver must distinguish: near-swap accuracy was 31.25% and macro accuracy 55.56%. The model therefore does not deliver a usable global energy for search. Reject global-critic solver development; the GANzzle-inspired reframe requires an actual latent-canvas/slot reconstruction model rather than this edge-statistics critic.
 
+
+## G3 latent-canvas set-to-slot gate (2026-08-13)
+CanvasNet learned a low-frequency image reconstruction signal (final canvas L1≈0.224) and its oracle canvas matching was strong, but the predicted canvas did not become a usable instance-conditioned placement representation. At step 600, predicted/slot tile placement remained about 0.3% top-1 and 3.7% top-20, essentially chance-scale. Thus the immediate set-to-canvas decoder architecture does not solve the permutation inference problem under independent tile corruption. Reject this existing latent-canvas family before any 24×24 extension.
+
