@@ -76,3 +76,7 @@ OH1's bounded random-reservoir objective transferred a small top-1 improvement o
 ## OH3 U1-aligned online hard refinement (2026-08-13)
 OH3 met the runtime constraint and mined negatives from the actual U1 candidate rows rather than random board pairs. It reached 32.81% held-out U1-row online-hard accuracy at step 150 (candidate-covered rows 62.77%), with post-warmup training under 1.3 s/iteration. This auxiliary score is lower than OH1 because the negatives are materially harder and distribution-aligned. Retain best.pt pending the decisive U1 pair/pose fusion smoke.
 
+
+## OH4 downstream fusion smoke (2026-08-13)
+U1-aligned online hard training reached the first local success at top-1: direct precision 30.38%, above the 30% threshold. It still failed the target top-4 regime (18.32% precision, 19.11% all-true recall). The model separates a few easy best rows but does not suppress enough of the top false tail. This diagnoses list size, not candidate coverage, as the next concrete lever.
+

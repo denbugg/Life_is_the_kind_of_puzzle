@@ -70,3 +70,6 @@ OH3 [U1-aligned online hard pairs]: reuse OH1's cache-free listwise loss, but mi
 
 OH4 [OH3 downstream precision]: replace pair scorer in U1 fusion evaluator with OH3 best step-150 checkpoint; run one-board no-label fusion smoke. Gate: top-4 direct precision >=30% AND all-direct recall >=20%; a failure rejects U1-aligned online PairwiseNet despite its fast training behavior.
 
+
+OH5 [full-row online listwise]: rerun OH3 with M=64 (true plus 63 hardest false candidates from U1 rows) instead of M=16, retaining nA=8 and streaming graph construction. Mechanism: train the tail relevant to downstream top-4, not just a 16-way local competition. Expected: top-4 direct precision >=30% with recall >=20%; falsify on runtime >5 s/step or OH5 fusion gate failure.
+
