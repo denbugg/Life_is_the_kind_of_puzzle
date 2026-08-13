@@ -28,3 +28,6 @@ U1 [candidate recall union]: union R3 MacroAffinity top64 candidates with R2L st
 
 U2 [precision after U1 recall]: score the U1 candidate union with the frozen PairwiseNet ensemble and F1 DirectPoseNet using the existing no-label fusion protocol. Mechanism: R2L recovers missed true candidates, while pair/pose scores rank the modestly denser graph. Expected: all-direct recall >=20% and top-4 precision >=35%; falsify if density gain erodes top-4 precision below 35% or recall remains <20%.
 
+
+U2 result: REJECTED early. Do not use frozen pair/pose fusion on U1 union without a new precision model. Next lever must train or reframe candidate-rank precision directly; simply broadening candidate sets lowers precision.
+

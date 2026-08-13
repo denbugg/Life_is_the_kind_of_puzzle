@@ -40,3 +40,7 @@ The 800-step run materially improved directional retrieval: best step 600 produc
 ## U1 R2L∪R3 candidate union (2026-08-13)
 On 8 fresh source-disjoint boards, adding top-8 R2L candidates from each cardinal direction to the frozen R3 union raised directed true-edge coverage from 69.34% to 73.95% (+4.61 pp) while candidate density rose only 11.16% (81.69 to 90.80 edges/tile). This is the first post-R3 lever that materially improves candidate recall under its pre-registered density constraint. Retain for pair/pose scoring; U1 alone makes no precision claim.
 
+
+## U2 union fusion smoke (2026-08-13)
+U1's coverage gain does not repair the pair/pose ranking bottleneck. On one fresh board, U1 union had 72.60% candidate direct coverage at 90.40 edges/tile, but frozen 0.5 pair/pose fusion achieved top-4 direct precision 18.27% and recall 19.07% (top-1 precision 25.52%, recall 6.66%). This fails the pre-registered 35%/20% gate, so a larger evaluation is not justified. U1 remains a recall source only; scorer calibration/precision is still the principal blocker.
+
