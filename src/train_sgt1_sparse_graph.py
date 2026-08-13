@@ -70,8 +70,7 @@ def load_board(path: Path, k: int, device: torch.device) -> GraphBoard:
         raise ValueError(f"K={k} outside candidate capacity {candidate_ids.shape[1]}")
     width = candidate_ids.shape[1]
     order = np.argsort(-candidate_scores, axis=1, kind="stable")[:, :k]
-    dst_by_query = candidate_ids[np.arange(N)[:, None].repeat(DIRECTIONS, axis=1).reshape(-1) // DIRECTIONS, order]
-    # The previous line uses source index for each direction query; make it explicit for auditability.
+    # Each direction query inherits its candidate ids from its source tile.
     source_by_query = np.repeat(np.arange(N), DIRECTIONS)
     dst_by_query = candidate_ids[source_by_query[:, None], order]
     score_by_query = np.take_along_axis(candidate_scores, order, axis=1)
