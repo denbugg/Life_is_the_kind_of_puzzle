@@ -4,3 +4,8 @@
 - R1 refuted naive untrained multi-band cosine fusion: R@20=0.259964 (-0.092504 vs R0).
 ## Next lever
 - Train a pairwise cross-encoder with same-image hard negatives, then use it as a reranker of R2 top-K retrieval.
+
+## R3 mechanism audit
+- Predicted: listwise hard-negative training would preserve a high-recall union while raising local ranks.
+- Observed: candidate coverage=0.688179 and reciprocal mutual coverage=0.898438; local all-true proxy R@1=0.077958 remains insufficient.
+- Conclusion: mechanism is confirmed only for candidate coverage. Keep R3 as sparse union generator; global slot evidence must arbitrate ambiguous rows.
