@@ -70,8 +70,8 @@ def main() -> None:
             if directional.ndim == 4 and directional.shape[0] == 1:
                 directional = directional[0]
             union_candidates, union_valid = _union_candidates(base_candidates[0], base_valid[0], directional, args.r2_topk)
-            base_cov, base_density = _coverage(perm, base_candidates, base_valid)
-            union_cov, union_density = _coverage(perm, union_candidates.unsqueeze(0), union_valid.unsqueeze(0))
+            base_cov, base_density = _coverage(perm[0], base_candidates, base_valid)
+            union_cov, union_density = _coverage(perm[0], union_candidates.unsqueeze(0), union_valid.unsqueeze(0))
             output = args.work / f"{path.stem}_r6u1_union.npz"
             np.savez_compressed(
                 output,
