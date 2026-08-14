@@ -238,3 +238,22 @@ QAP1 is blocked for a stricter reason. Its current soft assignment implementatio
 **Decision.** Advance exactly to R8-G2: compute the label-blind union of R8 top-K directed candidates with frozen rank96 candidates on the two pinned DEV boards, at active K=128. Require true directed coverage â‰¥73% without reduced active density. Do not run a layout, R5/NLM, test inference, or submission until G2 passes.
 
 **Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R8_holistic_full_pair\g1_capacity_resume1500_retry1\r8_g1_resume_report.json`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\R7_full_contrastive_retriever\g1_capacity\r2l_matched_cal_report.json`.
+
+## R8-G2 â€” synthetic full-pair retrieval did not transfer into the frozen rank96 DEV graph
+
+**Result.** R8-G1 passed strongly on source-disjoint synthetic CAL bags (Recall@20 58.7990%, +10.9644 pp over frozen R2L). Yet its G2 evaluation on the two pre-registered frozen rank96 DEV graph caches failed. R8-only candidate membership covered only **22.5091%** of true directed DEV neighbours at K=128, and the label-blind fixed-width rank-interleaved union reached **66.0779%**, below the required **73.0000%**.
+
+| Measure | Value |
+|---|---:|
+| Frozen rank96 base coverage | 65.1042% |
+| R8-only coverage | 22.5091% |
+| R8âˆªrank96 fixed-width union coverage | 66.0779% |
+| Union increment | +0.9737 pp |
+| Required G2 coverage | â‰¥73.0000% |
+| Active union density | 128.000 |
+
+**Mechanism.** The high capacity signal was valid only under the synthetic `CanvasDataset(real_prob=0.0)` corruption distribution used for FIT/CAL. It did not transfer to the raw corrupted mosaics associated with the frozen rank96 graph cache. The direct issue is not active-width lossâ€”the union retained exactly 128 candidatesâ€”but a severe train/evaluation distribution or score-calibration mismatch. This is an important rejection: local pair scoring must be trained and gated on the same raw-bag regime in which it will feed the global solver.
+
+**Decision.** Reject R8 before G3. Preserve the full-pair architectural insight, but do not route it into a solver or post-processing. The next research branch must audit and close the raw-input versus synthetic-corruption transfer gap, or separately develop a global island-placement solver evaluated on the canonical graph without claiming an R8 contribution.
+
+**Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R8_holistic_full_pair\g2_union_coverage\r8_g2_report.json`.
