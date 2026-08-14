@@ -206,3 +206,25 @@ R10-A | global component multistart packing, G2 paired raw-layout SSIM | REJECT 
 
 **Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g2_dev\r11_g2_report.json`.
 
+
+
+## P1 / CB1 â€” matched-corruption Boundary Buddies â€” G0 PASSED
+
+**Question.** Does the first new compatibility-evidence branch reproduce the task geometry, independent per-tile corruption contract, and directed-neighbour label geometry without opening targets or creating a layout?
+
+**Protocol.** The harness imported the repositoryâ€™s canonical `distort_frags` implementation and validated the fixed 24Ã—24/576/20px geometry; brightness Â±30, contrast 0.70â€“1.30, noise sigma 40â€“55, 3Ã—3 reflected Gaussian blur, JPEG quality 35â€“50, and the affineâ†’noiseâ†’blurâ†’JPEG order. An identical nonconstant tile was replicated 576 times to verify independently variable tile outputs. Directed right/down physical-neighbour labels were checked for count, self pairs, and duplication.
+
+| Check | Result |
+|---|---:|
+| Grid / tiles / tile width | 24Ã—24 / 576 / 20 px |
+| Directed true neighbours, each direction | 552 |
+| Independent corruption variation observed | 576 distinct rounded tile means |
+| Targets opened | false |
+| Models loaded | false |
+| Layouts assembled | false |
+| Decision | advance to CB1-G1 capacity |
+
+**Decision: PASS.** CB1 may now implement a bounded FIT-only capacity harness. It must use the same corruption function and remain target-free.
+
+**Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g0_contract\cb1_g0_report.json`.
+
