@@ -228,3 +228,28 @@ R10-A | global component multistart packing, G2 paired raw-layout SSIM | REJECT 
 
 **Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g0_contract\cb1_g0_report.json`.
 
+
+
+## P1 / CB1 â€” matched-corruption Boundary Buddies â€” G1 PASSED
+
+**Protocol.** A narrow directional boundary CNN was trained for the pre-registered 240 steps on source-disjoint FIT clean sources only. Each bag was independently corrupted per tile through the existing challenge-matched affineâ†’noiseâ†’3Ã—3 blurâ†’JPEG transform. A training list contained one true directed neighbour and 31 L1-hard false candidates. Four held-out FIT sources supplied 384 target-free 32-way evaluation queries.
+
+| Metric | L1 hard-list baseline | CB1 | Delta |
+|---|---:|---:|---:|
+| R@1 | 0.098958 | 0.109375 | +0.010417 |
+| R@20 | 0.385417 | 0.721354 | **+0.335938** |
+| Mean rank (lower better) | 20.674479 | 12.130208 | **âˆ’8.544271** |
+
+| Contract check | Result |
+|---|---:|
+| FIT train sources | 5,356 |
+| Held-out FIT sources | 4 |
+| CAL / DEV / test accessed | false / false / false |
+| Targets opened | FIT clean sources only |
+| Layouts or restorer used | false |
+| Decision | advance to full CB1 train and CAL candidate graph |
+
+**Interpretation.** CB1 has a real matched-corruption capacity signal: it substantially outranks the same L1 hard confusers on held-out FIT sources. This does **not** establish any raw-domain candidate or SSIM gain; G2 must compare the frozen `rank96 âˆª R2L âˆª CB1` graph against frozen `rank96 âˆª R2L` on CAL with targets sealed.
+
+**Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g1_capacity\cb1_g1_report.json`.
+
