@@ -61,7 +61,7 @@ v        v
 k <--L-- l
 ```
 
-A cycle is valid only when all four directional candidate relations exist. Its support equals a robust aggregate of the four frozen directional log-scores. Accumulate each cycle’s support onto its four constituent edges, normalize per directional query, and fuse with the original score using a **FIT-selected but predeclared** scalar λ. The reweighted scores are then decoded only by the canonical buddies solver; no target-dependent configuration selection is allowed.
+A cycle is valid only when all four directional candidate relations exist. Its support equals the bottleneck (minimum) of the four frozen directional scores, maximized over valid completions. Accumulate this support onto its four constituent edges, robust-normalize per directional query, and fuse with the original score. **G1 is fixed before implementation:** rank96 candidate width `64`, `loop_k=8`, λ grid `{0.00, 0.05, 0.10, 0.20, 0.40}`, 128 source-disjoint FIT sources for λ selection by mean absolute tile-placement accuracy, and a deterministic lower-λ tie-break. The locked λ is evaluated once on the 32 held FIT sources. The reweighted scores are then decoded only by the canonical buddies solver; no target-dependent configuration selection is allowed.
 
 ### Gates
 
@@ -69,7 +69,7 @@ A cycle is valid only when all four directional candidate relations exist. Its s
 |---|---|---|---|
 | P9 G0a — leakage audit | FIT cache/provenance only | Independent permutation-label and candidate-order tests show no label-position leakage; source provenance is disjoint from scorer supervision for the held set | **Completed: leakage detected. Reject P8 scorer; retain rank96-only decoder control.** |
 | P9 G0b — structural loop contract | Synthetic/frozen FIT graph | All 2×2 loops preserve direction, no self-edge, no duplicate tile in a loop, deterministic outputs | Stop and fix; no CAL |
-| P9 G1 — held FIT decoder signal | Fixed 128/32 source-disjoint split | Reweighted held Top-1 ≥ rank96 + 3 pp, Top-20 non-decreasing, and canonical solver emits a valid bijection | Reject P9 before CAL |
+| P9 G1 — held FIT decoder signal | Fixed 128/32 source-disjoint split and cached corrupted tiles; rank96 width 64, loop-k 8, λ grid `{0,.05,.10,.20,.40}` selected on train only | Locked-λ held absolute tile placement accuracy ≥ rank96 + 3 pp and canonical solver emits a valid bijection for every source | Reject P9 before CAL |
 | P9 G2 — CAL raw-layout test | One pre-registered CAL set | Paired mean raw-layout SSIM improves over frozen rank96; no per-image configuration choice | Reject before DEV/submission |
 | P9 G3 — DEV confirmation | Pre-registered DEV set | Lower 95% paired raw-layout SSIM bound > 0 | Authorize test/submission candidate |
 
