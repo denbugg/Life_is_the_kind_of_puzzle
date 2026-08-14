@@ -283,3 +283,13 @@ The user reported the official AI Challenge platform result for the completed S1
 The repair-free R10-A global packer completed its oracle smoke quickly, unlike the infeasible initial configuration that nested full-objective swap repair in all 32 restarts. With unchanged 96-edge buddy component construction, it preserved a full 576-tile bijection and fixed orientation, recovered the identity oracle placement exactly, and improved full-board objective from 10,560 to 11,040 over deterministic packing. This validates the spatial packing mechanism independently of retriever scores.
 
 **Decision.** Advance to R10-A G1: use frozen canonical rank96 scores on 8 pinned DEV boards; prove score/candidate hash identity and positive mean full R/D objective delta before calculating SSIM.
+
+## R10-A-G2 â€” raw edge objective is misaligned with assembly SSIM
+
+R10-A passed all structural and frozen-score contracts: it preserved candidate/raw-score capture, full bijection, and improved mean full-board rank96 R/D objective by +4.190589 across eight pinned DEV boards. But paired raw-layout SSIM declined by **-0.002510458** with lower-95 **-0.006607833**. Several boards became worse despite higher objective.
+
+**Mechanism finding.** The canonical raw ranker logit sum is not sufficiently calibrated as a global island-placement objective. A solver that maximizes that sum can choose locally high-scoring but semantically wrong external joins. The spatial-optimization hypothesis is not itself refuted; the raw objective used to choose among layouts is.
+
+**Decision.** Reject R10-A before R5/NLM, test inference, or submission. The next solver branch must learn or calibrate a layout-selection objective using FIT-only provenance and prove that its selection correlates with held-out layout SSIM before global deployment.
+
+**Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R10_global_component_multistart\g1_frozen_layout\r10a_g2_ssim_report.json`.
