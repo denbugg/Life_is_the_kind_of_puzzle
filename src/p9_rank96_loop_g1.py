@@ -253,7 +253,10 @@ def precompute_loop_delta(cache: dict[str, np.ndarray]) -> tuple[np.ndarray, dic
         lambda_value=1.0,
         sentinel=SENTINEL,
     )
-    delta = unit - cache["baseline"].astype(np.float64, copy=False)
+    baseline = cache["baseline"].astype(np.float64, copy=False)
+    delta = np.zeros_like(unit, dtype=np.float64)
+    finite = np.isfinite(unit) & np.isfinite(baseline)
+    delta[finite] = unit[finite] - baseline[finite]
     return delta, report.__dict__
 
 
