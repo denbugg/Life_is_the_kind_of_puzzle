@@ -137,3 +137,26 @@ R9 | raw-bag full-pair adaptation, G1 held-out raw CAL | REJECT | R8 step-2000 i
 R10-A | global component multistart packing, G0 oracle | PASS | same `max_edges=96` buddy components; 32 packing restarts, temperature=0.03, order jitter=0.25, repair=0 | 576-tile bijection valid; fixed 24Ã—24/no rotation; oracle placement accuracy=100.0%; objective 11,040 vs deterministic 10,560. | PASS to frozen-score R10-A G1; raw score/candidate hashes must stay identical.
 
 R10-A | global component multistart packing, G2 paired raw-layout SSIM | REJECT | unchanged canonical rank96 R/D and candidate scores; 8 pinned DEV; 32 restarts, repair=0 | G1 mean objective delta=+4.190589 (min=0; all hashes shared) but raw-layout paired SSIM delta=-0.002510458, lower-95=-0.006607833. | Reject before R5/NLM, test, or submission.
+
+
+## R11 â€” rank-normalized loop-consensus layout selector â€” G0 PASSED
+
+**Question.** Can a consensus objective select the oracle-correct configuration from a fixed rank96 component-placement ensemble without any target information?
+
+**Protocol.** Generated 32 fixed-orientation layouts from pre-registered rank96 component logic: one canonical packing and 31 individual randomized packings at temperature 0.03 and order jitter 0.25. The selector scored each valid bijection with non-self row-rank confidence and 2Ã—2 weakest-link loop consensus at lambda=1. No train, CAL, DEV, or target image was opened.
+
+| Check | Result |
+|---|---:|
+| Layout count | 32 |
+| Valid 576-tile bijections | 32 / 32 |
+| Canonical oracle identity accuracy | 0.000000 |
+| Selected oracle identity accuracy | 1.000000 |
+| Selected candidate index | 9 |
+| Edge-score range | 1103.519164 to 1104.000000 |
+| Loop-score range | 528.519164 to 529.000000 |
+| Targets opened | false |
+
+**Decision: PASS.** The selector is structurally capable of recovering an exact oracle layout from the fixed ensemble, while preserving tile identity and orientation. Advance only to the pre-registered single-board CAL lambda calibration; no DEV target may be used before lambda is fixed.
+
+**Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g0_smoke\r11_g0_report.json`.
+

@@ -293,3 +293,26 @@ R10-A passed all structural and frozen-score contracts: it preserved candidate/r
 **Decision.** Reject R10-A before R5/NLM, test inference, or submission. The next solver branch must learn or calibrate a layout-selection objective using FIT-only provenance and prove that its selection correlates with held-out layout SSIM before global deployment.
 
 **Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R10_global_component_multistart\g1_frozen_layout\r10a_g2_ssim_report.json`.
+
+
+## R11 â€” rank-normalized loop-consensus layout selector â€” G0 PASSED
+
+**Question.** Can a consensus objective select the oracle-correct configuration from a fixed rank96 component-placement ensemble without any target information?
+
+**Protocol.** Generated 32 fixed-orientation layouts from pre-registered rank96 component logic: one canonical packing and 31 individual randomized packings at temperature 0.03 and order jitter 0.25. The selector scored each valid bijection with non-self row-rank confidence and 2Ã—2 weakest-link loop consensus at lambda=1. No train, CAL, DEV, or target image was opened.
+
+| Check | Result |
+|---|---:|
+| Layout count | 32 |
+| Valid 576-tile bijections | 32 / 32 |
+| Canonical oracle identity accuracy | 0.000000 |
+| Selected oracle identity accuracy | 1.000000 |
+| Selected candidate index | 9 |
+| Edge-score range | 1103.519164 to 1104.000000 |
+| Loop-score range | 528.519164 to 529.000000 |
+| Targets opened | false |
+
+**Decision: PASS.** The selector is structurally capable of recovering an exact oracle layout from the fixed ensemble, while preserving tile identity and orientation. Advance only to the pre-registered single-board CAL lambda calibration; no DEV target may be used before lambda is fixed.
+
+**Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g0_smoke\r11_g0_report.json`.
+
