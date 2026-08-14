@@ -31,17 +31,21 @@ For every board, R10 reuses the exact raw R/D score matrices and `max_edges=96` 
 | Buddy components | `max_edges=96`, `min_margin=0` | Identical |
 | Component placement | Deterministic, one start | 32 starts; first is deterministic, remaining randomized packing |
 | Temperature / order jitter | n/a | 0.03 / 0.25 |
-| Repair | 0 passes | 2 bijection-preserving swap passes, pool 96 |
+| Repair | 0 passes | **R10-A:** 0 passes; bounded multistart packing only. A future R10-B may add delta-evaluated swap repair only after R10-A passes. |
 | Scoring | Full horizontal+vertical R/D objective | Identical objective |
 
 ## Gates
 
 | Gate | Protocol | Pass condition | Reject condition |
 |---|---|---|---|
-| R10-G0 | Oracle R/D and tile-placement structural smoke | valid 576-tile bijection, fixed 24×24 shape, no orientation mutation; R10 objective ≥ deterministic baseline | any violation |
-| R10-G1 | 8 held-out pinned DEV bags; frozen rank96 R/D; compare canonical vs R10 before any restoration | mean raw global R/D objective delta >0 and no board’s score matrices/candidate hashes differ from canonical | reject before SSIM if objective does not improve or contract differs |
+| R10-G0 | Oracle R/D and tile-placement structural smoke | valid 576-tile bijection, fixed 24×24 shape, no orientation mutation; R10-A objective ≥ deterministic baseline | any violation |
+| R10-G1 | 8 held-out pinned DEV bags; frozen rank96 R/D; compare canonical vs R10-A before any restoration | mean raw global R/D objective delta >0 and no board’s score matrices/candidate hashes differ from canonical | reject before SSIM if objective does not improve or contract differs |
 | R10-G2 | Same shared 8 DEV layout outputs, raw tile assembly only; paired SSIM to targets | paired mean and lower-95 SSIM delta >0 | reject before R5/NLM/test/submission |
 | R10-G3 | Only after G2 pass: same layouts with frozen R5→NLM | paired mean and lower-95 SSIM delta >0 relative to S1-style canonical layout | no retained solver claim or submission |
+
+## Runtime clarification
+
+The original draft specified two full-objective swap-repair passes inside all 32 oracle restarts. Its G0 CPU run was stopped after more than ten minutes without one completed result because the existing repair implementation recomputes the entire 2,208-boundary objective for every proposed swap. This is a **no-result execution diagnostic**, not a G0 pass or fail. R10-A retains the actual multistart component-packing hypothesis at 32 starts but sets repair passes to zero. Any later repair branch must first implement and validate an incremental delta objective as a separate pre-registered lever.
 
 ## Evidence base
 
