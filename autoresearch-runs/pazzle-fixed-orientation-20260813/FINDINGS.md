@@ -173,3 +173,16 @@ CP1 is not merely a weak improvement: its CAL selector found the identity fallba
 QAP1 is blocked for a stricter reason. Its current soft assignment implementation fails to recover a valid exact solution from perfect synthetic directional matrices: placement 24.83%, oriented-neighbour recovery 58.42%, and doubly-stochastic error 0.99993. It must not be trialed on real data or treated as a layout baseline.
 
 **Implication.** The next solver lever must target the information bottleneckâ€”candidate recall or an independently verifiable structural constraintâ€”not another fixed-graph residual, photometric rescoring, or the current QAP code path.
+
+
+## R6U1 â€” expanded R2Lâˆªrank96 candidate union â€” REJECTED at G0
+
+**Question.** Could the previously complementary R2L retriever expand the actual frozen rank96 candidate cache enough to train a larger listwise ranker on a richer hard-list distribution?
+
+**Valid source-disjoint G0.** On pinned DEV boards, the frozen cache had directed true-neighbour coverage **65.10%**. The label-blind R2L union reached **66.78%**, a **+1.68 pp** increment, but active candidates fell from **128.00** to **105.37** per tile and mean coverage missed the pre-registered **73%** capacity requirement by 6.22 pp.
+
+**Decision.** **REJECT R6U1 before ranker training.** The final result is the direct-metric frozen-cache run only; earlier adapter shape/base mismatches are explicitly invalid harness checks and are not evidence. No layout, R5/NLM composition, E26, test render or submission variant is allowed.
+
+**Mechanism audit.** R2L does add complementary edges, but not enough at the canonical cache operating point and with unacceptable active-density loss. The next miner must improve source-disjoint Recall@K without compressing the graph.
+
+**Evidence.** `R6U1_G0_EVIDENCE_REPORT.md`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\R6U1_expanded_candidate_ranker\g0_union_directmetric\r6u1_g0_directmetric_report.json`.

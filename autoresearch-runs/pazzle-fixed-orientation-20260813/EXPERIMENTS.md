@@ -104,3 +104,16 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 **Decision.** **REJECT QAP1 at G0.** No real-board, DEV, submission or E26 run is permitted. The current implementation cannot certify feasibility even under perfect relations.
 
 **Evidence.** `CP1_QAP1_NEGATIVE_GATES_REPORT.md`; CP1 report `E:\pazzle_work\pazzle_fixed_orientation_20260813\CP1_photometric_consensus\g1_local\cp1_g1_local_report.json`; QAP log `E:\pazzle_work\pazzle_fixed_orientation_20260813\QAP1_seeded_global_solver\g0_oracle\qap1_g0_oracle.log`.
+
+
+## R6U1 â€” expanded R2Lâˆªrank96 candidate union â€” REJECTED at G0
+
+**Question.** Could the previously complementary R2L retriever expand the actual frozen rank96 candidate cache enough to train a larger listwise ranker on a richer hard-list distribution?
+
+**Valid source-disjoint G0.** On pinned DEV boards, the frozen cache had directed true-neighbour coverage **65.10%**. The label-blind R2L union reached **66.78%**, a **+1.68 pp** increment, but active candidates fell from **128.00** to **105.37** per tile and mean coverage missed the pre-registered **73%** capacity requirement by 6.22 pp.
+
+**Decision.** **REJECT R6U1 before ranker training.** The final result is the direct-metric frozen-cache run only; earlier adapter shape/base mismatches are explicitly invalid harness checks and are not evidence. No layout, R5/NLM composition, E26, test render or submission variant is allowed.
+
+**Mechanism audit.** R2L does add complementary edges, but not enough at the canonical cache operating point and with unacceptable active-density loss. The next miner must improve source-disjoint Recall@K without compressing the graph.
+
+**Evidence.** `R6U1_G0_EVIDENCE_REPORT.md`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\R6U1_expanded_candidate_ranker\g0_union_directmetric\r6u1_g0_directmetric_report.json`.
