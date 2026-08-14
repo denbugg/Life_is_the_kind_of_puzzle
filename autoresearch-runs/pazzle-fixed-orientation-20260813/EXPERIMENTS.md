@@ -365,3 +365,25 @@ The smallest maximum is `alpha=0.00`; no positive alpha passes G1. P2 therefore 
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P2_CB1_directional_score_fusion\g0_g1_cal\p2_g0_g1_report.json` and six `alpha_*.npz` immutable artifacts.
 
+
+
+## P3 / CDCS G0 â€” FIT-only corruption and hard-list contract: PASSED
+
+P3 G0 constructed four deterministic, independently per-tile corrupted synthetic bags from the first four pinned FIT sources and passed each through the frozen dual-affinity rank96 candidate graph and frozen CandidateSeamRanker. This produced source-aware 32-way directional CDCS lists, with the known directed true neighbour forced into index zero and 31 unique non-self rank96 hard competitors retained in frozen score order. No solver, layout assembly, restorer, CAL target, DEV target, or test input was reachable in the gate.
+
+| Check | Result |
+|---|---:|
+| FIT sources | 4 / 4 validated source-disjoint |
+| Per-source directional queries | 2,208 |
+| Frozen hard-list shape | **(8,832, 32)** |
+| Positive index | 0 for every query |
+| Candidate uniqueness / non-self | verified |
+| Frozen rank96 tensor contract | candidates `(1,576,128)`, ranker scores `(4,576,128)` |
+| CAL targets opened | 0 |
+| DEV targets opened | 0 |
+| Test accessed / layouts assembled | false / false |
+
+**Decision: PASSED â†’ P3 G1 FIT capacity.** The next gate will compare listwise CDCS top-1 against a per-query pixel-boundary L1 baseline on held-out FIT source bags only. It must exceed that baseline by at least 5.0 percentage points after the 2,000-step fixed-budget run before either full FIT training or any CAL evaluation is permitted.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P3_CDCS\g0_smoke\p3_g0_fit_hardlists.npz` (391,905 bytes) and `p3_g0_report.json`.
+
