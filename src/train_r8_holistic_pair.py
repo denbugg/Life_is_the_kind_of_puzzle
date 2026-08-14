@@ -427,6 +427,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--split", type=Path, default=DEFAULT_SPLIT)
     parser.add_argument("--work", type=Path, default=DEFAULT_WORK)
     parser.add_argument("--report", type=Path, default=None)
+    parser.add_argument("--resume", type=Path, default=None, help="resume model weights and cosine step from a saved r8_last.pt")
     return parser.parse_args()
 
 
@@ -457,16 +458,28 @@ def main() -> None:
     fit_dataset = CanvasDataset(fit_names, patch=4, real_prob=0.0, seed=args.seed + 11)
     cal_dataset = CanvasDataset(cal_names, patch=4, real_prob=0.0, seed=args.seed + 29)
     model = HolisticPairNet(width=args.width, blocks=args.blocks).to(device)
+    resume_payload = None
+    start_step = 0
+    if args.resume is not None:
+        resume_payload = torch.load(args.resume, map_location=device, weights_only=False)
+        if resume_payload.get("architecture") != {"width": args.width, "blocks": args.blocks}:
+            raise RuntimeError("resume architecture does not match requested R8 model")
+        start_step = int(resume_payload["step"])
+        if not 0 < start_step < args.steps:
+            raise RuntimeError("resume checkpoint step must be within (0, --steps)")
+        model.load_state_dict(resume_payload["model"])
     smoke_report = smoke(model, fit_dataset, device, args.seed + 101)
     smoke_mode = device.type == "cpu" and args.steps == 1
     effective_batch = 1 if smoke_mode else args.batch_size
     effective_anchors = 4 if smoke_mode else args.anchors_per_board
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=args.steps, eta_min=args.lr * 0.1)
-    rng = random.Random(args.seed + 307)
+    if start_step:
+        scheduler.step(start_step)
+    rng = random.Random(args.seed + 307 + start_step)
     history: List[Dict[str, object]] = []
     started = time.time()
-    for step in range(1, args.steps + 1):
+    for step in range(start_step + 1, args.steps + 1):
         model.train()
         boards = stack_boards(fit_dataset, effective_batch, rng, device)
         loss_values: List[float] = []
@@ -500,7 +513,7 @@ def main() -> None:
         r2l_metric = None
         if R2L_MATCHED_CAL.exists():
             r2l_metric = json.loads(R2L_MATCHED_CAL.read_text(encoding="utf-8"))["metrics"].get("r20")
-        final = {"experiment": "R8_holistic_full_pair", "gate": "G1_capacity", "parameters": model_parameters(model), "smoke": smoke_report, "history": history, "cal": cal_metrics, "matched_frozen_r2l_recall_at_20": r2l_metric, "r8_minus_r2l_pp": None if r2l_metric is None else 100.0 * (cal_metrics["recall_at_20"] - r2l_metric), "required_margin_pp": 3.0, "provenance": provenance, "artifacts": {"last": str(args.work / "r8_last.pt")}}
+        final = {"experiment": "R8_holistic_full_pair", "gate": "G1_capacity", "parameters": model_parameters(model), "resume": None if args.resume is None else {"checkpoint": str(args.resume), "from_step": start_step, "optimizer_state": "restarted_at_cosine_global_step"}, "smoke": smoke_report, "history": history, "cal": cal_metrics, "matched_frozen_r2l_recall_at_20": r2l_metric, "r8_minus_r2l_pp": None if r2l_metric is None else 100.0 * (cal_metrics["recall_at_20"] - r2l_metric), "required_margin_pp": 3.0, "provenance": provenance, "artifacts": {"last": str(args.work / "r8_last.pt")}}
     report_path.write_text(json.dumps(final, indent=2), encoding="utf-8")
     print(json.dumps(final, indent=2), flush=True)
 
