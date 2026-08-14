@@ -277,3 +277,9 @@ The user reported the official AI Challenge platform result for the completed S1
 **Decision.** Preserve R9 as negative evidence. Stop raw-pair retriever tuning and climb the lever ladder to a global spatial assembly branch which works on the canonical rank96 candidate graph, is independently gated, and directly addresses coherent islands placed in the wrong global location.
 
 **Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R9_raw_bag_full_pair_adaptation\g1_capacity\r9_g1_report.json`.
+
+## R10-A-G0 â€” bounded multistart component packing passes oracle structural gate
+
+The repair-free R10-A global packer completed its oracle smoke quickly, unlike the infeasible initial configuration that nested full-objective swap repair in all 32 restarts. With unchanged 96-edge buddy component construction, it preserved a full 576-tile bijection and fixed orientation, recovered the identity oracle placement exactly, and improved full-board objective from 10,560 to 11,040 over deterministic packing. This validates the spatial packing mechanism independently of retriever scores.
+
+**Decision.** Advance to R10-A G1: use frozen canonical rank96 scores on 8 pinned DEV boards; prove score/candidate hash identity and positive mean full R/D objective delta before calculating SSIM.
