@@ -257,3 +257,7 @@ QAP1 is blocked for a stricter reason. Its current soft assignment implementatio
 **Decision.** Reject R8 before G3. Preserve the full-pair architectural insight, but do not route it into a solver or post-processing. The next research branch must audit and close the raw-input versus synthetic-corruption transfer gap, or separately develop a global island-placement solver evaluated on the canonical graph without claiming an R8 contribution.
 
 **Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R8_holistic_full_pair\g2_union_coverage\r8_g2_report.json`.
+
+## R9-G0 â€” raw cache supervision is provenance-safe for adaptation
+
+The R9 CPU smoke validated all registered raw-bag contracts: it loaded 17 FIT cache/input pairs using the original `image_####_k64.npz` â†’ `img_######.png` mapping, excluded the one CAL and two DEV cached sources from training, used only frozen cache permutations as labels, and never opened a target image. Its sampled objective remained finite with zero self or direct-neighbour negatives. This permits the 800-step raw-domain adaptation gate.
