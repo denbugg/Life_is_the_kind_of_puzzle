@@ -117,3 +117,5 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 **Mechanism audit.** R2L does add complementary edges, but not enough at the canonical cache operating point and with unacceptable active-density loss. The next miner must improve source-disjoint Recall@K without compressing the graph.
 
 **Evidence.** `R6U1_G0_EVIDENCE_REPORT.md`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\R6U1_expanded_candidate_ranker\g0_union_directmetric\r6u1_g0_directmetric_report.json`.
+
+R7 | directional full-board contrastive retriever, G0 CPU smoke | PASS | 1 synthetic FIT board, source-disjoint manifest enforced | score tensor `(1,4,576,576)`; 2,208 valid directed internal edges; zero self-targets; finite FP32 loss 6.374180; model consumes tiles only and uses `perm` only after score construction; FIT/CAL overlap=0 | 2.51s train-step elapsed. Proceed to pre-registered G1 1,200-step CUDA capacity gate.

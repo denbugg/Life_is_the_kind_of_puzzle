@@ -186,3 +186,13 @@ QAP1 is blocked for a stricter reason. Its current soft assignment implementatio
 **Mechanism audit.** R2L does add complementary edges, but not enough at the canonical cache operating point and with unacceptable active-density loss. The next miner must improve source-disjoint Recall@K without compressing the graph.
 
 **Evidence.** `R6U1_G0_EVIDENCE_REPORT.md`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\R6U1_expanded_candidate_ranker\g0_union_directmetric\r6u1_g0_directmetric_report.json`.
+
+## R7-G0 â€” full-board retrieval objective is structurally valid
+
+**Finding.** The R7 harness passed the pre-registered CPU smoke gate. It creates all four directed 576Ã—576 compatibility matrices from only corrupted, permuted tile bags. Its exact-neighbour supervision has 2,208 valid internal directed edges per 24Ã—24 board and no self-targets. The tiled input is the sole model input; the synthetic `perm` tensor is consumed only after score construction to index the full-board InfoNCE loss.
+
+**Interpretation.** R7 is not another candidate-list residual: every true directed edge competes against all 575 non-self tiles, including candidates absent from frozen rank96/R2L lists. This establishes testable candidate-discovery capacity, but does not yet establish retrieval quality.
+
+**Decision.** Advance to the pre-registered G1 CUDA capacity gate: 1,200 FIT-only steps and source-disjoint CAL Recall@20 comparison against frozen R2L. Do not run coverage, a layout solver, restoration, or a submission unless G1 passes.
+
+**Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R7_full_contrastive_retriever\g0_smoke\r7_g0_report.json`.
