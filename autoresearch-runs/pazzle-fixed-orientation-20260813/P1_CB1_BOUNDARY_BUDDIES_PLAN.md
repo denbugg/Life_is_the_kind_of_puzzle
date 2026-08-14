@@ -34,7 +34,7 @@ The model score may rank candidate lists. It may not be summed as a board-level 
 | Gate | Data permitted | Pass condition | Failure action |
 |---|---|---|---|
 | G0 — data/corruption contract | FIT inputs, manifest only | Each sampled tile has an independent transform within the exact ranges; labels, orientation, shape, no self/duplicate candidate, and source identity isolation are verified. | Repair data harness; no training. |
-| G1 — bounded FIT capacity | small frozen FIT scene subset | CB1 directional R@20 exceeds frozen rank96-only reference under the matched online corruption harness. | Reject before full train. |
+| G1 — bounded FIT capacity | small frozen FIT scene subset | CB1 directional R@20 exceeds the matched-corruption L1 hard-negative baseline under the identical 32-way lists. Frozen rank96/R2L remain untouched for G2. | Reject before full train. |
 | G2 — CAL candidate graph | CAL inputs + known permutation metadata; targets sealed | Mean directed true-neighbour coverage of rank96∪R2L∪CB1 exceeds frozen rank96∪R2L by >=2.0 percentage points; density cap recorded. | Reject before DEV. |
 | G3 — DEV candidate graph | 8 pinned DEV inputs + permutation metadata; targets sealed | Positive directed coverage delta replicates, no malformed candidate provenance or density breach. | Reject before layouts. |
 | G4 — paired DEV raw layout | Targets only after canonical and augmented layouts are immutable | Paired mean raw-layout SSIM delta >0 and lower-95 >0 vs canonical. | Reject before R5/NLM/test. |
