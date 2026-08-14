@@ -597,3 +597,31 @@ The pre-registered P4 rule required MGC top-20 to exceed L1 by at least 2.0 pp a
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P4_MGC_mutual_buddies\p4_g0_report.json`, `p4_g1_report.json`, and per-source frozen score artifacts.
 
+
+
+## P5 / Set-to-Grid Transformer G0â€“G1 â€” REJECTED before CAL
+
+P5 G0 passed the implementation contract on four FIT-only synthetic bags: reordering the 576 input tiles produced correspondingly reordered score rows with maximum absolute deviations below `6.2e-7`, labels permuted consistently, and Hungarian decoding always yielded a valid 576-tile bijection.
+
+The pre-registered G1 then trained the six-block, width-192 permutation-invariant set Transformer for 4,000 FIT-only steps on 256 FIT sources and compared it with the parameter-matched independent tile CNN on 32 source-disjoint held-out FIT sources. The model was required to exceed 10% held-out Hungarian slot accuracy and beat the comparator by 5 pp.
+
+| Held-out metric | Set Transformer | Independent CNN | Delta |
+|---|---:|---:|---:|
+| Loss, first 100 / last 100 | 6.35615 / 6.35611 | 6.35675 / 6.22017 | Set model did not learn |
+| Independent tile-slot accuracy | 0.1736% | 0.3092% | -0.1356 pp |
+| Hungarian tile-slot accuracy | 0.1788% | 0.2222% | **-0.0434 pp** |
+| Required Hungarian accuracy | >10.0% | â€” | not met |
+
+The set Transformer's slot loss remained essentially at `ln(576)`, whereas the independent CNN extracted at least a small absolute-placement prior. Thus full-set attention as implemented is not enough to bootstrap slot-specific correspondence from raw 20Ã—20 independently corrupted content and randomly initialized slot queries. P5 is rejected before scale and CAL; the CAL/DEV/test target seal remains intact.
+
+| Access check | Result |
+|---|---:|
+| CAL targets opened | 0 |
+| DEV targets opened | 0 |
+| Test accessed | false |
+| Layouts / restorer used | false / false |
+
+**Decision: REJECTED.** The immediate subsequent lever must no longer ask global cross-attention to discover tile/slot correspondence from scratch. The natural escalation is a **conditional positional diffusion model with explicit noisy 2D positional tokens**, as in JPDVT, or a pretrained/dense convolutional tile encoder; both must first clear a new FIT-only position-capacity gate.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P5_set_to_grid\g0_g1_capacity\p5_g0_report.json`, `p5_g1_report.json`, and both frozen G1 checkpoints.
+
