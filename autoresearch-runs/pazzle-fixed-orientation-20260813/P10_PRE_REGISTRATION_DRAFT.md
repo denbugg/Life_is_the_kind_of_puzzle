@@ -41,3 +41,22 @@ The only selected training checkpoint is the one with best 128-source FIT-train 
 [1] Gaël Heck, Nicolas Lermé, and Sylvie Le Hégarat-Mascle, [“Solving jigsaw puzzles with vision transformers”](https://link.springer.com/article/10.1007/s10044-025-01484-z), *Pattern Analysis and Applications*, 2025.
 
 [2] Gonzalo Mena et al., [“Learning Latent Permutations with Gumbel-Sinkhorn Networks”](https://arxiv.org/abs/1802.08665), ICLR 2018.
+
+## G0a result â€” PASS (synthetic permutation and Sinkhorn contracts)
+
+P9 was rejected before CAL, activating this preregistration. P10 G0a was then executed without reading any puzzle image, target, rank96 cache, or P8 artifact. The implementation is `src/p10_sinkhorn_contracts.py`; its JSON artifact is stored at `E:\pazzle_work\pazzle_fixed_orientation_20260813\P10_sinkhorn_refiner\g0a\p10_g0a_report.json`.
+
+| Contract | Result |
+|---|---:|
+| Matrix size / positional grid | 576 x 576 / 24 x 24 |
+| Log-domain Sinkhorn iterations | 20 |
+| Zero-noise identity decode accuracy | 100.000% |
+| Identity row / column error | 0 / 0 |
+| Row-permutation decode accuracy | 100.000% |
+| Row-permutation equivariance error | 0 |
+| Gradient finiteness | PASS |
+| Gradient row / column error | 3.5763e-7 / 3.5763e-7 |
+| Tied-logit discrete assignment is a bijection | PASS |
+| Puzzle targets / CAL / DEV / test accessed | no / no / no / no |
+
+**Decision:** PASS G0a. The next permitted stage is G0b: one FIT-source canonical rank96 layout cache and a deterministic input/shape/assignment contract. No CAL/DEV/test path is authorized.

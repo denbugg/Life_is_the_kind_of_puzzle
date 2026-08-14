@@ -688,3 +688,7 @@ The contrastive representation is materially more robust for identifying the ori
 ## P9 G1 finding â€” loop consistency did not transfer to held global placement
 
 The sparse directed 2x2 loop reweighting control preserved a valid canonical bijection on all evaluated boards, but lambda selected on FIT-train (`0.40`) reduced rather than increased held absolute placement accuracy: 0.179036% versus 0.189887% for rank96 (`-0.010851` percentage points). This eliminates rank96-only local loop reweighting as a CAL candidate under the preregistered +3 pp G1 gate. Future work should model absolute location/permutation structure directly rather than apply another local edge-score correction; P10 has been preregistered for this purpose.
+
+## P10 G0a finding â€” the 576-way differentiable assignment primitive is numerically sound
+
+The prescribed 20-step log-domain Sinkhorn mapping passed identity preservation, tile-row permutation equivariance, finite-gradient, doubly-stochastic, and deterministic linear-assignment bijection contracts at the real 576-tile board size. This validates the P10 assignment operator itself; it does not imply any puzzle-placement improvement. The next informative gate is a single FIT source using only the canonical rank96+buddies spatial hypothesis.

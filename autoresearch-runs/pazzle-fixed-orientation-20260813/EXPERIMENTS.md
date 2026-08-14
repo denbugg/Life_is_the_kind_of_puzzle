@@ -542,3 +542,16 @@ The contrastive representation is materially more robust for identifying the ori
 | Gate | FAIL: required held improvement >= +3.000 percentage points |
 | Decision | **REJECT before CAL** |
 | Leakage / data discipline | P8 labels not imported; CAL/DEV/test targets closed; no layouts/restorer/NLM/submission |
+
+## P10 â€” G0a Sinkhorn primitive contract
+
+| Field | Value |
+|---|---|
+| Status | **PASS** |
+| Scope | Synthetic 576-way permutation only; no puzzle data or targets |
+| Sinkhorn | 20 log-domain iterations |
+| Identity / permuted-row decode | 100.000% / 100.000% |
+| Doubly-stochastic maximum error | 3.5763e-7 (gradient probe) |
+| Discrete tie decoder | valid 576-way bijection |
+| Gate consequence | Authorize P10 G0b one-FIT canonical layout contract |
+| Data discipline | CAL/DEV/test closed; P8 artifacts absent |
