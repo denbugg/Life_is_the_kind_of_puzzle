@@ -692,3 +692,7 @@ The sparse directed 2x2 loop reweighting control preserved a valid canonical bij
 ## P10 G0a finding â€” the 576-way differentiable assignment primitive is numerically sound
 
 The prescribed 20-step log-domain Sinkhorn mapping passed identity preservation, tile-row permutation equivariance, finite-gradient, doubly-stochastic, and deterministic linear-assignment bijection contracts at the real 576-tile board size. This validates the P10 assignment operator itself; it does not imply any puzzle-placement improvement. The next informative gate is a single FIT source using only the canonical rank96+buddies spatial hypothesis.
+
+## P10 G0b finding â€” absolute-position refiner can consume the intended leakage-free input path
+
+A one-source contract confirms that corrupted FIT tiles, a frozen P9 canonical rank96+buddies spatial hypothesis, Fourier coordinates, a layout-context Transformer, 20-step Sinkhorn, and deterministic linear assignment compose into a valid 576-way assignment. The source's rank96 placement accuracy was only 0.173611%, demonstrating that G0b is a wiring/constraint check rather than evidence of P10 improvement. The only meaningful next test is the preregistered source-disjoint G1 training/held evaluation.

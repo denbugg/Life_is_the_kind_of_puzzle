@@ -60,3 +60,23 @@ P9 was rejected before CAL, activating this preregistration. P10 G0a was then ex
 | Puzzle targets / CAL / DEV / test accessed | no / no / no / no |
 
 **Decision:** PASS G0a. The next permitted stage is G0b: one FIT-source canonical rank96 layout cache and a deterministic input/shape/assignment contract. No CAL/DEV/test path is authorized.
+
+## G0b result â€” PASS (one FIT source canonical-layout contract)
+
+P10 G0b ran on the single explicit FIT source `img_003194.png` using only its frozen P9 rank96 cache (`sha256: 3f549da9b3bfc3ebd655c71ac635a9fdaa50bac3da12b4e1f52769f62548a5a4`) and the corresponding FIT target to reconstruct P9's approved corrupted-tile state. The harness made no new candidate mining/ranker call and did not train any model.
+
+| Contract | Result |
+|---|---:|
+| Input tiles | 576 x 20 x 20 x 3 corrupted FIT fragments |
+| Frozen spatial hypothesis | canonical rank96+buddies board |
+| Initial rank96 board | valid bijection |
+| Initial rank96 placement accuracy | 0.173611% |
+| P10 logits | 576 x 576 |
+| Sinkhorn passes | 20 log-domain iterations |
+| Sinkhorn row / column error | 3.5763e-7 / 4.7684e-7 |
+| P10 linear-assignment output | valid 576-way bijection |
+| Model trained | no |
+| CAL / DEV / test accessed | no / no / no |
+| P8 labels/scores imported | no / no |
+
+**Decision:** PASS G0b. The declared P10 input path, positional state, continuous assignment, and discrete bijection decoder are executable under FIT-only data discipline. G1 remains the next decision gate: train/select only on 128 FIT sources, then evaluate the chosen configuration exactly once on 32 held FIT sources.

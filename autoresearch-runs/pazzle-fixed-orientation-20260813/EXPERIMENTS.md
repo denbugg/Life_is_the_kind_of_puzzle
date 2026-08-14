@@ -555,3 +555,18 @@ The contrastive representation is materially more robust for identifying the ori
 | Discrete tie decoder | valid 576-way bijection |
 | Gate consequence | Authorize P10 G0b one-FIT canonical layout contract |
 | Data discipline | CAL/DEV/test closed; P8 artifacts absent |
+
+## P10 â€” G0b one-FIT canonical layout contract
+
+| Field | Value |
+|---|---|
+| Status | **PASS** |
+| Source | `img_003194.png` (FIT only) |
+| Spatial hypothesis | frozen P9 canonical rank96+buddies board |
+| Raw tile reconstruction | P9 cached FIT permutation/corruption seed |
+| Continuous assignment | 576 x 576, 20 log-domain Sinkhorn steps |
+| Sinkhorn max row / column error | 3.5763e-7 / 4.7684e-7 |
+| Discrete decoder | valid 576-way bijection |
+| Model trained | no |
+| Gate consequence | Authorize locked P10 G1 train-128 / held-32 protocol |
+| Data discipline | CAL/DEV/test closed; no P8 artifacts; no new rank96 mining/ranking |
