@@ -311,3 +311,29 @@ All eight immutable artifacts have shape `(576, 4, 32)` and per-input, frozen-ca
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g3_dev_construct\cb1_g3_report.json` and eight `img_*_cb1_g3.npz` files.
 
+
+
+## P1 / CB1 â€” G4 ranker-rescored CAL capacity: REJECTED before DEV
+
+The four pre-registered capacity-specific candidate graphs (`C âˆˆ {0,16,32,48}`) were constructed from frozen G2 CB1 candidates, then every selected edge was rescored by the unchanged frozen CandidateSeamRanker and decoded by the unchanged buddies solver. All candidate graphs and raw layouts were written before the sole permitted CAL target `img_000051.png` was opened.
+
+| Novel CB1 capacity `C` | CAL raw-layout SSIM |
+|---:|---:|
+| 0 | **0.2488631194** |
+| 16 | 0.2488631194 |
+| 32 | 0.2488631194 |
+| 48 | 0.2488631194 |
+
+The pre-registered tie-break therefore selects the smallest maximizer: **`C = 0`**. The proposed CB1 candidates did not affect the immutable rank96/buddies layout at any tested capacity, despite their CAL candidate-membership gain. Consequently, there is no non-canonical CB1 layout to validate on DEV: opening DEV targets would provide no scientific value and is prohibited.
+
+| Access check | Result |
+|---|---:|
+| CAL target opened | `img_000051.png` only |
+| DEV targets opened | false |
+| Test accessed | false |
+| Restorer used | false |
+
+**Decision: REJECTED.** CB1 confirms that better candidate membership alone is insufficient when the frozen ranker assigns no solver-relevant support to the novel edges. Reject before DEV SSIM, R5/NLM, and submission generation. Preserve the capacity result as a diagnostic for the next solver lever: the new model must alter or calibrate **edge compatibility scores**, not merely offer candidates.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g4_cal_rescored\cb1_g4_report.json` and `cal_capacity_{0,16,32,48}_immutable.npz`.
+
