@@ -29,6 +29,10 @@ A small directional CNN produces one compatibility logit for a boundary band. Tr
 
 The model score may rank candidate lists. It may not be summed as a board-level layout objective.
 
+## Frozen full-training configuration after G1
+
+CB1 full training is fixed at 6,000 steps, 24 32-way hard lists per step, `AdamW(lr=2e-3, weight_decay=1e-4)`, the G1 BoundaryBuddyNet architecture, the G1 loss, and seed 20260814. It trains only FIT clean sources with online challenge-matched corruption. The G2 graph check first uses a pre-registered source-disjoint CAL metadata cache that exposes only inputs, tile ordering/permutation labels, and frozen rank96/R2L candidate lists; it may not open a CAL target image. If that cache contract is unavailable, CB1 stops at G1 rather than substituting target-derived labels.
+
 ## Gates
 
 | Gate | Data permitted | Pass condition | Failure action |
