@@ -212,3 +212,13 @@ QAP1 is blocked for a stricter reason. Its current soft assignment implementatio
 **Decision.** Stop R7 before G2. Preserve its diagnostics on `E:` and pivot research to compatibility functions with an explicit *joint* pair representation (whole-piece/full-pair CNN) or a solver-stage multi-start/annealing lever. The next branch requires its own pre-registration and G0 smoke.
 
 **Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R7_full_contrastive_retriever\g1_capacity\r7_g1_report.json`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\R7_full_contrastive_retriever\g1_capacity\r2l_matched_cal_report.json`.
+
+## R8-G0 â€” joint full-pair supervision is structurally valid
+
+**Finding.** The R8 holistic compatibility harness passed its CPU smoke gate. It creates canonical `3Ã—20Ã—40` pair images from fixed-orientation tile pixels, uses a direction-specific scalar head, and masks both self-pairs and every true cardinal neighbour from sampled negatives. The smoke constructed 13 valid directed training rows with 16 candidates each, confirmed zero prohibited negatives, and produced a finite FP32 loss.
+
+**Interpretation.** R8 is a genuine change from R7: it scores the concatenated image pair jointly rather than factorizing compatibility into independent tile embeddings. The vertical representation transpose is internal to the pair encoder; no reconstructed tile is rotated or transformed.
+
+**Decision.** Advance to R8-G1: 2,000 FIT-only CUDA steps, then chunked dense all-board scoring on 32 source-disjoint CAL boards. Retain R8 only if it beats the matched frozen R2L CAL Recall@20 by at least 3 pp.
+
+**Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R8_holistic_full_pair\g0_smoke\r8_g0_report.json`.
