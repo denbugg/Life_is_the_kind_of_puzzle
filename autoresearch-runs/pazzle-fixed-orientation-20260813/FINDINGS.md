@@ -340,3 +340,25 @@ R10-A passed all structural and frozen-score contracts: it preserved candidate/r
 
 **Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g1_cal\r11_g1_report.json`.
 
+
+
+## R11 â€” rank-normalized loop-consensus layout selector â€” REJECTED at G2
+
+**Protocol.** The single CAL board froze lambda at 0.00. On all eight pre-registered DEV inputs, frozen rank96 R/D capture generated the 32-layout ensemble and made every R11 selection before any target was opened. Raw-layout SSIM was then paired against the canonical raw rank96 layout using the identical target.
+
+| Check | Result |
+|---|---:|
+| Frozen lambda | 0.00 |
+| DEV boards | 8 |
+| Selected layout indices | `0, 0, 0, 0, 0, 0, 0, 0` |
+| Paired mean raw SSIM delta | +0.000000000 |
+| Paired lower-95 delta | +0.000000000 |
+| Target-independent selection before targets | true |
+| Fixed orientation / valid bijections | true |
+
+**Diagnosis.** With the one permitted CAL tie-break selecting lambda=0, the rank-normalized edge objective preserved canonical placement on every DEV board. The 2Ã—2 loop term was therefore untested on unseen data, and the candidate ensemble had no calibrated noncanonical selection pressure. R11 cannot advance to R5/NLM, test generation, or submission.
+
+**Decision: REJECT.** Retain the negative result: rank normalization and loop-consensus selection, in this fixed rank96 multistart ensemble and transparent one-board calibration, did not change any DEV layout. The next lever must alter **candidate compatibility or position representation**, not merely re-rank the same component placements.
+
+**Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g2_dev\r11_g2_report.json`.
+
