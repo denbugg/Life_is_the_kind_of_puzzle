@@ -528,3 +528,17 @@ The contrastive representation is materially more robust for identifying the ori
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P7_pretrain_then_assemble\g0_g1_representation\p7_g0_report.json`, `p7_g1_report.json`, and frozen encoder checkpoint `p7_g1_encoder.pt`.
 
+
+## P9 â€” Rank96-only loop-consistent decoder (G1 locked held-FIT result)
+
+| Field | Value |
+|---|---|
+| Protocol | 128 FIT-train sources select lambda; one 32-source held-FIT evaluation; frozen canonical rank96 graph only |
+| Selected lambda | 0.40 |
+| Baseline held mean absolute placement accuracy (`lambda=0.00`) | 0.189887% |
+| Selected-lambda held mean absolute placement accuracy | 0.179036% |
+| Held delta | -0.010851 percentage points |
+| Bijection contract | PASS: `invalid_decodes=0` for every lambda/split |
+| Gate | FAIL: required held improvement >= +3.000 percentage points |
+| Decision | **REJECT before CAL** |
+| Leakage / data discipline | P8 labels not imported; CAL/DEV/test targets closed; no layouts/restorer/NLM/submission |

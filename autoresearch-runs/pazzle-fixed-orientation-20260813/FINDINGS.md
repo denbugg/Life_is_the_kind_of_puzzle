@@ -684,3 +684,7 @@ The contrastive representation is materially more robust for identifying the ori
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P7_pretrain_then_assemble\g0_g1_representation\p7_g0_report.json`, `p7_g1_report.json`, and frozen encoder checkpoint `p7_g1_encoder.pt`.
 
+
+## P9 G1 finding â€” loop consistency did not transfer to held global placement
+
+The sparse directed 2x2 loop reweighting control preserved a valid canonical bijection on all evaluated boards, but lambda selected on FIT-train (`0.40`) reduced rather than increased held absolute placement accuracy: 0.179036% versus 0.189887% for rank96 (`-0.010851` percentage points). This eliminates rank96-only local loop reweighting as a CAL candidate under the preregistered +3 pp G1 gate. Future work should model absolute location/permutation structure directly rather than apply another local edge-score correction; P10 has been preregistered for this purpose.

@@ -86,3 +86,19 @@ P9's learned-scorer branch is rejected because the leakage audit failed. The rem
 [3] Ben Vardi et al., [“Multi-Phase Relaxation Labeling for Square Jigsaw Puzzle Solving”](https://arxiv.org/abs/2303.14793), *VISAPP*, 2023.
 
 [4] Richard Dirauf et al., [“Benchmarking Content-Based Puzzle Solvers on Corrupted Jigsaw Puzzles”](https://arxiv.org/html/2507.07828v1), *ICIAP*, 2025.
+
+## P9 G1 Locked Held-FIT Result â€” 2026-08-14
+
+**Status: REJECT before CAL.** The complete 160-source FIT-only evaluation finished under the preregistered protocol. The lambda selection used the 128-source FIT-train partition only, while the 32-source FIT-held partition was evaluated once with the selected hyperparameter. P8 checkpoints, P8 scores, and P8 cache labels were never imported.
+
+| Item | Result |
+|---|---:|
+| Rank96 baseline (`lambda=0.00`) held mean absolute placement accuracy | 0.189887% |
+| Selected lambda (FIT-train selection) | 0.40 |
+| Selected-lambda held mean absolute placement accuracy | 0.179036% |
+| Held delta vs rank96 | -0.010851 percentage points |
+| Registered pass threshold | at least +3.000 percentage points |
+| Invalid decodes on train / held | 0 / 0 |
+| Decision | **REJECT before CAL** |
+
+The rank96-only loop reweighting was structurally valid and preserved bijection feasibility, but it did not improve held absolute placement. Therefore it is excluded from CAL, DEV, test, layout assembly, restoration, NLM, and submission paths. The next active hypothesis is the already preregistered P10 Layout-Conditioned Absolute Position Sinkhorn Refiner.
