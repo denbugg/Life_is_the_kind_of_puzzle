@@ -430,3 +430,28 @@ The post-G1 configuration was executed exactly as frozen: 6,000 steps, 24 32-way
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\full_fit\cb1_full_fit.pt` and `cb1_full_fit_report.json`.
 
+
+
+## P1 / CB1 â€” matched-corruption Boundary Buddies â€” G2 PASSED
+
+**Protocol.** The frozen 6,000-step CB1 checkpoint was applied to the sole pre-existing CAL raw cache `image_0051_k64.npz` and raw input `img_000051.png`. For each tile and each cardinal direction, CB1 label-blindly ranked the union of frozen 128-way cached candidates and a directional L1 top-128 shortlist, retaining 32 candidates per direction. The original monolithic scorer terminated silently after anchor 432, so the pre-registered computation was executed in four deterministic contiguous shards (0:144, 144:288, 288:432, 432:576); all four artifacts were hashed before the final matrix was concatenated. The cache permutation was accessed only after all lists were frozen for coverage measurement. No target image, layout, restorer, or test input was accessed.
+
+| Candidate membership metric | Frozen base | CB1 only | Frozen base âˆª CB1 |
+|---|---:|---:|---:|
+| Directed true-neighbour coverage | 0.754076 | 0.311141 | **0.778080** |
+| True-neighbour hits / 2,208 | 1,665 | 687 | **1,718** |
+| Mean candidates per anchor | 80.217 | 72.663 | 122.960 |
+| Delta versus frozen base | â€” | â€” | **+0.024004** |
+
+| Target-safety check | Result |
+|---|---:|
+| Target images opened | false |
+| Cache labels opened | false |
+| Layouts assembled | false |
+| Restorer used | false |
+| Test accessed | false |
+
+**Decision: PASS.** The +2.4004pp candidate-coverage improvement exceeds the pre-registered +2pp G2 threshold. Advance to a pinned DEV candidate-graph replication, still without opening targets.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g2_cal_graph\cb1_g2_report.json`, `cb1_g2_lists.npz`, and four hashed shard files.
+
