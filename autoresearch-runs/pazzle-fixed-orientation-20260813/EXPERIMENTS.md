@@ -337,3 +337,31 @@ The pre-registered tie-break therefore selects the smallest maximizer: **`C = 0`
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g4_cal_rescored\cb1_g4_report.json` and `cal_capacity_{0,16,32,48}_immutable.npz`.
 
+
+
+## P2 / CB1 direct directional score fusion â€” REJECTED before DEV
+
+P2 injected CB1 rank-normalized directional confidence directly into the frozen rank96 R/D matrices, leaving the frozen affinity graph, CandidateSeamRanker baseline scores, and buddies decoder unchanged. All six alpha-specific raw graphs and layouts were written and hashed before the sole permitted CAL target `img_000051.png` was opened.
+
+| Fusion alpha | CAL raw-layout SSIM | Delta vs. alpha 0 |
+|---:|---:|---:|
+| 0.00 | **0.2621234038** | â€” |
+| 0.02 | 0.2533531213 | -0.0087702825 |
+| 0.05 | 0.2494072532 | -0.0127161506 |
+| 0.10 | 0.2363160182 | -0.0258073856 |
+| 0.20 | 0.2287136537 | -0.0334097500 |
+| 0.40 | 0.2281907809 | -0.0339326229 |
+
+The smallest maximum is `alpha=0.00`; no positive alpha passes G1. P2 therefore rejects direct rank-normalized CB1 score fusion before DEV. The result is consistent with P1-G4: the CB1 capacity model clearly improves local hard-negative retrieval and CAL candidate coverage but its uncalibrated directional rank is anti-aligned with the rank96/buddies assembly objective.
+
+| Access check | Result |
+|---|---:|
+| CAL target opened | `img_000051.png` only |
+| DEV targets opened | false |
+| Test accessed | false |
+| Restorer used | false |
+
+**Decision: REJECTED.** The next lever must learn an explicitly calibrated compatibility score from FIT-only data with solver-relevant hard negatives and evaluate its score distribution before injecting it into R/D.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P2_CB1_directional_score_fusion\g0_g1_cal\p2_g0_g1_report.json` and six `alpha_*.npz` immutable artifacts.
+
