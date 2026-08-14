@@ -455,3 +455,15 @@ The post-G1 configuration was executed exactly as frozen: 6,000 steps, 24 32-way
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g2_cal_graph\cb1_g2_report.json`, `cb1_g2_lists.npz`, and four hashed shard files.
 
+
+
+## P1 / CB1 â€” G3 target-safe pinned DEV candidate construction PASSED
+
+The pre-registered eight-board source-disjoint DEV input list was processed sequentially on the RTX 2070: `img_000008`, `000014`, `000020`, `000033`, `000048`, `000057`, `000064`, and `000081`. For every board, the native frozen rank96 affinity miner created the ordered primary-then-secondary 64+64 candidate storage and its validity mask. Frozen CB1 then ranked the label-blind union of valid affinity candidates and directional L1 top-128 candidates, retaining finite top-32 candidates and scores for each of 576 anchors and four directions.
+
+All eight immutable artifacts have shape `(576, 4, 32)` and per-input, frozen-candidate, validity-mask, CB1-candidate and CB1-score hashes. No target image, permutation, cache label, layout, restorer, test input, or platform submission was accessed.
+
+**Decision: PASS.** G3 is a provenance and construction gate only: all eight target-free DEV candidate artifacts are frozen. The next gate may open pinned DEV targets only to evaluate immutable layouts and paired raw-layout SSIM; no list, model, or score selection may be modified on DEV.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g3_dev_construct\cb1_g3_report.json` and eight `img_*_cb1_g3.npz` files.
+
