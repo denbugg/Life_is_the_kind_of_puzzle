@@ -501,7 +501,7 @@ def main() -> None:
         grad_norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0).item())
         optimizer.step()
         scheduler.step()
-        if step == 1 or step % args.eval_every == 0 or step == args.steps:
+        if step == start_step + 1 or step % args.eval_every == 0 or step == args.steps:
             row = {"step": step, "train_loss": aggregate_value, "grad_norm": grad_norm, "sampled_rows": rows, "pair_tensors": pairs, "row_microbatch": args.row_microbatch, "lr": float(optimizer.param_groups[0]["lr"]), "elapsed_s": round(time.time() - started, 2)}
             history.append(row)
             print(json.dumps(row), flush=True)
