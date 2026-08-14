@@ -87,3 +87,20 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 **Decision.** **REJECT SGT2-V.** Do not run global-layout evaluation, compose it with rank96, or create a submission. The next solver lever must not be another supervised source-specific score residual.
 
 **Evidence.** `SGT2_G1_EVIDENCE_REPORT.md`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\SGT2_visual_graph\g1_capacity\sgt2_g1_capacity_report.json`.
+
+
+## CP1 â€” candidate-conditioned photometric consensus â€” REJECTED
+
+**Protocol.** CP1 solved per-tile affine RGB corrections from input-only mutual rank96 candidate edges and reranked only the frozen K=96 rows. The permutation was evaluation-only; candidate coverage was fixed.
+
+**G1 source-disjoint result.** CAL chose **alpha=0.0** because every positive fusion coefficient lowered covered top-1. DEV consequently remained **0.23060 â†’ 0.23060** (delta **0.00000**, coverage **0.65104** unchanged). Coefficients were finite but saturated guards (gains 0.65â€“1.50, offsets up to Â±75).
+
+**Decision.** **REJECT CP1** before shared-layout or solver evaluation. Provisional false edges do not support stable deterministic colour calibration here.
+
+## QAP1 â€” seeded global assignment on frozen rank96 scores â€” REJECTED
+
+**G0 synthetic capability gate.** On perfect label-aware right/down compatibilities, the existing seeded-QAP implementation recovered only **24.83%** placement and **58.42%** oriented neighbours, with doubly-stochastic error **0.99993**. Its precondition required exact recovery.
+
+**Decision.** **REJECT QAP1 at G0.** No real-board, DEV, submission or E26 run is permitted. The current implementation cannot certify feasibility even under perfect relations.
+
+**Evidence.** `CP1_QAP1_NEGATIVE_GATES_REPORT.md`; CP1 report `E:\pazzle_work\pazzle_fixed_orientation_20260813\CP1_photometric_consensus\g1_local\cp1_g1_local_report.json`; QAP log `E:\pazzle_work\pazzle_fixed_orientation_20260813\QAP1_seeded_global_solver\g0_oracle\qap1_g0_oracle.log`.

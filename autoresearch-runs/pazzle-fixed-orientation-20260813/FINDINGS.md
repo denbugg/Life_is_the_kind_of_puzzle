@@ -164,3 +164,12 @@ One paired board had R5 marginally below R4 (âˆ’0.007094), so R5 should not 
 SGT2 supplied the visual representation absent from SGT1, but its FIT loss decreased from 3.0791 to 1.8059 while source-disjoint DEV covered top-1 fell monotonically to **−7.14 pp**. Candidate coverage was unchanged at 65.10%, so the model damaged ordering of available candidates rather than hiding true relations.
 
 This rejects the current small supervised visual-residual formulation. Alongside SGT1, it shows that both raw-score graph propagation and learned directional patch residuals overfit scene-specific texture statistics at this source scale. Do not spend GPU on SGT2 hyperparameter sweeps; climb to a distinct solver information source/objective.
+
+
+## CP1 and QAP1 mechanism audit: stop tuning these two paths
+
+CP1 is not merely a weak improvement: its CAL selector found the identity fallback, because corrected seam evidence was anti-informative at every positive weight. The provisional mutual candidate graph is not sufficiently clean to estimate a board-wide photometric frame. Therefore stronger affine fitting, different fusion weights, or longer CP1 evaluation would be unprincipled without a new reliable correspondence source.
+
+QAP1 is blocked for a stricter reason. Its current soft assignment implementation fails to recover a valid exact solution from perfect synthetic directional matrices: placement 24.83%, oriented-neighbour recovery 58.42%, and doubly-stochastic error 0.99993. It must not be trialed on real data or treated as a layout baseline.
+
+**Implication.** The next solver lever must target the information bottleneckâ€”candidate recall or an independently verifiable structural constraintâ€”not another fixed-graph residual, photometric rescoring, or the current QAP code path.
