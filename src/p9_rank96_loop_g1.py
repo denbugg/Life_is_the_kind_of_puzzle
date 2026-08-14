@@ -233,7 +233,7 @@ def load_cache(args: argparse.Namespace, source: str) -> dict[str, np.ndarray]:
     if not path.is_file():
         raise FileNotFoundError(f"Missing P9 rank96 cache {path}")
     with np.load(path, allow_pickle=False) as z:
-        required = {"anchors", "directions", "members", "baseline", "permutation", "source"}
+        required = {"anchors", "directions", "members", "baseline", "candidates", "scores", "permutation", "source"}
         if not required.issubset(z.files):
             raise RuntimeError(f"Invalid P9 cache {path}: {z.files}")
         if str(z["source"].item()) != source:
