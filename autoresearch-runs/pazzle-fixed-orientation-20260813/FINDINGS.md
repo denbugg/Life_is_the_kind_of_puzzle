@@ -267,3 +267,13 @@ The R9 CPU smoke validated all registered raw-bag contracts: it loaded 17 FIT ca
 The user reported the official AI Challenge platform result for the completed S1 ZIP: **SSIM 0.23748525732559034**. This is an absolute improvement of **+0.02128711597988384** (9.84% relative) over the former `submission_rank96_v1.zip` canonical score of 0.2161981413457065. The prior DEV expectation of approximately +0.035 was optimistic; the platform score is authoritative.
 
 **Decision.** Retain the S1 production pipeline and use 0.23748525732559034 as the external benchmark for all future submissions. Continue solver research: a candidate/layout branch must first demonstrate its independent assembly benefit before it is combined with R5/NLM, to avoid attributing post-processing gains to an unproven solver.
+
+## R9-G1 â€” naive raw-bag fine-tuning does not close the transfer gap
+
+**Result.** The pre-registered R9 adaptation completed all 800 FIT-only raw-bag steps with finite training dynamics (loss 5.5101 â†’ 2.7500). It nevertheless failed sharply on the held-out raw CAL cache: **Recall@20=3.1703%** and **K=128 member coverage=21.8297%**, below gates of 20% and 50% respectively.
+
+**Mechanism finding.** The 17 cached raw FIT bags are not sufficient for naive supervised raw-domain fine-tuning to generalize to the held-out raw source. The mismatch is not repaired by merely replacing synthetic examples with a small raw labelled cache; direct pair compatibility remains the bottleneck. This branch is therefore rejected before any DEV or layout evaluation.
+
+**Decision.** Preserve R9 as negative evidence. Stop raw-pair retriever tuning and climb the lever ladder to a global spatial assembly branch which works on the canonical rank96 candidate graph, is independently gated, and directly addresses coherent islands placed in the wrong global location.
+
+**Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R9_raw_bag_full_pair_adaptation\g1_capacity\r9_g1_report.json`.
