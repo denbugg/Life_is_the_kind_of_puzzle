@@ -157,3 +157,10 @@ The residual assignment remains the dominant failure source. The R5 model cannot
 
 One paired board had R5 marginally below R4 (âˆ’0.007094), so R5 should not yet be blindly stacked with R4. A full source-disjoint composition gate must compare canonical rank96+NLM, rank96+R5, and only explicitly justified R5/NLM orderings on shared inferred boards. It must report paired mean, lower-95, worst case, and an unchanged-board hash before any production render.
 
+
+
+## SGT2-V failure: learned local visual compatibility did not transfer
+
+SGT2 supplied the visual representation absent from SGT1, but its FIT loss decreased from 3.0791 to 1.8059 while source-disjoint DEV covered top-1 fell monotonically to **−7.14 pp**. Candidate coverage was unchanged at 65.10%, so the model damaged ordering of available candidates rather than hiding true relations.
+
+This rejects the current small supervised visual-residual formulation. Alongside SGT1, it shows that both raw-score graph propagation and learned directional patch residuals overfit scene-specific texture statistics at this source scale. Do not spend GPU on SGT2 hyperparameter sweeps; climb to a distinct solver information source/objective.

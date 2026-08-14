@@ -74,3 +74,16 @@ F2/F2b | frozen PairwiseNet + F1 heuristic fusion | PARTIAL/DROP for assignment 
 
 **Evidence.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R5_restore_unet\r5_capacity_fp32_report.json`; `...\r5_rank96_layout_dev8.json`; `...\r5_vs_r4_rank96_dev8.json`; `R5_RESTORATION_EVIDENCE_REPORT.md`.
 
+
+
+## SGT2-V — transferable visual sparse candidate-graph reranker — REJECTED
+
+**Mechanism.** Direction-aware tile-patch visual features were intended to make a sparse residual reranker transfer across source scenes, unlike score-only SGT1.
+
+**G0 provenance pass.** The visual-cache adapter verified 20 frozen graph caches against corrupted train inputs and the pinned split: 17 FIT / 1 CAL / 2 DEV. No target or test image was used as model input.
+
+**G1 source-disjoint gate.** At K=96 after 600 CUDA steps, frozen covered-edge top-1 was **23.06%** versus **15.92%** for SGT2-V: **−7.14 pp** mean delta (per-board −5.29 pp and −8.98 pp). Candidate coverage remained **65.10%**.
+
+**Decision.** **REJECT SGT2-V.** Do not run global-layout evaluation, compose it with rank96, or create a submission. The next solver lever must not be another supervised source-specific score residual.
+
+**Evidence.** `SGT2_G1_EVIDENCE_REPORT.md`; `E:\pazzle_work\pazzle_fixed_orientation_20260813\SGT2_visual_graph\g1_capacity\sgt2_g1_capacity_report.json`.
