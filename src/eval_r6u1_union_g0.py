@@ -63,15 +63,15 @@ def main() -> None:
             tiles = torch.from_numpy(tiles_np).permute(0, 3, 1, 2).contiguous().unsqueeze(0).float().div_(255.0).to(device)
             perm = torch.from_numpy(permutation).unsqueeze(0).to(device)
             # The frozen cached rank96 rows are the actual canonical base graph.
-            base_candidates = torch.from_numpy(cached_ids).unsqueeze(0).expand(4, -1, -1).contiguous().to(device)
+            base_candidates = torch.from_numpy(cached_ids).unsqueeze(0).to(device)
             base_valid = base_candidates >= 0
             directional = r2(tiles)
             # U1 stores directional scores per image; enforce the exact contract rather than guessing.
             if directional.ndim == 4 and directional.shape[0] == 1:
                 directional = directional[0]
             union_candidates, union_valid = _union_candidates(base_candidates[0], base_valid[0], directional, args.r2_topk)
-            base_cov, base_density = _coverage(perm[0], base_candidates, base_valid)
-            union_cov, union_density = _coverage(perm[0], union_candidates, union_valid)
+            base_cov, base_density = _coverage(perm, base_candidates, base_valid)
+            union_cov, union_density = _coverage(perm, union_candidates.unsqueeze(0), union_valid.unsqueeze(0))
             output = args.work / f"{path.stem}_r6u1_union.npz"
             np.savez_compressed(
                 output,
