@@ -387,3 +387,32 @@ P3 G0 constructed four deterministic, independently per-tile corrupted synthetic
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P3_CDCS\g0_smoke\p3_g0_fit_hardlists.npz` (391,905 bytes) and `p3_g0_report.json`.
 
+
+
+## P3 / CDCS G1 â€” FIT-only listwise capacity: REJECTED before CAL
+
+P3 G1 trained the pre-registered FP32 directional-boundary CDCS model for 2,000 AdamW steps on frozen rank96-derived 32-way hard lists from 96 FIT sources. Evaluation used 2,048 queries from 32 source-disjoint held-out FIT sources, with the exact same candidate lists for CDCS and the pixel-boundary L1 reference. The primary loss decreased, but listwise discrimination did not improve enough to justify either full FIT training or CAL access.
+
+| Measurement | Result |
+|---|---:|
+| Loss, first 100 steps | 3.4409301782 |
+| Loss, last 100 steps | **3.2956900716** |
+| Held-out CDCS top-1 | 8.49609375% |
+| Matched L1 top-1 | 8.251953125% |
+| CDCS âˆ’ L1 | **+0.244140625 pp** |
+| Required G1 margin | â‰¥ +5.0 pp |
+| Held-out queries | 2,048 from 32 FIT-only sources |
+
+Although the optimization objective moved in the expected direction, CDCS missed its discrimination gate by 4.756 pp. This falsifies the current narrow 2-pixel boundary-band architecture as a sufficient solver-calibration model under frozen rank96 hard candidates. **P3 is rejected before full training and before CAL**; extending the same architecture or raising the step budget would be post-hoc threshold shopping and is prohibited.
+
+| Access check | Result |
+|---|---:|
+| CAL targets opened | 0 |
+| DEV targets opened | 0 |
+| Test accessed | false |
+| Layouts / restorer used | false / false |
+
+**Next lever:** climb from local learned boundary scoring to an orthogonal structural signalâ€”nonlearned Mahalanobis Gradient Compatibility (MGC) plus mutual-best-buddy evidenceâ€”or a position-aware assignment model. The immediate low-cost, target-safe candidate is MGC: it uses patch gradient covariance rather than the RGB seam/boundary CNN signal that has now repeatedly failed calibration.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P3_CDCS\g1_capacity\p3_g1_report.json`, `p3_g1_cdcs_capacity.pt`, and the reusable 128-source FIT-only cache.
+
