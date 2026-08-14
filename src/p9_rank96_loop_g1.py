@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 import numpy as np
@@ -55,6 +56,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--work", type=Path, default=WORK)
     p.add_argument("--device", default="cuda")
     p.add_argument("--limit", type=int, default=160, help="prepare only; prefix of pinned 128+32 sources")
+    p.add_argument("--workers", type=int, default=4, help="evaluate only; fixed by P9 preregistration")
     return p.parse_args()
 
 
@@ -228,8 +230,8 @@ def prepare(args: argparse.Namespace) -> None:
     print(json.dumps({k: report[k] for k in ("experiment", "gate", "decision", "prepared_sources", "candidate_k", "loop_k")}, indent=2))
 
 
-def load_cache(args: argparse.Namespace, source: str) -> dict[str, np.ndarray]:
-    path = cache_path(args.work, source)
+def load_cache_from_work(work: Path, source: str) -> dict[str, np.ndarray]:
+    path = cache_path(work, source)
     if not path.is_file():
         raise FileNotFoundError(f"Missing P9 rank96 cache {path}")
     with np.load(path, allow_pickle=False) as z:
@@ -239,6 +241,10 @@ def load_cache(args: argparse.Namespace, source: str) -> dict[str, np.ndarray]:
         if str(z["source"].item()) != source:
             raise RuntimeError(f"Source/cache mismatch: {source} vs {z['source'].item()}")
         return {k: z[k].copy() for k in required if k != "source"}
+
+
+def load_cache(args: argparse.Namespace, source: str) -> dict[str, np.ndarray]:
+    return load_cache_from_work(args.work, source)
 
 
 def precompute_loop_delta(cache: dict[str, np.ndarray]) -> tuple[np.ndarray, dict[str, object]]:
@@ -324,20 +330,38 @@ def smoke(args: argparse.Namespace) -> None:
     print(json.dumps(result, indent=2))
 
 
+def evaluate_source_worker(work_text: str, source: str) -> tuple[str, dict[float, dict[str, object]]]:
+    """Compute a source independently; result collection remains ordered by source later."""
+    cache = load_cache_from_work(Path(work_text), source)
+    loop_delta, loop_report = precompute_loop_delta(cache)
+    rows = {
+        lam: score_cache(cache, lam, loop_delta=loop_delta, loop_report=loop_report)
+        for lam in LAMBDAS
+    }
+    return source, rows
+
+
 def evaluate(args: argparse.Namespace) -> None:
+    if args.workers != 4:
+        raise ValueError("P9 preregistration fixes evaluate workers at exactly 4")
     train, held = pinned_sources(args.split, args.targets)
     all_sources = train + held
     # Evaluation observes only graph/permutation caches. No images or target path is read after this point.
-    cache = {source: load_cache(args, source) for source in all_sources}
     per_lambda: dict[float, dict[str, list[float] | int]] = {
         lam: {"train": [], "held": [], "invalid": 0} for lam in LAMBDAS
     }
     train_set = set(train)
+    source_rows: dict[str, dict[float, dict[str, object]]] = {}
+    with ProcessPoolExecutor(max_workers=args.workers) as executor:
+        pending = {executor.submit(evaluate_source_worker, str(args.work), source): source for source in all_sources}
+        for future in as_completed(pending):
+            source, rows = future.result()
+            source_rows[source] = rows
+            print(f"p9_eval_done source={source}", flush=True)
     for source in all_sources:
         split_name = "train" if source in train_set else "held"
-        loop_delta, loop_report = precompute_loop_delta(cache[source])
         for lam in LAMBDAS:
-            row = score_cache(cache[source], lam, loop_delta=loop_delta, loop_report=loop_report)
+            row = source_rows[source][lam]
             if not row["valid_bijection"]:
                 per_lambda[lam]["invalid"] = int(per_lambda[lam]["invalid"]) + 1
             per_lambda[lam][split_name].append(float(row["accuracy"]))
