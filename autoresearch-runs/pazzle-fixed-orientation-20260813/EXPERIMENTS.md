@@ -497,3 +497,34 @@ P6 therefore produces a small but genuine global-context contribution above the 
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P6_positional_diffusion\g0_g1_capacity\p6_g0_report.json`, `p6_g1_report.json`, and both frozen G1 checkpoints.
 
+
+
+## P7 / Paired Clean-Corruption Encoder Pretraining G0â€“G1 â€” REJECTED before global placement / CAL
+
+P7 G0 passed the FIT-only corruption-label contract on four sources: each batch contained 256 unique clean crop identities, two independent challenge-matched corruptions per identity, and finite reconstruction/InfoNCE losses and gradients.
+
+The fixed G1 trained the 128-D encoder for 12,000 FP32 steps using paired clean reconstruction plus two-view InfoNCE, then evaluated 32 source-disjoint FIT images. Its results divide sharply:
+
+| Held-out metric | Result | Pre-registered condition |
+|---|---:|---:|
+| Total loss, first 100 â†’ last 100 | 0.92530 â†’ **0.38602** | learning required |
+| Embedding clean-crop top-20 retrieval | **84.7005%** | compare to raw RGB-L1 |
+| Raw RGB-L1 top-20 retrieval | 69.9653% | reference |
+| Embedding retrieval gain | **+14.7352 pp** | â‰¥+5.0 pp â€” **PASS** |
+| Decoder clean-crop L1 | 0.073938 | must improve over identity |
+| Corrupted-view identity L1 | **0.072262** | reference |
+| Reconstruction relative improvement | **âˆ’2.319%** | â‰¥+10% â€” **FAIL** |
+
+The contrastive representation is materially more robust for identifying the originating clean crop under the competition corruption; this is the first strong visual-information result after P3â€“P6. However, the decoder does not recover pixels better than retaining the corrupted observation, so P7 does **not** satisfy its conjunctive pre-registered representation gate and cannot proceed to P7 frozen-encoder global placement or CAL.
+
+| Access check | Result |
+|---|---:|
+| CAL targets opened | 0 |
+| DEV targets opened | 0 |
+| Test accessed | false |
+| Layouts / restorer used | false / false |
+
+**Decision: REJECTED under the registered gate.** The result does not invalidate the retrieval signal; rather, it identifies the next structural lever precisely: enlarge the encoder's receptive field from an isolated `20Ã—20` tile to a **context-halo / cross-tile neighborhood representation** before positional reasoning. That follow-on must be independently pre-registered and must not reuse P7's rejected decoder claim.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P7_pretrain_then_assemble\g0_g1_representation\p7_g0_report.json`, `p7_g1_report.json`, and frozen encoder checkpoint `p7_g1_encoder.pt`.
+
