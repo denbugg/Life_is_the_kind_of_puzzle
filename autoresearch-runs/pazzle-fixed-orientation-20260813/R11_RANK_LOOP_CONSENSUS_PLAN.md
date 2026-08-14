@@ -29,10 +29,10 @@ Every candidate must be a 576-tile bijection. The R/D matrices and candidate gra
 For layout \(L\), use only ranks of the **same raw R/D matrices**, never targets:
 
 \[
-C_e(L)=\frac{575-\operatorname{rank}_a(b)}{574}\quad \text{for each horizontal or vertical directed layout boundary }a\to b,
+C_e(L)=\frac{574-\operatorname{rank}^{\mathrm{nonself}}_a(b)}{574}\quad \text{for each horizontal or vertical directed layout boundary }a\to b,
 \]
 
-where rank 0 is the highest-scoring non-self candidate in that row. Let \(E(L)\) be the sum of all horizontal and vertical confidences, and let \(Q(L)\) be the sum over all 23×23 adjacent 2×2 loops of the minimum confidence among that loop’s four directed boundaries. Candidate selection maximizes
+where `rank^nonself` 0 is the highest-scoring non-self candidate in that row, so every confidence is in [0,1]. Let \(E(L)\) be the sum of all horizontal and vertical confidences, and let \(Q(L)\) be the sum over all 23×23 adjacent 2×2 loops of the minimum confidence among that loop’s four directed boundaries. Candidate selection maximizes
 
 \[
 J_\lambda(L)=E(L)+\lambda Q(L).
