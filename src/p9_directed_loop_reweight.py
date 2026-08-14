@@ -58,8 +58,8 @@ def validate_queries(
         key = (int(anchor), int(direction))
         if key in lookup:
             raise ValueError(f"duplicate directional query {key}")
-        if np.unique(m[q]).size != m.shape[1]:
-            raise ValueError(f"duplicate candidate tile in query {key}")
+        # Canonical rank96 candidate unions can repeat a tile.  This is not a
+        # new edge: later lookup deterministically uses the strongest occurrence.
         lookup[key] = q
     return a, d, m, s, lookup
 
@@ -68,13 +68,14 @@ def _rank_positions(row: np.ndarray, limit: int) -> np.ndarray:
     return np.argsort(-row, kind="mergesort")[:limit]
 
 
-def _candidate_pos(members: np.ndarray, query: int, tile: int) -> int | None:
+def _candidate_pos(members: np.ndarray, scores: np.ndarray, query: int, tile: int) -> int | None:
+    """Return the strongest frozen occurrence of tile in a possibly repeated list."""
     found = np.flatnonzero(members[query] == tile)
     if found.size == 0:
         return None
-    if found.size != 1:
-        raise ValueError("candidate tile ambiguity")
-    return int(found[0])
+    values = scores[query, found]
+    # Stable argmax resolves identical scores by earliest canonical list position.
+    return int(found[int(np.argmax(values))])
 
 
 def _normalize(support: np.ndarray, usable: np.ndarray) -> np.ndarray:
@@ -151,7 +152,7 @@ def reweight_directed_2x2_loops(
                     continue
                 for pos_jd in _rank_positions(s[q_jd], loop_k):
                     l = int(m[q_jd, pos_jd])
-                    pos_kr = _candidate_pos(m, q_kr, l)
+                    pos_kr = _candidate_pos(m, s, q_kr, l)
                     if pos_kr is None:
                         continue
                     if len({i, j, k, l}) != 4:
@@ -186,7 +187,7 @@ def reweight_directed_2x2_loops(
                     continue
                 for pos_jd in _rank_positions(s[q_jd], loop_k):
                     l = int(m[q_jd, pos_jd])
-                    pos_kr = _candidate_pos(m, q_kr, l)
+                    pos_kr = _candidate_pos(m, s, q_kr, l)
                     if pos_kr is None:
                         continue
                     if len({i, j, k, l}) != 4:

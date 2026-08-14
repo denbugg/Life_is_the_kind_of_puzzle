@@ -130,11 +130,33 @@ def build_query_view(candidates: np.ndarray, scores: np.ndarray, permutation: np
     return a, d, m, s
 
 
+def canonical_dense_rd(candidates: np.ndarray, scores: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
+    """Exact rank96 dense semantics: listwise softmax, scatter-add duplicates, R/L and D/U fusion."""
+    candidate_t = torch.from_numpy(np.asarray(candidates, dtype=np.int64))
+    score_t = torch.from_numpy(np.asarray(scores, dtype=np.float32))
+    finite = torch.isfinite(score_t)
+    safe = score_t.masked_fill(~finite, -torch.inf)
+    safe = torch.where(finite.any(dim=-1, keepdim=True), safe, torch.zeros_like(safe))
+    probabilities = torch.softmax(safe, dim=-1).masked_fill(~finite, 0.0)
+
+    def direction_matrix(direction: int) -> torch.Tensor:
+        out = torch.zeros((N, N), dtype=probabilities.dtype)
+        out.scatter_add_(1, candidate_t, probabilities[direction])
+        out.fill_diagonal_(0.0)
+        return out
+
+    right = 0.5 * (direction_matrix(0) + direction_matrix(2).transpose(0, 1))
+    down = 0.5 * (direction_matrix(1) + direction_matrix(3).transpose(0, 1))
+    right.fill_diagonal_(0.0)
+    down.fill_diagonal_(0.0)
+    return right.numpy(), down.numpy()
+
+
 def prepare_one(args: argparse.Namespace, source: str, index: int, models: object, device: torch.device) -> dict:
     dst = cache_path(args.work, source)
     if dst.is_file():
         with np.load(dst, allow_pickle=False) as z:
-            required = {"anchors", "directions", "members", "baseline", "permutation", "source"}
+            required = {"anchors", "directions", "members", "baseline", "candidates", "scores", "permutation", "source"}
             if required.issubset(z.files) and z["members"].shape == (4 * GRID * (GRID - 1), CANDIDATE_K):
                 return {"source": source, "cached": True, "cache": str(dst), "sha256": sha256_file(dst)}
     clean = load_rgb(args.targets / source)
@@ -161,6 +183,8 @@ def prepare_one(args: argparse.Namespace, source: str, index: int, models: objec
         directions=directions,
         members=members,
         baseline=baseline,
+        candidates=candidate_np,
+        scores=score_np,
         permutation=permutation,
         source=np.array(source),
         seed=np.array(SEED, dtype=np.int64),
@@ -222,15 +246,19 @@ def score_cache(cache: dict[str, np.ndarray], lam: float) -> dict[str, object]:
     directions = cache["directions"]
     members = cache["members"]
     base = cache["baseline"]
+    candidates = cache["candidates"]
+    full_scores = cache["scores"]
     permutation = cache["permutation"]
-    if lam == 0.0:
-        adjusted = base.astype(np.float64, copy=True)
-        loop = None
-    else:
-        adjusted, loop = reweight_directed_2x2_loops(
-            anchors, directions, members, base, n_tiles=N, loop_k=LOOP_K, lambda_value=lam, sentinel=SENTINEL
-        )
-    r, d = directed_to_dense_rd(anchors, directions, members, adjusted, n_tiles=N, sentinel=SENTINEL)
+    adjusted, loop = reweight_directed_2x2_loops(
+        anchors, directions, members, base, n_tiles=N, loop_k=LOOP_K, lambda_value=lam, sentinel=SENTINEL
+    )
+    # `baseline` rows are direct views of `full_scores[direction, anchor]`.
+    # Write only existing query scores back; duplicates remain canonical and
+    # lambda=0 therefore follows rank96 dense softmax/scatter-add exactly.
+    adjusted_full = full_scores.astype(np.float32, copy=True)
+    for q in range(anchors.size):
+        adjusted_full[int(directions[q]), int(anchors[q])] = adjusted[q].astype(np.float32, copy=False)
+    r, d = canonical_dense_rd(candidates, adjusted_full)
     board, objective = solve_buddies_from_scores(r, d, max_edges=96, min_margin=0.0, repair_passes=2)
     flat = np.asarray(board, dtype=np.int64).reshape(-1)
     valid = flat.shape == (N,) and np.array_equal(np.sort(flat), np.arange(N))
