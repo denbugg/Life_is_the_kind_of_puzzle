@@ -241,7 +241,29 @@ def load_cache(args: argparse.Namespace, source: str) -> dict[str, np.ndarray]:
         return {k: z[k].copy() for k in required if k != "source"}
 
 
-def score_cache(cache: dict[str, np.ndarray], lam: float) -> dict[str, object]:
+def precompute_loop_delta(cache: dict[str, np.ndarray]) -> tuple[np.ndarray, dict[str, object]]:
+    """Compute lambda=1 normalized loop delta once; later lambdas only scale it."""
+    unit, report = reweight_directed_2x2_loops(
+        cache["anchors"],
+        cache["directions"],
+        cache["members"],
+        cache["baseline"],
+        n_tiles=N,
+        loop_k=LOOP_K,
+        lambda_value=1.0,
+        sentinel=SENTINEL,
+    )
+    delta = unit - cache["baseline"].astype(np.float64, copy=False)
+    return delta, report.__dict__
+
+
+def score_cache(
+    cache: dict[str, np.ndarray],
+    lam: float,
+    *,
+    loop_delta: np.ndarray | None = None,
+    loop_report: dict[str, object] | None = None,
+) -> dict[str, object]:
     anchors = cache["anchors"]
     directions = cache["directions"]
     members = cache["members"]
@@ -249,9 +271,11 @@ def score_cache(cache: dict[str, np.ndarray], lam: float) -> dict[str, object]:
     candidates = cache["candidates"]
     full_scores = cache["scores"]
     permutation = cache["permutation"]
-    adjusted, loop = reweight_directed_2x2_loops(
-        anchors, directions, members, base, n_tiles=N, loop_k=LOOP_K, lambda_value=lam, sentinel=SENTINEL
-    )
+    if loop_delta is None:
+        loop_delta, loop_report = precompute_loop_delta(cache)
+    if loop_delta.shape != base.shape:
+        raise RuntimeError(f"P9 loop delta shape mismatch: {loop_delta.shape} vs {base.shape}")
+    adjusted = base.astype(np.float64, copy=False) + float(lam) * loop_delta
     # `baseline` rows are direct views of `full_scores[direction, anchor]`.
     # Write only existing query scores back; duplicates remain canonical and
     # lambda=0 therefore follows rank96 dense softmax/scatter-add exactly.
@@ -269,7 +293,7 @@ def score_cache(cache: dict[str, np.ndarray], lam: float) -> dict[str, object]:
         "accuracy": accuracy,
         "objective": float(objective),
         "valid_bijection": True,
-        "loop_report": None if loop is None else loop.__dict__,
+        "loop_report": loop_report,
     }
 
 
@@ -277,7 +301,8 @@ def smoke(args: argparse.Namespace) -> None:
     train, held = pinned_sources(args.split, args.targets)
     source = train[0]
     cache = load_cache(args, source)
-    rows = {str(lam): score_cache(cache, lam) for lam in LAMBDAS}
+    loop_delta, loop_report = precompute_loop_delta(cache)
+    rows = {str(lam): score_cache(cache, lam, loop_delta=loop_delta, loop_report=loop_report) for lam in LAMBDAS}
     result = {
         "experiment": "P9_loop_decoder",
         "gate": "G0d_one_source_rank96_to_decoder_smoke",
@@ -304,10 +329,12 @@ def evaluate(args: argparse.Namespace) -> None:
     per_lambda: dict[float, dict[str, list[float] | int]] = {
         lam: {"train": [], "held": [], "invalid": 0} for lam in LAMBDAS
     }
+    train_set = set(train)
     for source in all_sources:
-        split_name = "train" if source in set(train) else "held"
+        split_name = "train" if source in train_set else "held"
+        loop_delta, loop_report = precompute_loop_delta(cache[source])
         for lam in LAMBDAS:
-            row = score_cache(cache[source], lam)
+            row = score_cache(cache[source], lam, loop_delta=loop_delta, loop_report=loop_report)
             if not row["valid_bijection"]:
                 per_lambda[lam]["invalid"] = int(per_lambda[lam]["invalid"]) + 1
             per_lambda[lam][split_name].append(float(row["accuracy"]))
