@@ -625,3 +625,31 @@ The set Transformer's slot loss remained essentially at `ln(576)`, whereas the i
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P5_set_to_grid\g0_g1_capacity\p5_g0_report.json`, `p5_g1_report.json`, and both frozen G1 checkpoints.
 
+
+
+## P6 / Conditional Positional Diffusion G0â€“G1 â€” REJECTED before CAL
+
+P6 passed its G0 contract on four FIT-only synthetic bags. The explicit `(576,2)` noisy positional state and denoiser output permuted equivariantly with independently shuffled tile bags (maximum absolute deviation below `3.9e-7`), deterministic 32-step reverse decoding remained finite, and Hungarian projection always produced a valid 576-tile bijection.
+
+G1 trained the set-conditioned diffusion denoiser and a parameter-matched independent positional denoiser for 8,000 FIT-only steps each. Both performed full 32-step reverse inference from Gaussian state on 32 source-disjoint held-out FIT bags before Hungarian assignment.
+
+| Held-out metric | Set diffusion denoiser | Independent denoiser | Set âˆ’ independent |
+|---|---:|---:|---:|
+| Denoising loss, first 100 / last 100 | 0.50147 / **0.31533** | 0.41245 / 0.31291 | set model learned the conditional task |
+| Reverse Hungarian placement accuracy | **0.22786%** | 0.13563% | **+0.09223 pp** |
+| Required absolute placement accuracy | â‰¥1.0% | â€” | not met |
+| Required gain vs. independent denoiser | â‰¥+0.5 pp | â€” | not met |
+
+P6 therefore produces a small but genuine global-context contribution above the independent control and above nominal chance, while remaining far too weak for raw puzzle assembly. It does **not** earn a CAL evaluation. This supports the updated diagnosis: the position-state mechanism helps, but raw 20Ã—20 corrupted RGB tiles do not provide a sufficiently strong visual representation for global placement learning from scratch.
+
+| Access check | Result |
+|---|---:|
+| CAL targets opened | 0 |
+| DEV targets opened | 0 |
+| Test accessed | false |
+| Layouts / restorer used | false / false |
+
+**Decision: REJECTED before scale/CAL.** The next structural lever is a FIT-only **pretrain-then-assemble** pipeline: train a stronger visual representation on all clean source crops under challenge-matched corruption with denoising and/or contrastive objectives, then attach a global positional head in a separately pre-registered gate. This changes the visual information bottleneck rather than revisiting the rejected local-score or raw-encoder decoders.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P6_positional_diffusion\g0_g1_capacity\p6_g0_report.json`, `p6_g1_report.json`, and both frozen G1 checkpoints.
+
