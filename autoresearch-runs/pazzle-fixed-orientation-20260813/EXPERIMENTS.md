@@ -416,3 +416,28 @@ Although the optimization objective moved in the expected direction, CDCS missed
 
 **Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P3_CDCS\g1_capacity\p3_g1_report.json`, `p3_g1_cdcs_capacity.pt`, and the reusable 128-source FIT-only cache.
 
+
+
+## P4 / MGC-MB â€” FIT signal capacity: REJECTED before CAL
+
+P4 first passed a target-safe numerical G0 on four synthetic FIT bags: regularized symmetric MGC costs were finite off diagonal, label mappings were valid, and the mutual-buddy construction was internally consistent. G1 then evaluated MGC versus the matched RGB seam-L1 baseline over 128 cached challenge-matched synthetic FIT bags, with the final 32 sources held out and source-disjoint from the initial 96.
+
+| Held-out directional metric | MGC-MB | L1 seam baseline | MGC âˆ’ L1 |
+|---|---:|---:|---:|
+| Top-1 | 3.3500% | 9.1769% | -5.8268 pp |
+| Top-20 coverage | 24.6179% | 38.5657% | **-13.9479 pp** |
+| Mutual-best precision | 5.9039% | 16.7935% | -10.8896 pp |
+
+The pre-registered P4 rule required MGC top-20 to exceed L1 by at least 2.0 pp and mutual precision to be no lower than MGC top-1. It fails the primary signal criterion decisively. Under the taskâ€™s independently corrupted, JPEG-compressed 20Ã—20 tiles, local gradient covariance is substantially less reliable than even raw RGB seam mismatch. Direct score fusion would therefore be predictably anti-aligned and is prohibited.
+
+| Access check | Result |
+|---|---:|
+| CAL targets opened | 0 |
+| DEV targets opened | 0 |
+| Test accessed | false |
+| Layouts / restorer used | false / false |
+
+**Decision: REJECTED before CAL.** This closes the local compatibility-only lever family for the current corruption regime: learned narrow bands fail P3 calibration, and nonlearned MGC fails P4 signal capacity. The next structural experiment must model **absolute tile positions and global context**, using a position-aware transformer/diffusion-style set-to-grid assignment supervised entirely on FIT sources and decoded by Hungarian matching.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P4_MGC_mutual_buddies\p4_g0_report.json`, `p4_g1_report.json`, and per-source frozen score artifacts.
+
