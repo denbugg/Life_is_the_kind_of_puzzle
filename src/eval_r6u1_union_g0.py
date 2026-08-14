@@ -58,12 +58,12 @@ def main() -> None:
                 split = str(z["split_name"].item())
             if split != "dev":
                 raise RuntimeError(f"R6U1-G0 requires pinned DEV cache, got {name}: {split}")
-            if cached_ids.ndim != 2 or cached_ids.shape[0] != 24 * 24 * 4:
+            if cached_ids.ndim != 2 or cached_ids.shape[0] != 24 * 24:
                 raise RuntimeError(f"unexpected frozen rank96 candidate shape for {name}: {cached_ids.shape}")
             tiles = torch.from_numpy(tiles_np).permute(0, 3, 1, 2).contiguous().unsqueeze(0).float().div_(255.0).to(device)
             perm = torch.from_numpy(permutation).unsqueeze(0).to(device)
             # The frozen cached rank96 rows are the actual canonical base graph.
-            base_candidates = torch.from_numpy(cached_ids.reshape(24 * 24, 4, cached_ids.shape[1]).transpose(1, 0, 2)).to(device)
+            base_candidates = torch.from_numpy(cached_ids).unsqueeze(0).expand(4, -1, -1).contiguous().to(device)
             base_valid = base_candidates >= 0
             directional = r2(tiles)
             # U1 stores directional scores per image; enforce the exact contract rather than guessing.
