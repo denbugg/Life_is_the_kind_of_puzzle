@@ -34,6 +34,10 @@ For every board, R10 reuses the exact raw R/D score matrices and `max_edges=96` 
 | Repair | 0 passes | **R10-A:** 0 passes; bounded multistart packing only. A future R10-B may add delta-evaluated swap repair only after R10-A passes. |
 | Scoring | Full horizontal+vertical R/D objective | Identical objective |
 
+## Pinned DEV selection
+
+R10-G1/G2 uses the first eight lexicographically sorted source names from the `dev` list in the already pinned `source_disjoint_split_v1.json` manifest. The evaluator records the manifest SHA-256 and all eight names before loading score models. This deterministic rule is fixed before any R10 DEV scores are computed.
+
 ## Gates
 
 | Gate | Protocol | Pass condition | Reject condition |
