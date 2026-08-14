@@ -97,16 +97,19 @@ class HolisticPairNet(nn.Module):
             for _ in range(4)
         ])
 
-    def forward(self, pairs: Tensor, directions: Tensor) -> Tensor:
+    def forward_all(self, pairs: Tensor) -> Tensor:
+        """Return all four directional-head scores for canonical pair pixels."""
         if pairs.ndim != 4 or pairs.shape[1:] != (3, 20, 40):
             raise ValueError(f"expected (M,3,20,40) pair pixels, got {tuple(pairs.shape)}")
+        x = self.pool(self.body(self.stem(pairs)))
+        return torch.cat([head(x) for head in self.heads], dim=1)
+
+    def forward(self, pairs: Tensor, directions: Tensor) -> Tensor:
         if directions.ndim != 1 or directions.shape[0] != pairs.shape[0]:
             raise ValueError("directions must be M long")
         if torch.any((directions < 0) | (directions > 3)):
             raise ValueError("invalid direction")
-        x = self.pool(self.body(self.stem(pairs)))
-        all_scores = torch.cat([head(x) for head in self.heads], dim=1)
-        return all_scores.gather(1, directions[:, None]).squeeze(1)
+        return self.forward_all(pairs).gather(1, directions[:, None]).squeeze(1)
 
 
 def clean_neighbour_map(perm: Tensor) -> Tensor:
@@ -230,6 +233,7 @@ def sampled_pair_lists(perm: Tensor, *, anchors_per_board: int, negatives: int, 
 
 
 def sampled_loss(model: nn.Module, tiles: Tensor, perm: Tensor, *, anchors_per_board: int, negatives: int, rng: random.Random) -> Tuple[Tensor, Dict[str, int]]:
+    """Materialize one small sampled objective, used only by the G0 smoke."""
     anchors, directions, candidates, positive, stats = sampled_pair_lists(
         perm, anchors_per_board=anchors_per_board, negatives=negatives, rng=rng
     )
@@ -245,30 +249,77 @@ def sampled_loss(model: nn.Module, tiles: Tensor, perm: Tensor, *, anchors_per_b
     return loss, stats
 
 
+def backward_sampled_loss(model: nn.Module, tiles: Tensor, perm: Tensor, *, anchors_per_board: int, negatives: int, row_microbatch: int, rng: random.Random) -> Tuple[float, Dict[str, int]]:
+    """Backpropagate the exact sampled listwise loss in bounded row microbatches.
+
+    Each candidate row has the same number of choices.  Scaling each chunk mean
+    by `rows_in_chunk / total_rows` makes the accumulated gradient exactly equal
+    to one full-row cross-entropy mean, while freeing pair-CNN activations after
+    each backward call.  This changes memory geometry only, not the R8 objective.
+    """
+    if row_microbatch < 1:
+        raise ValueError("row_microbatch must be positive")
+    anchors, directions, candidates, positive, stats = sampled_pair_lists(
+        perm, anchors_per_board=anchors_per_board, negatives=negatives, rng=rng
+    )
+    rows, choices = candidates.shape
+    total_loss = 0.0
+    for start in range(0, rows, row_microbatch):
+        end = min(rows, start + row_microbatch)
+        count = end - start
+        row_anchors = anchors[start:end]
+        row_dirs = directions[start:end]
+        row_candidates = candidates[start:end]
+        flat_anchors = row_anchors[:, None].expand(count, choices).reshape(-1)
+        flat_dirs = row_dirs[:, None].expand(count, choices).reshape(-1)
+        pairs = make_joint_pairs(tiles, flat_anchors, row_candidates.reshape(-1), flat_dirs)
+        logits = model(pairs, flat_dirs).reshape(count, choices)
+        chunk_mean = F.cross_entropy(logits, positive[start:end])
+        if not torch.isfinite(chunk_mean):
+            raise RuntimeError("R8 microbatched loss is non-finite")
+        weighted = chunk_mean * (count / rows)
+        weighted.backward()
+        total_loss += float(weighted.detach().item())
+    stats["pair_tensors"] = int(rows * choices)
+    stats["row_microbatch"] = int(row_microbatch)
+    return total_loss, stats
+
+
 def all_direct_targets(perm: Tensor) -> Tensor:
     return clean_neighbour_map(perm)
 
 
 @torch.inference_mode()
-def dense_scores(model: nn.Module, tiles: Tensor, *, pair_chunk: int) -> Tensor:
-    """Score every non-self candidate in each direction, chunked for one RTX 2070."""
+def dense_scores(model: HolisticPairNet, tiles: Tensor, *, pair_chunk: int) -> Tensor:
+    """Score all directed candidates with reciprocal reuse of joint-pair encodings.
+
+    A physical left|right pair `(i,j)` provides RIGHT(i,j) from its right head
+    and LEFT(j,i) from its left head.  A physical top/bottom pair provides the
+    analogous DOWN/UP scores.  Thus all four directed matrices need two—not
+    four—CNN evaluations per ordered non-self pair, without any score tying.
+    """
     if tiles.shape != (NFRAG, 3, 20, 20):
         raise ValueError("dense scoring expects one board tile bag")
     device = tiles.device
     scores = torch.full((4, NFRAG, NFRAG), -1.0e9, dtype=torch.float32, device=device)
     base = torch.arange(NFRAG, device=device)
-    for direction in range(4):
-        anchors = base[:, None].expand(NFRAG, NFRAG).reshape(-1)
-        candidates = base[None, :].expand(NFRAG, NFRAG).reshape(-1)
-        valid = anchors.ne(candidates)
-        anchors, candidates = anchors[valid], candidates[valid]
-        dirs = torch.full_like(anchors, direction)
-        out: List[Tensor] = []
-        for start in range(0, anchors.numel(), pair_chunk):
-            end = min(anchors.numel(), start + pair_chunk)
-            pairs = make_joint_pairs(tiles, anchors[start:end], candidates[start:end], dirs[start:end])
-            out.append(model(pairs, dirs[start:end]))
-        scores[direction, anchors, candidates] = torch.cat(out)
+    anchors = base[:, None].expand(NFRAG, NFRAG).reshape(-1)
+    candidates = base[None, :].expand(NFRAG, NFRAG).reshape(-1)
+    valid = anchors.ne(candidates)
+    anchors, candidates = anchors[valid], candidates[valid]
+    right_dirs = torch.full_like(anchors, RIGHT)
+    down_dirs = torch.full_like(anchors, DOWN)
+    for start in range(0, anchors.numel(), pair_chunk):
+        end = min(anchors.numel(), start + pair_chunk)
+        a, c = anchors[start:end], candidates[start:end]
+        horizontal = make_joint_pairs(tiles, a, c, right_dirs[start:end])
+        horizontal_all = model.forward_all(horizontal)
+        scores[RIGHT, a, c] = horizontal_all[:, RIGHT]
+        scores[LEFT, c, a] = horizontal_all[:, LEFT]
+        vertical = make_joint_pairs(tiles, a, c, down_dirs[start:end])
+        vertical_all = model.forward_all(vertical)
+        scores[DOWN, a, c] = vertical_all[:, DOWN]
+        scores[UP, c, a] = vertical_all[:, UP]
     return scores
 
 
@@ -361,6 +412,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--batch-size", type=int, default=2)
     parser.add_argument("--anchors-per-board", type=int, default=96)
     parser.add_argument("--negatives", type=int, default=15)
+    parser.add_argument("--row-microbatch", type=int, default=24, help="candidate rows per backward microbatch; preserves exact listwise mean")
     parser.add_argument("--width", type=int, default=96)
     parser.add_argument("--blocks", type=int, default=5)
     parser.add_argument("--lr", type=float, default=2e-4)
@@ -417,21 +469,27 @@ def main() -> None:
     for step in range(1, args.steps + 1):
         model.train()
         boards = stack_boards(fit_dataset, effective_batch, rng, device)
-        losses: List[Tensor] = []
+        loss_values: List[float] = []
         rows, pairs = 0, 0
         optimizer.zero_grad(set_to_none=True)
         for tiles, perm in boards:
-            loss, stats = sampled_loss(model, tiles, perm, anchors_per_board=effective_anchors, negatives=args.negatives, rng=rng)
-            losses.append(loss)
+            loss_value, stats = backward_sampled_loss(
+                model, tiles, perm, anchors_per_board=effective_anchors, negatives=args.negatives,
+                row_microbatch=args.row_microbatch, rng=rng,
+            )
+            # Average equally over boards, matching the pre-revision batch mean.
+            loss_values.append(loss_value)
             rows += stats["rows"]
             pairs += stats["pair_tensors"]
-        aggregate = torch.stack(losses).mean()
-        aggregate.backward()
+        for parameter in model.parameters():
+            if parameter.grad is not None:
+                parameter.grad.div_(len(boards))
+        aggregate_value = float(sum(loss_values) / len(loss_values))
         grad_norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), 5.0).item())
         optimizer.step()
         scheduler.step()
         if step == 1 or step % args.eval_every == 0 or step == args.steps:
-            row = {"step": step, "train_loss": float(aggregate.item()), "grad_norm": grad_norm, "sampled_rows": rows, "pair_tensors": pairs, "lr": float(optimizer.param_groups[0]["lr"]), "elapsed_s": round(time.time() - started, 2)}
+            row = {"step": step, "train_loss": aggregate_value, "grad_norm": grad_norm, "sampled_rows": rows, "pair_tensors": pairs, "row_microbatch": args.row_microbatch, "lr": float(optimizer.param_groups[0]["lr"]), "elapsed_s": round(time.time() - started, 2)}
             history.append(row)
             print(json.dumps(row), flush=True)
             torch.save({"model": model.state_dict(), "architecture": {"width": args.width, "blocks": args.blocks}, "args": jsonable(vars(args)), "step": step, "row": row, "provenance": provenance}, args.work / "r8_last.pt")
