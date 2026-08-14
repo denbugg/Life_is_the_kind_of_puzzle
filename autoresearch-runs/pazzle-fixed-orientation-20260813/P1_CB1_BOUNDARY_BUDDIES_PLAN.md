@@ -31,7 +31,7 @@ The model score may rank candidate lists. It may not be summed as a board-level 
 
 ## Frozen full-training configuration after G1
 
-CB1 full training is fixed at 6,000 steps, 24 32-way hard lists per step, `AdamW(lr=2e-3, weight_decay=1e-4)`, the G1 BoundaryBuddyNet architecture, the G1 loss, and seed 20260814. It trains only FIT clean sources with online challenge-matched corruption. The G2 graph check first uses a pre-registered source-disjoint CAL metadata cache that exposes only inputs, tile ordering/permutation labels, and frozen rank96/R2L candidate lists; it may not open a CAL target image. If that cache contract is unavailable, CB1 stops at G1 rather than substituting target-derived labels.
+CB1 full training is fixed at 6,000 steps, 24 32-way hard lists per step, `AdamW(lr=2e-3, weight_decay=1e-4)`, the G1 BoundaryBuddyNet architecture, the G1 loss, and seed 20260814. It trains only FIT clean sources with online challenge-matched corruption. The G2 graph check uses the sole pre-existing CAL raw cache `image_0051_k64.npz`, which exposes raw-input identity, frozen 128-way candidate membership and permutation metadata but no target image. CB1 forms its candidate extension by taking, for each anchor and direction, the union of that frozen 128-way membership list and the directional L1 top-128 shortlist from the raw input; it scores this label-blind shortlist with the frozen CB1 model, retains the top 32 per direction, then compares base and deduplicated base∪CB1 membership coverage using the cache permutation only after lists are frozen. If this exact cache contract is unavailable, CB1 stops at G1 rather than substituting target-derived labels.
 
 ## Gates
 
