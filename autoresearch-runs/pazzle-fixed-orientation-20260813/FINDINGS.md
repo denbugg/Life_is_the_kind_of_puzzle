@@ -261,3 +261,9 @@ QAP1 is blocked for a stricter reason. Its current soft assignment implementatio
 ## R9-G0 â€” raw cache supervision is provenance-safe for adaptation
 
 The R9 CPU smoke validated all registered raw-bag contracts: it loaded 17 FIT cache/input pairs using the original `image_####_k64.npz` â†’ `img_######.png` mapping, excluded the one CAL and two DEV cached sources from training, used only frozen cache permutations as labels, and never opened a target image. Its sampled objective remained finite with zero self or direct-neighbour negatives. This permits the 800-step raw-domain adaptation gate.
+
+## Verified external S1 result â€” rank96â†’R5â†’NLM is the new platform baseline
+
+The user reported the official AI Challenge platform result for the completed S1 ZIP: **SSIM 0.23748525732559034**. This is an absolute improvement of **+0.02128711597988384** (9.84% relative) over the former `submission_rank96_v1.zip` canonical score of 0.2161981413457065. The prior DEV expectation of approximately +0.035 was optimistic; the platform score is authoritative.
+
+**Decision.** Retain the S1 production pipeline and use 0.23748525732559034 as the external benchmark for all future submissions. Continue solver research: a candidate/layout branch must first demonstrate its independent assembly benefit before it is combined with R5/NLM, to avoid attributing post-processing gains to an unproven solver.
