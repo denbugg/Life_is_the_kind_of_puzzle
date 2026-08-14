@@ -9,7 +9,7 @@ from pathlib import Path
 import numpy as np
 import torch
 
-from eval_r2l_affinity_union import _coverage, _load_r2, _union_candidates
+from eval_r2l_affinity_union import _load_r2, _union_candidates
 
 DEFAULT_CACHE = Path(r"E:\pazzle_work\pazzle_fixed_orientation_20260813\SGT2_visual_graph\visual_cache")
 DEFAULT_A = Path(r"artifacts\macro_affinity\affinity_r1_1200_best.pt")
@@ -23,6 +23,26 @@ def digest(path: Path) -> str:
         while block := f.read(1 << 20):
             h.update(block)
     return h.hexdigest()
+
+
+def directed_coverage(permutation: np.ndarray, candidates: np.ndarray, valid: np.ndarray) -> tuple[float, float]:
+    """Exact directed-neighbour recall, evaluation-only, with no helper-specific labels."""
+    n = 24 * 24
+    inv = np.empty(n, dtype=np.int64)
+    inv[permutation] = np.arange(n, dtype=np.int64)
+    covered = 0
+    total = 0
+    deltas = ((-1, 0), (1, 0), (0, -1), (0, 1))
+    for source in range(n):
+        row, col = divmod(int(permutation[source]), 24)
+        values = candidates[source][valid[source]]
+        for dr, dc in deltas:
+            rr, cc = row + dr, col + dc
+            if 0 <= rr < 24 and 0 <= cc < 24:
+                total += 1
+                truth = int(inv[rr * 24 + cc])
+                covered += int(np.any(values == truth))
+    return covered / max(1, total), float(valid.sum() / n)
 
 
 def main() -> None:
@@ -70,13 +90,17 @@ def main() -> None:
             if directional.ndim == 4 and directional.shape[0] == 1:
                 directional = directional[0]
             union_candidates, union_valid = _union_candidates(base_candidates[0], base_valid[0], directional, args.r2_topk)
-            base_cov, base_density = _coverage(perm[0], base_candidates[0], base_valid[0])
-            union_cov, union_density = _coverage(perm[0], union_candidates, union_valid)
+            base_np = base_candidates[0].detach().cpu().numpy()
+            base_valid_np = base_valid[0].detach().cpu().numpy()
+            union_np = union_candidates.detach().cpu().numpy()
+            union_valid_np = union_valid.detach().cpu().numpy()
+            base_cov, base_density = directed_coverage(permutation, base_np, base_valid_np)
+            union_cov, union_density = directed_coverage(permutation, union_np, union_valid_np)
             output = args.work / f"{path.stem}_r6u1_union.npz"
             np.savez_compressed(
                 output,
-                candidate_ids=union_candidates.detach().cpu().numpy().astype(np.int16),
-                valid=union_valid.detach().cpu().numpy().astype(np.bool_),
+                candidate_ids=union_np.astype(np.int16),
+                valid=union_valid_np.astype(np.bool_),
                 tiles_rgb=tiles_np,
                 permutation=permutation,
             )
