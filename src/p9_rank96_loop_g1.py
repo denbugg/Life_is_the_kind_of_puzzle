@@ -38,7 +38,10 @@ FIT_TARGETS = Path(r"E:\pazzle_data\train\targets")
 SPLIT = Path(r"E:\pazzle_work\pazzle_fixed_orientation_20260813\PGA1_set_slot\source_disjoint_split_v1.json")
 WORK = Path(r"E:\pazzle_work\pazzle_fixed_orientation_20260813\P9_loop_decoder\g1_rank96_only")
 SENTINEL = -1.0e9
-CANDIDATE_K = 64
+# Canonical rank96 mine call uses 64 per directional proposal; the returned
+# anchor-indexed union is 128 wide, as verified in P8 and the P9 G0d smoke.
+MINING_K = 64
+CANDIDATE_K = 128
 LOOP_K = 8
 LAMBDAS = (0.00, 0.05, 0.10, 0.20, 0.40)
 SEED = 20260820
@@ -143,7 +146,7 @@ def prepare_one(args: argparse.Namespace, source: str, index: int, models: objec
         candidates, valid = mine_affinity_candidates(
             models.affinity_primary,
             tensor.unsqueeze(0),
-            candidate_k=CANDIDATE_K,
+            candidate_k=MINING_K,
             device=device,
             affinity_secondary=models.affinity_secondary,
         )
