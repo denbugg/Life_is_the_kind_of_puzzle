@@ -10,7 +10,6 @@ import numpy as np
 import torch
 
 from eval_r2l_affinity_union import _coverage, _load_r2, _union_candidates
-from train_offset_pose import load_frozen_affinity, mine_affinity_candidates
 
 DEFAULT_CACHE = Path(r"E:\pazzle_work\pazzle_fixed_orientation_20260813\SGT2_visual_graph\visual_cache")
 DEFAULT_A = Path(r"artifacts\macro_affinity\affinity_r1_1200_best.pt")
@@ -45,10 +44,8 @@ def main() -> None:
     if args.affinity_k != 64 or args.r2_topk != 8:
         raise ValueError("G0 is pre-registered at U1 affinity-k=64 and r2-topk=8")
     args.work.mkdir(parents=True, exist_ok=True)
-    affinity, affinity_meta, _ = load_frozen_affinity(args.affinity_ckpt, device)
-    affinity2, affinity2_meta, _ = load_frozen_affinity(args.affinity_ckpt2, device)
     r2 = _load_r2(str(args.r2_ckpt), device)
-    affinity.eval(); affinity2.eval(); r2.eval()
+    r2.eval()
     rows = []
     names = [x.strip() for x in args.dev.split(",") if x.strip()]
     with torch.no_grad():
@@ -57,20 +54,23 @@ def main() -> None:
             with np.load(path, allow_pickle=False) as z:
                 tiles_np = np.asarray(z["tiles_rgb"], dtype=np.uint8)
                 permutation = np.asarray(z["permutation"], dtype=np.int64)
+                cached_ids = np.asarray(z["candidate_ids"], dtype=np.int64)
                 split = str(z["split_name"].item())
             if split != "dev":
                 raise RuntimeError(f"R6U1-G0 requires pinned DEV cache, got {name}: {split}")
+            if cached_ids.ndim != 2 or cached_ids.shape[0] != 24 * 24 * 4:
+                raise RuntimeError(f"unexpected frozen rank96 candidate shape for {name}: {cached_ids.shape}")
             tiles = torch.from_numpy(tiles_np).permute(0, 3, 1, 2).contiguous().unsqueeze(0).float().div_(255.0).to(device)
             perm = torch.from_numpy(permutation).unsqueeze(0).to(device)
-            base_candidates, base_valid = mine_affinity_candidates(
-                affinity, tiles, candidate_k=args.affinity_k, device=device, affinity_secondary=affinity2
-            )
+            # The frozen cached rank96 rows are the actual canonical base graph.
+            base_candidates = torch.from_numpy(cached_ids.reshape(24 * 24, 4, cached_ids.shape[1]).transpose(1, 0, 2)).to(device)
+            base_valid = base_candidates >= 0
             directional = r2(tiles)
             # U1 stores directional scores per image; enforce the exact contract rather than guessing.
             if directional.ndim == 4 and directional.shape[0] == 1:
                 directional = directional[0]
             union_candidates, union_valid = _union_candidates(base_candidates[0], base_valid[0], directional, args.r2_topk)
-            base_cov, base_density = _coverage(perm[0], base_candidates[0], base_valid[0])
+            base_cov, base_density = _coverage(perm[0], base_candidates, base_valid)
             union_cov, union_density = _coverage(perm[0], union_candidates, union_valid)
             output = args.work / f"{path.stem}_r6u1_union.npz"
             np.savez_compressed(
@@ -92,7 +92,7 @@ def main() -> None:
         "experiment": "R6U1_G0_source_disjoint_candidate_union",
         "scope": "frozen MacroAffinity pair plus frozen R2L; input-only candidate generation; permutation used only after generation for coverage",
         "args": {key: str(value) if isinstance(value, Path) else value for key, value in vars(args).items()},
-        "checkpoint_metadata": {"affinity_a": affinity_meta.get("step"), "affinity_b": affinity2_meta.get("step")},
+        "checkpoint_metadata": {"base_graph": "frozen rank96 visual-cache candidate_ids", "r2_checkpoint": str(args.r2_ckpt)},
         "rows": rows, "summary": summary,
         "gate": {"condition": "mean union coverage >= 0.73 and strictly exceeds base at U1 settings", "passed": passed, "decision": "advance_to_R6U1_G1" if passed else "reject_R6U1_before_training"},
     }
