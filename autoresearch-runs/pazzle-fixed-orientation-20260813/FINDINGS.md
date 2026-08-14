@@ -409,3 +409,24 @@ R10-A passed all structural and frozen-score contracts: it preserved candidate/r
 
 **Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\g1_capacity\cb1_g1_report.json`.
 
+
+
+## P1 / CB1 â€” full FIT training completed
+
+The post-G1 configuration was executed exactly as frozen: 6,000 steps, 24 32-way L1-hard lists per step, seed 20260814, `BoundaryBuddyNet(width=48)`, and `AdamW(lr=2e-3, weight_decay=1e-4)`. Training accessed only the 5,360 FIT clean sources and generated independent challenge-matched corruption online. CAL, DEV, test, non-FIT targets, layouts, R5, and NLM remained sealed.
+
+| Measure | Value |
+|---|---:|
+| FIT sources | 5,360 |
+| Training steps | 6,000 |
+| Queries per step | 24 |
+| First loss | 3.650348 |
+| Last loss | 3.068961 |
+| Mean loss | 3.261308 |
+| CAL / DEV / test accessed | false / false / false |
+| Layout or restorer used | false |
+
+**Decision.** The checkpoint is frozen for CB1-G2. The next gate may use only raw CAL input, frozen candidate lists, and permutation metadata. It must not open a target image.
+
+**Artifacts.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\P1_CB1_boundary_buddies\full_fit\cb1_full_fit.pt` and `cb1_full_fit_report.json`.
+
