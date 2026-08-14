@@ -1,4 +1,4 @@
-"""P8 FIT-only context-aware virtual-halo candidate-graph capacity harness.
+﻿"""P8 FIT-only context-aware virtual-halo candidate-graph capacity harness.
 
 No CAL/DEV/test path, image assembly, restorer, NLM, or submission is imported.
 The graph is generated from frozen rank96 candidate utilities on independently
@@ -65,15 +65,14 @@ def build_one(c,name,index,models,device):
   if len(hits)!=1:raise RuntimeError('P8 target absent/duplicate')
   labels[q]=int(hits[0])
   for j,m in enumerate(members[q]):
-   pos=np.flatnonzero(cn[int(a),int(d)]==m)
+   pos=np.flatnonzero(cn[int(a)]==m)
    if len(pos)==1:
-    base[q,j]=sc[int(a),int(d),int(pos[0])]
-   elif int(m)==int(truth):
-    # P3 hardlists legally injects an absent true neighbour; rank66 has no
-    # score for it, so represent its frozen baseline as strictly worst.
-    base[q,j]=-1.0e9
+    base[q,j]=sc[int(d),int(a),int(pos[0])]
    else:
-    raise RuntimeError('P8 unexpected non-rank96 non-target member')
+    # A hard-list member absent from frozen rank96 has no frozen score.
+    # Treat every such member as strictly worst for the rank96 baseline;
+    # P8 itself still receives and learns from the item as a legal candidate.
+    base[q,j]=-1.0e9
  dst.parent.mkdir(parents=True,exist_ok=True);np.savez_compressed(dst,tiles=tiles,anchors=anchors,directions=dirs,members=members,baseline=base,labels=labels,permutation=perm,source=np.array(name),seed=np.array(c.seed,dtype=np.int64))
  print(f'cache_done source={name} lists={len(anchors)}',flush=True)
  return {'source':name,'cached':False,'cache':str(dst),'cache_sha256':sha256_file(dst),'lists':int(len(anchors)),'target_label_minmax':[int(labels.min()),int(labels.max())]}
@@ -91,9 +90,9 @@ def bands(tiles,anchors,dirs,members):
   for m in row:
    B=tiles[int(m)]
    if d==0:z=torch.cat((A[:,:,-2:],B[:,:,:2]),dim=2)
-   elif d==1:z=torch.cat((A[:,:,-2:],B[:,:,:2]),dim=1).transpose(1,2)
+   elif d==1:z=torch.cat((A[:,-2:,:],B[:,:2,:]),dim=1).transpose(1,2)
    elif d==2:z=torch.cat((B[:,:,-2:],A[:,:,:2]),dim=2)
-   else:z=torch.cat((B[:,:,-2:],A[:,:,:2]),dim=1).transpose(1,2)
+   else:z=torch.cat((B[:,-2:,:],A[:,:2,:]),dim=1).transpose(1,2)
    out.append(z)
  return torch.stack(out,0)
 class Band(nn.Module):
