@@ -160,3 +160,27 @@ R10-A | global component multistart packing, G2 paired raw-layout SSIM | REJECT 
 
 **Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g0_smoke\r11_g0_report.json`.
 
+
+
+## R11 â€” rank-normalized loop-consensus layout selector â€” G1 PASSED
+
+**Protocol.** Captured unchanged frozen rank96 R/D matrices for the sole pre-registered CAL source `img_000051.png`. The 32-layout ensemble and every target-independent R11 score were computed before opening that one target. The fixed lambda grid was `{0, 0.25, 0.5, 1, 2}` and the smallest lambda at maximal CAL raw-layout SSIM was retained.
+
+| Check | Result |
+|---|---:|
+| CAL source | `img_000051.png` only |
+| Selected lambda | 0.00 |
+| Canonical layout index | 0 |
+| Selected layout index | 0 |
+| Canonical raw SSIM | 0.246976192 |
+| Selected raw SSIM | 0.246976192 |
+| Selected minus canonical | +0.000000000 |
+| DEV accessed during G1 | false |
+| Split manifest SHA-256 | `a858a194ceab9976b72069aef6c46481734ce15594f67ae6818b4d7bfe30231a` |
+
+**Interpretation.** CAL provides no evidence for a positive loop weight: every grid point selected the canonical candidate, so the deterministic tie-break fixes lambda to 0.00. This is a non-degrading calibration pass, not evidence of improvement. The only remaining evidence gate is the pre-registered paired 8-board DEV test using rank-normalized edge confidence alone.
+
+**Decision: PASS to R11-G2.** No R5/NLM, test data, or submission is permitted unless both paired DEV mean delta and lower-95 confidence bound are positive.
+
+**Artifact.** `E:\pazzle_work\pazzle_fixed_orientation_20260813\R11_rank_loop_consensus\g1_cal\r11_g1_report.json`.
+
