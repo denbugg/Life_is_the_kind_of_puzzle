@@ -743,3 +743,5 @@ CPGS-24 generated finite poses and strict Hungarian 576-way assignments on every
 ## P14b G0b Finding -- Candidate Slot Is Not a Rank
 
 ## P14c G0 Finding -- Safe but Nearly Inert Topology Pruning
+
+## P14c Scope Finding -- Topology Must Fuse Reciprocal Direction Evidence
