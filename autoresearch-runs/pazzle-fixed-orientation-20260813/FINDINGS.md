@@ -708,3 +708,7 @@ Recent puzzle-permutation work supports set-based Transformer assignment and edg
 ## P11 G0 finding â€” global canvas architecture is structurally conditional and numerically valid
 
 Unlike the rejected P10 static Fourier-slot scorer, P11â€™s decoded canonical canvas and assignment logits change when an input tile changes. The G0a/G0b contracts confirm that the global slot representation is genuinely input-conditional, deterministic in evaluation mode, doubly stochastic to numerical tolerance, and discretely bijective. This is a necessary implementation prerequisite, not evidence of placement improvement; G1 remains the first performance gate.
+
+## P11 G1 finding â€” conditional canvas reconstruction by itself did not solve global location inference
+
+The global-canvas refiner was a strict advance over P10 at the representation level: canonical canvas tokens were conditional on the entire tile set, reconstructed RGB patches, and produced valid adaptive-Sinkhorn/Hungarian bijections. Nonetheless, held absolute placement fell from 0.189887% to 0.168186%. The combined P10/P11 evidence rejects two variants of direct 576Ã—576 supervised absolute-position prediction from a frozen rank96 layout on the 128-source protocol. The next solver hypothesis must explicitly preserve/repair high-confidence local relative structure while introducing global semantic anchors or multi-scale low-resolution canvas supervision; merely generating an unconditioned or weakly conditioned 20Ã—20 slot appearance is insufficient.

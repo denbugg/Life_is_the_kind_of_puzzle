@@ -605,3 +605,16 @@ The contrastive representation is materially more robust for identifying the ori
 | G0a synthetic structural contracts | **PASS** | conditional canvas responds to changed tile input; finite nonzero gradients; Sinkhorn rows/columns within 4.2e-7; exact 576-way decoder bijection |
 | G0b one-FIT canonical layout | **PASS** | `img_003194.png`; deterministic forward output; exact shapes; Sinkhorn rows/columns within 3.6e-7; exact 576-way decoder bijection |
 | Discipline | **PASS** | cached FIT-only labels; CAL/DEV/test closed; P8 absent; FP32 only |
+
+### P11 G1 locked global-canvas evaluation
+
+| Field | Value |
+|---|---|
+| Protocol | Frozen final epoch 16; 128 FIT-train then one 32-source held-FIT evaluation |
+| Held rank96 baseline placement accuracy | 0.189887% |
+| Held P11 placement accuracy | 0.168186% |
+| Held delta | -0.021701 percentage points |
+| Bijection contract | PASS: 0 invalid decodes |
+| Gate | FAIL: required held improvement >= +5.000 percentage points |
+| Decision | **REJECT before CAL** |
+| Data discipline | Pre-existing cached FIT labels only; CAL/DEV/test closed; P8 and P10 final checkpoint absent; no rank96 reranking/mining; FP32 only |

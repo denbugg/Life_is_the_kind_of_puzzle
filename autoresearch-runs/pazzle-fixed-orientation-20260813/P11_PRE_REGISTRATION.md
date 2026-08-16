@@ -67,3 +67,20 @@ P11 source was written only after the pre-registration commit `4163816` existed 
 | Data discipline | FIT cache only; CAL/DEV/test closed; P8 absent; AMP off |
 
 The G0 contracts establish interface correctness and data-provenance compliance only. They make no claim about held placement quality. The locked 128/32 G1 is now authorized exactly as pre-registered.
+
+## G1 result â€” REJECT before CAL (locked train-128 / held-32 evaluation)
+
+The complete P11 G1 protocol finished in the interactive RTX 2070 session. The pre-registered final epoch-16 checkpoint was evaluated once on the locked held-FIT partition. No held metric was used during training or for checkpoint selection.
+
+| Item | Result |
+|---|---:|
+| FIT train / held partition | 128 / 32 sources |
+| Training | 16 fixed epochs; AdamW; FP32; fixed seed 20260816 |
+| Rank96 held mean absolute placement accuracy | 0.189887% |
+| P11 held mean absolute placement accuracy | 0.168186% |
+| Held delta vs rank96 | -0.021701 percentage points |
+| Registered pass threshold | at least +5.000 percentage points |
+| Invalid P11 decodes | 0 |
+| Decision | **REJECT before CAL** |
+
+The conditional global-canvas architecture passed every G0 interface and bijection contract, but its learned canvas-assignment score did not generalize a placement improvement. It is excluded from CAL, DEV, test, layout/restoration, ensembling, and submission paths. CAL/DEV/test remained closed, only the pre-existing FIT-only P10 cache was consumed, P8 artifacts were absent, the P10 final checkpoint was absent, no fresh rank96 mining/ranking occurred, and AMP was disabled.
