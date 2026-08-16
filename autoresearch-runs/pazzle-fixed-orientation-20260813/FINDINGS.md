@@ -728,3 +728,7 @@ P12 confirms that sparse directed 2Ã—2 loop support is a well-defined, target
 ## 2026-08-16 â€” Next lever pre-registered: P13 CPGS-24
 
 P10/P11 invalidate direct learned absolute assignment and P12 invalidates scalar 2x2 loop rescoring as held-generalizing repairs. P13 moves the global inference object to robust synchronization of **relative translations**: preserve frozen sparse rank96 edges as noisy (+1,0)/(0,+1) measurements, solve globally coherent continuous poses, and make only a final one-to-one lattice projection. The falsification condition is explicit: valid coordinates/bijection without >=3pp held improvement proves the frozen candidate graph lacks sufficient global relative-pose evidence and the next rung must use independent semantic anchors.
+
+## 2026-08-16 â€” P13 CPGS-24 contracts validate global relative-pose solver mechanics
+
+A translation-synchronization solver can consume the canonical frozen graph without storage-order leakage, maintain a strict bijection via Hungarian projection, and produce finite global coordinates. On the one permitted FIT cache, all 576 tiles were connected by 1,152 selected right/down relative-pose constraints. This validates the P13 mechanism as technically distinct from P10/P11 absolute assignment and P12 scalar loop re-scoring; it does not establish placement improvement, which remains a locked G1 question.

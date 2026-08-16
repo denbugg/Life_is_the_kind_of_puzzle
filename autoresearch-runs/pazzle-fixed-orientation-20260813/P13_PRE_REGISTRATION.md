@@ -68,3 +68,7 @@ The accompanying `P13_RESEARCH_COMPONENT_POSE.md` records source evidence. The k
 2. Logeswaran. *Solving Jigsaw Puzzles using Paths and Cycles*. https://www.bmva-archive.org.uk/bmvc/2014/files/paper114.pdf
 3. Sholomon, David, Netanyahu. *A Genetic Algorithm-Based Solver for Very Large Jigsaw Puzzles*. https://openaccess.thecvf.com/content_cvpr_2013/papers/Sholomon_A_Genetic_Algorithm-Based_2013_CVPR_paper.pdf
 4. Talon, Del Bue, James. *GANzzle++*. https://www.sciencedirect.com/science/article/pii/S0167865524003179
+
+## G0a/G0b result — 2026-08-16
+
+**PASS.** Synthetic clean translation recovery, corruption down-weighting, candidate-order invariance and strict Hungarian bijection passed. One-FIT frozen-cache validation on $(@{amp_used=False; cal_target_opened=False; decode_info=; deterministic_candidate_order_invariant=True; dev_targets_opened=False; experiment=P13_CPGS-24; finite_pose=True; gate=G0b_one_FIT_frozen_cache; p10_final_checkpoint_imported=False; p11_final_checkpoint_imported=False; p8_labels_imported=False; passes_G0b=True; permuted_decode_info=; rank96_mining_invoked=False; rank96_ranker_invoked=False; source=img_000025.png; strict_bijection=True; targets_opened=False; test_accessed=False; threshold=0.0}.source) also passed canonical SHA, deterministic order invariance, finite pose and strict 576-way bijection. G1 is authorized under the pre-registered locked 128/32 FIT-only protocol. Evidence: $g0aPath; $g0bPath.
