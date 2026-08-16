@@ -94,10 +94,16 @@ def physical_edge_masks(
     selected = score_rank_mask(candidates, valid, scores, k)
     right = np.zeros((n, n), dtype=bool)
     down = np.zeros((n, n), dtype=bool)
-    for direction, matrix in ((RIGHT, right), (DOWN, down)):
-        for anchor in range(n):
-            targets = candidates[anchor, selected[direction, anchor]]
-            matrix[anchor, targets] = True
+    # Fuse reciprocal directional evidence into physical right/down relations.
+    for anchor in range(n):
+        targets = candidates[anchor, selected[RIGHT, anchor]]
+        right[anchor, targets] = True
+        targets = candidates[anchor, selected[LEFT, anchor]]
+        right[targets, anchor] = True
+        targets = candidates[anchor, selected[DOWN, anchor]]
+        down[anchor, targets] = True
+        targets = candidates[anchor, selected[UP, anchor]]
+        down[targets, anchor] = True
     return right, down, selected
 
 
@@ -123,8 +129,9 @@ def propagate_2x2(
     history: list[dict[str, int]] = []
     fixed_point = False
     for step in range(max_iterations):
-        r_u8 = current_r.astype(np.uint8, copy=False)
-        d_u8 = current_d.astype(np.uint8, copy=False)
+        # int32 prevents support-count overflow on dense 576-tile candidate graphs.
+        r_u8 = current_r.astype(np.int32, copy=False)
+        d_u8 = current_d.astype(np.int32, copy=False)
         # RIGHT support from a completed cell below or above the edge.
         support_r_below = ((d_u8 @ r_u8) @ d_u8.T) > 0
         support_r_above = ((d_u8.T @ r_u8) @ d_u8) > 0
@@ -224,13 +231,20 @@ def shuffle_candidate_axis(
     valid: np.ndarray,
     scores: np.ndarray,
     seed: int,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     rng = np.random.default_rng(seed)
     order = np.argsort(rng.random(candidates.shape), axis=1, kind="stable")
     shuffled_c = np.take_along_axis(candidates, order, axis=1)
     shuffled_v = np.take_along_axis(valid, order, axis=1)
     shuffled_s = np.take_along_axis(scores, order[None, :, :], axis=2)
-    return shuffled_c, shuffled_v, shuffled_s
+    return shuffled_c, shuffled_v, shuffled_s, order
+
+
+def restore_candidate_axis(shuffled_scores: np.ndarray, order: np.ndarray) -> np.ndarray:
+    """Return shuffled candidate-axis score tensor to its original slot ordering."""
+    restored = np.empty_like(shuffled_scores)
+    np.put_along_axis(restored, order[None, :, :], shuffled_scores, axis=2)
+    return restored
 
 
 def true_adjacency_masks(tile_to_slot: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -276,11 +290,11 @@ def g0a(args: argparse.Namespace) -> None:
     before_r, before_d, _ = physical_edge_masks(candidates, valid, scores, k=n)
     after_scores, info = filter_scores(candidates, valid, scores, k=n, iterations=8)
     after_r, after_d, _ = physical_edge_masks(candidates, valid, after_scores, k=n)
-    shuffled_c, shuffled_v, shuffled_s = shuffle_candidate_axis(candidates, valid, scores, seed=SEED + 14)
+    shuffled_c, shuffled_v, shuffled_s, _ = shuffle_candidate_axis(candidates, valid, scores, seed=SEED + 14)
     shuffled_out, _ = filter_scores(shuffled_c, shuffled_v, shuffled_s, k=n, iterations=8)
     shuffled_r, shuffled_d, _ = physical_edge_masks(shuffled_c, shuffled_v, shuffled_out, k=n)
     report = {
-        "experiment": "P14c_score_ranked_bidirectional_grid_topology_propagation",
+        "experiment": "P14d_symmetric_score_ranked_grid_topology_propagation",
         "gate": "G0a_synthetic_hard_2x2_contract",
         "true_edges_retained": bool(after_r[0, 1] and after_r[2, 3] and after_d[0, 2] and after_d[1, 3]),
         "dangling_false_removed": bool(before_r[0, 4] and not after_r[0, 4]),
@@ -314,12 +328,13 @@ def g0b(args: argparse.Namespace) -> None:
     out_r, out_d, _ = physical_edge_masks(candidates, valid, filtered, args.k)
     base_recall = directed_recall(base_r, base_d, target)
     retained_recall = directed_recall(out_r, out_d, target)
-    shuffled_c, shuffled_v, shuffled_s = shuffle_candidate_axis(candidates, valid, scores, SEED + 140)
+    shuffled_c, shuffled_v, shuffled_s, order = shuffle_candidate_axis(candidates, valid, scores, SEED + 140)
     shuffled_filtered, _ = filter_scores(shuffled_c, shuffled_v, shuffled_s, args.k, args.iterations)
     shuffled_r, shuffled_d, _ = physical_edge_masks(shuffled_c, shuffled_v, shuffled_filtered, args.k)
+    restored_filtered = restore_candidate_axis(shuffled_filtered, order)
     pred, objective = decode(candidates, filtered)
     report = {
-        "experiment": "P14c_score_ranked_bidirectional_grid_topology_propagation",
+        "experiment": "P14d_symmetric_score_ranked_grid_topology_propagation",
         "gate": "G0b_one_FIT_frozen_cache",
         "source": source,
         "input_candidate_sha": array_sha(candidates),
@@ -328,6 +343,7 @@ def g0b(args: argparse.Namespace) -> None:
         "k": int(args.k),
         "iterations": int(args.iterations),
         "candidate_order_invariant": bool(np.array_equal(out_r, shuffled_r) and np.array_equal(out_d, shuffled_d)),
+        "filtered_score_order_invariant": bool(np.array_equal(filtered, restored_filtered)),
         "baseline_directed_recall": base_recall,
         "retained_directed_recall": retained_recall,
         "retained_fraction_of_baseline": float(retained_recall / base_recall) if base_recall else 0.0,
@@ -344,6 +360,7 @@ def g0b(args: argparse.Namespace) -> None:
     }
     report["passes_G0b"] = bool(
         report["candidate_order_invariant"]
+        and report["filtered_score_order_invariant"]
         and report["strict_bijection"]
         and base_recall > 0.0
         and report["retained_fraction_of_baseline"] >= 0.95
@@ -394,7 +411,7 @@ def g1(args: argparse.Namespace) -> None:
     baseline_payload = json.loads(args.baseline_report.read_text(encoding="utf-8"))
     baseline = float(baseline_payload["baseline_held_accuracy"])
     report = {
-        "experiment": "P14c_score_ranked_bidirectional_grid_topology_propagation",
+        "experiment": "P14d_symmetric_score_ranked_grid_topology_propagation",
         "gate": "G1_calibrate128_held32",
         "grid": grid,
         "selected": selected,
