@@ -700,3 +700,7 @@ A one-source contract confirms that corrupted FIT tiles, a frozen P9 canonical r
 ## P10 G1 finding â€” valid global assignment machinery alone did not correct absolute placement
 
 The layout-context Transformer with Fourier slot embeddings, 20 log-domain Sinkhorn passes, and deterministic linear assignment trained stably but reduced held absolute placement from 0.189887% to 0.173611%. The result rejects the hypothesis that this low-capacity conditional slot scorer can infer a transferable global coordinate correction from the frozen rank96 layout. P11 must add an explicit globally synthesized slot/canvas representation and stronger structural supervision, rather than only changing local edge weights or adding another scalar decoder correction.
+
+## P11 research-to-design finding â€” learn conditional canvas slots, not another static coordinate correction
+
+Recent puzzle-permutation work supports set-based Transformer assignment and edge-informed encoders, while GANzzle motivates first synthesizing a global latent image and then retrieving/assigning pieces to it. The P10 failure specifically rules out treating Fourier slot embeddings plus a small contextual adjustment as sufficient. P11 therefore makes the canonical slot representation a function of every tile through cross-attention and adds supervised canonical canvas reconstruction. Entropy-adaptive Sinkhorn is a secondary stabilization mechanism for the 576-way heterogeneous assignment; it is not treated as the principal source of expected gain.

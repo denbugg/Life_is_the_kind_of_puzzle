@@ -583,3 +583,17 @@ The contrastive representation is materially more robust for identifying the ori
 | Gate | FAIL: required held improvement >= +5.000 percentage points |
 | Decision | **REJECT before CAL** |
 | Data discipline | FIT-only; CAL/DEV/test closed; P8 artifacts absent; no rank96 reranking/mining; AMP off |
+
+## P11 â€” Global-Canvas Assignment Refiner (GCA-24), PRE-REGISTERED
+
+| Field | Locked value |
+|---|---|
+| Falsifiable claim | Conditional generated canvas tokens improve held absolute placement by at least +5.000 pp vs frozen rank96 |
+| Mechanism | Tile-set Transformer â†’ slot-to-tile cross-attention â†’ 576 conditional canvas tokens â†’ RGB canvas reconstruction â†’ shared re-encoded tile/canvas assignment logits â†’ entropy-adaptive log-Sinkhorn â†’ Hungarian |
+| Inputs | Reused P10 FIT-only 160-source cache; 128 train / 32 held exactly |
+| Final epoch | 16, fixed before implementation |
+| Loss | Sinkhorn assignment NLL + 0.25 generated-canvas L1 + 0.25 soft-reassembly L1 |
+| Held baseline | 0.189887% absolute placement accuracy |
+| PASS gate | held accuracy >= 5.189887% and 0 invalid 576-way decodes |
+| Data discipline | CAL/DEV/test closed; no P8 artifacts; no P10 checkpoint; no fresh rank96 mining/ranking; FP32 only |
+| Git order | This entry is committed before P11 source code exists |
