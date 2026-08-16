@@ -19,8 +19,14 @@ Write-RunLog 'Protocol=pre-registered GCA-24, cache-only FIT 128/32, epoch=16, F
 Write-RunLog ("Session=" + $env:SESSIONNAME + " User=" + $env:USERDOMAIN + '\\' + $env:USERNAME)
 Write-RunLog ("python_exists=" + (Test-Path $python) + " entry_exists=" + (Test-Path $entry) + " cache_exists=" + (Test-Path $cache) + " prepare_exists=" + (Test-Path $prepare))
 try {
+    # PyTorch Transformer emits a known nonfatal warning to stderr.  Preserve it
+    # in the E: log but never let PowerShell promote native stderr to a terminating
+    # NativeCommandError before Python has completed its locked train/eval run.
+    $priorErrorAction = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
     & $python $entry train_eval --work-dir $work --cache-dir $cache --prepare-report $prepare *>&1 | Tee-Object -FilePath $log -Append
     $code = $LASTEXITCODE
+    $ErrorActionPreference = $priorErrorAction
     Write-RunLog ("P11 G1 end=" + (Get-Date -Format o) + " exit=" + $code)
     exit $code
 } catch {
