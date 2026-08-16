@@ -690,3 +690,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 ## P14c Status -- Invalidated Before G1 for Directionally Incomplete Physical Graph (2026-08-16)
 
 ## P14d G0 Evidence -- Symmetric Score-Ranked Topology (2026-08-16)
+
+## P14d Stopped Before Held -- Resource-Futility Decision (2026-08-16)

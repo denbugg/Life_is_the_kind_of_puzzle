@@ -747,3 +747,5 @@ CPGS-24 generated finite poses and strict Hungarian 576-way assignments on every
 ## P14c Scope Finding -- Topology Must Fuse Reciprocal Direction Evidence
 
 ## P14d G0 Finding -- Symmetric Topology Graph Is Saturated
+
+## P14d Compute-Allocation Finding -- Stop Weak Global Filters Early
