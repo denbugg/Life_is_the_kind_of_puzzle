@@ -68,3 +68,7 @@ Before P12 source implementation, an API audit of the frozen production `infer_r
 ## Pre-implementation candidate-axis correction
 
 A second frozen-API audit, completed before any valid P12 score extraction, established that canonical `mine_affinity_candidates` returns candidate IDs and validity as `[576,128]`, while `score_full_graph` evaluates the same candidate identities in all four physical relations and returns scores `[4,576,128]`. The previous wording incorrectly described candidate IDs as direction-indexed. P12 therefore shuffles each candidate row once and applies the identical shuffle to all four score directions, preserving exact tile/candidate/score correspondence. This correction changes no candidate identities, score model, loop formula, data, calibration grid, split, decoder cap, or G1 gate; it only makes the score-cache tensor contract exactly match frozen rank96.
+
+## G1 locked result â€” 2026-08-16
+
+**REJECT before CAL.** The completed 128-source FIT-train grid selected Î»=0.05 (train placement 0.219727%); one held-32 evaluation yielded 0.184462% versus frozen rank96 0.189887%, delta -0.542535% percentage points, with 0 invalid decodes. The result does not meet the preregistered G1 improvement gate. Data discipline: labels were read only from the already frozen FIT cache after score-cache preparation; CAL/DEV/test were not accessed; P8 artifacts and P10/P11 final checkpoints were excluded; AMP was disabled. Evidence: $report.

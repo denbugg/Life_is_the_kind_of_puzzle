@@ -720,3 +720,7 @@ The latest research cycle converged on a distinct lever from P10/P11: loop/conse
 ## P12 contract finding â€” canonical rank96 can supply a stable loop-consensus graph
 
 The first accepted P12 one-FIT graph has a nontrivial but sparse 2Ã—2 completion signal: about 11.576% of finite physical right edges and 11.580% of finite physical down edges receive nonzero top-12 loop support. Candidate-order permutation changes FP32 reduction results by at most 1.91e-6 after valid-ID reindexing, below the predeclared 1e-5 tolerance, so the SLC-24 score construction is semantically order-invariant without target information. This validates the structural mechanism only; it does not establish any placement improvement before the locked 128/32 gate.
+
+## 2026-08-16 â€” P12 sparse 2Ã—2 loop-consensus: valid structural signal, no held generalization
+
+P12 confirms that sparse directed 2Ã—2 loop support is a well-defined, target-order-invariant and bijection-preserving graph feature: all six train-grid settings had zero invalid decodes and Î»=0.05 improved the locked FIT-train decoder relative to Î»=0. However, the selected Î»=0.05 produced held placement **0.184462%** versus frozen rank96 **0.189887%**, a **-0.542535%** percentage-point drop. Therefore scalar 2Ã—2 loop support alone is insufficient to correct rank96's global component-placement errors. Future solvers must retain the leakage-safe sparse graph discipline but add a stronger component-level/global semantic anchor rather than another scalar local score adjustment. Evidence: $report.
