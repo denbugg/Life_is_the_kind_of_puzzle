@@ -638,3 +638,8 @@ The contrastive representation is materially more robust for identifying the ori
 
 P12 pre-registration was amended before source implementation: frozen rank96 stores the top-64 Ã— two-affinity union (width 128 with validity mask); the existing buddies decoder remains capped at 96 selected edges. No hypothesis, gate, data, score formula, calibration grid, or split changed.
 
+
+### P12 canonical candidate-axis correction
+
+Before valid P12 score extraction, the pre-registration was amended to exactly match the canonical API: shared candidate IDs/validity [576,128], score tensor [4,576,128], and a row permutation copied identically to all four score directions. No hypothesis, graph, formula, split, data, calibration grid, solver cap, or gate changed.
+
