@@ -724,3 +724,7 @@ The first accepted P12 one-FIT graph has a nontrivial but sparse 2Ã—2 complet
 ## 2026-08-16 â€” P12 sparse 2Ã—2 loop-consensus: valid structural signal, no held generalization
 
 P12 confirms that sparse directed 2Ã—2 loop support is a well-defined, target-order-invariant and bijection-preserving graph feature: all six train-grid settings had zero invalid decodes and Î»=0.05 improved the locked FIT-train decoder relative to Î»=0. However, the selected Î»=0.05 produced held placement **0.184462%** versus frozen rank96 **0.189887%**, a **-0.542535%** percentage-point drop. Therefore scalar 2Ã—2 loop support alone is insufficient to correct rank96's global component-placement errors. Future solvers must retain the leakage-safe sparse graph discipline but add a stronger component-level/global semantic anchor rather than another scalar local score adjustment. Evidence: $report.
+
+## 2026-08-16 â€” Next lever pre-registered: P13 CPGS-24
+
+P10/P11 invalidate direct learned absolute assignment and P12 invalidates scalar 2x2 loop rescoring as held-generalizing repairs. P13 moves the global inference object to robust synchronization of **relative translations**: preserve frozen sparse rank96 edges as noisy (+1,0)/(0,+1) measurements, solve globally coherent continuous poses, and make only a final one-to-one lattice projection. The falsification condition is explicit: valid coordinates/bijection without >=3pp held improvement proves the frozen candidate graph lacks sufficient global relative-pose evidence and the next rung must use independent semantic anchors.
