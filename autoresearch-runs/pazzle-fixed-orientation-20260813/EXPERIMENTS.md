@@ -597,3 +597,11 @@ The contrastive representation is materially more robust for identifying the ori
 | PASS gate | held accuracy >= 5.189887% and 0 invalid 576-way decodes |
 | Data discipline | CAL/DEV/test closed; no P8 artifacts; no P10 checkpoint; no fresh rank96 mining/ranking; FP32 only |
 | Git order | This entry is committed before P11 source code exists |
+
+### P11 G0a/G0b contract outcomes
+
+| Gate | Status | Evidence |
+|---|---|---|
+| G0a synthetic structural contracts | **PASS** | conditional canvas responds to changed tile input; finite nonzero gradients; Sinkhorn rows/columns within 4.2e-7; exact 576-way decoder bijection |
+| G0b one-FIT canonical layout | **PASS** | `img_003194.png`; deterministic forward output; exact shapes; Sinkhorn rows/columns within 3.6e-7; exact 576-way decoder bijection |
+| Discipline | **PASS** | cached FIT-only labels; CAL/DEV/test closed; P8 absent; FP32 only |

@@ -704,3 +704,7 @@ The layout-context Transformer with Fourier slot embeddings, 20 log-domain Sinkh
 ## P11 research-to-design finding â€” learn conditional canvas slots, not another static coordinate correction
 
 Recent puzzle-permutation work supports set-based Transformer assignment and edge-informed encoders, while GANzzle motivates first synthesizing a global latent image and then retrieving/assigning pieces to it. The P10 failure specifically rules out treating Fourier slot embeddings plus a small contextual adjustment as sufficient. P11 therefore makes the canonical slot representation a function of every tile through cross-attention and adds supervised canonical canvas reconstruction. Entropy-adaptive Sinkhorn is a secondary stabilization mechanism for the 576-way heterogeneous assignment; it is not treated as the principal source of expected gain.
+
+## P11 G0 finding â€” global canvas architecture is structurally conditional and numerically valid
+
+Unlike the rejected P10 static Fourier-slot scorer, P11â€™s decoded canonical canvas and assignment logits change when an input tile changes. The G0a/G0b contracts confirm that the global slot representation is genuinely input-conditional, deterministic in evaluation mode, doubly stochastic to numerical tolerance, and discretely bijective. This is a necessary implementation prerequisite, not evidence of placement improvement; G1 remains the first performance gate.

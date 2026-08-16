@@ -53,3 +53,17 @@ The interactive GPU task must run only through Windows Task Scheduler with inter
 [1] [Talon, Del Bue & James (2022), *GANzzle: Reframing jigsaw puzzle solving as a retrieval task using a generative mental image*](https://arxiv.org/abs/2207.05634).
 [2] [Heck, LermÃ© & Le HÃ©garat-Mascle (2025), *Solving jigsaw puzzles with vision transformers*](https://link.springer.com/article/10.1007/s10044-025-01484-z).
 [3] [Eisenberg & Lindenbaum (2026), *Learning Permutation from Structure Without Supervision*](https://arxiv.org/abs/2605.25551).
+
+## G0 result â€” PASS: structural and one-FIT canonical layout contracts
+
+P11 source was written only after the pre-registration commit `4163816` existed on GitHub. Both pre-G1 gates then passed.
+
+| Contract | Result |
+|---|---|
+| G0a synthetic conditional canvas | **PASS**; logits/plan `[1,576,576]`, patches `[1,576,3,20,20]`, finite gradients, conditional output deltas > 0, and valid 576-way linear assignment |
+| G0a Sinkhorn residuals | Row 3.58e-7; column 4.17e-7 |
+| G0b one FIT cache source | **PASS** on `img_003194.png`; deterministic logits/patches and a valid bijection |
+| G0b Sinkhorn residuals | Row 3.58e-7; column 3.58e-7 |
+| Data discipline | FIT cache only; CAL/DEV/test closed; P8 absent; AMP off |
+
+The G0 contracts establish interface correctness and data-provenance compliance only. They make no claim about held placement quality. The locked 128/32 G1 is now authorized exactly as pre-registered.
