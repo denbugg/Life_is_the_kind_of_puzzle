@@ -80,3 +80,20 @@ P10 G0b ran on the single explicit FIT source `img_003194.png` using only its fr
 | P8 labels/scores imported | no / no |
 
 **Decision:** PASS G0b. The declared P10 input path, positional state, continuous assignment, and discrete bijection decoder are executable under FIT-only data discipline. G1 remains the next decision gate: train/select only on 128 FIT sources, then evaluate the chosen configuration exactly once on 32 held FIT sources.
+
+## G1 result â€” REJECT before CAL (locked train-128 / held-32 evaluation)
+
+The complete P10 G1 protocol finished after the 160-source FIT-only cache was prepared. The fixed final epoch-12 checkpoint was evaluated once on the locked 32-source FIT-held partition. No held metric was inspected during training or used for checkpoint selection.
+
+| Item | Result |
+|---|---:|
+| FIT train / held partition | 128 / 32 sources |
+| Training | 12 fixed epochs; AdamW; no AMP |
+| Rank96 held mean absolute placement accuracy | 0.189887% |
+| P10 held mean absolute placement accuracy | 0.173611% |
+| Held delta vs rank96 | -0.016276 percentage points |
+| Registered pass threshold | at least +5.000 percentage points |
+| Invalid P10 decodes | 0 |
+| Decision | **REJECT before CAL** |
+
+The P10 Sinkhorn/Transformer implementation preserved valid discrete 576-way bijections, but the learned Fourier-slot assignment did not generalize as an absolute-position correction. It is excluded from CAL, DEV, test, layout/restoration, and submission paths. CAL/DEV/test remained closed, P8 artifacts were absent, no fresh rank96 mining/ranking occurred, and AMP was disabled.

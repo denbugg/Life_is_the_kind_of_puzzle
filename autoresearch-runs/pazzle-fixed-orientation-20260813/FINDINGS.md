@@ -696,3 +696,7 @@ The prescribed 20-step log-domain Sinkhorn mapping passed identity preservation,
 ## P10 G0b finding â€” absolute-position refiner can consume the intended leakage-free input path
 
 A one-source contract confirms that corrupted FIT tiles, a frozen P9 canonical rank96+buddies spatial hypothesis, Fourier coordinates, a layout-context Transformer, 20-step Sinkhorn, and deterministic linear assignment compose into a valid 576-way assignment. The source's rank96 placement accuracy was only 0.173611%, demonstrating that G0b is a wiring/constraint check rather than evidence of P10 improvement. The only meaningful next test is the preregistered source-disjoint G1 training/held evaluation.
+
+## P10 G1 finding â€” valid global assignment machinery alone did not correct absolute placement
+
+The layout-context Transformer with Fourier slot embeddings, 20 log-domain Sinkhorn passes, and deterministic linear assignment trained stably but reduced held absolute placement from 0.189887% to 0.173611%. The result rejects the hypothesis that this low-capacity conditional slot scorer can infer a transferable global coordinate correction from the frozen rank96 layout. P11 must add an explicit globally synthesized slot/canvas representation and stronger structural supervision, rather than only changing local edge weights or adding another scalar decoder correction.

@@ -570,3 +570,16 @@ The contrastive representation is materially more robust for identifying the ori
 | Model trained | no |
 | Gate consequence | Authorize locked P10 G1 train-128 / held-32 protocol |
 | Data discipline | CAL/DEV/test closed; no P8 artifacts; no new rank96 mining/ranking |
+
+## P10 â€” G1 locked Sinkhorn refiner evaluation
+
+| Field | Value |
+|---|---|
+| Protocol | Frozen final epoch 12; 128 FIT-train then one 32-source held-FIT evaluation |
+| Held rank96 baseline placement accuracy | 0.189887% |
+| Held P10 placement accuracy | 0.173611% |
+| Held delta | -0.016276 percentage points |
+| Bijection contract | PASS: 0 invalid decodes |
+| Gate | FAIL: required held improvement >= +5.000 percentage points |
+| Decision | **REJECT before CAL** |
+| Data discipline | FIT-only; CAL/DEV/test closed; P8 artifacts absent; no rank96 reranking/mining; AMP off |
