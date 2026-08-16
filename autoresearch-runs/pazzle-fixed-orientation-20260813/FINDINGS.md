@@ -1,4 +1,4 @@
-﻿## Champion by candidate coverage
+## Champion by candidate coverage
 - R2 is provisional R@20 champion: 0.397758 versus R0 0.352468 (+0.045290).
 - It is not a scientific pass: R@1=0.059047, R@5=0.184556, and b128 neighbour=0.040308 all remain below gate.
 - R1 refuted naive untrained multi-band cosine fusion: R@20=0.259964 (-0.092504 vs R0).
@@ -732,3 +732,8 @@ P10/P11 invalidate direct learned absolute assignment and P12 invalidates scalar
 ## 2026-08-16 â€” P13 CPGS-24 contracts validate global relative-pose solver mechanics
 
 A translation-synchronization solver can consume the canonical frozen graph without storage-order leakage, maintain a strict bijection via Hungarian projection, and produce finite global coordinates. On the one permitted FIT cache, all 576 tiles were connected by 1,152 selected right/down relative-pose constraints. This validates the P13 mechanism as technically distinct from P10/P11 absolute assignment and P12 scalar loop re-scoring; it does not establish placement improvement, which remains a locked G1 question.
+
+
+## P13 G1 Finding -- Valid Global Pose Synchronization Did Not Transfer to Placement
+
+CPGS-24 generated finite poses and strict Hungarian 576-way assignments on every board, but all thresholds retained 0.2278646% FIT-train accuracy. Held-32 reached 0.222439%, only +0.032552 pp above the 0.189887% baseline and 2.967448 points below the 3.189887% gate. **Relative translation synchronization on current top-candidate right/down graph is structurally valid but insufficiently discriminative for global canvas placement.** Next lever: enrich global anchors or component-level relationship information, not CPGS thresholds. Candidate-order leakage was absent, invalid decodes were zero, CAL/DEV/test remain closed, and P8 remains prohibited.

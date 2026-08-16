@@ -1,4 +1,4 @@
-﻿R0 | raw1 | PASS | 8 source-disjoint DEV images | overall R@1=0.098902 R@5=0.215014 R@20=0.352468 worst-image-R@20=0.233696 | 6.20s
+R0 | raw1 | PASS | 8 source-disjoint DEV images | overall R@1=0.098902 R@5=0.215014 R@20=0.352468 worst-image-R@20=0.233696 | 6.20s
 R1 | multiband hand-crafted | DROP | same 8 DEV images | overall R@20=0.259964, delta=-0.092504 vs R0 | mechanism refuted: untrained multi-band cosine fusion amplifies distortion.
 R2 | learned directional Siamese, 200 steps | PARTIAL | 8 source-disjoint DEV images | R@1=0.059047 R@5=0.184556 R@20=0.397758; R@20 delta=+0.045290 vs R0, but r1/r5 decline and gate fails (required r1>=0.25, neighbour>=0.18).
 R3 | listwise hard-negative candidate ranker, 200 steps | KEEP for candidate union | held-out 8 images: coverage_all_true=0.688179, R@1=0.113281 on selected rows, all-true proxy R@1=0.077958/R@5=0.219088, reciprocal_true_mutual_candidate_coverage=0.898438, reciprocal_precision=0.406977. It does not pass final selection gates.
@@ -668,3 +668,15 @@ P12 Sparse Loop-Consensus (SLC-24) completed its preregistered FIT-only protocol
 ## P13 G0a/G0b contracts â€” 2026-08-16 â€” PASS
 
 P13 CPGS-24 passed its pre-registered structural gates. **G0a synthetic:** exact clean relative-translation recovery and strict 576-way Hungarian bijection passed; candidate-order reindexing left the decode unchanged; the Huber corruption factor was  .1 for a gross residual versus 1.0 for a small residual. **G0b one-FIT frozen graph:** source $(@{amp_used=False; cal_target_opened=False; decode_info=; deterministic_candidate_order_invariant=True; dev_targets_opened=False; experiment=P13_CPGS-24; finite_pose=True; gate=G0b_one_FIT_frozen_cache; p10_final_checkpoint_imported=False; p11_final_checkpoint_imported=False; p8_labels_imported=False; passes_G0b=True; permuted_decode_info=; rank96_mining_invoked=False; rank96_ranker_invoked=False; source=img_000025.png; strict_bijection=True; targets_opened=False; test_accessed=False; threshold=0.0}.source) passed canonical score-cache SHA, deterministic candidate-order invariance, finite continuous pose, and strict 576-way bijection. The actual frozen graph formed $(@{amp_used=False; cal_target_opened=False; decode_info=; deterministic_candidate_order_invariant=True; dev_targets_opened=False; experiment=P13_CPGS-24; finite_pose=True; gate=G0b_one_FIT_frozen_cache; p10_final_checkpoint_imported=False; p11_final_checkpoint_imported=False; p8_labels_imported=False; passes_G0b=True; permuted_decode_info=; rank96_mining_invoked=False; rank96_ranker_invoked=False; source=img_000025.png; strict_bijection=True; targets_opened=False; test_accessed=False; threshold=0.0}.decode_info.component_count) connected component with $(@{amp_used=False; cal_target_opened=False; decode_info=; deterministic_candidate_order_invariant=True; dev_targets_opened=False; experiment=P13_CPGS-24; finite_pose=True; gate=G0b_one_FIT_frozen_cache; p10_final_checkpoint_imported=False; p11_final_checkpoint_imported=False; p8_labels_imported=False; passes_G0b=True; permuted_decode_info=; rank96_mining_invoked=False; rank96_ranker_invoked=False; source=img_000025.png; strict_bijection=True; targets_opened=False; test_accessed=False; threshold=0.0}.decode_info.constraint_count) selected relative constraints. No target PNG, CAL/DEV/test, P8 artifacts, P10/P11 final checkpoints, rank96 re-mining/re-scoring, or AMP were used. Evidence: $g0aPath; $g0bPath.
+
+
+## P13 G1 Final -- CPGS-24 Component-Pose Global Synchronization (2026-08-16)
+
+| Stage | Result |
+|---|---|
+| G0a/G0b | PASS: translation recovery, robust weighting, candidate-order invariance, finite poses, exact 576-way bijections. |
+| G1 train grid | Thresholds {0.00, 0.05, 0.10, 0.20}: all 0.2278646% on FIT-train 128, 0 invalid decodes. |
+| G1 held | One held-32 evaluation: 0.222439%, +0.032552 pp versus rank96 baseline, 0 invalid decodes. |
+| Gate decision | **REJECT before CAL**; CAL/DEV/test targets were not opened. |
+
+Frozen P12 rank96 score cache was the only score input; P8 artifacts were not imported.

@@ -72,3 +72,19 @@ The accompanying `P13_RESEARCH_COMPONENT_POSE.md` records source evidence. The k
 ## G0a/G0b result — 2026-08-16
 
 **PASS.** Synthetic clean translation recovery, corruption down-weighting, candidate-order invariance and strict Hungarian bijection passed. One-FIT frozen-cache validation on $(@{amp_used=False; cal_target_opened=False; decode_info=; deterministic_candidate_order_invariant=True; dev_targets_opened=False; experiment=P13_CPGS-24; finite_pose=True; gate=G0b_one_FIT_frozen_cache; p10_final_checkpoint_imported=False; p11_final_checkpoint_imported=False; p8_labels_imported=False; passes_G0b=True; permuted_decode_info=; rank96_mining_invoked=False; rank96_ranker_invoked=False; source=img_000025.png; strict_bijection=True; targets_opened=False; test_accessed=False; threshold=0.0}.source) also passed canonical SHA, deterministic order invariance, finite pose and strict 576-way bijection. G1 is authorized under the pre-registered locked 128/32 FIT-only protocol. Evidence: $g0aPath; $g0bPath.
+
+
+## P13 G1 Locked Evaluation Outcome (2026-08-16)
+
+The locked 128-source FIT-train grid selected threshold 0.00; held-32 executed exactly once. CAL, DEV, and test targets remained closed.
+
+| Check | Result |
+|---|---:|
+| Rank96 held baseline | 0.189887% |
+| P13 held absolute placement accuracy | 0.222439% |
+| Held delta | +0.032552 pp |
+| PASS gate | >= 3.189887% and 0 invalid decodes |
+| Shortfall | 2.967448 pp |
+| Invalid decodes | 0 |
+
+**Decision: REJECT before CAL.** Do not calibrate P13 on CAL or propagate it to submission.
