@@ -682,3 +682,5 @@ P13 CPGS-24 passed its pre-registered structural gates. **G0a synthetic:** exact
 Frozen P12 rank96 score cache was the only score input; P8 artifacts were not imported.
 
 ## P14a G0a Rejection -- One-Sided Grid-Topology Propagation (2026-08-16)
+
+## P14b G0b Rejection -- Raw Candidate-Slot Selection (2026-08-16)

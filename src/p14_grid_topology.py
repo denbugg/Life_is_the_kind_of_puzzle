@@ -76,11 +76,13 @@ def propagate_2x2(
     down: np.ndarray,
     max_iterations: int,
 ) -> tuple[np.ndarray, np.ndarray, dict[str, int | bool]]:
-    """Iteratively remove directed edges that cannot belong to an oriented 2x2 cell.
+    """Iteratively remove directed edges without a completed 2x2 on either side.
 
-    A right edge a->b survives only when there are c,d with a->c DOWN,
-    b->d DOWN, and c->d RIGHT.  The DOWN rule is the directional transpose.
-    Matrix products implement existential support over all c,d without labels.
+    RIGHT(a,b) can be supported below by D(a,c), R(c,d), D(b,d), or above by
+    D(c,a), R(c,d), D(d,b).  DOWN(a,c) has symmetric right and left supports.
+    Matrix products implement existential support over all partner tiles without
+    labels.  This bidirectional rule is pre-registered as P14b after P14a's
+    one-sided operator rejected an isolated true 2x2 cell.
     """
     if right.shape != down.shape or right.ndim != 2 or right.shape[0] != right.shape[1]:
         raise ValueError("right and down must be equal square matrices")
@@ -93,12 +95,14 @@ def propagate_2x2(
     for step in range(max_iterations):
         r_u8 = current_r.astype(np.uint8, copy=False)
         d_u8 = current_d.astype(np.uint8, copy=False)
-        # support_r[a,b] iff exists c,d: D[a,c] & R[c,d] & D[b,d].
-        support_r = ((d_u8 @ r_u8) @ d_u8.T) > 0
-        # support_d[a,c] iff exists b,d: R[a,b] & D[b,d] & R[c,d].
-        support_d = ((r_u8 @ d_u8) @ r_u8.T) > 0
-        next_r = current_r & support_r
-        next_d = current_d & support_d
+        # RIGHT support from a completed cell below or above the edge.
+        support_r_below = ((d_u8 @ r_u8) @ d_u8.T) > 0
+        support_r_above = ((d_u8.T @ r_u8) @ d_u8) > 0
+        # DOWN support from a completed cell right or left of the edge.
+        support_d_right = ((r_u8 @ d_u8) @ r_u8.T) > 0
+        support_d_left = ((r_u8.T @ d_u8) @ r_u8) > 0
+        next_r = current_r & (support_r_below | support_r_above)
+        next_d = current_d & (support_d_right | support_d_left)
         history.append(
             {
                 "iteration": step + 1,
@@ -246,7 +250,7 @@ def g0a(args: argparse.Namespace) -> None:
     shuffled_out, _ = filter_scores(shuffled_c, shuffled_v, shuffled_s, k=n, iterations=8)
     shuffled_r, shuffled_d = physical_edge_masks(shuffled_c, shuffled_v, shuffled_out, k=n)
     report = {
-        "experiment": "P14_grid_topology_propagation",
+        "experiment": "P14b_bidirectional_grid_topology_propagation",
         "gate": "G0a_synthetic_hard_2x2_contract",
         "true_edges_retained": bool(after_r[0, 1] and after_r[2, 3] and after_d[0, 2] and after_d[1, 3]),
         "dangling_false_removed": bool(before_r[0, 4] and not after_r[0, 4]),
@@ -273,7 +277,7 @@ def g0a(args: argparse.Namespace) -> None:
 def g0b(args: argparse.Namespace) -> None:
     train, _ = p12.source_lists(args.prepare_report)
     source = args.source or train[0]
-    candidates, valid, scores = p12.load_score_cache(args.score_dir, source)
+    candidates, valid, scores = p12.load_score(args.score_dir, source)
     target, _ = p12.load_labels(args.cache_dir, source)
     filtered, info = filter_scores(candidates, valid, scores, args.k, args.iterations)
     base_r, base_d = physical_edge_masks(candidates, valid, scores, args.k)
@@ -285,7 +289,7 @@ def g0b(args: argparse.Namespace) -> None:
     shuffled_r, shuffled_d = physical_edge_masks(shuffled_c, shuffled_v, shuffled_filtered, args.k)
     pred, objective = decode(candidates, filtered)
     report = {
-        "experiment": "P14_grid_topology_propagation",
+        "experiment": "P14b_bidirectional_grid_topology_propagation",
         "gate": "G0b_one_FIT_frozen_cache",
         "source": source,
         "input_candidate_sha": array_sha(candidates),
@@ -330,7 +334,7 @@ def evaluate_sources(
     values: list[float] = []
     invalid = 0
     for index, source in enumerate(sources):
-        candidates, valid, scores = p12.load_score_cache(args.score_dir, source)
+        candidates, valid, scores = p12.load_score(args.score_dir, source)
         filtered, _ = filter_scores(candidates, valid, scores, k, iterations)
         target, _ = p12.load_labels(args.cache_dir, source)
         try:
@@ -360,7 +364,7 @@ def g1(args: argparse.Namespace) -> None:
     baseline_payload = json.loads(args.baseline_report.read_text(encoding="utf-8"))
     baseline = float(baseline_payload["baseline_held_accuracy"])
     report = {
-        "experiment": "P14_grid_topology_propagation",
+        "experiment": "P14b_bidirectional_grid_topology_propagation",
         "gate": "G1_calibrate128_held32",
         "grid": grid,
         "selected": selected,
