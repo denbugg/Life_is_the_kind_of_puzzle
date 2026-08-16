@@ -633,3 +633,8 @@ The contrastive representation is materially more robust for identifying the ori
 | Leakage defense | Candidate axes deterministic-shuffled before caching; synthetic and one-FIT shuffle-invariance contracts; P8 absent |
 | Data discipline | CAL/DEV/test closed; P10/P11 checkpoints absent; FP32 only; target PNG never opened |
 | Git order | This entry is committed before P12 source code exists |
+
+### P12 canonical graph-interface correction
+
+P12 pre-registration was amended before source implementation: frozen rank96 stores the top-64 Ã— two-affinity union (width 128 with validity mask); the existing buddies decoder remains capped at 96 selected edges. No hypothesis, gate, data, score formula, calibration grid, or split changed.
+

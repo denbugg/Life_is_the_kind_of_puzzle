@@ -30,7 +30,7 @@ The causal claim is that a true local edge is more likely to participate in a co
 
 ## Locked SLC-24 solver
 
-For each cached source, canonical rank96 mining returns at most 96 directed right and down candidate edges per tile. The frozen scorer evaluates every candidate edge. The score cache serializes candidate identities and scores, with each candidate axis deterministically permuted before storage.
+For each cached source, canonical rank96 mining returns the ordered de-duplicated union of top-64 candidates from each frozen affinity encoder (rectangular width 128, with a validity mask); canonical buddies decoding remains capped at exactly 96 selected edges. The frozen scorer evaluates every candidate edge. The score cache serializes candidate identities and scores, with each candidate axis deterministically permuted before storage.
 
 For a candidate right edge `iâ†’j`, its loop support is the maximum normalized three-edge completion over `k âˆˆ top12(down(i))` and `l âˆˆ top12(down(j))`:
 
@@ -47,7 +47,7 @@ The only tuned scalar is the precommitted finite calibration grid `Î» âˆˆ {
 | Gate | Contract | Pass condition | On failure |
 |---|---|---|---|
 | G0a | Synthetic 2Ã—2: true complete loop receives greater support than a score-matched nonloop; missing-edge handling; candidate-order shuffle invariance; exact 576-way decoder bijection | Every contract passes | Correct implementation only; no puzzle metric |
-| G0b | One FIT cache source: canonical score cache has 576Ã—96 candidates per direction, candidate IDs are valid, score/loop outputs are invariant after unpermuting a second randomized candidate order, no labels flow into score cache | Every contract passes | Correct implementation only; no held metric |
+| G0b | One FIT cache source: canonical score cache has 576Ã—128 candidate storage rows (with valid-mask deduplication) per direction, candidate IDs are valid, score/loop outputs are invariant after unpermuting a second randomized candidate order, no labels flow into score cache | Every contract passes | Correct implementation only; no held metric |
 | G1 prepare | Score exactly the 160 cached FIT-only sources with frozen rank96 extractor; cache SHA/source manifests and candidate-order audit | 160 valid artifacts; no target PNG opened | Stop and diagnose |
 | G1 calibration/eval | Select Î» on 128 train sources then evaluate the selected Î» once on locked 32 held sources | Held placement â‰¥ 3.189887%; zero invalid decodes | Unlock separately preregistered CAL only after PASS |
 | G1 reject | Same locked run | Below gate, data breach, nonbijective decode, or numerical failure | **REJECT before CAL/DEV/test**; outputs excluded from production |
@@ -60,3 +60,7 @@ All GPU work must execute only through Windows Task Scheduler interactive-only e
 [2] [Vardi et al. (2023), *Multi-Phase Relaxation Labeling for Square Jigsaw Puzzle Solving*](https://arxiv.org/abs/2303.14793).  
 [3] [Cho, Avidan & Freeman (2010), *A Probabilistic Image Jigsaw Puzzle Solver*](https://people.csail.mit.edu/billf/papers/JigsawSolverCVPR2010.pdf).  
 [4] [ylieder, *jigsaw-solver*](https://github.com/ylieder/jigsaw-solver).
+
+## Pre-implementation canonical-width correction
+
+Before P12 source implementation, an API audit of the frozen production `infer_rank96.py` established that canonical rank96 candidate mining is the ordered de-duplicated union of **top-64** candidates from each of two affinity encoders. Therefore the rectangular candidate storage width is 128 (with validity mask), while the decoderâ€™s selection cap remains 96. The original P12 wording incorrectly conflated the candidate storage width with the solverâ€™s 96-edge cap. This correction changes no hypothesis, data, score formula, calibration grid, gate, or evaluation split; it makes the frozen-graph interface exact.
