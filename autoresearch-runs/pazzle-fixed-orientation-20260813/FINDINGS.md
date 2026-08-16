@@ -741,3 +741,5 @@ CPGS-24 generated finite poses and strict Hungarian 576-way assignments on every
 ## P14a G0a Finding -- One-Sided 2x2 Support Is Not Monotone-Safe
 
 ## P14b G0b Finding -- Candidate Slot Is Not a Rank
+
+## P14c G0 Finding -- Safe but Nearly Inert Topology Pruning

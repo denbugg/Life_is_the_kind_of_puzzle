@@ -49,26 +49,56 @@ def array_sha(array: np.ndarray) -> str:
     return hashlib.sha256(canonical_bytes(array)).hexdigest()
 
 
+def score_rank_mask(
+    candidates: np.ndarray,
+    valid: np.ndarray,
+    scores: np.ndarray,
+    k: int,
+) -> np.ndarray:
+    """Direction-specific top-K slots by frozen score, tie-broken by target ID.
+
+    Raw cache axis order is never interpreted as rank. This makes the selected
+    physical candidate graph invariant to a simultaneous candidate-axis shuffle.
+    """
+    n, width = candidates.shape
+    if valid.shape != (n, width) or scores.shape != (4, n, width):
+        raise ValueError("unexpected candidate, valid, or score shape")
+    limit = min(int(k), width)
+    selected = np.zeros((4, n, width), dtype=bool)
+    for direction in range(4):
+        for anchor in range(n):
+            slots = np.flatnonzero(
+                valid[anchor]
+                & np.isfinite(scores[direction, anchor])
+                & (candidates[anchor] >= 0)
+                & (candidates[anchor] < n)
+                & (candidates[anchor] != anchor)
+            )
+            if slots.size == 0:
+                continue
+            targets = candidates[anchor, slots]
+            values = scores[direction, anchor, slots]
+            order = np.lexsort((targets, -values))
+            selected[direction, anchor, slots[order[:limit]]] = True
+    return selected
+
+
 def physical_edge_masks(
     candidates: np.ndarray,
     valid: np.ndarray,
     scores: np.ndarray,
     k: int,
-) -> tuple[np.ndarray, np.ndarray]:
-    """Return physical RIGHT and DOWN adjacency masks from frozen candidate lists."""
-    n, width = candidates.shape
-    if valid.shape != (n, width) or scores.shape != (4, n, width):
-        raise ValueError("unexpected candidate, valid, or score shape")
-    limit = min(int(k), width)
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Return score-ranked physical RIGHT/DOWN masks and all selected slots."""
+    n, _ = candidates.shape
+    selected = score_rank_mask(candidates, valid, scores, k)
     right = np.zeros((n, n), dtype=bool)
     down = np.zeros((n, n), dtype=bool)
     for direction, matrix in ((RIGHT, right), (DOWN, down)):
-        finite = valid[:, :limit] & np.isfinite(scores[direction, :, :limit])
         for anchor in range(n):
-            targets = candidates[anchor, :limit][finite[anchor]]
-            targets = targets[(targets >= 0) & (targets < n) & (targets != anchor)]
+            targets = candidates[anchor, selected[direction, anchor]]
             matrix[anchor, targets] = True
-    return right, down
+    return right, down, selected
 
 
 def propagate_2x2(
@@ -128,15 +158,15 @@ def filter_scores(
     iterations: int,
 ) -> tuple[np.ndarray, dict[str, object]]:
     """Keep only top-k physical edges surviving topology propagation."""
-    before_r, before_d = physical_edge_masks(candidates, valid, scores, k)
+    before_r, before_d, selected = physical_edge_masks(candidates, valid, scores, k)
     after_r, after_d, details = propagate_2x2(before_r, before_d, iterations)
     n, width = candidates.shape
     limit = min(int(k), width)
     filtered = np.full_like(scores, -np.inf, dtype=np.float32)
     for direction in (UP, DOWN, LEFT, RIGHT):
         for anchor in range(n):
-            for slot in range(limit):
-                if not valid[anchor, slot] or not np.isfinite(scores[direction, anchor, slot]):
+            for slot in range(width):
+                if not selected[direction, anchor, slot]:
                     continue
                 target = int(candidates[anchor, slot])
                 if target < 0 or target >= n or target == anchor:
@@ -159,7 +189,7 @@ def filter_scores(
         "down_edges_before": int(before_d.sum()),
         "right_edges_after": int(after_r.sum()),
         "down_edges_after": int(after_d.sum()),
-        "score_finite_before": int(np.isfinite(scores[:, :, :limit]).sum()),
+        "score_finite_before": int(selected.sum()),
         "score_finite_after": int(np.isfinite(filtered).sum()),
         "propagation": details,
     }
@@ -243,14 +273,14 @@ def g0a(args: argparse.Namespace) -> None:
     add(DOWN, 0, 2)
     add(DOWN, 1, 3)
     add(RIGHT, 0, 4)
-    before_r, before_d = physical_edge_masks(candidates, valid, scores, k=n)
+    before_r, before_d, _ = physical_edge_masks(candidates, valid, scores, k=n)
     after_scores, info = filter_scores(candidates, valid, scores, k=n, iterations=8)
-    after_r, after_d = physical_edge_masks(candidates, valid, after_scores, k=n)
+    after_r, after_d, _ = physical_edge_masks(candidates, valid, after_scores, k=n)
     shuffled_c, shuffled_v, shuffled_s = shuffle_candidate_axis(candidates, valid, scores, seed=SEED + 14)
     shuffled_out, _ = filter_scores(shuffled_c, shuffled_v, shuffled_s, k=n, iterations=8)
-    shuffled_r, shuffled_d = physical_edge_masks(shuffled_c, shuffled_v, shuffled_out, k=n)
+    shuffled_r, shuffled_d, _ = physical_edge_masks(shuffled_c, shuffled_v, shuffled_out, k=n)
     report = {
-        "experiment": "P14b_bidirectional_grid_topology_propagation",
+        "experiment": "P14c_score_ranked_bidirectional_grid_topology_propagation",
         "gate": "G0a_synthetic_hard_2x2_contract",
         "true_edges_retained": bool(after_r[0, 1] and after_r[2, 3] and after_d[0, 2] and after_d[1, 3]),
         "dangling_false_removed": bool(before_r[0, 4] and not after_r[0, 4]),
@@ -280,16 +310,16 @@ def g0b(args: argparse.Namespace) -> None:
     candidates, valid, scores = p12.load_score(args.score_dir, source)
     target, _ = p12.load_labels(args.cache_dir, source)
     filtered, info = filter_scores(candidates, valid, scores, args.k, args.iterations)
-    base_r, base_d = physical_edge_masks(candidates, valid, scores, args.k)
-    out_r, out_d = physical_edge_masks(candidates, valid, filtered, args.k)
+    base_r, base_d, _ = physical_edge_masks(candidates, valid, scores, args.k)
+    out_r, out_d, _ = physical_edge_masks(candidates, valid, filtered, args.k)
     base_recall = directed_recall(base_r, base_d, target)
     retained_recall = directed_recall(out_r, out_d, target)
     shuffled_c, shuffled_v, shuffled_s = shuffle_candidate_axis(candidates, valid, scores, SEED + 140)
     shuffled_filtered, _ = filter_scores(shuffled_c, shuffled_v, shuffled_s, args.k, args.iterations)
-    shuffled_r, shuffled_d = physical_edge_masks(shuffled_c, shuffled_v, shuffled_filtered, args.k)
+    shuffled_r, shuffled_d, _ = physical_edge_masks(shuffled_c, shuffled_v, shuffled_filtered, args.k)
     pred, objective = decode(candidates, filtered)
     report = {
-        "experiment": "P14b_bidirectional_grid_topology_propagation",
+        "experiment": "P14c_score_ranked_bidirectional_grid_topology_propagation",
         "gate": "G0b_one_FIT_frozen_cache",
         "source": source,
         "input_candidate_sha": array_sha(candidates),
@@ -364,7 +394,7 @@ def g1(args: argparse.Namespace) -> None:
     baseline_payload = json.loads(args.baseline_report.read_text(encoding="utf-8"))
     baseline = float(baseline_payload["baseline_held_accuracy"])
     report = {
-        "experiment": "P14b_bidirectional_grid_topology_propagation",
+        "experiment": "P14c_score_ranked_bidirectional_grid_topology_propagation",
         "gate": "G1_calibrate128_held32",
         "grid": grid,
         "selected": selected,

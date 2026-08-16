@@ -684,3 +684,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 ## P14a G0a Rejection -- One-Sided Grid-Topology Propagation (2026-08-16)
 
 ## P14b G0b Rejection -- Raw Candidate-Slot Selection (2026-08-16)
+
+## P14c G0 Evidence -- Score-Ranked Bidirectional Topology (2026-08-16)
