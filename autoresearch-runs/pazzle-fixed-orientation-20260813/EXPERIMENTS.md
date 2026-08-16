@@ -643,3 +643,16 @@ P12 pre-registration was amended before source implementation: frozen rank96 sto
 
 Before valid P12 score extraction, the pre-registration was amended to exactly match the canonical API: shared candidate IDs/validity [576,128], score tensor [4,576,128], and a row permutation copied identically to all four score directions. No hypothesis, graph, formula, split, data, calibration grid, solver cap, or gate changed.
 
+
+## P12 G0a/G0b â€” PASS â€” Sparse Loop-Consensus Edge Refiner structural gates
+
+| Gate | Status | Exact evidence |
+|---|---|---|
+| G0a synthetic loop contracts | **PASS** | complete right and down 2Ã—2 loop support = 3.0; score-matched nonloop = 0.0; missing-edge support = 0.0; target-independent candidate-order contract passed |
+| G0b one-FIT frozen score-cache | **PASS** | source `img_003194.png`; shared candidate IDs `[576,128]`; scores `[4,576,128]`; valid fraction 0.6303304; all valid IDs in range; only valid candidate identities were audited |
+| Candidate-order audit | **PASS** | identical semantic loop result after deterministic candidate reordering; maximum FP32 absolute delta = `1.9073486328125e-06`, below predeclared `1.0e-05` numerical tolerance |
+| Frozen/data discipline | **PASS** | frozen rank96 candidate mining/scoring only; `target_labels_loaded=false`; CAL/DEV/test closed; P8/P10-final/P11-final excluded; AMP=false |
+
+The first two interactive G0b executions exposed only implementation integration defects before any valid gate measurement: incomplete `InferenceConfig` construction and mismatch between pre-audit assumptions and the frozen shared-candidate API. Both were documented by two pre-code corrections (`84f919c`, `5af4b6a`) before the accepted run. A cache SHA canonicalization issue and invalid duplicate-slot comparison were then repaired as harness validation, without changing the frozen graph, model, score formula, data, calibration grid, solver cap, or gate. The accepted G0b report is `E:\pazzle_work\pazzle_fixed_orientation_20260813\P12_loop_consensus\p12_g0b_report.json`.
+
+**Decision:** proceed to locked G1 frozen rank96 score-cache prepare on exactly the pre-registered 160 FIT-only source artifacts, then calibrate Î» on 128 FIT-train and evaluate held-32 once. CAL/DEV/test remain closed.

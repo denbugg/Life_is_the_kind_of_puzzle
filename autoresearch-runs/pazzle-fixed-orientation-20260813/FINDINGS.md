@@ -716,3 +716,7 @@ The global-canvas refiner was a strict advance over P10 at the representation le
 ## P12 research-to-design finding â€” retain local candidate graph and promote multi-edge consensus
 
 The latest research cycle converged on a distinct lever from P10/P11: loop/consensus and multi-phase constraint methods use multiple compatible local bonds to suppress pairwise outliers, while graphical-model work shows that global evidence is most useful as a constrained term rather than an unrestricted coordinate classifier. P12 applies only the sparse loop-consensus portion first, with a strict candidate-order audit to prevent a repeat of P8 leakage. It deliberately does not claim that direct canvas reconstruction or global absolute assignment will work.
+
+## P12 contract finding â€” canonical rank96 can supply a stable loop-consensus graph
+
+The first accepted P12 one-FIT graph has a nontrivial but sparse 2Ã—2 completion signal: about 11.576% of finite physical right edges and 11.580% of finite physical down edges receive nonzero top-12 loop support. Candidate-order permutation changes FP32 reduction results by at most 1.91e-6 after valid-ID reindexing, below the predeclared 1e-5 tolerance, so the SLC-24 score construction is semantically order-invariant without target information. This validates the structural mechanism only; it does not establish any placement improvement before the locked 128/32 gate.
