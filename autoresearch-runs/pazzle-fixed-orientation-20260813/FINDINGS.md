@@ -737,3 +737,5 @@ A translation-synchronization solver can consume the canonical frozen graph with
 ## P13 G1 Finding -- Valid Global Pose Synchronization Did Not Transfer to Placement
 
 CPGS-24 generated finite poses and strict Hungarian 576-way assignments on every board, but all thresholds retained 0.2278646% FIT-train accuracy. Held-32 reached 0.222439%, only +0.032552 pp above the 0.189887% baseline and 2.967448 points below the 3.189887% gate. **Relative translation synchronization on current top-candidate right/down graph is structurally valid but insufficiently discriminative for global canvas placement.** Next lever: enrich global anchors or component-level relationship information, not CPGS thresholds. Candidate-order leakage was absent, invalid decodes were zero, CAL/DEV/test remain closed, and P8 remains prohibited.
+
+## P14a G0a Finding -- One-Sided 2x2 Support Is Not Monotone-Safe
