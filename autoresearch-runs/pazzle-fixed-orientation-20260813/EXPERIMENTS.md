@@ -618,3 +618,18 @@ The contrastive representation is materially more robust for identifying the ori
 | Gate | FAIL: required held improvement >= +5.000 percentage points |
 | Decision | **REJECT before CAL** |
 | Data discipline | Pre-existing cached FIT labels only; CAL/DEV/test closed; P8 and P10 final checkpoint absent; no rank96 reranking/mining; FP32 only |
+
+## P12 â€” Sparse Loop-Consensus Edge Refiner (SLC-24), PRE-REGISTERED
+
+| Field | Locked value |
+|---|---|
+| Falsifiable claim | 2Ã—2 loop support improves held placement by at least +3.000 pp vs cached frozen rank96 layout |
+| Inference object | Sparse directed rank96 edges, not a 576Ã—576 learned absolute slot matrix |
+| Mechanism | Frozen rank96 candidates/scores â†’ deterministic candidate-order shuffle â†’ top-12 normalized 2Ã—2 loop support â†’ calibrated edge score â†’ canonical buddies decode |
+| Inputs | Reused 160 P10 FIT-only cache artifacts; exact 128 train / 32 held partition |
+| Tunable scalar | Î» grid `{0.00,0.05,0.10,0.20,0.40,0.80}` on FIT-train only; lower Î» wins ties |
+| Held baseline | 0.189887% absolute placement accuracy |
+| PASS gate | held accuracy >= 3.189887% and 0 invalid 576-way decodes |
+| Leakage defense | Candidate axes deterministic-shuffled before caching; synthetic and one-FIT shuffle-invariance contracts; P8 absent |
+| Data discipline | CAL/DEV/test closed; P10/P11 checkpoints absent; FP32 only; target PNG never opened |
+| Git order | This entry is committed before P12 source code exists |
