@@ -1,0 +1,495 @@
+{
+  "experiment": "P37_RIT24",
+  "gate": "G2",
+  "sources": 96,
+  "top20_recall": 0.034882622926185526,
+  "invalid": 0,
+  "seconds": 26.33822589996271,
+  "targets_opened": false,
+  "p8_imported": false,
+  "selection_opened": false,
+  "held_opened": false,
+  "passes_G2": false,
+  "rows": [
+    {
+      "source": "img_003194.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_004749.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_006622.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_004918.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000425.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_001783.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_006075.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_001132.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_001616.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_002645.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002760.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_003348.png",
+      "top20_recall": 0.032608695328235626,
+      "valid": true
+    },
+    {
+      "source": "img_006649.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_002784.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000266.png",
+      "top20_recall": 0.03170289844274521,
+      "valid": true
+    },
+    {
+      "source": "img_002139.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002730.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_001485.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_001751.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_003476.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_006050.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_000172.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_002598.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_006966.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_005491.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_006432.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_004820.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_001405.png",
+      "top20_recall": 0.032608695328235626,
+      "valid": true
+    },
+    {
+      "source": "img_000025.png",
+      "top20_recall": 0.032608695328235626,
+      "valid": true
+    },
+    {
+      "source": "img_001257.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002779.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_004255.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_005655.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_005380.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_006264.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_001952.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_002373.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000906.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002757.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_002945.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_006410.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_001996.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_006285.png",
+      "top20_recall": 0.032608695328235626,
+      "valid": true
+    },
+    {
+      "source": "img_005791.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000950.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_005151.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_004559.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000098.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_000168.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_006113.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_005493.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_004923.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_004763.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_001047.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_004354.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_005003.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000910.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000254.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_002582.png",
+      "top20_recall": 0.037137679755687714,
+      "valid": true
+    },
+    {
+      "source": "img_006413.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_005733.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_004671.png",
+      "top20_recall": 0.03170289844274521,
+      "valid": true
+    },
+    {
+      "source": "img_005908.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_006474.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002378.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_005503.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_003245.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_006494.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002389.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_001923.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_002278.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_004701.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_003039.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_006781.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_004052.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_000799.png",
+      "top20_recall": 0.032608695328235626,
+      "valid": true
+    },
+    {
+      "source": "img_002593.png",
+      "top20_recall": 0.037137679755687714,
+      "valid": true
+    },
+    {
+      "source": "img_003789.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_002190.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_000215.png",
+      "top20_recall": 0.03170289844274521,
+      "valid": true
+    },
+    {
+      "source": "img_003059.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_001344.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_000449.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_001838.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_001707.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_004495.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_004459.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_000773.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_001647.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_004169.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_001219.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_002150.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    },
+    {
+      "source": "img_005164.png",
+      "top20_recall": 0.036231882870197296,
+      "valid": true
+    },
+    {
+      "source": "img_004953.png",
+      "top20_recall": 0.03442028909921646,
+      "valid": true
+    },
+    {
+      "source": "img_003482.png",
+      "top20_recall": 0.033514492213726044,
+      "valid": true
+    },
+    {
+      "source": "img_003291.png",
+      "top20_recall": 0.03532608598470688,
+      "valid": true
+    }
+  ]
+}
