@@ -1,0 +1,49 @@
+{
+  "experiment": "P32_DSCP24",
+  "gate": "G2",
+  "fit": {
+    "epochs_run": 8,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 7.30980587999026
+      },
+      {
+        "epoch": 2,
+        "loss": 7.301417614022891
+      },
+      {
+        "epoch": 3,
+        "loss": 7.2845560510953264
+      },
+      {
+        "epoch": 4,
+        "loss": 7.260912984609604
+      },
+      {
+        "epoch": 5,
+        "loss": 7.231721505522728
+      },
+      {
+        "epoch": 6,
+        "loss": 7.197114338477452
+      },
+      {
+        "epoch": 7,
+        "loss": 7.158103172977765
+      },
+      {
+        "epoch": 8,
+        "loss": 7.110266834497452
+      }
+    ],
+    "minutes": 0.24193737666646484
+  },
+  "top20": 0.13863570601851852,
+  "placement": 0.012080439814814816,
+  "invalid": 0,
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": true
+}
