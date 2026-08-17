@@ -122,7 +122,7 @@ def gate_g1(args):
     rows = []
     with torch.no_grad():
         for source in args.sources:
-            feature = features(backbone, load_tiles(args.inputs, source), device).unsqueeze(0)
+            feature = features(backbone, load_tiles(args.inputs, source), device).to(device).unsqueeze(0)
             permutation = torch.randperm(N, device=device)
             reference = model(feature)[0]
             shuffled = model(feature[:, permutation])[0]
