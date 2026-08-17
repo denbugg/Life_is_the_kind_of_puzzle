@@ -1,0 +1,65 @@
+{
+    "experiment":  "P21_GBLS24",
+    "g0":  {
+               "experiment":  "P21_GBLS24",
+               "gate":  "G0",
+               "shape":  [
+                             1,
+                             3,
+                             20,
+                             16
+                         ],
+               "mask_is_zero":  true,
+               "target_alignment":  true,
+               "transpose_consistent":  true,
+               "candidate_row_invariant":  true,
+               "alpha_zero_identity":  true,
+               "finite":  true,
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P21_GBLS24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "count":  36864,
+                                "input_sha256":  "ad1689cdf335ad1015743edb26cc6f56c9f800b4ffd3e1839d1e99b7582502ed",
+                                "target_tensor_sha256":  "0158f1ba179e3ca86e34c710a2d2e6544b1dab6c4f1f4eb4e2c79357559cd834",
+                                "finite":  true,
+                                "masked_zero":  true
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "count":  36864,
+                                "input_sha256":  "607601a11359d77d26c7c0cacdafe56c3972841598e4d030b853412d3acd2454",
+                                "target_tensor_sha256":  "54d35b28b00cb883bc940f4a7750a4198da1f243437f43def40c544873db89ce",
+                                "finite":  true,
+                                "masked_zero":  true
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "count":  36864,
+                                "input_sha256":  "74f304985c92c0f3a707d6d786e32cce269a8af30595c3ea290b2acf65875cd6",
+                                "target_tensor_sha256":  "d95e1740540a92f3622440e10cd4d4eb321056cce589afe8122b2a0f5fd22f47",
+                                "finite":  true,
+                                "masked_zero":  true
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "count":  36864,
+                                "input_sha256":  "0fc6409faa1396fb7045278056513a6ac8ba1a1fe07fbc211b92e5fdfb83b7e7",
+                                "target_tensor_sha256":  "c81ae28f46b1edade657da878d1807732086c06cbcf29109ff76e12d9d9f8c5a",
+                                "finite":  true,
+                                "masked_zero":  true
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
