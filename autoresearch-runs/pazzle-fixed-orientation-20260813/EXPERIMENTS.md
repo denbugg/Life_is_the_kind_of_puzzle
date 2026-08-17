@@ -733,3 +733,11 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | Stage A | Stopped at 203.5 CPU seconds vs 180-second cap; 3 of 4 score-only seed artifacts persisted. |
 | Labels / target PNG / closed splits | Not accessed. |
 | Decision | No metric decision. P18b pre-registers SHA-validated one-seed resume and unchanged exact-delta Stage B. |
+
+## P18b G0b Runtime-Futility Outcome (2026-08-17)
+
+| Item | Result |
+|---|---|
+| Seeds | Four immutable SHA-validated canonical rank96 boards. |
+| Stage B | Exceeded 60-second cap; stopped at 96.422 CPU seconds before report. |
+| Decision | **STOP BEFORE FIT LABELS/HELD**; pivot from solver-only transformations to score-signal research. |

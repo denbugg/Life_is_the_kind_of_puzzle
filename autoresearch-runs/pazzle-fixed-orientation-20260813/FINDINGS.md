@@ -761,3 +761,7 @@ A global search may be viable only if each candidate move is scored from its aff
 ## P17 early-gate baseline bottleneck
 
 Exact-delta QAP local search is computationally correct on synthetic boards, but a cache gate that rebuilds the canonical baseline and rechecks invariance per board can still dominate runtime. Future early gates need precomputed seed boards or purely score-level diagnostics before layout decoding.
+
+## P13-P18 solver signal conclusion
+
+Translation synchronization, topology propagation, relaxation labeling, component beam assembly and exact-delta swaps either failed their structural gates or did not reach an accuracy gate. The common limitation is insufficient local compatibility information for globally correct placement. The next lever must improve the score signal, not add another decoder transformation.
