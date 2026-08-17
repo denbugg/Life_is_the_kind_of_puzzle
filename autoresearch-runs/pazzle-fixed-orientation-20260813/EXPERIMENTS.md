@@ -787,3 +787,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P33 CVA-24 cycle-verified agglomeration | G0 synthetic component consistency | PASS | Accepted 6 valid edges, rejected contradiction, recovered two non-overlapping 2x2 components. No real data accessed. Evidence: P33_G0_REPORT.json. |
 
 | P33 CVA-24 cycle-verified agglomeration | G1 input-only frozen+DINO candidate union | PASS | 16 cache-backed FIT inputs produced 116–128 unique non-self candidates/direction in 1.69–1.90s. No labels/targets accessed. Evidence: P33_G1_REPORT.json. |
+
+| P33 CVA-24 cycle-verified agglomeration | G2 FIT-only verifier/component coverage | STOPPED (fast futility) | 96-source preparation and 10 epochs completed; candidate-level coverage evaluator had unbounded per-edge Python GPU calls and violated the 15-minute resource gate. No selection/held/targets opened. Evidence: P33_G2_STOPPED.md. |
