@@ -700,3 +700,12 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | Stage | Synthetic G0a only; no cache or labels accessed. |
 | Runtime observation | Repeated auxiliary starts invoked duplicate exhaustive repair and exceeded the 3-minute fast-futility checkpoint without output. |
 | Decision | **ABORTED**, neither PASS nor REJECT; P15b pre-registers repair-free auxiliary support seeds. |
+
+## P15b G0a Rejection -- MPRL Synthetic Correctness (2026-08-17)
+
+| Metric | Result |
+|---|---|
+| Exact planted recovery | **False**; strict bijection/determinism remained true. |
+| Objective | unchanged: 4272.0 to 4272.0. |
+| Runtime | 70.4956206000061 seconds, under 90s. |
+| Decision | **REJECT BEFORE CACHE ACCESS**. No FIT score cache, labels, target PNGs, CAL, DEV, held or test accessed. |

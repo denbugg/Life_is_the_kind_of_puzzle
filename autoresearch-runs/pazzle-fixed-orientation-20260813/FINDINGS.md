@@ -749,3 +749,7 @@ CPGS-24 generated finite poses and strict Hungarian 576-way assignments on every
 ## P14d G0 Finding -- Symmetric Topology Graph Is Saturated
 
 ## P14d Compute-Allocation Finding -- Stop Weak Global Filters Early
+
+## P15b MPRL synthetic failure
+
+Balanced local relaxation with Hungarian projection must first preserve a planted global optimum. Here it returned a different strict permutation at equal synthetic adjacency objective, so no cache-based tuning is justified. Future global solvers need either explicit global anchors, a stronger objective with unique placement signal, or a search method that retains multiple globally equivalent hypotheses rather than collapsing them early.
