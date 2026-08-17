@@ -1,0 +1,57 @@
+{
+    "experiment":  "P29_DPCG24",
+    "g0":  {
+               "experiment":  "P29_DPCG24",
+               "gate":  "G0",
+               "finite":  true,
+               "transpose_consistent":  true,
+               "candidate_permutation_invariant":  true,
+               "directional_boundary_shape":  [
+                                                  5,
+                                                  16,
+                                                  8
+                                              ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P29_DPCG24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "seconds":  1.711167499946896,
+                                "descriptor_sha256":  "ba5d9b21cc6b63c7bf66a298045bc3710650bcbf900dceadbf3dfba8a1b15dd8",
+                                "topm_sha256":  "9cc253924aab175150e7e44f69c432e18cdd81e9c3f822c8d88b5626c854655e",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "seconds":  1.4676051000133157,
+                                "descriptor_sha256":  "9395d6238ca0f312d1a3166496a7c663f6959fa81a7460b88d567b8210c52671",
+                                "topm_sha256":  "5fc53710025145270100aa74354d4f87fb1e494ce84b9d6e09440848a943647e",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "seconds":  1.4664678999688476,
+                                "descriptor_sha256":  "3680e19cd51fad68644299effec528f200f43afa02b8e2e4b03e108d26dd2969",
+                                "topm_sha256":  "d566e30505831dc47be1969d2f60c28cbb177ccb1ec3c40b2c4a0502949aa7a6",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "seconds":  1.4603761999751441,
+                                "descriptor_sha256":  "adb8d99768a37f1c2a6953ec1a0d77289f680bb8ce9354c8ba8bc727b662a514",
+                                "topm_sha256":  "4ab379f057386637144a4c1f734e8bafc6d6ae2170c7257b5e4f401e61a50a22",
+                                "finite":  true
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
