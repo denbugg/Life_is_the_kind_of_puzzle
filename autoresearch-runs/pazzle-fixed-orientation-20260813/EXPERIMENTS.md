@@ -757,3 +757,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P22 FCLR-24 | FP32 exact-frozen-row listwise boundary ranker with alpha fusion | **REJECT G2 fast futility**: FIT-selection recall@20 3.582144% vs 3.502887% (+0.079257 pp), below +1.0 pp; held/CAL not opened |
 
 | P23 DCTR-24 | Full-tile directional InfoNCE retriever, frozen-row union | **REJECT G2 fast futility**: coverage +4.180820 pp passed, but retrieval recall@20 only +0.012738 pp vs +1.0 pp gate; held/CAL not opened |
+
+| P24 RCR-24 | P23-retrieved full-pair cross-reranker | **STOPPED before G2 metric**: candidate-pool setup >5 min with no progress and ~15GB working set; no held/CAL opened |

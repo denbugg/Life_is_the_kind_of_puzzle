@@ -1,0 +1,9 @@
+{
+    "experiment":  "P24_RCR24",
+    "gate":  "G2_setup",
+    "decision":  "STOPPED_before_metric",
+    "reason":  "candidate-pool construction exceeded five-minute fast-futility observation window with no progress output and ~15GB working set",
+    "targets_opened":  false,
+    "held_accessed":  false,
+    "p8_imported":  false
+}

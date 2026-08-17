@@ -777,3 +777,5 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 - **P22 (REJECT):** Exact frozen-candidate listwise supervision did improve FIT-selection recall@20 slightly (+0.079257 pp), unlike P20/P21, but the effect was 12.6� below the +1.0 pp continuation gate. Candidate-conditioned hard-negative ranking alone is not sufficient at this capacity; no held split was spent.
 
 - **P23 (REJECT):** Full-tile directional retrieval can expand candidate coverage materially (+4.180820 pp at M=64) but its retrieved neighbors did not improve top-20 ranking (+0.012738 pp). Future coverage work must couple retrieval with a stronger cross-encoder/reranker rather than treating dot-product retrieval as a final compatibility score.
+
+- **P24 (STOPPED):** P23 coverage plus full-pair reranking remains scientifically plausible, but the first all-source candidate-pool construction was operationally unbounded (>5 min, ~15GB, no checkpoint). Any revisit must use a streaming/cached pool construction and a new pre-registration.
