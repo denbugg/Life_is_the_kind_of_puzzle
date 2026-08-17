@@ -1,0 +1,55 @@
+{
+    "experiment":  "P22_FCLR24",
+    "g0":  {
+               "experiment":  "P22_FCLR24",
+               "gate":  "G0",
+               "shape":  [
+                             1,
+                             3,
+                             20,
+                             20
+                         ],
+               "transpose_consistent":  true,
+               "candidate_row_invariant":  true,
+               "alpha_zero_identity":  true,
+               "finite":  true,
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P22_FCLR24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "count":  36864,
+                                "band_sha256":  "198071566fd4ba812853aabe7bff262376fadb0b98692607640f3544a3ebeb25",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "count":  36864,
+                                "band_sha256":  "c88fd58f7a74713d14f0ff2bad8e27efc4dbe6d6dee1829aa98a45b55fdc8a2d",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "count":  36864,
+                                "band_sha256":  "32abf38f65352685a18a1c83cb888368eef570d611de9f06043f3b12c9f0b72c",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "count":  36864,
+                                "band_sha256":  "6c208c876147fcaa593aac033208723e0d548d0b9101bc209b8e5cf0dad598f2",
+                                "finite":  true
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
