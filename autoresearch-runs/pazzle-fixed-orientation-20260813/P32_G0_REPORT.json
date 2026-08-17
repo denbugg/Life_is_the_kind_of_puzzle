@@ -1,0 +1,9 @@
+{
+  "experiment": "P32_DSCP24",
+  "gate": "G0",
+  "finite_logits": true,
+  "valid_bijection": true,
+  "exact_synthetic": true,
+  "permutation_contract": true,
+  "passes_G0": true
+}
