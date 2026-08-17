@@ -781,3 +781,4 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 - **P24 (STOPPED):** P23 coverage plus full-pair reranking remains scientifically plausible, but the first all-source candidate-pool construction was operationally unbounded (>5 min, ~15GB, no checkpoint). Any revisit must use a streaming/cached pool construction and a new pre-registration.
 
 - **P26 (REJECT):** A lightweight full-tile sampled hard-negative pair scorer ranked P23/frozen candidates materially worse than the frozen score (-0.716146 pp). Reducing cross-reranking compute alone does not recover pairwise ranking signal; future work needs a different supervision/representation lever.
+P29 G3 rejected: dense DINOv2 candidate coverage was real, but logistic/alpha score fusion gained only +0.007077 pp versus +1.0 pp gate. Do not open held; next lever is structural use of dense candidate graph rather than reweighting.
