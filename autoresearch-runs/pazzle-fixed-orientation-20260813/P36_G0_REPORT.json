@@ -1,0 +1,10 @@
+{
+  "experiment": "P36_CSRP24",
+  "gate": "G0",
+  "right_support": 1.0,
+  "absent_support": 0.0,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G0": true
+}
