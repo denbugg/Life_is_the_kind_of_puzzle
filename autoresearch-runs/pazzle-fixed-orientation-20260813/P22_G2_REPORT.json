@@ -1,0 +1,58 @@
+{
+  "experiment": "P22_FCLR24",
+  "gate": "G2",
+  "train_sources": 96,
+  "selection_sources": 32,
+  "groups": 30091,
+  "steps": 2000,
+  "best_loss": 4.366194248199463,
+  "scores": [
+    {
+      "alpha": 0.0,
+      "recall20": 0.035028872282608696,
+      "baseline_recall20": 0.035028872282608696,
+      "gain_pp": 0.0,
+      "coverage": 0.14206861413043478
+    },
+    {
+      "alpha": 0.05,
+      "recall20": 0.034915647644927536,
+      "baseline_recall20": 0.035028872282608696,
+      "gain_pp": -0.011322463768115992,
+      "coverage": 0.14206861413043478
+    },
+    {
+      "alpha": 0.1,
+      "recall20": 0.034915647644927536,
+      "baseline_recall20": 0.035028872282608696,
+      "gain_pp": -0.011322463768115992,
+      "coverage": 0.14206861413043478
+    },
+    {
+      "alpha": 0.2,
+      "recall20": 0.03549592391304348,
+      "baseline_recall20": 0.035028872282608696,
+      "gain_pp": 0.04670516304347838,
+      "coverage": 0.14206861413043478
+    },
+    {
+      "alpha": 0.4,
+      "recall20": 0.035821444746376815,
+      "baseline_recall20": 0.035028872282608696,
+      "gain_pp": 0.07925724637681195,
+      "coverage": 0.14206861413043478
+    }
+  ],
+  "selected": {
+    "alpha": 0.4,
+    "recall20": 0.035821444746376815,
+    "baseline_recall20": 0.035028872282608696,
+    "gain_pp": 0.07925724637681195,
+    "coverage": 0.14206861413043478
+  },
+  "checkpoint": "E:\\pazzle_work\\pazzle_fixed_orientation_20260813\\P22_fclr\\p22_g2_ranker_fp32.pt",
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": false
+}

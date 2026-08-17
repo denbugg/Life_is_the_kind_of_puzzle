@@ -773,3 +773,5 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 - **P20 (REJECT):** On true frozen candidate hard negatives, analytic boundary discontinuity, tangential derivative, and normal-gradient calibration did not improve rank96 candidate recall (3.455474% vs 3.484842%, -0.029368 pp). This closes the lightweight analytic score-calibration branch; retain raw seam score as the stronger feature.
 
 - **P21 (REJECT):** A 2,000-step FP32 positive-only masked bridge predictor yielded a nearly neutral candidate-reranking signal on source-disjoint FIT selection (+0.001415 pp recall@20 vs +1.0 pp gate). A local generative residual is not an additive score signal atop frozen rank96; do not spend the held split.
+
+- **P22 (REJECT):** Exact frozen-candidate listwise supervision did improve FIT-selection recall@20 slightly (+0.079257 pp), unlike P20/P21, but the effect was 12.6� below the +1.0 pp continuation gate. Candidate-conditioned hard-negative ranking alone is not sufficient at this capacity; no held split was spent.
