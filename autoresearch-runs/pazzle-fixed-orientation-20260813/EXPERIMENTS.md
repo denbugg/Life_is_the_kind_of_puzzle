@@ -709,3 +709,11 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | Objective | unchanged: 4272.0 to 4272.0. |
 | Runtime | 70.4956206000061 seconds, under 90s. |
 | Decision | **REJECT BEFORE CACHE ACCESS**. No FIT score cache, labels, target PNGs, CAL, DEV, held or test accessed. |
+
+## P16 G0a Runtime-Futility Rejection (2026-08-17)
+
+| Item | Result |
+|---|---|
+| Stage | Synthetic G0a only; no score cache or labels. |
+| Result | Exceeded pre-registered 90s cap without report; stopped at 133.828 CPU seconds. |
+| Decision | **REJECT BEFORE CACHE ACCESS**; no P16 tuning. |
