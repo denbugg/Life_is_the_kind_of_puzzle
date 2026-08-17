@@ -1,0 +1,58 @@
+{
+  "experiment": "P21_GBLS24",
+  "gate": "G2",
+  "train_sources": 96,
+  "selection_sources": 32,
+  "steps": 2000,
+  "batch_size": 512,
+  "best_train_loss": 0.01731630600988865,
+  "scores": [
+    {
+      "alpha": 0.0,
+      "recall20": 0.03456182065217392,
+      "baseline_recall20": 0.03456182065217392,
+      "gain_pp": 0.0,
+      "coverage": 0.13971920289855072
+    },
+    {
+      "alpha": 0.05,
+      "recall20": 0.03456182065217392,
+      "baseline_recall20": 0.03456182065217392,
+      "gain_pp": 0.0,
+      "coverage": 0.13971920289855072
+    },
+    {
+      "alpha": 0.1,
+      "recall20": 0.03447690217391304,
+      "baseline_recall20": 0.03456182065217392,
+      "gain_pp": -0.008491847826087862,
+      "coverage": 0.13971920289855072
+    },
+    {
+      "alpha": 0.2,
+      "recall20": 0.03457597373188406,
+      "baseline_recall20": 0.03456182065217392,
+      "gain_pp": 0.0014153079710144123,
+      "coverage": 0.13971920289855072
+    },
+    {
+      "alpha": 0.4,
+      "recall20": 0.034462749094202896,
+      "baseline_recall20": 0.03456182065217392,
+      "gain_pp": -0.009907155797102274,
+      "coverage": 0.13971920289855072
+    }
+  ],
+  "selected": {
+    "alpha": 0.2,
+    "recall20": 0.03457597373188406,
+    "baseline_recall20": 0.03456182065217392,
+    "gain_pp": 0.0014153079710144123,
+    "coverage": 0.13971920289855072
+  },
+  "checkpoint": "E:\\pazzle_work\\pazzle_fixed_orientation_20260813\\P21_gbls\\p21_g2_bridge_fp32.pt",
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": false
+}

@@ -771,3 +771,5 @@ Translation synchronization, topology propagation, relaxation labeling, componen
 Internal contiguous-vs-random strips are too easy for raw pixel continuity (AUROC 0.986855) and do not train a scorer superior to seam matching. Any next learned score experiment needs candidate-conditioned hard negatives from the frozen rank96 candidate set, not random different-tile proxy negatives.
 
 - **P20 (REJECT):** On true frozen candidate hard negatives, analytic boundary discontinuity, tangential derivative, and normal-gradient calibration did not improve rank96 candidate recall (3.455474% vs 3.484842%, -0.029368 pp). This closes the lightweight analytic score-calibration branch; retain raw seam score as the stronger feature.
+
+- **P21 (REJECT):** A 2,000-step FP32 positive-only masked bridge predictor yielded a nearly neutral candidate-reranking signal on source-disjoint FIT selection (+0.001415 pp recall@20 vs +1.0 pp gate). A local generative residual is not an additive score signal atop frozen rank96; do not spend the held split.

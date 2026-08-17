@@ -751,3 +751,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | Decision | **REJECT BEFORE LABELS / SCORE INJECTION / HELD**. |
 
 | P20 DDCC-24 | Analytic RGB/tangential-derivative/normal-gradient candidate calibration, C grid {0.01,0.1,1.0} | **REJECT G2 fast futility**: FIT recall@20 3.455474% vs frozen 3.484842% (-0.029368 pp); held/CAL not opened |
+
+| P21 GBLS-24 | Positive-only generative masked boundary-bridge likelihood residual fused into frozen scores | **REJECT G2 fast futility**: FIT-selection recall@20 3.457597% vs 3.456182% (+0.001415 pp), below +1.0 pp; held/CAL not opened |
