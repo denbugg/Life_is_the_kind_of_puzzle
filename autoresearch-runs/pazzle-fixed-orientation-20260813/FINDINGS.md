@@ -788,3 +788,5 @@ P30 G0 passed: canonical solver exactly recovers a fully specified directed reci
 P30 G1 passed: dense DINOv2 scoring is deterministic and fast on RTX 2070. Opposite directions are necessarily transposes under the dot-product construction, whereas horizontal and vertical fields are distinct; future dense graph code must preserve this invariant.
 
 P30 G2 rejected: reciprocal rank support gives only +0.002831 pp dense-only recall@20. Dense DINO candidate diversity does not become edge reliability through graph rank algebra. Escalate to a learned raw-boundary compatibility model or independent absolute-position prior; do not tune reciprocal weights further.
+
+P31 G2 rejected: a compact raw 8-pixel seam CNN with hard negatives yielded only +0.009907 pp recall@20. Local boundary learning alone is not sufficient at this scale; climb to independent global absolute-position or assignment evidence rather than tune seam architecture.

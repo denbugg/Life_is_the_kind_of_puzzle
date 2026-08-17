@@ -1,0 +1,42 @@
+{
+  "experiment": "P31_BHCS24",
+  "gate": "G2",
+  "fit_info": {
+    "epochs_run": 6,
+    "history": [
+      {
+        "epoch": 1,
+        "loss": 0.18454127780337265
+      },
+      {
+        "epoch": 2,
+        "loss": 0.15369109514254878
+      },
+      {
+        "epoch": 3,
+        "loss": 0.14971510072549185
+      },
+      {
+        "epoch": 4,
+        "loss": 0.1467994537546439
+      },
+      {
+        "epoch": 5,
+        "loss": 0.14497064054012299
+      },
+      {
+        "epoch": 6,
+        "loss": 0.14354824825473453
+      }
+    ],
+    "train_minutes": 2.604554558332893,
+    "example_count": 105984
+  },
+  "frozen_recall20": 0.03494395380434783,
+  "learned_recall20": 0.03504302536231884,
+  "gain_pp": 0.009907155797100886,
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": false
+}
