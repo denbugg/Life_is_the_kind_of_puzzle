@@ -793,3 +793,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P34 VCLS-24 vectorized consensus-loop support | G0 synthetic vectorized 2x2 contract | PASS | Detected closed right/down witnesses, rejected broken candidate, reciprocal contract valid. No real data accessed. Evidence: P34_G0_REPORT.json. |
 
 | P34 VCLS-24 vectorized consensus-loop support | G1 input-only vectorized witnesses | PASS | 16 boards in 3.49–4.14s; finite masks and 40.9k–50.7k selected directional witnesses/board. No labels/targets. Evidence: P34_G1_REPORT.json. |
+
+| P34 VCLS-24 vectorized consensus-loop support | G2 FIT-train vectorized coverage | REJECTED | Baseline mutual coverage 60.180782%; loop-selected coverage 52.748528%; gain −7.432254 pp, 0 invalid. Selection/held unopened. Evidence: P34_G2_REPORT.json and P34_REJECTION.md. |

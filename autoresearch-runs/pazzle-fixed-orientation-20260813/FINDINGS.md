@@ -792,3 +792,5 @@ P30 G2 rejected: reciprocal rank support gives only +0.002831 pp dense-only reca
 P31 G2 rejected: a compact raw 8-pixel seam CNN with hard negatives yielded only +0.009907 pp recall@20. Local boundary learning alone is not sufficient at this scale; climb to independent global absolute-position or assignment evidence rather than tune seam architecture.
 
 P32 G3 rejected: strong FIT-train semantic coordinate capacity (13.86% top-20, 1.208% placement) did not generalize to source-disjoint selection (3.288%, 0.168%). Global DINO semantic placement is prone to source-level memorization; future global learning must add anti-memorization augmentation or derive source-invariant structure rather than tune this assignment model.
+
+P34 G2 rejected: fast vectorized 2x2 loop closure materially reduced correct mutual-edge coverage (−7.432 pp) despite zero invalid boards. On the current rank96+DINO union, a single local loop is not discriminative enough and removes true edges more often than false ones. Future loop work must include calibrated confidence or larger consensus, not unweighted witness pruning.
