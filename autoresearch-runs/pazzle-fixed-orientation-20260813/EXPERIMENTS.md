@@ -771,3 +771,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P30 DGRS-24 dense graph reciprocity | G2 FIT-train dense-only reciprocal rank gate | REJECTED | Best locked lambda=1.0 raised dense-only recall@20 from 3.427404% to 3.430235%: +0.002831 pp, below +1.0 pp threshold. FIT-selection and held were not accessed. Evidence: P30_G2_REPORT.json and P30_REJECTION.md. |
 
 | P31 BHCS-24 boundary hard-contrastive scorer | G0 synthetic seam contract | PASS | Canonical 3x20x8 seams, valid bijection, and exact recovery on unambiguous synthetic graph. No real data accessed. Evidence: P31_G0_REPORT.json. |
+
+| P31 BHCS-24 boundary hard-contrastive scorer | G1 input-only streamed seam validation | PASS | 16 FIT inputs yielded finite canonical 3x20x8 seam CNN scores within cap. No labels or targets accessed. Evidence: P31_G1_REPORT.json. |
