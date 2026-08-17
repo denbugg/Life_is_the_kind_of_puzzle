@@ -1,0 +1,48 @@
+{
+  "experiment": "P26_SHNCS24",
+  "gate": "G2",
+  "train_groups": 39353,
+  "steps": 2000,
+  "scores": [
+    {
+      "alpha": 0.0,
+      "recall20": 0.02740036231884058,
+      "baseline_recall20": 0.03456182065217391,
+      "gain_pp": -0.7161458333333334
+    },
+    {
+      "alpha": 0.05,
+      "recall20": 0.02717391304347826,
+      "baseline_recall20": 0.03456182065217391,
+      "gain_pp": -0.7387907608695652
+    },
+    {
+      "alpha": 0.1,
+      "recall20": 0.02711730072463768,
+      "baseline_recall20": 0.03456182065217391,
+      "gain_pp": -0.7444519927536232
+    },
+    {
+      "alpha": 0.2,
+      "recall20": 0.026508718297101448,
+      "baseline_recall20": 0.03456182065217391,
+      "gain_pp": -0.8053102355072463
+    },
+    {
+      "alpha": 0.4,
+      "recall20": 0.025871829710144928,
+      "baseline_recall20": 0.03456182065217391,
+      "gain_pp": -0.8689990942028986
+    }
+  ],
+  "selected": {
+    "alpha": 0.0,
+    "recall20": 0.02740036231884058,
+    "baseline_recall20": 0.03456182065217391,
+    "gain_pp": -0.7161458333333334
+  },
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": false
+}

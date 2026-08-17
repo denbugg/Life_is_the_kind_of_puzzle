@@ -779,3 +779,5 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 - **P23 (REJECT):** Full-tile directional retrieval can expand candidate coverage materially (+4.180820 pp at M=64) but its retrieved neighbors did not improve top-20 ranking (+0.012738 pp). Future coverage work must couple retrieval with a stronger cross-encoder/reranker rather than treating dot-product retrieval as a final compatibility score.
 
 - **P24 (STOPPED):** P23 coverage plus full-pair reranking remains scientifically plausible, but the first all-source candidate-pool construction was operationally unbounded (>5 min, ~15GB, no checkpoint). Any revisit must use a streaming/cached pool construction and a new pre-registration.
+
+- **P26 (REJECT):** A lightweight full-tile sampled hard-negative pair scorer ranked P23/frozen candidates materially worse than the frozen score (-0.716146 pp). Reducing cross-reranking compute alone does not recover pairwise ranking signal; future work needs a different supervision/representation lever.
