@@ -1,0 +1,10 @@
+{
+  "experiment": "P39_MPRT24",
+  "gate": "G3",
+  "sources": 32,
+  "top20_recall": 0.03541100522852503,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G3": false
+}
