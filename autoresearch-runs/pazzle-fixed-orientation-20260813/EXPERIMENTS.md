@@ -804,3 +804,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P35 FCVT-24 coordinate regressor | G3 locked source-disjoint FIT-selection | REJECTED | MAE 6.569325 slots; Hungarian exact placement 0.238715%, below 3.189887% gate; 0 invalid. No CAL/DEV/held/test/target PNG/P8. Evidence: P35_G3_REPORT.json and P35_REJECTION.md. |
 
 | P36 CSRP-24 soft 2×2 relaxation | G0 synthetic weighted-support contract | PASS | Correct 2×2 path support=1.0; absent path=0.0; no data/targets/P8. Evidence: P36_G0_REPORT.json. |
+
+| P36 CSRP-24 soft 2×2 relaxation | G1 frozen-cache candidate preservation | PASS | 16 FIT P12 score caches; finite re-ranked candidates and 100% baseline candidate preservation; no labels/targets/P8. Evidence: P36_G1_REPORT.json. |

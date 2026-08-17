@@ -1,0 +1,123 @@
+{
+  "experiment": "P36_CSRP24",
+  "gate": "G1",
+  "sources": 16,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G1": true,
+  "rows": [
+    {
+      "source": "img_003194.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 391.5268279823608,
+      "down_support_mean": 392.13160609057235
+    },
+    {
+      "source": "img_004749.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 429.0617185225379,
+      "down_support_mean": 427.9097264742582
+    },
+    {
+      "source": "img_006622.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 420.3289951283758,
+      "down_support_mean": 419.38177822487637
+    },
+    {
+      "source": "img_004918.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 389.36865033132665,
+      "down_support_mean": 388.36327416050636
+    },
+    {
+      "source": "img_000425.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 413.2338107729478,
+      "down_support_mean": 413.87397716176207
+    },
+    {
+      "source": "img_001783.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 424.21100967078655,
+      "down_support_mean": 422.5913266319222
+    },
+    {
+      "source": "img_006075.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 422.3846826846693,
+      "down_support_mean": 421.9725205222838
+    },
+    {
+      "source": "img_001132.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 373.6253800456116,
+      "down_support_mean": 372.560607609393
+    },
+    {
+      "source": "img_001616.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 418.3867012531925,
+      "down_support_mean": 417.21829873557607
+    },
+    {
+      "source": "img_002645.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 410.58214233654746,
+      "down_support_mean": 411.02991633298205
+    },
+    {
+      "source": "img_002760.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 388.3099280508779,
+      "down_support_mean": 387.601027541062
+    },
+    {
+      "source": "img_003348.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 422.5409747724273,
+      "down_support_mean": 422.7587334822972
+    },
+    {
+      "source": "img_006649.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 375.6276761284922,
+      "down_support_mean": 375.84869498505486
+    },
+    {
+      "source": "img_002784.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 418.39745040541834,
+      "down_support_mean": 417.0763450971204
+    },
+    {
+      "source": "img_000266.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 417.75428872655374,
+      "down_support_mean": 416.7640441812063
+    },
+    {
+      "source": "img_002139.png",
+      "finite": true,
+      "preserved": true,
+      "right_support_mean": 423.77634428337586,
+      "down_support_mean": 423.5040423031317
+    }
+  ]
+}
