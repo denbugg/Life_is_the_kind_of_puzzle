@@ -73,7 +73,7 @@ def load(cache: Path, source: str):
 
 
 def gt_board(label_dir: Path, source: str):
-    label = p13.load_cached_label(label_dir, source)
+    label = p13.load_cached_labels(label_dir, source)
     board = np.empty(N, np.int64)
     board[label] = np.arange(N, dtype=np.int64)
     return board.reshape(24, 24)
