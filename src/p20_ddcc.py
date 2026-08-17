@@ -37,12 +37,13 @@ def target_map(label_dir,name):
  if np.unique(pos).size!=N or pos.min()!=0 or pos.max()!=N-1:raise RuntimeError('label target permutation invalid')
  inv=np.empty(N,np.int32);inv[pos]=np.arange(N,dtype=np.int32);return pos,inv
 def neighbor(pos,inv,i,d):
- r,c=divmod(int(pos[i]),GRID)
+ # `pos` maps target-grid position -> shuffled input slot; `inv` maps input slot -> target-grid position.
+ r,c=divmod(int(inv[i]),GRID)
  if d==0: c+=1
  elif d==1:r+=1
  elif d==2:c-=1
  else:r-=1
- return -1 if r<0 or r>=GRID or c<0 or c>=GRID else int(inv[r*GRID+c])
+ return -1 if r<0 or r>=GRID or c<0 or c>=GRID else int(pos[r*GRID+c])
 def g0(a):
  tile=np.zeros((20,20,3),np.float32);tile[:,:,0]=np.arange(20,dtype=np.float32)[None,:]/19
  nxt=tile.copy();nxt[:,:,0]+=20/19;wrong=np.flip(nxt,axis=1).copy()
