@@ -1,0 +1,92 @@
+{
+  "experiment": "P35_FCVT24",
+  "gate": "G1",
+  "sources": 16,
+  "max_equivariance_error": 1.1920928955078125e-07,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G1": true,
+  "rows": [
+    {
+      "source": "img_003194.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_004749.png",
+      "equivariance_max_abs": 1.1920928955078125e-07,
+      "finite": true
+    },
+    {
+      "source": "img_006622.png",
+      "equivariance_max_abs": 1.1920928955078125e-07,
+      "finite": true
+    },
+    {
+      "source": "img_004918.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_000425.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_001783.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_006075.png",
+      "equivariance_max_abs": 1.1920928955078125e-07,
+      "finite": true
+    },
+    {
+      "source": "img_001132.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_001616.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_002645.png",
+      "equivariance_max_abs": 1.1920928955078125e-07,
+      "finite": true
+    },
+    {
+      "source": "img_002760.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_003348.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_006649.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    },
+    {
+      "source": "img_002784.png",
+      "equivariance_max_abs": 1.1920928955078125e-07,
+      "finite": true
+    },
+    {
+      "source": "img_000266.png",
+      "equivariance_max_abs": 1.1920928955078125e-07,
+      "finite": true
+    },
+    {
+      "source": "img_002139.png",
+      "equivariance_max_abs": 8.940696716308594e-08,
+      "finite": true
+    }
+  ]
+}
