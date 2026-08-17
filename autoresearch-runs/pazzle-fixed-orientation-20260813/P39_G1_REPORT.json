@@ -1,0 +1,14 @@
+{
+  "experiment": "P39_MPRT24",
+  "gate": "G1",
+  "fit_sources": 5360,
+  "first200_loss": 0.37772968612611296,
+  "last200_loss": 0.14257406141608953,
+  "decrease_fraction": 0.6225500227999338,
+  "seconds": 469.33784990001004,
+  "invalid": 0,
+  "targets_opened": false,
+  "labels_opened": false,
+  "p8_imported": false,
+  "passes_G1": true
+}

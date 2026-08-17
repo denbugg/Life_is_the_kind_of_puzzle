@@ -822,3 +822,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P38 SRIT-24 scaled raw-image transformer | G2 80-epoch 96 FIT RGB adjacency training | REJECTED | 31M FP32 raw-only model, 7,680 updates/783.18s: Top-20 3.504302% vs 20% gate; loss 12.708713 remained random. G3 unopened. Evidence: P38_G2_REPORT.json and P38_REJECTION.md. |
 
 | P39 MPRT-24 masked raw-image pretraining | G0 synthetic masked reconstruction contract | PASS | finite RGB reconstruction with exact 20×20 shape; no data/targets/P8. Evidence: P39_G0_REPORT.json. |
+
+| P39 MPRT-24 | G1 5,360 FIT raw RGB masked pretraining | PASS | Loss 0.37773?0.14257 (-62.26%), 469.34s; labels/targets/P8 closed. |
