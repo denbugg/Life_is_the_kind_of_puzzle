@@ -1,0 +1,10 @@
+{
+  "experiment": "P34_VCLS24",
+  "gate": "G0",
+  "right_witnesses": 1,
+  "down_witnesses": 1,
+  "valid_2x2": true,
+  "rejects_broken": true,
+  "reciprocal_contract": true,
+  "passes_G0": true
+}
