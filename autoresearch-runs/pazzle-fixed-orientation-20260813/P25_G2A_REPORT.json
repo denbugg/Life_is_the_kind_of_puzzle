@@ -1,0 +1,650 @@
+{
+  "experiment": "P25_SCXR24",
+  "mode": "all",
+  "rows": [
+    {
+      "source": "img_000025.png",
+      "seconds": 0.4243608000106178,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000098.png",
+      "seconds": 0.1885101999505423,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000168.png",
+      "seconds": 0.17462820000946522,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000172.png",
+      "seconds": 0.20196540001779795,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000215.png",
+      "seconds": 0.18415789998834953,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000254.png",
+      "seconds": 0.17283610004233196,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000266.png",
+      "seconds": 0.19050910003716126,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000425.png",
+      "seconds": 0.18808009999338537,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000437.png",
+      "seconds": 0.19597359996987507,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000449.png",
+      "seconds": 0.1936433000373654,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000486.png",
+      "seconds": 0.1936138000455685,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000653.png",
+      "seconds": 0.1979554000427015,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000667.png",
+      "seconds": 0.19008480000775307,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000773.png",
+      "seconds": 0.1901956000365317,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000799.png",
+      "seconds": 0.18246639997232705,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000874.png",
+      "seconds": 0.19014469999819994,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000906.png",
+      "seconds": 0.21680420002667233,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000910.png",
+      "seconds": 0.21543260000180453,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_000950.png",
+      "seconds": 0.20762360002845526,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001047.png",
+      "seconds": 0.2192895999760367,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001132.png",
+      "seconds": 0.22549649997381493,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001173.png",
+      "seconds": 0.22024539997801185,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001219.png",
+      "seconds": 0.21986399998422712,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001238.png",
+      "seconds": 0.22369170002639294,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001256.png",
+      "seconds": 0.22886319999815896,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001257.png",
+      "seconds": 0.23365179996471852,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001344.png",
+      "seconds": 0.232288500003051,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001379.png",
+      "seconds": 0.2217668000375852,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001405.png",
+      "seconds": 0.23050090001197532,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001485.png",
+      "seconds": 0.22420950001105666,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001555.png",
+      "seconds": 0.2353239999501966,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001616.png",
+      "seconds": 0.23330030002398416,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001647.png",
+      "seconds": 0.23967280000215396,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001707.png",
+      "seconds": 0.24439349997555837,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001751.png",
+      "seconds": 0.2353069999953732,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001783.png",
+      "seconds": 0.23566140001639724,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001838.png",
+      "seconds": 0.22759700001915917,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001923.png",
+      "seconds": 0.2263806999544613,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001952.png",
+      "seconds": 0.232793600007426,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_001996.png",
+      "seconds": 0.22697350004455075,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002139.png",
+      "seconds": 0.22775160003220662,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002150.png",
+      "seconds": 0.25867470004595816,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002190.png",
+      "seconds": 0.22943050001049414,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002198.png",
+      "seconds": 0.2308746000053361,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002278.png",
+      "seconds": 0.23166990000754595,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002373.png",
+      "seconds": 0.22496260004118085,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002378.png",
+      "seconds": 0.21870229998603463,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002389.png",
+      "seconds": 0.24513070000102744,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002582.png",
+      "seconds": 0.22092870000051335,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002587.png",
+      "seconds": 0.22427469998365268,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002593.png",
+      "seconds": 0.21230120002292097,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002598.png",
+      "seconds": 0.22158779995515943,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002645.png",
+      "seconds": 0.22102799999993294,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002730.png",
+      "seconds": 0.21864480001386255,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002757.png",
+      "seconds": 0.22669019998284057,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002760.png",
+      "seconds": 0.22453579999273643,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002779.png",
+      "seconds": 0.23543230001814663,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002784.png",
+      "seconds": 0.2390231000026688,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002945.png",
+      "seconds": 0.23471689998405054,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_002953.png",
+      "seconds": 0.22929950000252575,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003039.png",
+      "seconds": 0.2425711000105366,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003059.png",
+      "seconds": 0.24147629999788478,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003116.png",
+      "seconds": 0.23246689996449277,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003155.png",
+      "seconds": 0.22853459999896586,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003194.png",
+      "seconds": 0.23195270000724122,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003245.png",
+      "seconds": 0.2361889000167139,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003291.png",
+      "seconds": 0.23947400000179186,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003348.png",
+      "seconds": 0.2390354999806732,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003476.png",
+      "seconds": 0.23989430000074208,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003482.png",
+      "seconds": 0.23285199998645112,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003495.png",
+      "seconds": 0.22261419997084886,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003629.png",
+      "seconds": 0.22122280002804473,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003789.png",
+      "seconds": 0.2284242999739945,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_003872.png",
+      "seconds": 0.2329090999555774,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004052.png",
+      "seconds": 0.23772850004024804,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004077.png",
+      "seconds": 0.23742419999325648,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004169.png",
+      "seconds": 0.24126039998373017,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004208.png",
+      "seconds": 0.22858430002816021,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004255.png",
+      "seconds": 0.2346739000058733,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004259.png",
+      "seconds": 0.22386299999197945,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004354.png",
+      "seconds": 0.22567410004558042,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004459.png",
+      "seconds": 0.24383260001195595,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004495.png",
+      "seconds": 0.23615189996780828,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004559.png",
+      "seconds": 0.23557129997061566,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004600.png",
+      "seconds": 0.2341863999608904,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004671.png",
+      "seconds": 0.23566900001605973,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004701.png",
+      "seconds": 0.2314331000088714,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004749.png",
+      "seconds": 0.22853879997273907,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004763.png",
+      "seconds": 0.23421549994964153,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004820.png",
+      "seconds": 0.22840069996891543,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004918.png",
+      "seconds": 0.23136979999253526,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004923.png",
+      "seconds": 0.22657810000237077,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_004953.png",
+      "seconds": 0.22889870003564283,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005003.png",
+      "seconds": 0.21953970001777634,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005151.png",
+      "seconds": 0.2259976000059396,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005164.png",
+      "seconds": 0.22703040001215413,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005328.png",
+      "seconds": 0.22695159999420866,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005335.png",
+      "seconds": 0.2277526999823749,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005380.png",
+      "seconds": 0.233866999973543,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005454.png",
+      "seconds": 0.2264873999520205,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005481.png",
+      "seconds": 0.23010649997740984,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005491.png",
+      "seconds": 0.23772420000750571,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005493.png",
+      "seconds": 0.2294776999624446,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005503.png",
+      "seconds": 0.22567849996266887,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005613.png",
+      "seconds": 0.2289157999912277,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005655.png",
+      "seconds": 0.2301109999534674,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005733.png",
+      "seconds": 0.2351534000481479,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005791.png",
+      "seconds": 0.2257067000027746,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_005908.png",
+      "seconds": 0.22831750003388152,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006050.png",
+      "seconds": 0.23472900001797825,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006075.png",
+      "seconds": 0.22999770002206787,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006113.png",
+      "seconds": 0.23188799998024479,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006175.png",
+      "seconds": 0.2344918000162579,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006264.png",
+      "seconds": 0.2313795000081882,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006285.png",
+      "seconds": 0.22803019999992102,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006393.png",
+      "seconds": 0.22063870000420138,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006410.png",
+      "seconds": 0.22792410000693053,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006413.png",
+      "seconds": 0.21902160003082827,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006432.png",
+      "seconds": 0.2297876999946311,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006474.png",
+      "seconds": 0.23427539999829605,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006481.png",
+      "seconds": 0.2272811000002548,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006494.png",
+      "seconds": 0.2214145000325516,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006622.png",
+      "seconds": 0.22815999999875203,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006649.png",
+      "seconds": 0.2339468999998644,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006781.png",
+      "seconds": 0.22753470001043752,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006804.png",
+      "seconds": 0.2275453000329435,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006881.png",
+      "seconds": 0.2342182999709621,
+      "rss_gb": 0.0
+    },
+    {
+      "source": "img_006966.png",
+      "seconds": 0.22987950005335733,
+      "rss_gb": 0.0
+    }
+  ],
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2a": true
+}
