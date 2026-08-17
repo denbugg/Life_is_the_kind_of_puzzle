@@ -1,0 +1,54 @@
+{
+    "experiment":  "P24_RCR24",
+    "g0":  {
+               "experiment":  "P24_RCR24",
+               "gate":  "G0",
+               "shape":  [
+                             6,
+                             20,
+                             20
+                         ],
+               "transpose_consistent":  true,
+               "candidate_permutation_invariant":  true,
+               "alpha_zero_identity":  true,
+               "finite":  true,
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P24_RCR24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "count":  18432,
+                                "pair_sha256":  "3fe30b5813b6127c2749c403adf6901346c2d7313d20d12d15bf0e54491aef86",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "count":  18432,
+                                "pair_sha256":  "272ac1ebedc32690ed6b862f269c6d0fea7dd2e82e2673ff9edf9c7b1cbbcb7c",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "count":  18432,
+                                "pair_sha256":  "65ce2f38356700727579564d469a515067aeed7a91f2ea12e87c774720aef1e9",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "count":  18432,
+                                "pair_sha256":  "0ce854dcbd9072804f8439ed9e6a546ce29b899f30a49002a508ee99e83d80da",
+                                "finite":  true
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
