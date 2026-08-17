@@ -1,0 +1,656 @@
+{
+  "experiment": "P20_DDCC24",
+  "gate": "G2",
+  "selected_C": 0.01,
+  "fit_recall20": 0.03455474411231884,
+  "fit_baseline_recall20": 0.03484842051630435,
+  "gain_pp": -0.029367640398551137,
+  "samples": 639408,
+  "positives": 39963,
+  "coverage": [
+    {
+      "source": "img_000025.png",
+      "positive_coverage": 0.12952898550724637,
+      "positives": 286
+    },
+    {
+      "source": "img_000098.png",
+      "positive_coverage": 0.16304347826086957,
+      "positives": 360
+    },
+    {
+      "source": "img_000168.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_000172.png",
+      "positive_coverage": 0.14583333333333334,
+      "positives": 322
+    },
+    {
+      "source": "img_000215.png",
+      "positive_coverage": 0.13632246376811594,
+      "positives": 301
+    },
+    {
+      "source": "img_000254.png",
+      "positive_coverage": 0.14673913043478262,
+      "positives": 324
+    },
+    {
+      "source": "img_000266.png",
+      "positive_coverage": 0.1403985507246377,
+      "positives": 310
+    },
+    {
+      "source": "img_000425.png",
+      "positive_coverage": 0.14628623188405798,
+      "positives": 323
+    },
+    {
+      "source": "img_000437.png",
+      "positive_coverage": 0.151268115942029,
+      "positives": 334
+    },
+    {
+      "source": "img_000449.png",
+      "positive_coverage": 0.1286231884057971,
+      "positives": 284
+    },
+    {
+      "source": "img_000486.png",
+      "positive_coverage": 0.13677536231884058,
+      "positives": 302
+    },
+    {
+      "source": "img_000653.png",
+      "positive_coverage": 0.14266304347826086,
+      "positives": 315
+    },
+    {
+      "source": "img_000667.png",
+      "positive_coverage": 0.14628623188405798,
+      "positives": 323
+    },
+    {
+      "source": "img_000773.png",
+      "positive_coverage": 0.11231884057971014,
+      "positives": 248
+    },
+    {
+      "source": "img_000799.png",
+      "positive_coverage": 0.1490036231884058,
+      "positives": 329
+    },
+    {
+      "source": "img_000874.png",
+      "positive_coverage": 0.129981884057971,
+      "positives": 287
+    },
+    {
+      "source": "img_000906.png",
+      "positive_coverage": 0.1539855072463768,
+      "positives": 340
+    },
+    {
+      "source": "img_000910.png",
+      "positive_coverage": 0.12907608695652173,
+      "positives": 285
+    },
+    {
+      "source": "img_000950.png",
+      "positive_coverage": 0.1526268115942029,
+      "positives": 337
+    },
+    {
+      "source": "img_001047.png",
+      "positive_coverage": 0.15806159420289856,
+      "positives": 349
+    },
+    {
+      "source": "img_001132.png",
+      "positive_coverage": 0.1539855072463768,
+      "positives": 340
+    },
+    {
+      "source": "img_001173.png",
+      "positive_coverage": 0.1503623188405797,
+      "positives": 332
+    },
+    {
+      "source": "img_001219.png",
+      "positive_coverage": 0.1286231884057971,
+      "positives": 284
+    },
+    {
+      "source": "img_001238.png",
+      "positive_coverage": 0.12635869565217392,
+      "positives": 279
+    },
+    {
+      "source": "img_001256.png",
+      "positive_coverage": 0.12952898550724637,
+      "positives": 286
+    },
+    {
+      "source": "img_001257.png",
+      "positive_coverage": 0.14945652173913043,
+      "positives": 330
+    },
+    {
+      "source": "img_001344.png",
+      "positive_coverage": 0.13179347826086957,
+      "positives": 291
+    },
+    {
+      "source": "img_001379.png",
+      "positive_coverage": 0.13677536231884058,
+      "positives": 302
+    },
+    {
+      "source": "img_001405.png",
+      "positive_coverage": 0.14175724637681159,
+      "positives": 313
+    },
+    {
+      "source": "img_001485.png",
+      "positive_coverage": 0.12047101449275362,
+      "positives": 266
+    },
+    {
+      "source": "img_001555.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_001616.png",
+      "positive_coverage": 0.13903985507246377,
+      "positives": 307
+    },
+    {
+      "source": "img_001647.png",
+      "positive_coverage": 0.13269927536231885,
+      "positives": 293
+    },
+    {
+      "source": "img_001707.png",
+      "positive_coverage": 0.14628623188405798,
+      "positives": 323
+    },
+    {
+      "source": "img_001751.png",
+      "positive_coverage": 0.15579710144927536,
+      "positives": 344
+    },
+    {
+      "source": "img_001783.png",
+      "positive_coverage": 0.11911231884057971,
+      "positives": 263
+    },
+    {
+      "source": "img_001838.png",
+      "positive_coverage": 0.14130434782608695,
+      "positives": 312
+    },
+    {
+      "source": "img_001923.png",
+      "positive_coverage": 0.12817028985507245,
+      "positives": 283
+    },
+    {
+      "source": "img_001952.png",
+      "positive_coverage": 0.1453804347826087,
+      "positives": 321
+    },
+    {
+      "source": "img_001996.png",
+      "positive_coverage": 0.125,
+      "positives": 276
+    },
+    {
+      "source": "img_002139.png",
+      "positive_coverage": 0.15353260869565216,
+      "positives": 339
+    },
+    {
+      "source": "img_002150.png",
+      "positive_coverage": 0.13632246376811594,
+      "positives": 301
+    },
+    {
+      "source": "img_002190.png",
+      "positive_coverage": 0.1358695652173913,
+      "positives": 300
+    },
+    {
+      "source": "img_002198.png",
+      "positive_coverage": 0.129981884057971,
+      "positives": 287
+    },
+    {
+      "source": "img_002278.png",
+      "positive_coverage": 0.15896739130434784,
+      "positives": 351
+    },
+    {
+      "source": "img_002373.png",
+      "positive_coverage": 0.1634963768115942,
+      "positives": 361
+    },
+    {
+      "source": "img_002378.png",
+      "positive_coverage": 0.1480978260869565,
+      "positives": 327
+    },
+    {
+      "source": "img_002389.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_002582.png",
+      "positive_coverage": 0.13858695652173914,
+      "positives": 306
+    },
+    {
+      "source": "img_002587.png",
+      "positive_coverage": 0.13134057971014493,
+      "positives": 290
+    },
+    {
+      "source": "img_002593.png",
+      "positive_coverage": 0.14266304347826086,
+      "positives": 315
+    },
+    {
+      "source": "img_002598.png",
+      "positive_coverage": 0.13632246376811594,
+      "positives": 301
+    },
+    {
+      "source": "img_002645.png",
+      "positive_coverage": 0.14447463768115942,
+      "positives": 319
+    },
+    {
+      "source": "img_002730.png",
+      "positive_coverage": 0.14764492753623187,
+      "positives": 326
+    },
+    {
+      "source": "img_002757.png",
+      "positive_coverage": 0.13269927536231885,
+      "positives": 293
+    },
+    {
+      "source": "img_002760.png",
+      "positive_coverage": 0.14945652173913043,
+      "positives": 330
+    },
+    {
+      "source": "img_002779.png",
+      "positive_coverage": 0.1322463768115942,
+      "positives": 292
+    },
+    {
+      "source": "img_002784.png",
+      "positive_coverage": 0.16077898550724637,
+      "positives": 355
+    },
+    {
+      "source": "img_002945.png",
+      "positive_coverage": 0.14447463768115942,
+      "positives": 319
+    },
+    {
+      "source": "img_002953.png",
+      "positive_coverage": 0.14673913043478262,
+      "positives": 324
+    },
+    {
+      "source": "img_003039.png",
+      "positive_coverage": 0.1585144927536232,
+      "positives": 350
+    },
+    {
+      "source": "img_003059.png",
+      "positive_coverage": 0.15443840579710144,
+      "positives": 341
+    },
+    {
+      "source": "img_003116.png",
+      "positive_coverage": 0.14130434782608695,
+      "positives": 312
+    },
+    {
+      "source": "img_003155.png",
+      "positive_coverage": 0.13677536231884058,
+      "positives": 302
+    },
+    {
+      "source": "img_003194.png",
+      "positive_coverage": 0.13496376811594202,
+      "positives": 298
+    },
+    {
+      "source": "img_003245.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_003291.png",
+      "positive_coverage": 0.1403985507246377,
+      "positives": 310
+    },
+    {
+      "source": "img_003348.png",
+      "positive_coverage": 0.15081521739130435,
+      "positives": 333
+    },
+    {
+      "source": "img_003476.png",
+      "positive_coverage": 0.14492753623188406,
+      "positives": 320
+    },
+    {
+      "source": "img_003482.png",
+      "positive_coverage": 0.13903985507246377,
+      "positives": 307
+    },
+    {
+      "source": "img_003495.png",
+      "positive_coverage": 0.13360507246376813,
+      "positives": 295
+    },
+    {
+      "source": "img_003629.png",
+      "positive_coverage": 0.1431159420289855,
+      "positives": 316
+    },
+    {
+      "source": "img_003789.png",
+      "positive_coverage": 0.15534420289855072,
+      "positives": 343
+    },
+    {
+      "source": "img_003872.png",
+      "positive_coverage": 0.14673913043478262,
+      "positives": 324
+    },
+    {
+      "source": "img_004052.png",
+      "positive_coverage": 0.14945652173913043,
+      "positives": 330
+    },
+    {
+      "source": "img_004077.png",
+      "positive_coverage": 0.12635869565217392,
+      "positives": 279
+    },
+    {
+      "source": "img_004169.png",
+      "positive_coverage": 0.1480978260869565,
+      "positives": 327
+    },
+    {
+      "source": "img_004208.png",
+      "positive_coverage": 0.13994565217391305,
+      "positives": 309
+    },
+    {
+      "source": "img_004255.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_004259.png",
+      "positive_coverage": 0.151268115942029,
+      "positives": 334
+    },
+    {
+      "source": "img_004354.png",
+      "positive_coverage": 0.13768115942028986,
+      "positives": 304
+    },
+    {
+      "source": "img_004459.png",
+      "positive_coverage": 0.13677536231884058,
+      "positives": 302
+    },
+    {
+      "source": "img_004495.png",
+      "positive_coverage": 0.13677536231884058,
+      "positives": 302
+    },
+    {
+      "source": "img_004559.png",
+      "positive_coverage": 0.13949275362318841,
+      "positives": 308
+    },
+    {
+      "source": "img_004600.png",
+      "positive_coverage": 0.15670289855072464,
+      "positives": 346
+    },
+    {
+      "source": "img_004671.png",
+      "positive_coverage": 0.13722826086956522,
+      "positives": 303
+    },
+    {
+      "source": "img_004701.png",
+      "positive_coverage": 0.15172101449275363,
+      "positives": 335
+    },
+    {
+      "source": "img_004749.png",
+      "positive_coverage": 0.14130434782608695,
+      "positives": 312
+    },
+    {
+      "source": "img_004763.png",
+      "positive_coverage": 0.13949275362318841,
+      "positives": 308
+    },
+    {
+      "source": "img_004820.png",
+      "positive_coverage": 0.13541666666666666,
+      "positives": 299
+    },
+    {
+      "source": "img_004918.png",
+      "positive_coverage": 0.15353260869565216,
+      "positives": 339
+    },
+    {
+      "source": "img_004923.png",
+      "positive_coverage": 0.14356884057971014,
+      "positives": 317
+    },
+    {
+      "source": "img_004953.png",
+      "positive_coverage": 0.14447463768115942,
+      "positives": 319
+    },
+    {
+      "source": "img_005003.png",
+      "positive_coverage": 0.15942028985507245,
+      "positives": 352
+    },
+    {
+      "source": "img_005151.png",
+      "positive_coverage": 0.14764492753623187,
+      "positives": 326
+    },
+    {
+      "source": "img_005164.png",
+      "positive_coverage": 0.1331521739130435,
+      "positives": 294
+    },
+    {
+      "source": "img_005328.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_005335.png",
+      "positive_coverage": 0.14628623188405798,
+      "positives": 323
+    },
+    {
+      "source": "img_005380.png",
+      "positive_coverage": 0.1480978260869565,
+      "positives": 327
+    },
+    {
+      "source": "img_005454.png",
+      "positive_coverage": 0.14402173913043478,
+      "positives": 318
+    },
+    {
+      "source": "img_005481.png",
+      "positive_coverage": 0.1322463768115942,
+      "positives": 292
+    },
+    {
+      "source": "img_005491.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_005493.png",
+      "positive_coverage": 0.12454710144927536,
+      "positives": 275
+    },
+    {
+      "source": "img_005503.png",
+      "positive_coverage": 0.13496376811594202,
+      "positives": 298
+    },
+    {
+      "source": "img_005613.png",
+      "positive_coverage": 0.14673913043478262,
+      "positives": 324
+    },
+    {
+      "source": "img_005655.png",
+      "positive_coverage": 0.1431159420289855,
+      "positives": 316
+    },
+    {
+      "source": "img_005733.png",
+      "positive_coverage": 0.15806159420289856,
+      "positives": 349
+    },
+    {
+      "source": "img_005791.png",
+      "positive_coverage": 0.11820652173913043,
+      "positives": 261
+    },
+    {
+      "source": "img_005908.png",
+      "positive_coverage": 0.1503623188405797,
+      "positives": 332
+    },
+    {
+      "source": "img_006050.png",
+      "positive_coverage": 0.1331521739130435,
+      "positives": 294
+    },
+    {
+      "source": "img_006075.png",
+      "positive_coverage": 0.12590579710144928,
+      "positives": 278
+    },
+    {
+      "source": "img_006113.png",
+      "positive_coverage": 0.1480978260869565,
+      "positives": 327
+    },
+    {
+      "source": "img_006175.png",
+      "positive_coverage": 0.14221014492753623,
+      "positives": 314
+    },
+    {
+      "source": "img_006264.png",
+      "positive_coverage": 0.12364130434782608,
+      "positives": 273
+    },
+    {
+      "source": "img_006285.png",
+      "positive_coverage": 0.13134057971014493,
+      "positives": 290
+    },
+    {
+      "source": "img_006393.png",
+      "positive_coverage": 0.14583333333333334,
+      "positives": 322
+    },
+    {
+      "source": "img_006410.png",
+      "positive_coverage": 0.14221014492753623,
+      "positives": 314
+    },
+    {
+      "source": "img_006413.png",
+      "positive_coverage": 0.13541666666666666,
+      "positives": 299
+    },
+    {
+      "source": "img_006432.png",
+      "positive_coverage": 0.1381340579710145,
+      "positives": 305
+    },
+    {
+      "source": "img_006474.png",
+      "positive_coverage": 0.1403985507246377,
+      "positives": 310
+    },
+    {
+      "source": "img_006481.png",
+      "positive_coverage": 0.14628623188405798,
+      "positives": 323
+    },
+    {
+      "source": "img_006494.png",
+      "positive_coverage": 0.13858695652173914,
+      "positives": 306
+    },
+    {
+      "source": "img_006622.png",
+      "positive_coverage": 0.1213768115942029,
+      "positives": 268
+    },
+    {
+      "source": "img_006649.png",
+      "positive_coverage": 0.15625,
+      "positives": 345
+    },
+    {
+      "source": "img_006781.png",
+      "positive_coverage": 0.13632246376811594,
+      "positives": 301
+    },
+    {
+      "source": "img_006804.png",
+      "positive_coverage": 0.14855072463768115,
+      "positives": 328
+    },
+    {
+      "source": "img_006881.png",
+      "positive_coverage": 0.1408514492753623,
+      "positives": 311
+    },
+    {
+      "source": "img_006966.png",
+      "positive_coverage": 0.1480978260869565,
+      "positives": 327
+    }
+  ],
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": true
+}

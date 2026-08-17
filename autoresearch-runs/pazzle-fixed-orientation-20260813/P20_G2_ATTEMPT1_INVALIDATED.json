@@ -1,0 +1,7 @@
+{
+    "experiment":  "P20_DDCC24",
+    "attempt":  "G2_attempt_1",
+    "status":  "INVALIDATED_BEFORE_COMPLETION",
+    "reason":  "target_tile_to_slot inverse was used in neighbor lookup; live baseline inconsistency detected; no G2 model/report/held result accepted",
+    "timestamp":  "2026-08-17T15:03:08.5829956+03:00"
+}

@@ -769,3 +769,5 @@ Translation synchronization, topology propagation, relaxation labeling, componen
 ## P19 proxy-task lesson
 
 Internal contiguous-vs-random strips are too easy for raw pixel continuity (AUROC 0.986855) and do not train a scorer superior to seam matching. Any next learned score experiment needs candidate-conditioned hard negatives from the frozen rank96 candidate set, not random different-tile proxy negatives.
+
+- **P20 (REJECT):** On true frozen candidate hard negatives, analytic boundary discontinuity, tangential derivative, and normal-gradient calibration did not improve rank96 candidate recall (3.455474% vs 3.484842%, -0.029368 pp). This closes the lightweight analytic score-calibration branch; retain raw seam score as the stronger feature.

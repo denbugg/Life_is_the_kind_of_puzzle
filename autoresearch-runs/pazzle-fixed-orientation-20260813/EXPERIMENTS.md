@@ -749,3 +749,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | G0 | PASS: input-only strip, alpha=0 identity, candidate-ID invariance. |
 | G1 | CNN AUROC 0.859468 vs raw seam 0.986855; required +0.030, observed -0.127387. |
 | Decision | **REJECT BEFORE LABELS / SCORE INJECTION / HELD**. |
+
+| P20 DDCC-24 | Analytic RGB/tangential-derivative/normal-gradient candidate calibration, C grid {0.01,0.1,1.0} | **REJECT G2 fast futility**: FIT recall@20 3.455474% vs frozen 3.484842% (-0.029368 pp); held/CAL not opened |
