@@ -1,0 +1,9 @@
+{
+    "experiment":  "P25_SCXR24",
+    "gate":  "G2b",
+    "decision":  "STOPPED_before_metric",
+    "reason":  "no 250-step checkpoint after extended high-memory first segment; process held ~14.8GB working set",
+    "targets_opened":  false,
+    "held_accessed":  false,
+    "p8_imported":  false
+}
