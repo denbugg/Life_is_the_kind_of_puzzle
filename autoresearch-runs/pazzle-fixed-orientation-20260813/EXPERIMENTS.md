@@ -785,3 +785,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P32 DSCP-24 DINO semantic coordinate prior | G3 frozen source-disjoint FIT-selection | REJECTED | Frozen checkpoint: top-20 3.287760%, Hungarian placement 0.168186%, 0 invalid; fails 5.0%/0.50% gate. Held unopened. Evidence: P32_G3_REPORT.json and P32_REJECTION.md. |
 
 | P33 CVA-24 cycle-verified agglomeration | G0 synthetic component consistency | PASS | Accepted 6 valid edges, rejected contradiction, recovered two non-overlapping 2x2 components. No real data accessed. Evidence: P33_G0_REPORT.json. |
+
+| P33 CVA-24 cycle-verified agglomeration | G1 input-only frozen+DINO candidate union | PASS | 16 cache-backed FIT inputs produced 116–128 unique non-self candidates/direction in 1.69–1.90s. No labels/targets accessed. Evidence: P33_G1_REPORT.json. |

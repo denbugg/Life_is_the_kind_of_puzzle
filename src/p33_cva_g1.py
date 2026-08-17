@@ -10,9 +10,9 @@ import p13_component_pose as p13
 def bad(*x):
  if 'p8' in '\n'.join(map(lambda q:str(q).lower(),x)):raise RuntimeError('P8 prohibited')
 def main():
- p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=Path(r'E:\pazzle_data\train\inputs'));p.add_argument('--scores',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P12_loop_consensus\score_cache'));p.add_argument('--work',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P33_cva'));p.add_argument('--sources',nargs='*',default=('img_000002.png','img_000025.png','img_000098.png','img_000168.png','img_000172.png','img_000194.png','img_000223.png','img_000243.png','img_000267.png','img_000304.png','img_000344.png','img_000384.png','img_000426.png','img_000457.png','img_000480.png','img_000513.png'));a=p.parse_args();bad(a.inputs,a.scores,a.work);a.work.mkdir(parents=True,exist_ok=True);dev=torch.device('cuda');m=model(dev);rows=[]
+ p=argparse.ArgumentParser();p.add_argument('--inputs',type=Path,default=Path(r'E:\pazzle_data\train\inputs'));p.add_argument('--scores',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P12_loop_consensus\score_cache'));p.add_argument('--work',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P33_cva'));p.add_argument('--sources',nargs='*',default=('img_000025.png','img_000098.png','img_000155.png','img_000168.png','img_000172.png','img_000215.png','img_000254.png','img_000266.png','img_000425.png','img_000437.png','img_000449.png','img_000486.png','img_000538.png','img_000653.png','img_000664.png','img_000667.png'));a=p.parse_args();bad(a.inputs,a.scores,a.work);a.work.mkdir(parents=True,exist_ok=True);dev=torch.device('cuda');m=model(dev);rows=[]
  for k,n in enumerate(a.sources,1):
-  st=time.perf_counter();c,v,_=p13.load_score_cache(a.scores,n);z=desc(m,load_tiles(a.inputs,n),dev);b=torch.stack([z[:,:,:,-1,:],z[:,-1,:,:],z[:,:,0,:],z[:,0,:,:]]);dn=[topm(b[d],b[(d+2)%4],64)[0] for d in range(4)];length=[];valid=True
+  st=time.perf_counter();c,v,_=p13.load_score_cache(a.scores,n);z=desc(m,load_tiles(a.inputs,n),dev);b=torch.stack([z[:,:,-1,:],z[:,-1,:,:],z[:,:,0,:],z[:,0,:,:]]);dn=[topm(b[d],b[(d+2)%4],64)[0] for d in range(4)];length=[];valid=True
   for d in range(4):
    for i in range(N):
     u=[]

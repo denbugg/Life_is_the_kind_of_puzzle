@@ -1,0 +1,122 @@
+{
+  "experiment": "P33_CVA24",
+  "gate": "G1",
+  "rows": [
+    {
+      "source": "img_000025.png",
+      "seconds": 1.8959332999656908,
+      "min_union": 116,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000098.png",
+      "seconds": 1.6947499999660067,
+      "min_union": 117,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000155.png",
+      "seconds": 1.8255102000548504,
+      "min_union": 123,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000168.png",
+      "seconds": 1.6906995000317693,
+      "min_union": 119,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000172.png",
+      "seconds": 1.6858570000040345,
+      "min_union": 121,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000215.png",
+      "seconds": 1.6894532999722287,
+      "min_union": 118,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000254.png",
+      "seconds": 1.696342499984894,
+      "min_union": 118,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000266.png",
+      "seconds": 1.694327200006228,
+      "min_union": 117,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000425.png",
+      "seconds": 1.6898948999587446,
+      "min_union": 118,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000437.png",
+      "seconds": 1.6941362000070512,
+      "min_union": 117,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000449.png",
+      "seconds": 1.6925498999771662,
+      "min_union": 121,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000486.png",
+      "seconds": 1.6926348999841139,
+      "min_union": 117,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000538.png",
+      "seconds": 1.8552400000044145,
+      "min_union": 120,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000653.png",
+      "seconds": 1.694026000041049,
+      "min_union": 116,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000664.png",
+      "seconds": 1.7806499000289477,
+      "min_union": 120,
+      "max_union": 128,
+      "valid": true
+    },
+    {
+      "source": "img_000667.png",
+      "seconds": 1.6920403999974951,
+      "min_union": 118,
+      "max_union": 128,
+      "valid": true
+    }
+  ],
+  "labels_used": false,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G1": true
+}
