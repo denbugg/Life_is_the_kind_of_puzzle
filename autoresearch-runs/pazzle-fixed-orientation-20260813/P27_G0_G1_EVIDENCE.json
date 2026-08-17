@@ -1,0 +1,50 @@
+{
+    "experiment":  "P27_AMGC24",
+    "g0":  {
+               "experiment":  "P27_AMGC24",
+               "gate":  "G0",
+               "self_continuation_lower":  true,
+               "transpose_consistent":  true,
+               "epsilon_finite":  true,
+               "candidate_permutation_invariant":  true,
+               "alpha_zero_identity":  true,
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P27_AMGC24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "count":  183160,
+                                "amgc_sha256":  "53bc8319b13243a07193bedd75dc9d722aa346cc0af488dbed7b49eae2d8056c",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "count":  187256,
+                                "amgc_sha256":  "f949c6eb90084956650acf008e1c2b87840a64dec2ab034829ec7d91eca4493f",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "count":  183832,
+                                "amgc_sha256":  "cbcc13c496702497b72982d2fd5cd605d3876fd348ff1943f3cd4d19b78ef43a",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "count":  187856,
+                                "amgc_sha256":  "243f1c9ea5adea903863d95b68c617b94001e90649da0f536e7299f610ced8e5",
+                                "finite":  true
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
