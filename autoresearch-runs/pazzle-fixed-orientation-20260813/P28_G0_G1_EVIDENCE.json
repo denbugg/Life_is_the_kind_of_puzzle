@@ -1,0 +1,73 @@
+{
+    "experiment":  "P28_GDCP24",
+    "g0":  {
+               "experiment":  "P28_GDCP24",
+               "gate":  "G0",
+               "translation_invariant":  true,
+               "permutation_invariant":  true,
+               "directed_axis_correct":  true,
+               "finite":  true,
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P28_GDCP24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "edges":  183160,
+                                "graph_sha256":  "558c9617fb794a211c0325c7dfc3bb71d640ae1f7a4a569e39c5a817d83da0f2",
+                                "finite":  true,
+                                "directed_values":  [
+                                                        0,
+                                                        1,
+                                                        2,
+                                                        3
+                                                    ]
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "edges":  187256,
+                                "graph_sha256":  "826a802e8a98c795110e482c46111bc4575091d1bf2b8684ade40ffafa68cede",
+                                "finite":  true,
+                                "directed_values":  [
+                                                        0,
+                                                        1,
+                                                        2,
+                                                        3
+                                                    ]
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "edges":  183832,
+                                "graph_sha256":  "3413e8aca3ec66598f51812547d1e340aa302dba59f96b5b1aa214c96cb89d2f",
+                                "finite":  true,
+                                "directed_values":  [
+                                                        0,
+                                                        1,
+                                                        2,
+                                                        3
+                                                    ]
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "edges":  187856,
+                                "graph_sha256":  "9461e1dfd128da20d2243f5fc0c5ec79a760efd9376de02a6e1c599525135888",
+                                "finite":  true,
+                                "directed_values":  [
+                                                        0,
+                                                        1,
+                                                        2,
+                                                        3
+                                                    ]
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
