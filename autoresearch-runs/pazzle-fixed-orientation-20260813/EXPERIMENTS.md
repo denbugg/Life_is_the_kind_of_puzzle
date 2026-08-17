@@ -725,3 +725,11 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | G0a | PASS: exact deltas, planted recovery, 11.227s. |
 | G0b | Exceeded fixed 60s before report; stopped at 87.359 CPU seconds. |
 | Decision | **REJECT BEFORE FIT LABELS/HELD**. Frozen scores only; no target PNG/CAL/DEV/test. |
+
+## P18a Runtime-Futility Record (2026-08-17)
+
+| Item | Result |
+|---|---|
+| Stage A | Stopped at 203.5 CPU seconds vs 180-second cap; 3 of 4 score-only seed artifacts persisted. |
+| Labels / target PNG / closed splits | Not accessed. |
+| Decision | No metric decision. P18b pre-registers SHA-validated one-seed resume and unchanged exact-delta Stage B. |
