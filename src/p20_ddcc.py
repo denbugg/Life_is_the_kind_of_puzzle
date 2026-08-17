@@ -83,7 +83,7 @@ def model_fit(x,y,C):
  mu=x.mean(0);sd=x.std(0);sd=np.maximum(sd,1e-6);z=(x-mu)/sd
  m=LogisticRegression(C=C,penalty='l2',solver='lbfgs',class_weight='balanced',max_iter=250,tol=1e-5,n_jobs=1,random_state=20260817).fit(z,y)
  return {'mean':mu,'std':sd,'coef':m.coef_[0].astype(np.float32),'intercept':float(m.intercept_[0]),'C':float(C)}
-def score_features(f,m):return (f-m['mean'])@m['coef']/m['std']+m['intercept']
+def score_features(f,m):return ((f-m['mean'])/m['std'])@m['coef']+m['intercept']
 def recall(a,names,m,labels=True):
  rows=[];allhits=[];basehits=[]
  for k,name in enumerate(names):
