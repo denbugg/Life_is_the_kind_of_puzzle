@@ -767,3 +767,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P30 DGRS-24 dense graph reciprocity | G0 synthetic directed graph | PASS | Valid canonical tile-to-slot bijection and exact recovery on the unambiguous 24x24 synthetic reciprocal graph. No real inputs, labels, targets, or P8 artifacts accessed. Evidence: P30_G0_REPORT.json. |
 
 | P30 DGRS-24 dense graph reciprocity | G1 input-only descriptor contract | PASS | 16 FIT inputs completed in 1.46–1.66 seconds each; opposite directions were transpose-symmetric and orthogonal direction fields differed on >99.8% of entries. Labels and targets remained unopened. Evidence: P30_G1_REPORT.json. |
+
+| P30 DGRS-24 dense graph reciprocity | G2 FIT-train dense-only reciprocal rank gate | REJECTED | Best locked lambda=1.0 raised dense-only recall@20 from 3.427404% to 3.430235%: +0.002831 pp, below +1.0 pp threshold. FIT-selection and held were not accessed. Evidence: P30_G2_REPORT.json and P30_REJECTION.md. |

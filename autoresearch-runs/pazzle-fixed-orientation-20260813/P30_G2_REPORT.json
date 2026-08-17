@@ -1,0 +1,41 @@
+{
+  "experiment": "P30_DGRS24",
+  "gate": "G2",
+  "train_grid": [
+    {
+      "lambda": 0.0,
+      "recall20": 0.034274041364734296,
+      "boards": 96
+    },
+    {
+      "lambda": 0.1,
+      "recall20": 0.0341796875,
+      "boards": 96
+    },
+    {
+      "lambda": 0.25,
+      "recall20": 0.03425517059178745,
+      "boards": 96
+    },
+    {
+      "lambda": 0.5,
+      "recall20": 0.03429762983091788,
+      "boards": 96
+    },
+    {
+      "lambda": 1.0,
+      "recall20": 0.03430234752415459,
+      "boards": 96
+    }
+  ],
+  "selected": {
+    "lambda": 1.0,
+    "recall20": 0.03430234752415459,
+    "boards": 96
+  },
+  "gain_pp": 0.0028306159420295185,
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": false
+}

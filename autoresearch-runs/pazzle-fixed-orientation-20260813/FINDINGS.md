@@ -786,3 +786,5 @@ P29 G3 rejected: dense DINOv2 candidate coverage was real, but logistic/alpha sc
 P30 G0 passed: canonical solver exactly recovers a fully specified directed reciprocal synthetic grid. The dense-only structural implementation contract is sound; proceed to input-only descriptor validation.
 
 P30 G1 passed: dense DINOv2 scoring is deterministic and fast on RTX 2070. Opposite directions are necessarily transposes under the dot-product construction, whereas horizontal and vertical fields are distinct; future dense graph code must preserve this invariant.
+
+P30 G2 rejected: reciprocal rank support gives only +0.002831 pp dense-only recall@20. Dense DINO candidate diversity does not become edge reliability through graph rank algebra. Escalate to a learned raw-boundary compatibility model or independent absolute-position prior; do not tune reciprocal weights further.
