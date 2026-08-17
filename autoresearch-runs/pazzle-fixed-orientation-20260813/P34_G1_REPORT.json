@@ -1,0 +1,154 @@
+{
+  "experiment": "P34_VCLS24",
+  "gate": "G1",
+  "rows": [
+    {
+      "source": "img_000025.png",
+      "right_candidates": 73486,
+      "down_candidates": 73511,
+      "right_selected": 50686,
+      "down_selected": 49370,
+      "valid": true,
+      "seconds": 4.140694800007623
+    },
+    {
+      "source": "img_000098.png",
+      "right_candidates": 73604,
+      "down_candidates": 73599,
+      "right_selected": 46343,
+      "down_selected": 45820,
+      "valid": true,
+      "seconds": 3.903684099961538
+    },
+    {
+      "source": "img_000155.png",
+      "right_candidates": 73707,
+      "down_candidates": 73710,
+      "right_selected": 45198,
+      "down_selected": 44701,
+      "valid": true,
+      "seconds": 3.6731342999846675
+    },
+    {
+      "source": "img_000168.png",
+      "right_candidates": 73561,
+      "down_candidates": 73583,
+      "right_selected": 49999,
+      "down_selected": 48383,
+      "valid": true,
+      "seconds": 3.7828213999746367
+    },
+    {
+      "source": "img_000172.png",
+      "right_candidates": 73621,
+      "down_candidates": 73643,
+      "right_selected": 49086,
+      "down_selected": 48329,
+      "valid": true,
+      "seconds": 3.599407500005327
+    },
+    {
+      "source": "img_000215.png",
+      "right_candidates": 73692,
+      "down_candidates": 73678,
+      "right_selected": 48583,
+      "down_selected": 47349,
+      "valid": true,
+      "seconds": 3.4928398999618366
+    },
+    {
+      "source": "img_000254.png",
+      "right_candidates": 73409,
+      "down_candidates": 73475,
+      "right_selected": 50499,
+      "down_selected": 49564,
+      "valid": true,
+      "seconds": 3.509890399989672
+    },
+    {
+      "source": "img_000266.png",
+      "right_candidates": 73530,
+      "down_candidates": 73498,
+      "right_selected": 45905,
+      "down_selected": 44632,
+      "valid": true,
+      "seconds": 3.7364649000228383
+    },
+    {
+      "source": "img_000425.png",
+      "right_candidates": 73396,
+      "down_candidates": 73362,
+      "right_selected": 48108,
+      "down_selected": 46582,
+      "valid": true,
+      "seconds": 3.92281489999732
+    },
+    {
+      "source": "img_000437.png",
+      "right_candidates": 73671,
+      "down_candidates": 73637,
+      "right_selected": 40866,
+      "down_selected": 40851,
+      "valid": true,
+      "seconds": 3.666126299998723
+    },
+    {
+      "source": "img_000449.png",
+      "right_candidates": 73660,
+      "down_candidates": 73643,
+      "right_selected": 46710,
+      "down_selected": 45926,
+      "valid": true,
+      "seconds": 3.678424099984113
+    },
+    {
+      "source": "img_000486.png",
+      "right_candidates": 73470,
+      "down_candidates": 73467,
+      "right_selected": 47506,
+      "down_selected": 45574,
+      "valid": true,
+      "seconds": 3.5596014999900945
+    },
+    {
+      "source": "img_000538.png",
+      "right_candidates": 73662,
+      "down_candidates": 73635,
+      "right_selected": 45923,
+      "down_selected": 44214,
+      "valid": true,
+      "seconds": 3.5832229999941774
+    },
+    {
+      "source": "img_000653.png",
+      "right_candidates": 73572,
+      "down_candidates": 73589,
+      "right_selected": 45291,
+      "down_selected": 44645,
+      "valid": true,
+      "seconds": 3.587952799978666
+    },
+    {
+      "source": "img_000664.png",
+      "right_candidates": 73581,
+      "down_candidates": 73591,
+      "right_selected": 49054,
+      "down_selected": 48216,
+      "valid": true,
+      "seconds": 3.9360933999996632
+    },
+    {
+      "source": "img_000667.png",
+      "right_candidates": 73302,
+      "down_candidates": 73285,
+      "right_selected": 50714,
+      "down_selected": 49489,
+      "valid": true,
+      "seconds": 4.075564899947494
+    }
+  ],
+  "labels_used": false,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G1": true
+}
