@@ -1,0 +1,18 @@
+{
+  "experiment": "P31_BHCS24",
+  "gate": "G0",
+  "seam_shape": [
+    3,
+    20,
+    8
+  ],
+  "vertical_shape": [
+    3,
+    20,
+    8
+  ],
+  "valid_bijection": true,
+  "exact_synthetic": true,
+  "finite_seam": true,
+  "passes_G0": true
+}
