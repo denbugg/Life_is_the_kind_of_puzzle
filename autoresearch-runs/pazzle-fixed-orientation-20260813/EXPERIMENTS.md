@@ -799,3 +799,6 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P35 FCVT-24 coordinate regressor | G0 synthetic coordinate/projection contract | PASS | Exact shuffled 24×24 coordinate recovery; 0 invalid. No data/targets/P8 accessed. Evidence: P35_G0_REPORT.json. |
 
 | P35 FCVT-24 coordinate regressor | G1 FIT-input order-equivariance | PASS | 16 FIT inputs only; max permutation-equivariance discrepancy 1.1920929e-07, 0 invalid; no labels/targets/P8. Evidence: P35_G1_REPORT.json. |
+
+| P35 FCVT-24 coordinate regressor | G2 FIT-train continuous-coordinate fit | PASS | MAE 4.215399 slots, exact placement 0.652850%, 0 invalid, 18.67 s train; target PNG/P8/selection/held unopened. Evidence: P35_G2_REPORT.json. |
+| P35 FCVT-24 coordinate regressor | G3 locked source-disjoint FIT-selection | REJECTED | MAE 6.569325 slots; Hungarian exact placement 0.238715%, below 3.189887% gate; 0 invalid. No CAL/DEV/held/test/target PNG/P8. Evidence: P35_G3_REPORT.json and P35_REJECTION.md. |

@@ -1,0 +1,592 @@
+{
+  "experiment": "P35_FCVT24",
+  "gate": "G2",
+  "sources": 96,
+  "mae_slots": 4.215398867925008,
+  "exact_placement": 0.006528501157407408,
+  "invalid": 0,
+  "train_seconds": 18.672608599998057,
+  "targets_opened": false,
+  "p8_imported": false,
+  "selection_opened": false,
+  "held_opened": false,
+  "passes_G2": true,
+  "rows": [
+    {
+      "source": "img_002598.png",
+      "mae_slots": 4.168546676635742,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_002760.png",
+      "mae_slots": 4.06846284866333,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_002593.png",
+      "mae_slots": 4.221116065979004,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_003482.png",
+      "mae_slots": 4.4744086265563965,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_003476.png",
+      "mae_slots": 4.249924182891846,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_004763.png",
+      "mae_slots": 4.144553184509277,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_002139.png",
+      "mae_slots": 4.037849426269531,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_005908.png",
+      "mae_slots": 4.223319053649902,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_002378.png",
+      "mae_slots": 4.047730445861816,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_004820.png",
+      "mae_slots": 4.08570671081543,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_002784.png",
+      "mae_slots": 4.272368907928467,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_006285.png",
+      "mae_slots": 4.197534561157227,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_001783.png",
+      "mae_slots": 4.2168354988098145,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_002389.png",
+      "mae_slots": 4.172084808349609,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_001996.png",
+      "mae_slots": 4.271535873413086,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_005151.png",
+      "mae_slots": 4.31707763671875,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_002730.png",
+      "mae_slots": 4.3435258865356445,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_001707.png",
+      "mae_slots": 4.218932151794434,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_004255.png",
+      "mae_slots": 4.222451210021973,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_006474.png",
+      "mae_slots": 4.2392096519470215,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_001751.png",
+      "mae_slots": 4.278764724731445,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_000168.png",
+      "mae_slots": 4.614941120147705,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_003039.png",
+      "mae_slots": 4.27380895614624,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_006622.png",
+      "mae_slots": 4.423640251159668,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_003194.png",
+      "mae_slots": 4.235758304595947,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_002645.png",
+      "mae_slots": 4.449858665466309,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_003245.png",
+      "mae_slots": 4.502418518066406,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_001616.png",
+      "mae_slots": 4.479896068572998,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_006050.png",
+      "mae_slots": 4.264341354370117,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_002278.png",
+      "mae_slots": 3.981172800064087,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_001838.png",
+      "mae_slots": 4.367528915405273,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_000266.png",
+      "mae_slots": 4.33738374710083,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_001047.png",
+      "mae_slots": 4.217409133911133,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_006432.png",
+      "mae_slots": 4.520928382873535,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_005503.png",
+      "mae_slots": 4.483900547027588,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_005380.png",
+      "mae_slots": 4.162618637084961,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_001132.png",
+      "mae_slots": 4.1843390464782715,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_001219.png",
+      "mae_slots": 4.2128753662109375,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_006113.png",
+      "mae_slots": 4.157680034637451,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_003789.png",
+      "mae_slots": 3.8924238681793213,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_006410.png",
+      "mae_slots": 4.071044921875,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_004953.png",
+      "mae_slots": 4.245903968811035,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_000910.png",
+      "mae_slots": 4.602598190307617,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_003348.png",
+      "mae_slots": 4.600934028625488,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_006494.png",
+      "mae_slots": 4.189905166625977,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_002150.png",
+      "mae_slots": 4.129880905151367,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_001344.png",
+      "mae_slots": 4.085598945617676,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_005003.png",
+      "mae_slots": 4.327409744262695,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_006649.png",
+      "mae_slots": 4.243770122528076,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_004671.png",
+      "mae_slots": 4.28835391998291,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_004923.png",
+      "mae_slots": 4.328226089477539,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_002190.png",
+      "mae_slots": 4.259729385375977,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_004701.png",
+      "mae_slots": 4.225656032562256,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_005791.png",
+      "mae_slots": 3.896350860595703,
+      "exact_placement": 0.013888888888888888,
+      "valid": true
+    },
+    {
+      "source": "img_004918.png",
+      "mae_slots": 4.191123008728027,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_000425.png",
+      "mae_slots": 4.512136459350586,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_000773.png",
+      "mae_slots": 4.350876808166504,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_003059.png",
+      "mae_slots": 4.072751045227051,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_000254.png",
+      "mae_slots": 4.159162521362305,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_004559.png",
+      "mae_slots": 4.2385125160217285,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_001257.png",
+      "mae_slots": 4.049400329589844,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_000025.png",
+      "mae_slots": 4.14909553527832,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_005164.png",
+      "mae_slots": 4.31233024597168,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_001647.png",
+      "mae_slots": 4.375024795532227,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_000799.png",
+      "mae_slots": 4.016352653503418,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_005655.png",
+      "mae_slots": 4.044166564941406,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_006413.png",
+      "mae_slots": 3.915968179702759,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_004354.png",
+      "mae_slots": 4.276736736297607,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_006264.png",
+      "mae_slots": 3.74368953704834,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_003291.png",
+      "mae_slots": 3.9930546283721924,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_004459.png",
+      "mae_slots": 4.4900360107421875,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_001485.png",
+      "mae_slots": 4.208488464355469,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_005733.png",
+      "mae_slots": 3.9344778060913086,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_004052.png",
+      "mae_slots": 4.206216812133789,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_002945.png",
+      "mae_slots": 4.031392574310303,
+      "exact_placement": 0.012152777777777778,
+      "valid": true
+    },
+    {
+      "source": "img_005491.png",
+      "mae_slots": 3.858153820037842,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_002373.png",
+      "mae_slots": 3.9555745124816895,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_004169.png",
+      "mae_slots": 4.257110595703125,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_001952.png",
+      "mae_slots": 5.161325931549072,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_001923.png",
+      "mae_slots": 4.269451141357422,
+      "exact_placement": 0.008680555555555556,
+      "valid": true
+    },
+    {
+      "source": "img_006075.png",
+      "mae_slots": 4.080494403839111,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_000950.png",
+      "mae_slots": 3.879542112350464,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_000906.png",
+      "mae_slots": 3.4694149494171143,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_001405.png",
+      "mae_slots": 4.035820960998535,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_000098.png",
+      "mae_slots": 4.04341459274292,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_000449.png",
+      "mae_slots": 4.298584938049316,
+      "exact_placement": 0.0,
+      "valid": true
+    },
+    {
+      "source": "img_004495.png",
+      "mae_slots": 3.935922384262085,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_000172.png",
+      "mae_slots": 4.11087703704834,
+      "exact_placement": 0.010416666666666666,
+      "valid": true
+    },
+    {
+      "source": "img_000215.png",
+      "mae_slots": 3.9314820766448975,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_002779.png",
+      "mae_slots": 4.2928948402404785,
+      "exact_placement": 0.006944444444444444,
+      "valid": true
+    },
+    {
+      "source": "img_004749.png",
+      "mae_slots": 4.407521724700928,
+      "exact_placement": 0.001736111111111111,
+      "valid": true
+    },
+    {
+      "source": "img_006781.png",
+      "mae_slots": 4.15032434463501,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_002582.png",
+      "mae_slots": 4.624231338500977,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_005493.png",
+      "mae_slots": 4.080564975738525,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    },
+    {
+      "source": "img_006966.png",
+      "mae_slots": 4.546797752380371,
+      "exact_placement": 0.003472222222222222,
+      "valid": true
+    },
+    {
+      "source": "img_002757.png",
+      "mae_slots": 4.287569522857666,
+      "exact_placement": 0.005208333333333333,
+      "valid": true
+    }
+  ]
+}
