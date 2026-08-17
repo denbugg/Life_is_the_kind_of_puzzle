@@ -37,6 +37,6 @@ def main():
  import p23_dctr as r23;dev=torch.device('cuda');retr=r23.Enc().to(dev);retr.load_state_dict(torch.load(a.checkpoint,map_location=dev,weights_only=True)['state']);retr.eval();p=p13();fit,_=p.source_lists(a.manifest);names=[a.source] if a.mode=='one' else sorted(fit)[:128];a.work.mkdir(parents=True,exist_ok=True);rows=[];tall=time.perf_counter()
  for k,n in enumerate(names):
   out,sec,gb=pool_one(n,a,retr,r23,dev);np.savez_compressed(a.work/(Path(n).stem+'.npz'),pool=out,source=n);rows.append({'source':n,'seconds':sec,'rss_gb':gb});print(json.dumps({'stage':'pool','done':k+1,'total':len(names),'source':n,'seconds':sec,'rss_gb':gb}),flush=True)
-  if time.perf_counter()-tall>180*max(1,(len(names)+31)//32):raise RuntimeError('split total preparation cap')
+  if time.perf_counter()-tall>(360 if a.mode=='all' else 180):raise RuntimeError('registered split total preparation cap')
  rep={'experiment':'P25_SCXR24','mode':a.mode,'rows':rows,'labels_used':True,'targets_opened':False,'p8_imported':False,'passes_G2a':True};(a.work/'p25_g2a_report.json').write_text(json.dumps(rep,indent=2)+'\n');print(json.dumps(rep),flush=True)
 if __name__=='__main__':main()
