@@ -1,0 +1,92 @@
+{
+  "experiment": "P38_SRIT24",
+  "gate": "G1",
+  "sources": 16,
+  "max_equivariance_error": 1.430511474609375e-06,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G1": true,
+  "rows": [
+    {
+      "source": "img_003194.png",
+      "equivariance_error": 1.2218952178955078e-06,
+      "finite": true
+    },
+    {
+      "source": "img_004749.png",
+      "equivariance_error": 1.2218952178955078e-06,
+      "finite": true
+    },
+    {
+      "source": "img_006622.png",
+      "equivariance_error": 1.1622905731201172e-06,
+      "finite": true
+    },
+    {
+      "source": "img_004918.png",
+      "equivariance_error": 1.1324882507324219e-06,
+      "finite": true
+    },
+    {
+      "source": "img_000425.png",
+      "equivariance_error": 1.2814998626708984e-06,
+      "finite": true
+    },
+    {
+      "source": "img_001783.png",
+      "equivariance_error": 1.1324882507324219e-06,
+      "finite": true
+    },
+    {
+      "source": "img_006075.png",
+      "equivariance_error": 1.2814998626708984e-06,
+      "finite": true
+    },
+    {
+      "source": "img_001132.png",
+      "equivariance_error": 1.1920928955078125e-06,
+      "finite": true
+    },
+    {
+      "source": "img_001616.png",
+      "equivariance_error": 1.1920928955078125e-06,
+      "finite": true
+    },
+    {
+      "source": "img_002645.png",
+      "equivariance_error": 1.430511474609375e-06,
+      "finite": true
+    },
+    {
+      "source": "img_002760.png",
+      "equivariance_error": 1.1622905731201172e-06,
+      "finite": true
+    },
+    {
+      "source": "img_003348.png",
+      "equivariance_error": 1.4007091522216797e-06,
+      "finite": true
+    },
+    {
+      "source": "img_006649.png",
+      "equivariance_error": 1.2814998626708984e-06,
+      "finite": true
+    },
+    {
+      "source": "img_002784.png",
+      "equivariance_error": 1.2218952178955078e-06,
+      "finite": true
+    },
+    {
+      "source": "img_000266.png",
+      "equivariance_error": 1.1622905731201172e-06,
+      "finite": true
+    },
+    {
+      "source": "img_002139.png",
+      "equivariance_error": 1.2218952178955078e-06,
+      "finite": true
+    }
+  ]
+}

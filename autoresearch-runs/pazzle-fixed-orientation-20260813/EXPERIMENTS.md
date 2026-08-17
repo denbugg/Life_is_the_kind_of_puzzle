@@ -816,3 +816,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P37 RIT-24 raw-image relational transformer | G2 96 FIT-train RGB adjacency learning | REJECTED | Raw RGB only, FP32, 8×384 transformer; Top-20 recall 3.488262% vs 20% gate after 4 epochs/26.34s; loss remained 12.7089. G3 unopened. Evidence: P37_G2_REPORT.json and P37_REJECTION.md. |
 
 | P38 SRIT-24 scaled raw-image transformer | G0 synthetic RGB equivariance | PASS | FP32 synthetic pair-score equivariance error 9.6858e-07; no data/targets/P8. Evidence: P38_G0_REPORT.json. |
+
+| P38 SRIT-24 scaled raw-image transformer | G1 input-only GPU feasibility/equivariance | PASS | 16 raw RGB FIT PNGs; max pair-score equivariance error 1.4305e-06, 0 invalid; no labels/targets/P8. Evidence: P38_G1_REPORT.json. |
