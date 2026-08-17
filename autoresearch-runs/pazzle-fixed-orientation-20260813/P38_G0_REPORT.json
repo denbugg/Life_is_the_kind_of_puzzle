@@ -1,0 +1,9 @@
+{
+  "experiment": "P38_SRIT24",
+  "gate": "G0",
+  "equivariance_error": 9.685754776000977e-07,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G0": true
+}
