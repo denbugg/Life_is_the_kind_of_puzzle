@@ -1,0 +1,18 @@
+{
+  "experiment": "P28_GDCP24",
+  "gate": "G2a",
+  "sources": [
+    "img_000025.png",
+    "img_000098.png"
+  ],
+  "rmse": [
+    0.2949834167957306,
+    0.297715425491333
+  ],
+  "random_rmse": 0.3009646236896515,
+  "axis_orientation": true,
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2a": false
+}
