@@ -783,3 +783,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P32 DSCP-24 DINO semantic coordinate prior | G2 FIT-train semantic placement | PASS | 8 epochs/0.242 GPU min: top-20 13.863571%, Hungarian placement 1.208044%, 0 invalid; clears 5.0%/0.50% gate. Held unopened. Evidence: P32_G2_REPORT.json. |
 
 | P32 DSCP-24 DINO semantic coordinate prior | G3 frozen source-disjoint FIT-selection | REJECTED | Frozen checkpoint: top-20 3.287760%, Hungarian placement 0.168186%, 0 invalid; fails 5.0%/0.50% gate. Held unopened. Evidence: P32_G3_REPORT.json and P32_REJECTION.md. |
+
+| P33 CVA-24 cycle-verified agglomeration | G0 synthetic component consistency | PASS | Accepted 6 valid edges, rejected contradiction, recovered two non-overlapping 2x2 components. No real data accessed. Evidence: P33_G0_REPORT.json. |

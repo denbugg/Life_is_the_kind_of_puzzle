@@ -1,0 +1,10 @@
+{
+  "experiment": "P33_CVA24",
+  "gate": "G0",
+  "accepted": 6,
+  "rejected": 1,
+  "components": 2,
+  "overlap": false,
+  "exact_2x2": true,
+  "passes_G0": true
+}
