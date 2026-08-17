@@ -808,3 +808,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P36 CSRP-24 soft 2×2 relaxation | G1 frozen-cache candidate preservation | PASS | 16 FIT P12 score caches; finite re-ranked candidates and 100% baseline candidate preservation; no labels/targets/P8. Evidence: P36_G1_REPORT.json. |
 
 | P36 CSRP-24 soft 2×2 relaxation | G2 paired FIT-train canonical-solver placement | STOPPED | Fast-futility: 4/96 boards after ~9 CPU-min; projected beyond 15-min cap. No quality conclusion; G3 unopened. Evidence: P36_G2_STOPPED.md and P36_G2_STOPPED_TASK.log. |
+
+| P37 RIT-24 raw-image relational transformer | G0 synthetic raw-pixel set-equivariance | PASS | FP32 raw tensor pair-score equivariance error 9.6858e-07; no data/targets/P8. Evidence: P37_G0_REPORT.json. |
