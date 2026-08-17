@@ -1,0 +1,9 @@
+{
+  "experiment": "P35_FCVT24",
+  "gate": "G0",
+  "synthetic_exact": true,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G0": true
+}
