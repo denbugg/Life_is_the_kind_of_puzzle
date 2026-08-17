@@ -44,19 +44,22 @@ def score_board(m,b,u,bi,d,dev):
   en=min(len(ci),st+4096);out[st:en]=m(pairs(b,np.full(en-st,bi,np.int64),ai[st:en],ci[st:en],di[st:en],dev)).cpu().numpy()
  return out.reshape(N,128)
 def evaluate(m,b,w,ld,sd,names,dev):
- p=p13();rs=[]
+ p=p13();cached=[]
  with torch.no_grad():
-  for al in [0.,.05,.10,.20,.40]:
-   hit=base=tot=0
-   for bi,n in enumerate(names):
-    po,iv=lab(ld,n);u=pool(w,n);c,v,s=p.load_score_cache(sd,n)
-    for d in range(4):
-     z=score_board(m,b,u,bi,d,dev)
-     for i in range(N):
-      q=nb(po,iv,i,d)
-      if q<0:continue
-      ci=u[d,i];zz=(z[i]-z[i].mean())/(z[i].std()+1e-6);sl=np.flatnonzero(v[i]);mp={int(c[i,j]):float(s[d,i,j]) for j in sl};f=np.asarray([mp.get(int(x),0.) for x in ci]);f=(f-f.mean())/(f.std()+1e-6);rank=ci[np.argsort(-(zz+al*f))[:20]];br=c[i,sl[np.argsort(-s[d,i,sl])[:20]]];hit+=int(np.any(rank==q));base+=int(np.any(br==q));tot+=1
-   rs.append({'alpha':al,'recall20':hit/tot,'baseline_recall20':base/tot,'gain_pp':100*(hit-base)/tot})
+  for bi,n in enumerate(names):
+   u=pool(w,n);cached.append([score_board(m,b,u,bi,d,dev) for d in range(4)]);print(json.dumps({'stage':'selection_scores','done':bi+1,'total':len(names)}),flush=True)
+ rs=[]
+ for al in [0.,.05,.10,.20,.40]:
+  hit=base=tot=0
+  for bi,n in enumerate(names):
+   po,iv=lab(ld,n);u=pool(w,n);c,v,s=p.load_score_cache(sd,n)
+   for d in range(4):
+    z=cached[bi][d]
+    for i in range(N):
+     q=nb(po,iv,i,d)
+     if q<0:continue
+     ci=u[d,i];zz=(z[i]-z[i].mean())/(z[i].std()+1e-6);sl=np.flatnonzero(v[i]);mp={int(c[i,j]):float(s[d,i,j]) for j in sl};f=np.asarray([mp.get(int(x),0.) for x in ci]);f=(f-f.mean())/(f.std()+1e-6);rank=ci[np.argsort(-(zz+al*f))[:20]];br=c[i,sl[np.argsort(-s[d,i,sl])[:20]]];hit+=int(np.any(rank==q));base+=int(np.any(br==q));tot+=1
+  rs.append({'alpha':al,'recall20':hit/tot,'baseline_recall20':base/tot,'gain_pp':100*(hit-base)/tot})
  return rs
 def main():
  q=argparse.ArgumentParser();q.add_argument('--pool-dir',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P25_scxr'));q.add_argument('--label-dir',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P10_sinkhorn_refiner\g1\cache'));q.add_argument('--score-dir',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P12_loop_consensus\score_cache'));q.add_argument('--manifest',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P10_sinkhorn_refiner\g1\p10_g1_prepare_report.json'));q.add_argument('--work',type=Path,default=Path(r'E:\pazzle_work\pazzle_fixed_orientation_20260813\P26_shncs'));q.add_argument('--steps',type=int,default=2000);q.add_argument('--groups-per-step',type=int,default=16);a=q.parse_args()
