@@ -717,3 +717,11 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | Stage | Synthetic G0a only; no score cache or labels. |
 | Result | Exceeded pre-registered 90s cap without report; stopped at 133.828 CPU seconds. |
 | Decision | **REJECT BEFORE CACHE ACCESS**; no P16 tuning. |
+
+## P17 G0b Runtime-Futility Rejection (2026-08-17)
+
+| Item | Result |
+|---|---|
+| G0a | PASS: exact deltas, planted recovery, 11.227s. |
+| G0b | Exceeded fixed 60s before report; stopped at 87.359 CPU seconds. |
+| Decision | **REJECT BEFORE FIT LABELS/HELD**. Frozen scores only; no target PNG/CAL/DEV/test. |

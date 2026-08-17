@@ -227,8 +227,9 @@ def g0a(args: argparse.Namespace) -> None:
 
 
 def score_matrices(candidates: np.ndarray, scores: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
-    right, down = dense_rd(candidates, scores)
-    right, down = np.asarray(right, dtype=np.float32), np.asarray(down, dtype=np.float32)
+    # `dense_rd` is the canonical Torch API; frozen P13 loader returns NumPy arrays.
+    right, down = dense_rd(torch.from_numpy(np.asarray(candidates, dtype=np.int64)), torch.from_numpy(np.asarray(scores, dtype=np.float32)))
+    right, down = right.detach().cpu().numpy().astype(np.float32, copy=False), down.detach().cpu().numpy().astype(np.float32, copy=False)
     np.fill_diagonal(right, -np.inf)
     np.fill_diagonal(down, -np.inf)
     return right, down

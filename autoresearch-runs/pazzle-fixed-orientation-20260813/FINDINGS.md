@@ -757,3 +757,7 @@ Balanced local relaxation with Hungarian projection must first preserve a plante
 ## P16 exact-delta requirement
 
 A global search may be viable only if each candidate move is scored from its affected boundary edges, not by recomputing a complete-board objective or full repair. This is a computational requirement, not a claim of solver improvement.
+
+## P17 early-gate baseline bottleneck
+
+Exact-delta QAP local search is computationally correct on synthetic boards, but a cache gate that rebuilds the canonical baseline and rechecks invariance per board can still dominate runtime. Future early gates need precomputed seed boards or purely score-level diagnostics before layout decoding.
