@@ -777,3 +777,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P31 BHCS-24 seam-only hard-contrastive scorer | G2 FIT-train dense learned seam score | REJECTED | 6 FP32 epochs / 2.60 GPU minutes: learned recall@20 3.504303% versus frozen rank96 3.494395%, gain +0.009907 pp below +1.0 pp gate. Selection and held remained unopened. Evidence: P31_G2_REPORT.json and P31_REJECTION.md. |
 
 | P32 DSCP-24 DINO semantic coordinate prior | G0 synthetic permutation-assignment contract | PASS | Finite 576-way logits, exact unambiguous bijection, and permutation contract. No real data accessed. Evidence: P32_G0_REPORT.json. |
+
+| P32 DSCP-24 DINO semantic coordinate prior | G1 input-only DINO/set equivariance | PASS | 16 boards completed in 1.50–1.71s; finite logits, <6.4e-8 permutation restoration error, nonzero content sensitivity. No labels or targets accessed. Evidence: P32_G1_REPORT.json. |
