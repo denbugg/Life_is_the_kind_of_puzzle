@@ -692,3 +692,11 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 ## P14d G0 Evidence -- Symmetric Score-Ranked Topology (2026-08-16)
 
 ## P14d Stopped Before Held -- Resource-Futility Decision (2026-08-16)
+
+## P15a Runtime Abort Before Cache Access (2026-08-17)
+
+| Item | Result |
+|---|---|
+| Stage | Synthetic G0a only; no cache or labels accessed. |
+| Runtime observation | Repeated auxiliary starts invoked duplicate exhaustive repair and exceeded the 3-minute fast-futility checkpoint without output. |
+| Decision | **ABORTED**, neither PASS nor REJECT; P15b pre-registers repair-free auxiliary support seeds. |
