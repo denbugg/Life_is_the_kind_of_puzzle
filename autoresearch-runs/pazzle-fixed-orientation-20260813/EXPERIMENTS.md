@@ -755,3 +755,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P21 GBLS-24 | Positive-only generative masked boundary-bridge likelihood residual fused into frozen scores | **REJECT G2 fast futility**: FIT-selection recall@20 3.457597% vs 3.456182% (+0.001415 pp), below +1.0 pp; held/CAL not opened |
 
 | P22 FCLR-24 | FP32 exact-frozen-row listwise boundary ranker with alpha fusion | **REJECT G2 fast futility**: FIT-selection recall@20 3.582144% vs 3.502887% (+0.079257 pp), below +1.0 pp; held/CAL not opened |
+
+| P23 DCTR-24 | Full-tile directional InfoNCE retriever, frozen-row union | **REJECT G2 fast futility**: coverage +4.180820 pp passed, but retrieval recall@20 only +0.012738 pp vs +1.0 pp gate; held/CAL not opened |

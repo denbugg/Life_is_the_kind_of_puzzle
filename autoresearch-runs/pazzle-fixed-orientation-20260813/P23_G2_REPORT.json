@@ -1,0 +1,60 @@
+{
+  "experiment": "P23_DCTR24",
+  "gate": "G2",
+  "train_sources": 96,
+  "selection_sources": 32,
+  "edges": 211968,
+  "steps": 1500,
+  "results": [
+    {
+      "M": 16,
+      "coverage": 0.1458191802536232,
+      "baseline_coverage": 0.13971920289855072,
+      "coverage_gain_pp": 0.6099977355072478,
+      "retrieval_recall20": 0.027839107789855072,
+      "baseline_recall20": 0.03456182065217392,
+      "retrieval_gain_pp": -0.672271286231884
+    },
+    {
+      "M": 32,
+      "coverage": 0.15518851902173914,
+      "baseline_coverage": 0.13971920289855072,
+      "coverage_gain_pp": 1.5469316123188415,
+      "retrieval_recall20": 0.034689198369565216,
+      "baseline_recall20": 0.03456182065217392,
+      "retrieval_gain_pp": 0.012737771739130502
+    },
+    {
+      "M": 48,
+      "coverage": 0.16764322916666666,
+      "baseline_coverage": 0.13971920289855072,
+      "coverage_gain_pp": 2.792402626811594,
+      "retrieval_recall20": 0.034689198369565216,
+      "baseline_recall20": 0.03456182065217392,
+      "retrieval_gain_pp": 0.012737771739130502
+    },
+    {
+      "M": 64,
+      "coverage": 0.18152740036231885,
+      "baseline_coverage": 0.13971920289855072,
+      "coverage_gain_pp": 4.180819746376812,
+      "retrieval_recall20": 0.034689198369565216,
+      "baseline_recall20": 0.03456182065217392,
+      "retrieval_gain_pp": 0.012737771739130502
+    }
+  ],
+  "selected": {
+    "M": 64,
+    "coverage": 0.18152740036231885,
+    "baseline_coverage": 0.13971920289855072,
+    "coverage_gain_pp": 4.180819746376812,
+    "retrieval_recall20": 0.034689198369565216,
+    "baseline_recall20": 0.03456182065217392,
+    "retrieval_gain_pp": 0.012737771739130502
+  },
+  "checkpoint": "E:\\pazzle_work\\pazzle_fixed_orientation_20260813\\P23_dctr\\p23_g2_retriever_fp32.pt",
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": false
+}

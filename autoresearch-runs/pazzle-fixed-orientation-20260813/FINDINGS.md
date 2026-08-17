@@ -775,3 +775,5 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 - **P21 (REJECT):** A 2,000-step FP32 positive-only masked bridge predictor yielded a nearly neutral candidate-reranking signal on source-disjoint FIT selection (+0.001415 pp recall@20 vs +1.0 pp gate). A local generative residual is not an additive score signal atop frozen rank96; do not spend the held split.
 
 - **P22 (REJECT):** Exact frozen-candidate listwise supervision did improve FIT-selection recall@20 slightly (+0.079257 pp), unlike P20/P21, but the effect was 12.6� below the +1.0 pp continuation gate. Candidate-conditioned hard-negative ranking alone is not sufficient at this capacity; no held split was spent.
+
+- **P23 (REJECT):** Full-tile directional retrieval can expand candidate coverage materially (+4.180820 pp at M=64) but its retrieved neighbors did not improve top-20 ranking (+0.012738 pp). Future coverage work must couple retrieval with a stronger cross-encoder/reranker rather than treating dot-product retrieval as a final compatibility score.
