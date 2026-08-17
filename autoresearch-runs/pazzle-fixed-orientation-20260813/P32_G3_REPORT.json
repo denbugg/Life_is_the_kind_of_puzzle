@@ -1,0 +1,12 @@
+{
+  "experiment": "P32_DSCP24",
+  "gate": "G3",
+  "checkpoint_epochs": 8,
+  "selection_top20": 0.032877604166666664,
+  "selection_placement": 0.001681857638888889,
+  "invalid": 0,
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G3": false
+}
