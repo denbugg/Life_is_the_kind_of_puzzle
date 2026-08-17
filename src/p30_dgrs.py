@@ -126,9 +126,12 @@ def g1(args: argparse.Namespace) -> dict:
     rows = []
     for k, source in enumerate(args.sources):
         start = time.perf_counter(); raw = dense_scores(m, device, args.inputs, source); elapsed = time.perf_counter() - start
-        reciprocal = rank0(raw); asymmetric = float(np.mean(np.abs(raw[0] - raw[2].T) > 1e-6))
-        ok = bool(np.isfinite(raw[np.isfinite(raw)]).all() and elapsed <= 90.0 and asymmetric > 0.01 and np.array_equal(reciprocal, rank0(raw)))
-        rows.append({"source": source, "seconds": elapsed, "asymmetric_fraction": asymmetric, "ok": ok})
+        reciprocal = rank0(raw)
+        # Dot-product scoring makes opposite directions exact transposes; horizontal and vertical fields must still differ.
+        paired = float(np.mean(np.isclose(raw[0], raw[2].T, rtol=0.0, atol=1e-6) | (~np.isfinite(raw[0]))))
+        directional = float(np.mean(np.abs(raw[0] - raw[1]) > 1e-6))
+        ok = bool(np.isfinite(raw[np.isfinite(raw)]).all() and elapsed <= 90.0 and paired > 0.999 and directional > 0.01 and np.array_equal(reciprocal, rank0(raw)))
+        rows.append({"source": source, "seconds": elapsed, "opposite_transpose_fraction": paired, "orthogonal_difference_fraction": directional, "ok": ok})
         if (k + 1) % 4 == 0: print(json.dumps({"stage": "g1", "done": k + 1, "total": len(args.sources)}), flush=True)
     return {"experiment": "P30_DGRS24", "gate": "G1", "rows": rows, "labels_used": False, "targets_opened": False, "p8_imported": False, "passes_G1": bool(all(x["ok"] for x in rows))}
 

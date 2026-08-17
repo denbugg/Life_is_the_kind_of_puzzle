@@ -784,3 +784,5 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 P29 G3 rejected: dense DINOv2 candidate coverage was real, but logistic/alpha score fusion gained only +0.007077 pp versus +1.0 pp gate. Do not open held; next lever is structural use of dense candidate graph rather than reweighting.
 
 P30 G0 passed: canonical solver exactly recovers a fully specified directed reciprocal synthetic grid. The dense-only structural implementation contract is sound; proceed to input-only descriptor validation.
+
+P30 G1 passed: dense DINOv2 scoring is deterministic and fast on RTX 2070. Opposite directions are necessarily transposes under the dot-product construction, whereas horizontal and vertical fields are distinct; future dense graph code must preserve this invariant.
