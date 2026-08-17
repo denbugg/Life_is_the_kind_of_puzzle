@@ -1,0 +1,34 @@
+{
+  "experiment": "P29_DPCG24",
+  "gate": "G2",
+  "rows": [
+    {
+      "M": 16,
+      "union_coverage": 0.16484091938405798,
+      "frozen_coverage": 0.14139988111413043,
+      "gain_pp": 2.3441038269927534
+    },
+    {
+      "M": 32,
+      "union_coverage": 0.18947789288949277,
+      "frozen_coverage": 0.14139988111413043,
+      "gain_pp": 4.8078011775362315
+    },
+    {
+      "M": 64,
+      "union_coverage": 0.22256425498188406,
+      "frozen_coverage": 0.14139988111413043,
+      "gain_pp": 8.116437386775363
+    }
+  ],
+  "selected": {
+    "M": 64,
+    "union_coverage": 0.22256425498188406,
+    "frozen_coverage": 0.14139988111413043,
+    "gain_pp": 8.116437386775363
+  },
+  "labels_used": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G2": true
+}
