@@ -1,0 +1,13 @@
+{
+  "experiment": "P39_MPRT24",
+  "gate": "G2",
+  "sources": 96,
+  "top20_recall": 0.3855487636756152,
+  "terminal_loss": 11.049048135677973,
+  "seconds": 71.11739740002668,
+  "invalid": 0,
+  "targets_opened": false,
+  "p8_imported": false,
+  "selection_opened": false,
+  "passes_G2": true
+}

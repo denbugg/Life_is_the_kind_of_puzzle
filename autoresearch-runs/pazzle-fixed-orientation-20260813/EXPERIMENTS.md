@@ -824,3 +824,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P39 MPRT-24 masked raw-image pretraining | G0 synthetic masked reconstruction contract | PASS | finite RGB reconstruction with exact 20×20 shape; no data/targets/P8. Evidence: P39_G0_REPORT.json. |
 
 | P39 MPRT-24 | G1 5,360 FIT raw RGB masked pretraining | PASS | Loss 0.37773?0.14257 (-62.26%), 469.34s; labels/targets/P8 closed. |
+
+| P39 MPRT-24 | G2 pretrained raw relational fine-tuning | PASS | 5,360 raw-FIT masked pretraining then 96 FIT labels: Top-20 38.5549%, 0 invalid, 71.12s; selection unopened. |
