@@ -782,3 +782,5 @@ Internal contiguous-vs-random strips are too easy for raw pixel continuity (AURO
 
 - **P26 (REJECT):** A lightweight full-tile sampled hard-negative pair scorer ranked P23/frozen candidates materially worse than the frozen score (-0.716146 pp). Reducing cross-reranking compute alone does not recover pairwise ranking signal; future work needs a different supervision/representation lever.
 P29 G3 rejected: dense DINOv2 candidate coverage was real, but logistic/alpha score fusion gained only +0.007077 pp versus +1.0 pp gate. Do not open held; next lever is structural use of dense candidate graph rather than reweighting.
+
+P30 G0 passed: canonical solver exactly recovers a fully specified directed reciprocal synthetic grid. The dense-only structural implementation contract is sound; proceed to input-only descriptor validation.

@@ -1,0 +1,8 @@
+{
+  "experiment": "P30_DGRS24",
+  "gate": "G0",
+  "valid_bijection": true,
+  "exact_synthetic": true,
+  "objective": 27019.808715820312,
+  "passes_G0": true
+}

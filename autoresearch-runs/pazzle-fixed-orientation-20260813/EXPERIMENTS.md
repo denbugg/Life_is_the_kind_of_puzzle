@@ -763,3 +763,5 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | P26 SHNCS-24 | Full-tile sampled 15-hard-negative pair scorer over P23/frozen pools | **REJECT G2**: best selection recall@20 2.740036% vs 3.456182% baseline (-0.716146 pp); held/CAL not opened |
 
 | P29 DPCG-24 G3 dense/rank logistic fusion | FIT-only source-disjoint selection gate | REJECTED | M=64 passed G2 coverage by +8.116437 pp, but alpha 0.05 increased recall@20 only 3.460428% to 3.467505% (+0.007077 pp), below +1.0 pp gate. Held was not opened. Evidence: P29_G3_REPORT.json and P29_REJECTION.md. |
+
+| P30 DGRS-24 dense graph reciprocity | G0 synthetic directed graph | PASS | Valid canonical tile-to-slot bijection and exact recovery on the unambiguous 24x24 synthetic reciprocal graph. No real inputs, labels, targets, or P8 artifacts accessed. Evidence: P30_G0_REPORT.json. |
