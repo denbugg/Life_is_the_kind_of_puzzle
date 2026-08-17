@@ -1,0 +1,55 @@
+{
+    "experiment":  "P26_SHNCS24",
+    "g0":  {
+               "experiment":  "P26_SHNCS24",
+               "gate":  "G0",
+               "shape":  [
+                             6,
+                             20,
+                             20
+                         ],
+               "transpose_consistent":  true,
+               "deterministic_hard_negative_sampling":  true,
+               "candidate_permutation_invariant":  true,
+               "alpha_zero_identity":  true,
+               "finite":  true,
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G0":  true
+           },
+    "g1":  {
+               "experiment":  "P26_SHNCS24",
+               "gate":  "G1",
+               "rows":  [
+                            {
+                                "source":  "img_000025.png",
+                                "pool_sha256":  "0294f703850150e5de32392ba390955fd8a034f64434041c2aff088ef807a30e",
+                                "sampling_sha256":  "f7e2ae0f4398ed2ffeb2a6b9b11f90fd4a433dab6227f89e39b5cbbcbdf66da9",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000098.png",
+                                "pool_sha256":  "0a7b0e386e2cd9585e485a6fd277ed44a6350bf0ff2472a8a1d36c4b51e2d77f",
+                                "sampling_sha256":  "2320a7a0323c0474cf9563686b20425b0b8b1fc340e3c4b37f4d699f6ff6a3af",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000168.png",
+                                "pool_sha256":  "fc0b93c49b550bec15b1e46d3f4ef58a01929f2de44d523bdf1cd1e426e4463e",
+                                "sampling_sha256":  "49170e7d5eedbfe367f004136867a0c30c2ee322e87ec237125a61c4d595bc04",
+                                "finite":  true
+                            },
+                            {
+                                "source":  "img_000172.png",
+                                "pool_sha256":  "c074af2956e0b548d8bdf296899f4e2ef94e285f7a0d1fb3a04fd153a7fe92c4",
+                                "sampling_sha256":  "98604e523c4bfab7335a0ffa2c8c392df8ff842f05fbce27e7a13cc0e6f03ca5",
+                                "finite":  true
+                            }
+                        ],
+               "labels_used":  false,
+               "targets_opened":  false,
+               "p8_imported":  false,
+               "passes_G1":  true
+           }
+}
