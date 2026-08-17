@@ -741,3 +741,11 @@ Frozen P12 rank96 score cache was the only score input; P8 artifacts were not im
 | Seeds | Four immutable SHA-validated canonical rank96 boards. |
 | Stage B | Exceeded 60-second cap; stopped at 96.422 CPU seconds before report. |
 | Decision | **STOP BEFORE FIT LABELS/HELD**; pivot from solver-only transformations to score-signal research. |
+
+## P19 G1 Input-Only AUROC Rejection (2026-08-17)
+
+| Item | Result |
+|---|---|
+| G0 | PASS: input-only strip, alpha=0 identity, candidate-ID invariance. |
+| G1 | CNN AUROC 0.859468 vs raw seam 0.986855; required +0.030, observed -0.127387. |
+| Decision | **REJECT BEFORE LABELS / SCORE INJECTION / HELD**. |

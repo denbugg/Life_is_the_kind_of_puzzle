@@ -765,3 +765,7 @@ Exact-delta QAP local search is computationally correct on synthetic boards, but
 ## P13-P18 solver signal conclusion
 
 Translation synchronization, topology propagation, relaxation labeling, component beam assembly and exact-delta swaps either failed their structural gates or did not reach an accuracy gate. The common limitation is insufficient local compatibility information for globally correct placement. The next lever must improve the score signal, not add another decoder transformation.
+
+## P19 proxy-task lesson
+
+Internal contiguous-vs-random strips are too easy for raw pixel continuity (AUROC 0.986855) and do not train a scorer superior to seam matching. Any next learned score experiment needs candidate-conditioned hard negatives from the frozen rank96 candidate set, not random different-tile proxy negatives.
