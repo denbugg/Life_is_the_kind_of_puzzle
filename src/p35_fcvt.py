@@ -207,9 +207,33 @@ def gate_g2(args):
     }
 
 
+def gate_g3(args):
+    seed()
+    _, selection_sources, _ = locked_sources(args.manifest)
+    if len(args.sources) != 32 or set(args.sources) != set(selection_sources):
+        raise RuntimeError("G3 must use exactly the locked FIT-selection sources")
+    device = torch.device("cuda")
+    backbone = dino(device)
+    feature_map = frozen_features(backbone, args.inputs, args.sources, device, args.feature_cache)
+    label_map = {source: cached_label(args.labels, source)[0] for source in args.sources}
+    model = CoordSet().to(device)
+    checkpoint = torch.load(args.model_out, map_location=device, weights_only=False)
+    model.load_state_dict(checkpoint["state_dict"])
+    rows = fit_and_evaluate(model, feature_map, label_map, device, epochs=0)
+    mae = float(np.mean([row["mae_slots"] for row in rows]))
+    exact = float(np.mean([row["exact_placement"] for row in rows]))
+    invalid = sum(not row["valid"] for row in rows)
+    return {
+        "experiment": "P35_FCVT24", "gate": "G3", "sources": len(rows),
+        "mae_slots": mae, "exact_placement": exact, "invalid": invalid,
+        "targets_opened": False, "p8_imported": False, "held_opened": False,
+        "passes_G3": bool(exact >= 0.03189887152777778 and invalid == 0), "rows": rows,
+    }
+
+
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--mode", choices=("g0", "g1", "g2"), required=True)
+    parser.add_argument("--mode", choices=("g0", "g1", "g2", "g3"), required=True)
     parser.add_argument("--inputs", type=Path)
     parser.add_argument("--manifest", type=Path)
     parser.add_argument("--labels", type=Path)
@@ -218,7 +242,7 @@ def main():
     parser.add_argument("--report", type=Path, required=True)
     parser.add_argument("--sources", nargs="*", default=[])
     args = parser.parse_args()
-    report = {"g0": gate_g0, "g1": gate_g1, "g2": gate_g2}[args.mode](args)
+    report = {"g0": gate_g0, "g1": gate_g1, "g2": gate_g2, "g3": gate_g3}[args.mode](args)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report), flush=True)
