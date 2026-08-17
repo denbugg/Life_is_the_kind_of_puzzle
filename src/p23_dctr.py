@@ -61,9 +61,11 @@ def cache(ld,names,dev):
   q.append(torch.from_numpy(x.transpose(0,3,1,2).copy()))
  return torch.stack(q).to(dev,dtype=torch.float32).div_(255.)
 def role_gpu(bank,bi,ids,d,source):
- z=bank[bi,ids];rot=d if source else (d+2)%4
- if rot in (1,3):z=z.transpose(-2,-1)
- if rot in (2,3):z=torch.flip(z,[-1])
+ z=bank[bi,ids].clone();rot=d if torch.is_tensor(d) else torch.full_like(bi,d)
+ if not source:rot=(rot+2)%4
+ swap=(rot==1)|(rot==3);flip=(rot==2)|(rot==3)
+ if swap.any():z[swap]=z[swap].transpose(-2,-1)
+ if flip.any():z[flip]=torch.flip(z[flip],[-1])
  return z
 def g2(a):
  if not torch.cuda.is_available():raise RuntimeError('P23 requires interactive local CUDA')
