@@ -1,0 +1,9 @@
+{
+  "experiment": "P39_MPRT24",
+  "gate": "G0",
+  "shape_ok": true,
+  "finite": true,
+  "targets_opened": false,
+  "p8_imported": false,
+  "passes_G0": true
+}
