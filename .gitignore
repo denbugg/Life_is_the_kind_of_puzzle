@@ -1,0 +1,38 @@
+# macOS / Python caches
+.DS_Store
+._*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local environments and optimizer scratch state
+.venv/
+.weco/
+.runs/
+
+# Large model/data/submission artifacts
+models/
+submission_*/
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+*.zip
+*.log
+
+# Generated visual artifacts; keep compact JSON metrics tracked
+artifacts/**/*.png
+artifacts/**/*.jpg
+artifacts/**/*.jpeg
+
+# Frontend dependencies/build products
+scorer/node_modules/
+scorer/dist/
+
+# Temporary/editor files
+*.backup
+*.weco_inplace_backup_*
+*.tmp
+*.swp

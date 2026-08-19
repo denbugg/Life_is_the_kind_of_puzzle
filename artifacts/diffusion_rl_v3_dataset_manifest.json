@@ -1,0 +1,1010 @@
+[
+  {
+    "source": "img_000013.png",
+    "variant": 0,
+    "output": "img_000013_v00.png",
+    "input_psnr": 22.32368573739915,
+    "restored_psnr": 23.0851310405449
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 1,
+    "output": "img_000013_v01.png",
+    "input_psnr": 22.792402327803288,
+    "restored_psnr": 23.609021603638073
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 2,
+    "output": "img_000013_v02.png",
+    "input_psnr": 22.840625449213,
+    "restored_psnr": 23.60844424925457
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 3,
+    "output": "img_000013_v03.png",
+    "input_psnr": 22.847079094700412,
+    "restored_psnr": 23.633410638905428
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 4,
+    "output": "img_000013_v04.png",
+    "input_psnr": 23.044980004923442,
+    "restored_psnr": 23.772122575678537
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 5,
+    "output": "img_000013_v05.png",
+    "input_psnr": 22.973368100442485,
+    "restored_psnr": 23.833564120091772
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 6,
+    "output": "img_000013_v06.png",
+    "input_psnr": 22.96559431031023,
+    "restored_psnr": 23.72744155053399
+  },
+  {
+    "source": "img_000013.png",
+    "variant": 7,
+    "output": "img_000013_v07.png",
+    "input_psnr": 22.699962806197014,
+    "restored_psnr": 23.508020733272538
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 0,
+    "output": "img_000275_v00.png",
+    "input_psnr": 22.195048056084104,
+    "restored_psnr": 22.77110176022669
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 1,
+    "output": "img_000275_v01.png",
+    "input_psnr": 21.943205695599126,
+    "restored_psnr": 22.436341518309717
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 2,
+    "output": "img_000275_v02.png",
+    "input_psnr": 21.951618815032035,
+    "restored_psnr": 22.580923234327376
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 3,
+    "output": "img_000275_v03.png",
+    "input_psnr": 21.73574417186213,
+    "restored_psnr": 22.32069575638298
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 4,
+    "output": "img_000275_v04.png",
+    "input_psnr": 21.959110530124107,
+    "restored_psnr": 22.478257944046433
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 5,
+    "output": "img_000275_v05.png",
+    "input_psnr": 22.040790568480737,
+    "restored_psnr": 22.737626614803837
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 6,
+    "output": "img_000275_v06.png",
+    "input_psnr": 21.988170464300726,
+    "restored_psnr": 22.571229593420497
+  },
+  {
+    "source": "img_000275.png",
+    "variant": 7,
+    "output": "img_000275_v07.png",
+    "input_psnr": 22.043506741547905,
+    "restored_psnr": 22.647462477648013
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 0,
+    "output": "img_000313_v00.png",
+    "input_psnr": 22.99455098591674,
+    "restored_psnr": 23.74683512388023
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 1,
+    "output": "img_000313_v01.png",
+    "input_psnr": 22.882139801906618,
+    "restored_psnr": 23.747344224462232
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 2,
+    "output": "img_000313_v02.png",
+    "input_psnr": 23.13544001367694,
+    "restored_psnr": 24.055063305599273
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 3,
+    "output": "img_000313_v03.png",
+    "input_psnr": 23.401787261722692,
+    "restored_psnr": 24.363185051179734
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 4,
+    "output": "img_000313_v04.png",
+    "input_psnr": 23.53677656900011,
+    "restored_psnr": 24.373267711525504
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 5,
+    "output": "img_000313_v05.png",
+    "input_psnr": 23.03668375242954,
+    "restored_psnr": 23.90451092548
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 6,
+    "output": "img_000313_v06.png",
+    "input_psnr": 22.98658799340259,
+    "restored_psnr": 24.013787778807952
+  },
+  {
+    "source": "img_000313.png",
+    "variant": 7,
+    "output": "img_000313_v07.png",
+    "input_psnr": 23.002723116922752,
+    "restored_psnr": 23.830835244471995
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 0,
+    "output": "img_000697_v00.png",
+    "input_psnr": 21.500459336492522,
+    "restored_psnr": 22.009681410710865
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 1,
+    "output": "img_000697_v01.png",
+    "input_psnr": 20.998284997053073,
+    "restored_psnr": 21.560912191079208
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 2,
+    "output": "img_000697_v02.png",
+    "input_psnr": 21.267362602826687,
+    "restored_psnr": 21.765914544249092
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 3,
+    "output": "img_000697_v03.png",
+    "input_psnr": 21.474617575453824,
+    "restored_psnr": 21.93224724682437
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 4,
+    "output": "img_000697_v04.png",
+    "input_psnr": 21.489152895441784,
+    "restored_psnr": 21.99867137684564
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 5,
+    "output": "img_000697_v05.png",
+    "input_psnr": 21.472963192599025,
+    "restored_psnr": 21.9935409622638
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 6,
+    "output": "img_000697_v06.png",
+    "input_psnr": 21.574036117613108,
+    "restored_psnr": 22.130554516485766
+  },
+  {
+    "source": "img_000697.png",
+    "variant": 7,
+    "output": "img_000697_v07.png",
+    "input_psnr": 21.617959271970697,
+    "restored_psnr": 22.131171084906732
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 0,
+    "output": "img_000809_v00.png",
+    "input_psnr": 22.437736176261453,
+    "restored_psnr": 23.32249622938229
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 1,
+    "output": "img_000809_v01.png",
+    "input_psnr": 21.955449546355016,
+    "restored_psnr": 22.754738750917927
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 2,
+    "output": "img_000809_v02.png",
+    "input_psnr": 22.335190982403642,
+    "restored_psnr": 23.128986884257348
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 3,
+    "output": "img_000809_v03.png",
+    "input_psnr": 21.9981970046453,
+    "restored_psnr": 22.779198794699216
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 4,
+    "output": "img_000809_v04.png",
+    "input_psnr": 22.221452847708974,
+    "restored_psnr": 22.891443769621716
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 5,
+    "output": "img_000809_v05.png",
+    "input_psnr": 22.376789244158605,
+    "restored_psnr": 23.208026972043342
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 6,
+    "output": "img_000809_v06.png",
+    "input_psnr": 22.064486270906492,
+    "restored_psnr": 22.802545115119166
+  },
+  {
+    "source": "img_000809.png",
+    "variant": 7,
+    "output": "img_000809_v07.png",
+    "input_psnr": 22.15097271998529,
+    "restored_psnr": 22.973769080290147
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 0,
+    "output": "img_000840_v00.png",
+    "input_psnr": 20.54058204996504,
+    "restored_psnr": 20.97470777096678
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 1,
+    "output": "img_000840_v01.png",
+    "input_psnr": 20.150229299629878,
+    "restored_psnr": 20.623601481557564
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 2,
+    "output": "img_000840_v02.png",
+    "input_psnr": 20.29616160596762,
+    "restored_psnr": 20.691856463862408
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 3,
+    "output": "img_000840_v03.png",
+    "input_psnr": 20.398776455971,
+    "restored_psnr": 20.845287362855412
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 4,
+    "output": "img_000840_v04.png",
+    "input_psnr": 20.448376998997475,
+    "restored_psnr": 20.95980391836953
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 5,
+    "output": "img_000840_v05.png",
+    "input_psnr": 20.246207668717027,
+    "restored_psnr": 20.753652187219345
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 6,
+    "output": "img_000840_v06.png",
+    "input_psnr": 20.253091753692,
+    "restored_psnr": 20.69176468000687
+  },
+  {
+    "source": "img_000840.png",
+    "variant": 7,
+    "output": "img_000840_v07.png",
+    "input_psnr": 20.38109267521441,
+    "restored_psnr": 20.843013336537624
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 0,
+    "output": "img_001737_v00.png",
+    "input_psnr": 22.181112058721585,
+    "restored_psnr": 22.92426663452094
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 1,
+    "output": "img_001737_v01.png",
+    "input_psnr": 22.05858631214904,
+    "restored_psnr": 22.754088093604867
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 2,
+    "output": "img_001737_v02.png",
+    "input_psnr": 22.31124011535078,
+    "restored_psnr": 22.97540531626554
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 3,
+    "output": "img_001737_v03.png",
+    "input_psnr": 22.16842570043198,
+    "restored_psnr": 22.798570726561024
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 4,
+    "output": "img_001737_v04.png",
+    "input_psnr": 22.525911866869027,
+    "restored_psnr": 23.19972959535847
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 5,
+    "output": "img_001737_v05.png",
+    "input_psnr": 22.752424038119283,
+    "restored_psnr": 23.471708614743008
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 6,
+    "output": "img_001737_v06.png",
+    "input_psnr": 22.22949471567121,
+    "restored_psnr": 22.830599949124156
+  },
+  {
+    "source": "img_001737.png",
+    "variant": 7,
+    "output": "img_001737_v07.png",
+    "input_psnr": 22.14091462417658,
+    "restored_psnr": 22.79246319691222
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 0,
+    "output": "img_001786_v00.png",
+    "input_psnr": 22.864145598513772,
+    "restored_psnr": 23.448272585581563
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 1,
+    "output": "img_001786_v01.png",
+    "input_psnr": 22.842044820768315,
+    "restored_psnr": 23.513272414577795
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 2,
+    "output": "img_001786_v02.png",
+    "input_psnr": 23.155633081399305,
+    "restored_psnr": 23.678031556871385
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 3,
+    "output": "img_001786_v03.png",
+    "input_psnr": 22.88397983703197,
+    "restored_psnr": 23.41081277150074
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 4,
+    "output": "img_001786_v04.png",
+    "input_psnr": 22.807261066284752,
+    "restored_psnr": 23.49496869807031
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 5,
+    "output": "img_001786_v05.png",
+    "input_psnr": 23.269793365937453,
+    "restored_psnr": 23.8213580957987
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 6,
+    "output": "img_001786_v06.png",
+    "input_psnr": 22.74437864033365,
+    "restored_psnr": 23.354107086614817
+  },
+  {
+    "source": "img_001786.png",
+    "variant": 7,
+    "output": "img_001786_v07.png",
+    "input_psnr": 22.910715258264247,
+    "restored_psnr": 23.534766029645372
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 0,
+    "output": "img_001990_v00.png",
+    "input_psnr": 21.20463437929182,
+    "restored_psnr": 21.73749599103269
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 1,
+    "output": "img_001990_v01.png",
+    "input_psnr": 21.723339930629095,
+    "restored_psnr": 22.37070477517291
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 2,
+    "output": "img_001990_v02.png",
+    "input_psnr": 21.558262453168673,
+    "restored_psnr": 22.070706824837796
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 3,
+    "output": "img_001990_v03.png",
+    "input_psnr": 21.385676245165346,
+    "restored_psnr": 21.836371623488795
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 4,
+    "output": "img_001990_v04.png",
+    "input_psnr": 21.466477088465826,
+    "restored_psnr": 21.971671192394815
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 5,
+    "output": "img_001990_v05.png",
+    "input_psnr": 21.36952029925589,
+    "restored_psnr": 21.897019931246007
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 6,
+    "output": "img_001990_v06.png",
+    "input_psnr": 21.51562126672239,
+    "restored_psnr": 22.075014820519225
+  },
+  {
+    "source": "img_001990.png",
+    "variant": 7,
+    "output": "img_001990_v07.png",
+    "input_psnr": 21.426772487006993,
+    "restored_psnr": 22.033373216584053
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 0,
+    "output": "img_001997_v00.png",
+    "input_psnr": 21.90687340270837,
+    "restored_psnr": 22.496052142927606
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 1,
+    "output": "img_001997_v01.png",
+    "input_psnr": 22.259801764080382,
+    "restored_psnr": 22.888927014002803
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 2,
+    "output": "img_001997_v02.png",
+    "input_psnr": 22.002015733789687,
+    "restored_psnr": 22.7610809413703
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 3,
+    "output": "img_001997_v03.png",
+    "input_psnr": 22.183278862542632,
+    "restored_psnr": 22.997547938426678
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 4,
+    "output": "img_001997_v04.png",
+    "input_psnr": 22.164329379710868,
+    "restored_psnr": 22.849831773966287
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 5,
+    "output": "img_001997_v05.png",
+    "input_psnr": 22.106829310715742,
+    "restored_psnr": 22.778169995766312
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 6,
+    "output": "img_001997_v06.png",
+    "input_psnr": 22.23396083243431,
+    "restored_psnr": 23.040365826719395
+  },
+  {
+    "source": "img_001997.png",
+    "variant": 7,
+    "output": "img_001997_v07.png",
+    "input_psnr": 21.919028425132588,
+    "restored_psnr": 22.629378847994822
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 0,
+    "output": "img_002051_v00.png",
+    "input_psnr": 23.26019225870212,
+    "restored_psnr": 24.102873746277503
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 1,
+    "output": "img_002051_v01.png",
+    "input_psnr": 23.180297787766307,
+    "restored_psnr": 23.992772511874982
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 2,
+    "output": "img_002051_v02.png",
+    "input_psnr": 23.05772390076566,
+    "restored_psnr": 23.888277796585115
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 3,
+    "output": "img_002051_v03.png",
+    "input_psnr": 23.268490994906568,
+    "restored_psnr": 24.261077620739343
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 4,
+    "output": "img_002051_v04.png",
+    "input_psnr": 22.942525843679732,
+    "restored_psnr": 23.67702953390522
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 5,
+    "output": "img_002051_v05.png",
+    "input_psnr": 23.083139541385634,
+    "restored_psnr": 24.024744546134027
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 6,
+    "output": "img_002051_v06.png",
+    "input_psnr": 23.007108847411637,
+    "restored_psnr": 23.89476336900784
+  },
+  {
+    "source": "img_002051.png",
+    "variant": 7,
+    "output": "img_002051_v07.png",
+    "input_psnr": 22.683583077895776,
+    "restored_psnr": 23.450602565455448
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 0,
+    "output": "img_002127_v00.png",
+    "input_psnr": 21.490497439914286,
+    "restored_psnr": 22.024124990547485
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 1,
+    "output": "img_002127_v01.png",
+    "input_psnr": 21.83882248867468,
+    "restored_psnr": 22.3981554531641
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 2,
+    "output": "img_002127_v02.png",
+    "input_psnr": 21.52835467936647,
+    "restored_psnr": 22.06500171427458
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 3,
+    "output": "img_002127_v03.png",
+    "input_psnr": 21.324817916754363,
+    "restored_psnr": 21.901094856247777
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 4,
+    "output": "img_002127_v04.png",
+    "input_psnr": 21.842264934561864,
+    "restored_psnr": 22.42433007872251
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 5,
+    "output": "img_002127_v05.png",
+    "input_psnr": 21.275059779901877,
+    "restored_psnr": 21.890509757555673
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 6,
+    "output": "img_002127_v06.png",
+    "input_psnr": 21.968047068428596,
+    "restored_psnr": 22.598620413077768
+  },
+  {
+    "source": "img_002127.png",
+    "variant": 7,
+    "output": "img_002127_v07.png",
+    "input_psnr": 21.72131629071256,
+    "restored_psnr": 22.27886989151216
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 0,
+    "output": "img_002198_v00.png",
+    "input_psnr": 23.792641051567173,
+    "restored_psnr": 24.54301822808473
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 1,
+    "output": "img_002198_v01.png",
+    "input_psnr": 24.06932742790238,
+    "restored_psnr": 24.748745423660985
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 2,
+    "output": "img_002198_v02.png",
+    "input_psnr": 23.75308225179541,
+    "restored_psnr": 24.49517812316911
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 3,
+    "output": "img_002198_v03.png",
+    "input_psnr": 23.832463004536187,
+    "restored_psnr": 24.622653515532967
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 4,
+    "output": "img_002198_v04.png",
+    "input_psnr": 24.071409325674168,
+    "restored_psnr": 24.89238544800965
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 5,
+    "output": "img_002198_v05.png",
+    "input_psnr": 23.664152649994463,
+    "restored_psnr": 24.366122307446734
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 6,
+    "output": "img_002198_v06.png",
+    "input_psnr": 24.023332901646995,
+    "restored_psnr": 24.785727702402475
+  },
+  {
+    "source": "img_002198.png",
+    "variant": 7,
+    "output": "img_002198_v07.png",
+    "input_psnr": 24.00446807463797,
+    "restored_psnr": 24.800201659968998
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 0,
+    "output": "img_002647_v00.png",
+    "input_psnr": 23.091985324132878,
+    "restored_psnr": 23.769655848359466
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 1,
+    "output": "img_002647_v01.png",
+    "input_psnr": 22.88764599958816,
+    "restored_psnr": 23.748977226722122
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 2,
+    "output": "img_002647_v02.png",
+    "input_psnr": 23.565808852578275,
+    "restored_psnr": 24.485025156061404
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 3,
+    "output": "img_002647_v03.png",
+    "input_psnr": 23.113694847522034,
+    "restored_psnr": 24.019883974130348
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 4,
+    "output": "img_002647_v04.png",
+    "input_psnr": 23.030270353250756,
+    "restored_psnr": 23.8263151928706
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 5,
+    "output": "img_002647_v05.png",
+    "input_psnr": 23.102400747072693,
+    "restored_psnr": 23.863090193406737
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 6,
+    "output": "img_002647_v06.png",
+    "input_psnr": 22.713095149556256,
+    "restored_psnr": 23.581047980240484
+  },
+  {
+    "source": "img_002647.png",
+    "variant": 7,
+    "output": "img_002647_v07.png",
+    "input_psnr": 22.901599747231508,
+    "restored_psnr": 23.755830933531698
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 0,
+    "output": "img_002775_v00.png",
+    "input_psnr": 21.265832495928368,
+    "restored_psnr": 21.855729262237254
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 1,
+    "output": "img_002775_v01.png",
+    "input_psnr": 21.66145797358982,
+    "restored_psnr": 22.459895991225657
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 2,
+    "output": "img_002775_v02.png",
+    "input_psnr": 20.89242781866271,
+    "restored_psnr": 21.47356695070918
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 3,
+    "output": "img_002775_v03.png",
+    "input_psnr": 21.483704586714122,
+    "restored_psnr": 22.16852678110738
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 4,
+    "output": "img_002775_v04.png",
+    "input_psnr": 21.12350242900301,
+    "restored_psnr": 21.623134145931402
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 5,
+    "output": "img_002775_v05.png",
+    "input_psnr": 21.137038463890825,
+    "restored_psnr": 21.846112928175177
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 6,
+    "output": "img_002775_v06.png",
+    "input_psnr": 21.26261769945655,
+    "restored_psnr": 21.9579372078616
+  },
+  {
+    "source": "img_002775.png",
+    "variant": 7,
+    "output": "img_002775_v07.png",
+    "input_psnr": 21.258320206274448,
+    "restored_psnr": 21.823624309676177
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 0,
+    "output": "img_002829_v00.png",
+    "input_psnr": 25.415572768250794,
+    "restored_psnr": 26.277756688573746
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 1,
+    "output": "img_002829_v01.png",
+    "input_psnr": 25.257897765249155,
+    "restored_psnr": 26.408728934023245
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 2,
+    "output": "img_002829_v02.png",
+    "input_psnr": 25.298511356394666,
+    "restored_psnr": 26.145398458806206
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 3,
+    "output": "img_002829_v03.png",
+    "input_psnr": 25.259303915014453,
+    "restored_psnr": 26.404934981830415
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 4,
+    "output": "img_002829_v04.png",
+    "input_psnr": 25.271164318083883,
+    "restored_psnr": 26.406408504063027
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 5,
+    "output": "img_002829_v05.png",
+    "input_psnr": 25.049451596616315,
+    "restored_psnr": 26.145455934908178
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 6,
+    "output": "img_002829_v06.png",
+    "input_psnr": 25.480202227692924,
+    "restored_psnr": 26.41430802843314
+  },
+  {
+    "source": "img_002829.png",
+    "variant": 7,
+    "output": "img_002829_v07.png",
+    "input_psnr": 25.28479497694107,
+    "restored_psnr": 26.469852038745945
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 0,
+    "output": "img_002948_v00.png",
+    "input_psnr": 24.857924092927483,
+    "restored_psnr": 25.909598381375876
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 1,
+    "output": "img_002948_v01.png",
+    "input_psnr": 24.685700500907018,
+    "restored_psnr": 25.637933066443715
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 2,
+    "output": "img_002948_v02.png",
+    "input_psnr": 24.849396059632593,
+    "restored_psnr": 25.854729738615593
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 3,
+    "output": "img_002948_v03.png",
+    "input_psnr": 25.034576324224226,
+    "restored_psnr": 26.05232155944689
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 4,
+    "output": "img_002948_v04.png",
+    "input_psnr": 24.86495909510865,
+    "restored_psnr": 25.838062839866463
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 5,
+    "output": "img_002948_v05.png",
+    "input_psnr": 25.382129304395242,
+    "restored_psnr": 26.384929838812713
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 6,
+    "output": "img_002948_v06.png",
+    "input_psnr": 24.752010565138743,
+    "restored_psnr": 25.618928114831007
+  },
+  {
+    "source": "img_002948.png",
+    "variant": 7,
+    "output": "img_002948_v07.png",
+    "input_psnr": 24.855563645778567,
+    "restored_psnr": 25.832327120925065
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 0,
+    "output": "img_002950_v00.png",
+    "input_psnr": 25.61520444048913,
+    "restored_psnr": 27.016288396706404
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 1,
+    "output": "img_002950_v01.png",
+    "input_psnr": 25.440238729729664,
+    "restored_psnr": 26.78379370401234
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 2,
+    "output": "img_002950_v02.png",
+    "input_psnr": 25.79730964454564,
+    "restored_psnr": 27.04950602022319
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 3,
+    "output": "img_002950_v03.png",
+    "input_psnr": 25.31809673031156,
+    "restored_psnr": 26.46967256920294
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 4,
+    "output": "img_002950_v04.png",
+    "input_psnr": 25.53247312066493,
+    "restored_psnr": 26.748089423612885
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 5,
+    "output": "img_002950_v05.png",
+    "input_psnr": 25.876438867250503,
+    "restored_psnr": 27.359507533061688
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 6,
+    "output": "img_002950_v06.png",
+    "input_psnr": 25.589938314611047,
+    "restored_psnr": 26.88713977600043
+  },
+  {
+    "source": "img_002950.png",
+    "variant": 7,
+    "output": "img_002950_v07.png",
+    "input_psnr": 25.249585101646783,
+    "restored_psnr": 26.4026299314322
+  }
+]

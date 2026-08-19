@@ -1,0 +1,4 @@
+- Provider: Fenix gaming laptop over SSH/WSL2
+- CPU/GPU: laptop CPU plus RTX 4060; cached scorer makes solver evaluation CPU-bound
+- Project: `/home/kva/pazzle_directional_solver_manual`
+- Parallelism: 1 initially to avoid noisy contention

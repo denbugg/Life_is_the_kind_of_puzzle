@@ -1,0 +1,3 @@
+- Frozen cache: `/home/kva/pazzle_directional_solver_manual/outputs/directional_student_holdout128.npz`
+- 128 real-noisy grouped cases; raw tiles are solver outputs; targets are evaluation-only.
+- Cache SHA-256: `74db2b62e9d5eafffae33117c7771512d823b0dcaa0095ef5807adb8e86a25df`

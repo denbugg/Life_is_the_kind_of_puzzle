@@ -1,0 +1,1 @@
+The highest-leverage change is structural: add a block-preserving large-neighborhood phase after the existing solver. Weight tuning cannot exploit R@5 when correct runs are repeatedly broken. Initial experiments vary block geometry and proposal policy while preserving the exact API and raw output pixels.

@@ -1,0 +1,33 @@
+{
+  "greedy": {
+    "exact": 0.010416666666666666,
+    "adjacency": 0.035326086956521736
+  },
+  "optimized": {
+    "exact": 0.006944444444444444,
+    "adjacency": 0.041666666666666664
+  },
+  "rl_first": {
+    "exact": 0.006944444444444444,
+    "adjacency": 0.041666666666666664,
+    "steps": 1200,
+    "accepted": false,
+    "psnr": 7.363941669464111
+  },
+  "context": {
+    "psnr": 7.5444793701171875
+  },
+  "rl_second": {
+    "exact": 0.006944444444444444,
+    "adjacency": 0.041666666666666664,
+    "steps": 1200,
+    "accepted": false,
+    "psnr": 7.5444793701171875
+  },
+  "graph": {
+    "components": 14,
+    "largest": 208,
+    "placed": 11,
+    "accepted_edges": 566
+  }
+}

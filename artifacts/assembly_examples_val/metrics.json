@@ -1,0 +1,30 @@
+[
+  {
+    "tile_exact": 0.001736111111111111,
+    "adjacency": 0.026268115942028984,
+    "stem": "img_000272",
+    "split": "validation",
+    "objective": 3829.847412109375
+  },
+  {
+    "tile_exact": 0.0,
+    "adjacency": 0.025362318840579712,
+    "stem": "img_002105",
+    "split": "validation",
+    "objective": 3977.574462890625
+  },
+  {
+    "tile_exact": 0.003472222222222222,
+    "adjacency": 0.02717391304347826,
+    "stem": "img_003847",
+    "split": "validation",
+    "objective": 4020.4228515625
+  },
+  {
+    "tile_exact": 0.0,
+    "adjacency": 0.021739130434782608,
+    "stem": "img_006023",
+    "split": "validation",
+    "objective": 3903.488525390625
+  }
+]

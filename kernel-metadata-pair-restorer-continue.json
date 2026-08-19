@@ -1,0 +1,17 @@
+{
+  "id": "phoenix0501/pazzle-continue-pair-on-restorer",
+  "title": "pazzle-continue-pair-on-restorer",
+  "code_file": "kaggle_continue_pair_on_restorer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": ["pasha883/vsos-ai-initiative-pazzle"],
+  "competition_sources": [],
+  "kernel_sources": [
+    "phoenix0501/pazzle-fragment-restorer",
+    "phoenix0501/pazzle-finetune-pair-on-restorer"
+  ]
+}

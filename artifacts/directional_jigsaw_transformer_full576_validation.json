@@ -1,0 +1,12 @@
+{
+  "checkpoint": "models/directional_jigsaw_transformer_best.pt",
+  "validation_images_sampled": 20,
+  "candidates_per_puzzle": 576,
+  "val_loss": 5.608933091163635,
+  "recall_at_1": 0.019089674577116966,
+  "recall_at_5": 0.07531703263521194,
+  "border_acc": 0.9583333134651184,
+  "random_recall_at_1": 0.001736111111111111,
+  "random_recall_at_5": 0.008680555555555556,
+  "note": "Border accuracy equals the majority-class baseline and should not be treated as learned border detection."
+}

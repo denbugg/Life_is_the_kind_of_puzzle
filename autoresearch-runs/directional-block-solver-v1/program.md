@@ -1,0 +1,1 @@
+Keep the existing `solve_layout(right, down, pos, seed)` baseline intact. Each experiment adds one bounded post-SA large-neighborhood phase. Evaluate first on the same frozen 32-case prefix, always assemble raw cached tiles, and record mean/robust SSIM, adjacency, wins, runtime, and validity. Promote only candidates improving all primary metrics.

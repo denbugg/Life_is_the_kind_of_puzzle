@@ -1,0 +1,27 @@
+{
+  "clean": {
+    "tile_exact": 0.006944444444444444,
+    "adjacency": 0.016304347826086956,
+    "row_acc": 0.08333333333333333,
+    "col_acc": 0.08506944444444445
+  },
+  "noisy": {
+    "tile_exact": 0.001736111111111111,
+    "adjacency": 0.002717391304347826,
+    "row_acc": 0.0763888888888889,
+    "col_acc": 0.0625
+  },
+  "diffusion_restored": {
+    "tile_exact": 0.006944444444444444,
+    "adjacency": 0.002717391304347826,
+    "row_acc": 0.07118055555555555,
+    "col_acc": 0.04861111111111111
+  },
+  "image_quality": {
+    "noisy_psnr": 25.615203857421875,
+    "diffusion_restored_psnr": 27.01628875732422
+  },
+  "source": "img_002950",
+  "variant": 0,
+  "checkpoint_epoch": 20
+}

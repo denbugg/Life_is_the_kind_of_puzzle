@@ -1,0 +1,19 @@
+{
+  "id": "phoenix0501/pazzle-solver-relation-guarded-v3",
+  "title": "pazzle-solver-relation-guarded-v3",
+  "code_file": "kaggle_solve_puzzles.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": false,
+  "dataset_sources": ["pasha883/vsos-ai-initiative-pazzle"],
+  "competition_sources": [],
+  "kernel_sources": [
+    "phoenix0501/pazzle-puzzle-assembly-models",
+    "phoenix0501/pazzle-fragment-restorer",
+    "phoenix0501/pazzle-rl-puzzle-assembler",
+    "phoenix0501/pazzle-continue-pair-on-restorer"
+  ]
+}

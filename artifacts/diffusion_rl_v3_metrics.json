@@ -1,0 +1,100 @@
+[
+  {
+    "epoch": 1,
+    "loss": 5.173138618469238,
+    "policy_acc": 0.241455078125,
+    "mean_reward": 4.170923965267354,
+    "corruption_swaps": 65
+  },
+  {
+    "epoch": 2,
+    "loss": 4.9162765343983965,
+    "policy_acc": 0.2713216145833333,
+    "mean_reward": 5.932123214454839,
+    "corruption_swaps": 106
+  },
+  {
+    "epoch": 3,
+    "loss": 4.345571915308635,
+    "policy_acc": 0.2522786458333333,
+    "mean_reward": 6.061991261861597,
+    "corruption_swaps": 147
+  },
+  {
+    "epoch": 4,
+    "loss": 3.678464889526367,
+    "policy_acc": 0.2767740885416667,
+    "mean_reward": 6.010682248070629,
+    "corruption_swaps": 188
+  },
+  {
+    "epoch": 5,
+    "loss": 3.0648104747136435,
+    "policy_acc": 0.289306640625,
+    "mean_reward": 5.894131913720803,
+    "corruption_swaps": 230
+  },
+  {
+    "epoch": 6,
+    "loss": 2.614077925682068,
+    "policy_acc": 0.3155924479166667,
+    "mean_reward": 5.744473752358721,
+    "corruption_swaps": 271
+  },
+  {
+    "epoch": 7,
+    "loss": 2.386624018351237,
+    "policy_acc": 0.3505859375,
+    "mean_reward": 5.616841957714684,
+    "corruption_swaps": 312
+  },
+  {
+    "epoch": 8,
+    "loss": 2.2134412129720054,
+    "policy_acc": 0.3839518229166667,
+    "mean_reward": 5.480219348070763,
+    "corruption_swaps": 353
+  },
+  {
+    "epoch": 9,
+    "loss": 1.9671916564305623,
+    "policy_acc": 0.4514973958333333,
+    "mean_reward": 5.360113684269082,
+    "corruption_swaps": 394
+  },
+  {
+    "epoch": 10,
+    "loss": 1.8098226984341939,
+    "policy_acc": 0.4872233072916667,
+    "mean_reward": 5.250905488600472,
+    "corruption_swaps": 436
+  },
+  {
+    "epoch": 11,
+    "loss": 1.7102437615394592,
+    "policy_acc": 0.5086263020833334,
+    "mean_reward": 5.154210757619391,
+    "corruption_swaps": 477
+  },
+  {
+    "epoch": 12,
+    "loss": 1.6222992539405823,
+    "policy_acc": 0.539306640625,
+    "mean_reward": 5.074583479177414,
+    "corruption_swaps": 518
+  },
+  {
+    "epoch": 13,
+    "loss": 1.6075787941614788,
+    "policy_acc": 0.5445963541666666,
+    "mean_reward": 5.074611267945902,
+    "corruption_swaps": 518
+  },
+  {
+    "epoch": 14,
+    "loss": 1.5579130450884502,
+    "policy_acc": 0.5608723958333334,
+    "mean_reward": 5.082700093863187,
+    "corruption_swaps": 518
+  }
+]

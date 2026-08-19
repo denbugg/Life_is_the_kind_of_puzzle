@@ -1,0 +1,405 @@
+{
+  "count": 32,
+  "summary": {
+    "raw": {
+      "ssim": {
+        "mean": 0.09808167400487644,
+        "robust": 0.0941551853510155,
+        "folds": [
+          0.08732139645479121,
+          0.10117689799415944,
+          0.09513421174256173,
+          0.10869418982799342
+        ]
+      },
+      "mean_adjacency": 0.08947576992753624,
+      "ssim_wins_vs_raw": 0,
+      "right": {
+        "r1": 0.16360960144927536,
+        "r5": 0.3066689311594203,
+        "r25": 0.4974524456521739,
+        "median": 26.0
+      },
+      "down": {
+        "r1": 0.169044384057971,
+        "r5": 0.3200860507246377,
+        "r25": 0.5042459239130435,
+        "median": 25.0
+      }
+    },
+    "tile_nlm_h3": {
+      "ssim": {
+        "mean": 0.09917046142489568,
+        "robust": 0.0956262579586341,
+        "folds": [
+          0.09000309211653224,
+          0.10214506757561995,
+          0.09559908656646399,
+          0.10893459944096656
+        ]
+      },
+      "mean_adjacency": 0.0876075634057971,
+      "ssim_wins_vs_raw": 19,
+      "right": {
+        "r1": 0.16140172101449277,
+        "r5": 0.30502717391304346,
+        "r25": 0.49343297101449274,
+        "median": 27.0
+      },
+      "down": {
+        "r1": 0.16927083333333334,
+        "r5": 0.31674592391304346,
+        "r25": 0.5010190217391305,
+        "median": 25.0
+      }
+    },
+    "tile_nlm_h5": {
+      "ssim": {
+        "mean": 0.09941380678125966,
+        "robust": 0.09642137492222148,
+        "folds": [
+          0.0922098632254598,
+          0.10061171374817794,
+          0.09642072829171869,
+          0.10841292185968221
+        ]
+      },
+      "mean_adjacency": 0.08840013586956522,
+      "ssim_wins_vs_raw": 18,
+      "right": {
+        "r1": 0.15828804347826086,
+        "r5": 0.30202672101449274,
+        "r25": 0.4906589673913043,
+        "median": 27.0
+      },
+      "down": {
+        "r1": 0.16734601449275363,
+        "r5": 0.3132925724637681,
+        "r25": 0.4990942028985507,
+        "median": 26.0
+      }
+    }
+  },
+  "images": [
+    {
+      "index": 0,
+      "stem": "img_000095",
+      "raw_ssim": 0.08727538765770082,
+      "raw_adjacency": 0.09148550724637682,
+      "tile_nlm_h3_ssim": 0.10236310837691139,
+      "tile_nlm_h3_adjacency": 0.08333333333333333,
+      "tile_nlm_h5_ssim": 0.09717446350872967,
+      "tile_nlm_h5_adjacency": 0.08786231884057971
+    },
+    {
+      "index": 1,
+      "stem": "img_000341",
+      "raw_ssim": 0.10330057544136743,
+      "raw_adjacency": 0.07427536231884058,
+      "tile_nlm_h3_ssim": 0.10461277440424398,
+      "tile_nlm_h3_adjacency": 0.08242753623188406,
+      "tile_nlm_h5_ssim": 0.10237465918320732,
+      "tile_nlm_h5_adjacency": 0.08242753623188406
+    },
+    {
+      "index": 2,
+      "stem": "img_005731",
+      "raw_ssim": 0.06742325445335971,
+      "raw_adjacency": 0.11775362318840579,
+      "tile_nlm_h3_ssim": 0.06478036198229513,
+      "tile_nlm_h3_adjacency": 0.12228260869565218,
+      "tile_nlm_h5_ssim": 0.07596020579309659,
+      "tile_nlm_h5_adjacency": 0.10778985507246377
+    },
+    {
+      "index": 3,
+      "stem": "img_001764",
+      "raw_ssim": 0.09305031046957275,
+      "raw_adjacency": 0.08786231884057971,
+      "tile_nlm_h3_ssim": 0.09683790392214313,
+      "tile_nlm_h3_adjacency": 0.07518115942028986,
+      "tile_nlm_h5_ssim": 0.08965131539065203,
+      "tile_nlm_h5_adjacency": 0.0769927536231884
+    },
+    {
+      "index": 4,
+      "stem": "img_006696",
+      "raw_ssim": 0.09091161982283961,
+      "raw_adjacency": 0.059782608695652176,
+      "tile_nlm_h3_ssim": 0.09087365129606086,
+      "tile_nlm_h3_adjacency": 0.07608695652173914,
+      "tile_nlm_h5_ssim": 0.09769690008651827,
+      "tile_nlm_h5_adjacency": 0.07971014492753623
+    },
+    {
+      "index": 5,
+      "stem": "img_003047",
+      "raw_ssim": 0.11810251627570313,
+      "raw_adjacency": 0.06702898550724638,
+      "tile_nlm_h3_ssim": 0.11857760895384299,
+      "tile_nlm_h3_adjacency": 0.07789855072463768,
+      "tile_nlm_h5_ssim": 0.12184298321177671,
+      "tile_nlm_h5_adjacency": 0.07608695652173914
+    },
+    {
+      "index": 6,
+      "stem": "img_000483",
+      "raw_ssim": 0.09249176902441573,
+      "raw_adjacency": 0.08786231884057971,
+      "tile_nlm_h3_ssim": 0.0984216523909886,
+      "tile_nlm_h3_adjacency": 0.08514492753623189,
+      "tile_nlm_h5_ssim": 0.09938143846109244,
+      "tile_nlm_h5_adjacency": 0.10597826086956522
+    },
+    {
+      "index": 7,
+      "stem": "img_001452",
+      "raw_ssim": 0.13092210164344942,
+      "raw_adjacency": 0.06431159420289854,
+      "tile_nlm_h3_ssim": 0.13214862764885407,
+      "tile_nlm_h3_adjacency": 0.06068840579710145,
+      "tile_nlm_h5_ssim": 0.13445565182132613,
+      "tile_nlm_h5_adjacency": 0.06974637681159421
+    },
+    {
+      "index": 8,
+      "stem": "img_002808",
+      "raw_ssim": 0.09189632420204942,
+      "raw_adjacency": 0.10235507246376811,
+      "tile_nlm_h3_ssim": 0.09759437574051477,
+      "tile_nlm_h3_adjacency": 0.10054347826086957,
+      "tile_nlm_h5_ssim": 0.09334866793682527,
+      "tile_nlm_h5_adjacency": 0.09601449275362318
+    },
+    {
+      "index": 9,
+      "stem": "img_003942",
+      "raw_ssim": 0.07996127958943204,
+      "raw_adjacency": 0.10597826086956522,
+      "tile_nlm_h3_ssim": 0.07674883797103249,
+      "tile_nlm_h3_adjacency": 0.09601449275362318,
+      "tile_nlm_h5_ssim": 0.07662818479601301,
+      "tile_nlm_h5_adjacency": 0.10416666666666667
+    },
+    {
+      "index": 10,
+      "stem": "img_003450",
+      "raw_ssim": 0.11138045058452008,
+      "raw_adjacency": 0.07065217391304347,
+      "tile_nlm_h3_ssim": 0.10652896114879064,
+      "tile_nlm_h3_adjacency": 0.06340579710144928,
+      "tile_nlm_h5_ssim": 0.113264123127137,
+      "tile_nlm_h5_adjacency": 0.08514492753623189
+    },
+    {
+      "index": 11,
+      "stem": "img_001947",
+      "raw_ssim": 0.17914760483501468,
+      "raw_adjacency": 0.07608695652173914,
+      "tile_nlm_h3_ssim": 0.18060530151275048,
+      "tile_nlm_h3_adjacency": 0.07971014492753623,
+      "tile_nlm_h5_ssim": 0.17091081987063725,
+      "tile_nlm_h5_adjacency": 0.06702898550724638
+    },
+    {
+      "index": 12,
+      "stem": "img_004393",
+      "raw_ssim": 0.08969985315787878,
+      "raw_adjacency": 0.10597826086956522,
+      "tile_nlm_h3_ssim": 0.08690987466552184,
+      "tile_nlm_h3_adjacency": 0.08967391304347826,
+      "tile_nlm_h5_ssim": 0.0929594627912953,
+      "tile_nlm_h5_adjacency": 0.08967391304347826
+    },
+    {
+      "index": 13,
+      "stem": "img_004419",
+      "raw_ssim": 0.10840981107756398,
+      "raw_adjacency": 0.08876811594202899,
+      "tile_nlm_h3_ssim": 0.10248035077230293,
+      "tile_nlm_h3_adjacency": 0.09057971014492754,
+      "tile_nlm_h5_ssim": 0.1124932871962218,
+      "tile_nlm_h5_adjacency": 0.08605072463768115
+    },
+    {
+      "index": 14,
+      "stem": "img_000820",
+      "raw_ssim": 0.1033619688861943,
+      "raw_adjacency": 0.07971014492753623,
+      "tile_nlm_h3_ssim": 0.1071880885379433,
+      "tile_nlm_h3_adjacency": 0.06884057971014493,
+      "tile_nlm_h5_ssim": 0.10088324059590754,
+      "tile_nlm_h5_adjacency": 0.07065217391304347
+    },
+    {
+      "index": 15,
+      "stem": "img_002172",
+      "raw_ssim": 0.0831879671120375,
+      "raw_adjacency": 0.10869565217391304,
+      "tile_nlm_h3_ssim": 0.08140549344088431,
+      "tile_nlm_h3_adjacency": 0.09057971014492754,
+      "tile_nlm_h5_ssim": 0.09114354404430047,
+      "tile_nlm_h5_adjacency": 0.10144927536231885
+    },
+    {
+      "index": 16,
+      "stem": "img_004993",
+      "raw_ssim": 0.0886149932045933,
+      "raw_adjacency": 0.08967391304347826,
+      "tile_nlm_h3_ssim": 0.09692873208235964,
+      "tile_nlm_h3_adjacency": 0.08876811594202899,
+      "tile_nlm_h5_ssim": 0.10380616508653569,
+      "tile_nlm_h5_adjacency": 0.08876811594202899
+    },
+    {
+      "index": 17,
+      "stem": "img_001953",
+      "raw_ssim": 0.11535089138547304,
+      "raw_adjacency": 0.08695652173913043,
+      "tile_nlm_h3_ssim": 0.12558198118997055,
+      "tile_nlm_h3_adjacency": 0.07608695652173914,
+      "tile_nlm_h5_ssim": 0.11368451466752073,
+      "tile_nlm_h5_adjacency": 0.07518115942028986
+    },
+    {
+      "index": 18,
+      "stem": "img_004118",
+      "raw_ssim": 0.10376496876441266,
+      "raw_adjacency": 0.09963768115942029,
+      "tile_nlm_h3_ssim": 0.09765700136083429,
+      "tile_nlm_h3_adjacency": 0.08967391304347826,
+      "tile_nlm_h5_ssim": 0.10068443444373192,
+      "tile_nlm_h5_adjacency": 0.08695652173913043
+    },
+    {
+      "index": 19,
+      "stem": "img_000058",
+      "raw_ssim": 0.10797288755212597,
+      "raw_adjacency": 0.09692028985507246,
+      "tile_nlm_h3_ssim": 0.1049540158454489,
+      "tile_nlm_h3_adjacency": 0.09239130434782608,
+      "tile_nlm_h5_ssim": 0.10792827101723564,
+      "tile_nlm_h5_adjacency": 0.08786231884057971
+    },
+    {
+      "index": 20,
+      "stem": "img_002139",
+      "raw_ssim": 0.0766934028918652,
+      "raw_adjacency": 0.08967391304347826,
+      "tile_nlm_h3_ssim": 0.07671045117068744,
+      "tile_nlm_h3_adjacency": 0.09329710144927536,
+      "tile_nlm_h5_ssim": 0.07632848956122401,
+      "tile_nlm_h5_adjacency": 0.10235507246376811
+    },
+    {
+      "index": 21,
+      "stem": "img_005220",
+      "raw_ssim": 0.10243308970538989,
+      "raw_adjacency": 0.08786231884057971,
+      "tile_nlm_h3_ssim": 0.09908259789498342,
+      "tile_nlm_h3_adjacency": 0.07971014492753623,
+      "tile_nlm_h5_ssim": 0.10540704104298941,
+      "tile_nlm_h5_adjacency": 0.08786231884057971
+    },
+    {
+      "index": 22,
+      "stem": "img_005328",
+      "raw_ssim": 0.06343040859182629,
+      "raw_adjacency": 0.08333333333333333,
+      "tile_nlm_h3_ssim": 0.06491516063534715,
+      "tile_nlm_h3_adjacency": 0.08605072463768115,
+      "tile_nlm_h5_ssim": 0.06407325540564822,
+      "tile_nlm_h5_adjacency": 0.08333333333333333
+    },
+    {
+      "index": 23,
+      "stem": "img_005937",
+      "raw_ssim": 0.0954955017359181,
+      "raw_adjacency": 0.08967391304347826,
+      "tile_nlm_h3_ssim": 0.09489759264641513,
+      "tile_nlm_h3_adjacency": 0.08423913043478261,
+      "tile_nlm_h5_ssim": 0.0937331218175989,
+      "tile_nlm_h5_adjacency": 0.08605072463768115
+    },
+    {
+      "index": 24,
+      "stem": "img_001071",
+      "raw_ssim": 0.08698958463797861,
+      "raw_adjacency": 0.11322463768115942,
+      "tile_nlm_h3_ssim": 0.08975632197104035,
+      "tile_nlm_h3_adjacency": 0.1105072463768116,
+      "tile_nlm_h5_ssim": 0.09421417236235691,
+      "tile_nlm_h5_adjacency": 0.11231884057971014
+    },
+    {
+      "index": 25,
+      "stem": "img_002820",
+      "raw_ssim": 0.09172389152935222,
+      "raw_adjacency": 0.0769927536231884,
+      "tile_nlm_h3_ssim": 0.09299076340392883,
+      "tile_nlm_h3_adjacency": 0.08786231884057971,
+      "tile_nlm_h5_ssim": 0.0807247940822667,
+      "tile_nlm_h5_adjacency": 0.09148550724637682
+    },
+    {
+      "index": 26,
+      "stem": "img_000925",
+      "raw_ssim": 0.09994490514108655,
+      "raw_adjacency": 0.07971014492753623,
+      "tile_nlm_h3_ssim": 0.10183737200539915,
+      "tile_nlm_h3_adjacency": 0.07880434782608696,
+      "tile_nlm_h5_ssim": 0.10165477272830437,
+      "tile_nlm_h5_adjacency": 0.07880434782608696
+    },
+    {
+      "index": 27,
+      "stem": "img_005223",
+      "raw_ssim": 0.08090355267345976,
+      "raw_adjacency": 0.11775362318840579,
+      "tile_nlm_h3_ssim": 0.06963019839313835,
+      "tile_nlm_h3_adjacency": 0.1286231884057971,
+      "tile_nlm_h5_ssim": 0.06807008796266598,
+      "tile_nlm_h5_adjacency": 0.12771739130434784
+    },
+    {
+      "index": 28,
+      "stem": "img_003339",
+      "raw_ssim": 0.08649000606342394,
+      "raw_adjacency": 0.0769927536231884,
+      "tile_nlm_h3_ssim": 0.0788882216291617,
+      "tile_nlm_h3_adjacency": 0.09057971014492754,
+      "tile_nlm_h5_ssim": 0.08215058447019334,
+      "tile_nlm_h5_adjacency": 0.08786231884057971
+    },
+    {
+      "index": 29,
+      "stem": "img_004946",
+      "raw_ssim": 0.09013312894899368,
+      "raw_adjacency": 0.09420289855072464,
+      "tile_nlm_h3_ssim": 0.09708562601465441,
+      "tile_nlm_h3_adjacency": 0.10960144927536232,
+      "tile_nlm_h5_ssim": 0.09173824580542789,
+      "tile_nlm_h5_adjacency": 0.09329710144927536
+    },
+    {
+      "index": 30,
+      "stem": "img_001895",
+      "raw_ssim": 0.11927596849467857,
+      "raw_adjacency": 0.09057971014492754,
+      "tile_nlm_h3_ssim": 0.12346409447011364,
+      "tile_nlm_h3_adjacency": 0.07155797101449275,
+      "tile_nlm_h5_ssim": 0.11546435577883137,
+      "tile_nlm_h5_adjacency": 0.06702898550724638
+    },
+    {
+      "index": 31,
+      "stem": "img_002533",
+      "raw_ssim": 0.0988735926023692,
+      "raw_adjacency": 0.10144927536231885,
+      "tile_nlm_h3_ssim": 0.11099766211809815,
+      "tile_nlm_h3_adjacency": 0.09329710144927536,
+      "tile_nlm_h5_ssim": 0.11141056295304123,
+      "tile_nlm_h5_adjacency": 0.08514492753623189
+    }
+  ]
+}

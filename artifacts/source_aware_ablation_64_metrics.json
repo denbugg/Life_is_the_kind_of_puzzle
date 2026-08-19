@@ -1,0 +1,979 @@
+{
+  "count": 64,
+  "baseline_mean_ssim": 0.18043731903879046,
+  "source_mean_ssim": 0.24477305231263446,
+  "source_wins": 33,
+  "retrieval_exact_like": 9,
+  "best_gate": {
+    "threshold": 0.10403286346600248,
+    "coverage": 0.359375,
+    "mean_ssim": 0.2464892664233192,
+    "robust_ssim": 0.22693902819549747,
+    "fold_ssim": [
+      0.23826953326581052,
+      0.29586012895628394,
+      0.18874089425911716,
+      0.26308650921206533
+    ]
+  },
+  "gates": [
+    {
+      "threshold": 0.0007348589444267275,
+      "coverage": 1.0,
+      "mean_ssim": 0.24477305231263446,
+      "robust_ssim": 0.22438828885070397,
+      "fold_ssim": [
+        0.2372733590723745,
+        0.2955508484484163,
+        0.18390715910977556,
+        0.2623608426199716
+      ]
+    },
+    {
+      "threshold": 0.00285430517618765,
+      "coverage": 0.9375,
+      "mean_ssim": 0.24512021324533895,
+      "robust_ssim": 0.22453414845342157,
+      "fold_ssim": [
+        0.237196116164754,
+        0.2967295468703573,
+        0.18390715910977556,
+        0.26264803083646887
+      ]
+    },
+    {
+      "threshold": 0.004361297318466186,
+      "coverage": 0.890625,
+      "mean_ssim": 0.24532479058820314,
+      "robust_ssim": 0.22488620277536786,
+      "fold_ssim": [
+        0.237196116164754,
+        0.2967295468703573,
+        0.18470701132149847,
+        0.2626664879962028
+      ]
+    },
+    {
+      "threshold": 0.010266109962099033,
+      "coverage": 0.84375,
+      "mean_ssim": 0.2451321406587289,
+      "robust_ssim": 0.22480531294500514,
+      "fold_ssim": [
+        0.237196116164754,
+        0.2960470891146327,
+        0.18470701132149847,
+        0.26257834603403046
+      ]
+    },
+    {
+      "threshold": 0.013667919401027203,
+      "coverage": 0.796875,
+      "mean_ssim": 0.24522346682160895,
+      "robust_ssim": 0.22489766543813486,
+      "fold_ssim": [
+        0.23715732778240467,
+        0.29626040621855465,
+        0.184897787251446,
+        0.26257834603403046
+      ]
+    },
+    {
+      "threshold": 0.015664476566457895,
+      "coverage": 0.75,
+      "mean_ssim": 0.2454214016527757,
+      "robust_ssim": 0.22531924212980792,
+      "fold_ssim": [
+        0.23667079751207704,
+        0.29626040621855465,
+        0.18617605684644065,
+        0.26257834603403046
+      ]
+    },
+    {
+      "threshold": 0.021490237514180173,
+      "coverage": 0.703125,
+      "mean_ssim": 0.24552169205960225,
+      "robust_ssim": 0.2255510921643798,
+      "fold_ssim": [
+        0.23667079751207704,
+        0.29626040621855465,
+        0.18682101068834078,
+        0.2623345538194366
+      ]
+    },
+    {
+      "threshold": 0.03032987159483098,
+      "coverage": 0.640625,
+      "mean_ssim": 0.24572470113922062,
+      "robust_ssim": 0.2260669214917358,
+      "fold_ssim": [
+        0.23667079751207704,
+        0.295781874289229,
+        0.18811157893613992,
+        0.2623345538194366
+      ]
+    },
+    {
+      "threshold": 0.04095087969119108,
+      "coverage": 0.59375,
+      "mean_ssim": 0.24588663172924302,
+      "robust_ssim": 0.22625687150493054,
+      "fold_ssim": [
+        0.23755552781692962,
+        0.295781874289229,
+        0.1880741124341673,
+        0.2621350123766462
+      ]
+    },
+    {
+      "threshold": 0.050107808997447136,
+      "coverage": 0.546875,
+      "mean_ssim": 0.2459750793639721,
+      "robust_ssim": 0.22634606339471952,
+      "fold_ssim": [
+        0.23771002181122652,
+        0.29571593872108853,
+        0.1880741124341673,
+        0.262400244489406
+      ]
+    },
+    {
+      "threshold": 0.05602564562245436,
+      "coverage": 0.5,
+      "mean_ssim": 0.24605368237840677,
+      "robust_ssim": 0.22644642196540987,
+      "fold_ssim": [
+        0.23809849638932135,
+        0.2956418762007325,
+        0.1880741124341673,
+        0.262400244489406
+      ]
+    },
+    {
+      "threshold": 0.0670762069692678,
+      "coverage": 0.453125,
+      "mean_ssim": 0.24562797385867569,
+      "robust_ssim": 0.2261518516087871,
+      "fold_ssim": [
+        0.23826953326581052,
+        0.2953426346068227,
+        0.1880741124341673,
+        0.2608256151279023
+      ]
+    },
+    {
+      "threshold": 0.08602154263496903,
+      "coverage": 0.40625,
+      "mean_ssim": 0.2462680050422922,
+      "robust_ssim": 0.22689286068137254,
+      "fold_ssim": [
+        0.23826953326581052,
+        0.29586012895628394,
+        0.18929128642273185,
+        0.2616510715243427
+      ]
+    },
+    {
+      "threshold": 0.10403286346600248,
+      "coverage": 0.359375,
+      "mean_ssim": 0.2464892664233192,
+      "robust_ssim": 0.22693902819549747,
+      "fold_ssim": [
+        0.23826953326581052,
+        0.29586012895628394,
+        0.18874089425911716,
+        0.26308650921206533
+      ]
+    },
+    {
+      "threshold": 0.11405402485154363,
+      "coverage": 0.296875,
+      "mean_ssim": 0.24604143475738666,
+      "robust_ssim": 0.2262801327992795,
+      "fold_ssim": [
+        0.23751262501129672,
+        0.29586012895628394,
+        0.1877064758499008,
+        0.26308650921206533
+      ]
+    },
+    {
+      "threshold": 0.13872002919681026,
+      "coverage": 0.25,
+      "mean_ssim": 0.2459655736559646,
+      "robust_ssim": 0.2261762144494836,
+      "fold_ssim": [
+        0.23710272741706684,
+        0.2959665821448256,
+        0.1877064758499008,
+        0.26308650921206533
+      ]
+    },
+    {
+      "threshold": 0.17602773373147407,
+      "coverage": 0.203125,
+      "mean_ssim": 0.24622882129539725,
+      "robust_ssim": 0.2265321333139432,
+      "fold_ssim": [
+        0.23730282626804808,
+        0.29617049461306233,
+        0.18835545508841328,
+        0.26308650921206533
+      ]
+    },
+    {
+      "threshold": 0.3463616074798147,
+      "coverage": 0.15625,
+      "mean_ssim": 0.24549249883383287,
+      "robust_ssim": 0.22573971742029875,
+      "fold_ssim": [
+        0.23477574548831115,
+        0.29617049461306233,
+        0.18835545508841328,
+        0.26266830014554476
+      ]
+    },
+    {
+      "threshold": 1.6451372326360394,
+      "coverage": 0.109375,
+      "mean_ssim": 0.2304815913347379,
+      "robust_ssim": 0.21295831064719314,
+      "fold_ssim": [
+        0.20340848721416688,
+        0.2674491326979107,
+        0.18835545508841328,
+        0.26271329033846075
+      ]
+    },
+    {
+      "threshold": 2.4700681931486512,
+      "coverage": 0.0625,
+      "mean_ssim": 0.20687004691690208,
+      "robust_ssim": 0.19162355416368462,
+      "fold_ssim": [
+        0.20340848721416688,
+        0.23754779385871605,
+        0.15865110468406862,
+        0.22787280191065684
+      ]
+    },
+    {
+      "threshold": 5.55419779413745,
+      "coverage": 0.015625,
+      "mean_ssim": 0.18520241853208108,
+      "robust_ssim": 0.17503076953110397,
+      "fold_ssim": [
+        0.1722400676022744,
+        0.2040266648350962,
+        0.15865110468406862,
+        0.20589183700688515
+      ]
+    }
+  ],
+  "images": [
+    {
+      "index": 0,
+      "source": "img_002333.png",
+      "retrieval_rank_distance": 0.2826777398586273,
+      "assignment_cost": 0.5012567043304443,
+      "assignment_margin": -0.039377663284540176,
+      "retrieval_margin": 0.013449719412258084,
+      "source_target_ssim": 0.14992187205571275,
+      "baseline_ssim": 0.09478033310233569,
+      "source_ssim": 0.09540094721992494
+    },
+    {
+      "index": 1,
+      "source": "img_000674.png",
+      "retrieval_rank_distance": 0.7196317315101624,
+      "assignment_cost": 0.09112809598445892,
+      "assignment_margin": 0.10660230368375778,
+      "retrieval_margin": 5.55419779413745,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.29853821359670946,
+      "source_ssim": 0.6035045811673104
+    },
+    {
+      "index": 2,
+      "source": "img_004948.png",
+      "retrieval_rank_distance": 0.575107753276825,
+      "assignment_cost": 0.2903718054294586,
+      "assignment_margin": -0.044683847576379776,
+      "retrieval_margin": 0.01631661047826329,
+      "source_target_ssim": 0.3097685645748453,
+      "baseline_ssim": 0.23558884461656202,
+      "source_ssim": 0.22804075656472098
+    },
+    {
+      "index": 3,
+      "source": "img_002385.png",
+      "retrieval_rank_distance": 0.6040611267089844,
+      "assignment_cost": 0.47766292095184326,
+      "assignment_margin": -0.06393886357545853,
+      "retrieval_margin": 0.08314825626347042,
+      "source_target_ssim": 0.157170863471601,
+      "baseline_ssim": 0.1307741542498937,
+      "source_ssim": 0.11756685190684757
+    },
+    {
+      "index": 4,
+      "source": "img_005723.png",
+      "retrieval_rank_distance": 0.38603171706199646,
+      "assignment_cost": 0.5050722360610962,
+      "assignment_margin": -0.09554476290941238,
+      "retrieval_margin": 0.0009358360843523197,
+      "source_target_ssim": 0.1660368330447057,
+      "baseline_ssim": 0.12947477450626416,
+      "source_ssim": 0.13071066102819182
+    },
+    {
+      "index": 5,
+      "source": "img_006301.png",
+      "retrieval_rank_distance": 0.5178206562995911,
+      "assignment_cost": 0.42097413539886475,
+      "assignment_margin": -0.05347241461277008,
+      "retrieval_margin": 0.136116910602459,
+      "source_target_ssim": 0.2174755560931864,
+      "baseline_ssim": 0.17054002103638263,
+      "source_ssim": 0.1688367700197164
+    },
+    {
+      "index": 6,
+      "source": "img_001749.png",
+      "retrieval_rank_distance": 0.7419238686561584,
+      "assignment_cost": 0.41200923919677734,
+      "assignment_margin": -0.02875242382287979,
+      "retrieval_margin": 0.09607409268161678,
+      "source_target_ssim": 0.24325519073833277,
+      "baseline_ssim": 0.17250083227095117,
+      "source_ssim": 0.1813071068887865
+    },
+    {
+      "index": 7,
+      "source": "img_006364.png",
+      "retrieval_rank_distance": 0.3523225784301758,
+      "assignment_cost": 0.3383040428161621,
+      "assignment_margin": -0.038606829941272736,
+      "retrieval_margin": 0.056345447434159514,
+      "source_target_ssim": 0.2871412843634283,
+      "baseline_ssim": 0.20851431587483638,
+      "source_ssim": 0.2337083856588953
+    },
+    {
+      "index": 8,
+      "source": "img_004763.png",
+      "retrieval_rank_distance": 0.7542366981506348,
+      "assignment_cost": 0.4335925281047821,
+      "assignment_margin": -0.055141717195510864,
+      "retrieval_margin": 0.26150235245512693,
+      "source_target_ssim": 0.3866845016508513,
+      "baseline_ssim": 0.24637150425498935,
+      "source_ssim": 0.29105322757445146
+    },
+    {
+      "index": 9,
+      "source": "img_006314.png",
+      "retrieval_rank_distance": 0.2981087565422058,
+      "assignment_cost": 0.416253924369812,
+      "assignment_margin": -0.023102309554815292,
+      "retrieval_margin": 0.146529384979864,
+      "source_target_ssim": 0.3457719810336517,
+      "baseline_ssim": 0.282853524616042,
+      "source_ssim": 0.27959092512425354
+    },
+    {
+      "index": 10,
+      "source": "img_006784.png",
+      "retrieval_rank_distance": 0.5327069163322449,
+      "assignment_cost": 0.48204028606414795,
+      "assignment_margin": -0.07758361846208572,
+      "retrieval_margin": 0.02788794315146445,
+      "source_target_ssim": 0.20949631213581169,
+      "baseline_ssim": 0.18101165660053753,
+      "source_ssim": 0.16939894787682175
+    },
+    {
+      "index": 11,
+      "source": "img_005426.png",
+      "retrieval_rank_distance": 0.5392757058143616,
+      "assignment_cost": 0.5227827429771423,
+      "assignment_margin": -0.14110785722732544,
+      "retrieval_margin": 0.04472445480945227,
+      "source_target_ssim": 0.2539130345345632,
+      "baseline_ssim": 0.2065712954946685,
+      "source_ssim": 0.20232758169051188
+    },
+    {
+      "index": 12,
+      "source": "img_002387.png",
+      "retrieval_rank_distance": 0.31058046221733093,
+      "assignment_cost": 0.4554251432418823,
+      "assignment_margin": -0.036563921719789505,
+      "retrieval_margin": 0.11548540822016584,
+      "source_target_ssim": 0.16226159441246238,
+      "baseline_ssim": 0.11573192073134787,
+      "source_ssim": 0.11260693162077857
+    },
+    {
+      "index": 13,
+      "source": "img_003690.png",
+      "retrieval_rank_distance": 0.35707393288612366,
+      "assignment_cost": 0.14161621034145355,
+      "assignment_margin": 0.14474473893642426,
+      "retrieval_margin": 1.7281650994615503,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.1641561107027535,
+      "source_ssim": 0.6425775321298682
+    },
+    {
+      "index": 14,
+      "source": "img_002827.png",
+      "retrieval_rank_distance": 0.32518187165260315,
+      "assignment_cost": 0.3819262683391571,
+      "assignment_margin": -0.04379958286881447,
+      "retrieval_margin": 0.07280817399626421,
+      "source_target_ssim": 0.23146031878923234,
+      "baseline_ssim": 0.1817211067632825,
+      "source_ssim": 0.16224632294624972
+    },
+    {
+      "index": 15,
+      "source": "img_004476.png",
+      "retrieval_rank_distance": 0.5846015810966492,
+      "assignment_cost": 0.3630588948726654,
+      "assignment_margin": -0.05294588580727577,
+      "retrieval_margin": 0.3877729226110807,
+      "source_target_ssim": 0.3741682344261401,
+      "baseline_ssim": 0.3059596588637406,
+      "source_ssim": 0.30523981577708464
+    },
+    {
+      "index": 16,
+      "source": "img_001862.png",
+      "retrieval_rank_distance": 0.8007993698120117,
+      "assignment_cost": 0.4249504804611206,
+      "assignment_margin": -0.09692113846540451,
+      "retrieval_margin": 0.1789245353706346,
+      "source_target_ssim": 0.3827798400122784,
+      "baseline_ssim": 0.3029697781659357,
+      "source_ssim": 0.2987213473222641
+    },
+    {
+      "index": 17,
+      "source": "img_000179.png",
+      "retrieval_rank_distance": 0.3168942630290985,
+      "assignment_cost": 0.1381179392337799,
+      "assignment_margin": 0.05632402002811432,
+      "retrieval_margin": 1.6080298434264464,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.20641222333814446,
+      "source_ssim": 0.6659540139805702
+    },
+    {
+      "index": 18,
+      "source": "img_003328.png",
+      "retrieval_rank_distance": 0.3364454209804535,
+      "assignment_cost": 0.4688347578048706,
+      "assignment_margin": -0.041282832622528076,
+      "retrieval_margin": 0.015360915400335537,
+      "source_target_ssim": 0.10680664761577356,
+      "baseline_ssim": 0.10015477861303555,
+      "source_ssim": 0.09330052791068193
+    },
+    {
+      "index": 19,
+      "source": "img_003237.png",
+      "retrieval_rank_distance": 0.2888791859149933,
+      "assignment_cost": 0.39016690850257874,
+      "assignment_margin": -0.031127797439694405,
+      "retrieval_margin": 0.035377790844135164,
+      "source_target_ssim": 0.16896519640648874,
+      "baseline_ssim": 0.11505020404807137,
+      "source_ssim": 0.11824286713271782
+    },
+    {
+      "index": 20,
+      "source": "img_005262.png",
+      "retrieval_rank_distance": 0.6364794969558716,
+      "assignment_cost": 0.5622994899749756,
+      "assignment_margin": -0.08963247388601303,
+      "retrieval_margin": 0.013813386060206616,
+      "source_target_ssim": 0.22622858633918255,
+      "baseline_ssim": 0.15159480326512542,
+      "source_ssim": 0.15937928759036799
+    },
+    {
+      "index": 21,
+      "source": "img_001120.png",
+      "retrieval_rank_distance": 0.33495447039604187,
+      "assignment_cost": 0.4083431363105774,
+      "assignment_margin": -0.04480463266372681,
+      "retrieval_margin": 0.07780408724489378,
+      "source_target_ssim": 0.1335781981858488,
+      "baseline_ssim": 0.12564727108987014,
+      "source_ssim": 0.1173673614984899
+    },
+    {
+      "index": 22,
+      "source": "img_005073.png",
+      "retrieval_rank_distance": 0.5028586387634277,
+      "assignment_cost": 0.47132042050361633,
+      "assignment_margin": -0.050613027065992355,
+      "retrieval_margin": 0.0038088157761950463,
+      "source_target_ssim": 0.2591248763433525,
+      "baseline_ssim": 0.21546164274699287,
+      "source_ssim": 0.20266400735942622
+    },
+    {
+      "index": 23,
+      "source": "img_003237.png",
+      "retrieval_rank_distance": 0.23775093257427216,
+      "assignment_cost": 0.4052905738353729,
+      "assignment_margin": -0.05339203402400017,
+      "retrieval_margin": 0.09267862553920726,
+      "source_target_ssim": 0.18237151577577973,
+      "baseline_ssim": 0.12689479196713002,
+      "source_ssim": 0.11970330995352613
+    },
+    {
+      "index": 24,
+      "source": "img_001862.png",
+      "retrieval_rank_distance": 0.5760281085968018,
+      "assignment_cost": 0.5076091289520264,
+      "assignment_margin": -0.20417922735214233,
+      "retrieval_margin": 0.050010167788247864,
+      "source_target_ssim": 0.30195065066819143,
+      "baseline_ssim": 0.22661784199126558,
+      "source_ssim": 0.22414593808251526
+    },
+    {
+      "index": 25,
+      "source": "img_002548.png",
+      "retrieval_rank_distance": 0.8766993284225464,
+      "assignment_cost": 0.42668136954307556,
+      "assignment_margin": -0.11927910894155502,
+      "retrieval_margin": 0.056184474103474165,
+      "source_target_ssim": 0.35771333564889063,
+      "baseline_ssim": 0.28544638942478556,
+      "source_ssim": 0.2902342549273431
+    },
+    {
+      "index": 26,
+      "source": "img_001730.png",
+      "retrieval_rank_distance": 0.5037088990211487,
+      "assignment_cost": 0.35902488231658936,
+      "assignment_margin": -0.050970498472452164,
+      "retrieval_margin": 0.015765663621832012,
+      "source_target_ssim": 0.22439822225100883,
+      "baseline_ssim": 0.16783965266211234,
+      "source_ssim": 0.16506847924355128
+    },
+    {
+      "index": 27,
+      "source": "img_001854.png",
+      "retrieval_rank_distance": 0.44775742292404175,
+      "assignment_cost": 0.4520411491394043,
+      "assignment_margin": -0.05327276885509491,
+      "retrieval_margin": 0.007121579084629479,
+      "source_target_ssim": 0.18940754129953338,
+      "baseline_ssim": 0.1531373087857202,
+      "source_ssim": 0.14313174000635903
+    },
+    {
+      "index": 28,
+      "source": "img_006519.png",
+      "retrieval_rank_distance": 0.27251046895980835,
+      "assignment_cost": 0.49683910608291626,
+      "assignment_margin": -0.06644541770219803,
+      "retrieval_margin": 0.05643112534770277,
+      "source_target_ssim": 0.19283707198269742,
+      "baseline_ssim": 0.133656267011079,
+      "source_ssim": 0.13091967698725232
+    },
+    {
+      "index": 29,
+      "source": "img_001179.png",
+      "retrieval_rank_distance": 0.30211564898490906,
+      "assignment_cost": 0.31729447841644287,
+      "assignment_margin": -0.05883903056383133,
+      "retrieval_margin": 0.005617830657023386,
+      "source_target_ssim": 0.25623590950236225,
+      "baseline_ssim": 0.194394613866563,
+      "source_ssim": 0.20531393795815658
+    },
+    {
+      "index": 30,
+      "source": "img_001749.png",
+      "retrieval_rank_distance": 0.2710586488246918,
+      "assignment_cost": 0.39442846179008484,
+      "assignment_margin": -0.0398862287402153,
+      "retrieval_margin": 0.11234241382027861,
+      "source_target_ssim": 0.2429145007194049,
+      "baseline_ssim": 0.1658013764229411,
+      "source_ssim": 0.17790681115852588
+    },
+    {
+      "index": 31,
+      "source": "img_002257.png",
+      "retrieval_rank_distance": 0.27147555351257324,
+      "assignment_cost": 0.5002149343490601,
+      "assignment_margin": -0.048968348652124405,
+      "retrieval_margin": 0.0027359883269155584,
+      "source_target_ssim": 0.17478605697854555,
+      "baseline_ssim": 0.12448819072941904,
+      "source_ssim": 0.11989317926546261
+    },
+    {
+      "index": 32,
+      "source": "img_000872.png",
+      "retrieval_rank_distance": 0.506953775882721,
+      "assignment_cost": 0.40240389108657837,
+      "assignment_margin": -0.12654489278793335,
+      "retrieval_margin": 0.17409653263870034,
+      "source_target_ssim": 0.2636207282551952,
+      "baseline_ssim": 0.2630273511809655,
+      "source_ssim": 0.2598257695652659
+    },
+    {
+      "index": 33,
+      "source": "img_004479.png",
+      "retrieval_rank_distance": 0.6007897257804871,
+      "assignment_cost": 0.4777930676937103,
+      "assignment_margin": -0.11454084515571594,
+      "retrieval_margin": 0.0018371919657025476,
+      "source_target_ssim": 0.19678602026029676,
+      "baseline_ssim": 0.16831824202398793,
+      "source_ssim": 0.1749507481674857
+    },
+    {
+      "index": 34,
+      "source": "img_002840.png",
+      "retrieval_rank_distance": 0.37800130248069763,
+      "assignment_cost": 0.562624990940094,
+      "assignment_margin": -0.0417601577937603,
+      "retrieval_margin": 0.03748134987311776,
+      "source_target_ssim": 0.11665382201992647,
+      "baseline_ssim": 0.0732550064635535,
+      "source_ssim": 0.07385447049511533
+    },
+    {
+      "index": 35,
+      "source": "img_004924.png",
+      "retrieval_rank_distance": 0.751033365726471,
+      "assignment_cost": 0.46877649426460266,
+      "assignment_margin": -0.06257334351539612,
+      "retrieval_margin": 0.008775659910438334,
+      "source_target_ssim": 0.37558675696079247,
+      "baseline_ssim": 0.35800486626407185,
+      "source_ssim": 0.3694207064381903
+    },
+    {
+      "index": 36,
+      "source": "img_002788.png",
+      "retrieval_rank_distance": 0.32547205686569214,
+      "assignment_cost": 0.4334186613559723,
+      "assignment_margin": -0.022194914519786835,
+      "retrieval_margin": 0.10445174613886486,
+      "source_target_ssim": 0.18472097882285232,
+      "baseline_ssim": 0.11511228960333503,
+      "source_ssim": 0.12417342659333357
+    },
+    {
+      "index": 37,
+      "source": "img_003774.png",
+      "retrieval_rank_distance": 0.3107633888721466,
+      "assignment_cost": 0.1179182231426239,
+      "assignment_margin": 0.1924831122159958,
+      "retrieval_margin": 2.985534838237002,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.11208605649715919,
+      "source_ssim": 0.648424120875077
+    },
+    {
+      "index": 38,
+      "source": "img_001845.png",
+      "retrieval_rank_distance": 0.2739182114601135,
+      "assignment_cost": 0.48499488830566406,
+      "assignment_margin": -0.044680289924144745,
+      "retrieval_margin": 0.11389498225503004,
+      "source_target_ssim": 0.16052444670183552,
+      "baseline_ssim": 0.10090635059206234,
+      "source_ssim": 0.10535161040393949
+    },
+    {
+      "index": 39,
+      "source": "img_000426.png",
+      "retrieval_rank_distance": 1.4678373336791992,
+      "assignment_cost": 0.4768771529197693,
+      "assignment_margin": -0.07595116645097733,
+      "retrieval_margin": 0.016940016300874872,
+      "source_target_ssim": 0.3842185683199159,
+      "baseline_ssim": 0.3906917247668604,
+      "source_ssim": 0.39459240020036246
+    },
+    {
+      "index": 40,
+      "source": "img_005442.png",
+      "retrieval_rank_distance": 0.23251625895500183,
+      "assignment_cost": 0.11050671339035034,
+      "assignment_margin": 0.14505243301391602,
+      "retrieval_margin": 2.497776467003766,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.16936034287001137,
+      "source_ssim": 0.6680550566602913
+    },
+    {
+      "index": 41,
+      "source": "img_004216.png",
+      "retrieval_rank_distance": 0.3350401520729065,
+      "assignment_cost": 0.44036540389060974,
+      "assignment_margin": -0.0349457748234272,
+      "retrieval_margin": 0.05028914267167434,
+      "source_target_ssim": 0.2280687184631446,
+      "baseline_ssim": 0.16140343293524792,
+      "source_ssim": 0.16930753059367779
+    },
+    {
+      "index": 42,
+      "source": "img_000418.png",
+      "retrieval_rank_distance": 0.21237695217132568,
+      "assignment_cost": 0.11047454923391342,
+      "assignment_margin": 0.1287587732076645,
+      "retrieval_margin": 2.3837634747860346,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.18001492971987046,
+      "source_ssim": 0.655284536189385
+    },
+    {
+      "index": 43,
+      "source": "img_000857.png",
+      "retrieval_rank_distance": 0.2691718339920044,
+      "assignment_cost": 0.42596036195755005,
+      "assignment_margin": -0.037370845675468445,
+      "retrieval_margin": 0.0035247673220628337,
+      "source_target_ssim": 0.1975999247840596,
+      "baseline_ssim": 0.1549273029187254,
+      "source_ssim": 0.14654115617402788
+    },
+    {
+      "index": 44,
+      "source": "img_002816.png",
+      "retrieval_rank_distance": 0.2326628565788269,
+      "assignment_cost": 0.5587735772132874,
+      "assignment_margin": -0.05918943136930466,
+      "retrieval_margin": 0.1086900685800327,
+      "source_target_ssim": 0.1386225421698708,
+      "baseline_ssim": 0.11447348565556019,
+      "source_ssim": 0.11752288073778254
+    },
+    {
+      "index": 45,
+      "source": "img_005110.png",
+      "retrieval_rank_distance": 0.4035687744617462,
+      "assignment_cost": 0.48564228415489197,
+      "assignment_margin": -0.029762625694274902,
+      "retrieval_margin": 0.05586681714143455,
+      "source_target_ssim": 0.09755496039013804,
+      "baseline_ssim": 0.0794116316831815,
+      "source_ssim": 0.07269253435044822
+    },
+    {
+      "index": 46,
+      "source": "img_002387.png",
+      "retrieval_rank_distance": 0.5190837383270264,
+      "assignment_cost": 0.5357920527458191,
+      "assignment_margin": -0.20690250396728516,
+      "retrieval_margin": 0.030064191634341285,
+      "source_target_ssim": 0.20372614186787952,
+      "baseline_ssim": 0.1561033231756508,
+      "source_ssim": 0.16501947936959024
+    },
+    {
+      "index": 47,
+      "source": "img_003972.png",
+      "retrieval_rank_distance": 0.39297065138816833,
+      "assignment_cost": 0.4018961191177368,
+      "assignment_margin": -0.0619448758661747,
+      "retrieval_margin": 0.2957477778749332,
+      "source_target_ssim": 0.25533072114124905,
+      "baseline_ssim": 0.2029037518169462,
+      "source_ssim": 0.20959509688127528
+    },
+    {
+      "index": 48,
+      "source": "img_001845.png",
+      "retrieval_rank_distance": 0.6112120151519775,
+      "assignment_cost": 0.43622252345085144,
+      "assignment_margin": -0.08024748414754868,
+      "retrieval_margin": 0.05379847482761062,
+      "source_target_ssim": 0.1879369800874889,
+      "baseline_ssim": 0.2166921759059541,
+      "source_ssim": 0.21047658265643673
+    },
+    {
+      "index": 49,
+      "source": "img_002644.png",
+      "retrieval_rank_distance": 0.4689773619174957,
+      "assignment_cost": 0.43391522765159607,
+      "assignment_margin": -0.08341126143932343,
+      "retrieval_margin": 0.04442498647084191,
+      "source_target_ssim": 0.2390929271230887,
+      "baseline_ssim": 0.19687771775656204,
+      "source_ssim": 0.19793268684680895
+    },
+    {
+      "index": 50,
+      "source": "img_004903.png",
+      "retrieval_rank_distance": 0.2719137966632843,
+      "assignment_cost": 0.5137144327163696,
+      "assignment_margin": -0.06811477243900299,
+      "retrieval_margin": 0.012417884687063481,
+      "source_target_ssim": 0.17638111134181259,
+      "baseline_ssim": 0.11893264812190359,
+      "source_ssim": 0.11588023324274316
+    },
+    {
+      "index": 51,
+      "source": "img_006653.png",
+      "retrieval_rank_distance": 0.7747707366943359,
+      "assignment_cost": 0.563477098941803,
+      "assignment_margin": -0.05088337883353233,
+      "retrieval_margin": 0.08673986422784366,
+      "source_target_ssim": 0.2549513846061211,
+      "baseline_ssim": 0.21687912091350517,
+      "source_ssim": 0.20110359992354698
+    },
+    {
+      "index": 52,
+      "source": "img_005635.png",
+      "retrieval_rank_distance": 0.36498185992240906,
+      "assignment_cost": 0.4651414155960083,
+      "assignment_margin": -0.04427042230963707,
+      "retrieval_margin": 0.1318674080523972,
+      "source_target_ssim": 0.16524734363409474,
+      "baseline_ssim": 0.14445877712033803,
+      "source_ssim": 0.15414212773858524
+    },
+    {
+      "index": 53,
+      "source": "img_003909.png",
+      "retrieval_rank_distance": 0.5590125918388367,
+      "assignment_cost": 0.551101565361023,
+      "assignment_margin": -0.13773488998413086,
+      "retrieval_margin": 0.022518832161321105,
+      "source_target_ssim": 0.34880805755462524,
+      "baseline_ssim": 0.2583193112423762,
+      "source_ssim": 0.2659758221115871
+    },
+    {
+      "index": 54,
+      "source": "img_003317.png",
+      "retrieval_rank_distance": 0.5105776190757751,
+      "assignment_cost": 0.48344337940216064,
+      "assignment_margin": -0.16014984250068665,
+      "retrieval_margin": 0.14683791769930016,
+      "source_target_ssim": 0.15336056899823725,
+      "baseline_ssim": 0.14145063292900326,
+      "source_ssim": 0.13106696511280336
+    },
+    {
+      "index": 55,
+      "source": "img_005960.png",
+      "retrieval_rank_distance": 0.4833768606185913,
+      "assignment_cost": 0.14145544171333313,
+      "assignment_margin": 0.09566503018140793,
+      "retrieval_margin": 2.4852984375655836,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.2140214394906724,
+      "source_ssim": 0.565716877951019
+    },
+    {
+      "index": 56,
+      "source": "img_006481.png",
+      "retrieval_rank_distance": 0.34675368666648865,
+      "assignment_cost": 0.271758496761322,
+      "assignment_margin": 0.13881713151931763,
+      "retrieval_margin": 0.8022233570982481,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.18080605180576984,
+      "source_ssim": 0.6826821841920784
+    },
+    {
+      "index": 57,
+      "source": "img_001071.png",
+      "retrieval_rank_distance": 0.4361981749534607,
+      "assignment_cost": 0.4871080219745636,
+      "assignment_margin": -0.030968837440013885,
+      "retrieval_margin": 0.0007348589444267275,
+      "source_target_ssim": 0.16536329876525288,
+      "baseline_ssim": 0.13342840585843396,
+      "source_ssim": 0.1079367249638794
+    },
+    {
+      "index": 58,
+      "source": "img_000857.png",
+      "retrieval_rank_distance": 0.5821870565414429,
+      "assignment_cost": 0.3534035086631775,
+      "assignment_margin": -0.04137067124247551,
+      "retrieval_margin": 0.02199581764899186,
+      "source_target_ssim": 0.2173161429051814,
+      "baseline_ssim": 0.20452920112191642,
+      "source_ssim": 0.18657666168690654
+    },
+    {
+      "index": 59,
+      "source": "img_000478.png",
+      "retrieval_rank_distance": 0.2781562805175781,
+      "assignment_cost": 0.16437584161758423,
+      "assignment_margin": 0.2121877819299698,
+      "retrieval_margin": 1.6610403994401506,
+      "source_target_ssim": 1.0,
+      "baseline_ssim": 0.11089680640388196,
+      "source_ssim": 0.6683446212487448
+    },
+    {
+      "index": 60,
+      "source": "img_006373.png",
+      "retrieval_rank_distance": 0.384921133518219,
+      "assignment_cost": 0.4886847734451294,
+      "assignment_margin": -0.07051829248666763,
+      "retrieval_margin": 0.04008235299627835,
+      "source_target_ssim": 0.22034029192484347,
+      "baseline_ssim": 0.15071338446611338,
+      "source_ssim": 0.13655769958847194
+    },
+    {
+      "index": 61,
+      "source": "img_005943.png",
+      "retrieval_rank_distance": 0.31724312901496887,
+      "assignment_cost": 0.38353464007377625,
+      "assignment_margin": -0.033136870712041855,
+      "retrieval_margin": 0.012087771136350992,
+      "source_target_ssim": 0.17195132052423714,
+      "baseline_ssim": 0.1216271041227388,
+      "source_ssim": 0.11821403045998734
+    },
+    {
+      "index": 62,
+      "source": "img_003542.png",
+      "retrieval_rank_distance": 0.4599025547504425,
+      "assignment_cost": 0.49615511298179626,
+      "assignment_margin": -0.07146359980106354,
+      "retrieval_margin": 0.014141646113688726,
+      "source_target_ssim": 0.17509044773823199,
+      "baseline_ssim": 0.14314569212472236,
+      "source_ssim": 0.1295476293071616
+    },
+    {
+      "index": 63,
+      "source": "img_006694.png",
+      "retrieval_rank_distance": 1.0229835510253906,
+      "assignment_cost": 0.6743830442428589,
+      "assignment_margin": -0.2713505029678345,
+      "retrieval_margin": 0.0038227830305130983,
+      "source_target_ssim": 0.33051450968252594,
+      "baseline_ssim": 0.2745544595220193,
+      "source_ssim": 0.2826452917109739
+    }
+  ]
+}

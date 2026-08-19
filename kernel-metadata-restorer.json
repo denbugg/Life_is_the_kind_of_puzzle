@@ -1,0 +1,15 @@
+{
+  "id": "phoenix0501/pazzle-fragment-restorer",
+  "title": "pazzle-fragment-restorer",
+  "code_file": "kaggle_train_fragment_restorer.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

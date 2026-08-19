@@ -1,0 +1,16 @@
+{
+  "id": "phoenix0501/pazzle-global-jigsaw-transformer",
+  "title": "pazzle-global-jigsaw-transformer",
+  "code_file": "kaggle_train_global_jigsaw_standalone.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,1 @@
+Optimize the 24x24 raw-tile jigsaw solver on the frozen 128-case directional-student cache. The unknown is how to convert strong top-k directional predictions into coherent global layouts without destroying already-correct local runs. Production code remains untouched until a winner passes smoke-32 and full-128.

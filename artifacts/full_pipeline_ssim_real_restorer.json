@@ -1,0 +1,150 @@
+{
+  "count": 20,
+  "checkpoint_epoch": 8,
+  "mean_raw_assembled_ssim": 0.10001265670649265,
+  "mean_restored_assembled_ssim": 0.16840474350040086,
+  "mean_delta_ssim": 0.06839208679390824,
+  "mean_adjacency": 0.029619565217391296,
+  "images": [
+    {
+      "tile_exact": 0.001736111111111111,
+      "adjacency": 0.026268115942028984,
+      "stem": "img_000272",
+      "raw_assembled_ssim": 0.11595270557502901,
+      "restored_assembled_ssim": 0.18952455190379594
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.03713768115942029,
+      "stem": "img_004808",
+      "raw_assembled_ssim": 0.09160177015644304,
+      "restored_assembled_ssim": 0.14693911080175018
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.03804347826086957,
+      "stem": "img_003050",
+      "raw_assembled_ssim": 0.11044633031511712,
+      "restored_assembled_ssim": 0.17974378756509587
+    },
+    {
+      "tile_exact": 0.003472222222222222,
+      "adjacency": 0.018115942028985508,
+      "stem": "img_000738",
+      "raw_assembled_ssim": 0.19245943061322332,
+      "restored_assembled_ssim": 0.3486869615442905
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.028079710144927536,
+      "stem": "img_000835",
+      "raw_assembled_ssim": 0.11025385673450065,
+      "restored_assembled_ssim": 0.20732192011237757
+    },
+    {
+      "tile_exact": 0.003472222222222222,
+      "adjacency": 0.026268115942028984,
+      "stem": "img_001007",
+      "raw_assembled_ssim": 0.09427635292666213,
+      "restored_assembled_ssim": 0.15758715924796526
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.03894927536231884,
+      "stem": "img_002803",
+      "raw_assembled_ssim": 0.0802503673482043,
+      "restored_assembled_ssim": 0.13296537774133949
+    },
+    {
+      "tile_exact": 0.003472222222222222,
+      "adjacency": 0.020833333333333332,
+      "stem": "img_004022",
+      "raw_assembled_ssim": 0.07247033908471344,
+      "restored_assembled_ssim": 0.10079920104233475
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.026268115942028984,
+      "stem": "img_004962",
+      "raw_assembled_ssim": 0.11006431993855191,
+      "restored_assembled_ssim": 0.20096438886243714
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.026268115942028984,
+      "stem": "img_006633",
+      "raw_assembled_ssim": 0.11372602942760884,
+      "restored_assembled_ssim": 0.1832527382868101
+    },
+    {
+      "tile_exact": 0.003472222222222222,
+      "adjacency": 0.012681159420289856,
+      "stem": "img_002537",
+      "raw_assembled_ssim": 0.10497840729743653,
+      "restored_assembled_ssim": 0.16897970949474225
+    },
+    {
+      "tile_exact": 0.001736111111111111,
+      "adjacency": 0.03804347826086957,
+      "stem": "img_003459",
+      "raw_assembled_ssim": 0.04633008319173964,
+      "restored_assembled_ssim": 0.061090572709088076
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.030797101449275364,
+      "stem": "img_006692",
+      "raw_assembled_ssim": 0.08210165938884367,
+      "restored_assembled_ssim": 0.1491954109107982
+    },
+    {
+      "tile_exact": 0.0,
+      "adjacency": 0.04619565217391304,
+      "stem": "img_000887",
+      "raw_assembled_ssim": 0.10025309775059053,
+      "restored_assembled_ssim": 0.16661262808157892
+    },
+    {
+      "tile_exact": 0.005208333333333333,
+      "adjacency": 0.030797101449275364,
+      "stem": "img_006492",
+      "raw_assembled_ssim": 0.06040593489898385,
+      "restored_assembled_ssim": 0.07955358741069712
+    },
+    {
+      "tile_exact": 0.001736111111111111,
+      "adjacency": 0.034420289855072464,
+      "stem": "img_004545",
+      "raw_assembled_ssim": 0.10225711851577109,
+      "restored_assembled_ssim": 0.17161811979803612
+    },
+    {
+      "tile_exact": 0.001736111111111111,
+      "adjacency": 0.03170289855072464,
+      "stem": "img_002859",
+      "raw_assembled_ssim": 0.12958655523530613,
+      "restored_assembled_ssim": 0.2219419712276637
+    },
+    {
+      "tile_exact": 0.001736111111111111,
+      "adjacency": 0.028079710144927536,
+      "stem": "img_003654",
+      "raw_assembled_ssim": 0.08558190775330064,
+      "restored_assembled_ssim": 0.14395203708848495
+    },
+    {
+      "tile_exact": 0.001736111111111111,
+      "adjacency": 0.02717391304347826,
+      "stem": "img_000237",
+      "raw_assembled_ssim": 0.08082765627528915,
+      "restored_assembled_ssim": 0.13570900823109552
+    },
+    {
+      "tile_exact": 0.005208333333333333,
+      "adjacency": 0.026268115942028984,
+      "stem": "img_006023",
+      "raw_assembled_ssim": 0.11642921170253774,
+      "restored_assembled_ssim": 0.22165662794763571
+    }
+  ]
+}
