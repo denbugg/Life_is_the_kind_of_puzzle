@@ -1,0 +1,20 @@
+{
+  "experiment": "E14 Kaggle port cached parity",
+  "cache_sha256": "74db2b62e9d5eafffae33117c7771512d823b0dcaa0095ef5807adb8e86a25df",
+  "case_index": 0,
+  "seed": 20260818,
+  "reference_fusion": "autoresearch-runs/e14-fusion-relaxation/e2_raw_fusion.py",
+  "reference_solver": "global_solver_candidate.py@fed2d61",
+  "classical_right_sha256": "52d0ead2dee443d98bbe57967a41c7d17a6fbb54a01bd3b371c4fc2a7ba42544",
+  "classical_down_sha256": "fd27e309d459863b41b95a543322ef927c87efe9a56542a31ed6146074584da9",
+  "fused_right_sha256": "e73533d5b662273bf7bafd1957fc5963a82a189036004d1e412e047266d9f8c2",
+  "fused_down_sha256": "f8e132fcc61c62e662b05b873894a07ca9a7ea021fddaff239a003b083c2d9cb",
+  "layout_sha256": "907143189f0137f17d289b2aeda3d0ad468708a1281d9baaa983f0ce4854c1f7",
+  "classical_arrays_bit_identical": true,
+  "fused_arrays_bit_identical": true,
+  "layout_bit_identical": true,
+  "layout_valid_permutation": true,
+  "fallback_test": "passed",
+  "test_count": 4,
+  "test_runtime_seconds": 3.113
+}
