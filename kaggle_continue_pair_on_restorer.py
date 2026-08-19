@@ -27,8 +27,8 @@ VAL_SAMPLES = 50_000
 BATCH_SIZE = 512
 TRAIN_IMAGES = 4_000
 PAIRS_PER_IMAGE = 64
-EPOCHS = 4
-LR = float(os.getenv("LR", "2e-5"))
+EPOCHS = int(os.getenv("EPOCHS", "1"))
+LR = float(os.getenv("LR", "5e-6"))
 CLEAN_REPLAY_WEIGHT = float(os.getenv("CLEAN_REPLAY_WEIGHT", "0.25"))
 MATCH_CONFIDENCE_FLOOR = float(os.getenv("MATCH_CONFIDENCE_FLOOR", "0.05"))
 MATCH_CONFIDENCE_POWER = float(os.getenv("MATCH_CONFIDENCE_POWER", "1.5"))
@@ -425,7 +425,7 @@ def main():
 
     restorer_path = find_checkpoint("fragment_restorer_epoch8.pt", "pazzle-fragment-restorer")
     relation_path = find_checkpoint(
-        "pair_relation_restorer_finetuned_best.pt", "pazzle-finetune-pair-on-restorer"
+        "pair_relation_restorer_continued_best.pt", "pazzle-continue-pair-on-restorer"
     )
     restorer_ckpt = torch.load(restorer_path, map_location="cpu")
     restorer = FragmentRestorer(restorer_ckpt.get("config", {}).get("base_channels", 64))
@@ -454,7 +454,7 @@ def main():
     scaler = torch.amp.GradScaler("cuda")
     history = []
     best_f1 = baseline["restored"]["macro_f1"]
-    best_path = OUT_DIR / "pair_relation_restorer_continued_best.pt"
+    best_path = OUT_DIR / "pair_relation_restorer_low_lr_e1_best.pt"
     torch.save({
         "model": relation.state_dict(), "epoch": 0, "metrics": baseline,
         "class_names": CLASS_NAMES, "source_checkpoint": str(relation_path),
@@ -497,7 +497,7 @@ def main():
         "matching_domain": "restored",
     }
     print(json.dumps(results, indent=2))
-    (OUT_DIR / "pair_relation_restorer_continue_metrics.json").write_text(
+    (OUT_DIR / "pair_relation_restorer_low_lr_e1_metrics.json").write_text(
         json.dumps(results, indent=2), encoding="utf-8"
     )
 
