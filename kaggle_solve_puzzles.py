@@ -14,6 +14,8 @@ from scipy.optimize import linear_sum_assignment
 from skimage.metrics import structural_similarity
 from tqdm.auto import tqdm
 
+import kaggle_e14_solver
+
 
 GRID = 24
 TILE = 20
@@ -54,6 +56,8 @@ SWAP_STEPS = int(os.getenv("SWAP_STEPS", "20000"))
 POSITION_WEIGHT = float(os.getenv("POSITION_WEIGHT", "0.12"))
 RESTORE_BATCH = int(os.getenv("RESTORE_BATCH", "512"))
 USE_RL = os.getenv("USE_RL", "1") == "1"
+USE_E14 = os.getenv("USE_E14", "1") == "1"
+E14_FALLBACK_ON_ERROR = os.getenv("E14_FALLBACK_ON_ERROR", "1") == "1"
 RL_PROPOSALS = int(os.getenv("RL_PROPOSALS", "48"))
 RL_STEPS = int(os.getenv("RL_STEPS", "800"))
 RL_STAGNATION = int(os.getenv("RL_STAGNATION", "120"))
@@ -1016,6 +1020,32 @@ def select_layout_candidate(baseline_layout, candidate_layout, right, down, pos_
     return (candidate_layout if accepted else baseline_layout), baseline_value, candidate_value, accepted
 
 
+def select_e14_or_fallback(raw_tiles, right, down, pos_score, seed, fallback_layout):
+    """Run target-free E14, retaining the previous solver as a safe fallback."""
+    fallback_layout = np.asarray(fallback_layout, dtype=np.int32)
+    if not USE_E14:
+        return fallback_layout, False, "disabled"
+    try:
+        fused_right, fused_down = kaggle_e14_solver.fused_directional_scores(
+            raw_tiles,
+            right,
+            down,
+            # EdgeMatcher emits finite compatibility logits, while verified E14
+            # receives learned log-probabilities. Normalize once before fusion.
+            learned_are_logp=False,
+        )
+        candidate = kaggle_e14_solver.solve_layout(
+            fused_right, fused_down, pos_score, seed
+        )
+        if not kaggle_e14_solver.is_valid_layout(candidate):
+            raise ValueError("E14 returned an invalid tile permutation")
+        return np.asarray(candidate, dtype=np.int32), True, None
+    except Exception as exc:
+        if not E14_FALLBACK_ON_ERROR:
+            raise
+        return fallback_layout, False, f"{type(exc).__name__}: {exc}"
+
+
 def solve_one(path, edge_model, relation_model, pos_model, restorer_model, restorer_config,
               rl_model, seed, use_relation_guard=True):
     tiles = load_tiles(path)
@@ -1053,6 +1083,13 @@ def solve_one(path, edge_model, relation_model, pos_model, restorer_model, resto
             f"relation_guard confident_edges={guard_stats['confident_edges']} "
             f"attempted={guard_stats['attempted']} accepted={guard_stats['accepted']}"
         )
+    layout, e14_selected, e14_reason = select_e14_or_fallback(
+        tiles, right, down, pos, seed, layout
+    )
+    print(
+        f"e14_fusion_relaxation selected={int(e14_selected)} "
+        f"fallback_reason={e14_reason or 'none'}"
+    )
     return assemble(clean_tiles, layout), layout, assemble(clean_tiles, v5_layout)
 
 
