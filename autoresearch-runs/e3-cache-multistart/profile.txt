@@ -1,0 +1,38 @@
+         1600702 function calls (1600673 primitive calls) in 3.800 seconds
+
+   Ordered by: cumulative time
+   List reduced from 80 to 30 due to restriction <30>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    3.526    3.526    3.637    3.637 /private/tmp/ai-puzzle-e3-cache-multistart/global_solver_candidate.py:24(solve_layout)
+        3    0.000    0.000    0.163    0.054 /Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py:239(__getitem__)
+        3    0.034    0.011    0.163    0.054 /Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/.venv/lib/python3.12/site-packages/numpy/lib/_format_impl.py:780(read_array)
+     1953    0.001    0.000    0.127    0.000 /Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/.venv/lib/python3.12/site-packages/numpy/lib/_format_impl.py:1000(_read_bytes)
+     1956    0.001    0.000    0.126    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:983(read)
+     1947    0.001    0.000    0.124    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:1065(_read1)
+     1947    0.001    0.000    0.110    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:1101(_read2)
+     1953    0.002    0.000    0.109    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:820(read)
+     1953    0.106    0.000    0.106    0.000 {method 'read' of '_io.BufferedReader' objects}
+  1548720    0.096    0.000    0.096    0.000 {method 'add' of 'set' objects}
+        1    0.013    0.013    0.013    0.013 {built-in method scipy.optimize._lsap.linear_sum_assignment}
+     1947    0.000    0.000    0.013    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:1018(_update_crc)
+     1950    0.012    0.000    0.012    0.000 {built-in method zlib.crc32}
+        4    0.000    0.000    0.001    0.000 /Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:1259(argmax)
+        4    0.000    0.000    0.001    0.000 /Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/.venv/lib/python3.12/site-packages/numpy/_core/fromnumeric.py:48(_wrapfunc)
+        4    0.001    0.000    0.001    0.000 {method 'argmax' of 'numpy.ndarray' objects}
+    19527    0.001    0.000    0.001    0.000 {built-in method builtins.len}
+     1944    0.001    0.000    0.001    0.000 {built-in method numpy.frombuffer}
+     1956    0.001    0.000    0.001    0.000 {method 'tell' of '_io.BufferedReader' objects}
+     3894    0.000    0.000    0.000    0.000 {built-in method builtins.min}
+      949    0.000    0.000    0.000    0.000 {method 'copy' of 'numpy.ndarray' objects}
+        1    0.000    0.000    0.000    0.000 /private/tmp/ai-puzzle-e3-cache-multistart/global_solver_candidate.py:11(objective)
+     1956    0.000    0.000    0.000    0.000 {method 'seek' of '_io.BufferedReader' objects}
+        3    0.000    0.000    0.000    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+     1947    0.000    0.000    0.000    0.000 {built-in method builtins.max}
+     1956    0.000    0.000    0.000    0.000 {method '__exit__' of '_thread.RLock' objects}
+        3    0.000    0.000    0.000    0.000 /Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/.venv/lib/python3.12/site-packages/numpy/lib/_format_impl.py:621(_read_array_header)
+        3    0.000    0.000    0.000    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/ast.py:56(literal_eval)
+     1956    0.000    0.000    0.000    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:1634(<lambda>)
+        3    0.000    0.000    0.000    0.000 /Users/fenix/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/lib/python3.12/zipfile/__init__.py:1587(open)
+
+

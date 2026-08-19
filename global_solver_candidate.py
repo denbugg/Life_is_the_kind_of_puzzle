@@ -1,4 +1,5 @@
 """Optimized global jigsaw solver for 24x24 grids."""
+import os
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
@@ -53,6 +54,15 @@ def solve_layout(right, down, pos, seed):
     N_VAL = N
     RIGHT_LIMIT = GRID - 1
     DOWN_LIMIT = N - GRID
+
+    if os.getenv("SOLVER_BACKEND", "python") == "cython":
+        from global_solver_kernel import run_sa
+        best_layout, _ = run_sa(
+            right, down, weighted_pos, layout, inverse_layout,
+            best_right, best_down, best_left, best_up,
+            rng, current_score, log_temp_ratio, STEPS,
+        )
+        return best_layout
 
     for step in range(STEPS):
         # Move selection
