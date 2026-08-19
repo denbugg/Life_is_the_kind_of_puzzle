@@ -8,7 +8,7 @@ max_generations = 3
 hypotheses_per_gen = 4
 stagnation = 2
 
-generations_run = 0
-experiments_run = 0
+generations_run = 3
+experiments_run = 7
 best_metric = 0.099817
 champion = baseline
