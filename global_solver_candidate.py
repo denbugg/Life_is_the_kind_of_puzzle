@@ -1,4 +1,5 @@
 """Optimized global jigsaw solver for 24x24 grids."""
+import os
 import numpy as np
 from scipy.optimize import linear_sum_assignment
 
@@ -6,6 +7,131 @@ GRID = 24
 N = GRID * GRID
 POSITION_WEIGHT = 0.11
 STEPS = 400000
+BEST_BUDDY_MARGIN = 0.5
+
+
+def _hungarian_layout(pos):
+    """Return the baseline position-only initializer."""
+    tile_indices, position_indices = linear_sum_assignment(-pos)
+    layout = np.empty(N, dtype=np.int32)
+    layout[position_indices] = tile_indices
+    return layout
+
+
+def _second_best_margin(matrix, axis):
+    """Top-1 minus top-2 margin along rows (1) or columns (0)."""
+    top_two = np.partition(matrix, -2, axis=axis)
+    if axis == 1:
+        return top_two[:, -1] - top_two[:, -2]
+    return top_two[-1, :] - top_two[-2, :]
+
+
+def _best_buddy_component_layout(right, down, pos):
+    """Place coordinate-consistent reciprocal high-margin components.
+
+    Edges are admitted strongest-first.  A merge is rejected if its relative
+    coordinates conflict, overlap another member, or cannot fit on the board.
+    Components are then anchored by their summed position logits; remaining
+    tiles retain the baseline Hungarian position assignment on free cells.
+    """
+    best_right = np.argmax(right, axis=1)
+    best_left = np.argmax(right, axis=0)
+    best_down = np.argmax(down, axis=1)
+    best_up = np.argmax(down, axis=0)
+    right_row_margin = _second_best_margin(right, 1)
+    right_col_margin = _second_best_margin(right, 0)
+    down_row_margin = _second_best_margin(down, 1)
+    down_col_margin = _second_best_margin(down, 0)
+
+    edges = []
+    for tile in range(N):
+        neighbour = int(best_right[tile])
+        confidence = float(min(right_row_margin[tile], right_col_margin[neighbour]))
+        if best_left[neighbour] == tile and confidence >= BEST_BUDDY_MARGIN:
+            edges.append((confidence, tile, neighbour, 0, 1))
+        neighbour = int(best_down[tile])
+        confidence = float(min(down_row_margin[tile], down_col_margin[neighbour]))
+        if best_up[neighbour] == tile and confidence >= BEST_BUDDY_MARGIN:
+            edges.append((confidence, tile, neighbour, 1, 0))
+    edges.sort(reverse=True)
+
+    roots = np.arange(N, dtype=np.int32)
+    components = {tile: {tile: (0, 0)} for tile in range(N)}
+    component_confidence = {tile: 0.0 for tile in range(N)}
+    for confidence, source, target, dr, dc in edges:
+        source_root, target_root = int(roots[source]), int(roots[target])
+        source_coord = components[source_root][source]
+        target_coord = components[target_root][target]
+        required = (source_coord[0] + dr, source_coord[1] + dc)
+        if source_root == target_root:
+            continue
+        shift = (required[0] - target_coord[0], required[1] - target_coord[1])
+        shifted = {
+            tile: (coord[0] + shift[0], coord[1] + shift[1])
+            for tile, coord in components[target_root].items()
+        }
+        merged_coords = list(components[source_root].values()) + list(shifted.values())
+        rows = [coord[0] for coord in merged_coords]
+        cols = [coord[1] for coord in merged_coords]
+        if (len(set(merged_coords)) != len(merged_coords)
+                or max(rows) - min(rows) >= GRID
+                or max(cols) - min(cols) >= GRID):
+            continue
+        components[source_root].update(shifted)
+        for tile in shifted:
+            roots[tile] = source_root
+        del components[target_root]
+        component_confidence[source_root] += component_confidence.pop(target_root) + confidence
+
+    # Strong/larger components claim positions first.  Singletons and any
+    # component that cannot be placed are completed by Hungarian matching.
+    ordered = sorted(
+        (root for root, members in components.items() if len(members) >= 2),
+        key=lambda root: (len(components[root]), component_confidence[root]),
+        reverse=True,
+    )
+    layout = np.full(N, -1, dtype=np.int32)
+    occupied = np.zeros(N, dtype=bool)
+    placed_tiles = np.zeros(N, dtype=bool)
+    for root in ordered:
+        members = components[root]
+        min_row = min(coord[0] for coord in members.values())
+        min_col = min(coord[1] for coord in members.values())
+        normalized = {
+            tile: (coord[0] - min_row, coord[1] - min_col)
+            for tile, coord in members.items()
+        }
+        height = max(coord[0] for coord in normalized.values()) + 1
+        width = max(coord[1] for coord in normalized.values()) + 1
+        best_score, best_positions = -np.inf, None
+        for row in range(GRID - height + 1):
+            for col in range(GRID - width + 1):
+                positions = [
+                    (row + coord[0]) * GRID + col + coord[1]
+                    for coord in normalized.values()
+                ]
+                if occupied[positions].any():
+                    continue
+                score = sum(
+                    float(pos[tile, position])
+                    for tile, position in zip(normalized, positions)
+                )
+                if score > best_score:
+                    best_score, best_positions = score, positions
+        if best_positions is None:
+            continue
+        for tile, position in zip(normalized, best_positions):
+            layout[position] = tile
+            occupied[position] = True
+            placed_tiles[tile] = True
+
+    remaining_tiles = np.flatnonzero(~placed_tiles)
+    remaining_positions = np.flatnonzero(~occupied)
+    tile_indices, position_indices = linear_sum_assignment(
+        -pos[np.ix_(remaining_tiles, remaining_positions)]
+    )
+    layout[remaining_positions[position_indices]] = remaining_tiles[tile_indices]
+    return layout
 
 
 def objective(layout, right, down, weighted_pos):
@@ -25,10 +151,14 @@ def solve_layout(right, down, pos, seed):
     """Return a permutation: tile index at every row-major board position."""
     rng = np.random.default_rng(seed)
 
-    # Initial layout using global position scores
-    tile_indices, position_indices = linear_sum_assignment(-pos)
-    layout = np.empty(N, dtype=np.int32)
-    layout[position_indices] = tile_indices
+    # E4 changes only the initializer; the SA below is intentionally unchanged.
+    initializer = os.getenv("INITIALIZER_MODE", "hungarian")
+    if initializer == "hungarian":
+        layout = _hungarian_layout(pos)
+    elif initializer == "best_buddy":
+        layout = _best_buddy_component_layout(right, down, pos)
+    else:
+        raise ValueError(f"unknown INITIALIZER_MODE={initializer}")
     weighted_pos = POSITION_WEIGHT * pos
 
     # Precompute best neighbors for heuristic moves
