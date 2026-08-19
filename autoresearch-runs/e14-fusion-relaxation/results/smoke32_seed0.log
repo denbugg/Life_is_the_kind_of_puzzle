@@ -1,0 +1,105 @@
+{"done": 1, "total": 32, "stem": "img_000095"}
+{"done": 2, "total": 32, "stem": "img_000341"}
+{"done": 3, "total": 32, "stem": "img_005731"}
+{"done": 4, "total": 32, "stem": "img_001764"}
+{"done": 5, "total": 32, "stem": "img_006696"}
+{"done": 6, "total": 32, "stem": "img_003047"}
+{"done": 7, "total": 32, "stem": "img_000483"}
+{"done": 8, "total": 32, "stem": "img_001452"}
+{"done": 9, "total": 32, "stem": "img_002808"}
+{"done": 10, "total": 32, "stem": "img_003942"}
+{"done": 11, "total": 32, "stem": "img_003450"}
+{"done": 12, "total": 32, "stem": "img_001947"}
+{"done": 13, "total": 32, "stem": "img_004393"}
+{"done": 14, "total": 32, "stem": "img_004419"}
+{"done": 15, "total": 32, "stem": "img_000820"}
+{"done": 16, "total": 32, "stem": "img_002172"}
+{"done": 17, "total": 32, "stem": "img_004993"}
+{"done": 18, "total": 32, "stem": "img_001953"}
+{"done": 19, "total": 32, "stem": "img_004118"}
+{"done": 20, "total": 32, "stem": "img_000058"}
+{"done": 21, "total": 32, "stem": "img_002139"}
+{"done": 22, "total": 32, "stem": "img_005220"}
+{"done": 23, "total": 32, "stem": "img_005328"}
+{"done": 24, "total": 32, "stem": "img_005937"}
+{"done": 25, "total": 32, "stem": "img_001071"}
+{"done": 26, "total": 32, "stem": "img_002820"}
+{"done": 27, "total": 32, "stem": "img_000925"}
+{"done": 28, "total": 32, "stem": "img_005223"}
+{"done": 29, "total": 32, "stem": "img_003339"}
+{"done": 30, "total": 32, "stem": "img_004946"}
+{"done": 31, "total": 32, "stem": "img_001895"}
+{"done": 32, "total": 32, "stem": "img_002533"}
+{
+  "experiment": "E14 fixed E2 raw fusion into unchanged E11 relaxation",
+  "baseline_commit": "ceea9ca234d8700bfeef5a9392f1ef31d6dfe4b7",
+  "e2_commit": "63c14562ce6caa7228ccb902160259531b8fbab2",
+  "e11_commit": "4d677494a6ec4532caba64aa35d72db018644a8c",
+  "cache_sha256": "skipped_after_verified_run",
+  "cases": 32,
+  "start": 0,
+  "seed_offset": 0,
+  "alpha": 0.2,
+  "selection_inputs": [
+    "raw tiles",
+    "right",
+    "down",
+    "pos"
+  ],
+  "selection_excludes": [
+    "target",
+    "truth",
+    "SSIM",
+    "adjacency"
+  ],
+  "fusion_preprocessing_seconds": 12.136418581998441,
+  "methods": {
+    "baseline_sa": {
+      "ssim": {
+        "mean": 0.09823913764805123,
+        "robust": 0.09470924720594655,
+        "folds": [
+          0.08880600308070832,
+          0.10124585530836284,
+          0.09510064441830623,
+          0.10780404778482755
+        ]
+      },
+      "mean_adjacency": 0.08740942028985507,
+      "mean_learned_objective": -5839.783067703247,
+      "mean_fused_objective": -6139.586610794067,
+      "runtime_seconds": 106.57021825097036,
+      "mean_runtime_seconds": 3.3303193203428236,
+      "valid_permutations": 32
+    },
+    "e14_fusion_relaxation": {
+      "ssim": {
+        "mean": 0.10112994660878125,
+        "robust": 0.09783082624788587,
+        "folds": [
+          0.09350660987092585,
+          0.10455316078704988,
+          0.09632012549435184,
+          0.11013989028279741
+        ]
+      },
+      "mean_adjacency": 0.10626132246376811,
+      "mean_learned_objective": -6573.865893363953,
+      "mean_fused_objective": -6745.3912534713745,
+      "runtime_seconds": 18.994883543113247,
+      "mean_runtime_seconds": 0.593590110722289,
+      "valid_permutations": 32
+    }
+  },
+  "failures": [],
+  "comparison": {
+    "robust_ssim_delta": 0.0031215790419393263,
+    "mean_ssim_delta": 0.002890808960730018,
+    "mean_adjacency_delta": 0.01885190217391304,
+    "ssim_wins": 19,
+    "adjacency_wins": 29,
+    "candidate_end_to_end_runtime_seconds": 31.131302125111688,
+    "candidate_end_to_end_runtime_ratio": 0.2921200935499466
+  },
+  "dual_metric_gate": true
+}

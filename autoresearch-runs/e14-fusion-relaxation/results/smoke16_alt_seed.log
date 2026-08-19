@@ -1,0 +1,89 @@
+{"done": 1, "total": 16, "stem": "img_000095"}
+{"done": 2, "total": 16, "stem": "img_000341"}
+{"done": 3, "total": 16, "stem": "img_005731"}
+{"done": 4, "total": 16, "stem": "img_001764"}
+{"done": 5, "total": 16, "stem": "img_006696"}
+{"done": 6, "total": 16, "stem": "img_003047"}
+{"done": 7, "total": 16, "stem": "img_000483"}
+{"done": 8, "total": 16, "stem": "img_001452"}
+{"done": 9, "total": 16, "stem": "img_002808"}
+{"done": 10, "total": 16, "stem": "img_003942"}
+{"done": 11, "total": 16, "stem": "img_003450"}
+{"done": 12, "total": 16, "stem": "img_001947"}
+{"done": 13, "total": 16, "stem": "img_004393"}
+{"done": 14, "total": 16, "stem": "img_004419"}
+{"done": 15, "total": 16, "stem": "img_000820"}
+{"done": 16, "total": 16, "stem": "img_002172"}
+{
+  "experiment": "E14 fixed E2 raw fusion into unchanged E11 relaxation",
+  "baseline_commit": "ceea9ca234d8700bfeef5a9392f1ef31d6dfe4b7",
+  "e2_commit": "63c14562ce6caa7228ccb902160259531b8fbab2",
+  "e11_commit": "4d677494a6ec4532caba64aa35d72db018644a8c",
+  "cache_sha256": "skipped_after_verified_run",
+  "cases": 16,
+  "start": 0,
+  "seed_offset": 1000003,
+  "alpha": 0.2,
+  "selection_inputs": [
+    "raw tiles",
+    "right",
+    "down",
+    "pos"
+  ],
+  "selection_excludes": [
+    "target",
+    "truth",
+    "SSIM",
+    "adjacency"
+  ],
+  "fusion_preprocessing_seconds": 6.4335915430565365,
+  "methods": {
+    "baseline_sa": {
+      "ssim": {
+        "mean": 0.1052941546866136,
+        "robust": 0.09951457695317689,
+        "folds": [
+          0.09820180964922291,
+          0.10450023745527419,
+          0.0941968724050485,
+          0.1242776992369088
+        ]
+      },
+      "mean_adjacency": 0.09193840579710146,
+      "mean_learned_objective": -5854.358818054199,
+      "mean_fused_objective": -6151.139839172363,
+      "runtime_seconds": 57.516331707825884,
+      "mean_runtime_seconds": 3.5947707317391178,
+      "valid_permutations": 16
+    },
+    "e14_fusion_relaxation": {
+      "ssim": {
+        "mean": 0.10577014898132509,
+        "robust": 0.09998849369130178,
+        "folds": [
+          0.09792792990492628,
+          0.10651406700365533,
+          0.09435945570420826,
+          0.12427914331251046
+        ]
+      },
+      "mean_adjacency": 0.10643115942028986,
+      "mean_learned_objective": -6572.870927810669,
+      "mean_fused_objective": -6744.047563552856,
+      "runtime_seconds": 9.975574331183452,
+      "mean_runtime_seconds": 0.6234733956989658,
+      "valid_permutations": 16
+    }
+  },
+  "failures": [],
+  "comparison": {
+    "robust_ssim_delta": 0.00047391673812488544,
+    "mean_ssim_delta": 0.0004759942947114848,
+    "mean_adjacency_delta": 0.0144927536231884,
+    "ssim_wins": 8,
+    "adjacency_wins": 13,
+    "candidate_end_to_end_runtime_seconds": 16.40916587423999,
+    "candidate_end_to_end_runtime_ratio": 0.2852957653418515
+  },
+  "dual_metric_gate": true
+}
