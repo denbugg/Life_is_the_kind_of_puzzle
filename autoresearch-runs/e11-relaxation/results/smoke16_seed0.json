@@ -1,0 +1,358 @@
+{
+  "experiment": "E11 sparse multi-phase relaxation labeling",
+  "baseline_commit": "ceea9ca234d8700bfeef5a9392f1ef31d6dfe4b7",
+  "cache": "/Users/fenix/Desktop/ML/ai_challenge_pazzle_predicting/outputs/directional_student_holdout128.npz",
+  "cache_sha256": "74db2b62e9d5eafffae33117c7771512d823b0dcaa0095ef5807adb8e86a25df",
+  "cases": 16,
+  "start": 0,
+  "seed_offset": 0,
+  "seed_formula": "20260818 + index * 100 + seed_offset",
+  "selection_inputs": [
+    "right",
+    "down",
+    "pos"
+  ],
+  "selection_excludes": [
+    "target",
+    "truth",
+    "SSIM",
+    "adjacency"
+  ],
+  "methods": {
+    "baseline_sa": {
+      "ssim": {
+        "mean": 0.10267562874147758,
+        "robust": 0.09693361215823536,
+        "folds": [
+          0.09316582334791298,
+          0.10222701620832413,
+          0.09373885093699122,
+          0.12157082447268198
+        ]
+      },
+      "mean_adjacency": 0.08605072463768115,
+      "mean_cached_objective": -5860.303405761719,
+      "runtime_seconds": 63.20543116610497,
+      "mean_runtime_seconds": 3.9503394478815608,
+      "valid_permutations": 16
+    },
+    "e11_relaxation": {
+      "ssim": {
+        "mean": 0.10425575288518638,
+        "robust": 0.09807777973473578,
+        "folds": [
+          0.09655606857797619,
+          0.10411643252382372,
+          0.09204069463865329,
+          0.12430981580029238
+        ]
+      },
+      "mean_adjacency": 0.09969429347826086,
+      "mean_cached_objective": -6617.754615783691,
+      "runtime_seconds": 11.85318933200324,
+      "mean_runtime_seconds": 0.7408243332502025,
+      "valid_permutations": 16
+    }
+  },
+  "failures": [],
+  "images": [
+    {
+      "index": 0,
+      "stem": "img_000095",
+      "baseline_sa": {
+        "ssim": 0.09389233140699943,
+        "adjacency": 0.0769927536231884,
+        "cached_objective": -5897.417938232422,
+        "seconds": 3.822692791989539,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.11195456486834275,
+        "adjacency": 0.11413043478260869,
+        "cached_objective": -6606.684661865234,
+        "seconds": 0.6757965410361066,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 1,
+      "stem": "img_000341",
+      "baseline_sa": {
+        "ssim": 0.10095377851755628,
+        "adjacency": 0.07608695652173914,
+        "cached_objective": -5980.0987548828125,
+        "seconds": 3.800474417046644,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.10478297277275239,
+        "adjacency": 0.10326086956521739,
+        "cached_objective": -6638.647613525391,
+        "seconds": 0.7386108750361018,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 2,
+      "stem": "img_005731",
+      "baseline_sa": {
+        "ssim": 0.06948692550847231,
+        "adjacency": 0.1286231884057971,
+        "cached_objective": -5888.424102783203,
+        "seconds": 3.8456390829524025,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.06084192129230545,
+        "adjacency": 0.13405797101449277,
+        "cached_objective": -6756.976013183594,
+        "seconds": 0.7067976249963976,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 3,
+      "stem": "img_001764",
+      "baseline_sa": {
+        "ssim": 0.09629420825721795,
+        "adjacency": 0.08786231884057971,
+        "cached_objective": -5746.819274902344,
+        "seconds": 3.8327980000176467,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.09158912946996545,
+        "adjacency": 0.09420289855072464,
+        "cached_objective": -6420.412353515625,
+        "seconds": 0.8101030410034582,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 4,
+      "stem": "img_006696",
+      "baseline_sa": {
+        "ssim": 0.09705951080235076,
+        "adjacency": 0.07608695652173914,
+        "cached_objective": -5901.5728759765625,
+        "seconds": 4.155116750043817,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.0914168987182656,
+        "adjacency": 0.08514492753623189,
+        "cached_objective": -6754.160827636719,
+        "seconds": 0.7270698340144008,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 5,
+      "stem": "img_003047",
+      "baseline_sa": {
+        "ssim": 0.1270628772754656,
+        "adjacency": 0.0661231884057971,
+        "cached_objective": -5811.737060546875,
+        "seconds": 4.023492917011026,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.12724741688823016,
+        "adjacency": 0.07608695652173914,
+        "cached_objective": -6653.498107910156,
+        "seconds": 0.7443644999875687,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 6,
+      "stem": "img_000483",
+      "baseline_sa": {
+        "ssim": 0.09461796806733645,
+        "adjacency": 0.08967391304347826,
+        "cached_objective": -5832.749053955078,
+        "seconds": 4.006691457994748,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.09674391334039452,
+        "adjacency": 0.10326086956521739,
+        "cached_objective": -6749.474426269531,
+        "seconds": 0.7403015839518048,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 7,
+      "stem": "img_001452",
+      "baseline_sa": {
+        "ssim": 0.1314536903022897,
+        "adjacency": 0.06702898550724638,
+        "cached_objective": -5908.874938964844,
+        "seconds": 3.9395450410083868,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.1366016393106684,
+        "adjacency": 0.06340579710144928,
+        "cached_objective": -6434.596374511719,
+        "seconds": 0.7748582499916665,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 8,
+      "stem": "img_002808",
+      "baseline_sa": {
+        "ssim": 0.09744831933046995,
+        "adjacency": 0.09601449275362318,
+        "cached_objective": -5831.818267822266,
+        "seconds": 4.089045291999355,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.09556799259811759,
+        "adjacency": 0.10054347826086957,
+        "cached_objective": -6707.936218261719,
+        "seconds": 0.751359042013064,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 9,
+      "stem": "img_003942",
+      "baseline_sa": {
+        "ssim": 0.07576953113933564,
+        "adjacency": 0.09963768115942029,
+        "cached_objective": -5903.648712158203,
+        "seconds": 4.010386457957793,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.0781452447392703,
+        "adjacency": 0.11956521739130435,
+        "cached_objective": -6671.154724121094,
+        "seconds": 0.7546442080056295,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 10,
+      "stem": "img_003450",
+      "baseline_sa": {
+        "ssim": 0.10717893951751274,
+        "adjacency": 0.07155797101449275,
+        "cached_objective": -5850.967834472656,
+        "seconds": 4.0126217500073835,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.10875902520210871,
+        "adjacency": 0.10869565217391304,
+        "cached_objective": -6431.765350341797,
+        "seconds": 0.7284620000282302,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 11,
+      "stem": "img_001947",
+      "baseline_sa": {
+        "ssim": 0.16968664740097114,
+        "adjacency": 0.07971014492753623,
+        "cached_objective": -6034.0643310546875,
+        "seconds": 3.9837284160312265,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.1763762409077189,
+        "adjacency": 0.0769927536231884,
+        "cached_objective": -6551.734619140625,
+        "seconds": 0.8265064589795657,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 12,
+      "stem": "img_004393",
+      "baseline_sa": {
+        "ssim": 0.0842631318518318,
+        "adjacency": 0.09510869565217392,
+        "cached_objective": -5772.910888671875,
+        "seconds": 4.061083417036571,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.08728481812717881,
+        "adjacency": 0.09601449275362318,
+        "cached_objective": -7034.1734619140625,
+        "seconds": 0.7437702909810469,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 13,
+      "stem": "img_004419",
+      "baseline_sa": {
+        "ssim": 0.10512187790093895,
+        "adjacency": 0.10054347826086957,
+        "cached_objective": -5714.883636474609,
+        "seconds": 4.050474832998589,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.10629009569504201,
+        "adjacency": 0.10326086956521739,
+        "cached_objective": -6341.869384765625,
+        "seconds": 0.764772875001654,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 14,
+      "stem": "img_000820",
+      "baseline_sa": {
+        "ssim": 0.10367157065464339,
+        "adjacency": 0.08423913043478261,
+        "cached_objective": -5780.215057373047,
+        "seconds": 3.894596584024839,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.10181791871980446,
+        "adjacency": 0.09782608695652174,
+        "cached_objective": -6498.7681884765625,
+        "seconds": 0.6825332909938879,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 15,
+      "stem": "img_002172",
+      "baseline_sa": {
+        "ssim": 0.08884875193024916,
+        "adjacency": 0.08152173913043478,
+        "cached_objective": -5908.651763916016,
+        "seconds": 3.6770439579850063,
+        "valid_permutation": true
+      },
+      "e11_relaxation": {
+        "ssim": 0.09267225351281679,
+        "adjacency": 0.11865942028985507,
+        "cached_objective": -6632.221527099609,
+        "seconds": 0.6832389159826562,
+        "valid_permutation": true
+      }
+    }
+  ],
+  "comparison": {
+    "robust_ssim_delta": 0.0011441675765004183,
+    "mean_ssim_delta": 0.001580124143708797,
+    "mean_adjacency_delta": 0.013643568840579712,
+    "mean_cached_objective_delta": -757.4512100219727,
+    "ssim_wins": 11,
+    "adjacency_wins": 14,
+    "runtime_ratio": 0.18753434812987593
+  },
+  "dual_metric_gate": true
+}
