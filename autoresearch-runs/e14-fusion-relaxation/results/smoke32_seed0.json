@@ -1,0 +1,747 @@
+{
+  "experiment": "E14 fixed E2 raw fusion into unchanged E11 relaxation",
+  "baseline_commit": "ceea9ca234d8700bfeef5a9392f1ef31d6dfe4b7",
+  "e2_commit": "63c14562ce6caa7228ccb902160259531b8fbab2",
+  "e11_commit": "4d677494a6ec4532caba64aa35d72db018644a8c",
+  "cache_sha256": "skipped_after_verified_run",
+  "cases": 32,
+  "start": 0,
+  "seed_offset": 0,
+  "alpha": 0.2,
+  "selection_inputs": [
+    "raw tiles",
+    "right",
+    "down",
+    "pos"
+  ],
+  "selection_excludes": [
+    "target",
+    "truth",
+    "SSIM",
+    "adjacency"
+  ],
+  "fusion_preprocessing_seconds": 12.136418581998441,
+  "methods": {
+    "baseline_sa": {
+      "ssim": {
+        "mean": 0.09823913764805123,
+        "robust": 0.09470924720594655,
+        "folds": [
+          0.08880600308070832,
+          0.10124585530836284,
+          0.09510064441830623,
+          0.10780404778482755
+        ]
+      },
+      "mean_adjacency": 0.08740942028985507,
+      "mean_learned_objective": -5839.783067703247,
+      "mean_fused_objective": -6139.586610794067,
+      "runtime_seconds": 106.57021825097036,
+      "mean_runtime_seconds": 3.3303193203428236,
+      "valid_permutations": 32
+    },
+    "e14_fusion_relaxation": {
+      "ssim": {
+        "mean": 0.10112994660878125,
+        "robust": 0.09783082624788587,
+        "folds": [
+          0.09350660987092585,
+          0.10455316078704988,
+          0.09632012549435184,
+          0.11013989028279741
+        ]
+      },
+      "mean_adjacency": 0.10626132246376811,
+      "mean_learned_objective": -6573.865893363953,
+      "mean_fused_objective": -6745.3912534713745,
+      "runtime_seconds": 18.994883543113247,
+      "mean_runtime_seconds": 0.593590110722289,
+      "valid_permutations": 32
+    }
+  },
+  "failures": [],
+  "images": [
+    {
+      "index": 0,
+      "stem": "img_000095",
+      "fusion_preprocessing_seconds": 0.40810424997471273,
+      "baseline_sa": {
+        "ssim": 0.09389233140699943,
+        "adjacency": 0.0769927536231884,
+        "learned_objective": -5897.417938232422,
+        "fused_objective": -6146.465789794922,
+        "seconds": 3.358488166995812,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.11492943638462749,
+        "adjacency": 0.11775362318840579,
+        "learned_objective": -6588.8944091796875,
+        "fused_objective": -6701.8775634765625,
+        "seconds": 0.5798780000186525,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 1,
+      "stem": "img_000341",
+      "fusion_preprocessing_seconds": 0.380290667002555,
+      "baseline_sa": {
+        "ssim": 0.10095377851755628,
+        "adjacency": 0.07608695652173914,
+        "learned_objective": -5980.0987548828125,
+        "fused_objective": -6256.0489501953125,
+        "seconds": 3.3167251660488546,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.10687626330627982,
+        "adjacency": 0.09239130434782608,
+        "learned_objective": -6808.775390625,
+        "fused_objective": -6934.353271484375,
+        "seconds": 0.618896665982902,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 2,
+      "stem": "img_005731",
+      "fusion_preprocessing_seconds": 0.3789313339511864,
+      "baseline_sa": {
+        "ssim": 0.06948692550847231,
+        "adjacency": 0.1286231884057971,
+        "learned_objective": -5888.424102783203,
+        "fused_objective": -6226.462921142578,
+        "seconds": 3.327707124990411,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.06586715142760628,
+        "adjacency": 0.1358695652173913,
+        "learned_objective": -6659.879974365234,
+        "fused_objective": -6862.539642333984,
+        "seconds": 0.6057471669628285,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 3,
+      "stem": "img_001764",
+      "fusion_preprocessing_seconds": 0.3752272080164403,
+      "baseline_sa": {
+        "ssim": 0.09629420825721795,
+        "adjacency": 0.08786231884057971,
+        "learned_objective": -5746.819274902344,
+        "fused_objective": -6024.359558105469,
+        "seconds": 3.320256457955111,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09030202400672677,
+        "adjacency": 0.10235507246376811,
+        "learned_objective": -6477.444763183594,
+        "fused_objective": -6697.909851074219,
+        "seconds": 0.5821439159917645,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 4,
+      "stem": "img_006696",
+      "fusion_preprocessing_seconds": 0.3766735839890316,
+      "baseline_sa": {
+        "ssim": 0.09705951080235076,
+        "adjacency": 0.07608695652173914,
+        "learned_objective": -5901.5728759765625,
+        "fused_objective": -6209.1595458984375,
+        "seconds": 3.3074972499744035,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09392663229428024,
+        "adjacency": 0.11956521739130435,
+        "learned_objective": -6538.284423828125,
+        "fused_objective": -6807.63037109375,
+        "seconds": 0.5813515409827232,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 5,
+      "stem": "img_003047",
+      "fusion_preprocessing_seconds": 0.3746580829611048,
+      "baseline_sa": {
+        "ssim": 0.1270628772754656,
+        "adjacency": 0.0661231884057971,
+        "learned_objective": -5811.737060546875,
+        "fused_objective": -6186.7216796875,
+        "seconds": 3.310440666973591,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.1335792725695901,
+        "adjacency": 0.07789855072463768,
+        "learned_objective": -6585.553894042969,
+        "fused_objective": -6824.429382324219,
+        "seconds": 0.5989809170132503,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 6,
+      "stem": "img_000483",
+      "fusion_preprocessing_seconds": 0.37631875002989545,
+      "baseline_sa": {
+        "ssim": 0.09461796806733645,
+        "adjacency": 0.08967391304347826,
+        "learned_objective": -5832.749053955078,
+        "fused_objective": -6108.849639892578,
+        "seconds": 3.3151742079644464,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09421995658612252,
+        "adjacency": 0.12318840579710146,
+        "learned_objective": -6431.468505859375,
+        "fused_objective": -6577.251708984375,
+        "seconds": 0.5922888339846395,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 7,
+      "stem": "img_001452",
+      "fusion_preprocessing_seconds": 0.3788969580200501,
+      "baseline_sa": {
+        "ssim": 0.1314536903022897,
+        "adjacency": 0.06702898550724638,
+        "learned_objective": -5908.874938964844,
+        "fused_objective": -6153.153015136719,
+        "seconds": 3.403696875029709,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.13607742418796476,
+        "adjacency": 0.057065217391304345,
+        "learned_objective": -6590.138671875,
+        "fused_objective": -6700.947265625,
+        "seconds": 0.6183421250316314,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 8,
+      "stem": "img_002808",
+      "fusion_preprocessing_seconds": 0.37823291699169204,
+      "baseline_sa": {
+        "ssim": 0.09744831933046995,
+        "adjacency": 0.09601449275362318,
+        "learned_objective": -5831.818267822266,
+        "fused_objective": -6108.504302978516,
+        "seconds": 3.347098750004079,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09456654971638595,
+        "adjacency": 0.11865942028985507,
+        "learned_objective": -6483.2093505859375,
+        "fused_objective": -6612.2073974609375,
+        "seconds": 0.5781547079677694,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 9,
+      "stem": "img_003942",
+      "fusion_preprocessing_seconds": 0.3777064580353908,
+      "baseline_sa": {
+        "ssim": 0.07576953113933564,
+        "adjacency": 0.09963768115942029,
+        "learned_objective": -5903.648712158203,
+        "fused_objective": -6189.076934814453,
+        "seconds": 3.320831832999829,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.07998563748202246,
+        "adjacency": 0.11231884057971014,
+        "learned_objective": -6833.803039550781,
+        "fused_objective": -6934.137512207031,
+        "seconds": 0.608146000013221,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 10,
+      "stem": "img_003450",
+      "fusion_preprocessing_seconds": 0.37946983403526247,
+      "baseline_sa": {
+        "ssim": 0.10717893951751274,
+        "adjacency": 0.07155797101449275,
+        "learned_objective": -5850.967834472656,
+        "fused_objective": -6109.883117675781,
+        "seconds": 3.3118794589536265,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.11634849179810641,
+        "adjacency": 0.11956521739130435,
+        "learned_objective": -6482.6083984375,
+        "fused_objective": -6638.10888671875,
+        "seconds": 0.5792255419655703,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 11,
+      "stem": "img_001947",
+      "fusion_preprocessing_seconds": 0.37693766702432185,
+      "baseline_sa": {
+        "ssim": 0.16968664740097114,
+        "adjacency": 0.07971014492753623,
+        "learned_objective": -6034.0643310546875,
+        "fused_objective": -6417.2784423828125,
+        "seconds": 3.300071709032636,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.17769935334218012,
+        "adjacency": 0.08695652173913043,
+        "learned_objective": -6473.4691162109375,
+        "fused_objective": -6751.5225830078125,
+        "seconds": 0.6119985840050504,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 12,
+      "stem": "img_004393",
+      "fusion_preprocessing_seconds": 0.37835429195547476,
+      "baseline_sa": {
+        "ssim": 0.0842631318518318,
+        "adjacency": 0.09510869565217392,
+        "learned_objective": -5772.910888671875,
+        "fused_objective": -6052.922607421875,
+        "seconds": 3.3575950840022415,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.08828910122441146,
+        "adjacency": 0.10326086956521739,
+        "learned_objective": -6735.0286865234375,
+        "fused_objective": -6856.6925048828125,
+        "seconds": 0.5838202090235427,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 13,
+      "stem": "img_004419",
+      "fusion_preprocessing_seconds": 0.3758573329541832,
+      "baseline_sa": {
+        "ssim": 0.10512187790093895,
+        "adjacency": 0.10054347826086957,
+        "learned_objective": -5714.883636474609,
+        "fused_objective": -6004.187103271484,
+        "seconds": 3.354864207969513,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.10561509465672891,
+        "adjacency": 0.10507246376811594,
+        "learned_objective": -6546.1998291015625,
+        "fused_objective": -6690.6500244140625,
+        "seconds": 0.6032958750147372,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 14,
+      "stem": "img_000820",
+      "fusion_preprocessing_seconds": 0.38074841600609943,
+      "baseline_sa": {
+        "ssim": 0.10367157065464339,
+        "adjacency": 0.08423913043478261,
+        "learned_objective": -5780.215057373047,
+        "fused_objective": -6069.294891357422,
+        "seconds": 3.3027699579834007,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.10100222300499785,
+        "adjacency": 0.10416666666666667,
+        "learned_objective": -6413.977722167969,
+        "fused_objective": -6619.832458496094,
+        "seconds": 0.5748165830154903,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 15,
+      "stem": "img_002172",
+      "fusion_preprocessing_seconds": 0.3808627499965951,
+      "baseline_sa": {
+        "ssim": 0.08884875193024916,
+        "adjacency": 0.08152173913043478,
+        "learned_objective": -5908.651763916016,
+        "fused_objective": -6207.163970947266,
+        "seconds": 3.329528584028594,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09303777171317018,
+        "adjacency": 0.12681159420289856,
+        "learned_objective": -6517.198669433594,
+        "fused_objective": -6694.670593261719,
+        "seconds": 0.5909794170293026,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 16,
+      "stem": "img_004993",
+      "fusion_preprocessing_seconds": 0.3790081659681164,
+      "baseline_sa": {
+        "ssim": 0.09342051891127541,
+        "adjacency": 0.09057971014492754,
+        "learned_objective": -5781.5997314453125,
+        "fused_objective": -6063.7161865234375,
+        "seconds": 3.3354638339951634,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.10843993085351421,
+        "adjacency": 0.10597826086956522,
+        "learned_objective": -6557.1640625,
+        "fused_objective": -6740.80078125,
+        "seconds": 0.5796818340313621,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 17,
+      "stem": "img_001953",
+      "fusion_preprocessing_seconds": 0.376620750001166,
+      "baseline_sa": {
+        "ssim": 0.11243934999221945,
+        "adjacency": 0.08876811594202899,
+        "learned_objective": -5752.4981689453125,
+        "fused_objective": -6055.9029541015625,
+        "seconds": 3.3210182499606162,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.12566713085921646,
+        "adjacency": 0.09510869565217392,
+        "learned_objective": -6384.276062011719,
+        "fused_objective": -6538.960876464844,
+        "seconds": 0.6023666249820963,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 18,
+      "stem": "img_004118",
+      "fusion_preprocessing_seconds": 0.377256584004499,
+      "baseline_sa": {
+        "ssim": 0.10155150979041606,
+        "adjacency": 0.09510869565217392,
+        "learned_objective": -5894.890197753906,
+        "fused_objective": -6316.519836425781,
+        "seconds": 3.3270693750237115,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.10346721658330384,
+        "adjacency": 0.08333333333333333,
+        "learned_objective": -6586.167236328125,
+        "fused_objective": -6843.61767578125,
+        "seconds": 0.5953765830490738,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 19,
+      "stem": "img_000058",
+      "fusion_preprocessing_seconds": 0.37900679203448817,
+      "baseline_sa": {
+        "ssim": 0.10056029818963762,
+        "adjacency": 0.10235507246376811,
+        "learned_objective": -5748.707183837891,
+        "fused_objective": -6016.642974853516,
+        "seconds": 3.340132624958642,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09723572500017534,
+        "adjacency": 0.10778985507246377,
+        "learned_objective": -6538.4384765625,
+        "fused_objective": -6653.478759765625,
+        "seconds": 0.5925528329680674,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 20,
+      "stem": "img_002139",
+      "fusion_preprocessing_seconds": 0.3779952499899082,
+      "baseline_sa": {
+        "ssim": 0.07632399361970488,
+        "adjacency": 0.08514492753623189,
+        "learned_objective": -5816.371765136719,
+        "fused_objective": -6155.185974121094,
+        "seconds": 3.3163112920010462,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.07444692139434833,
+        "adjacency": 0.11594202898550725,
+        "learned_objective": -6618.107208251953,
+        "fused_objective": -6798.436065673828,
+        "seconds": 0.597630875010509,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 21,
+      "stem": "img_005220",
+      "fusion_preprocessing_seconds": 0.38089670799672604,
+      "baseline_sa": {
+        "ssim": 0.10419623129793214,
+        "adjacency": 0.07789855072463768,
+        "learned_objective": -5755.776550292969,
+        "fused_objective": -6063.947448730469,
+        "seconds": 3.3538752919994295,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09929331959621941,
+        "adjacency": 0.11865942028985507,
+        "learned_objective": -6256.550079345703,
+        "fused_objective": -6458.660430908203,
+        "seconds": 0.641943208000157,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 22,
+      "stem": "img_005328",
+      "fusion_preprocessing_seconds": 0.38620845798868686,
+      "baseline_sa": {
+        "ssim": 0.061999351914132174,
+        "adjacency": 0.08333333333333333,
+        "learned_objective": -5836.820861816406,
+        "fused_objective": -6093.991760253906,
+        "seconds": 3.354996416019276,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.05799623598792423,
+        "adjacency": 0.12771739130434784,
+        "learned_objective": -6525.233428955078,
+        "fused_objective": -6675.539825439453,
+        "seconds": 0.5642376670148224,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 23,
+      "stem": "img_005937",
+      "fusion_preprocessing_seconds": 0.37839208298828453,
+      "baseline_sa": {
+        "ssim": 0.09793700556391248,
+        "adjacency": 0.09239130434782608,
+        "learned_objective": -5854.5089111328125,
+        "fused_objective": -6151.6390380859375,
+        "seconds": 3.3328397910227068,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09690012032532448,
+        "adjacency": 0.11865942028985507,
+        "learned_objective": -6793.373046875,
+        "fused_objective": -6954.61328125,
+        "seconds": 0.5921038329834118,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 24,
+      "stem": "img_001071",
+      "fusion_preprocessing_seconds": 0.3775397500139661,
+      "baseline_sa": {
+        "ssim": 0.08704604055141385,
+        "adjacency": 0.10416666666666667,
+        "learned_objective": -5867.188659667969,
+        "fused_objective": -6132.728698730469,
+        "seconds": 3.316626665997319,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09595427642745148,
+        "adjacency": 0.10416666666666667,
+        "learned_objective": -7056.905700683594,
+        "fused_objective": -7115.630798339844,
+        "seconds": 0.5900671249837615,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 25,
+      "stem": "img_002820",
+      "fusion_preprocessing_seconds": 0.37561533303232864,
+      "baseline_sa": {
+        "ssim": 0.09585956726171763,
+        "adjacency": 0.08786231884057971,
+        "learned_objective": -5768.3577880859375,
+        "fused_objective": -6116.7435302734375,
+        "seconds": 3.3214837500127032,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.0908012667231395,
+        "adjacency": 0.09148550724637682,
+        "learned_objective": -6701.348449707031,
+        "fused_objective": -6922.397277832031,
+        "seconds": 0.604052959010005,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 26,
+      "stem": "img_000925",
+      "fusion_preprocessing_seconds": 0.37935433397069573,
+      "baseline_sa": {
+        "ssim": 0.10264794842379166,
+        "adjacency": 0.07427536231884058,
+        "learned_objective": -5824.677001953125,
+        "fused_objective": -6199.1337890625,
+        "seconds": 3.3009629999869503,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.1062286042075153,
+        "adjacency": 0.08967391304347826,
+        "learned_objective": -6535.618225097656,
+        "fused_objective": -6842.398986816406,
+        "seconds": 0.5886992500163615,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 27,
+      "stem": "img_005223",
+      "fusion_preprocessing_seconds": 0.38084645802155137,
+      "baseline_sa": {
+        "ssim": 0.07702477183904077,
+        "adjacency": 0.12681159420289856,
+        "learned_objective": -5875.614685058594,
+        "fused_objective": -6154.858581542969,
+        "seconds": 3.3426344170002267,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.08222381650555406,
+        "adjacency": 0.14130434782608695,
+        "learned_objective": -6734.06884765625,
+        "fused_objective": -6859.201904296875,
+        "seconds": 0.591042667045258,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 28,
+      "stem": "img_003339",
+      "fusion_preprocessing_seconds": 0.37503225001273677,
+      "baseline_sa": {
+        "ssim": 0.08099417817162059,
+        "adjacency": 0.06974637681159421,
+        "learned_objective": -5856.0430908203125,
+        "fused_objective": -6138.5924072265625,
+        "seconds": 3.348248207999859,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.07750003067238766,
+        "adjacency": 0.10507246376811594,
+        "learned_objective": -6492.263763427734,
+        "fused_objective": -6658.413665771484,
+        "seconds": 0.5753702920046635,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 29,
+      "stem": "img_004946",
+      "fusion_preprocessing_seconds": 0.3797863330109976,
+      "baseline_sa": {
+        "ssim": 0.08856362908173708,
+        "adjacency": 0.08152173913043478,
+        "learned_objective": -5793.153564453125,
+        "fused_objective": -6087.97998046875,
+        "seconds": 3.327137792017311,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.09460730110320238,
+        "adjacency": 0.09601449275362318,
+        "learned_objective": -6517.081970214844,
+        "fused_objective": -6678.931335449219,
+        "seconds": 0.589244625007268,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 30,
+      "stem": "img_001895",
+      "fusion_preprocessing_seconds": 0.3764635410043411,
+      "baseline_sa": {
+        "ssim": 0.11965094147014503,
+        "adjacency": 0.0625,
+        "learned_objective": -5925.110137939453,
+        "fused_objective": -6199.431427001953,
+        "seconds": 3.335729167039972,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.1254311243592384,
+        "adjacency": 0.0806159420289855,
+        "learned_objective": -6564.112731933594,
+        "fused_objective": -6708.989685058594,
+        "seconds": 0.6068699170136824,
+        "valid_permutation": true
+      }
+    },
+    {
+      "index": 31,
+      "stem": "img_002533",
+      "fusion_preprocessing_seconds": 0.3791252910159528,
+      "baseline_sa": {
+        "ssim": 0.10062700879530151,
+        "adjacency": 0.09782608695652174,
+        "learned_objective": -5756.8853759765625,
+        "fused_objective": -6050.2244873046875,
+        "seconds": 3.3110628750291653,
+        "valid_permutation": true
+      },
+      "e14_fusion_relaxation": {
+        "ssim": 0.10764288718128369,
+        "adjacency": 0.11594202898550725,
+        "learned_objective": -6337.064453125,
+        "fused_objective": -6497.687744140625,
+        "seconds": 0.5755771659896709,
+        "valid_permutation": true
+      }
+    }
+  ],
+  "comparison": {
+    "robust_ssim_delta": 0.0031215790419393263,
+    "mean_ssim_delta": 0.002890808960730018,
+    "mean_adjacency_delta": 0.01885190217391304,
+    "ssim_wins": 19,
+    "adjacency_wins": 29,
+    "candidate_end_to_end_runtime_seconds": 31.131302125111688,
+    "candidate_end_to_end_runtime_ratio": 0.2921200935499466
+  },
+  "dual_metric_gate": true
+}

@@ -1,0 +1,44 @@
+{
+  "experiment": "E14 fixed E2 raw fusion into unchanged E11 relaxation",
+  "aggregation_sources": [
+    "smoke32_seed0.json",
+    "untouched96_seed0.json"
+  ],
+  "cases": 128,
+  "seed_offset": 0,
+  "baseline_sa": {
+    "mean_ssim": 0.10270654841383675,
+    "robust_ssim": 0.10034144290857687,
+    "folds": [
+      0.09873526431734156,
+      0.10679805133127496,
+      0.09730879602939094,
+      0.10798408197733955
+    ],
+    "mean_adjacency": 0.08551290760869565,
+    "runtime_seconds": 428.72630154457875
+  },
+  "e14_fusion_relaxation": {
+    "mean_ssim": 0.10391357043701233,
+    "robust_ssim": 0.10146434903286494,
+    "folds": [
+      0.09910531432251184,
+      0.10781757797935665,
+      0.09901735230271833,
+      0.1097140371434625
+    ],
+    "mean_adjacency": 0.1026452105978261,
+    "fusion_preprocessing_seconds": 48.780840250256006,
+    "solver_runtime_seconds": 76.26436808519065,
+    "end_to_end_runtime_seconds": 125.04520833544666
+  },
+  "comparison": {
+    "mean_ssim_delta": 0.0012070220231755746,
+    "robust_ssim_delta": 0.0011229061242880728,
+    "mean_adjacency_delta": 0.017132302989130446,
+    "ssim_wins": 67,
+    "adjacency_wins": 116,
+    "candidate_end_to_end_runtime_ratio": 0.2916667530891956,
+    "dual_metric_gate": true
+  }
+}

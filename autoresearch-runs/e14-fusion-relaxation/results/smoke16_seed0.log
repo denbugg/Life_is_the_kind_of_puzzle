@@ -1,0 +1,89 @@
+{"done": 1, "total": 16, "stem": "img_000095"}
+{"done": 2, "total": 16, "stem": "img_000341"}
+{"done": 3, "total": 16, "stem": "img_005731"}
+{"done": 4, "total": 16, "stem": "img_001764"}
+{"done": 5, "total": 16, "stem": "img_006696"}
+{"done": 6, "total": 16, "stem": "img_003047"}
+{"done": 7, "total": 16, "stem": "img_000483"}
+{"done": 8, "total": 16, "stem": "img_001452"}
+{"done": 9, "total": 16, "stem": "img_002808"}
+{"done": 10, "total": 16, "stem": "img_003942"}
+{"done": 11, "total": 16, "stem": "img_003450"}
+{"done": 12, "total": 16, "stem": "img_001947"}
+{"done": 13, "total": 16, "stem": "img_004393"}
+{"done": 14, "total": 16, "stem": "img_004419"}
+{"done": 15, "total": 16, "stem": "img_000820"}
+{"done": 16, "total": 16, "stem": "img_002172"}
+{
+  "experiment": "E14 fixed E2 raw fusion into unchanged E11 relaxation",
+  "baseline_commit": "ceea9ca234d8700bfeef5a9392f1ef31d6dfe4b7",
+  "e2_commit": "63c14562ce6caa7228ccb902160259531b8fbab2",
+  "e11_commit": "4d677494a6ec4532caba64aa35d72db018644a8c",
+  "cache_sha256": "74db2b62e9d5eafffae33117c7771512d823b0dcaa0095ef5807adb8e86a25df",
+  "cases": 16,
+  "start": 0,
+  "seed_offset": 0,
+  "alpha": 0.2,
+  "selection_inputs": [
+    "raw tiles",
+    "right",
+    "down",
+    "pos"
+  ],
+  "selection_excludes": [
+    "target",
+    "truth",
+    "SSIM",
+    "adjacency"
+  ],
+  "fusion_preprocessing_seconds": 6.427728124894202,
+  "methods": {
+    "baseline_sa": {
+      "ssim": {
+        "mean": 0.10267562874147758,
+        "robust": 0.09693361215823536,
+        "folds": [
+          0.09316582334791298,
+          0.10222701620832413,
+          0.09373885093699122,
+          0.12157082447268198
+        ]
+      },
+      "mean_adjacency": 0.08605072463768115,
+      "mean_learned_objective": -5860.303405761719,
+      "mean_fused_objective": -6154.345779418945,
+      "runtime_seconds": 57.051641376980115,
+      "mean_runtime_seconds": 3.565727586061257,
+      "valid_permutations": 16
+    },
+    "e14_fusion_relaxation": {
+      "ssim": {
+        "mean": 0.10577014898132509,
+        "robust": 0.09998849369130178,
+        "folds": [
+          0.09792792990492628,
+          0.10651406700365533,
+          0.09435945570420826,
+          0.12427914331251046
+        ]
+      },
+      "mean_adjacency": 0.10643115942028986,
+      "mean_learned_objective": -6572.870927810669,
+      "mean_fused_objective": -6744.047563552856,
+      "runtime_seconds": 9.92545629106462,
+      "mean_runtime_seconds": 0.6203410181915388,
+      "valid_permutations": 16
+    }
+  },
+  "failures": [],
+  "comparison": {
+    "robust_ssim_delta": 0.0030548815330664197,
+    "mean_ssim_delta": 0.0030945202398475063,
+    "mean_adjacency_delta": 0.020380434782608703,
+    "ssim_wins": 10,
+    "adjacency_wins": 15,
+    "candidate_end_to_end_runtime_seconds": 16.35318441595882,
+    "candidate_end_to_end_runtime_ratio": 0.2866382810601695
+  },
+  "dual_metric_gate": true
+}
