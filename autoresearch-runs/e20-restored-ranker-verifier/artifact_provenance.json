@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "canonical_cache_sha256": "74db2b62e9d5eafffae33117c7771512d823b0dcaa0095ef5807adb8e86a25df",
+  "sidecar_sha256": "65c04742aeaa1fb51934fd70951052a46443f09dd60c798b484f66aca29e5cab",
+  "sidecar_bytes": 69387927,
+  "sidecar_contents": ["unguarded restored uint8 tiles", "exact no-gray bad_mask", "stems", "provenance_json"],
+  "restorer": {
+    "file": "real_fragment_restorer_best.pt",
+    "sha256": "6fcc7de2cf8063b4f2f45d4b96b8999d5eb9c29a071ff2c0031d2703c70d6695",
+    "epoch": 8,
+    "architecture": "train_real_tile_restorer.FragmentRestorer(base=64)",
+    "residual_multiplier": 0.5,
+    "parameters": 1670595
+  },
+  "ranker": {
+    "file": "restored_border_ranker_best.pt",
+    "sha256": "8eb7b7e106c0333b9a099f88894eac7b1081555643d3828e479aaf4e56137be1",
+    "epoch": 12,
+    "architecture": "train_restored_border_ranker.BorderRanker(base=48)",
+    "parameters": 153745,
+    "config": {"grid": 24, "tile": 20, "border_width": 6, "candidates": 32}
+  }
+}
