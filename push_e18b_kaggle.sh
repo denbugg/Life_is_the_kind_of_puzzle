@@ -11,8 +11,7 @@ fi
 KAGGLE_BIN="${KAGGLE_BIN:-kaggle}"
 STAGE_DIR="$(mktemp -d /tmp/kaggle-e18b-guarded-nlm.XXXXXX)"
 trap 'rm -rf "$STAGE_DIR"' EXIT
-cp "$REPO_DIR/kaggle_solve_puzzles.py" "$STAGE_DIR/kaggle_solve_puzzles.py"
-cp "$REPO_DIR/kaggle_e14_solver.py" "$STAGE_DIR/kaggle_e14_solver.py"
-cp "$REPO_DIR/kaggle_e18b_postprocess.py" "$STAGE_DIR/kaggle_e18b_postprocess.py"
+"${PYTHON_BIN:-python3}" "$REPO_DIR/build_e18b_self_contained.py" --check
+cp "$REPO_DIR/kaggle_solve_puzzles_e18b.py" "$STAGE_DIR/kaggle_solve_puzzles_e18b.py"
 cp "$REPO_DIR/kernel-metadata-e18b-guarded-nlm.json" "$STAGE_DIR/kernel-metadata.json"
 "$KAGGLE_BIN" kernels push -p "$STAGE_DIR" -t 3600 --accelerator NvidiaTeslaT4
