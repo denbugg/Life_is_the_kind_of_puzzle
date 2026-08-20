@@ -15,6 +15,7 @@ from skimage.metrics import structural_similarity
 from tqdm.auto import tqdm
 
 import kaggle_e14_solver
+import kaggle_e18b_postprocess
 
 
 GRID = 24
@@ -58,6 +59,8 @@ RESTORE_BATCH = int(os.getenv("RESTORE_BATCH", "512"))
 USE_RL = os.getenv("USE_RL", "1") == "1"
 USE_E14 = os.getenv("USE_E14", "1") == "1"
 E14_FALLBACK_ON_ERROR = os.getenv("E14_FALLBACK_ON_ERROR", "1") == "1"
+USE_E18B = os.getenv("USE_E18B", "1") == "1"
+E18B_FALLBACK_ON_ERROR = os.getenv("E18B_FALLBACK_ON_ERROR", "1") == "1"
 RL_PROPOSALS = int(os.getenv("RL_PROPOSALS", "48"))
 RL_STEPS = int(os.getenv("RL_STEPS", "800"))
 RL_STAGNATION = int(os.getenv("RL_STAGNATION", "120"))
@@ -1046,6 +1049,15 @@ def select_e14_or_fallback(raw_tiles, right, down, pos_score, seed, fallback_lay
         return fallback_layout, False, f"{type(exc).__name__}: {exc}"
 
 
+def select_e18b_or_raw(raw_assembled):
+    """Apply target-free E18b, retaining raw E14 pixels as a safe fallback."""
+    return kaggle_e18b_postprocess.polish_or_raw(
+        raw_assembled,
+        enabled=USE_E18B,
+        fallback_on_error=E18B_FALLBACK_ON_ERROR,
+    )
+
+
 def solve_one(path, edge_model, relation_model, pos_model, restorer_model, restorer_config,
               rl_model, seed, use_relation_guard=True):
     tiles = load_tiles(path)
@@ -1090,7 +1102,19 @@ def solve_one(path, edge_model, relation_model, pos_model, restorer_model, resto
         f"e14_fusion_relaxation selected={int(e14_selected)} "
         f"fallback_reason={e14_reason or 'none'}"
     )
-    return assemble(clean_tiles, layout), layout, assemble(clean_tiles, v5_layout)
+    raw_e14 = assemble(tiles, layout)
+    pred, e18b_selected, e18b_reason, e18b_stats = select_e18b_or_raw(raw_e14)
+    print(
+        f"e18b_guarded_nlm selected={int(e18b_selected)} "
+        f"fallback_reason={e18b_reason or 'none'} "
+        f"raw_gray={e18b_stats['raw_gray_count']} "
+        f"unguarded_gray={e18b_stats['unguarded_gray_count']} "
+        f"guarded_gray={e18b_stats['guarded_gray_count']} "
+        f"reverted={e18b_stats['reverted_new_gray_cells']}"
+    )
+    raw_v5 = assemble(tiles, v5_layout)
+    baseline_pred, _, _, _ = select_e18b_or_raw(raw_v5)
+    return pred, layout, baseline_pred
 
 
 def validate(data_root, edge_model, relation_model, pos_model, restorer_model, restorer_config,
