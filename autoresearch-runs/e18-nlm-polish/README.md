@@ -36,12 +36,13 @@ polish; `E18B_FALLBACK_ON_ERROR=0` is available only for fail-fast debugging.
 
 The reviewable package consists of:
 
-- `kaggle_solve_puzzles.py`
-- `kaggle_e14_solver.py`
-- `kaggle_e18b_postprocess.py`
+- `kaggle_solve_puzzles_e18b.py` — the single self-contained Kaggle code file
 - `kernel-metadata-e18b-guarded-nlm.json`
 - `push_e18b_kaggle.sh`
 
-The push script refuses to contact Kaggle while the repeated API-404 blocker is
-active.  Exact evaluator/production pixel parity, layout identity, no-gray, and
-raw-fallback behavior are covered by `tests/test_kaggle_e18b_port.py`.
+`build_e18b_self_contained.py` deterministically embeds the exact E14 and E18b
+source modules into that entrypoint; the push script rejects a stale bundle.
+This avoids Kaggle's single-`code_file` runtime dropping local sidecars.  The
+push script refuses to contact Kaggle while the repeated API-404 blocker is
+active. Exact evaluator/production pixel parity, isolated import, layout
+identity, no-gray, and raw-fallback behavior are covered by the test suite.
