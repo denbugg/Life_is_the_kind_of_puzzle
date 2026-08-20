@@ -25,3 +25,23 @@ python autoresearch-runs/e18-nlm-polish/evaluate_e18.py \
 
 `RESULTS.md` records smoke-32, untouched cases 32–127, and aggregated full-128
 evidence from the frozen cache.
+
+## Production port
+
+`kaggle_e18b_postprocess.py` is the dependency-light Kaggle port.  Production
+now assembles the original raw tiles with the selected E14 layout, runs frozen
+NLM, and applies the same guard.  Any OpenCV/postprocess exception returns the
+bit-identical raw assembled image by default.  Set `USE_E18B=0` to disable the
+polish; `E18B_FALLBACK_ON_ERROR=0` is available only for fail-fast debugging.
+
+The reviewable package consists of:
+
+- `kaggle_solve_puzzles.py`
+- `kaggle_e14_solver.py`
+- `kaggle_e18b_postprocess.py`
+- `kernel-metadata-e18b-guarded-nlm.json`
+- `push_e18b_kaggle.sh`
+
+The push script refuses to contact Kaggle while the repeated API-404 blocker is
+active.  Exact evaluator/production pixel parity, layout identity, no-gray, and
+raw-fallback behavior are covered by `tests/test_kaggle_e18b_port.py`.
