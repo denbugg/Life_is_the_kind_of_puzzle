@@ -71,3 +71,21 @@ higher than its own raw E14 image.
 - **E18b guarded: PASS**. Mean and robust SSIM improve strongly on smoke,
   untouched, and full splits; gain retention clears the predeclared 90% gate;
   structural identity and per-image no-gray gates are exact.
+
+## Kaggle v2 follow-up (2026-08-20)
+
+The self-contained private kernel `phoenix0501/pazzle-e18b-guarded-nlm`
+loaded and executed without packaging/import errors. E18b reported
+`fallback_reason=none` and its gray guard was active. Remote validation was,
+however, worse than the in-kernel v5 baseline:
+
+- `validation_mean_solver_ssim=0.180304`
+- `validation_mean_v5_baseline_ssim=0.187267`
+- delta `-0.006963`
+
+The test loop then ran at roughly 13.8–14.2 seconds per image and reached only
+189/700 before the one-hour limit. Final status was
+`KernelWorkerStatus.CANCEL_ACKNOWLEDGED`; no output/submission files were
+available. Therefore E18b remains an offline frozen-cache winner, not a
+verified Kaggle hidden-test winner. The next remote package must keep the v5
+validation fallback and reduce inference to approximately <=5 seconds/image.

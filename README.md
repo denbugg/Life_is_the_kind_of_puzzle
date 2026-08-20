@@ -1,5 +1,9 @@
 # Puzzle image restoration: fragment DDPM baseline
 
+> Полный журнал текущей autoresearch-серии — гипотезы, протокол, метрики,
+> отрицательные результаты, ветки и Kaggle-проверка — находится в
+> [AUTORESEARCH_REPORT.md](AUTORESEARCH_REPORT.md).
+
 Стартовый Kaggle-пайплайн для задачи восстановления 480x480 изображений.
 
 Что делает текущая версия:
