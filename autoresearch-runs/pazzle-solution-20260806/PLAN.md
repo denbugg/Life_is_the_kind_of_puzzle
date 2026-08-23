@@ -277,3 +277,142 @@ exact; no board, SSIM, NLM or GPU path ran. The exact raw CC96 nontrivial-anchor
 top-8 pool is closed before training. The next changed variable must increase
 candidate recall from the `420..437` singleton tiles rather than train a
 verifier on a graph whose oracle ceiling is already insufficient.
+
+## E22 — RCCE-4 full-union all-emitter candidate ceiling (predeclared before execution)
+
+- role: one CPU-only label-after-core discovery ceiling for a redesigned candidate-generator module; E22 is not claimed as an isolated one-variable ablation and is authorized by exact E21 KILL SHA256 `0c43099860c7a16f5e968a8ea6cf637293cd639d9b86e342797ef68c5d53e724`
+- input/core boundary: exact byte-pinned E12 raw IDs `10..17`; core accepts only contiguous `candidate_ids int64[576,128]` and raw `U,D,L,R` logits `float32[4,576,128]` with one common finite mask; it internally reproduces frozen CPU-float32 Rank96 dense conversion and raw CC96 (`96,0`) full partition including singletons
+- affinity-pair OR: all 576 tiles emit; one canonical unordered pair `a<b` exists if either directed K64+K64-union membership exists; upstream support remains the already-frozen ordered dual-affinity K64+K64 union, while E22 adds no truncation; row-listwise raw logits are preserved per finite slot but never compared across rows, averaged, summed, ranked or thresholded for admission
+- literal RCCE-4 order: each pair emits exactly `(a,b,R)`, `(b,a,R)`, `(a,b,D)`, `(b,a,D)`; metadata is respectively `RIGHT[a,b]/LEFT[b,a]`, `RIGHT[b,a]/LEFT[a,b]`, `DOWN[a,b]/UP[b,a]`, `DOWN[b,a]/UP[a,b]`, with missing reverse membership explicit and no averaged/repeated reverse claim
+- hypotheses/filter: remove same-component claims; group exact canonical signed component pair/offset relations without collapsing alternatives; accept only when every supporting endpoint remains adjacent, component coordinates do not collide and the pair bbox is at most `24x24`; incidental contacts never reject or add evidence
+- hard theoretical bounds, never truncation: directed memberships and unordered pairs each `<=73728`; stored finite directional logit observations `<=294912`; oriented claims exactly four per pair and `<=294912`; geometry-valid hypotheses `<=294912`
+- label-only metrics: whole-component exact purity; primary denominator is every GT undirected cardinal seam crossing two distinct whole-pure CC96 components and must be positive; candidate hit is unordered-pair membership; also report unconditional cross-component recall; require post-filter survival of every hit eligible true seam exactly `1.0`
+- oracle connectivity: union all and only exact true hypotheses with independent potential DSU, include isolated pure components, revalidate collision/span, select largest exact cluster deterministically, count legal origins analytically, construct no board
+- all-inclusive PASS: complete `8/8`; emitters `576` each; all bounds `8/8`; true hypotheses and legal origins `8/8`; positive eligible denominator and exact survival `8/8`; eligible pure-contact recall mean/worst `>=0.90/0.80`; exact-connected coverage mean/worst `>=0.30/0.20`; selected cycle-rank ratio mean/worst `>=0.05/0.01`
+- routing: PASS opens only a separately frozen E23 source-group-disjoint confirmation of the identical generator, never immediate GPU training; FAIL closes this exact full-union generator without K/threshold/cap/filter/component resweep
+- exclusions/storage: no clean score/pixels, labels in core, learned shortlist, triangle/iterative growth, board/residual/placement/neighbour/SSIM/NLM, absolute-origin choice, rotation/reflection, GPU/diffusion or target submission data; atomic report `E:/pazzle_work/posegraph_e22/cc96_all_emitter_full_union_candidate_ceiling_v1.json`, all temp/output on `E:`
+
+Preflight frozen before metrics: exact E22 core/evaluator tests passed `53/53`,
+the complete repository passed `357/357`, and an independent read-only audit
+reported `P0=0, P1=0, P2=0`. The target report remained absent. Frozen SHA256:
+core `a393343b8694cf9935fd8b8d0f31ba7fc6931c5c66ea495f73c43b8f839f96ea`,
+evaluator `47b73098997f548c71ee730fb4910d5514b6f4b3f14a972adcf66c7e325a487b`,
+core tests `03cbb24459277d5a1b7793b26f40afcfee7099e9b953b04ab35255e7bfe358de`,
+evaluator tests `a418b3af1b3863aa6f97e258ad9d85ad063b186b5ee586cda0a7bb51c2712d8f`,
+protocol `9956030b0e16797f2fd7588c58d23c04a4d828c1f6fabd10eda42b48757634f9`,
+run contract `55398bc0a268cf23394fe18bab5238735d9f0d68b0651c5ea9365b9a3fc150e2`,
+and raw-scene lineage `00cd2fdd9189d6453e7c1b215e4ee067b843bc51cdcd0122fa66fdc076779c98`.
+The next action is exactly one frozen CPU run, followed by complete replay;
+no code, gate, K, threshold, cap or filter may change first.
+
+Result: KILL only on the frozen pair-OR recall gates after a complete `8/8`
+run. Mean/worst eligible true-contact recall was
+`0.7177555328 / 0.6009122007` versus required `0.90 / 0.80`. Every other
+gate passed: exact post-filter survival was `5063/5063 = 1.0`, mean/worst
+exact-connected coverage was `0.6918402778 / 0.3020833333`, and mean/worst
+cycle-rank ratio was `0.4404890902 / 0.2554347826`. Bounds, 576 emitters,
+true relations, legal origins and positive denominators passed on all eight
+scenes. The report is
+`E:/pazzle_work/posegraph_e22/cc96_all_emitter_full_union_candidate_ceiling_v1.json`,
+SHA256 `a594bdd64a8b786b261175f3d6f071f6afe91c7ede92a33b0d7e9ac9edf30281`,
+run-contract SHA256
+`55398bc0a268cf23394fe18bab5238735d9f0d68b0651c5ea9365b9a3fc150e2`.
+Independent complete replay reproduced every row, hash, summary and decision.
+The exact existing-affinity RCCE-4 generator is closed without resweep. The
+next changed variable must be one predeclared orthogonal candidate source that
+raises pair recall; geometry filtering and oracle connectivity are no longer
+the bottleneck.
+
+## E23 — frozen I21 residual-spatial K64 candidate ceiling (predeclared before execution)
+
+- authorization/data: exact E22 recall-only KILL report SHA256 `a594bdd64a8b786b261175f3d6f071f6afe91c7ede92a33b0d7e9ac9edf30281`; same already-open byte-pinned E12 corrupted upright scenes `10..17`; no E23 target spatial logits or recall metrics were opened before this declaration
+- frozen source: `E:/pazzle_work/positional_ddpm/positional_ddpm_train_latest.pt`, 29,677,382 bytes, step 6000, SHA256 `54b13fa3bc594ca8739cb948c68a3725aa29b34bcc8406f94fd2a332db3992c1`; exact model args `24/128/192/4/6/300`; dependency SHA256 `positional_ddpm=a41c8abf...fbbf`, `eval_paired_alignment=564b879c...eda4`, `config=824165ab...3e0a83`; evaluation-mode CPU float32 `encode_tiles -> directional_edge_scores` only, with no autocast, diffusion sampling, coordinate prediction, denoising, training or GPU
+- unchanged prefix: independently reproduce exact E22 dense scores, raw CC96 full partition and canonical affinity pairs; the combined pair inventory begins with the exact E22 pair tuple, all E22 hits remain present and component/eligible-denominator digests must match E22
+- one changed source: for each tile and each spatial U/D/L/R row, exclude self and every pre-existing E22 canonical pair, then select exactly 64 targets by score descending/tile ID ascending; canonical-OR and lexicographically append only new pairs; direction is metadata and does not choose a physical side
+- unchanged lift/filter: every new pair emits the literal four upright RCCE-4 adjacencies; remove same-component claims, retain alternative exact signed offsets, and apply the same adjacency/collision/24x24-span geometry filter; no score fusion, alpha, threshold, rerank or post-union truncation
+- fail-not-truncate caps per scene: exactly 1,327,104 finite spatial logits and 147,456 residual selections; base pairs `B<=73,728`; new pairs `S<=min(147456,165600-B)`; combined pairs `B+S<=165,600`; new claims `4S<=589,824`; combined claims, relation candidates and geometry-valid hypotheses each `<=662,400`
+- matched-budget null: one immutable label-free SHA256 ordering keyed by literal `E23-hash-null-v1`, exact scene tile digest and `(anchor,direction,target)`; convert the unique order to exact float32 rank logits, then run the identical self/base exclusion, residual K64, RCCE-4 and geometry core; no null seed/rule sweep
+- density/deployability gates: actual spatial new-pair count `<=100,000` and combined spatial geometry-valid hypotheses `<=450,000` on every scene; mean spatial-minus-null combined-recall lift `>=+0.020`, strict spatial recall wins `>=6/8`, and mean per-scene `(spatial incremental hits / spatial S) / (null incremental hits / null S) >=1.10`; zero denominator fails
+- deterministic runtime/cache: Python `3.13.6`, NumPy `2.2.6`, Torch `2.11.0+cu128`, CPU float32, deterministic algorithms on, MKLDNN off, Torch intra/inter-op threads `1/1`; exact manifest is in the cache identity; each row reports `S_spatial/S_null`, both incremental hit counts/efficiencies, efficiency ratio and full null-tensor SHA256; prefilter claims/relations retain the explicit theoretical `662,400` runtime cap while the spatial geometry output alone has the stricter `450,000` cap
+- label-only metrics: labels first after the complete validated core returns; report baseline/combined eligible recall and incremental hits, require new/base pair intersection empty, E22 pair subset and hit preservation, at least one unique incremental eligible hit on every scene, and exact post-filter survival `1.0` for every combined hit
+- label boundary clarification: the frozen upstream E12 loader may materialize/authenticate its already-pinned permutation and target only to reproduce/verify the corrupted bag; E23 run-contract scene records, cache, preflight, rankings and both cores contain only image/name/raw-cache/candidate/raw-logit/corrupted-tile provenance, and the first E23 experimental/oracle label use is `scene.permutation` after both complete pools validate; clean target is never used
+- all-inclusive PASS: spatial and matched-null completed/prefix/provenance/bounds/576 emitters/positive denominator/true relation/legal origin/incremental hit/survival all `8/8`; absolute combined recall mean/worst `>=0.90/0.80`; all density/null-lift gates above; exact-connected coverage mean/worst `>=0.30/0.20`; cycle-rank ratio mean/worst `>=0.05/0.01`
+- routing/exclusions: PASS opens only a separately frozen source-group-disjoint confirmation, never immediate training; FAIL closes exact I21-residual-K64 without K, direction, checkpoint, threshold, alpha, cap or filter resweep; no board, residual, placement, neighbour, SSIM, NLM, clean pixels, rotation, reflection or submission data
+- execution/storage: exact label-free spatial caches may exist only under `E:/pazzle_work/posegraph_e23/spatial_logits_cpu_f32_v1/`; atomic report `E:/pazzle_work/posegraph_e23/cc96_i21_residual_k64_candidate_ceiling_v1.json`; all cache/report/temp/pycache output remains on `E:`
+
+Preflight frozen before target logits or metrics: evaluator tests passed `48/48`,
+the combined E22+E23 regression passed `115/115`, and the complete repository
+passed `419/419`, with all test temp and bytecode output on `E:`. Two independent
+exact-SHA read-only audits reported no blocking code or science findings
+(`P0=0, P1=0`). Non-blocking operational findings are closed by the literal
+launcher: `PYTHONPYCACHEPREFIX`, `TEMP`, `TMP`, and Torch cache are set under
+`E:/pazzle_work/posegraph_e23/`; exact default report/cache paths are used; a
+crash orphan from the fail-closed two-file cache is quarantined on `E:` before
+restart rather than deleted. A no-write preflight intercepted the first atomic
+report write and hard-disabled `_run_scene_pair` and `evaluate_scene_pair`; it
+observed `atomic_write=1`, `run_scene_pair=0`, `evaluate_scene_pair=0`, E23 label
+access `=0`, and both exact target report/cache absent before and after.
+
+Frozen SHA256: protocol canonical
+`1d0a33bee726ced202ff658c7c32ed04365a4ddd6057807477f1f2fdb22525fa`,
+run contract `3794ff3ecec6bd55ac0c36f8af55904d357fe9f11c1add13430abd1a3d35047b`,
+label-free raw scenes `d48eee94a10e4d7ee75da3f0883972cc3d472c2fd3d0c2407eddcae6706730ac`,
+null rule `331380483d38c39b45dfe44e1d648c3744db382543360e700f07fe664f6210e7`,
+core `6d837e3704003400898017f78ccd37d32fd9f0791b03ea42ccf27a826c67b1e6`,
+evaluator `2128a664c94ac328974c1dd05c08f1ec8347990c915f9c73337e7c4167aac726`,
+core tests `58b6590cf2f18c4519a8bc1e04f34d3c7f503d9cec2283c16ed1d9b7856a6828`,
+evaluator tests `937a45bf6362e84c67c1ae98c4fac9ac907945f61454b89d858b2f279541eeed`,
+and protocol document
+`48a394403d9213d91824662e0086b402c62cba9938629afb9a7cf2e433ae3c76`.
+The next action is exactly one frozen CPU run followed by a complete replay; no
+code, K, direction, checkpoint, threshold, alpha, cap, filter, null, or path may
+change first.
+
+A final child audit completed before execution and left `P0=0, P1=0`. It added
+two literal-hardening-only P2 notes: the loader authenticates sidecar semantics
+and payload/file hashes but does not reject byte-equivalent non-canonical JSON,
+and an embedded caller's ambient CPU autocast context is not explicitly
+disabled. The target starts from an absent cache written canonically by the
+frozen writer and runs as a fresh standalone process outside autocast, so neither
+finding changes this run's inputs, candidate pool, metrics, or replay decision.
+
+Result: PASS. The exact frozen E23 run completed `8/8` scenes and passed all
+`30/30` checks. Mean/worst spatial combined eligible-contact recall was
+`0.9705050095 / 0.9076396807` versus required `0.90 / 0.80`; matched hash-null
+was `0.9140727743 / 0.8825541619`. Spatial beat null on `8/8`, mean recall lift
+was `+0.0564322352` versus `+0.020`, and mean incremental-hit efficiency ratio
+was `1.9962590911` versus `1.10`. Spatial/null incremental hits were
+`1776 / 1378`; total combined hits were `6839 / 6441` of `7045`, with exact
+post-filter survival `1.0` on all scenes. Mean/worst exact-connected coverage
+was `0.9095052083 / 0.84375` (`523.875` tiles mean), and mean/worst cycle ratio
+was `0.8225910141 / 0.6989247312`. Maximum spatial new pairs/hypotheses were
+`70213 / 333080`, below `100000 / 450000`. The CPU-only run took
+`1025.9996478` seconds. Report
+`E:/pazzle_work/posegraph_e23/cc96_i21_residual_k64_candidate_ceiling_v1.json`
+is `547787` bytes, SHA256
+`9043a52fd746558d4a9a4eb047b83724abf225d3c00d71e1413e6e8e58698c20`.
+A full forced checkpoint/cache/core/row/summary replay exited `0` after about
+`17.42` minutes and left that report SHA unchanged. Independent post-result
+audit authenticated every source/input hash and all eight exact NPY/sidecar
+pairs and reproduced all `30/30` checks (`P0=0, P1=0`). This PASS authorizes
+only a separately frozen source-group-disjoint confirmation of the identical
+generator; it is not yet training, a board, or a submission.
+
+## E24 — CRS-v1 component-relation contextual selector (predeclared before metrics)
+
+- route/scope: at the user's explicit direction, the previously planned identical-generator confirmation is withdrawn before any E24 metric access. E24 is a new discovery/development experiment on the already-open E12/E23 scenes, not an E23-authorized confirmation and not evidence of generalization. A separately frozen one-shot E25 remains required before production.
+- frozen input boundary: replay exact E23 `candidate_ids`, raw U/D/L/R logits, corrupted upright tiles, authenticated CPU-f32 spatial logits, and exact E23 candidate-pool core. The label-free extractor accepts only those arrays plus the returned E23 components/claims/hypotheses. It must not accept a `RawScene`, permutation, clean target, E23 report/summary/oracle row, filename, source group, or any truth-derived value.
+- OOF split: four fixed scene folds, `F0={10,14}`, `F1={11,15}`, `F2={12,16}`, `F3={13,17}`; each fold trains on the other six scenes. Every prediction used for an E24 decision is finalized by a model that did not train on that scene. There is no early stopping, best-epoch choice, threshold sweep, feature sweep, cap sweep, or post-result retry.
+- canonical query: one unordered component pair `(u<v)`; reversing endpoints negates `(dr,dc)`. Every geometry-valid E23 offset for that pair occurs exactly once in canonical order, followed by exactly one synthetic `NONE` row. Duplicate claims are aggregated before scoring. A label-only trainer asserts one-hot truth: the exact offset is positive only when both complete components are pure and `shift[v]-shift[u]=(dr,dc)`; otherwise `NONE` is positive. A missing true offset remains a false negative in recall and may never be injected into the candidate rows.
+- feature allowlist: corrupted RGB/Lab/gradient boundary aggregates; frozen raw/I21 score ranks, robust z/margins, nominations and reciprocity; base-versus-residual claim counts; component size/local bbox/density; alternative-offset, incident, exact two-hop composition and cycle-witness statistics computed only from the frozen candidate graph. `e0` is the maximum supporting-claim mean of correct forward/reverse spatial percentiles. Query-local summaries use all offsets. Context-only two-hop construction retains top-4 offsets per pair, then top-32 `e0`-best incident pair winners per endpoint with canonical ties and top4-by-top4 composition; all geometry-valid E23 offsets remain scored. Image/tile/component IDs are grouping and tie-break keys only, never numeric features. Clean pixels, permutation, purity, shifts, GT seams/relations/hits, source names/groups, absolute board coordinates and E23 oracle metrics are forbidden. The frozen ordered tuple contains 227 names; canonical ASCII JSON `{"feature_names":[...]}\n` SHA256 is `670167bf9ad2d450cd838abeeb414f0ba99e98d89e8984f672c959080a048a31`. The extractor SHA256 must be frozen at preflight before labels or OOF metrics are opened.
+- fixed learner: LightGBM `4.6.0`, `objective=lambdarank`, binary `label_gain=[0,1]`, NDCG@1, `n_estimators=256`, `learning_rate=0.05`, `num_leaves=31`, `min_child_samples=200`, `max_bin=255`, `feature_fraction=1`, `bagging_fraction=1`, `lambda_l2=1`, `lambda_l1=0`, `lambdarank_truncation_level=30`, `lambdarank_norm=true`, deterministic/force-col-wise, eight CPU threads, with seed/data/feature seeds `1234+fold`; no early stopping or validation callback. All query rows are retained: no label-driven mining, sampling, or positive injection. Within each fold-training scene, positive-offset and `NONE`-positive query categories each receive total weight `0.5`; queries within a category are equal-weight and rows within a query divide that query weight equally; fold weights are then rescaled to mean one. Both categories must be nonempty.
+- decoder: for each pair choose the maximum offset score with canonical `(dr,dc)` tie-break; compute `margin=best_offset_score-NONE_score`; `margin<=0` drops the pair, including exact ties. Sort survivors by `(-margin,u,v,dr,dc)`, attempt only the first `min(count,2*(component_count-1))`, and process exactly that prefix with a rollback-safe signed-potential DSU. Inconsistent potentials, contact failure, tile collision or span above `24x24` reject without mutation; consistent redundant relations are retained as cycle evidence. No truth-dependent retry, fill, threshold, or alternative offset is allowed.
+- label-only structural PASS, all required over the eight OOF scenes: provenance/query/orientation/canonicality/fold-isolation/finite-output/DSU/legal-origin checks `8/8`; nonempty proposals and accepted relations `8/8`; proposed relation precision mean/worst `>=0.70/0.60`; true-relation recall over unique canonical relations induced by every GT right/down physical seam crossing two distinct complete pure components, constructed before candidate presence so missing E23 relations remain false negatives, mean/worst `>=0.65/0.50`; exact-connected tile coverage after DSU mean/worst `>=0.50/0.35`; mean accepted-graph cycle-rank ratio `>=0.05`; no scene exceeds the frozen E23 `450000` geometry-hypothesis cap or fails the declared memory/runtime envelope. Zero denominators fail.
+- staged end-to-end gate: board/SSIM/NLM remain sealed unless every structural check passes. Then, without changing the model or decoder, convert accepted clusters plus untouched base components to `solve_components_from_scores` with frozen raw R/D scores, `repair_passes=0`, assemble upright corrupted tiles, and apply champion NLM10. Versus exact RR96 on the same eight scenes require mean solve-only SSIM delta `>=+0.003`, mean final SSIM delta `>=+0.002`, final wins `>=5/8`, worst final delta `>=-0.020`, and mean neighbour-accuracy delta `>=+0.005`, all inclusive.
+- E25 seal: before any E24 metric, reserve manifest-only source-group-disjoint validation IDs `226,262,242,123,103,231,286,296,230,134,118,110,239,269,146,187,183,151,148,247,191,186,193,106,220,274,125,117,115,265,165,257,210,213,132,143,152,137,177,225,113,259,101,178,202,141,273,111`. Their newline-list SHA256 is `407a6326ceeec2e8cc78106b74c2f10c46a55143ea488a30f7bac66e2b373caa`; canonical `{name,source_group,target_sha256}` records SHA256 is `76e6b9431de41388e4aebef525ff4a5fd8354f789cf0a5913c1e29d8db148e2e`. Until the E24 feature schema, checkpoint, decoder and gates are frozen, no pixels, corrupted tiles, logits, embeddings, permutations, targets, caches or metrics for those 48 may be read or created.
+- routing/storage: full structural plus staged end-to-end PASS authorizes one final all-eight fit with the identical learner and then exactly one E25 run; it does not authorize a submission by itself. Any failed hard gate closes CRS-v1 without weakening thresholds or resweeping. Feature cache is capped at `4 GiB`, all E24 artifacts/temp at `8 GiB`, peak RAM at `16 GiB`, OOF CPU at `8 h` and final fit at `2 h`. Everything lives under `E:/pazzle_work/posegraph_e24_selector/`; rotation/reflection remain impossible.
+
+Operational authority clarification: a structural report is provisional and cannot open the staged board/SSIM/NLM route, final fit or E25 by itself. Routing requires both structural PASS and the canonical `oof_orchestration_receipt.json` that hash-binds the report and confirms cumulative CPU, peak-RAM and aggregate-artifact caps; an absent/failing receipt is terminal E24 infrastructure failure.
+
+Pre-metric process-boundary clarification: the no-target ledger projects and hashes only the allowlisted E23 label-free source records. A separately invoked trusted tile-lineage process may replay upstream lineage but exports only canonical corrupted `tiles_uint8` bytes plus an exact-key receipt, then exits. The raw/spatial broker subsequently opens exactly `candidate_ids.npy` followed by `candidate_scores.npy` from the ledger-pinned raw archive and never enumerates or opens another member. Fold-label brokers open only `permutation.npy` for their exact six training IDs; the held-out evaluator may open only that literal member and only after all four model/prediction commits pass the global barrier. No E24 feature, trainer or evaluator process receives a `RawScene` or clean target.
+- pre-metric runtime canary: immediately after frozen preflight, run the exact label-free feature worker only on scene `17`, the maximum frozen E23 spatial-geometry scene (`333080` hypotheses). No permutation, label, target or metric is accessible. Proceed to the other seven only at wall time `<=30 min`, observed peak working set `<=4 GiB`, feature artifact `<=480 MiB`, and valid aggregate `4/8 GiB` extrapolation. Failure is infrastructure STOP before labels/metrics and requires a new source hash/preflight plus exact semantic-equivalence tests; the failed artifact is not reused under changed source.

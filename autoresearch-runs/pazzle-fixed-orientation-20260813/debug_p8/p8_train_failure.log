@@ -1,0 +1,31 @@
+﻿2026-08-14T15:36:14.3051321+03:00 BEGIN P8 FIT-only train cache_count=160
+Traceback (most recent call last):
+  File "E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_context_candidate_graph.py", line 152, in <module>
+    if __name__=='__main__':main()
+                            ~~~~^^
+  File "E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_context_candidate_graph.py", line 151, in main
+    c=args();random.seed(c.seed);np.random.seed(c.seed);torch.manual_seed(c.seed); contract(c) if c.phase=='g0' else prepare(c) if c.phase=='prepare' else train(c)
+                                                                                                                                                           ~~~~~^^^
+  File "E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_context_candidate_graph.py", line 149, in train
+    ctx=train_model(c,True,train,held,enc,d);loc=train_model(c,False,train,held,enc,d);delta_base=100*(ctx['heldout_top1']-ctx['baseline_rank96_top1']);delta_local=100*(ctx['heldout_top1']-loc['heldout_top1']);passed=bool(delta_base>=5 and delta_local>=3 and ctx['heldout_top20']>=ctx['baseline_rank96_top20']);rep={'experiment':'P8_context_aware_candidate_graph','gate':'G1_FIT_context_capacity','context_model':ctx,'local_only_ablation':loc,'context_vs_rank96_top1_pp':delta_base,'context_vs_local_top1_pp':delta_local,'pass_criteria':'context top1 >= rank96 +5pp and local +3pp; context top20 non-decreasing','passes_G1':passed,'decision':'pass_to_G2_FIT_score_decoder_alignment' if passed else 'reject_P8_before_solver_CAL','split_sha256':sha256_file(c.split),'p7_checkpoint_sha256':sha256_file(c.p7),'CAL_target_opened':False,'DEV_targets_opened':False,'test_accessed':False,'layouts_assembled':False,'restorer_used':False};(c.work/'p8_g1_report.json').write_text(json.dumps(rep,indent=2),encoding='utf-8');print(json.dumps(rep,indent=2),flush=True)
+  File "E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_context_candidate_graph.py", line 137, in train_model
+    cache=train[int(rng.integers(len(train)))];ids=rng.choice(cache['anchors'].shape[0],size=c.batch_queries,replace=False);a,ca,b,di,la,_=materialize(cache,ids,enc,d);log=m(a,ca,b,di);loss=F.cross_entropy(log,la);opt.zero_grad(set_to_none=True);loss.backward();torch.nn.utils.clip_grad_norm_(m.parameters(),1.0);opt.step();losses.append(float(loss.detach()))
+                                                                                                                                           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_context_candidate_graph.py", line 119, in materialize
+    return all_e[a],all_e[m],bands(t,a.cpu(),d.cpu(),m.cpu()).to(device),d,lab,base
+                             ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_context_candidate_graph.py", line 97, in bands
+    return torch.stack(out,0)
+           ~~~~~~~~~~~^^^^^^^
+RuntimeError: stack expects each tensor to be equal size, but got [3, 2, 40] at entry 0 and [3, 20, 4] at entry 96
+2026-08-14T15:36:21.0535763+03:00 RESULT=FAIL P8 train exit code 1; inspect E:\pazzle_work\pazzle_fixed_orientation_20260813\P8_context_candidate_graph\g0_g1_capacit
+y\logs\p8_train_20260814_153614.log
+At E:\pazzle_work\pazzle_fixed_orientation_20260813\worktrees\cb1_boundary_buddies\src\p8_run_train_interactive.ps1:16 
+char:26
++ ... xitCode -ne 0) { throw "P8 train exit code $exitCode; inspect $log" }
++                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (P8 train exit c...0814_153614.log:String) [], RuntimeException
+    + FullyQualifiedErrorId : P8 train exit code 1; inspect E:\pazzle_work\pazzle_fixed_orientation_20260813\P8_contex 
+   t_candidate_graph\g0_g1_capacity\logs\p8_train_20260814_153614.log
+ 
+

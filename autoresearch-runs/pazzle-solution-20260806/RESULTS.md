@@ -275,3 +275,74 @@ contained only `22.75` tiles on average.
 Independent replay matched every row and hash. The verifier cannot recover
 relations that are absent from its candidate graph, so the exact E21 pool is
 closed without GPU training or a top-k sweep.
+
+## E22 RCCE-4 full-union all-emitter candidate ceiling
+
+E22 fixed E21's singleton-emitter connectivity failure, but the unchanged
+affinity-union support missed the strict contact-recall prerequisite. The run
+completed all eight scenes with all 576 tiles emitting and stayed within every
+theoretical fail-not-truncate bound.
+
+- status/stage: `complete / kill_existing_affinity_full_union_generator`;
+- eligible true contacts: `7045`; unordered-pair hits: `5063`;
+- mean/worst eligible contact recall: `0.7177555328 / 0.6009122007`
+  versus `0.90 / 0.80`;
+- post-filter exact physical-seam survival: `5063/5063`, exactly `1.0` on
+  `8/8` scenes;
+- mean/worst exact connected coverage: `0.6918402778 / 0.3020833333`
+  versus `0.30 / 0.20`;
+- mean exact connected tiles: `398.5`; total true hypotheses: `5019`;
+- mean/worst selected cycle-rank ratio:
+  `0.4404890902 / 0.2554347826` versus `0.05 / 0.01`;
+- geometry-valid hypotheses: `786636` total, at most `105227` per scene;
+- report SHA256: `a594bdd64a8b786b261175f3d6f071f6afe91c7ede92a33b0d7e9ac9edf30281`;
+- run-contract SHA256: `55398bc0a268cf23394fe18bab5238735d9f0d68b0651c5ea9365b9a3fc150e2`;
+- protocol SHA256: `9956030b0e16797f2fd7588c58d23c04a4d828c1f6fabd10eda42b48757634f9`;
+- runtime: `147.7295974` CPU seconds.
+
+Independent complete replay from the pinned raw caches reproduced all eight
+rows, compact core/oracle hashes, summary and KILL decision without changing
+the `1,070,101`-byte report. No board, SSIM, NLM, GPU, rotation or reflection
+path ran. The exact existing-affinity full-union generator is closed without a
+K/threshold/cap/filter resweep. The next generator must add one orthogonal
+candidate source; training a verifier on the closed pool is not authorized.
+
+## E23 I21 residual-spatial K64 candidate ceiling
+
+E23 passed the complete candidate-availability prerequisite. The only new
+source was the frozen I21 directional edge head; its upright residual K64 pairs
+were appended after the exact E22 prefix and compared with one predeclared
+matched-budget SHA256 null through the identical RCCE-4/geometry core.
+
+- status/stage: `complete / go_source_group_disjoint_confirmation_same_generator`;
+- all decision checks: `30/30` true on exact IDs `10..17`;
+- spatial mean/worst combined eligible recall:
+  `0.9705050095 / 0.9076396807` versus `0.90 / 0.80`;
+- matched-null mean/worst recall: `0.9140727743 / 0.8825541619`;
+- mean spatial-minus-null recall lift: `+0.0564322352` versus `+0.020`;
+- strict spatial wins: `8/8` versus required `6/8`;
+- mean incremental-hit efficiency ratio: `1.9962590911` versus `1.10`;
+- incremental hits spatial/null: `1776 / 1378`; combined hits:
+  `6839 / 6441` of `7045`, with unchanged E22 base hits `5063`;
+- exact post-filter survival: `1.0` on `8/8` for both arms;
+- mean/worst exact connected coverage: `0.9095052083 / 0.84375`;
+  mean connected tiles `523.875`;
+- mean/worst selected cycle-rank ratio: `0.8225910141 / 0.6989247312`;
+- maximum spatial new pairs/hypotheses: `70213 / 333080`, below frozen
+  `100000 / 450000` caps;
+- report SHA256:
+  `9043a52fd746558d4a9a4eb047b83724abf225d3c00d71e1413e6e8e58698c20`;
+- run-contract SHA256:
+  `3794ff3ecec6bd55ac0c36f8af55904d357fe9f11c1add13430abd1a3d35047b`;
+- protocol SHA256:
+  `1d0a33bee726ced202ff658c7c32ed04365a4ddd6057807477f1f2fdb22525fa`;
+- runtime: `1025.9996478` CPU-only wall seconds.
+
+The mandatory full replay recomputed and byte-compared all eight spatial
+caches, replayed both candidate cores, every row, summary and decision, exited
+`0`, and left the `547,787`-byte report SHA unchanged. Independent post-result
+audit authenticated report, source/input lineage and all eight NPY+sidecar pairs
+(`P0=0, P1=0`). Tiles stayed upright; no board, SSIM, NLM, GPU, rotation or
+reflection path ran. This solves the missing-pair bottleneck on discovery data,
+but authorizes only an identical-generator source-group-disjoint confirmation
+before verifier training or production integration.
