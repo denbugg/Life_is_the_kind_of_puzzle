@@ -181,20 +181,50 @@ It converts nothing, on every use tried:
 - as a tie-break it lengthens the clean prefix from 50 edges to **59**, and as a
   filter it shortens it. The requirement is 552 (M313).
 
-### Therefore
+### The target, corrected from measurement (M314, M316)
 
-The cliff is out of reach. Not because the objective is flat, not because the
-scorer is small, and not because the fragments are unreadable -- because one
-draw of this noise shows about 410 of 1104 adjacencies to any matcher, the
-roster's whole union holds 525 (M253), the top-2 pool holds 599, and no selector
-built from votes, competition, geometry or independent pixels holds a clean
-front past 59 edges.
+M268's "552 correct edges" was derived by sampling the true adjacency set
+UNIFORMLY, and our true edges are not uniform -- a matcher succeeds where the
+photograph has texture, so they cluster. Clustering helps. Handed every true
+edge our own roster already proposes, 432 a board, the placement stage reaches
+**fragment placement 0.4029** with a largest coherent component of 194; the same
+432 drawn uniformly reach only 0.2661 and a component of 105.
 
-What remains is the composition front, and it is monotone: every unit of visible
-texture costs score at a constant rate because our texture is in the wrong place
-(M145, M165, and the composition ladder). The operating point on that front is a
-judgement about what a submission should look like, not a measurement -- and the
-standing rule forbids buying score with smoothness.
+So the evidence ALREADY ON DISK is worth placement 0.40, and the shipping
+harvest extracts **0.0012** from it. The target is not a better matcher and not
+552 edges. It is **about 430 edges at precision 0.97**, which is where M316 puts
+the collapse -- 0.97 is worth placement 0.21, 0.95 is worth 0.06.
+
+### And why that target is out of reach anyway (M317 to M321)
+
+| selection route | best point | placement |
+|---|---:|---:|
+| the shipping vote | 208 edges at 0.817 | 0.0022 |
+| learned per-edge, 60 boards, segment features | 430 at 0.586 | 0.0014 |
+| " at its clean end | 100 at 0.951 | 0.0019 |
+| consistency filter as a search | 537 at 0.503 | 0.0029 |
+| corroborated island merges | 470 at 0.514 | 0.0009 |
+| **a perfect selector on the same pool** | **432 at 1.000** | **0.4029** |
+
+Precision falls smoothly from 0.951 at a hundred edges to 0.586 at four hundred
+and thirty, so no threshold hides a clean set. The independent evidence found in
+M311 does rank above every vote count as a feature and is worth two hundredths.
+Coherent coverage can be doubled, 0.385 to 0.494, by demanding a second contact
+before two islands fuse -- and it does not convert.
+
+**The payoff tracks the largest coherent block and nothing else.** Blocks of
+19.6, 27.2 and 37.7 all pay about 0.002; a block of 194 pays 0.40. That is M263
+from the other end: placing many medium components against each other is exactly
+the coordination the objective cannot do, so the assembly is worth something only
+once one component is large enough to anchor the board by itself.
+
+### What is left
+
+The composition front, which is monotone -- every unit of visible texture costs
+score at a constant rate because our texture is in the wrong place (M145, M165).
+The operating point on it is a judgement about what a submission should look
+like, not a measurement, and the standing rule forbids buying score with
+smoothness.
 
 **Measurement rule, paid for twice today:** two runs of the SAME configuration
 differ by 0.028 in R@1 at step 2500 (M306). A single-run A/B cannot see anything
