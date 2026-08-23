@@ -96,7 +96,18 @@ class RestoreNet(nn.Module):
             self.dec.append(ConvBlock(chs[i - 1] * 2, chs[i - 1]))
         self.head = nn.Conv2d(base, 3, 3, padding=1)
 
-    def forward(self, x):
+    def forward(self, x, clamp=True):
+        """`clamp=False` returns the unbounded residual sum.
+
+        The clamp belongs at inference, not in the training graph.  It has no
+        gradient outside [0,1], so once a run saturates it can never come back:
+        M147 trained a fresh net whose head pushed every pixel past the bounds
+        by step 200, after which 91.7% of the output sat at exactly 0 and 8.3%
+        at exactly 1, the gradient was identically zero everywhere, and the
+        weights stopped moving -- visible as two evaluations reporting the SAME
+        score to four decimals.  Training on the unbounded sum keeps a gradient
+        that pulls out-of-range pixels back.
+        """
         h = self.stem(x)
         skips = []
         for enc, down in zip(self.enc, self.down):
@@ -107,7 +118,8 @@ class RestoreNet(nn.Module):
         for up, dec, s in zip(self.up, self.dec, reversed(skips)):
             h = up(h)
             h = dec(torch.cat([h, s], 1))
-        return torch.clamp(x + self.head(h), 0, 1)
+        out = x + self.head(h)
+        return torch.clamp(out, 0, 1) if clamp else out
 
 
 # ----------------------------------------------------------------------------

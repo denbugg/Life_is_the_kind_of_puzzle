@@ -63,3 +63,42 @@ def distort_image(img, rng=None):
     """Distort every 20x20 fragment of a 480x480 image, keeping positions (correct order)."""
     from imgio import to_frags, from_frags
     return from_frags(distort_frags(to_frags(img), rng))
+
+
+def distort_frags_scaled(frags, rng, strength):
+    """Same chain with the severity dialled by `strength` in [0, 1].
+
+    A matcher trained only at full severity learns a shortcut rather than the
+    matching function itself: on CLEAN tiles it scores R@1 0.388 where plain MGC
+    scores 0.913, so it has stopped reading fine detail altogether.  Sweeping the
+    severity forces it to learn the general function and then be robust to the
+    corruption, rather than the other way round.
+
+    Blur is structural, not severity, so it always applies -- the generator
+    always blurs, and dropping it moves the input off-distribution.
+    """
+    N = frags.shape[0]
+    x = frags.astype(np.float32)
+
+    span = 0.5 * (CONTRAST[1] - CONTRAST[0]) * strength
+    a = rng.uniform(1.0 - span, 1.0 + span, size=(N, 1, 1, 1)).astype(np.float32)
+    b = rng.uniform(-BRIGHT * strength, BRIGHT * strength,
+                    size=(N, 1, 1, 1)).astype(np.float32)
+    pivot = (x * _GRAY).sum(-1, keepdims=True).mean(axis=(1, 2), keepdims=True)
+    x = a * (x - pivot) + pivot + b
+
+    sig = rng.uniform(NOISE_SIGMA[0] * strength, NOISE_SIGMA[1] * strength,
+                      size=(N, 1, 1, 1)).astype(np.float32)
+    x = np.clip(x + rng.standard_normal(x.shape).astype(np.float32) * sig, 0, 255)
+    x = np.clip(_blur3(x), 0, 255).astype(np.uint8)
+
+    # quality 35-50 at full severity, up to near-lossless at zero
+    lo = JPEG_Q[0] + (95 - JPEG_Q[0]) * (1.0 - strength)
+    hi = JPEG_Q[1] + (98 - JPEG_Q[1]) * (1.0 - strength)
+    q = rng.integers(int(lo), int(hi) + 1, size=N)
+    out = np.empty_like(x)
+    for i in range(N):
+        bgr = np.ascontiguousarray(x[i][..., ::-1])
+        ok, enc = cv2.imencode(".jpg", bgr, [int(cv2.IMWRITE_JPEG_QUALITY), int(q[i])])
+        out[i] = cv2.imdecode(enc, cv2.IMREAD_COLOR)[..., ::-1] if ok else x[i]
+    return out
