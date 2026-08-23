@@ -144,42 +144,68 @@ spectral embedding, spectral prior and diffusion distance all buy coarse
 geometry by spending the resolution the problem needs (M293, M294, M299); and
 restoration entirely, by the two bounds above.
 
-**Nothing is live. The matcher side finished on 2026-08-23**, and it finished
-with a measurement rather than with exhaustion.
+**Where 2026-08-24 left it.** The matcher side stayed closed all day and the
+picture changed anyway, because the quantity everything was averaged over turned
+out to be bimodal.
 
-### What the wall is made of (M310)
+### The mean described no board (M342, M343)
 
-One clean board, eight independent draws of the generator, the same matcher on
-each. True edges pooled over draws: **410, 497, 550, 587, 615, 637, 654, 669**,
-still climbing at the eighth. True-edge agreement between two DRAWS is 0.626;
-between two MODELS on one draw it is 0.877.
+The oracle-on-pool arm, taken from 12 boards to 24 and then run with the frame
+prior ON, which every earlier entry had switched OFF for comparability:
 
-Read both numbers together and the position is exact:
+| | prior off | prior on |
+|---|---:|---:|
+| boards placing more than half | 0.292 | **0.417** |
+| boards at essentially zero | 0.542 | **0.250** |
+| mean placement | 0.2455 | **0.3860** |
+| **median placement** | **0.0069** | **0.4531** |
 
-- the seams are **readable** -- three independent looks already reach 550, which
-  is the cliff, and the union does not saturate, so no argument from content
-  ambiguity survives;
-- what decides which ones we see is the **noise realisation we are given**, not
-  the architecture, which is why four retrievers sharing no weights agree on 85%
-  of the edges they get right (M309) and why every model-side axis reads null.
+Nine boards of twenty-four are nearly solved and thirteen are at zero, with
+almost nothing between -- so `0.4029` from M314 described no board at all, and
+was besides measured on twelve, which this project's own rule says settles
+nothing.
 
-We cannot draw the noise again. That is the whole wall, and it is one draw thick.
+**Half the failures are ORIGIN failures, not assembly failures.** Boards
+carrying 321, 215, 180, 145, 136 coherent fragments were scoring zero because
+the block stood in the wrong place. The frame prior lifts six of the thirteen
+above 0.2 -- 321 fragments go 0.0104 to 0.7413 -- and BREAKS two that worked
+without it, 0.3941 to 0.0069 and 0.5243 to 0.0000.
 
-### The one genuinely independent signal, and why it still does not pay
+**Read every earlier entry with this correction**: M314, M316, M321, M336 and
+M342 all ran with the prior off and all understate the ceiling.
 
-The noise is per-pixel, so different PIXELS of one seam carry different draws of
-it. `--head local` already sums twenty per-row agreements, so two sub-matchers
-fall out of the shipping weights for free. Their true edges agree at **0.214** --
-four times more independent than two separately trained networks (M311).
+### What follows, in order of expected return
 
-It converts nothing, on every use tried:
+1. **A solvability diagnostic.** Tell a board that assembled from one that did
+   not, without the answer. This is the first task where the project's
+   subtractive signals are strong on their merits rather than weak as builders:
+   M335 measured 5.6 sd separating a long correct assembly from a wrong one,
+   M336's component health picks a correct core 0.836 of the time against 0.629
+   by size, M334's agreement check runs 7.5 to 1.
+2. **The frame prior as a per-board bet**, since it rescues six boards and
+   breaks two. Same diagnostic, different consumer.
+3. **A fallback arm for the hopeless boards.** Composition belongs here and only
+   here -- not as the main strategy, which is what the user rightly refused, but
+   as what to ship on the quarter to half of boards that do not assemble.
 
-- pooled, the two halves find 209 correct edges where the whole seam alone finds
-  227, because half a seam is half the evidence (M311);
-- as a robust aggregator over rows -- median, trimmed mean, best k of twenty --
-  it moves along the existing precision-recall front and never above it (M312);
-- as a tie-break it lengthens the clean prefix from 50 edges to **59**, and as a
-  filter it shortens it. The requirement is 552 (M313).
+Arithmetic behind the priority: a solved board renders at SSIM ~0.49 against our
+current 0.06 to 0.10, so converting 40% of boards is worth about +0.17 on the
+mean, which is 0.28 -> 0.45 with no better matcher at all.
+
+### Live, and unfinished when the day ended
+
+- **The strip energy** (M340, M341). An energy trained against its OWN optimum
+  is the first objective here ever to rank the truth above the arrangement the
+  seam cost prefers -- 0.583 of boards where the seam cost manages 0.000 -- and
+  it retracts M339's claim that no such objective can exist. It does not yet
+  convert: contrastive rounds overfit at 240 boards, the loss reaching zero, and
+  generate-and-rerank is a wash against the seam cost. `scratchpad/cd_scale.py`
+  was re-running it at 2400 training boards and 40 evaluation boards and was
+  killed at 1200 boards of pool building. That run is the open question.
+- **A submission probe** across alphas 1.0 to 0.15 with `--place anneal
+  --frame 1.0`, killed before its validation printed. The layout is the
+  expensive part and re-rendering is nearly free, so one pass gives the whole
+  front; the operating point on it is the user's call, not a measurement.
 
 ### The target, corrected from measurement (M314, M316)
 
