@@ -392,6 +392,7 @@ def main():
                 per_board.append({
                     "name": names[k], "place": float(np.mean(lay == np.arange(N))),
                     "adjacency": adj,
+                    "lay": [int(x) for x in np.asarray(lay).reshape(-1)],
                     "ssim": {f"{al:.2f}": float(ssim_fn(img, tgt, channel_axis=2,
                                                         data_range=255))
                              for al, img in imgs.items()}})
