@@ -196,8 +196,12 @@ def search(components, CH, CV, rounds=6, baseline_q=0.05, seed=0, prior=None,
     return board, owner, placement
 
 
+ANNEAL_STATS = {}
+
+
 def anneal(components, CH, CV, iters=40000, baseline_q=0.05, t0=6.0, t1=0.05,
-           seed=0, init=None, prior=None, lam=0.0):
+           seed=0, init=None, prior=None, lam=0.0, jump=1.0, step=3.0,
+           swap=0.0):
     """Simulated annealing over component positions.
 
     Coordinate descent reaches only half to four fifths of the objective value
@@ -273,8 +277,47 @@ def anneal(components, CH, CV, iters=40000, baseline_q=0.05, t0=6.0, t1=0.05,
     best_total, best_pos = total, list(pos)
     ratio = (t1 / t0) ** (1.0 / max(iters, 1))
     T = t0
+    ANNEAL_STATS.update(proposed=0, unfit=0, uphill=0, accepted=0, improved=0)
     for _ in range(iters):
+        ANNEAL_STATS["proposed"] += 1
         T *= ratio
+        if swap > 0 and len(comps) > 1 and rng.random() < swap:
+            # M361: single-component relocation cannot escape the greedy
+            # initialisation. Of the thousands of proposals that FIT, not one
+            # was uphill -- greedy already put each component at its best spot
+            # given the others, so moving one alone only breaks its own
+            # contacts. A swap changes two at once, which is the smallest move
+            # that can trade one component's contacts for another's.
+            i = int(rng.integers(len(comps)))
+            j = int(rng.integers(len(comps)))
+            if i == j or pos[i] is None or pos[j] is None:
+                continue
+            pi, pj = pos[i], pos[j]
+            before = gain(i, *pi) + gain(j, *pj)
+            lift(i)
+            lift(j)
+            if not (fits(i, *pj) and fits(j, *pi)):
+                ANNEAL_STATS["unfit"] += 1
+                put(i, *pi)
+                put(j, *pj)
+                continue
+            put(i, *pj)
+            put(j, *pi)
+            d = gain(i, *pj) + gain(j, *pi) - before
+            if d >= 0:
+                ANNEAL_STATS["uphill"] += 1
+            if d >= 0 or rng.random() < np.exp(d / max(T, 1e-6)):
+                ANNEAL_STATS["accepted"] += 1
+                total += d
+                if total > best_total:
+                    ANNEAL_STATS["improved"] += 1
+                    best_total, best_pos = total, list(pos)
+            else:
+                lift(i)
+                lift(j)
+                put(i, *pi)
+                put(j, *pj)
+            continue
         i = int(rng.integers(len(comps)))
         if pos[i] is None:
             continue
@@ -282,17 +325,32 @@ def anneal(components, CH, CV, iters=40000, baseline_q=0.05, t0=6.0, t1=0.05,
         before = gain(i, *old)
         lift(i)
         cells, h, w = shapes[i]
-        r0 = int(rng.integers(G - h + 1))
-        c0 = int(rng.integers(G - w + 1))
+        if rng.random() < jump:
+            r0 = int(rng.integers(G - h + 1))
+            c0 = int(rng.integers(G - w + 1))
+        else:
+            # a LOCAL displacement. M360 measured why this matters: after the
+            # greedy initialisation the board is 43 to 72 per cent occupied, so
+            # a uniform relocation must find a free rectangle the size of the
+            # component's bounding box and almost never does -- across 32 boards
+            # and five seeds the annealer never once improved on its own
+            # initialisation, making 20000 iterations a no-op.
+            r0 = int(np.clip(old[0] + rng.normal(0, step), 0, G - h))
+            c0 = int(np.clip(old[1] + rng.normal(0, step), 0, G - w))
         if not fits(i, r0, c0):
+            ANNEAL_STATS["unfit"] += 1
             put(i, *old)
             continue
         after = gain(i, r0, c0)
         d = after - before
+        if d >= 0:
+            ANNEAL_STATS["uphill"] += 1
         if d >= 0 or rng.random() < np.exp(d / max(T, 1e-6)):
+            ANNEAL_STATS["accepted"] += 1
             put(i, r0, c0)
             total += d
             if total > best_total:
+                ANNEAL_STATS["improved"] += 1
                 best_total, best_pos = total, list(pos)
         else:
             put(i, *old)

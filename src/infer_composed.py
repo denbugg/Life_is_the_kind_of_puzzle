@@ -134,7 +134,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  margin=0.0, orientations=2, frame=0.0, anneal_iters=20000,
                  border_net=None, content=0.0, place="descent",
                  corroboration=4.0, vote_target=0, order="margin",
-                 dissolve=0.0, dissolve_min=6, seed=0):
+                 dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -192,7 +192,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                 if pool else (CH, CV))
         if place == "anneal":
             board, _ = anneal(placed, H, V, iters=anneal_iters,
-                              baseline_q=0.15, prior=prior, lam=frame, seed=seed)
+                              baseline_q=0.15, prior=prior, lam=frame, seed=seed,
+                              jump=jump, step=step, swap=swap)
         else:
             board, _, _ = search(placed, H, V, rounds=6, baseline_q=0.15,
                                  prior=prior, lam=frame)
@@ -285,6 +286,23 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--swap", type=float, default=0.0,
+                    help="share of annealing proposals that SWAP two components "
+                         "rather than move one. M361 measured why this is the "
+                         "move that matters: of the thousands of single-component "
+                         "proposals that fit, not one improved the score, so the "
+                         "greedy initialisation is a deep local optimum for that "
+                         "move class and the annealer was a no-op")
+    ap.add_argument("--jump", type=float, default=1.0,
+                    help="share of annealing proposals that TELEPORT a component "
+                         "to a uniform random position; the rest displace it "
+                         "locally. 1.0 is the historical behaviour, which M360 "
+                         "measured as a no-op -- at 43 to 72 per cent occupancy "
+                         "a teleport almost never fits, so the annealer never "
+                         "improved on its greedy initialisation across 32 "
+                         "boards and five seeds")
+    ap.add_argument("--step", type=float, default=3.0,
+                    help="standard deviation, in cells, of a local displacement")
     ap.add_argument("--seed", type=int, default=0,
                     help="the annealer's seed. M357 found per-board choice "
                          "between CONFIGURATIONS hopeless because board texture "
@@ -415,7 +433,8 @@ def main():
                                a.votes, a.margin, a.orientations, a.frame,
                                20000, bnet, a.content, a.place,
                                a.corroboration, a.vote_target, a.order,
-                               a.dissolve, a.dissolve_min, a.seed)
+                               a.dissolve, a.dissolve_min, a.seed, a.jump,
+                               a.step, a.swap)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
