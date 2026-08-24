@@ -276,8 +276,17 @@ def main():
                          "structural one. Default off: at 0.5 it lifts every "
                          "side's AUC and still costs 0.004 SSIM on 24 boards "
                          "(M256)")
-    ap.add_argument("--fill", choices=("seam", "field"), default="seam",
-                    help="how cells outside the components are filled")
+    ap.add_argument("--fill", choices=("seam", "field"), default="field",
+                    help="how the fragments no component owns are placed. FIELD "
+                         "after M350: assigning them by colour against the "
+                         "predicted field beats the seam fill by 0.0027 of SSIM "
+                         "at full texture, reproduced on 24 boards and again on "
+                         "48. It costs adjacency, 0.244 to 0.230, because a "
+                         "colour fill does not preserve index adjacency, and "
+                         "gains score anyway. M226 found every fill rule within "
+                         "one ten-thousandth of RANDOM, but measured it with no "
+                         "field at all, where the fill had to supply the colour "
+                         "rather than place texture beneath one")
     ap.add_argument("--level", action=argparse.BooleanOptionalAction, default=True)
     ap.add_argument("--nlm", action=argparse.BooleanOptionalAction, default=True)
     ap.add_argument("--bilateral", action=argparse.BooleanOptionalAction,
