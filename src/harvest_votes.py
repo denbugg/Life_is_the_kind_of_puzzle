@@ -80,6 +80,36 @@ def _mutual(M, offset):
             for i in range(N) if int(back[int(forward[i])]) == i}
 
 
+def _depth(M, offset, k):
+    """Edges within the top `k` in EITHER direction, keyed like `_mutual`.
+
+    M253 measured what this is for: the union of every scorer's top-1 holds 525
+    correct edges of 1104 and percolation needs 552, so no selector on top-1
+    evidence can reach it -- while the union of every top-2 holds 599 and does.
+    M254 and M255 then built selectors on a depth-two pool, but the SHIPPING
+    harvest has always taken mutual-best only, and M344 measured that what
+    decides a board is the VOLUME of agreed evidence rather than its purity.
+
+    The weight is still the margin to the runner-up, so a top-2 edge carries a
+    smaller one and sorts below the mutual-best edges that M348 leaves in place.
+    """
+    D = M.copy()
+    np.fill_diagonal(D, -np.inf)
+    part = np.partition(D, -2, axis=1)
+    margin = part[:, -1] - part[:, -2]
+    fwd = np.argpartition(-D, k, axis=1)[:, :k]
+    bwd = np.argpartition(-D, k, axis=0)[:k]
+    out = {}
+    for i in range(N):
+        for j in fwd[i].tolist():
+            out[(i, int(j), offset)] = float(margin[i])
+    for r in range(k):
+        for j in range(N):
+            i = int(bwd[r, j])
+            out.setdefault((i, j, offset), float(margin[i]))
+    return out
+
+
 ORIENTATIONS = [(a, b, c) for a in (0, 1) for b in (0, 1) for c in (0, 1)]
 
 
@@ -110,7 +140,7 @@ def votes_for_target(sets, target):
 
 
 def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
-                margin=0.0, target=0, order="margin"):
+                margin=0.0, target=0, order="margin", depth=1):
     """Edges enough of the scorers agree on, strongly enough.
 
     With `target`, the vote bar is chosen PER BOARD so the harvest reaches that
@@ -145,7 +175,7 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     maximise CLEAN COVERAGE at 0.288.  All three beat the eighteen-scorer
     arrangement they replaced.
     """
-    sets = _scorer_sets(models, inputs, device, orientations)
+    sets = _scorer_sets(models, inputs, device, orientations, depth)
     if target:
         votes = votes_for_target(sets, target)
     seen = set()
@@ -166,13 +196,17 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     return {e: m for e, (v, m) in out.items()}
 
 
-def _scorer_sets(models, inputs, device, orientations):
+def _scorer_sets(models, inputs, device, orientations, depth=1):
     sets = []
     for model in models:
         for tiles in inputs:
             for orient in ORIENTATIONS[:orientations]:
                 H, V = _calibrated(model, tiles, device, orient)
-                sets.append({**_mutual(H, (0, 1)), **_mutual(V, (1, 0))})
+                if depth <= 1:
+                    sets.append({**_mutual(H, (0, 1)), **_mutual(V, (1, 0))})
+                else:
+                    sets.append({**_depth(H, (0, 1), depth),
+                                 **_depth(V, (1, 0), depth)})
     return sets
 
 

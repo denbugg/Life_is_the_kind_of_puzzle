@@ -134,7 +134,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  margin=0.0, orientations=2, frame=0.0, anneal_iters=20000,
                  border_net=None, content=0.0, place="descent",
                  corroboration=4.0, vote_target=0, order="margin",
-                 dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0):
+                 dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
+                 swap=0.0, depth=1):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -161,7 +162,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         views = [tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
         agreed = voted_edges(matcher, views, dev, votes,
                              orientations=orientations, margin=margin,
-                             target=vote_target, order=order)
+                             target=vote_target, order=order, depth=depth)
         if frame > 0 and corroboration > 0:
             pool = voted_pool(matcher, views, dev, orientations)
     else:
@@ -286,6 +287,18 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--depth", type=int, default=1,
+                    help="how deep into each scorer's candidate list an edge may "
+                         "sit and still be voted on. 1 is mutual-best, which is "
+                         "all the shipping harvest has ever used; M253 measured "
+                         "the top-1 union holding 525 correct edges of 1104 "
+                         "against percolation at 552, and the top-2 union 599")
+    ap.add_argument("--anneal-iters", type=int, default=20000,
+                    help="annealing iterations per board. M360 measured the "
+                         "phase as a no-op -- five seeds return bitwise "
+                         "identical layouts because the greedy initialisation "
+                         "is a local optimum no single-component move can leave "
+                         "(M361) -- so this is pure cost unless --swap is on")
     ap.add_argument("--swap", type=float, default=0.0,
                     help="share of annealing proposals that SWAP two components "
                          "rather than move one. M361 measured why this is the "
@@ -431,10 +444,10 @@ def main():
         big, cells = predict_field(field, tiles, dev)
         lay, nc = solve_layout(matcher, restorers, tiles, dev, cells, a.fill,
                                a.votes, a.margin, a.orientations, a.frame,
-                               20000, bnet, a.content, a.place,
+                               a.anneal_iters, bnet, a.content, a.place,
                                a.corroboration, a.vote_target, a.order,
                                a.dissolve, a.dissolve_min, a.seed, a.jump,
-                               a.step, a.swap)
+                               a.step, a.swap, a.depth)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
