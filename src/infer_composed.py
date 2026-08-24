@@ -295,6 +295,10 @@ def main():
     ap.add_argument("--out", default=str(Path(SUB_DIR) / "composed_v1"))
     ap.add_argument("--limit", type=int, default=0, help="smoke run; no ZIP")
     ap.add_argument("--validate", type=int, default=24)
+    ap.add_argument("--dump-validate", default="",
+                    help="save the validation renders and their per-board "
+                         "metrics to this directory, so a truth-FREE judge of "
+                         "the output can be scored against what happened")
     a = ap.parse_args()
 
     dev = "cuda"
@@ -358,7 +362,7 @@ def main():
         names = [str(n) for n in blob["names"][-300:]]
         inv = blob["inv"][-300:]
         rows = {al: [] for al in a.alpha}
-        common = []
+        common, per_board = [], []
         for k in range(min(a.validate, len(names))):
             tgt = load_rgb(Path(TRAIN_TGT) / names[k])
             tiles = to_frags(load_rgb(Path(TRAIN_INP) / names[k])).astype(
@@ -377,6 +381,20 @@ def main():
             for al, img in imgs.items():
                 rows[al].append([float(ssim_fn(img, tgt, channel_axis=2,
                                                data_range=255)), detail(img)])
+            if a.dump_validate:
+                # the rendered board beside its truth-based metrics, so a
+                # truth-FREE judge can be scored against what actually happened
+                dd = Path(a.dump_validate)
+                dd.mkdir(parents=True, exist_ok=True)
+                for al, img in imgs.items():
+                    cv2.imwrite(str(dd / f"{names[k]}_a{int(al*100):03d}.png"),
+                                img[:, :, ::-1])
+                per_board.append({
+                    "name": names[k], "place": float(np.mean(lay == np.arange(N))),
+                    "adjacency": adj,
+                    "ssim": {f"{al:.2f}": float(ssim_fn(img, tgt, channel_axis=2,
+                                                        data_range=255))
+                             for al, img in imgs.items()}})
         c = np.mean(common, axis=0)
         report["validation"] = {
             "flat_fill": round(float(c[0]), 4),
@@ -388,6 +406,9 @@ def main():
                                     "detail": round(float(np.mean(v, 0)[1]), 1)}
                       for al, v in rows.items()}}
         print(json.dumps(report["validation"], indent=1), flush=True)
+        if a.dump_validate:
+            (Path(a.dump_validate) / "per_board.json").write_text(
+                json.dumps(per_board, indent=1), encoding="utf-8")
 
     out = Path(a.out)
     dirs = {al: out / f"a{int(round(al * 100)):03d}" for al in a.alpha}
