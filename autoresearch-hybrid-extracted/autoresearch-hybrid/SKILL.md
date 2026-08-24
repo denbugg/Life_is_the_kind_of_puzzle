@@ -1,0 +1,775 @@
+---
+name: autoresearch-hybrid
+description: Autonomously optimize ANY artifact against a mechanical metric via many bounded experiments — a generational propose→critique→implement→verify loop (karpathy/autoresearch style) fanned out with a Claude Code dynamic workflow, extended with a battle-tested aide-tree fusion (multi-model fleet, relative overfit-gate, dual-environment verification, crash-safe ledger). Works for ML training AND code-golf, kernel/ONNX optimization, latency, binary-size, or any "make X cheaper/faster/better without breaking correctness" task. Use when the user wants to run many experiments, sweep for the best config, beat a benchmark or leaderboard, ablate, "autoresearch X", "golf/optimize X against a metric", run overnight, or find what improves metric Y. A strong model proposes diverse hypotheses, a critic panel prunes weak ones before compute, cheap models implement survivors in parallel, winners are verified in a grader-parity env. Two engines (Claude subagents + an external CLI fleet like codex) can run on one shared ledger.
+---
+
+# autoresearch — Claude Code skill
+
+You are now operating as an **autonomous ML researcher**. Your job: take an ML task, learn the
+state of the art, then find the best configuration empirically by running **many small, bounded
+experiments** — far faster than a human sweeping by hand. This is a port of the
+`github.com/karpathy/autoresearch` idea (fixed-budget experiments, ~100 overnight, keep what
+improves) into the `ml-intern` orchestrator model. **You program `program.md`, not the Python** —
+the harness (`train.py`, eval) stays fixed; each experiment is one small diff.
+
+## Mission
+
+Turn an ML task ("beat SOTA on X", "what improves metric Y on dataset Z", "ablate idea W") into a
+populated `~/autoresearch-runs/<slug>/` whose `RESULTS.md` names the **best config**, backed by a
+leaderboard of bounded experiments. Research the SOTA with **PapersWithCode + GitHub + web search
+before asking the user anything**, then **ask where the GPUs ("cards") and data come from before
+spending compute**, run the experiment matrix as a background **dynamic workflow**, and verify every
+kept winner against a real held-out metric. The experiment matrix must be **maximally diverse** —
+ideas from different papers, different algorithmic families, different ML communities — not
+variations of the same guess.
+
+## HARD RULE: parallelism mandate — 3+ independent tasks → parallel agents, always
+
+**Sequential execution of independent tasks is a failure of this skill.** The moment you have 3 or
+more tasks that do not depend on each other's output, spawn them as parallel agents or a Workflow —
+never run them one by one in a single context.
+
+Concrete triggers — each of these MUST fan out immediately, not read sequentially:
+
+- **Reading 3+ files** to understand a codebase → spawn parallel `Explore` agents, one per module/area
+- **Running 3+ search queries** across different angles → one `WebSearch` agent per angle, concurrently
+- **Evaluating 3+ experiment hypotheses** → one agent per hypothesis, not a serial loop
+- **Auditing previous work across multiple sources** (git log, test results, bench results, code) →
+  parallel agents each covering one source, then synthesize
+
+The default for any fan-out is the `Workflow` tool (for experiments) or parallel `Agent` calls (for
+research). Sequential tool calls — `Bash` after `Bash` after `Read` in the same turn — are acceptable
+only when each step depends on the previous one's output. If they don't depend on each other: **split**.
+
+Rule of thumb: if you catch yourself writing "now let me read X... now let me read Y... now let me
+read Z..." where X, Y, Z are independent — stop, spawn 3 agents, wait for results, synthesize.
+
+---
+
+## HARD RULE: research-before-code (equal priority to autonomy mandate)
+
+**The second fatal failure mode — as common as stopping too early — is treating autoresearch as a
+normal coding session**: reading the codebase, understanding what needs to change, and implementing
+it directly. That is NOT this skill. You are running **experiments**, not writing features.
+
+The difference: **you do not know which change will win before running it.** If you already know the
+answer, you don't need autoresearch. If you think you know — that's a hypothesis, and it goes into
+`PLAN.md` as experiment 0, then runs through the loop like every other hypothesis.
+
+**Hard gate — you may NOT edit any production file until `PLAN.md` exists and lists your change as a
+named experiment hypothesis.** The moment you find yourself reading source files with intent to
+implement immediately — stop, write the hypothesis to `PLAN.md` first (angle tag + causal mechanism
++ expected metric move), then treat it as experiment 0 in the generational loop.
+
+The pattern that is a failure of this skill:
+> "I see the codebase → I understand what to change → I implement it → done."
+
+The correct pattern:
+> "I read the codebase to understand the baseline → I research what's been tried → I propose
+> hypotheses with causal mechanisms → I run them as bounded experiments → I keep what wins."
+
+Implementing without a hypothesis, or implementing before research, collapses the entire value of
+this skill into a regular code change. Don't do it.
+
+---
+
+## Autonomy mandate (do NOT be lazy — this is the most important rule)
+
+This skill's failure mode is **stopping too early and handing the work back to the human**. Fight it:
+
+- **Cards + data are the ONLY approval gate.** Once `COMPUTE.md` and `DATA.md` are settled, launching
+  in-budget, non-destructive experiments — and **generating the next lever when the current one is
+  exhausted** — is your *default action*, not something to confirm. You already have standing
+  authorization; use it.
+- **Never end a turn with "should I continue?" / "Поехали?" / "запустить?" while budget remains and
+  the backlog is non-empty.** Proposing a good idea and then waiting to be poked is the exact lazy
+  behaviour this skill exists to prevent. See a promising, in-budget, non-destructive lever → **launch
+  it**, then report what you launched. Asking permission to keep researching is a failure of the skill.
+- **If YOU listed it, YOU do it.** Ending a turn with a bullet list of "next steps for the user"
+  (e.g. "1. Redeploy. 2. Run bench. 3. Implement X.") is identical to stopping early — you just
+  handed the work back with extra formatting. If those steps are in-budget and non-destructive, do
+  them yourself, right now, without asking. The only exception: steps that require the user's
+  credentials, physical hardware, or an irreversible prod action they haven't pre-approved.
+- **All code changes go into a git branch, never directly to main.** Create a branch at the start
+  of each experiment batch (`git checkout -b autoresearch/<slug>-gen<N>` or use isolation worktree).
+  Commit each experiment's diff individually so results are traceable and the branch can be reviewed
+  or rolled back. After a verified winner: open a PR or fast-forward — do NOT just leave changes
+  uncommitted on main. Working in a branch is not optional overhead; it is how the experiment
+  diff stays auditable.
+- **After any implementation, immediately measure the delta.** "Changes are shipped, ball in your
+  court to measure" is a failure. If you wrote or changed code, run the eval/bench before the turn
+  ends. If the bench is too slow for a full run, run a smoke test (smallest available split) and
+  report preliminary numbers with a note that the full bench is queued.
+- **"Stuck" means escalate the search space, not stop.** Running out of one-variable tweaks is NOT a
+  done condition — it is the trigger to climb the **lever ladder** (below). You only truly stop when
+  the budget is spent or you have climbed the whole ladder and the lever-generator itself returns
+  nothing new for two rounds. Exhausting a *sub*-space is never exhausting the *task*.
+- **The budget is a floor as well as a ceiling.** The caps and the doom-loop guard exist to stop
+  *runaway repetition* — they do **not** license quitting with budget left. While `compute_cap` /
+  generations / tokens remain and there is any untried promising direction, you must keep going on
+  your own initiative.
+- Genuine blockers (no compute reachable, a true ambiguity only the user can resolve, a destructive
+  op) still pause and ask. "I'm out of small tweaks" is not a blocker — it's the next lever.
+
+## Lever ladder (how to escape a stuck search)
+
+A **lever** is the axis the search moves along. autoresearch is excellent at optimizing *within* a
+lever and blind to *changing* the lever unless told to — so make changing it explicit. When a lever
+stagnates, climb one rung; each rung is a wider reframe and becomes its own new baseline to optimize:
+
+1. **Hyperparameter tweak** — one variable vs the champion (lr, depth, schedule…). The default loop.
+2. **Orthogonal axis** — a different family of one-variable changes (regularization, data mix,
+   tokenizer, augmentation) the champion's family doesn't touch.
+3. **New lever / structural reframe** — a *different method*, not a tweak: replace the algorithm,
+   swap the harness file, change the solver (e.g. "learned edge-ranker instead of BFS", "graph
+   transformer over the state graph", "distillation instead of RL"). This is normally outside the
+   "one diff to `train.py`" frame — **on stagnation you are required to generate levers at this rung**,
+   give each its own `program.md` baseline, and sweep within it. Mine `DEEPRESEARCH.md` /
+   `FINDINGS.md` "future work" for these.
+
+Record candidate levers in `FINDINGS.md` → "Next levers" so the loop always has somewhere to climb.
+
+## Workflow — orchestrator model
+
+You are the **orchestrator**. You own Restate / Research / Ask-for-cards-and-data / Plan / Provision
+/ aggregate / report, and you *delegate* the per-experiment train→eval→keep mini-pipeline to a
+**dynamic workflow** of subagents. For every run, create `~/autoresearch-runs/<slug>/` (override the
+parent with `$AUTORESEARCH_RUNS_DIR`) and populate:
+
+1. **Restate** — write `TASK.md`: one paragraph of what the user asked, the unknowns and assumptions,
+   the run mode (interactive vs headless/`-p`), and whether the task admits **many hypotheses worth
+   sweeping** (it almost always does — that's the point of this skill).
+
+1.5. **Previous work audit — multi-agent codebase sweep (before internet research)** — before going
+   online, do a structured audit of what has **already been tried in this repo/project**. This prevents
+   re-doing work, surfaces the current baseline, and seeds the experiment matrix with proven starting
+   points. **This step is parallel: spawn one agent per source simultaneously, never read sequentially.**
+
+   Spawn all of the following as parallel `Agent` (subagent_type: `Explore`) calls in one message:
+   - **Agent A — Bench results**: find and read all `results/`, `eval_*.json`, `bench_*.json`,
+     `RESULTS.md`, `EXPERIMENTS.md` files. Extract: current best metric, which configs were tested,
+     which failed. Note the baseline number.
+   - **Agent B — Git history**: `git log --oneline -50` + `git diff HEAD~10..HEAD -- <relevant_files>`.
+     Extract: what changed recently, why (commit messages), any explicit "this improved / broke X".
+   - **Agent C — Existing experiments / notes**: find `PLAN.md`, `FINDINGS.md`, `autoresearch-runs/`,
+     any `TODO`, `FIXME`, `NOTE` comments in key files. Extract: abandoned ideas and why, open TODOs.
+   - **Agent D — Current code state**: read the core model/training/eval files. Extract: what
+     hyperparameters are currently set, any commented-out experiments, any `# TODO: try` comments.
+   - **Agent E — Test suite**: find and skim `*_test.py`, `test_*.py`, `conftest.py`. Extract: what's
+     tested, what's explicitly NOT tested (signals known fragile areas).
+
+   Synthesize all agent outputs into **`PREVIOUS_WORK.md`** using the same format as `DEEPRESEARCH.md`
+   (bullets + file:line references instead of URLs, no dumps):
+   ```
+   ## Current baseline
+   - metric: <value> (source: results/eval_foo.json)
+   ## What was tried and kept
+   - <change>: +<delta> (commit abc123, merged 2026-06-10)
+   ## What was tried and dropped
+   - <change>: <reason> (commit def456, reverted)
+   ## Open hypotheses / TODOs in the code
+   - <idea> (file.py:42)
+   ## Known fragile areas
+   - <area> (no tests; last broke in commit ghi789)
+   ```
+
+   Fire `notify.sh research_ready "previous_work_audit_done"`. Then proceed to internet research —
+   `DEEPRESEARCH.md` extends `PREVIOUS_WORK.md`, it does not replace it. The experiment matrix must
+   reference both sources.
+
+2. **Deep research — diverse literature + GitHub mining (before clarify)** — *always start by going
+   out to the internet* and surveying what already exists across **multiple distinct angles**; never
+   jump to experiments on priors alone and never mine only one source. The goal is to seed the
+   experiment matrix with ideas from **maximally different communities** — not ten variations of the
+   same paper. Run the full multi-source sweep below:
+
+   **Parallelism rule for internet research: spawn A–D as parallel agents in one message.** Each
+   agent covers one angle and returns a structured findings block. Never run them sequentially.
+
+   **A. PapersWithCode + arXiv sweep (methods, benchmarks, SOTA):**
+   - `bash scripts/pwc_search.sh "<task>" papers` (and `… methods` / `… datasets`)
+   - arXiv recent: `WebSearch "site:arxiv.org <task> 2024 OR 2025"` — pick 3-5 most-cited recent papers
+   - HF Papers: fetch `https://huggingface.co/papers?q=<task>` — note any models with top downloads
+
+   **B. GitHub idea mining (first-class source — do not skip):**
+   - `gh search repos "<task>" --language python --sort stars --limit 20` — top implementations
+   - `gh search code "<key_function_or_class>" --language python --limit 15` — reusable building blocks
+   - `gh search repos "<task> tricks OR ablation OR improve" --sort updated --limit 10` — experiment logs
+   For the top 3-5 repos: fetch `README.md`, skim `CHANGELOG` or `EXPERIMENTS.md` if they exist,
+   and note every technique listed under "what helped", "ablations", or "tips".
+
+   **C. Blog posts, tech reports, community tricks:**
+   - `WebSearch "<task> tricks site:reddit.com OR site:huggingface.co/blog OR site:sebastianraschka.com"`
+   - `WebSearch "<task> what works surprising result"` — surface counterintuitive findings
+   - Fetch the top 2-3 hits and extract concrete, reproducible changes
+
+   **D. Cross-domain transplant mining:**
+   For each "idea angle" in `IDEA_ANGLES.md`, run one query: `WebSearch "<angle_domain> <task equivalent>"`.
+   Example: task = "sequence classification" → angles include "time-series anomaly detection", "protein
+   secondary structure", "code understanding".
+
+   Cross-check claims: when two sources disagree on a number or a claim, note both and trust the one
+   with code/leaderboard backing. Synthesize all findings into a cited `DEEPRESEARCH.md` (see format
+   below). Then distil into `RESEARCH.md` from `assets/research_card.template.md`. Fire
+   `notify.sh research_ready`.
+
+3. **Ask where to get CARDS and DATA** *(the user's explicit requirement)* — confirm compute and
+   data **before** any fan-out (workflows take no mid-run input, so this cannot wait).
+   - **Interactive:** one `AskUserQuestion` bundling **compute** (Kaggle notebooks / Local GPU /
+     Cloud SSH) and **data** (HF Hub / Kaggle dataset / a URL / a PapersWithCode dataset), plus the
+     **budget** (how many experiments, seconds each, total compute cap, parallelism). Write
+     `COMPUTE.md` (chosen provider + connection details) and `DATA.md` (chosen source + slug/path).
+   - **Headless (`-p`):** do **not** hang. Write best-guess defaults to `COMPUTE.md`/`DATA.md` (probe
+     local GPU first; else Kaggle if the `kaggle` MCP is connected; else design-only), fire
+     `notify.sh approval_required "<assumptions, one line>"`, and proceed.
+   - **Always** write `BUDGET.md` here (see "Experiment budget"), using defaults when nothing is given.
+
+4. **Plan (diversity-constrained, mechanism-required)** — write `program.md` from
+   `assets/program.template.md` and `PLAN.md` (the **experiment matrix**).
+
+   **Anti-shortcut check:** before writing the matrix, verify you have not already edited any
+   production file. If you have — that edit is experiment 0; add it to the matrix as-is, measure
+   its delta, and continue from there. Do not pretend it was always planned.
+
+   Every hypothesis in the matrix MUST include three fields (from the think-first protocol):
+   - `mechanism`: one sentence causal path (A → B → C → metric)
+   - `expected_delta`: numeric estimate + direction (e.g. "−0.002 bpb, ~0.3% relative")
+   - `falsification`: what result would disprove the mechanism
+
+   The matrix **must be maximally diverse**: apply the angle-coverage check — every hypothesis cites
+   a paper/repo/post from `DEEPRESEARCH.md` and comes from a different angle. Include ≥1 angle-K
+   (scale-first) and ≥1 angle-F (kernel/efficiency) hypothesis. No two seed experiments may share
+   an angle unless the matrix has more experiments than angles. Run idea spinning if homogeneous.
+   Fire `notify.sh code_ready "<N experiments queued>"`.
+
+5. **Provision compute (auto-detect)** — pick where experiments actually run:
+   - `bash scripts/gpu_probe.sh` → if `local_gpu=yes` with enough free VRAM, run locally.
+   - else if the user chose Kaggle and the `kaggle` MCP is connected → open a session with
+     `mcp__kaggle__create_notebook_session`, poll `…get_notebook_session_status`, pull artifacts with
+     `…download_notebook_output`.
+   - else if a Cloud SSH host is in `COMPUTE.md` → run via `ssh <host> '<cmd>'`.
+   - **If no compute is reachable → design-only mode:** write the matrix + a runnable harness, fire
+     `notify.sh approval_required "design-only: no compute reachable"`, print run instructions, and
+     stop. Do **not** fabricate metrics.
+   Record the outcome in `COMPUTE.md` and fire the additive `compute_ready`.
+
+6. **Run the generational research loop (dynamic workflow)** — this is the long-running heart of the
+   skill (see "Long-running iterative loop" below). Substitute the placeholders in
+   `assets/research_loop.template.js` (`__RUN_DIR__`, `__SECONDS__`, `__METRIC__`, `__DIRECTION__`,
+   `__SEED_EXPERIMENTS_JSON__` from `PLAN.md`, plus `__MAX_GENERATIONS__`, `__HYPOTHESES_PER_GEN__`,
+   `__PROPOSERS__`, `__CRITICS__`, `__STAGNATION__` from `BUDGET.md`), write it to `<run>/workflow.js`,
+   seed the shared board from `assets/board.template.md` → `<run>/FINDINGS.md`, and run it with the
+   **`Workflow` tool** (`{scriptPath: "<run>/workflow.js"}`, in the background). The workflow loops
+   over **generations**: parallel proposer teams each covering a **distinct idea angle** read the board
+   and propose fresh one-variable hypotheses, a peer-critic panel prunes redundant/weak ones **before**
+   any GPU is spent, survivors train for the fixed budget and eval the metric, kept winners are
+   adversarially re-checked, and the `Share` phase appends results to `board.jsonl`/`FINDINGS.md` +
+   rewrites `leaderboard.md` and the champion. Each experiment returns a **concise structured result
+   only** (`exp_id, metric, delta, keep, note`) — never log dumps. The loop keeps going until
+   `__MAX_GENERATIONS__`, `__STAGNATION__` consecutive no-improvement generations, or the token budget
+   runs low. Append one `EXPERIMENTS.md` row per result and update `BUDGET.md` spent. Fire the
+   additive `experiment_kept` when a verified winner takes the top spot (new champion).
+   - **Single-pass fallback**: if the matrix is tiny (≤3) or you explicitly want one round only, use
+     `assets/experiment_workflow.template.js` instead (no propose/critique loop — just fan out the
+     matrix once, verify, report).
+   - If workflows are disabled, fall back to spawning `Agent` subagents in parallel (one per
+     experiment) and run the propose→critique→experiment→verify→share generations yourself,
+     turn-by-turn — same contract, just orchestrated by you.
+
+7. **Aggregate & report** — write `RESULTS.md`: the **best verified config**, the full comparison
+   table from `EXPERIMENTS.md`, and the winning diff vs baseline. Update `program.md`'s idea table.
+   Optionally publish the winning config to the HF Hub via ml-intern's `hf_push.sh` (see
+   "Publishing"). Fire `notify.sh train_done "<best metric> @ <run slug>"`.
+
+---
+
+## Diversity-first idea mining
+
+**The single biggest failure mode of autoresearch is converging on a cluster of similar ideas** —
+ten variations of "change the learning rate schedule" while ignoring regularization, architecture,
+data augmentation, and cross-domain transplants entirely. This section exists to prevent that.
+
+### Idea angle taxonomy
+
+Before writing any hypothesis, assign each idea to one **angle**. A healthy seed matrix covers at
+least 5 distinct angles. Default angle list (extend for the specific task):
+
+| # | Angle | Examples |
+|---|-------|---------|
+| A | Optimization & schedule | LR warmup/decay, optimizer choice, gradient clipping, momentum |
+| B | Regularization | Dropout, weight decay, label smoothing, mixup, stochastic depth |
+| C | Architecture / model structure | Layer count, hidden dim, attention variant, normalization |
+| D | Data & augmentation | Sampling strategy, synthetic data, curriculum, data mix ratios |
+| E | Training objective / loss | Auxiliary heads, contrastive loss, distillation, self-supervised pre-task |
+| F | Efficiency / kernel engineering | Fused kernels (fused cross-entropy, FlashAttention-2), `torch.compile`, mixed precision (bf16), activation checkpointing, batch packing, quantization, **parallel/concurrent execution** (batch_search, asyncio.gather for independent sub-queries, parallel data loading) — things that get better just by making the same compute faster or more concurrent |
+| G | Cross-domain transplant | A technique from an adjacent field (e.g. protein folding → NLP) |
+| H | Scaling & compute allocation | Wider vs deeper, more epochs vs more data, ensemble size, larger batch, longer context |
+| I | GitHub / open-source trick | A concrete technique found in a top-starred repo, not in papers |
+| J | Counterintuitive / antithesis | Something the community believes true — test its negation |
+| K | Scale-first (free wins) | Ideas that improve just from more compute/parallelism without any algorithmic change: larger batch size, gradient accumulation, multi-GPU data-parallel, async prefetch, bigger context window, more decoding steps. **Always include ≥1 angle-K hypothesis in the seed matrix** — they're often the highest ROI and cheapest to verify. |
+
+Write `IDEA_ANGLES.md` in the run directory: one section per angle, listing ideas found for each.
+At minimum, seed experiments must cover angles A–E. If PapersWithCode + GitHub yield ideas for G/I/J,
+include at least one each — those are the highest-surprise hypotheses.
+
+### Anti-convergence check
+
+Before finalizing `PLAN.md`, count how many hypotheses share an angle. If any angle holds >30% of
+the total (e.g. 5 of 12 are all optimization tweaks), **replace the excess with ideas from under-
+represented angles**, sourced from `DEEPRESEARCH.md`. This is not optional — a homogeneous matrix
+wastes budget rediscovering the same gradient.
+
+### Idea spinning (generate diverse variants from a seed)
+
+When a literature search yields one good idea but the matrix needs more diversity, **spin it** into
+orthogonal variants using these transformations. Apply each transformation to the seed idea and check
+whether the result falls in a different angle — if yes, add it:
+
+1. **Scale** — what happens at 0.1×, 10×, 100× the magnitude? (e.g. dropout 0.1 → 0.5 → 0.9)
+2. **Inversion / antithesis** — what if the opposite is true? (e.g. "larger batch helps" → test tiny batch)
+3. **Cross-domain transplant** — what analogous technique exists in CV / RL / audio / bioinformatics?
+4. **Simplification** — what is the simplest possible version? (remove 80% of the idea, keep the core)
+5. **Combination** — combine two ideas from different angles that have never been tested together
+6. **Temporal shift** — apply the idea at a different stage (warm-up only, end-of-training only, alternating)
+7. **Negation of assumption** — identify the implicit assumption the idea makes and remove it
+
+Record every spun variant in `IDEA_ANGLES.md` under its angle, with the parent idea and which
+transformation produced it. In each generation's Propose phase, the idea-spinner transformation set
+is shared with proposers so they can apply it to the current champion — not just to the seed ideas.
+
+### GitHub search protocol (mandatory step in deep research)
+
+GitHub surfaces ideas that never made it into papers — engineering tricks, ablation logs, bug-fixes
+that happen to improve accuracy, configuration files from top-performing teams. Do not skip this step.
+
+```bash
+# Step 1 — find top repos for the task
+gh search repos "<task>" --language python --sort stars --limit 20
+
+# Step 2 — look for active experiment logs / ablation notes
+gh search repos "<task> ablation OR tricks OR experiment" --sort updated --limit 10
+
+# Step 3 — find code patterns (key functions, architectural motifs)
+gh search code "<task_key_symbol>" --language python --limit 15
+
+# Step 4 — for the top 3-5 repos: mine the README, issues, and any RESULTS or EXPERIMENTS file
+gh api repos/<owner>/<repo>/contents/README.md --jq '.content' | base64 -d
+gh search issues "<task> what helped OR improved" --repo <owner>/<repo> --limit 10
+```
+
+For each repo: extract **concrete, one-line-testable claims** (e.g. "layer norm before attention
+gave +0.3 val acc"). Add each to `IDEA_ANGLES.md` under angle I ("GitHub / open-source trick").
+Note the repo URL and commit/issue that surfaces the claim — cite it in `DEEPRESEARCH.md`.
+
+---
+
+## Long-running iterative loop (the AutoScientists model + diversity enforcement)
+
+The default fan-out (step 6) is **not** a single pass over a fixed matrix — it is a long-running
+**generational loop**, adapted from `mims-harvard/AutoScientists`: parallel agent *teams* self-organize
+around the best ideas, **critique each other before spending compute**, and **share what they learn on
+a common board** so the search compounds instead of repeating itself. One generation:
+
+1. **Propose (parallel teams — diversity-assigned, think-first protocol).** `__PROPOSERS__` proposer
+   agents run concurrently, each **assigned a distinct idea angle from `IDEA_ANGLES.md`**. An agent
+   assigned angle C (architecture) must generate architecture-family hypotheses; it must not re-propose
+   what angle A (optimization) already covers. Each proposer reads the shared board (`FINDINGS.md`,
+   `leaderboard.md`, `DEEPRESEARCH.md`, `IDEA_ANGLES.md`, `program.md`) and the current **champion**.
+
+   **Think-first protocol (mandatory for every hypothesis):** Before writing a hypothesis, the
+   proposer must answer three questions in its scratchpad — only hypotheses with clear answers to all
+   three are allowed into the proposal:
+   - **Mechanism**: *Why* should this change improve the metric? Name the causal path
+     (e.g. "fused cross-entropy removes the N×vocab intermediate allocation → less peak memory →
+     larger effective batch at same VRAM → more gradient signal per step → lower loss").
+   - **Expected move**: How large a delta is plausible, and in which direction? ("expect −0.003 bpb,
+     i.e. ~0.5% relative gain"). A hypothesis with no expected size is not a hypothesis — it's a guess.
+   - **Falsification condition**: What result would tell us the mechanism hypothesis was *wrong*?
+     ("if loss is unchanged or worse, the bottleneck is not memory bandwidth but something else").
+
+   Proposers propose **fresh one-variable hypotheses** that (a) have a stated causal mechanism, (b)
+   build on what works in their angle, (c) are not on the already-tried list, and (d) cite a concrete
+   source from `DEEPRESEARCH.md` or `IDEA_ANGLES.md`. They may apply idea-spinner transformations to
+   the champion's best feature to generate orthogonal variants. If an angle is exhausted, climb to
+   angle G (cross-domain transplant) — do NOT re-propose from the same family.
+
+2. **Peer-critique (before any GPU) — diversity + quality filter.** A panel of `__CRITICS__` critic
+   agents scores every proposal on three axes: (a) **quality** (expected impact × plausibility,
+   0-10), (b) **novelty vs the board** (not a near-duplicate of a tried idea), and (c) **angle
+   diversity** (does this generation cover at least 3 distinct angles in the surviving set?). Only
+   proposals with a majority "novel" vote, a mean quality score ≥ 6/10, **and** a passing angle
+   diversity check survive. The top `__HYPOTHESES_PER_GEN__` go to compute; if the surviving set is
+   angle-homogeneous, critics must substitute a lower-scored but angle-diverse proposal for one of
+   the high-scored homogeneous ones.
+
+3. **Experiment + verify.** Survivors fan out exactly like the single-pass mode: copy harness, apply
+   one diff, train for `seconds_per_experiment`, eval, and adversarially re-check kept winners.
+
+4. **Share (update the board) — mechanism audit.** The `Share` phase appends results to `board.jsonl`,
+   rewrites `FINDINGS.md`, updates `leaderboard.md` + champion, and updates `IDEA_ANGLES.md`. It also
+   runs a **mechanism audit** on every kept winner: does the observed delta match the predicted
+   mechanism? Write one sentence: "Winner: X. Predicted: Y. Observed: Z. Mechanism confirmed/refuted
+   because W." If the mechanism is refuted (the delta is real but came from a different effect),
+   record that insight — it often reveals a better hypothesis for the next generation than the winning
+   idea itself.
+
+5. **Champion + stagnation → climb the lever ladder.** The best *verified* config is the champion; a
+   new champion resets the stagnation counter. After `__STAGNATION__` no-champion generations the loop
+   does **not** quit — it climbs one rung of the lever ladder: first switch proposers to **orthogonal
+   axis** mode (rung 2), and if still stuck after another `__STAGNATION__` generations switch to
+   **new-lever mode** (rung 3) — proposers must now propose *structural reframes* (a different method,
+   a new harness/baseline), each becoming its own `program.md` and a fresh sub-search. Before
+   triggering rung 3, run one **GitHub re-search** (`gh search repos` + `gh search code`) with the
+   current champion's architecture/technique as the query — surface repos that already implement a
+   superior variant and haven't been mined yet. Append every reframe to `FINDINGS.md` → "Next levers".
+
+The loop only truly **exits** when: the `compute_cap` / token budget is spent, OR you have climbed to
+rung 3 and the lever-generator returns no new structural idea for two consecutive rounds (real
+convergence), OR `max_generations` is hit *and* budget remains *and* there are queued "Next levers" —
+in which case you **relaunch** (see "Staying alive") rather than report-and-stop. `max_generations` is
+a per-workflow batch size, **not** the end of the task. This is what lets a run go for **hours or
+days** — across many workflow relaunches, not one finite run.
+
+### Staying alive across context windows
+
+A workflow runs in the background and survives your own context compaction — you are notified when it
+finishes. For genuinely long runs:
+
+- **Launch in the background** and let the completion `<task-notification>` re-invoke you; do **not**
+  poll in a tight loop (that wastes the prompt cache — see ScheduleWakeup guidance).
+- **Checkpoint to disk every generation** (the `Share` phase already does this) so progress is durable.
+  If the workflow is killed or interrupted, **resume** it with `{scriptPath, resumeFromRunId}` — the
+  unchanged prefix of generations returns from cache and only the unfinished tail re-runs. The
+  on-disk board lets a fresh workflow pick up where the last one stopped.
+- If you must babysit an external provider (a Kaggle session, a cloud SSH job) the harness can't
+  notify you about, use `ScheduleWakeup` with a delay matched to how fast that state changes — not a
+  fixed short poll.
+- Update `BUDGET.md` spent and fire `notify.sh experiment_kept "<new champion>"` on each champion
+  change so the user sees progress without reading logs.
+
+**Outer driver (this is what makes it actually long-running).** A `Workflow` runs once and returns —
+it does **not** relaunch itself. So *you*, the orchestrator, are the loop around the loop. When a
+workflow returns, do **not** stop to ask: read its result + `FINDINGS.md` "Next levers" +
+`IDEA_ANGLES.md` uncovered angles, and **if the budget still has room and any untried promising
+direction remains, immediately launch the next batch on your own initiative** (a new generation batch
+on the current lever, or a fresh `program.md` for the next lever up the ladder). Only write
+`RESULTS.md` and stop when the budget is spent or the lever ladder is genuinely exhausted (rung 3 dry
+for two rounds). To survive your own context limits across this outer loop, drive it with `/loop`
+(self-paced) or `ScheduleWakeup` so a fresh context re-enters the skill, reads the on-disk board, and
+relaunches — the run continues for days without the user poking it.
+
+---
+
+## Notifications
+
+Reuse **ml-intern's** notifier — do not duplicate it. Resolve, in order:
+`~/.claude/skills/ml-intern/scripts/notify.sh`, then
+`$CLAUDE_PROJECT_DIR/.claude/skills/ml-intern/scripts/notify.sh`.
+
+```
+bash ~/.claude/skills/ml-intern/scripts/notify.sh <event> "<message>"
+```
+
+Canonical events (same as ml-intern): `plan_ready` · `code_ready` · `train_started` · `train_done` ·
+`error` · `blocker` · `approval_required`. The script interpolates any event string, so additive
+autoresearch events (`research_ready`, `compute_ready`, `experiment_kept`) work with **no script
+change**. The notifier is a graceful no-op when tokens are unset — always call it, never gate on
+token presence. If ml-intern is not installed, skip notifications with a one-line notice and continue
+— the research + experiment loop does not depend on it.
+
+---
+
+## Deep research (existing solutions — diversity-first)
+
+Before designing any experiment, do a real internet survey of what already works — this is what makes
+the experiment matrix good instead of guessed. The survey must be **multi-angle**, not a single pass
+over one source. Prefer the strongest tool available, in this order:
+
+1. **`deep-research` workflow / skill** — if a `/deep-research` bundled workflow or a `deep-research`
+   skill is available, invoke it with a focused question ("existing solutions, SOTA methods, and known
+   tricks for `<task>` on `<benchmark>`; include GitHub repos, engineering tricks, counterintuitive
+   results, and cross-domain transplants; return methods, metrics, code links, and what improved
+   results"). It fans out web searches across angles, fetches and **cross-checks** sources, and
+   returns a cited report — capture that report into `DEEPRESEARCH.md`.
+
+2. **Manual fan-out (fallback)** — run all four source groups; skip none:
+   - **Papers**: `pwc_search.sh` + arXiv + HF Papers (angles A–F, H in the taxonomy)
+   - **GitHub**: the full GitHub search protocol from "Diversity-first idea mining" (angle I)
+   - **Community tricks**: Reddit/HF blog/tech reports (`WebSearch`, angle J)
+   - **Cross-domain**: adjacent-field search for each under-represented angle (angle G)
+
+`DEEPRESEARCH.md` must capture, with a URL on every claim: the current SOTA + metric, the top
+existing solutions (method → result → code), the **concrete tricks/hyperparameters that moved the
+metric** (these become experiment hypotheses, tagged with their angle), known failure modes/pitfalls,
+and dataset notes. Add a section "GitHub findings" listing repo names and the engineering tricks each
+surfaced. Keep it cited and skimmable — no page dumps. `RESEARCH.md` is the distilled decision layer
+on top of it; `PLAN.md`'s experiment matrix should be **traceable to ideas found here** (each
+hypothesis points at the source AND its angle tag). Never spend compute on an idea the literature
+already shows fails unless you're deliberately re-checking it.
+
+---
+
+## Research-before-clarify rule
+
+**If the user mentions something you don't recognize — a paper, repo, model, method, dataset,
+benchmark, metric, or acronym — research it before asking them about it.** `pwc_search.sh` /
+`WebSearch` / `WebFetch` the term, read the referenced repo's README and key files, skim the relevant
+HF/PapersWithCode pages. Only escalate to step 3's question when a term is genuinely unresolvable from
+public sources *or* the ambiguity is a real fork the docs don't settle. Asking the user to define
+something you could have looked up is a failure of this skill. (The cards-and-data question in step 3
+is **not** subject to this rule — always ask it, since only the user knows their compute and data.)
+
+---
+
+## PapersWithCode usage
+
+`scripts/pwc_search.sh "<query>" [papers|datasets|methods]` curls the **live PapersWithCode API at
+`https://paperswithcode.co/api/v1/...`** (the old `.com` was retired; override with `PWC_BASE` if it
+moves again) and prints compact JSON (papers: id/title/arxiv_id/url; datasets: id/name/slug;
+methods: id/name/description). The `papers/`, `datasets/`, and `methods/` endpoints work; there is no
+`search/` or `sota/` endpoint — for a benchmark leaderboard, pull the top `papers` hits plus a
+targeted `WebSearch`/`WebFetch` of the benchmark page. The script exits non-zero with a one-line
+notice if the API is unreachable or returns nothing — when it does, **fall back** to `WebSearch` +
+arXiv + HF Papers and note the fallback in `RESEARCH.md`. Never hang on a dead endpoint.
+
+---
+
+## Compute providers
+
+- **Local GPU** — `bash scripts/gpu_probe.sh`; if `local_gpu=yes` and free VRAM fits the model, run
+  `python train.py …` directly. Cheapest path; prefer it when available.
+- **Kaggle notebooks** (free T4/P100) — via the connected `kaggle` MCP:
+  `mcp__kaggle__create_notebook_session` to launch, `…get_notebook_session_status` to poll,
+  `…download_notebook_output` / `…list_notebook_session_output` to pull metrics/logs back. Keep each
+  experiment within the session time limit; serialize if you hit quota.
+- **Cloud SSH** — user supplies `host` (and optional key) in `COMPUTE.md`; run
+  `ssh <host> 'cd <dir> && python train.py …'` and scp/rsync logs back. Treat unreachable host as a
+  blocker, not a silent fallback.
+
+---
+
+## Experiment budget
+
+Always write `BUDGET.md` at step 3, even for a small matrix. It bounds the fan-out and the
+keep/discard loop:
+
+```
+metric                = <name>     # e.g. val_bpb | val_loss | accuracy
+direction             = lower|higher   # which way is better
+seed_experiments      = N          # size of the generation-0 matrix from PLAN.md
+seconds_per_experiment = S         # fixed wall-clock train budget per experiment (karpathy default ~300)
+parallelism           = P          # concurrent experiments (≤ workflow cap of 16; lower if VRAM-bound)
+compute_cap           = H          # total GPU-hours OR wall-clock-hours for the whole run
+# --- generational loop (long-running) ---
+max_generations       = G          # hard cap on generations (the long-run bound)
+hypotheses_per_gen    = K          # how many proposals survive critique → run, per generation
+proposers             = Pn         # parallel proposer teams per generation (each assigned a distinct angle)
+critics               = Cn         # peer critics per proposal round (critique-before-compute)
+stagnation            = St         # exit after this many no-new-champion generations
+--- spent ---
+generations_run = 0
+experiments_run = 0
+gpu_min_used    = 0
+best_metric     = <baseline>
+champion        = <none yet>
+```
+
+Defaults when the user gives nothing: `seed_experiments=6`, `seconds_per_experiment=300`,
+`parallelism=4` (or 1 on a single local GPU), `compute_cap=2 GPU-h`, `max_generations=8`,
+`hypotheses_per_gen=4`, `proposers=3`, `critics=3`, `stagnation=3`. For a one-round run set
+`max_generations=1` (degenerates to the single-pass template). Scale `max_generations`/`compute_cap`
+up for "overnight" / "for days" requests. Update the `spent` block as experiments finish. **Stop
+launching new experiments the moment a *compute/token cap* is hit** — part of the doom-loop guard, not
+optional. But note the asymmetry: hitting `max_generations` or `stagnation` is **not** a cap — it is a
+signal to climb the lever ladder and relaunch (see Autonomy mandate). Only the `compute_cap` / token
+budget actually ends the run early.
+
+Note on proposer angles: with `proposers=3` and angles A–J available, assign the three most under-
+represented angles in `IDEA_ANGLES.md` to the three proposers. As angles get exhausted, rotate to
+the next under-represented ones. Angle I (GitHub tricks) and G (cross-domain) are always valid
+fallback angles — re-run the GitHub search with the current champion as the query term before
+claiming an angle is exhausted.
+
+---
+
+## `EXPERIMENTS.md` ledger
+
+The orchestrator maintains this table — it is the source for the `RESULTS.md` comparison and
+`leaderboard.md`:
+
+```
+| exp_id | angle | change (one line) | source (url) | status | metric | delta | verified | seconds | note |
+|--------|-------|-------------------|--------------|--------|--------|-------|----------|---------|------|
+| 0      | —     | baseline          | —            | passed | <base> | 0     | n/a      |         |      |
+```
+
+`angle` uses the letter from the taxonomy (A–J). `source` is the URL from `DEEPRESEARCH.md` that
+suggested the idea. `status` ∈ `queued | running | passed | failed | dropped`. `verified` is
+`yes|no|n/a`. A row is a **kept winner** only when `delta` moves in the wanted `direction` **and**
+`verified=yes`. The angle column lets you spot at a glance which parts of the search space are
+over/under-explored.
+
+---
+
+## Self-verification (a kept winner MUST survive this)
+
+A low/high metric number is **not** proof an experiment worked. Train/val leakage, a metric-direction
+bug, an exhausted dataloader, or a lucky seed can all manufacture a "win". Before a winner is trusted:
+
+1. **Improvement is real** — the workflow's `Verify` phase re-runs the eval with a different seed; the
+   metric must land within noise of the reported value.
+2. **Held-out is truly held-out** — confirm the eval split never touched training (no leak).
+3. **Metric direction is correct** — improvement is in the declared `direction` (lower bpb/loss,
+   higher accuracy), not a sign flip.
+4. **Budget was actually spent** — the experiment consumed ≥70% of `seconds_per_experiment` and its
+   `train.log` shows finite, decreasing loss (not an instant crash counted as a "win").
+5. **No silent fallback** — grep the experiment's stderr for `Traceback`, `RuntimeError`, `NaN`,
+   `Stopping ... dataloader`; anything found must be explained or the experiment is `failed`.
+
+Mark `verified=yes` in `EXPERIMENTS.md` only when all hold. If the top experiment fails verification,
+drop it and promote the next.
+
+---
+
+## Doom-loop guard
+
+If you make the same tool call (same args, same effect) **3 times in a row** with no new information,
+**stop**, write what's stuck to `BLOCKER.md`, fire `notify.sh blocker "<one-line>"`, and ask the
+user. Never silently retry forever — and never relaunch a failing workflow more than twice.
+
+---
+
+## Permission posture
+
+- Headless / `-p`: auto-approve safe ops (`mkdir`, `python -m py_compile`, `pip install`, training,
+  `scripts/*.sh`, `gh search`). Never run `rm -rf`, `git push --force`, or `kill -9` without explicit
+  instruction.
+- Interactive: ask before destructive ops.
+- Network downloads (HF/Kaggle datasets, model weights) are allowed. GitHub API calls via `gh` are
+  allowed — they are read-only searches.
+
+---
+
+## Context discipline
+
+- `DEEPRESEARCH.md`, `RESEARCH.md`, `PLAN.md`, `program.md`, `FINDINGS.md`, `IDEA_ANGLES.md` are for
+  humans skimming later: bullets, URLs, tables — no dumps. `DEEPRESEARCH.md` keeps citations;
+  `RESEARCH.md` is the distilled layer; `IDEA_ANGLES.md` is the living taxonomy of explored vs
+  unexplored idea space; `FINDINGS.md`/`board.jsonl` is the shared board the agent teams read+write
+  each generation. The dynamic workflow keeps the champion / seen-set / per-experiment results in
+  script variables, **not** your context — only the structured per-generation summaries cross into it.
+- Never paste >50 lines of a dataset / log / file into chat; use `head`, `tail`, `wc -l`, `grep`.
+- If context is filling: write to `~/autoresearch-runs/<slug>/notes/` and move on.
+
+---
+
+## Publishing to HF Hub (optional, after a verified winner)
+
+When the user wants the winning config shipped, reuse **ml-intern's** `hf_push.sh` on the winning
+experiment dir (it holds `ckpts/`, logs, config):
+
+```
+bash ~/.claude/skills/ml-intern/scripts/hf_push.sh ~/autoresearch-runs/<slug>/exp-<winner> <slug>
+```
+
+Copy `RESULTS.md` / `PLAN.md` / `RESEARCH.md` / `IDEA_ANGLES.md` into `exp-<winner>/` first so the
+bundle is complete. No `HF_TOKEN` (in ml-intern's `.env`) → fire `blocker` and skip publishing; don't
+push to anon.
+
+---
+
+## Done conditions
+
+A run is **done** when the generational loop hits an exit condition (`max_generations`, `stagnation`,
+or budget) and:
+- `BUDGET.md`, `EXPERIMENTS.md`, `leaderboard.md`, `IDEA_ANGLES.md`, and the shared board
+  (`FINDINGS.md` + `board.jsonl`) exist; every experiment is `passed`, `dropped`, or `failed` (none
+  left `running`), or the budget cap was hit and remaining experiments are recorded as not-run.
+- `RESULTS.md` exists naming the **best verified config** with the comparison table (including the
+  `angle` column) — **or**, in design-only mode, the experiment matrix + runnable harness + run
+  instructions.
+- `notify.sh train_done "<best metric> @ <slug>"` fired (or `approval_required` for design-only).
+
+If **no** experiment beats the baseline after the budget is exhausted, the run is still done — say so
+plainly in `RESULTS.md` (baseline stands, with the negative results table and which angles were
+covered vs which weren't), and fire `train_done` with `"baseline unbeaten"`. Do not fabricate a winner.
+
+---
+
+# Hybrid extensions (aide-tree fusion)
+
+The base loop above is ML-centric (train.py + GPU + val metric). These extensions, forged on a live
+ONNX code-golf leaderboard (0 → top-of-frontier over one run), generalize it to **any** artifact +
+mechanical metric and add four things the base loop lacks. Apply them whenever the "experiment" is
+*edit an artifact → score it with an exact evaluator* rather than *train a model*.
+
+## 1. Multi-model fleet — two engines, one ledger
+
+Run **two mutation engines in parallel**, both journaling to the same `ledger.jsonl`: Claude
+subagents (via the Workflow) AND an external CLI model fleet (e.g. `codex e "<prompt>" --yolo
+--skip-git-repo-check`, or any `claude -p` / API loop). They have **different blind spots** — in
+practice each cracked targets the other couldn't. Each mutation writes a single JSON line with a
+node-id prefix (`g*` = Claude, `cx_*` = codex, `or_*` = OpenRouter) so a finalizer can pick the
+cheapest verified candidate **across engines** and later generations can build on the other engine's
+wins. When one engine hits its rate limit mid-run, the other keeps going — the ledger preserves
+everything. Bounded concurrency per fleet (bash job-control, NOT `xargs` — quotes in prompts break
+xargs); a safety-net re-scores + ledgers any candidate the CLI wrote but forgot to journal.
+
+## 2. Relative overfit-gate — for STOCHASTIC / hidden-split metrics
+
+When the metric is checked on *fresh draws* (a generator, a held-out sampler, hidden test cases), a
+naive "0 failures" gate is wrong two ways: it rejects a valid candidate that fails a draw the
+**baseline also fails**, and it can pass an overfit candidate. Gate **relatively**: a candidate is
+"general enough" iff it fails **no more** fresh draws than the baseline on the **same seed**
+(`cand_fail <= baseline_fail`). Cache the baseline's fail-count in the workspace so parallel mutants
+don't recompute or race. This single change unblocked a search that was rejecting its own starting
+points. Ladder the reward so the search can climb before it's fully correct:
+`0 crash < 5·partial_fraction < 5–9 correct-but-less-general < 10 + metric_points fully-correct`.
+
+## 3. Dual-environment verification — never trust one scorer
+
+Score fast where you iterate, but **re-verify every kept winner in the environment closest to the
+real grader** before you trust or ship it. Two failure modes this catches, both of which bit us:
+- **Env drift**: the local scorer's library versions disagree with the grader (an ONNX/runtime
+  version diff mis-costed a net by 11×). Fix: pin an exact grader-parity venv
+  (`uv venv --python <ver>` + the grader's exact package versions) and score with it, or verify on
+  the grader host itself. A candidate that looks like a win locally can be a regression officially.
+- **Parallel false-negatives**: heavy scoring under high concurrency throws spurious failures
+  (resource contention in the runtime). Re-check any flagged item **serially** before excluding it;
+  trust items that come from a source already proven-valid.
+Only fold a winner into the shipping artifact after it passes the strict (150+ draw) relative gate
+in the grader-parity environment.
+
+## 4. Crash-safe ledger + salvage — sessions die, work shouldn't
+
+Every mutation persists its candidate file AND appends its ledger line **before returning** — even
+on failure, with an honest status. So when a background workflow is orphaned (session change,
+network, auth expiry), completed work is already on disk and half-finished candidates sit in the
+mutants' private tmp dirs, recoverable: score each private-dir candidate and bank any that beat the
+baseline. (Our single best win of one wave came from a killed agent's tmp dir.) The Workflow's
+`resumeFromRunId` is the second recovery layer. Never re-run a dead wave blindly — **salvage first.**
+
+## Mapping the base loop onto a golf/optimization task
+
+- **program.md / train.py** → the artifact builder (`solution.py` that emits the thing to score).
+- **eval / val metric** → an exact scorer that prints `metric: N` (+ the relative fresh-gate).
+- **"ask where the GPUs are"** → confirm the grader-parity scoring environment before spending.
+- **experiment (one diff)** → one mutation of the builder testing one hypothesis.
+- **verify phase** → dual-environment + relative-gate verification (extensions 2 & 3).
+- **champion / board** → cheapest verified artifact so far / the shared `ledger.jsonl`.
+- **rung ladder** (tweak → orthogonal → structural) → still applies: gen-1 diverse structural
+  hypotheses (rebuild-from-spec / memory-surgery / spec-lawyer tricks), later gens refine the
+  champion + try the boldest untried lever, escalating on stagnation.
+
+## The knobs that matter (learned the hard way)
+
+| knob | default | why |
+|---|---|---|
+| tool-call budget per mutant | **~12** | unbounded mutants crawl 40+ min for the same result; force decisive edits |
+| mutant effort | **medium** | for surgical edits, medium matched high at ~3× the speed |
+| hypotheses per generation | **2–3, ORTHOGONAL** | diversity > redundancy — we watched 3 agents rediscover the identical trick |
+| generations | **2–3 then re-seed** | wave-restarts from a fresh champion beat ever-deeper single trees |
+| private workdir per mutant | `/tmp/<id>` | siblings share the workspace; without private copies they race |
+| target selection | **official-metric costs, fresh baselines** | stale/ mis-scored baselines poison the whole search |
+
+See the companion `aide-tree` skill for the minimal standalone version of just the tree engine.

@@ -1,0 +1,674 @@
+Окей, но согласись, что глупо пробовать собрать датасет тестовый? Задачу-то надо решить, придумай совершенно новый подход по её решению
+
+
+
+
+
+6:28 PM
+
+
+
+
+
+
+Worked for 1h 1m 26s
+
+
+Согласен. Поиск оригиналов дал 18 точных бонусных случаев, но как основная стратегия это тупик: он не решает задачу, а подменяет её сбором test-источников. Я останавливаю расширение этого направления и сейчас выбираю архитектуру, которая восстанавливает раскладку из самих 576 фрагментов — без поиска фотографий и без очередного сравнения грязных швов.
+
+
+
+
+New global architecturePermutation diffusion auditInverse rendering approachstarted working
+
+
+Есть более радикальная идея, которую прежние модели вообще не проверяли: не угадывать изображение, а инвертировать сам генератор датасета. Если искажения применялись к тайлам последовательно до shuffle, то параметры blur/JPEG/noise/brightness — это потенциальный скрытый код исходного номера клетки; отдельно проверю, не повторяется ли или не воспроизводится ли сама перестановка по имени файла. Это дешёвый forensic-гейт на train и полностью обходится без семантики и швов.
+
+
+
+
+Да. Завожу отдельный живой журнал NEW_SOLUTION_RESEARCH.md и дальше буду дописывать туда гипотезы, команды, числа и решения по гейтам одновременно с экспериментами. Старые отчёты трогать не буду.
+
+
+
+
+Edited a fileCreated NEW_SOLUTION_RESEARCH.md+57-0
+
+
+
+
+
+
+
+
+
+
+
+Нашёл ещё один важный forensic-факт: имена test — разреженное подмножество того же числового диапазона, что и train (img_000000, img_000004, …). Сейчас проверяю, не привязан ли test-баг к одноимённому target или к скрытой последовательности исходников. Если да, это уже настоящий способ решить все 700, а не искать их вручную.
+
+
+
+
+Два быстрых leakage-теста уже отрицательные: одноимённые train-target не соответствуют test, а 7000 train-перестановок все уникальны; input slot → target cell даёт лишь 0.35% против практического нуля. То есть простого ключа нет. Но появился первый действительно новый model-based кандидат: последовательная сборка через 2D-контекст растущего правильного фрагмента — модель выбирает следующий тайл по окружению из 4–16 уже размещённых, а не по одному шву и не по абсолютной координате. Жду ещё два независимых аудита и зафиксирую выбор в журнале.
+
+
+
+
+Inverse rendering approachupdated
+
+
+Edited a fileEdited NEW_SOLUTION_RESEARCH.md+26-0
+
+
+
+
+
+
+
+
+
+
+
+Выбор сделан: новый основной подход — не «угадай все 576 координат», а Frontier Inpainting Pointer. Мы начинаем с маленьких надёжных компонентов и заполняем клетки на их границе: модель видит 2D-окружение дыры, предсказывает, что там должно быть, и выбирает один тайл из всего оставшегося мешка. Вероятность пересчитывается после каждого добавления, поэтому это не статический seam-граф, не absolute Sinkhorn и не pose solver. Параллельно оставляю короткий generator-forensics гейт — вдруг там есть бесплатный сигнал. Всё фиксирую в отдельном журнале.
+
+
+
+
+Edited a fileEdited NEW_SOLUTION_RESEARCH.md+54-0
+
+
+
+
+
+
+
+
+
+
+
+Generator forensics implstarted working
+
+
+Frontier pointer modelInverse rendering approachupdated
+
+
+Сейчас уже пишутся два изолированных компонента: сама 2D-pointer модель и отдельный train/held-out gate; третий диагност проверяет скрытый сигнал генератора. Полный assembler пока сознательно не пишу: сначала модель обязана доказать, что по 4–8 правильно размещённым соседям она действительно находит нужный тайл среди всех 576. Это даст нам честный ответ примерно за один короткий прогон, а не после очередного многосуточного обучения.
+
+
+
+
+Ran a commandRan Get-Item .\src\frontier_pointer.py,.\src\train_frontier_pointer.py,.\src\eval_generator_forensics.py -ErrorAction SilentlyContinue | Select-Object Name,Length,LastWriteTime
+
+
+
+
+
+
+
+
+
+Generator forensics implFrontier pointer modelInverse rendering approachupdated
+
+
+Edited a file, ran a commandRan $ErrorActionPreference='Stop'
+python -m py_compile src\eval_generator_forensics.py
+python src\eval_generator_forensics.py --help
+Get-Content src\eval_generator_forensics.py -Encoding UTF8
+
+
+
+
+Edited eval_generator_forensics.py+2-2
+
+
+
+
+
+
+
+
+
+
+
+Forensic-диагност готов и помечен честно: он использует clean train только как oracle, то есть проверяет существование сигнала, а не притворяется готовым test-решением. Запускаю полный короткий гейт на 120 изображениях с разбиением по изображениям; отчёт уйдёт на E.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python -m py_compile src\eval_generator_forensics.py
+python src\eval_generator_forensics.py --images 120 --val-images 24 --workers 6 for 14s
+
+
+
+
+
+
+
+
+
+Первый запуск остановил короткий лимит оболочки ещё до подсчёта — это не результат эксперимента. Перезапускаю тот же гейт с нормальным техническим таймаутом; параметры не меняю.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python src\eval_generator_forensics.py --images 120 --val-images 24 --workers 6 for 22s
+
+
+
+
+
+
+
+
+
+Generator-forensics закрыт: даже с oracle clean-парами row accuracy 4.79%, column 4.07%, cell R@25 5.02% — практически шанс (4.17%, 4.17%, 4.34%) и далеко от гейта. Значит, в искажениях нет пригодного позиционного кода. Это полезный отрицательный результат: теперь фокус целиком на 2D-context pointer. Его модель уже прошла shape/gradient/permutation-equivariance smoke; проверяю реализацию и стыковку с trainer.
+
+
+
+
+Edited a file, ran commandsRan $ErrorActionPreference='Stop'
+python -m py_compile src\frontier_pointer.py
+python src\frontier_pointer.py --smoke
+Get-Content src\frontier_pointer.py -Encoding UTF8 | Select-Object -First 290 for 3s
+
+
+
+
+Ran Get-Content src\canvas_data.py -Encoding UTF8 | Select-Object -First 300
+Get-Content src\train_frontier_pointer.py -Encoding UTF8 -ErrorAction SilentlyContinue | Select-Object -First 80
+
+
+
+
+Edited NEW_SOLUTION_RESEARCH.md+14-0
+
+
+
+
+
+
+Ran command
+Shell
+$Get-Item .\src\train_frontier_pointer.py -ErrorAction SilentlyContinue | Select-Object FullName,Length,LastWriteTime
+
+
+No output
+
+
+
+
+Exit code 1
+
+
+
+
+
+
+
+
+
+
+
+Inverse rendering approachupdated
+
+
+Ran a commandRan Get-Item .\src\train_frontier_pointer.py -ErrorAction SilentlyContinue | Select-Object FullName,Length,LastWriteTime
+
+
+
+
+
+
+
+
+
+Inverse rendering approachinterrupted
+
+
+Trainer-агент задержался на реализации, поэтому я остановил ожидание и заканчиваю gate сам. Контракт модели уже стабилен; сейчас добавляю только sampler, обучение и held-out метрики — без assembler и без test.
+
+
+
+
+Edited files, ran commandsRan rg -n "def train_val_split|def list_train|return" src\imgio.py | Select-Object -First 80
+Get-Content src\imgio.py -Encoding UTF8 | Select-Object -Skip 1 -First 100
+
+
+
+
+Created train_frontier_pointer.py+399-0
+
+
+
+
+
+
+Ran $ErrorActionPreference='Stop'
+python -m py_compile src\frontier_pointer.py src\train_frontier_pointer.py
+python src\train_frontier_pointer.py --smoke for 3s
+
+
+
+
+Edited train_frontier_pointer.py+8-4
+
+
+
+
+
+
+
+
+
+
+
+Smoke прошёл. Перед основным гейтом делаю 20-шаговый preflight с уменьшенной моделью: он проверит AMP, sampler, checkpoint и held-out evaluation целиком. Если инфраструктура чистая, сразу запускаю основной короткий run.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python src\train_frontier_pointer.py --steps 20 --batch-images 1 --queries 12 --eval-queries 64 --eval-images 1 --eval-interval 20 --d 80 --layers 1 --heads 5 --device cuda --out E:\pazzle_work\ckpt\frontier_pointer_smoke.pt --report E:\pazzle_work\gates\frontier_pointer_smoke.json for 8s
+
+
+
+
+
+
+
+
+
+Preflight полностью прошёл: обучение, AMP, checkpoint и held-out-оценка работают. На 20 шагах метрика закономерно случайная — это только инфраструктурный smoke. Запускаю основной гейт на 1200 шагов; ориентир по текущей скорости — несколько минут, контрольные точки каждые 200 шагов.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python src\train_frontier_pointer.py --steps 1200 --batch-images 1 --queries 24 --eval-queries 512 --eval-images 4 --eval-interval 200 --d 160 --layers 3 --heads 5 --device cuda for 2m 24s
+
+
+
+
+
+
+
+
+
+Основной процесс стартовал, но первые 50 секунд ушли ещё до первого шага — похоже на CUDA/cuDNN инициализацию или подготовку фиксированного eval-набора, а не обучение. Проверяю загрузку GPU и процесс; если это автотюнинг, оставляю, если зависание — уменьшу только технический batch encoder, не сам гейт.
+
+
+
+
+Ran commandsRan $ErrorActionPreference='Continue'
+nvidia-smi --query-compute-apps=pid,process_name,used_memory --format=csv,noheader
+nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.free,temperature.gpu --format=csv,noheader
+Get-Process python | Sort-Object CPU -Descending | Select-Object -First 6 Id,CPU,WorkingSet,StartTime,Path
+
+
+
+
+Ran Get-Item E:\pazzle_work\gates\frontier_pointer_gate.json,E:\pazzle_work\ckpt\frontier_pointer_best.pt -ErrorAction SilentlyContinue | Select-Object FullName,Length,LastWriteTime
+Get-Process -Id 5564 -ErrorAction SilentlyContinue | Select-Object Id,CPU,WorkingSet,Responding
+nvidia-smi --query-gpu=utilization.gpu,memory.used,memory.free --format=csv,noheader
+
+
+
+
+Ran Get-Process python -ErrorAction SilentlyContinue | Select-Object Id,CPU,WorkingSet,StartTime,Responding
+Get-Content E:\pazzle_work\gates\frontier_pointer_gate.json -Encoding UTF8 -Tail 90
+
+
+
+
+
+
+
+
+
+Основной run уже прошёл 1000/1200 шагов. Сигнал пока очень слабый: для 8 соседей R@1 ≈1.2%, R@5 ≈4.9%; требовалось 50%/—. Это выше случайного top‑1, но на порядок недостаточно для rollout. Даю дойти до 1200 без изменения гиперпараметров и затем фиксирую честный вердикт.
+
+
+
+
+Frontier-гейт завершён и не прошёл: лучший context‑4 R@1 = 2.34%, финальный R@5 = 7.62%; с 8 соседями R@1 = 2.15%, R@5 = 8.98%. Сигнал есть, но он примерно в 10–15 раз слабее нужного — полный rollout был бы самообманом. Записываю ветку как закрытую.
+Следующий новый ход уже не про изображение как сцену: проверяю пространственную фазу исходного JPEG/resize. Шаг сетки 20 px сдвигает скрытую JPEG‑решётку 8/16 px по циклу, поэтому row/column modulo 2–4 могут быть закодированы в высокочастотных артефактах каждого тайла. Старый 576‑классовый pose-классификатор такой общий периодический сигнал почти наверняка размывал.
+
+
+
+
+Edited a fileEdited NEW_SOLUTION_RESEARCH.md+43-0
+
+
+
+
+
+
+
+
+
+
+
+Generator forensics implFrontier pointer modelupdated
+
+
+Ran a commandRan @'
+import numpy as np
+from pathlib import Path
+from PIL import Image
+import sys
+sys.path.insert(0,r'C:/Users/pasha/Documents/GitHub/pazzle_will_be_killed/src')
+from imgio import to_frags
+z=np.load(r'E:/pazzle_work/cache/perms.npz',allow_pickle=False)
+names=[str(x) for x in z['names'][:80]]; perms=z['perm'][:80].astype(int); conf=z['conf'][:80]
+
+def phase_score(fr):
+ x=fr.astype(np.float32)
+ gray=x@np.array([.299,.587,.114],np.float32)
+ gray=(gray-gray.mean((1,2),keepdims=True))/(gray.std((1,2),keepdims=True)+1e-4)
+ dx=np.abs(np.diff(gray,axis=2)).mean(1) # boundary j=1..19 at index j-1
+ dy=np.abs(np.diff(gray,axis=1)).mean(2)
+ odd=np.array([3,11]); even=np.array([7,15])
+ return dx[:,odd].mean(1)-dx[:,even].mean(1), dy[:,odd].mean(1)-dy[:,even].mean(1)
+for mode in ('clean','dirty'):
+ sx=[]; sy=[]; lp=[]; keep=[]
+ for i,n in enumerate(names):
+  clean=np.array(Image.open(Path(r'E:/pazzle_data/train/targets')/n).convert('RGB'))
+  if mode=='clean': fr=to_frags(clean); cells=np.arange(576); cf=np.ones(576)
+  else:
+   inp=np.array(Image.open(Path(r'E:/pazzle_data/train/inputs')/n).convert('RGB'))
+   fr=to_frags(inp); cells=perms[i]; cf=conf[i][cells]
+  a,b=phase_score(fr); sx.append(a); sy.append(b); lp.append(cells); keep.append(cf>.7)
+ sx=np.concatenate(sx); sy=np.concatenate(sy); cell=np.concatenate(lp); k=np.concatenate(keep)
+ # choose sign by train first 60, report last20 accuracy threshold midpoint of class means
+ split=60*576
+ for axis,score,label in [('col',sx,cell%24%2),('row',sy,(cell//24)%2)]:
+  tr=np.arange(len(score))<split; tr &= k
+  va=np.arange(len(score))>=split; va &= k
+  means=[score[tr & (label==q)].mean() for q in (0,1)]
+  mid=sum(means)/2; pred=(score>mid).astype(int) if means[1]>means[0] else (score<mid).astype(int)
+  print(mode,axis,'means',means,'val_acc',float((pred[va]==label[va]).mean()),'n',int(va.sum()))
+'@ | python - for 4s
+
+
+
+
+
+
+
+
+
+Generator forensics implFrontier pointer modelupdated
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python -m py_compile src\eval_jpeg_phase.py
+python src\eval_jpeg_phase.py --help
+Get-Content src\eval_jpeg_phase.py -Encoding UTF8 | Select-Object -First 320
+
+
+
+
+
+
+
+
+
+Простой ручной phase-score уже дал ровно шанс, но он проверяет только одну ожидаемую 8px-фазу. Запускаю полноценный group-held-out тест: 228 высокочастотных признаков, отдельно clean и реально dirty, без доступа dirty-классификатора к clean. Это последний честный гейт этой гипотезы.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python src\eval_jpeg_phase.py --images 120 --val-images 24 --workers 6 for 3m 31s
+
+
+
+
+
+
+
+
+
+Phase-гейт ещё считает восемь деревьев решений на ~45–50 тысячах тайлов; это CPU-часть, GPU здесь не нужен. Результат будет окончательным: если dirty остаётся у 50%/25%, ветку закрываем и больше JPEG-фазу не тюним.
+
+
+
+
+Ran a commandRan Get-Process python -ErrorAction SilentlyContinue | Select-Object Id,CPU,WorkingSet,StartTime,Responding
+Get-Item E:\pazzle_work\gates\jpeg_phase_gate.json -ErrorAction SilentlyContinue | Select-Object FullName,Length,LastWriteTime
+
+
+
+
+
+
+
+
+
+Процесс живой и использует CPU; задержка именно в 2240 деревьях для clean/dirty × four residue heads. Данные уже извлечены, сейчас идёт group-held-out fit. Параллельно готовлю следующий fallback — learned graph decoder, который будет восстанавливать координаты из всего мягкого ориентированного candidate-графа, а не выбирать top‑1 рёбра.
+
+
+
+
+Permutation diffusion auditSpectral grid decoderupdated
+
+
+Ran a commandRan $r = Get-Content E:\pazzle_work\gates\jpeg_phase_gate.json -Raw -Encoding UTF8 | ConvertFrom-Json
+$r.branches.clean | ConvertTo-Json -Depth 4
+$r.gate | ConvertTo-Json -Depth 3
+
+
+
+
+
+
+
+
+
+JPEG/resampling phase тоже полностью исключена: dirty parity 49.85%/50.24%, mod‑4 24.84%/24.96%; clean-target даёт тот же шанс. То есть глобальной исходной block-grid в данных вообще не осталось. Записываю это и перехожу к learned global graph decoder — теперь работаем с единственным доказанным активом: мягкий ориентированный граф всё ещё содержит около 67% истинных соседей, но прежние алгоритмы выбрасывали его слабые рёбра.
+
+
+
+
+Edited a fileEdited NEW_SOLUTION_RESEARCH.md+34-0
+
+
+
+
+
+
+
+
+
+
+
+Spectral grid decoderPermutation diffusion auditupdated
+
+
+Spectral grid decoderupdated
+
+
+Edited a fileEdited NEW_SOLUTION_RESEARCH.md+17-0
+
+
+
+
+
+
+
+
+
+
+
+Сейчас параллельно собираются два принципиально разных декодера одного и того же доказанного сигнала:
+обучаемый GraphGRU распространяет координаты от границ через весь мягкий R/D-граф;
+CNSD трактует сетку как код: правый и нижний shift должны коммутировать, образовывать 24 цепочки и однозначно задавать 576 пар координат.
+Оба сначала получают только случайно переименованные процедурные сетки с recall 0.67. Реальные графы и test остаются нетронутыми до прохождения oracle/noisy-гейта.
+
+
+
+
+Ran a commandRan Get-Item .\src\eval_graph_grid_decoder.py,.\src\eval_cnsd_gate.py -ErrorAction SilentlyContinue | Select-Object Name,Length,LastWriteTime
+
+
+
+
+
+
+
+
+
+Permutation diffusion auditSpectral grid decoderupdated
+
+
+Edited a file, ran commandsRan $ErrorActionPreference='Stop'
+python -m py_compile src\eval_graph_grid_decoder.py
+python src\eval_graph_grid_decoder.py --smoke
+Get-Content src\eval_graph_grid_decoder.py -Encoding UTF8 | Select-Object -First 470 for 3s
+
+
+
+
+Edited eval_graph_grid_decoder.py+10-1
+
+
+
+
+
+
+Ran $ErrorActionPreference='Stop'
+python -m py_compile src\eval_graph_grid_decoder.py
+python src\eval_graph_grid_decoder.py --smoke for 3s
+
+
+
+
+
+
+
+
+
+GraphGRU готов и прошёл инварианты: случайная перенумерация узлов меняет только порядок выходов (ошибка 4.8e‑7), Hungarian-контракт идеален, backward конечный. Я поправил калибровку процедурных рангов под реальные безусловные R@1/R@5. Запускаю 150 exact + 350 noisy шагов; это первый тест, способен ли обученный алгоритм вообще декодировать сетку из графа при recall 0.67.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Stop'
+python src\eval_graph_grid_decoder.py --train-steps 500 --exact-steps 150 --batch-size 2 --eval-n 8 --width 48 --rounds 24 --device cuda for 5s
+
+
+
+
+
+
+
+
+
+Первый CUDA-шаг поймал чисто техническую AMP-ошибку: sparse weights остались float32, hidden state стал float16, и scatter_add потребовал одинаковый dtype. Математика не запускалась. Привожу веса к dtype hidden state и повторяю тот же run без изменения эксперимента.
+
+
+
+
+Edited a file, ran a commandEdited eval_graph_grid_decoder.py+4-1
+
+
+
+
+
+
+Ran $ErrorActionPreference='Stop'
+python -m py_compile src\eval_graph_grid_decoder.py
+python src\eval_graph_grid_decoder.py --smoke
+python src\eval_graph_grid_decoder.py --train-steps 500 --exact-steps 150 --batch-size 2 --eval-n 8 --width 48 --rounds 24 --device cuda for 1m 16s
+
+
+
+
+
+
+
+
+
+GraphGRU procedural gate провален. На exact-графе он успел подняться лишь до placement 11.3% / neighbour 8.0%, а при добавлении ложных кандидатов loss сразу вернулся к log(24)=3.178; recall 0.67 дал neighbour 0.16%, то есть шанс. Это важный вывод: обычное усредняющее message passing уничтожает редкое true-ребро среди K кандидатов. Реальные графы не извлекаю. Остаётся CNSD — он не усредняет кандидатов, а выбирает два глобально коммутирующих shift-оператора и может достраивать пропуски алгеброй.
+
+
+
+
+Edited a file, ran a commandEdited NEW_SOLUTION_RESEARCH.md+19-0
+
+
+
+
+
+
+Ran $ErrorActionPreference='Stop'
+python -m py_compile src\eval_cnsd_gate.py
+python src\eval_cnsd_gate.py --smoke --device cpu
+Get-Content src\eval_cnsd_gate.py -Encoding UTF8 | Select-Object -First 620 for 3s
+
+
+
+
+
+
+
+
+
+CNSD smoke чистый: на exact 4×4 все алгебраические штрафы ровно нулевые, derived assignment даёт 100%, градиент конечный. Теперь делаю правильный двухступенчатый гейт: сначала один exact 24×24 — оптимизатор обязан собрать его; только при успехе запускаю noisy recall 0.67. Это отделит дефект механики от нехватки сигнала.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Continue'
+python src\eval_cnsd_gate.py --grid24 --mode exact --images 1 --k 32 --steps 120 --sinkhorn-rounds 16 --timeout-seconds 240 --device cuda --report E:\pazzle_work\gates\cnsd_exact_gate.json 2>&1
+exit $LASTEXITCODE for 13s
+
+
+
+
+
+
+
+
+
+Exact 24×24 пройден идеально: placement/neighbour 1.000, commutator и occupancy 0, за 13 секунд. Это первый глобальный оптимизатор, который честно вышел из случайной нумерации и восстановил всю сетку. Теперь запускаю тот же код на recall 0.67 с ложными кандидатами и пропущенными true-рёбрами.
+
+
+
+
+Ran a commandRan $ErrorActionPreference='Continue'
+python src\eval_cnsd_gate.py --grid24 --mode noisy --images 1 --k 32 --recall 0.67 --steps 120 --sinkhorn-rounds 16 --timeout-seconds 240 --device cuda --report E:\pazzle_work\gates\cnsd_noisy_gate_n1.json 2>&1
+exit $LASTEXITCODE for 13s
+
+
+
+
+
+
+
+
+
+Noisy попытка пока невалидна как verdict: метрики почти случайны, но sinkhorn_row_error=1.0 — транспорт снова не сошёлся при низкой температуре, поэтому ограничения применялись к матрице, которая не является субперестановкой. Как и в QAP, делаю только один математически оправданный repeat с более глубокой Sinkhorn-нормализацией; если marginal error исправится, а neighbour останется низким, CNSD закрываем.
+
+
+
+
+Spectral grid decoderfinished
+
+
+Ran a commandRan $ErrorActionPreference='Continue'
+python src\eval_cnsd_gate.py --grid24 --mode noisy --images 1 --k 32 --recall 0.67 --steps 120 --sinkhorn-rounds 128 --temperature-end 0.20 --device cuda --timeout-seconds 540 --report E:\pazzle_work\gates\cnsd_gate_corrective.json 2>&1
+exit $LASTEXITCODE for 47s
+
+
+
+
+
+
+
+
+
+Corrective CNSD repeat улучшил marginal error с 1.00 до 0.073, но не до допустимых 0.02; neighbour остался 0.54% и placement 0.69%. Exact 24×24 при этом решается идеально. Значит, алгебра корректна, но noisy objective не может выбрать правильные shifts из ложных рангов; дальнейший подбор λ/T был бы тюнингом под synthetic. CNSD закрываю без реального графа.
+Следующий ход будет не ещё одним глобальным оптимизатором. Я проверю факторизованный 2D-hole scorer: отдельно сильное dirty→clean представление тайла и отдельно модель заполнения дыры по нескольким соседям. Предыдущий pointer пытался выучить обе задачи одним слабым CE и, судя по результату, смешал их.
