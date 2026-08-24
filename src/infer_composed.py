@@ -91,10 +91,50 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
     return cells[r], tiles_idx[c]
 
 
+def component_health(comp, CH, CV):
+    """Does a component confirm itself under its own evidence? (M206, M336)
+
+    For every tile with two or more in-component neighbours, each neighbour
+    names its best candidate from OUTSIDE the component; the tile is confirmed
+    when they agree on the tile that is actually there.  M336 measured this
+    correlating with a component's coherent fraction at +0.310 and choosing a
+    correct core 0.836 of the time against 0.629 by size -- and found it useless
+    as an edge FILTER, because dropping components shrinks the largest coherent
+    block, which is what placement tracks.
+
+    M358 supplies the use it was missing.  A component is placed by the annealer
+    as a UNIT, so a large one in the wrong place costs more SSIM than the same
+    fragments scattered, while fragments left to the fill are placed by COLOUR,
+    which SSIM rewards.  So the question is not which components to trust for
+    the harvest but which to trust enough to place as a BLOCK.
+    """
+    at = {(dy, dx): t for t, (dy, dx) in comp.items()}
+    inside = set(comp)
+    fired = tested = 0
+    for t, (dy, dx) in comp.items():
+        nb = []
+        for (ddy, ddx), (M, fwd) in (((0, -1), (CH, False)), ((0, 1), (CH, True)),
+                                     ((-1, 0), (CV, False)), ((1, 0), (CV, True))):
+            u = at.get((dy + ddy, dx + ddx))
+            if u is not None:
+                nb.append((M, u, fwd))
+        if len(nb) < 2:
+            continue
+        votes_ = []
+        for M, u, fwd in nb:
+            col = (M[:, u] if fwd else M[u, :]).copy()
+            col[[x for x in inside if x != t]] = np.inf
+            votes_.append(int(np.argmin(col)))
+        tested += 1
+        fired += int(len(set(votes_)) == 1 and votes_[0] == t)
+    return (fired / tested) if tested else None
+
+
 def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  margin=0.0, orientations=2, frame=0.0, anneal_iters=20000,
                  border_net=None, content=0.0, place="descent",
-                 corroboration=4.0, vote_target=0, order="margin"):
+                 corroboration=4.0, vote_target=0, order="margin",
+                 dissolve=0.0, dissolve_min=6, seed=0):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -136,11 +176,23 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                              content_scores(border_net, tiles, dev)
                              if border_net is not None else None, content)
         placed = [c for c in comps if len(c) > 1]
+        if dissolve > 0:
+            # a component we do not trust is not placed as a block; its
+            # fragments go to the fill, where colour decides (M358)
+            keep = []
+            for c in placed:
+                if len(c) < dissolve_min:
+                    keep.append(c)
+                    continue
+                h = component_health(c, CH, CV)
+                if h is None or h >= dissolve:
+                    keep.append(c)
+            placed = keep
         H, V = (corroborate(placed, pool, CH, CV, corroboration)
                 if pool else (CH, CV))
         if place == "anneal":
             board, _ = anneal(placed, H, V, iters=anneal_iters,
-                              baseline_q=0.15, prior=prior, lam=frame)
+                              baseline_q=0.15, prior=prior, lam=frame, seed=seed)
         else:
             board, _, _ = search(placed, H, V, rounds=6, baseline_q=0.15,
                                  prior=prior, lam=frame)
@@ -233,6 +285,21 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--seed", type=int, default=0,
+                    help="the annealer's seed. M357 found per-board choice "
+                         "between CONFIGURATIONS hopeless because board texture "
+                         "swamps it; restarts of one configuration differ only "
+                         "in the arrangement, so the comparison is clean")
+    ap.add_argument("--dissolve", type=float, default=0.0,
+                    help="do not place a component as a BLOCK unless it confirms "
+                         "itself at least this much; its fragments go to the "
+                         "fill instead, where colour decides. M358 measured why "
+                         "this could pay: a component is placed as a unit, so a "
+                         "large one in the wrong place costs more SSIM than the "
+                         "same fragments scattered. 0 disables")
+    ap.add_argument("--dissolve-min", type=int, default=6,
+                    help="only components of at least this size are ever "
+                         "dissolved; small ones are cheap to misplace")
     ap.add_argument("--order", choices=("margin", "votes", "votes_margin"),
                     default="margin",
                     help="what orders the edges as components are built. The "
@@ -347,7 +414,8 @@ def main():
         lay, nc = solve_layout(matcher, restorers, tiles, dev, cells, a.fill,
                                a.votes, a.margin, a.orientations, a.frame,
                                20000, bnet, a.content, a.place,
-                               a.corroboration, a.vote_target, a.order)
+                               a.corroboration, a.vote_target, a.order,
+                               a.dissolve, a.dissolve_min, a.seed)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
