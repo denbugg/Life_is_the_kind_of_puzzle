@@ -144,68 +144,63 @@ spectral embedding, spectral prior and diffusion distance all buy coarse
 geometry by spending the resolution the problem needs (M293, M294, M299); and
 restoration entirely, by the two bounds above.
 
-**Where 2026-08-24 left it.** The matcher side stayed closed all day and the
-picture changed anyway, because the quantity everything was averaged over turned
-out to be bimodal.
+**Where 2026-08-24 left it**, after a day that produced two shipped changes,
+several closures, three retractions of my own claims, and one correction handed
+over by the user.
 
-### The mean described no board (M342, M343)
+### Shipped, each validated through `--validate` and not through a harness
 
-The oracle-on-pool arm, taken from 12 boards to 24 and then run with the frame
-prior ON, which every earlier entry had switched OFF for comparability:
+| change | effect |
+|---|---|
+| the vote bar 8 -> 10 (M348) | SSIM 0.2626 -> 0.2701, placement 0.0012 -> 0.0113 |
+| leftover fill, seam -> field (M350) | +0.0027 SSIM, reproduced on 24 boards and 48 |
 
-| | prior off | prior on |
-|---|---:|---:|
-| boards placing more than half | 0.292 | **0.417** |
-| boards at essentially zero | 0.542 | **0.250** |
-| mean placement | 0.2455 | **0.3860** |
-| **median placement** | **0.0069** | **0.4531** |
+`honest_v6` is built from these and sits at
+`E:/pazzle_work/submissions/honest_v6/submission_composed_a100.zip`. Only alpha
+1.0 is in play; the user has ruled out blending with the field.
 
-Nine boards of twenty-four are nearly solved and thirteen are at zero, with
-almost nothing between -- so `0.4029` from M314 described no board at all, and
-was besides measured on twelve, which this project's own rule says settles
-nothing.
+### Closed through the shipping path, not merely in a harness
 
-**Half the failures are ORIGIN failures, not assembly failures.** Boards
-carrying 321, 215, 180, 145, 136 coherent fragments were scoring zero because
-the block stood in the wrong place. The frame prior lifts six of the thirteen
-above 0.2 -- 321 fragments go 0.0104 to 0.7413 -- and BREAKS two that worked
-without it, 0.3941 to 0.0069 and 0.5243 to 0.0000.
+M248's corroboration (-0.0004), the trained content border detector (0.0000),
+`--margin` at every strength -- it buys purity by spending volume and SSIM does
+not rise, which confirms M344 from a second mechanism -- and the ORDER in which
+components are built, because at 212 edges over 576 fragments they hardly ever
+conflict. The frame prior at 1.0, annealing over descent, sigma 20 and all three
+post-processing stages are confirmed where they stand.
 
-**Read every earlier entry with this correction**: M314, M316, M321, M336 and
-M342 all ran with the prior off and all understate the ceiling.
+### The finding the day turns on (M344)
 
-### What follows, in order of expected return
+The NUMBER of voted edges predicts the assembly's adjacency at **0.955**, better
+than the harvest's true edge PRECISION at 0.652. Volume decides and purity
+follows, which retires the habit of tuning the harvest for precision.
 
-1. **A solvability diagnostic.** Tell a board that assembled from one that did
-   not, without the answer. This is the first task where the project's
-   subtractive signals are strong on their merits rather than weak as builders:
-   M335 measured 5.6 sd separating a long correct assembly from a wrong one,
-   M336's component health picks a correct core 0.836 of the time against 0.629
-   by size, M334's agreement check runs 7.5 to 1.
-2. **The frame prior as a per-board bet**, since it rescues six boards and
-   breaks two. Same diagnostic, different consumer.
-3. **A fallback arm for the hopeless boards.** Composition belongs here and only
-   here -- not as the main strategy, which is what the user rightly refused, but
-   as what to ship on the quarter to half of boards that do not assemble.
+### Three retractions, each caught before it shipped
 
-Arithmetic behind the priority: a solved board renders at SSIM ~0.49 against our
-current 0.06 to 0.10, so converting 40% of boards is worth about +0.17 on the
-mean, which is 0.28 -> 0.45 with no better matcher at all.
+- the per-board vote target (M347): a harness weighted edges by vote count where
+  the pipeline weights them by the minimum margin, so it built different
+  components from the same edges. Its CONTROL arm reproduced exactly, which is
+  what made the difference look real;
+- sigma 12 as a free gain (M352): sigma changes visible detail, which is what
+  the standing rule protects, and at matched detail the default wins outright
+  (M353);
+- "no objective can have its optimum at the truth" (M339, retracted by M340).
 
-### Live, and unfinished when the day ended
+### Live, and the largest measured opportunity
 
-- **The strip energy** (M340, M341). An energy trained against its OWN optimum
-  is the first objective here ever to rank the truth above the arrangement the
-  seam cost prefers -- 0.583 of boards where the seam cost manages 0.000 -- and
-  it retracts M339's claim that no such objective can exist. It does not yet
-  convert: contrastive rounds overfit at 240 boards, the loss reaching zero, and
-  generate-and-rerank is a wash against the seam cost. `scratchpad/cd_scale.py`
-  was re-running it at 2400 training boards and 40 evaluation boards and was
-  killed at 1200 boards of pool building. That run is the open question.
-- **A submission probe** across alphas 1.0 to 0.15 with `--place anneal
-  --frame 1.0`, killed before its validation printed. The layout is the
-  expensive part and re-rendering is nearly free, so one pass gives the whole
-  front; the operating point on it is the user's call, not a measurement.
+**Per-board configuration.** The user found a nearly-solved board by eye in the
+shipped submission, correcting M344's reading that the pipeline is not bimodal:
+about 1.4% of test boards reach that level and 24 held-out boards contained
+none. Choosing the vote bar per board by ORACLE is worth SSIM **0.2741 against
+0.2661** for the best fixed bar -- more than both shipped changes together.
+
+What it needs is a feature comparable ACROSS configurations. The sum of the three
+largest components ranks BOARDS well (it put the user's board ninth of 700 and
+its top ranks look assembled) but grows mechanically with the edge count, so it
+cannot rank bars on one board (M355). Under test now: judges read off the
+finished LAYOUT -- its mean seam cost, a trimmed mean, the share of realised
+adjacencies that are mutually best, and the same seam cost scored by a matcher
+that took no part in the harvest, since the first three judge with the very cost
+that chose the edges.
 
 ### The target, corrected from measurement (M314, M316)
 
