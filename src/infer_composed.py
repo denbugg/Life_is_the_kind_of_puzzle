@@ -227,14 +227,16 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
-    ap.add_argument("--vote-target", type=int, default=400,
+    ap.add_argument("--vote-target", type=int, default=0,
                     help="choose the vote bar PER BOARD so the harvest reaches "
                          "this many edges, instead of clearing a fixed one. "
-                         "M344 found the edge COUNT predicts the assembly's "
-                         "adjacency at 0.955 while its true precision manages "
-                         "0.652, and M346 measured the per-board choice beating "
-                         "a fixed bar at matched volume: SSIM 0.0983 -> 0.1050, "
-                         "placement 0.0021 -> 0.0145. 0 restores the fixed bar")
+                         "OFF by default: it does raise the assembly's "
+                         "adjacency, 0.218 to 0.245, but M347 measured the "
+                         "whole pipeline and the gain does not survive the "
+                         "restorer and the field -- SSIM falls at every alpha, "
+                         "0.2711 to 0.2635 at full texture. Kept because the "
+                         "adjacency gain is real and reproduces, and because a "
+                         "later renderer may convert it")
     ap.add_argument("--margin", type=float, default=0.0,
                     help="the weakest agreeing scorer's margin must clear this; "
                          "raises precision where votes alone cannot (M224)")
