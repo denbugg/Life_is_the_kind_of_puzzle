@@ -135,7 +135,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  border_net=None, content=0.0, place="descent",
                  corroboration=4.0, vote_target=0, order="margin",
                  dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
-                 swap=0.0, depth=1):
+                 swap=0.0, depth=1, weighted=False):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -162,7 +162,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         views = [tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
         agreed = voted_edges(matcher, views, dev, votes,
                              orientations=orientations, margin=margin,
-                             target=vote_target, order=order, depth=depth)
+                             target=vote_target, order=order, depth=depth,
+                             weighted=weighted)
         if frame > 0 and corroboration > 0:
             pool = voted_pool(matcher, views, dev, orientations)
     else:
@@ -290,6 +291,11 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--weighted", action="store_true",
+                    help="weight each scorer's vote by how far it agrees with "
+                         "the consensus of the others, estimated without labels. "
+                         "M365 measured the views at solo precisions from 0.483 "
+                         "down to 0.173 while every one casts an equal vote")
     ap.add_argument("--depth", type=int, default=1,
                     help="how deep into each scorer's candidate list an edge may "
                          "sit and still be voted on. 1 is mutual-best, which is "
@@ -450,7 +456,7 @@ def main():
                                a.anneal_iters, bnet, a.content, a.place,
                                a.corroboration, a.vote_target, a.order,
                                a.dissolve, a.dissolve_min, a.seed, a.jump,
-                               a.step, a.swap, a.depth)
+                               a.step, a.swap, a.depth, a.weighted)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)

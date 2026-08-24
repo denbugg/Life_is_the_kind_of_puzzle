@@ -113,6 +113,37 @@ def _depth(M, offset, k):
 ORIENTATIONS = [(a, b, c) for a in (0, 1) for b in (0, 1) for c in (0, 1)]
 
 
+def scorer_weights(sets):
+    """How far each scorer agrees with the consensus of the others, unlabelled.
+
+    M365 measured the views as wildly unequal: solo mutual-edge precision runs
+    0.483 on the raw view, 0.332 and 0.252 on the two shipped restorers, and
+    0.205 and 0.173 on the two extra ones -- yet `voted_edges` counts every
+    scorer's opinion as one vote. That is the worst case for plain majority
+    voting, which the ensemble literature says loses to confidence weighting by
+    a margin that GROWS with heterogeneity (Parisi et al., "Ranking and
+    combining multiple predictors without labeled data", arXiv 1303.3257).
+
+    The weight has to be estimable without the answer, so it is one round of the
+    unlabelled scheme: build a consensus from the plain vote, then score each
+    scorer by the share of ITS edges the consensus also holds. A scorer that
+    agrees with everyone is trusted; one that mostly proposes edges nobody else
+    sees is not.
+    """
+    counts = {}
+    for s_ in sets:
+        for e in s_:
+            counts[e] = counts.get(e, 0) + 1
+    half = max(2, len(sets) // 2)
+    consensus = {e for e, c in counts.items() if c >= half}
+    w = []
+    for s_ in sets:
+        hit = sum(1 for e in s_ if e in consensus)
+        w.append(hit / max(len(s_), 1))
+    m = sum(w) / max(len(w), 1)
+    return [x / m if m > 0 else 1.0 for x in w]
+
+
 def votes_for_target(sets, target):
     """The highest vote bar whose harvest still reaches `target` edges.
 
@@ -140,7 +171,8 @@ def votes_for_target(sets, target):
 
 
 def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
-                margin=0.0, target=0, order="margin", depth=1):
+                margin=0.0, target=0, order="margin", depth=1,
+                weighted=False):
     """Edges enough of the scorers agree on, strongly enough.
 
     With `target`, the vote bar is chosen PER BOARD so the harvest reaches that
@@ -178,14 +210,20 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     sets = _scorer_sets(models, inputs, device, orientations, depth)
     if target:
         votes = votes_for_target(sets, target)
+        if weighted:
+            # the bar is a WEIGHTED tally now, so a count-based target has to be
+            # read on the same scale
+            votes = float(votes)
     seen = set()
     for s in sets:
         seen |= set(s)
+    w = scorer_weights(sets) if weighted else [1.0] * len(sets)
     out = {}
     for e in seen:
         hit = [s[e] for s in sets if e in s]
-        if len(hit) >= votes and min(hit) >= margin:
-            out[e] = (len(hit), min(hit))
+        tally = sum(wi for wi, s in zip(w, sets) if e in s)
+        if tally >= votes and min(hit) >= margin:
+            out[e] = (tally, min(hit))
     if not out:
         return {}
     big = max(m for _, m in out.values()) + 1.0
