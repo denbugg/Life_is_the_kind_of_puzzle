@@ -91,6 +91,36 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
     return cells[r], tiles_idx[c]
 
 
+ANALYTIC_VIEWS = {
+    "median": lambda x: cv2.medianBlur(x, 3),
+    "nlm": lambda x: cv2.fastNlMeansDenoisingColored(x, None, 6, 6, 7, 21),
+    "bilateral": lambda x: cv2.bilateralFilter(x, 7, 50, 7),
+    "unsharp": lambda x: cv2.addWeighted(
+        x, 1.6, cv2.GaussianBlur(x, (0, 0), 1.5), -0.6, 0),
+}
+
+
+def analytic_view(name, tiles):
+    """One filtered version of every fragment, as an extra VOTER.
+
+    M363 measured that independence comes from the input rather than the
+    weights, and M365 that the learned restorers make weak views -- solo
+    mutual-edge precision 0.148 to 0.280 against 0.396 for the raw fragments.
+    M366 then measured these: median 0.352, non-local means 0.346, bilateral
+    0.342, all better than every restorer and nearly the raw view itself.
+
+    The reason is plain enough. A restorer is trained to reconstruct the clean
+    fragment and INVENTS detail doing it, which the matcher then believes; a
+    filter invents nothing and can only remove, so it stays nearer the
+    distribution the matcher was trained on.
+    """
+    fn = ANALYTIC_VIEWS[name]
+    out = np.empty_like(tiles)
+    for k in range(len(tiles)):
+        out[k] = fn(np.clip(tiles[k], 0, 255).astype(np.uint8)).astype(np.float32)
+    return out
+
+
 def component_health(comp, CH, CV):
     """Does a component confirm itself under its own evidence? (M206, M336)
 
@@ -135,7 +165,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  border_net=None, content=0.0, place="descent",
                  corroboration=4.0, vote_target=0, order="margin",
                  dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
-                 swap=0.0, depth=1, weighted=False):
+                 swap=0.0, depth=1, weighted=False, analytic=()):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -159,7 +189,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
     pool = None
     if votes:
         CH, CV = costs_from_models(matcher, tiles)
-        views = [tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
+        views = ([tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
+                 + [analytic_view(n, tiles) for n in analytic])
         agreed = voted_edges(matcher, views, dev, votes,
                              orientations=orientations, margin=margin,
                              target=vote_target, order=order, depth=depth,
@@ -291,6 +322,13 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--analytic", nargs="*", default=[],
+                    choices=sorted(ANALYTIC_VIEWS),
+                    help="analytic filters to add as extra VIEWS. M366 measured "
+                         "these at solo precision 0.352, 0.346 and 0.342 for "
+                         "median, non-local means and the bilateral, against "
+                         "0.396 for the raw fragments and 0.148 to 0.280 for "
+                         "every learned restorer")
     ap.add_argument("--weighted", action="store_true",
                     help="weight each scorer's vote by how far it agrees with "
                          "the consensus of the others, estimated without labels. "
@@ -456,7 +494,8 @@ def main():
                                a.anneal_iters, bnet, a.content, a.place,
                                a.corroboration, a.vote_target, a.order,
                                a.dissolve, a.dissolve_min, a.seed, a.jump,
-                               a.step, a.swap, a.depth, a.weighted)
+                               a.step, a.swap, a.depth, a.weighted,
+                               a.analytic)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
