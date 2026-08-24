@@ -204,8 +204,9 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
             (-CH).astype(np.float32), (-CV).astype(np.float32), comps,
             repair_passes=0, restarts=1)[0], np.int64)
     if fill == "field":
-        tile_colour = np.mean([_restore_tiles(m, tiles, dev).mean((1, 2))
-                               for m in restorers], axis=0)
+        tile_colour = (np.mean([_restore_tiles(m, tiles, dev).mean((1, 2))
+                                for m in restorers], axis=0) if restorers
+                       else tiles.mean((1, 2)))
         # only what was actually PLACED is owned: the annealer positions the
         # multi-tile components and `fill_rest` scatters the rest at random,
         # and those scattered fragments are exactly what this is here to place
@@ -255,7 +256,9 @@ def main():
                          "pessimistic minimum of M201, worth about +0.02 edge "
                          "precision when they are of comparable strength")
     ap.add_argument("--restorers", nargs="+",
-                    default=["tile_restorer_mgc.pt", "tile_restorer.pt"])
+                    default=["tile_restorer_mgc.pt", "tile_restorer.pt"],
+                    help="restorer checkpoints, one extra VIEW of the board "
+                         "each; pass `none` for the raw view alone")
     ap.add_argument("--field", default="coarse_field_v2.pt")
     ap.add_argument("--r5", default="E:/pazzle_work/pazzle_fixed_orientation_20260813/"
                                     "R5_restore_unet/r5_capacity_fp32.pt")
@@ -411,7 +414,7 @@ def main():
         m.eval()
         matcher.append(m)
     restorers = []
-    for n in a.restorers:
+    for n in ([] if a.restorers == ["none"] else a.restorers):
         ck = torch.load(Path(CKPT_DIR) / n, map_location=dev, weights_only=False)
         ar = ck.get("args", {})
         # `residual` and `ycc` add no weights but change the forward pass, so a
