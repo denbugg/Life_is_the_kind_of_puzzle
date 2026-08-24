@@ -94,7 +94,7 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
 def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  margin=0.0, orientations=2, frame=0.0, anneal_iters=20000,
                  border_net=None, content=0.0, place="descent",
-                 corroboration=4.0, vote_target=0):
+                 corroboration=4.0, vote_target=0, order="margin"):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -121,7 +121,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         views = [tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
         agreed = voted_edges(matcher, views, dev, votes,
                              orientations=orientations, margin=margin,
-                             target=vote_target)
+                             target=vote_target, order=order)
         if frame > 0 and corroboration > 0:
             pool = voted_pool(matcher, views, dev, orientations)
     else:
@@ -220,13 +220,27 @@ def main():
                          "-- sigma 20 is worth +0.005 and every larger sigma is "
                          "worse than not using it -- so there is no middle "
                          "ground between this and the composed picture")
-    ap.add_argument("--votes", type=int, default=8,
+    ap.add_argument("--votes", type=int, default=10,
                     help="how many of the eighteen scorers must agree on an "
-                         "edge; 0 falls back to the old two-view filter")
+                         "edge; 0 falls back to the old two-view filter. TEN "
+                         "after M348 swept the bar through this whole path on "
+                         "24 boards: against the previous default of eight it "
+                         "lifts adjacency 0.240 to 0.242, fragment placement "
+                         "0.0012 to 0.0113 and SSIM 0.2626 to 0.2701 at full "
+                         "texture; against thirteen it gains 0.024 of adjacency "
+                         "for an SSIM wash")
     ap.add_argument("--orientations", type=int, default=2,
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--order", choices=("margin", "votes", "votes_margin"),
+                    default="margin",
+                    help="what orders the edges as components are built. The "
+                         "weight is an ORDERING and nothing else, and M270 "
+                         "measured that ordering decides -- the same edges "
+                         "shuffled take clean coverage from 0.931 to 0.268 -- "
+                         "yet this has always been the minimum margin and was "
+                         "never swept")
     ap.add_argument("--vote-target", type=int, default=0,
                     help="choose the vote bar PER BOARD so the harvest reaches "
                          "this many edges, instead of clearing a fixed one. "
@@ -320,7 +334,7 @@ def main():
         lay, nc = solve_layout(matcher, restorers, tiles, dev, cells, a.fill,
                                a.votes, a.margin, a.orientations, a.frame,
                                20000, bnet, a.content, a.place,
-                               a.corroboration, a.vote_target)
+                               a.corroboration, a.vote_target, a.order)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)

@@ -110,11 +110,21 @@ def votes_for_target(sets, target):
 
 
 def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
-                margin=0.0, target=0):
+                margin=0.0, target=0, order="margin"):
     """Edges enough of the scorers agree on, strongly enough.
 
     With `target`, the vote bar is chosen PER BOARD so the harvest reaches that
     many edges rather than clearing a fixed bar -- see `votes_for_target`.
+
+    `order` sets what the returned weight means, and the weight is used for one
+    thing only: `build_directed_components` adds edges in DESCENDING weight and
+    keeps whatever does not conflict, so the weight is an ORDERING and nothing
+    else. M270 measured that ordering is decisive -- the same edges shuffled take
+    clean coverage from 0.931 to 0.268 -- and this project has never swept it,
+    having always ordered by the pessimistic minimum margin of M201. "votes"
+    orders by how many scorers agreed, which M344 found predicts the assembly's
+    adjacency at 0.955 where precision manages 0.652; "votes_margin" breaks ties
+    among equal vote counts by that margin.
 
     The scorers are every matcher, on every input, in `orientations` of the
     board's eight symmetries.  `inputs` lists the tile arrays -- the raw tiles
@@ -145,8 +155,15 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     for e in seen:
         hit = [s[e] for s in sets if e in s]
         if len(hit) >= votes and min(hit) >= margin:
-            out[e] = min(hit)
-    return out
+            out[e] = (len(hit), min(hit))
+    if not out:
+        return {}
+    big = max(m for _, m in out.values()) + 1.0
+    if order == "votes":
+        return {e: float(v) for e, (v, m) in out.items()}
+    if order == "votes_margin":
+        return {e: v * big + m for e, (v, m) in out.items()}
+    return {e: m for e, (v, m) in out.items()}
 
 
 def _scorer_sets(models, inputs, device, orientations):
