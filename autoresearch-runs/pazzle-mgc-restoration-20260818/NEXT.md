@@ -144,63 +144,80 @@ spectral embedding, spectral prior and diffusion distance all buy coarse
 geometry by spending the resolution the problem needs (M293, M294, M299); and
 restoration entirely, by the two bounds above.
 
-**Where 2026-08-24 left it**, after a day that produced two shipped changes,
-several closures, three retractions of my own claims, and one correction handed
-over by the user.
+**Where 2026-08-24 left it.** A long day: two shipped changes, many closures,
+four retractions of my own claims, one correction handed over by the user, and
+one finding at the end that opens a live thread.
 
-### Shipped, each validated through `--validate` and not through a harness
+### Shipped, each validated through `--validate`, never through a harness
 
 | change | effect |
 |---|---|
 | the vote bar 8 -> 10 (M348) | SSIM 0.2626 -> 0.2701, placement 0.0012 -> 0.0113 |
 | leftover fill, seam -> field (M350) | +0.0027 SSIM, reproduced on 24 boards and 48 |
 
-`honest_v6` is built from these and sits at
-`E:/pazzle_work/submissions/honest_v6/submission_composed_a100.zip`. Only alpha
-1.0 is in play; the user has ruled out blending with the field.
+`honest_v6` is built from these at
+`E:/pazzle_work/submissions/honest_v6/submission_composed_a100.zip`. The user has
+NOT submitted it: by eye it assembles worse than v5, and M357 confirmed why --
+v5 ran the bar at 13 and v6 at 10, which is the purity-volume trade in visual
+form. Only alpha 1.0 is in play; blending with the field is ruled out.
 
-### Closed through the shipping path, not merely in a harness
+### THE LIVE THREAD: views, and where independence actually comes from
 
-M248's corroboration (-0.0004), the trained content border detector (0.0000),
-`--margin` at every strength -- it buys purity by spending volume and SSIM does
-not rise, which confirms M344 from a second mechanism -- and the ORDER in which
-components are built, because at 212 edges over 576 fragments they hardly ever
-conflict. The frame prior at 1.0, annealing over descent, sigma 20 and all three
-post-processing stages are confirmed where they stand.
+**M363.** The roster's three factors, separated for the first time at a matched
+number of votes: three VIEWS on one architecture reach adjacency 0.224 and 61.2
+components; three ARCHITECTURES on one view reach 0.189 and 38.3; doubling by
+orientations buys nothing. Independence comes from showing the matcher a
+different version of the PIXELS, not from different weights reading the same
+ones -- which explains why M309's from-scratch retriever and M328's half-seam
+matchers both agreed with the incumbents at 0.83 to 0.85.
+
+**M365.** Growing by views failed anyway because the available views are weak
+and because I compared rosters by the FRACTION of votes rather than by harvest
+VOLUME, which is not the same selectivity. Rule: match the volume.
+
+**M366, the opening.** Free analytic filters are better voters than every
+restorer this project has trained -- solo precision median 0.352, non-local
+means 0.346, bilateral 0.342, against 0.148 to 0.280 for the restorers and 0.396
+for the raw fragments. End to end at matched volume, raw plus those three gives
+**adjacency 0.241 and placement 0.0106** against the shipping baseline's 0.229
+and 0.0092, for 0.004 of SSIM. The first arm all day that IMPROVES the assembly
+instead of trading it away. The mechanism is M292 from the other side: a
+restorer invents detail and the matcher believes it; a filter can only remove.
+
+**M367.** Confidence weighting estimated without labels (Parisi et al.) tracks
+true solo precision at +0.899 and recovers 0.011 to 0.012 of the adjacency that
+unequal views cost. The right way to combine views of differing quality.
+
+**Next:** more filters as views, weighted, at matched volume -- and a submission
+built on the analytic roster if the adjacency gain holds on 48 boards.
+
+### Closed today, all through the shipping path
+
+M248's corroboration, the content border detector, `--margin`, the ORDER
+components are built in, a depth-two harvest (M362, closing M253's way out from
+a third direction), per-board configuration choice by every feature tried
+(M355 to M358), and dissolving untrusted components (M359).
+
+**And the annealer never annealed** (M360, M361): five seeds return bitwise
+identical layouts because 93% of its proposals do not fit and NONE of the rest
+is uphill -- the greedy initialisation is a deep local optimum for the move
+class "relocate one component". A swap move was added and produces uphill moves
+where single moves produce none, and changes nothing end to end, which agrees
+with M243 and M245 that the objective is flat at the top.
 
 ### The finding the day turns on (M344)
 
 The NUMBER of voted edges predicts the assembly's adjacency at **0.955**, better
 than the harvest's true edge PRECISION at 0.652. Volume decides and purity
-follows, which retires the habit of tuning the harvest for precision.
+follows -- but only AGREED volume, since M362's deeper pool loses everywhere.
 
-### Three retractions, each caught before it shipped
+### Four retractions, each caught before it shipped
 
-- the per-board vote target (M347): a harness weighted edges by vote count where
-  the pipeline weights them by the minimum margin, so it built different
-  components from the same edges. Its CONTROL arm reproduced exactly, which is
-  what made the difference look real;
-- sigma 12 as a free gain (M352): sigma changes visible detail, which is what
-  the standing rule protects, and at matched detail the default wins outright
-  (M353);
-- "no objective can have its optimum at the truth" (M339, retracted by M340).
-
-### Live, and the largest measured opportunity
-
-**Per-board configuration.** The user found a nearly-solved board by eye in the
-shipped submission, correcting M344's reading that the pipeline is not bimodal:
-about 1.4% of test boards reach that level and 24 held-out boards contained
-none. Choosing the vote bar per board by ORACLE is worth SSIM **0.2741 against
-0.2661** for the best fixed bar -- more than both shipped changes together.
-
-What it needs is a feature comparable ACROSS configurations. The sum of the three
-largest components ranks BOARDS well (it put the user's board ninth of 700 and
-its top ranks look assembled) but grows mechanically with the edge count, so it
-cannot rank bars on one board (M355). Under test now: judges read off the
-finished LAYOUT -- its mean seam cost, a trimmed mean, the share of realised
-adjacencies that are mutually best, and the same seam cost scored by a matcher
-that took no part in the harvest, since the first three judge with the very cost
-that chose the edges.
+The per-board vote target (M347), sigma 12 as a free gain (M352, M353), "no
+objective can have its optimum at the truth" (M339, retracted by M340), and
+"the real pipeline is not bimodal" (M344, corrected by the user, who found a
+nearly-solved board by eye -- about 1.4% of test boards reach that level and 24
+held-out boards contained none).
 
 ### The target, corrected from measurement (M314, M316)
 
