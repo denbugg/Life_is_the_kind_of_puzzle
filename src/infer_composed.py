@@ -94,7 +94,7 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
 def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  margin=0.0, orientations=2, frame=0.0, anneal_iters=20000,
                  border_net=None, content=0.0, place="descent",
-                 corroboration=4.0):
+                 corroboration=4.0, vote_target=0):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -120,7 +120,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         CH, CV = costs_from_models(matcher, tiles)
         views = [tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
         agreed = voted_edges(matcher, views, dev, votes,
-                             orientations=orientations, margin=margin)
+                             orientations=orientations, margin=margin,
+                             target=vote_target)
         if frame > 0 and corroboration > 0:
             pool = voted_pool(matcher, views, dev, orientations)
     else:
@@ -226,6 +227,14 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
+    ap.add_argument("--vote-target", type=int, default=400,
+                    help="choose the vote bar PER BOARD so the harvest reaches "
+                         "this many edges, instead of clearing a fixed one. "
+                         "M344 found the edge COUNT predicts the assembly's "
+                         "adjacency at 0.955 while its true precision manages "
+                         "0.652, and M346 measured the per-board choice beating "
+                         "a fixed bar at matched volume: SSIM 0.0983 -> 0.1050, "
+                         "placement 0.0021 -> 0.0145. 0 restores the fixed bar")
     ap.add_argument("--margin", type=float, default=0.0,
                     help="the weakest agreeing scorer's margin must clear this; "
                          "raises precision where votes alone cannot (M224)")
@@ -309,7 +318,7 @@ def main():
         lay, nc = solve_layout(matcher, restorers, tiles, dev, cells, a.fill,
                                a.votes, a.margin, a.orientations, a.frame,
                                20000, bnet, a.content, a.place,
-                               a.corroboration)
+                               a.corroboration, a.vote_target)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)

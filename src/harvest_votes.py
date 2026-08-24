@@ -83,9 +83,38 @@ def _mutual(M, offset):
 ORIENTATIONS = [(a, b, c) for a in (0, 1) for b in (0, 1) for c in (0, 1)]
 
 
+def votes_for_target(sets, target):
+    """The highest vote bar whose harvest still reaches `target` edges.
+
+    M344 measured what decides a board's outcome: the NUMBER of voted edges
+    predicts the assembly's adjacency at 0.955, better than the harvest's true
+    edge precision at 0.652, so volume decides and purity follows.  The bar that
+    sets that volume was global -- thirteen of eighteen on every board alike --
+    while the count clearing it varies board to board by a factor of several.
+    M288 and M289 swept the bar, but swept it globally.
+
+    Choosing the bar per board to a fixed volume beats the fixed bar AT MATCHED
+    VOLUME (M346): against a fixed eight yielding 431 edges, a per-board target
+    of 400 yields 441 and lifts SSIM from 0.0983 to 0.1050 and fragment
+    placement from 0.0021 to 0.0145.  So the gain is the per-board choice and
+    not the lower bar.
+    """
+    counts = {}
+    for s_ in sets:
+        for e in s_:
+            counts[e] = counts.get(e, 0) + 1
+    for v in range(len(sets), 0, -1):
+        if sum(1 for c in counts.values() if c >= v) >= target:
+            return v
+    return 1
+
+
 def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
-                margin=0.0):
+                margin=0.0, target=0):
     """Edges enough of the scorers agree on, strongly enough.
+
+    With `target`, the vote bar is chosen PER BOARD so the harvest reaches that
+    many edges rather than clearing a fixed bar -- see `votes_for_target`.
 
     The scorers are every matcher, on every input, in `orientations` of the
     board's eight symmetries.  `inputs` lists the tile arrays -- the raw tiles
@@ -107,6 +136,8 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     arrangement they replaced.
     """
     sets = _scorer_sets(models, inputs, device, orientations)
+    if target:
+        votes = votes_for_target(sets, target)
     seen = set()
     for s in sets:
         seen |= set(s)
