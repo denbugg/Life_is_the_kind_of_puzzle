@@ -54,7 +54,9 @@ from infer_conformant import (agreed_edges, assemble, detail, load_unet, _net,
 from border_prior import border_prior, border_scores, content_scores
 from harvest_votes import voted_edges, voted_pool
 from place_search import anneal, corroborate, fill_rest, fill_seams, search
+from edge_selector import selected_edges
 from level_seams import level
+from merge_corroborated import merge_corroborated
 from restore_tile import TileRestorer, to_frags
 from seam_cost import costs_from_models
 from seam_embed import SeamEmbed
@@ -136,7 +138,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  border_net=None, content=0.0, place="descent",
                  corroboration=4.0, vote_target=0, order="margin",
                  dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
-                 swap=0.0, depth=1, weighted=False, analytic=()):
+                 swap=0.0, depth=1, weighted=False, analytic=(),
+                 merge_support=0, selector=None, sel_depth=2, sel_volume=430):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -162,11 +165,15 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         CH, CV = costs_from_models(matcher, tiles)
         views = ([tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
                  + [analytic_view(n, tiles) for n in analytic])
-        agreed = voted_edges(matcher, views, dev, votes,
-                             orientations=orientations, margin=margin,
-                             target=vote_target, order=order, depth=depth,
-                             weighted=weighted)
-        if frame > 0 and corroboration > 0:
+        if selector is not None:
+            agreed = selected_edges(selector, matcher, views, dev, orientations,
+                                    sel_depth, sel_volume)
+        else:
+            agreed = voted_edges(matcher, views, dev, votes,
+                                 orientations=orientations, margin=margin,
+                                 target=vote_target, order=order, depth=depth,
+                                 weighted=weighted)
+        if frame > 0 and (corroboration > 0 or merge_support > 0):
             pool = voted_pool(matcher, views, dev, orientations)
     else:
         CH, CV, agreed = agreed_edges(matcher, restorers, tiles, dev)
@@ -174,6 +181,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         [i for (i, j, o) in agreed],
         [DIR_RIGHT if o == (0, 1) else DIR_DOWN for (i, j, o) in agreed],
         [j for (i, j, o) in agreed], list(agreed.values()), max_edges=len(agreed))
+    if merge_support > 0 and pool:
+        comps = merge_corroborated(comps, pool, merge_support)
     placed = comps
     if frame > 0:
         prior = border_prior(border_scores(matcher, tiles, dev),
@@ -362,6 +371,27 @@ def main():
                          "prefix at every depth: over 24 boards the strongest "
                          "half of the harvest is 0.883 against 0.849 and the "
                          "strongest three quarters 0.767 against 0.737")
+    ap.add_argument("--selector", default="",
+                    help="a trained LightGBM edge selector, replacing the vote "
+                         "threshold. M317 closed per-edge selection on the "
+                         "MUTUAL-BEST pool, where every candidate is rank one "
+                         "from both ends and rank carries no information; M377 "
+                         "widened the pool and made it a variable")
+    ap.add_argument("--sel-depth", type=int, default=2,
+                    help="how many candidates per fragment the selector sees")
+    ap.add_argument("--sel-volume", type=int, default=430,
+                    help="how many edges the selector is allowed to keep; "
+                         "M316 set the target at about 430")
+    ap.add_argument("--merge-support", type=int, default=0,
+                    help="join two components when this many independent tile "
+                         "pairs from the FULL pool imply the same relative "
+                         "offset between them. `place_search.corroborate` reads "
+                         "the same signal and only discounts the seams, leaving "
+                         "the components apart, and M321 measured that "
+                         "separateness is what costs -- placement follows the "
+                         "largest coherent block alone. M381 measured the merge "
+                         "on 24 boards: the block goes 33.7 to 42.9 and true "
+                         "adjacencies 254.2 to 271.5 at a support of two")
     ap.add_argument("--vote-target", type=int, default=350,
                     help="choose the vote bar PER BOARD so the harvest reaches "
                          "this many edges, instead of clearing a fixed one. "
@@ -453,6 +483,10 @@ def main():
         restorers.append(m)
     field = load_field(Path(CKPT_DIR) / a.field, dev)
     r5 = load_unet(a.r5, dev)
+    booster = None
+    if a.selector:
+        import lightgbm as lgb
+        booster = lgb.Booster(model_file=str(Path(CKPT_DIR) / a.selector))
     bnet = None
     if a.frame > 0 and a.border_net:
         from train_border import BorderNet
@@ -476,7 +510,8 @@ def main():
                                a.corroboration, a.vote_target, a.order,
                                a.dissolve, a.dissolve_min, a.seed, a.jump,
                                a.step, a.swap, a.depth, a.weighted,
-                               a.analytic)
+                               a.analytic, a.merge_support, booster,
+                               a.sel_depth, a.sel_volume)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
