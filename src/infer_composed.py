@@ -287,8 +287,7 @@ def main():
                     help="one or more matchers; several are combined by the "
                          "pessimistic minimum of M201, worth about +0.02 edge "
                          "precision when they are of comparable strength")
-    ap.add_argument("--restorers", nargs="+",
-                    default=["tile_restorer_mgc.pt", "tile_restorer.pt"],
+    ap.add_argument("--restorers", nargs="+", default=["none"],
                     help="restorer checkpoints, one extra VIEW of the board "
                          "each; pass `none` for the raw view alone")
     ap.add_argument("--field", default="coarse_field_v2.pt")
@@ -322,7 +321,7 @@ def main():
                     help="how many of the board's eight symmetries each matcher "
                          "sees; each one makes different heads judge the same "
                          "seam, at one forward pass (M236, M237)")
-    ap.add_argument("--analytic", nargs="*", default=[],
+    ap.add_argument("--analytic", nargs="*", default=["median", "bilateral"],
                     choices=sorted(ANALYTIC_VIEWS),
                     help="analytic filters to add as extra VIEWS. M366 measured "
                          "these at solo precision 0.352, 0.346 and 0.342 for "
@@ -386,7 +385,7 @@ def main():
                          "shuffled take clean coverage from 0.931 to 0.268 -- "
                          "yet this has always been the minimum margin and was "
                          "never swept")
-    ap.add_argument("--vote-target", type=int, default=0,
+    ap.add_argument("--vote-target", type=int, default=350,
                     help="choose the vote bar PER BOARD so the harvest reaches "
                          "this many edges, instead of clearing a fixed one. "
                          "OFF by default: it does raise the assembly's "
