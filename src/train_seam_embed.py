@@ -33,6 +33,7 @@ from seam_embed import (SeamEmbed, board_logits, infonce, invariance_loss,
 
 RESTORER = None
 INPUT_RESTORER = None
+INPUT_FILTER = ""
 
 
 def load_restorer(name, dev):
@@ -70,6 +71,8 @@ def to_input(x):
     and evaluated on restored tiles throughout, reads accuracy 0.378 against
     0.274 on raw and adjacency 0.483 against 0.311.
     """
+    if INPUT_FILTER:
+        return _filtered(x)
     if INPUT_RESTORER is None:
         return x
     out = []
@@ -77,6 +80,23 @@ def to_input(x):
         with torch.autocast("cuda", torch.float16):
             out.append(INPUT_RESTORER(x[i:i + 288]).float())
     return torch.cat(out).clamp(0, 255)
+
+
+def _filtered(x):
+    """One of the shipped analytic views, applied exactly as inference does.
+
+    Every matcher in this repo was trained on RAW fragments, and since M371 the
+    pipeline shows each of them three views -- raw, median, bilateral -- two of
+    which they have never seen. M199 measured the cost of exactly that kind of
+    mismatch at about 0.15 of edge precision when the shift was restoration.
+    A filter shifts the distribution far less than a restorer does, so the cost
+    should be smaller, but it is not zero and nothing here has ever paid it.
+    """
+    from analytic_views import ANALYTIC_VIEWS
+    fn = ANALYTIC_VIEWS[INPUT_FILTER]
+    a = x.permute(0, 2, 3, 1).clamp(0, 255).to(torch.uint8).cpu().numpy()
+    out = np.stack([fn(np.ascontiguousarray(t)) for t in a])
+    return torch.from_numpy(out).to(x.dtype).permute(0, 3, 1, 2).to(x.device)
 
 
 @torch.no_grad()
@@ -225,6 +245,16 @@ def main():
     ap.add_argument("--restore-input", default="",
                     help="replace the input tiles with this restorer's output, "
                          "for both training and evaluation")
+    ap.add_argument("--filter-input", default="", choices=[
+        "", "median", "bilateral", "bilat_mild", "guided2", "guided4", "nlm",
+        "unsharp"],
+        help="train and evaluate on this analytic view instead of the raw "
+             "fragments, so the matcher sees at training time what the pipeline "
+             "shows it at inference. M292 measured that a matcher trained on "
+             "RESTORED tiles plateaus at 0.295 against 0.334 on raw, but M372 "
+             "found the two transforms differ in kind -- a restorer invents "
+             "detail the matcher then believes, a filter can only remove -- so "
+             "this has never been tested on its own terms")
     ap.add_argument("--restored", default="",
                     help="per-tile restorer checkpoint supplying a third input "
                          "view; empty keeps the two-view model")
@@ -263,7 +293,10 @@ def main():
     dl = DataLoader(tr, batch_size=a.batch, shuffle=True, num_workers=a.workers,
                     drop_last=True, persistent_workers=a.workers > 0)
 
-    global RESTORER, INPUT_RESTORER
+    global RESTORER, INPUT_RESTORER, INPUT_FILTER
+    if a.filter_input:
+        INPUT_FILTER = a.filter_input
+        print(f"input filtered by {a.filter_input}", flush=True)
     if a.restore_input:
         INPUT_RESTORER = load_restorer(a.restore_input, dev)
         print(f"input replaced by {a.restore_input}", flush=True)

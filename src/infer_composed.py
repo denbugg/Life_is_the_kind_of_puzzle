@@ -44,6 +44,7 @@ import torch.nn.functional as F
 from scipy.optimize import linear_sum_assignment
 
 import infer_rank96 as rank96
+from analytic_views import ANALYTIC_VIEWS, analytic_view  # noqa: F401
 from coarse_field import CoarseField
 from config import (CACHE_DIR, CKPT_DIR, GRID as G, SUB_DIR, TEST_DIR, TRAIN_INP,
                     TRAIN_TGT)
@@ -89,43 +90,6 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
          ).sum(-1)
     r, c = linear_sum_assignment(d)
     return cells[r], tiles_idx[c]
-
-
-ANALYTIC_VIEWS = {
-    # M372: mild filtering preserves the signal. The same bilateral at 5/25
-    # scores 0.375 against 0.342 at 7/50, and total variation, the most
-    # aggressive of the lot, is the worst at 0.245. What a view must do is
-    # remove a little noise without erasing the detail the matcher reads.
-    "guided2": lambda x: cv2.ximgproc.guidedFilter(x, x, 2, 100),
-    "guided4": lambda x: cv2.ximgproc.guidedFilter(x, x, 4, 200),
-    "bilat_mild": lambda x: cv2.bilateralFilter(x, 5, 25, 5),
-    "median": lambda x: cv2.medianBlur(x, 3),
-    "nlm": lambda x: cv2.fastNlMeansDenoisingColored(x, None, 6, 6, 7, 21),
-    "bilateral": lambda x: cv2.bilateralFilter(x, 7, 50, 7),
-    "unsharp": lambda x: cv2.addWeighted(
-        x, 1.6, cv2.GaussianBlur(x, (0, 0), 1.5), -0.6, 0),
-}
-
-
-def analytic_view(name, tiles):
-    """One filtered version of every fragment, as an extra VOTER.
-
-    M363 measured that independence comes from the input rather than the
-    weights, and M365 that the learned restorers make weak views -- solo
-    mutual-edge precision 0.148 to 0.280 against 0.396 for the raw fragments.
-    M366 then measured these: median 0.352, non-local means 0.346, bilateral
-    0.342, all better than every restorer and nearly the raw view itself.
-
-    The reason is plain enough. A restorer is trained to reconstruct the clean
-    fragment and INVENTS detail doing it, which the matcher then believes; a
-    filter invents nothing and can only remove, so it stays nearer the
-    distribution the matcher was trained on.
-    """
-    fn = ANALYTIC_VIEWS[name]
-    out = np.empty_like(tiles)
-    for k in range(len(tiles)):
-        out[k] = fn(np.clip(tiles[k], 0, 255).astype(np.uint8)).astype(np.float32)
-    return out
 
 
 def component_health(comp, CH, CV):
@@ -427,15 +391,20 @@ def main():
                          "structural one. Default off: at 0.5 it lifts every "
                          "side's AUC and still costs 0.004 SSIM on 24 boards "
                          "(M256)")
-    ap.add_argument("--fill", choices=("seam", "field"), default="field",
-                    help="how the fragments no component owns are placed. FIELD "
-                         "after M350: assigning them by colour against the "
-                         "predicted field beats the seam fill by 0.0027 of SSIM "
-                         "at full texture, reproduced on 24 boards and again on "
-                         "48. It costs adjacency, 0.244 to 0.230, because a "
-                         "colour fill does not preserve index adjacency, and "
-                         "gains score anyway. M226 found every fill rule within "
-                         "one ten-thousandth of RANDOM, but measured it with no "
+    ap.add_argument("--fill", choices=("seam", "field"), default="seam",
+                    help="how the fragments no component owns are placed, which "
+                         "is most of the board. SEAM after M375. M350 shipped "
+                         "the colour fill for 0.0027 of SSIM while recording "
+                         "that it cost adjacency, 0.244 to 0.230 -- a trade the "
+                         "project rule forbids, since the assembly metric is "
+                         "what ranks arms and SSIM is the control. On the "
+                         "analytic roster of M371 there is no trade left to "
+                         "make: over 48 boards the seam fill gives adjacency "
+                         "0.256 against 0.242, identical placement (0.0107 "
+                         "against 0.0106) and 0.0013 less SSIM, and it wins "
+                         "adjacency on every one of the first six boards "
+                         "individually. M226 found every fill rule within one "
+                         "ten-thousandth of RANDOM, but measured it with no "
                          "field at all, where the fill had to supply the colour "
                          "rather than place texture beneath one")
     ap.add_argument("--level", action=argparse.BooleanOptionalAction, default=True)
