@@ -92,6 +92,13 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
 
 
 ANALYTIC_VIEWS = {
+    # M372: mild filtering preserves the signal. The same bilateral at 5/25
+    # scores 0.375 against 0.342 at 7/50, and total variation, the most
+    # aggressive of the lot, is the worst at 0.245. What a view must do is
+    # remove a little noise without erasing the detail the matcher reads.
+    "guided2": lambda x: cv2.ximgproc.guidedFilter(x, x, 2, 100),
+    "guided4": lambda x: cv2.ximgproc.guidedFilter(x, x, 4, 200),
+    "bilat_mild": lambda x: cv2.bilateralFilter(x, 5, 25, 5),
     "median": lambda x: cv2.medianBlur(x, 3),
     "nlm": lambda x: cv2.fastNlMeansDenoisingColored(x, None, 6, 6, 7, 21),
     "bilateral": lambda x: cv2.bilateralFilter(x, 7, 50, 7),
