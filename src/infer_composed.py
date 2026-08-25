@@ -348,14 +348,20 @@ def main():
     ap.add_argument("--dissolve-min", type=int, default=6,
                     help="only components of at least this size are ever "
                          "dissolved; small ones are cheap to misplace")
-    ap.add_argument("--order", choices=("margin", "votes", "votes_margin"),
+    ap.add_argument("--order",
+                    choices=("margin", "max_margin", "votes", "votes_margin"),
                     default="margin",
                     help="what orders the edges as components are built. The "
                          "weight is an ORDERING and nothing else, and M270 "
                          "measured that ordering decides -- the same edges "
-                         "shuffled take clean coverage from 0.931 to 0.268 -- "
-                         "yet this has always been the minimum margin and was "
-                         "never swept")
+                         "shuffled take clean coverage from 0.931 to 0.268. "
+                         "M362 swept the three that existed and found them "
+                         "flat, but all three read the MINIMUM margin, the "
+                         "least convinced scorer. `max_margin` reads the most "
+                         "convinced one instead, which M382 measured as a purer "
+                         "prefix at every depth: over 24 boards the strongest "
+                         "half of the harvest is 0.883 against 0.849 and the "
+                         "strongest three quarters 0.767 against 0.737")
     ap.add_argument("--vote-target", type=int, default=350,
                     help="choose the vote bar PER BOARD so the harvest reaches "
                          "this many edges, instead of clearing a fixed one. "

@@ -223,15 +223,17 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
         hit = [s[e] for s in sets if e in s]
         tally = sum(wi for wi, s in zip(w, sets) if e in s)
         if tally >= votes and min(hit) >= margin:
-            out[e] = (tally, min(hit))
+            out[e] = (tally, min(hit), max(hit))
     if not out:
         return {}
-    big = max(m for _, m in out.values()) + 1.0
+    big = max(m for _, m, _ in out.values()) + 1.0
     if order == "votes":
-        return {e: float(v) for e, (v, m) in out.items()}
+        return {e: float(v) for e, (v, m, x) in out.items()}
     if order == "votes_margin":
-        return {e: v * big + m for e, (v, m) in out.items()}
-    return {e: m for e, (v, m) in out.items()}
+        return {e: v * big + m for e, (v, m, x) in out.items()}
+    if order == "max_margin":
+        return {e: x for e, (v, m, x) in out.items()}
+    return {e: m for e, (v, m, x) in out.items()}
 
 
 def _scorer_sets(models, inputs, device, orientations, depth=1):
