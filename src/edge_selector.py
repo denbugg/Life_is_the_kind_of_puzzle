@@ -18,6 +18,7 @@ every board; scratchpad/rank_features.py holds the reference implementation the
 training set was built from, and `_features` reproduces it exactly.
 """
 import numpy as np
+from scipy.optimize import linear_sum_assignment
 
 from config import GRID as G
 from harvest_votes import ORIENTATIONS, _calibrated
@@ -151,13 +152,35 @@ def _features(per_scorer, depth):
     return src, dst, X
 
 
+def _assignment(keys, scores, off, keep):
+    """One partner per fragment in one direction, chosen JOINTLY.
+
+    Exclusive greedy walks the ranked list and takes an edge when neither end
+    is spoken for, so a wrong edge at rank 40 permanently blocks a true edge at
+    rank 60 that needed the same fragment. That is a matching problem solved
+    greedily. M396 measured the difference: 291.7 correct bonds at 600 edges
+    against greedy's 267.0 at 430, and a clean block of 45.6 against 41.5.
+    """
+    M = np.full((N, N), -1e3, np.float64)
+    for n, (i, j, o) in enumerate(keys):
+        if o == off:
+            M[i, j] = max(M[i, j], float(scores[n]))
+    np.fill_diagonal(M, -1e6)
+    r, c = linear_sum_assignment(-M)
+    out = [((int(a), int(b), off), float(M[a, b])) for a, b in zip(r, c)
+           if M[a, b] > -1e2]
+    out.sort(key=lambda kv: -kv[1])
+    return out[:keep]
+
+
 def selected_edges(booster, matchers, views, device, orientations=2, depth=2,
-                   volume=430):
-    """The `volume` best candidates the selector can find, as {edge: score}.
+                   volume=430, decode="greedy"):
+    """The best candidates the selector can find, as {edge: score}.
 
     The score is returned as the ORDERING weight, which is all
-    `build_directed_components` uses it for, and decoding is exclusive: one
-    right-hand and one left-hand partner per fragment, as the grid demands.
+    `build_directed_components` uses it for. `decode` chooses between walking
+    the ranked list exclusively and solving each direction as an assignment;
+    with the assignment, `volume` is per direction.
     """
     per = {(0, 1): [], (1, 0): []}
     for ai, m in enumerate(matchers):
@@ -173,6 +196,12 @@ def selected_edges(booster, matchers, views, device, orientations=2, depth=2,
         keys += [(int(a), int(b), off) for a, b in zip(src, dst)]
         scores.append(s)
     scores = np.concatenate(scores)
+    if decode == "assignment":
+        out = {}
+        for off in ((0, 1), (1, 0)):
+            for e, w in _assignment(keys, scores, off, volume):
+                out[e] = w
+        return out
     order = np.argsort(-scores)
     used_src, used_dst, out = set(), set(), {}
     for idx in order:

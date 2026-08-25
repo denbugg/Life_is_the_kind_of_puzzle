@@ -139,7 +139,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  corroboration=4.0, vote_target=0, order="margin",
                  dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
                  swap=0.0, depth=1, weighted=False, analytic=(),
-                 merge_support=0, selector=None, sel_depth=2, sel_volume=430):
+                 merge_support=0, selector=None, sel_depth=2, sel_volume=430,
+                 sel_decode="greedy"):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -167,7 +168,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  + [analytic_view(n, tiles) for n in analytic])
         if selector is not None:
             agreed = selected_edges(selector, matcher, views, dev, orientations,
-                                    sel_depth, sel_volume)
+                                    sel_depth, sel_volume, sel_decode)
         else:
             agreed = voted_edges(matcher, views, dev, votes,
                                  orientations=orientations, margin=margin,
@@ -382,6 +383,16 @@ def main():
     ap.add_argument("--sel-volume", type=int, default=430,
                     help="how many edges the selector is allowed to keep; "
                          "M316 set the target at about 430")
+    ap.add_argument("--sel-decode", choices=("greedy", "assignment"),
+                    default="greedy",
+                    help="how the selector's scores become edges. GREEDY walks "
+                         "the ranked list and takes an edge when neither end is "
+                         "spoken for, which lets a wrong edge block a true one "
+                         "that needed the same fragment. ASSIGNMENT solves each "
+                         "direction as a 576x576 matching instead, and M396 "
+                         "measured 291.7 correct bonds at 600 edges against "
+                         "greedy's 267.0 at 430, with a clean block of 45.6 "
+                         "against 41.5. With this, --sel-volume is per direction")
     ap.add_argument("--merge-support", type=int, default=0,
                     help="join two components when this many independent tile "
                          "pairs from the FULL pool imply the same relative "
@@ -511,7 +522,7 @@ def main():
                                a.dissolve, a.dissolve_min, a.seed, a.jump,
                                a.step, a.swap, a.depth, a.weighted,
                                a.analytic, a.merge_support, booster,
-                               a.sel_depth, a.sel_volume)
+                               a.sel_depth, a.sel_volume, a.sel_decode)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
