@@ -28,6 +28,7 @@ from restore_tile import to_frags
 from seam_cost import cycle_consistency
 from restore_tile import TileRestorer
 from seam_embed import (SeamEmbed, board_logits, infonce, invariance_loss,
+                        sinkhorn_loss,
                         predict_loss)
 
 
@@ -268,6 +269,17 @@ def main():
     ap.add_argument("--steps", type=int, default=4000)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--real-prob", type=float, default=0.0)
+    ap.add_argument("--sinkhorn-weight", type=float, default=0.0,
+                    help="mix in a cross-entropy on the doubly-stochastic "
+                         "projection of the score matrix, which is the shape "
+                         "the pipeline actually decodes (M395, M396). M116 "
+                         "REPLACED the loss with this at twenty unrolled "
+                         "iterations and two consistency rounds and the model "
+                         "collapsed, R@1 0.3527 to 0.0009; mixed at a small "
+                         "weight with few iterations the raw objective keeps "
+                         "anchoring it, which is the standard remedy and was "
+                         "never tried")
+    ap.add_argument("--sinkhorn-iters", type=int, default=3)
     ap.add_argument("--predict-weight", type=float, default=0.0,
                     help="weight of the continuation-prediction auxiliary loss")
     ap.add_argument("--twin-thr", type=float, default=0.0,
@@ -362,6 +374,10 @@ def main():
                                    clean=None if cl is None else cl[b],
                                    twin_thr=a.twin_thr, calibrate=a.calibrate,
                                    modes=a.modes, mode_tau=a.mode_tau)
+                    if a.sinkhorn_weight > 0:
+                        l = l + a.sinkhorn_weight * sinkhorn_loss(
+                            desc, model.logit_scale.exp(), iters=a.sinkhorn_iters,
+                            modes=a.modes, mode_tau=a.mode_tau)
                     if a.predict_weight > 0:
                         l = l + a.predict_weight * predict_loss(
                             out[4], cl[b], strip=a.strip)

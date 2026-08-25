@@ -307,6 +307,45 @@ def twin_targets(clean, tgt_idx, thr, exclude=None):
     return t / t.sum(1, keepdim=True)
 
 
+def sinkhorn_loss(desc, scale, grid=24, iters=3, modes=1, mode_tau=0.0):
+    """Cross-entropy on the DOUBLY-STOCHASTIC projection of the score matrix.
+
+    M395 established that what the pipeline decodes is an assignment -- one
+    partner per fragment in each direction -- and M396 that solving it jointly
+    beats walking a ranked list. Row-wise InfoNCE never asks for the column
+    constraint, so the model is trained on a question the pipeline does not ask.
+
+    M116 tried the strongest version of this and it collapsed, R@1 0.3527 to
+    0.0009, and diagnosed the gradient through twenty Sinkhorn iterations plus
+    two consistency rounds. That is the most unstable configuration available:
+    the loss REPLACED rather than mixed, deeply unrolled, at a temperature near
+    27. This is the conservative one -- a handful of iterations, mixed with
+    InfoNCE rather than replacing it, so the raw objective keeps anchoring the
+    model.
+    """
+    n = grid * grid
+    dev = desc[0].device
+    eye = torch.eye(n, device=dev, dtype=torch.bool)
+    loss = 0.0
+    for axis, step, mask in (
+            ("h", 1, torch.tensor([p % grid != grid - 1 for p in range(n)],
+                                  device=dev)),
+            ("v", grid, torch.tensor([p < n - grid for p in range(n)],
+                                     device=dev))):
+        # float32 throughout: repeated logsumexp over logits already multiplied
+        # by a temperature near 27 overflows fp16, which is the trap M116 hit
+        A = (board_logits(desc, axis, modes, mode_tau).float()
+             * scale.float()).masked_fill(eye, -1e4)
+        for _ in range(iters):
+            A = A - torch.logsumexp(A, 1, keepdim=True)
+            A = A - torch.logsumexp(A, 0, keepdim=True)
+        rows = mask.nonzero(as_tuple=True)[0]
+        tgt = rows + step
+        loss = loss + F.cross_entropy(A[rows], tgt)
+        loss = loss + F.cross_entropy(A.t()[tgt], rows)
+    return loss / 4.0
+
+
 def infonce(desc, scale, grid=24, clean=None, twin_thr=0.0, calibrate=0,
             modes=1, mode_tau=0.0):
     """Softmax over every candidate tile, in both directions, for both axes.
