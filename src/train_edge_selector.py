@@ -89,6 +89,10 @@ def main():
     ap.add_argument("--depth", type=int, default=2,
                     help="candidates per fragment per scorer the model sees")
     ap.add_argument("--held", type=int, default=20, help="boards held out")
+    ap.add_argument("--held-front", action="store_true",
+                    help="hold out the FIRST boards instead of the last, so a "
+                         "held-out set can be chosen to match dumps another "
+                         "experiment already has")
     ap.add_argument("--rounds", type=int, default=400)
     ap.add_argument("--leaves", type=int, default=63)
     ap.add_argument("--volumes", type=int, nargs="+",
@@ -108,7 +112,8 @@ def main():
     files = sorted(Path(a.dumps).glob("*.npz"))
     if len(files) <= a.held:
         sys.exit(f"only {len(files)} dumps in {a.dumps}")
-    train, held = files[:-a.held], files[-a.held:]
+    train, held = ((files[a.held:], files[:a.held]) if a.held_front
+                   else (files[:-a.held], files[-a.held:]))
     print(f"{len(train)} train boards, {len(held)} held out, depth {a.depth}",
           flush=True)
 
