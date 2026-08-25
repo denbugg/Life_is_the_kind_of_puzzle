@@ -1,297 +1,95 @@
-# Where this stands, and what to do next
+# Where this stands
 
-Rewritten 2026-08-22, after a day that ended by locating the bottleneck instead
-of nudging it. The shippable build is **honest_v4** (local SSIM 0.2690, expect
-about 0.292 on the platform; no colour substitution anywhere).
+## Shipped
 
-## The one number that reorders everything
+- `--fill seam` (M375). Reverses M350, which bought 0.0027 of SSIM with 0.014 of
+  adjacency while its own help text said so. On the analytic roster the SSIM
+  gain has changed sign, so there is no trade left: 48 boards give adjacency
+  0.256 against 0.242 at identical placement.
+- `--votes 10`, `--restorers none`, `--analytic median bilateral`,
+  `--vote-target 350` from earlier in the run. M373 confirmed every remaining
+  harvest setting is at its optimum, so the harvest is closed as a knob.
 
-**The payoff from correct edges is a CLIFF, and every quantity this project has
-optimised for months lives underneath it (M268).** Hand the unchanged pipeline
-K edges drawn from the TRUE adjacency set -- the ceiling of every possible
-selector at that volume -- and the board is worth:
+## Available but not default, pending validation
 
-| correct edges | largest clean component | fragment placement | SSIM |
-|---:|---:|---:|---:|
-| 159 (what we harvest) | 15.6 | 0.0258 | 0.2690 |
-| 400 | 46.1 | 0.0123 | 0.2595 |
-| **552** | **266.8** | **0.6613** | **0.5405** |
-| 750 | 561.1 | 0.9986 | 0.6477 |
+- `--order max_margin` (M382). Every ordering the pipeline has used reads the
+  MINIMUM margin, the least convinced scorer. The maximum gives a purer prefix
+  at every depth over 24 boards -- 0.883 against 0.849 at half the harvest,
+  0.767 against 0.737 at three quarters -- and M270 measured that ordering is
+  decisive for what survives into components.
+- `--selector edge_selector_d2.txt --sel-volume N`. Beats M317 at matched
+  volume (0.908 / 0.798 / 0.662 at 200 / 300 / 430 against 0.833 / 0.707 /
+  0.586) and reaches a coherent block of 47.0 where the harvest reaches 33.7.
+  On six boards through the real pipeline adjacency rose 0.280 to 0.288 and
+  PLACEMENT FELL 0.0258 to 0.0032; the 24-board sweep over volumes is what
+  decides it.
+- `--merge-support 2`. `place_search.corroborate` reads the corroboration
+  signal and only discounts seams, leaving the components apart; merging on the
+  same signal lifts the coherent block from 33.7 to 42.9 and true adjacencies
+  from 254 to 272 over 24 boards.
 
-Going from 159 to 400 -- two and a half times the evidence, far beyond anything
-any selector has achieved -- is worth **nothing**. Going from 400 to 552 wins the
-competition outright against a leader at 0.40. This is M221's percolation
-threshold, confirmed and priced.
+## The finding that reframes the problem
 
-**How clean they must be (M269, M270).** Without help, 552 edges at precision
-0.95 collapse: twenty-nine false edges among 581 take clean coverage from 0.931
-to 0.322, because in a dense graph a false edge fuses two LARGE components and
-the damage scales with what it fuses. With the consistency filter the
-requirement softens to **552 edges at 0.97 in the PREFIX**, after which garbage
-is not merely tolerable but useful.
+**M377: the ceiling was our own mutual-best filter, not the noise draw.** M310
+measured that one noise realisation makes about 410 true edges visible and this
+has been read since as a data limit. Mutual best is a filter we impose -- a true
+pair where one side prefers somebody else is discarded even when it stands
+second in both lists -- and separating the two gives true-edge recall 0.368 at
+depth one, 0.516 at two, 0.645 at eight. **M268's cliff of 552 true edges, where
+SSIM goes 0.26 to 0.54, is inside the depth-two pool.** The truth is in the
+evidence; the problem is selection, and the vote count actively ranks the wider
+pool worse (253 true in the best 432 at depth one, 157 at depth two).
 
-The filter (`scratchpad/consistency_filter.py`) is a union-find carrying an
-offset. An edge is accepted only if it agrees with the relative position its
-ends already have, puts no two fragments in one cell, **and does not push the
-assembly past 24 cells** -- the photograph is 24x24, so anything wider is
-provably wrong. That last check is not cosmetic: without it, five false edges
-stretch the assembly out of the board, `search` silently drops what it cannot
-place, and 0.8824 fragment placement reads as 0.1648.
+M376 fixes the other ceiling with a matched control: eighteen scorers cover 406
+true edges against one scorer's 337, so perfect selection on the shipped pool
+would reach adjacency 0.368 against the 0.256 now shipping.
 
-Order is everything. The same edges shuffled give clean coverage 0.268 against
-0.931. On the learned selector's real ordering the filter does nothing, because
-that ordering already carries thirty-three false edges in its first two hundred.
+## Reopened by island purity
 
-## What we have against what is needed
+M378 found the lever: unanimity is a COUNT, and ordering the unanimous edges by
+MARGIN gives 54 edges at precision 0.998 whose islands are internally perfect
+99.6 per cent of the time, against 25 per cent for the shipping harvest. Two
+closures fall on that input:
 
-| | now | needed |
-|---|---:|---:|
-| correct edges a board | 159 | 552 |
-| precision at that volume | ~0.50 | ~0.97 in the prefix |
-| matcher R@1 | 0.334 | ~0.52 |
+- **M379 overturns M180.** Scoring a merge by the seam along the whole contact
+  gives truth-free precision 0.723 where M180 read 0.265, and M150's size effect
+  appears on real components at last -- 0.880 at two tiles, 1.000 at five.
+- **M380 overturns the premise of M329.** A hole with two correct neighbours
+  fills at 0.752 against M204's 0.511, and 1.000 under a margin gate, so the
+  0.922 cap that closed seeded growth by arithmetic is a property of uncertain
+  neighbours, not of two neighbours.
 
-## Why nothing on the assembly side can close it
+**M381 is why it does not yet pay.** Iterated, merge precision falls to 0.313 --
+one wrong merge makes an island internally wrong and every later decision
+involving it is judged against garbage -- and the end state reaches a block of
+27.2 against the shipping 33.7. The mechanism has enormous headroom: with
+correct witnesses the same procedure assembles 436 of 576 fragments into one
+block. Purity and coverage trade, and the purest seed holds only 82 fragments.
 
-**The placement objective is excellent and its own context destroys it (M263).**
-Scored against the other components at their TRUE places, the true position of a
-component ranks first **52.2%** of the time (74.2% for components of eight
-fragments or more). Scored against the search's own arrangement it ranks first
-**0.8%** of the time, 175th of 234. That is a coordination failure: from an
-all-wrong arrangement no single correct move improves the score, so annealing,
-exchanges, priors and restarts all push on a gradient that does not point
-anywhere. It corrects the earlier reading that the objective was "flat".
+## Open
 
-Everything downstream follows from it and every remedy has now been measured:
+1. **A revocable merge.** Every arm in M381 commits to the best decision
+   available and a wrong commitment is permanent. Nothing here has tried a
+   search that can take a merge back, or one that carries several hypotheses.
+2. **Placement, which is where the selector currently loses.** M321 measured
+   that placement follows the largest coherent block alone and that 19.6, 27.2
+   and 37.7 all pay about 0.002 while 194 pays 0.40. At 47 we are still inside
+   the flat zone, so a better block is not yet a better score, and consolidating
+   68 components into 45 may cost more than the block gains.
+3. **A matcher trained on the view it will judge.** `--filter-input` now exists
+   in `train_seam_embed.py`. M292 measured that a matcher trained on RESTORED
+   tiles plateaus at 0.295 against 0.334 on raw, but M372 found the transforms
+   differ in kind -- a restorer invents detail the matcher then believes, a
+   filter can only remove -- so this has never been tested on its own terms.
+4. **The strip energy trained against its own optimum** (M340/M341), overfit at
+   240 boards, and contour chain length as a feature for it (M370).
 
-- growth from a seed decays from 0.810 correct to 0.138 in nine steps even from
-  an ORACLE seed, because errors compound (M265);
-- a beam is worth nothing, because branches are selected by the same objective
-  that cannot tell them apart (M266);
-- tile-by-tile lattice growth from a 144-fragment correct seed recovers 5% of
-  the rest, and global assignment is worse than greedy (M273);
-- the frame prior is the only absolute cue that converts, worth +0.015 SSIM and
-  a doubling of placement, and it speaks about the 21.7% of components that
-  touch a border (M246, M247, M250).
+## Retracted or corrected in this run
 
-## The task is SOLVABLE, and the whole gap is edge quality (M304)
-
-Handed perfectly clean fragments, the CURRENT stack places **93.45%** of them:
-874 mutual edges at precision 0.974, 852 correct, largest clean component 354.
-M141 had bounded this programme for months with "the pipeline on clean tiles
-measures edge precision 0.746 and place_acc 0.086, still not assembling" -- but
-it fed clean tiles to the LEARNED matcher, which `distort.py` itself documents
-as degrading there ("on CLEAN tiles R@1 0.388 where plain MGC scores 0.913"). A
-plain analytic cost on the same fragments reaches 0.974.
-
-So 24x24 assembly is not intrinsically out of reach. The entire deficit is one
-number: **159 correct edges from the deployed harvest against 852 from clean
-fragments**, with the cliff at 552.
-
-### The matcher target, derived end to end (M305)
-
-| corruption removed | single-seam R@1 | correct edges | fragment placement |
-|---:|---:|---:|---:|
-| 0% | 0.070 | 51 | 0.002 |
-| 60% | 0.310 | 300 | 0.001 |
-| **80%** | **0.505** | **515** | **0.125** |
-| 90% | — | 658 | 0.294 |
-| 100% | 0.803 | 858 | 0.947 |
-
-**R@1 must reach about 0.52.** It is 0.334. That is the number the trainer's
-docstring has called "the assembly threshold" all along, now derived from this
-pipeline rather than inherited.
-
-## Restoration is closed BY BOUNDS, not by plateaus
-
-- *denoising*: the MMSE estimate under a prior of 184320 real clean fragments
-  buys **0.31 dB** over the corrupted fragment (M301). M54's plateau was the
-  limit, not a failure of capacity.
-- *the affine*: predictable from a fragment at R^2 **0.093** for contrast and
-  **0.199** for brightness (M302) -- about a tenth of the error. It is
-  recoverable only from how a fragment's level agrees with its neighbours',
-  which needs the assembly the affine is blocking.
-- why the noise looks worse than it is: the generator's 3x3 blur averages nine
-  pixels and cuts it threefold, so the fragment sits at 23.8 dB where sigma 47
-  alone would give 14.7.
-
-## Immediate work, in order
-
-**Read before measuring.** This session lost most of a day to seven accidental
-re-derivations (M286, M290, M291). Every one would have been avoided by a grep
-of EXPERIMENTS.md, FINDINGS.md and the relevant trainer docstring. The file
-holds 291 entries and documents its own negative results inside the code that
-produced them.
-
-**Closed, do not re-open without a new reason:**
-
-- *matcher capacity and training length* -- M197, "CLOSES THE SCALING LEVER":
-  20000 extra steps bought +0.002 edge precision, and R@20 never moved (0.660 to
-  0.666), so the shortlist is saturated and only the ordering inside it improves;
-- *restorer capacity* -- M54: 2.41M parameters against the shipped 0.40M plateaus
-  at R@1 0.16-0.17, "capacity is not the binding constraint";
-- *`--calibrate`* (M116, same collapse to 0.0009), *`--mix`* (M65), *`--ycc`*
-  (M62), *`--target-mode noisefree`* (M55), *non-local denoising* (M22, M61);
-- *the harvest* -- vote threshold, pool width and purity all swept, the shipping
-  13-of-18 wins each time and maximises the largest clean component (M288, M289);
-- *the placement stage* -- component search, seeded growth, beam, tile-lattice
-  growth and global assignment, all measured (M263 to M266, M273).
-
-**Also closed since:** `--restore-input` -- the matcher trained AND evaluated on
-restored fragments plateaus at R@1 0.295 against 0.334 on raw (M292), which
-upholds M66 and M91 for the right reason at last; the descriptor DIMENSION,
-against a matched control (M306); global-averaging methods as a family --
-spectral embedding, spectral prior and diffusion distance all buy coarse
-geometry by spending the resolution the problem needs (M293, M294, M299); and
-restoration entirely, by the two bounds above.
-
-**Where 2026-08-24 left it.** A long day: two shipped changes, many closures,
-four retractions of my own claims, one correction handed over by the user, and
-one finding at the end that opens a live thread.
-
-### Shipped, each validated through `--validate`, never through a harness
-
-| change | effect |
-|---|---|
-| the vote bar 8 -> 10 (M348) | SSIM 0.2626 -> 0.2701, placement 0.0012 -> 0.0113 |
-| leftover fill, seam -> field (M350) | +0.0027 SSIM, reproduced on 24 boards and 48 |
-
-`honest_v6` is built from these at
-`E:/pazzle_work/submissions/honest_v6/submission_composed_a100.zip`. The user has
-NOT submitted it: by eye it assembles worse than v5, and M357 confirmed why --
-v5 ran the bar at 13 and v6 at 10, which is the purity-volume trade in visual
-form. Only alpha 1.0 is in play; blending with the field is ruled out.
-
-### THE LIVE THREAD: views, and where independence actually comes from
-
-**M363.** The roster's three factors, separated for the first time at a matched
-number of votes: three VIEWS on one architecture reach adjacency 0.224 and 61.2
-components; three ARCHITECTURES on one view reach 0.189 and 38.3; doubling by
-orientations buys nothing. Independence comes from showing the matcher a
-different version of the PIXELS, not from different weights reading the same
-ones -- which explains why M309's from-scratch retriever and M328's half-seam
-matchers both agreed with the incumbents at 0.83 to 0.85.
-
-**M365.** Growing by views failed anyway because the available views are weak
-and because I compared rosters by the FRACTION of votes rather than by harvest
-VOLUME, which is not the same selectivity. Rule: match the volume.
-
-**M366, the opening.** Free analytic filters are better voters than every
-restorer this project has trained -- solo precision median 0.352, non-local
-means 0.346, bilateral 0.342, against 0.148 to 0.280 for the restorers and 0.396
-for the raw fragments. End to end at matched volume, raw plus those three gives
-**adjacency 0.241 and placement 0.0106** against the shipping baseline's 0.229
-and 0.0092, for 0.004 of SSIM. The first arm all day that IMPROVES the assembly
-instead of trading it away. The mechanism is M292 from the other side: a
-restorer invents detail and the matcher believes it; a filter can only remove.
-
-**M367.** Confidence weighting estimated without labels (Parisi et al.) tracks
-true solo precision at +0.899 and recovers 0.011 to 0.012 of the adjacency that
-unequal views cost. The right way to combine views of differing quality.
-
-**Next:** more filters as views, weighted, at matched volume -- and a submission
-built on the analytic roster if the adjacency gain holds on 48 boards.
-
-### Closed today, all through the shipping path
-
-M248's corroboration, the content border detector, `--margin`, the ORDER
-components are built in, a depth-two harvest (M362, closing M253's way out from
-a third direction), per-board configuration choice by every feature tried
-(M355 to M358), and dissolving untrusted components (M359).
-
-**And the annealer never annealed** (M360, M361): five seeds return bitwise
-identical layouts because 93% of its proposals do not fit and NONE of the rest
-is uphill -- the greedy initialisation is a deep local optimum for the move
-class "relocate one component". A swap move was added and produces uphill moves
-where single moves produce none, and changes nothing end to end, which agrees
-with M243 and M245 that the objective is flat at the top.
-
-### The finding the day turns on (M344)
-
-The NUMBER of voted edges predicts the assembly's adjacency at **0.955**, better
-than the harvest's true edge PRECISION at 0.652. Volume decides and purity
-follows -- but only AGREED volume, since M362's deeper pool loses everywhere.
-
-### Four retractions, each caught before it shipped
-
-The per-board vote target (M347), sigma 12 as a free gain (M352, M353), "no
-objective can have its optimum at the truth" (M339, retracted by M340), and
-"the real pipeline is not bimodal" (M344, corrected by the user, who found a
-nearly-solved board by eye -- about 1.4% of test boards reach that level and 24
-held-out boards contained none).
-
-### The target, corrected from measurement (M314, M316)
-
-M268's "552 correct edges" was derived by sampling the true adjacency set
-UNIFORMLY, and our true edges are not uniform -- a matcher succeeds where the
-photograph has texture, so they cluster. Clustering helps. Handed every true
-edge our own roster already proposes, 432 a board, the placement stage reaches
-**fragment placement 0.4029** with a largest coherent component of 194; the same
-432 drawn uniformly reach only 0.2661 and a component of 105.
-
-So the evidence ALREADY ON DISK is worth placement 0.40, and the shipping
-harvest extracts **0.0012** from it. The target is not a better matcher and not
-552 edges. It is **about 430 edges at precision 0.97**, which is where M316 puts
-the collapse -- 0.97 is worth placement 0.21, 0.95 is worth 0.06.
-
-### And why that target is out of reach anyway (M317 to M321)
-
-| selection route | best point | placement |
-|---|---:|---:|
-| the shipping vote | 208 edges at 0.817 | 0.0022 |
-| learned per-edge, 60 boards, segment features | 430 at 0.586 | 0.0014 |
-| " at its clean end | 100 at 0.951 | 0.0019 |
-| consistency filter as a search | 537 at 0.503 | 0.0029 |
-| corroborated island merges | 470 at 0.514 | 0.0009 |
-| **a perfect selector on the same pool** | **432 at 1.000** | **0.4029** |
-
-Precision falls smoothly from 0.951 at a hundred edges to 0.586 at four hundred
-and thirty, so no threshold hides a clean set. The independent evidence found in
-M311 does rank above every vote count as a feature and is worth two hundredths.
-Coherent coverage can be doubled, 0.385 to 0.494, by demanding a second contact
-before two islands fuse -- and it does not convert.
-
-**The payoff tracks the largest coherent block and nothing else.** Blocks of
-19.6, 27.2 and 37.7 all pay about 0.002; a block of 194 pays 0.40. That is M263
-from the other end: placing many medium components against each other is exactly
-the coordination the objective cannot do, so the assembly is worth something only
-once one component is large enough to anchor the board by itself.
-
-### What is left
-
-The composition front, which is monotone -- every unit of visible texture costs
-score at a constant rate because our texture is in the wrong place (M145, M165).
-The operating point on it is a judgement about what a submission should look
-like, not a measurement, and the standing rule forbids buying score with
-smoothness.
-
-**Measurement rule, paid for twice today:** two runs of the SAME configuration
-differ by 0.028 in R@1 at step 2500 (M306). A single-run A/B cannot see anything
-smaller than about 0.03, and a control must be produced alongside its arm, never
-borrowed from an earlier run.
-
-**Genuinely new this session, and unexploited:** the border detector read off
-Sinkhorn's slack column (M246, shipped, +0.015 SSIM and double the placement);
-loop-closure merging at precision 0.938, which overturns M180 and M233 but fires
-2.3 times a board (M248); and the consistency filter with the board bound, which
-moves the requirement from precision everywhere to precision in the prefix
-(M270) and does nothing on our real ordering. All three are mechanisms without
-enough volume behind them yet.
-
-## Rules this file exists to enforce
-
-- **Rank by assembly, not SSIM.** They disagree: the frame weight that maximises
-  SSIM (0.2) is two and a half times worse at placement than the one that
-  maximises placement (1.0). Report component-absolute, component-relation and
-  fragment placement; keep SSIM as the control. The organisers check placement
-  by hand.
-- **Twelve boards cannot settle anything.** Three effects looked real at twelve
-  and vanished or reversed at twenty-four this week (M256, M258, the staged
-  freeze).
-- **Watch for arms that are too GOOD.** A degenerate tie in the Hungarian fill
-  returned the identity permutation, which in this harness IS the answer, and
-  produced a perfectly monotone "fewer components is better" curve that read
-  exactly like a finding (M264). It was caught because an arm scored 1.0000.
-- **`is_clean` is all-or-nothing** and stops meaning anything once components
-  pass a few dozen fragments; use tile-level accuracy there (M270).
-- **The restorers take [0,255]**, not [0,1]. Feeding them [0,1] returns noise
-  and silently poisons whatever is built on it (M279).
+- M350's colour fill (reversed by M375).
+- M248's 0.938 as an operating number: it was measured between islands already
+  known correct, and against the islands we build the same rule scores 0.069 to
+  0.242 (M378).
+- The reading of M310 as a data limit (M377).
+- M180's closure of the island route, and M329's arithmetic closure of seeded
+  growth, both on the purity condition they each named (M379, M380).

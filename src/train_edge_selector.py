@@ -93,6 +93,15 @@ def main():
     ap.add_argument("--leaves", type=int, default=63)
     ap.add_argument("--volumes", type=int, nargs="+",
                     default=[200, 300, 430, 552])
+    ap.add_argument("--objective", default="binary",
+                    choices=("binary", "lambdarank"),
+                    help="binary treats every candidate independently; "
+                         "lambdarank ranks the candidates of one SOURCE "
+                         "fragment against each other, which is the question "
+                         "exclusive decoding actually asks -- each fragment "
+                         "keeps one right-hand and one left-hand partner, so "
+                         "what matters is the order within a fragment and not "
+                         "the calibration across the board")
     ap.add_argument("--out", default="edge_selector.txt")
     a = ap.parse_args()
 
@@ -103,22 +112,34 @@ def main():
     print(f"{len(train)} train boards, {len(held)} held out, depth {a.depth}",
           flush=True)
 
-    X, Y = [], []
-    for f in train:
-        _k, x, y = board_rows(f, a.depth)
-        X.append(x)
-        Y.append(y)
+    X, Y, GRP = [], [], []
+    for bi, f in enumerate(train):
+        k, x, y = board_rows(f, a.depth)
+        # one group per (board, source fragment, direction): the candidates
+        # that compete for the same slot under exclusive decoding
+        g = np.array([hash((bi, i, off)) for i, _j, off in k])
+        o = np.argsort(g, kind="stable")
+        X.append(x[o])
+        Y.append(y[o])
+        GRP.append(np.unique(g[o], return_counts=True)[1])
     X, Y = np.vstack(X), np.concatenate(Y)
+    GRP = np.concatenate(GRP)
     pos = float(Y.mean())
     print(f"{len(Y)/len(train):.0f} candidates a board, {Y.sum()/len(train):.0f} "
           f"true, base rate {pos:.4f}", flush=True)
 
-    model = lgb.train(
-        {"objective": "binary", "learning_rate": 0.05, "num_leaves": a.leaves,
-         "min_data_in_leaf": 50, "feature_fraction": 0.8,
-         "bagging_fraction": 0.8, "bagging_freq": 1, "verbose": -1,
-         "scale_pos_weight": ((1 - pos) / max(pos, 1e-9)) ** 0.5},
-        lgb.Dataset(X, Y, feature_name=FEATURES), num_boost_round=a.rounds)
+    params = {"learning_rate": 0.05, "num_leaves": a.leaves,
+              "min_data_in_leaf": 50, "feature_fraction": 0.8,
+              "bagging_fraction": 0.8, "bagging_freq": 1, "verbose": -1}
+    if a.objective == "binary":
+        params["objective"] = "binary"
+        params["scale_pos_weight"] = ((1 - pos) / max(pos, 1e-9)) ** 0.5
+        ds = lgb.Dataset(X, Y, feature_name=FEATURES)
+    else:
+        params["objective"] = "lambdarank"
+        params["lambdarank_truncation_level"] = 8
+        ds = lgb.Dataset(X, Y, group=GRP, feature_name=FEATURES)
+    model = lgb.train(params, ds, num_boost_round=a.rounds)
 
     prec, block, adj = defaultdict(list), defaultdict(list), defaultdict(list)
     for f in held:
