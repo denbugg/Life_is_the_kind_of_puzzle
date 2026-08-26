@@ -269,6 +269,13 @@ def main():
     ap.add_argument("--steps", type=int, default=4000)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--real-prob", type=float, default=0.0)
+    ap.add_argument("--seed", type=int, default=0,
+                    help="M306 measured the run-to-run noise floor here: two "
+                         "runs of the SAME configuration differ by 0.028 in R@1 "
+                         "at step 2500, an order of magnitude above most "
+                         "effects claimed on this axis. Any A/B smaller than "
+                         "that needs several seeds, and this is how to vary "
+                         "them")
     ap.add_argument("--sinkhorn-weight", type=float, default=0.0,
                     help="mix in a cross-entropy on the doubly-stochastic "
                          "projection of the score matrix, which is the shape "
@@ -295,6 +302,8 @@ def main():
                     help="warm-start weights from this checkpoint")
     ap.add_argument("--out", default="seam_embed.pt")
     a = ap.parse_args()
+    torch.manual_seed(a.seed)
+    np.random.seed(a.seed)
 
     dev = "cuda"
     blob = np.load(Path(CACHE_DIR) / "restore_labels.npz", allow_pickle=True)

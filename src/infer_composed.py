@@ -94,6 +94,36 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
     return cells[r], tiles_idx[c]
 
 
+def matrix_edges(CH, CV, how):
+    """Edges read straight off the fused cost matrix, with no harvest.
+
+    M395 made the count of CORRECT bonds the currency and M408 measured what
+    each rule yields on the pipeline's own matrix. Taking each fragment's best
+    partner and keeping the collisions beats every cleverer set, because
+    `build_directed_components` already resolves collisions in score order --
+    it walks edges in descending weight and drops whatever conflicts with the
+    geometry it has committed to.
+    """
+    H, V = -np.asarray(CH, np.float64), -np.asarray(CV, np.float64)
+    np.fill_diagonal(H, -1e9)
+    np.fill_diagonal(V, -1e9)
+    out = {}
+    for M, off in ((H, (0, 1)), (V, (1, 0))):
+        if how == "assignment":
+            r, c = linear_sum_assignment(-M)
+            for a, b in zip(r, c):
+                out[(int(a), int(b), off)] = float(M[a, b])
+            continue
+        am = M.argmax(1)
+        bm = M.argmax(0)
+        for i in range(N):
+            j = int(am[i])
+            if how == "mutual" and int(bm[j]) != i:
+                continue
+            out[(i, j, off)] = float(M[i, j])
+    return out
+
+
 def component_health(comp, CH, CV):
     """Does a component confirm itself under its own evidence? (M206, M336)
 
@@ -140,7 +170,7 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
                  swap=0.0, depth=1, weighted=False, analytic=(),
                  merge_support=0, selector=None, sel_depth=2, sel_volume=430,
-                 sel_decode="greedy"):
+                 sel_decode="greedy", edges_from="votes"):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -166,7 +196,9 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         CH, CV = costs_from_models(matcher, tiles)
         views = ([tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
                  + [analytic_view(n, tiles) for n in analytic])
-        if selector is not None:
+        if edges_from in ("top1", "mutual", "assignment"):
+            agreed = matrix_edges(CH, CV, edges_from)
+        elif selector is not None:
             agreed = selected_edges(selector, matcher, views, dev, orientations,
                                     sel_depth, sel_volume, sel_decode)
         else:
@@ -372,6 +404,14 @@ def main():
                          "prefix at every depth: over 24 boards the strongest "
                          "half of the harvest is 0.883 against 0.849 and the "
                          "strongest three quarters 0.767 against 0.737")
+    ap.add_argument("--edges", choices=("votes", "top1", "mutual", "assignment"),
+                    default="votes",
+                    help="what becomes an edge. VOTES is the harvest. The other "
+                         "three read the fused cost matrix directly, and M408 "
+                         "measured them there: top-1 with collisions kept gives "
+                         "348.4 correct bonds a board and a coherent block of "
+                         "56.8, mutual best 315.7 and 56.6, the assignment "
+                         "332.4 and 58.1, against the harvest's 254 and 33.7")
     ap.add_argument("--selector", default="",
                     help="a trained LightGBM edge selector, replacing the vote "
                          "threshold. M317 closed per-edge selection on the "
@@ -522,7 +562,8 @@ def main():
                                a.dissolve, a.dissolve_min, a.seed, a.jump,
                                a.step, a.swap, a.depth, a.weighted,
                                a.analytic, a.merge_support, booster,
-                               a.sel_depth, a.sel_volume, a.sel_decode)
+                               a.sel_depth, a.sel_volume, a.sel_decode,
+                               a.edges)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)
