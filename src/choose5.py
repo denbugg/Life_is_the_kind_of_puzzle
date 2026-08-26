@@ -86,15 +86,31 @@ class Choose5(nn.Module):
         self.mix = nn.TransformerEncoder(enc_layer, layers)
         self.none = nn.Parameter(torch.zeros(1, 1, dim))
         self.score = nn.Linear(dim, 1)
+        # zero-initialised, so an untrained model reproduces the matcher's own
+        # ranking EXACTLY and any gain is something the model found rather than
+        # something it relearned. `coarse_field` uses the same device and says
+        # why: it makes "no effect" unarguable.
+        nn.init.zeros_(self.score.weight)
+        nn.init.zeros_(self.score.bias)
+        self.prior = nn.Parameter(torch.tensor(1.0))
+        self.none_bias = nn.Parameter(torch.tensor(0.0))
 
     def forward(self, patch, scalars):
-        """patch (B, K, 3, 20, 2*strip); scalars (B, K, 4) -> logits (B, K+1)."""
+        """patch (B, K, 3, 20, 2*strip); scalars (B, K, 4) -> logits (B, K+1).
+
+        The matcher's own margin enters as a fixed prior and the network learns
+        a correction on top, so training starts from the matcher's top-1 and
+        moves away from it only when the pixels say so.
+        """
         b, k = patch.shape[:2]
         z = self.enc(patch.reshape(b * k, *patch.shape[2:])).reshape(b, k, -1)
         z = z + self.scalars(scalars)
         z = torch.cat([z, self.none.expand(b, 1, z.shape[-1])], 1)
         z = self.mix(z)
-        return self.score(z).squeeze(-1)
+        delta = self.score(z).squeeze(-1)
+        base = torch.cat([scalars[..., 1] * self.prior,
+                          self.none_bias.expand(b, 1)], 1)
+        return base + delta
 
 
 def seam_patch(tiles, src, dst, axis, strip=4):
@@ -113,11 +129,20 @@ def seam_patch(tiles, src, dst, axis, strip=4):
     return p.permute(0, 3, 1, 2).contiguous()
 
 
-def choose_loss(logits, label):
-    """Cross-entropy over the five candidates plus NONE.
+def choose_loss(logits, label, none_weight=0.3):
+    """Cross-entropy over the five candidates plus NONE, with NONE discounted.
 
     `label` is the index of the true candidate, or K when the truth is outside
-    the shortlist. Rows with no true partner at all -- the last column and the
-    bottom row of the board -- are dropped by the caller.
+    the shortlist; rows with no true partner at all are dropped by the caller.
+
+    The discount is not a detail. NONE is the correct answer for 47 per cent of
+    fragments, so plain cross-entropy is minimised by abstaining often, and an
+    abstention scores zero correct bonds -- the quantity M395 and M407 say
+    converts. The first run of this measured it: a model that starts at the
+    matcher's own 347.3 correct bonds falls to 275.9 after one epoch of the
+    undiscounted loss. At weight 0 the model is trained only where the truth is
+    in the shortlist, which is the pure five-way question.
     """
-    return F.cross_entropy(logits, label)
+    w = torch.ones(logits.shape[1], device=logits.device)
+    w[K] = none_weight
+    return F.cross_entropy(logits, label, weight=w)

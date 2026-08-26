@@ -71,7 +71,7 @@ def board_batch(tiles, idx, val, lab, strip, dev):
     return keep, src, dst, val[keep], lab[keep]
 
 
-def run_board(model, tiles, packs, strip, dev, train):
+def run_board(model, tiles, packs, strip, dev, train, none_weight=0.3):
     loss_sum, rows = 0.0, []
     for axis in ("h", "v"):
         idx, val, lab = packs[axis]
@@ -86,7 +86,7 @@ def run_board(model, tiles, packs, strip, dev, train):
         sc = torch.stack([v / 10.0, z, rank.expand(len(keep), K),
                           (z == 0).float()], -1)
         logits = model(patch, sc)
-        loss = choose_loss(logits, y)
+        loss = choose_loss(logits, y, none_weight)
         loss_sum += float(loss.detach())
         if train:
             loss.backward()
@@ -107,6 +107,8 @@ def main():
     ap.add_argument("--ch", type=int, default=48)
     ap.add_argument("--dim", type=int, default=128)
     ap.add_argument("--layers", type=int, default=2)
+    ap.add_argument("--none-weight", type=float, default=0.3,
+                    help="how much the NONE class counts in the loss. It is the right answer for 47%% of fragments, so at weight 1 the model learns to abstain and an abstention is worth zero correct bonds; at 0 it is trained only where the truth is in the shortlist")
     ap.add_argument("--eval-every", type=int, default=1)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default="choose5.pt")
@@ -159,7 +161,8 @@ def main():
             tiles, packs = batch[0]
             tiles = tiles.to(dev)
             opt.zero_grad(set_to_none=True)
-            loss, _rows = run_board(model, tiles, packs, a.strip, dev, True)
+            loss, _rows = run_board(model, tiles, packs, a.strip, dev, True,
+                                    a.none_weight)
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
             opt.step()
             sched.step()
