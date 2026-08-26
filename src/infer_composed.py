@@ -56,7 +56,7 @@ from harvest_votes import voted_edges, voted_pool
 from place_search import anneal, corroborate, fill_rest, fill_seams, search
 from edge_selector import selected_edges
 from level_seams import level
-from merge_corroborated import merge_corroborated
+from merge_corroborated import merge_by_contact, merge_corroborated
 from restore_tile import TileRestorer, to_frags
 from seam_cost import costs_from_models
 from seam_embed import SeamEmbed
@@ -94,8 +94,14 @@ def _assign(cell_colour, tile_colour, cells, tiles_idx):
     return cells[r], tiles_idx[c]
 
 
-def matrix_edges(CH, CV, how):
+def matrix_edges(CH, CV, how, keep=0):
     """Edges read straight off the fused cost matrix, with no harvest.
+
+    `margin` is the PURE seed: each fragment's best partner, ranked by how far
+    it leads the runner-up, cut to `keep`. M378 measured that purity comes from
+    the margin -- and M416 that growth only pays from a pure seed, because the
+    harvest's components are internally correct only a quarter of the time and
+    merging compounds their errors.
 
     M395 made the count of CORRECT bonds the currency and M408 measured what
     each rule yields on the pipeline's own matrix. Taking each fragment's best
@@ -114,6 +120,13 @@ def matrix_edges(CH, CV, how):
             for a, b in zip(r, c):
                 out[(int(a), int(b), off)] = float(M[a, b])
             continue
+        if how == "margin":
+            part = np.partition(M, -2, axis=1)
+            lead = part[:, -1] - part[:, -2]
+            am = M.argmax(1)
+            for i in range(N):
+                out[(i, int(am[i]), off)] = float(lead[i])
+            continue
         am = M.argmax(1)
         bm = M.argmax(0)
         for i in range(N):
@@ -121,6 +134,8 @@ def matrix_edges(CH, CV, how):
             if how == "mutual" and int(bm[j]) != i:
                 continue
             out[(i, j, off)] = float(M[i, j])
+    if how == "margin" and keep:
+        out = dict(sorted(out.items(), key=lambda kv: -kv[1])[:keep])
     return out
 
 
@@ -170,7 +185,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  dissolve=0.0, dissolve_min=6, seed=0, jump=1.0, step=3.0,
                  swap=0.0, depth=1, weighted=False, analytic=(),
                  merge_support=0, selector=None, sel_depth=2, sel_volume=430,
-                 sel_decode="greedy", edges_from="votes"):
+                 sel_decode="greedy", edges_from="votes",
+                 merge_contact=0):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -196,8 +212,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         CH, CV = costs_from_models(matcher, tiles)
         views = ([tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
                  + [analytic_view(n, tiles) for n in analytic])
-        if edges_from in ("top1", "mutual", "assignment"):
-            agreed = matrix_edges(CH, CV, edges_from)
+        if edges_from in ("top1", "mutual", "assignment", "margin"):
+            agreed = matrix_edges(CH, CV, edges_from, sel_volume)
         elif selector is not None:
             agreed = selected_edges(selector, matcher, views, dev, orientations,
                                     sel_depth, sel_volume, sel_decode)
@@ -216,6 +232,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         [j for (i, j, o) in agreed], list(agreed.values()), max_edges=len(agreed))
     if merge_support > 0 and pool:
         comps = merge_corroborated(comps, pool, merge_support)
+    if merge_contact > 0:
+        comps = merge_by_contact(comps, CH, CV, rounds=merge_contact)
     placed = comps
     if frame > 0:
         prior = border_prior(border_scores(matcher, tiles, dev),
@@ -404,7 +422,7 @@ def main():
                          "prefix at every depth: over 24 boards the strongest "
                          "half of the harvest is 0.883 against 0.849 and the "
                          "strongest three quarters 0.767 against 0.737")
-    ap.add_argument("--edges", choices=("votes", "top1", "mutual", "assignment"),
+    ap.add_argument("--edges", choices=("votes", "top1", "mutual", "assignment", "margin"),
                     default="votes",
                     help="what becomes an edge. VOTES is the harvest. The other "
                          "three read the fused cost matrix directly, and M408 "
@@ -433,6 +451,16 @@ def main():
                          "measured 291.7 correct bonds at 600 edges against "
                          "greedy's 267.0 at 430, with a clean block of 45.6 "
                          "against 41.5. With this, --sel-volume is per direction")
+    ap.add_argument("--merge-contact", type=int, default=0,
+                    help="after the components are built, join the pair whose "
+                         "contact carries the single BEST seam, this many "
+                         "times. M415 measured the statistic: ranked by the "
+                         "mean -- the rule the island branch stood on since "
+                         "August -- growth reaches a clean block of 30.9, and "
+                         "by the MAXIMUM it reaches 38.9 with more true "
+                         "adjacencies. M409 is the reason this needs the "
+                         "pipeline to judge it: below the knee a bigger block "
+                         "bought with precision has always lost")
     ap.add_argument("--merge-support", type=int, default=0,
                     help="join two components when this many independent tile "
                          "pairs from the FULL pool imply the same relative "
@@ -563,7 +591,7 @@ def main():
                                a.step, a.swap, a.depth, a.weighted,
                                a.analytic, a.merge_support, booster,
                                a.sel_depth, a.sel_volume, a.sel_decode,
-                               a.edges)
+                               a.edges, a.merge_contact)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
         if a.no_field:
             out = np.rint(tex).clip(0, 255).astype(np.uint8)

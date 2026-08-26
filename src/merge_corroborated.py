@@ -100,3 +100,85 @@ def largest_block(components):
         if shifts:
             best = max(best, max(shifts.values()))
     return best
+
+
+def merge_by_contact(components, CH, CV, rounds=40, keep=6, min_seam=None):
+    """Join the two components whose contact carries the single BEST seam.
+
+    M415 measured the statistic. Ranked by the mean seam -- the rule M379 and
+    M381 used, and the one the whole island branch stood on -- growth reaches a
+    clean block of 30.9; ranked by the MAXIMUM it reaches 38.9, with more true
+    adjacencies, for a one-line change. The minimum is worst of the three at
+    27.9, which confirms the reading: a pair of islands belongs together when
+    ONE seam across the join is convincing, and the average is dragged down by
+    the weak seams every contact contains.
+
+    Offsets are seeded from the best cross-component fragment pairs rather than
+    enumerated, for the same reason and at a fraction of the cost.
+    """
+    H, V = -np.asarray(CH, np.float64), -np.asarray(CV, np.float64)
+    np.fill_diagonal(H, -1e9)
+    np.fill_diagonal(V, -1e9)
+    comps = [dict(c) for c in components if c]
+
+    def offers(A, B):
+        cand = []
+        for fa, pa in A.items():
+            for fb, pb in B.items():
+                a, b = int(fa), int(fb)
+                for dy, dx, sc in ((0, 1, H[a, b]), (0, -1, H[b, a]),
+                                   (1, 0, V[a, b]), (-1, 0, V[b, a])):
+                    cand.append((sc, (pa[0] + dy - pb[0], pa[1] + dx - pb[1])))
+        cand.sort(key=lambda t: -t[0])
+        occ = set(A.values())
+        seen, out = set(), []
+        for _sc, s in cand:
+            if s in seen:
+                continue
+            seen.add(s)
+            moved = {f: (p[0] + s[0], p[1] + s[1]) for f, p in B.items()}
+            if occ & set(moved.values()):
+                continue
+            m = dict(A)
+            m.update(moved)
+            if not _span_ok(m):
+                continue
+            best = -np.inf
+            occ_map = {p: int(f) for f, p in A.items()}
+            for f, (y, x) in moved.items():
+                g = occ_map.get((y, x - 1))
+                if g is not None:
+                    best = max(best, H[g, int(f)])
+                g = occ_map.get((y, x + 1))
+                if g is not None:
+                    best = max(best, H[int(f), g])
+                g = occ_map.get((y - 1, x))
+                if g is not None:
+                    best = max(best, V[g, int(f)])
+                g = occ_map.get((y + 1, x))
+                if g is not None:
+                    best = max(best, V[int(f), g])
+            if np.isfinite(best):
+                out.append((float(best), s, m))
+            if len(out) >= keep:
+                break
+        return out
+
+    for _ in range(rounds):
+        best = None
+        for ia in range(len(comps)):
+            if not comps[ia]:
+                continue
+            for ib in range(ia + 1, len(comps)):
+                if not comps[ib]:
+                    continue
+                for sc, _s, m in offers(comps[ia], comps[ib]):
+                    if best is None or sc > best[0]:
+                        best = (sc, ia, ib, m)
+                    break
+        if best is None or (min_seam is not None and best[0] < min_seam):
+            break
+        _sc, ia, ib, m = best
+        comps[ia] = m
+        comps[ib] = {}
+    return [c for c in comps if c]
