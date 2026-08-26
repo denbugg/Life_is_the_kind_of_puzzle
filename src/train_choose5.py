@@ -130,8 +130,8 @@ def main():
     model = Choose5(a.ch, a.dim, a.strip, a.layers,
                     encoder=a.encoder).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=0.01)
-    dl = DataLoader(Boards(train), batch_size=1, shuffle=True,
-                    collate_fn=collate, num_workers=2)
+    dl = DataLoader(Boards(train, cache=True), batch_size=1,
+                    shuffle=True, collate_fn=collate, num_workers=0)
     sched = torch.optim.lr_scheduler.OneCycleLR(
         opt, a.lr, total_steps=max(a.epochs * len(train), 1), pct_start=0.15)
 
