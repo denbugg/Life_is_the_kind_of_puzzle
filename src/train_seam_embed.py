@@ -269,6 +269,11 @@ def main():
     ap.add_argument("--steps", type=int, default=4000)
     ap.add_argument("--lr", type=float, default=3e-4)
     ap.add_argument("--real-prob", type=float, default=0.0)
+    ap.add_argument("--max-hours", type=float, default=0.0,
+                    help="stop cleanly after this many hours, for a "
+                         "hosted session with a wall clock. The "
+                         "checkpoint is written at every eval, so "
+                         "stopping early loses nothing")
     ap.add_argument("--seed", type=int, default=0,
                     help="M306 measured the run-to-run noise floor here: two "
                          "runs of the SAME configuration differ by 0.028 in R@1 "
@@ -406,6 +411,13 @@ def main():
                 mem = torch.cuda.max_memory_allocated() / 2**20
                 print(f"step {step:5d}  loss {np.mean(run[-100:]):.4f}  "
                       f"{(time.time()-t0)/step:.2f} s/step  {mem:.0f} MiB", flush=True)
+            if a.max_hours and (time.time() - t0) > a.max_hours * 3600:
+                e = evaluate(model, names[cut:], inv[cut:], a.eval_boards, dev)
+                print(f"  [budget reached @ {step}] R@1 {e['R@1']:.4f}  "
+                      f"R@20 {e['R@20']:.4f}", flush=True)
+                torch.save({"model": model.state_dict(), "args": vars(a),
+                            "eval": e, "step": step}, Path(CKPT_DIR) / a.out)
+                return
             if step % a.eval_every == 0 or step == a.steps:
                 e = evaluate(model, names[cut:], inv[cut:], a.eval_boards, dev)
                 print(f"  [eval @ {step}] R@1 {e['R@1']:.4f}  R@20 {e['R@20']:.4f}  "

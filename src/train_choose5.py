@@ -109,6 +109,9 @@ def main():
     ap.add_argument("--layers", type=int, default=2)
     ap.add_argument("--none-weight", type=float, default=0.3,
                     help="how much the NONE class counts in the loss. It is the right answer for 47%% of fragments, so at weight 1 the model learns to abstain and an abstention is worth zero correct bonds; at 0 it is trained only where the truth is in the shortlist")
+    ap.add_argument("--encoder", default="cnn",
+                    choices=("cnn", "cross"),
+                    help="cnn convolves the join; cross makes the two sides of it attend to each other row by row, which no matcher in this project does -- they are all bi-encoders comparing pooled descriptors")
     ap.add_argument("--eval-every", type=int, default=1)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out", default="choose5.pt")
@@ -124,7 +127,8 @@ def main():
           flush=True)
 
     dev = "cuda"
-    model = Choose5(a.ch, a.dim, a.strip, a.layers).to(dev)
+    model = Choose5(a.ch, a.dim, a.strip, a.layers,
+                    encoder=a.encoder).to(dev)
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=0.01)
     dl = DataLoader(Boards(train), batch_size=1, shuffle=True,
                     collate_fn=collate, num_workers=2)
@@ -178,7 +182,7 @@ def main():
     out = Path(CKPT_DIR) / a.out
     torch.save({"model": model.state_dict(),
                 "args": {k: getattr(a, k) for k in
-                         ("ch", "dim", "strip", "layers")}}, out)
+                         ("ch", "dim", "strip", "layers", "encoder")}}, out)
     print(f"wrote {out}")
 
 

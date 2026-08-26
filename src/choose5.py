@@ -66,6 +66,50 @@ class SeamEncoder(nn.Module):
         return self.head(h.mean((2, 3)))
 
 
+class CrossSeam(nn.Module):
+    """The two sides of a join attend to EACH OTHER, row by row.
+
+    Every matcher in this project is a bi-encoder: each fragment is encoded
+    alone and the two descriptors are compared by a dot product. Attention
+    between the pair is never computed, which means the comparison is fixed to
+    "row k of A against row k of B" -- and a seam whose content shifts a row,
+    which the corruption and the 20-pixel quantisation make common, cannot be
+    matched that way.
+
+    Here each side becomes a sequence of row tokens and the two sequences
+    cross-attend, so the model can align row k of A with row k+1 of B when the
+    content says so. M105 to M109, M157 and M164 built re-rankers, but as
+    joint scorers over pooled features rather than as cross-attention over the
+    seam, and they moved R@1 by 0.003.
+    """
+
+    def __init__(self, ch=48, dim=128, strip=4, layers=2, heads=4):
+        super().__init__()
+        self.strip = strip
+        self.stem = nn.Sequential(
+            nn.Conv2d(3, ch, 3, padding=1), nn.GELU(),
+            nn.Conv2d(ch, ch, 3, padding=1), nn.GroupNorm(8, ch), nn.GELU())
+        self.to_tok = nn.Linear(ch * strip, dim)
+        self.side = nn.Parameter(torch.zeros(2, 1, dim))
+        self.pos = nn.Parameter(torch.zeros(1, 40, dim))
+        layer = nn.TransformerEncoderLayer(
+            dim, heads, dim * 2, dropout=0.0, batch_first=True,
+            norm_first=True, activation="gelu")
+        self.mix = nn.TransformerEncoder(layer, layers)
+        self.out = nn.Linear(dim, dim)
+
+    def forward(self, x):
+        """(B, 3, 20, 2*strip) -> (B, dim), the two halves cross-attending."""
+        b = x.shape[0]
+        h = self.stem(x)
+        a = h[:, :, :, :self.strip].permute(0, 2, 1, 3).reshape(b, 20, -1)
+        c = h[:, :, :, self.strip:].permute(0, 2, 1, 3).reshape(b, 20, -1)
+        t = torch.cat([self.to_tok(a) + self.side[0],
+                       self.to_tok(c) + self.side[1]], 1)
+        t = t + self.pos[:, :t.shape[1]]
+        return self.out(self.mix(t).mean(1))
+
+
 class Choose5(nn.Module):
     """Five joins in, one choice out, with a NONE option.
 
@@ -74,10 +118,12 @@ class Choose5(nn.Module):
     cannot do.
     """
 
-    def __init__(self, ch=48, dim=128, strip=4, layers=2, heads=4):
+    def __init__(self, ch=48, dim=128, strip=4, layers=2, heads=4,
+                 encoder="cnn"):
         super().__init__()
         self.strip = strip
-        self.enc = SeamEncoder(ch, dim, strip)
+        self.enc = (CrossSeam(ch, dim, strip, layers, heads)
+                    if encoder == "cross" else SeamEncoder(ch, dim, strip))
         self.scalars = nn.Sequential(
             nn.Linear(4, dim), nn.GELU(), nn.Linear(dim, dim))
         enc_layer = nn.TransformerEncoderLayer(
