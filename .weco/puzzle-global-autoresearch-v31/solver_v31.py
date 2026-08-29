@@ -254,8 +254,9 @@ def solve_scene(scene, matrices, heads, unary_weight, device, config):
 
 
 def aggregate(rows):
-    keys = ("adjacency", "aligned_placement", "composite")
+    keys = ("adjacency", "translation_aligned_placement", "direct_placement")
     result = {key: float(np.mean([row["metrics"][key] for row in rows])) for key in keys}
+    result["composite"] = result["adjacency"] + .25 * result["translation_aligned_placement"]
     result["oracle_adjacency"] = float(np.mean([row["oracle_metrics"]["adjacency"] for row in rows]))
     result["seconds"] = float(sum(row["seconds"] for row in rows))
     result["coverage"] = 1.0
@@ -290,4 +291,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

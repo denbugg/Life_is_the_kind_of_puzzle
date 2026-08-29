@@ -23,7 +23,7 @@ def test_assert_permutation():
 def test_identity_has_perfect_adjacency():
     metrics = s.v30.placement_metrics(np.arange(s.N, dtype=np.int32))
     assert metrics["adjacency"] == 1.0
-    assert metrics["aligned_placement"] == 1.0
+    assert metrics["translation_aligned_placement"] == 1.0
 
 
 def test_mutual_rank_is_finite_and_diagonal_zero():
@@ -33,4 +33,3 @@ def test_mutual_rank_is_finite_and_diagonal_zero():
     assert result.shape == matrix.shape
     assert np.isfinite(result).all()
     assert np.array_equal(np.diag(result), np.zeros(s.N))
-
