@@ -84,16 +84,21 @@ def edge_and_loops(board, right, down):
     return horizontal, vertical, loops
 
 
-def objective(board, right, down, unary, unary_weight, loop_weight):
-    horizontal, vertical, loops = edge_and_loops(board, right, down)
+def objective(board, right, down, unary, unary_weight, loop_weight, loop_matrices=None):
+    horizontal, vertical, _ = edge_and_loops(board, right, down)
+    loop_right, loop_down = loop_matrices or (right, down)
+    _, _, loops = edge_and_loops(board, loop_right, loop_down)
     pair = float(horizontal.sum() + vertical.sum())
     unary_score = float(unary[np.asarray(board), np.arange(N)].sum())
     return pair + unary_weight * unary_score + loop_weight * float(loops.sum())
 
 
-def local_quality(board, right, down, unary, unary_weight, loop_weight):
+def local_quality(board, right, down, unary, unary_weight, loop_weight,
+                  loop_matrices=None):
     grid = np.asarray(board).reshape(SIDE, SIDE)
-    horizontal, vertical, loops = edge_and_loops(board, right, down)
+    horizontal, vertical, _ = edge_and_loops(board, right, down)
+    loop_right, loop_down = loop_matrices or (right, down)
+    _, _, loops = edge_and_loops(board, loop_right, loop_down)
     local = np.zeros((SIDE, SIDE), np.float32)
     local[:, :-1] += horizontal
     local[:, 1:] += horizontal
@@ -110,8 +115,9 @@ def local_quality(board, right, down, unary, unary_weight, loop_weight):
 
 
 def destroy_cells(board, right, down, unary, unary_weight, loop_weight,
-                  rng, width, operator):
-    quality = local_quality(board, right, down, unary, unary_weight, loop_weight)
+                  rng, width, operator, loop_matrices=None):
+    quality = local_quality(board, right, down, unary, unary_weight, loop_weight,
+                            loop_matrices)
     if operator == "worst":
         # Gumbel perturbation prevents the same deterministic basin each round.
         scale = max(1e-4, float(np.std(quality)) * 0.15)
@@ -152,16 +158,18 @@ def hungarian_scores(board, tiles, cells, right, down, unary, unary_weight):
 
 
 def iterative_repair(board, cells, right, down, unary, unary_weight,
-                     loop_weight, passes=3):
+                     loop_weight, loop_matrices=None, passes=3):
     current = np.asarray(board).copy()
-    best_score = objective(current, right, down, unary, unary_weight, loop_weight)
+    best_score = objective(current, right, down, unary, unary_weight, loop_weight,
+                           loop_matrices)
     tiles = current[cells].copy()
     for _ in range(passes):
         scores = hungarian_scores(current, tiles, cells, right, down, unary, unary_weight)
         tile_rows, cell_cols = linear_sum_assignment(-scores.astype(np.float64))
         candidate = current.copy()
         candidate[cells[cell_cols]] = tiles[tile_rows]
-        candidate_score = objective(candidate, right, down, unary, unary_weight, loop_weight)
+        candidate_score = objective(candidate, right, down, unary, unary_weight,
+                                    loop_weight, loop_matrices)
         if candidate_score > best_score + 1e-7:
             current, best_score = candidate, candidate_score
         else:
@@ -171,14 +179,16 @@ def iterative_repair(board, cells, right, down, unary, unary_weight,
 
 
 def exact_two_opt(board, cells, right, down, unary, unary_weight, loop_weight,
-                  rng, proposals=96):
+                  rng, proposals=96, loop_matrices=None):
     current = np.asarray(board).copy()
-    best = objective(current, right, down, unary, unary_weight, loop_weight)
+    best = objective(current, right, down, unary, unary_weight, loop_weight,
+                     loop_matrices)
     for _ in range(proposals):
         a, b = rng.choice(cells, 2, replace=False)
         candidate = current.copy()
         candidate[a], candidate[b] = candidate[b], candidate[a]
-        score = objective(candidate, right, down, unary, unary_weight, loop_weight)
+        score = objective(candidate, right, down, unary, unary_weight, loop_weight,
+                          loop_matrices)
         if score > best + 1e-7:
             current, best = candidate, score
     assert_permutation(current)
@@ -188,9 +198,12 @@ def exact_two_opt(board, cells, right, down, unary, unary_weight, loop_weight,
 def refine(board, raw_right, raw_down, unary, unary_weight, seed,
            rounds=24, widths=(32, 64, 96), loop_weight=.5,
            operators=("worst", "related", "rectangle", "strip"), two_opt=64):
-    right, down = structural_matrices(raw_right, raw_down)
+    right = v30.global_solver._normalise(raw_right)
+    down = v30.global_solver._normalise(raw_down)
+    loop_matrices = structural_matrices(raw_right, raw_down)
     current = np.asarray(board).copy()
-    best = objective(current, right, down, unary, unary_weight, loop_weight)
+    best = objective(current, right, down, unary, unary_weight, loop_weight,
+                     loop_matrices)
     rng = np.random.default_rng(seed)
     stagnation = 0
     op_reward = {name: 1.0 for name in operators}
@@ -201,11 +214,12 @@ def refine(board, raw_right, raw_down, unary, unary_weight, seed,
         weights /= weights.sum()
         operator = str(rng.choice(operators, p=weights))
         cells = destroy_cells(current, right, down, unary, unary_weight,
-                              loop_weight, rng, width, operator)
+                              loop_weight, rng, width, operator, loop_matrices)
         candidate, score = iterative_repair(current, cells, right, down, unary,
-                                             unary_weight, loop_weight)
+                                             unary_weight, loop_weight, loop_matrices)
         candidate, score = exact_two_opt(candidate, cells, right, down, unary,
-                                         unary_weight, loop_weight, rng, two_opt)
+                                         unary_weight, loop_weight, rng, two_opt,
+                                         loop_matrices)
         gain = score - best
         op_reward[operator] = .85 * op_reward[operator] + .15 * (1.0 + max(0.0, gain))
         if gain > 1e-7:
