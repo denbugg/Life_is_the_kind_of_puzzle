@@ -238,9 +238,16 @@ def load_models(device):
     reranker.eval()
     state = torch.load(V30_ROOT / "outputs/solver_v30.pt", map_location=device,
                        weights_only=True)
-    heads = v30.DirectionalCoordinateGNN(width=state["head_width"],
-                                         steps=state["head_steps"]).to(device)
-    heads.load_state_dict(state["heads"])
+    fused_path = OUT / "fused_heads_v31.pt"
+    if fused_path.exists():
+        fused_state = torch.load(fused_path, map_location=device, weights_only=True)
+        heads = v30.DirectionalCoordinateGNN(width=fused_state["width"],
+                                             steps=fused_state["steps"]).to(device)
+        heads.load_state_dict(fused_state["heads"])
+    else:
+        heads = v30.DirectionalCoordinateGNN(width=state["head_width"],
+                                             steps=state["head_steps"]).to(device)
+        heads.load_state_dict(state["heads"])
     heads.eval()
     return reranker, heads, float(state["unary_weight"])
 
@@ -304,7 +311,8 @@ def main():
     config = {"rounds": args.rounds, "loop_weight": args.loop_weight}
     rows = []
     for scene in scenes:
-        matrices = v30.load_v27(scene, reranker, device) if scene in VALID_SCENES else v30.load_eval(scene, reranker, device)
+        cache_path = v30.V28_ROOT / "score_cache" / f"scene_{scene:06d}.npz"
+        matrices = v30.load_eval(scene, reranker, device) if cache_path.exists() else v30.load_v27(scene, reranker, device)
         row = solve_scene(scene, matrices, heads, unary_weight, device, config, args.method)
         row["scene"] = scene
         assert_permutation(row.pop("board"))
