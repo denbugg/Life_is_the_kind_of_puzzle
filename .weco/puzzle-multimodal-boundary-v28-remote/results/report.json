@@ -1,0 +1,99 @@
+{
+  "schema": "puzzle-multimodal-boundary-v28",
+  "parameters": 5759745,
+  "modalities": [
+    "raw_rgb",
+    "unet_denoised_grayscale",
+    "soft_learned_contour",
+    "binary_learned_contour"
+  ],
+  "train_scenes": [
+    0,
+    6699
+  ],
+  "selection_scenes": [
+    6728,
+    6731
+  ],
+  "calibration_scenes": [
+    6732,
+    6735
+  ],
+  "test_scenes": [
+    6989,
+    6999
+  ],
+  "history": [
+    {
+      "step": 300,
+      "top1": 0.10484601449275363,
+      "top5": 0.23709239130434784,
+      "top32": 0.485054347826087,
+      "mrr": 0.17746630594893104,
+      "objective": 0.20946291698688765
+    },
+    {
+      "step": 600,
+      "top1": 0.11594202898550725,
+      "top5": 0.259963768115942,
+      "top32": 0.5174365942028986,
+      "mrr": 0.19421271001529894,
+      "objective": 0.22782578475668297
+    },
+    {
+      "step": 900,
+      "top1": 0.12409420289855072,
+      "top5": 0.26698369565217395,
+      "top32": 0.5221920289855073,
+      "mrr": 0.201613415404378,
+      "objective": 0.2350350925011655
+    }
+  ],
+  "selection_best_objective": 0.2350350925011655,
+  "selected": {
+    "alpha": 0.7,
+    "top1": 0.13360507246376813,
+    "top5": 0.24728260869565216,
+    "top32": 0.4336503623188406,
+    "mrr": 0.1940326380044543,
+    "objective": 0.21911676310813724
+  },
+  "test_v27": {
+    "top1": 0.14377470355731226,
+    "top5": 0.2706686429512517,
+    "top32": 0.45750988142292487,
+    "mrr": 0.21093593393714352
+  },
+  "test_v28_standalone": {
+    "top1": 0.12014163372859027,
+    "top5": 0.2536231884057971,
+    "top32": 0.4976943346508564,
+    "mrr": 0.1931686917304133
+  },
+  "test_v28_fused": {
+    "top1": 0.15727931488801053,
+    "top5": 0.2919960474308301,
+    "top32": 0.5144927536231885,
+    "mrr": 0.2301826745531028
+  },
+  "assembly_scene": 6989,
+  "assembly": {
+    "v27": {
+      "coverage": 1.0,
+      "direct_placement": 0.001736111111111111,
+      "translation_aligned_placement": 0.017361111111111112,
+      "adjacency": 0.10326086956521738,
+      "objective": 4204.9540473271045,
+      "anchor_size": 201
+    },
+    "v28": {
+      "coverage": 1.0,
+      "direct_placement": 0.001736111111111111,
+      "translation_aligned_placement": 0.027777777777777776,
+      "adjacency": 0.1105072463768116,
+      "objective": 2410.5695036947727,
+      "anchor_size": 175
+    }
+  },
+  "assembly_image": "/home/kva/pazzle_multimodal_boundary_v28/outputs/assembly_scene_6989.png"
+}

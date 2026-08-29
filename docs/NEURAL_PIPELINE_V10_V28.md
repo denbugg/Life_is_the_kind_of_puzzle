@@ -1,4 +1,4 @@
-# Neural pipeline V10–V27: experiments and results
+# Neural pipeline V10–V28: experiments and results
 
 Дата среза: 2026-08-29. Ветка: `codex/contour-normalization`.
 
@@ -27,7 +27,9 @@ Checkpoints, датасет и секреты не входят в Git.
 | V23-XL bi-encoder | 16 × 24×24 | 11.62% | 23.31% | 41.79% | 17.85% | — | победитель среди одиночных V23 |
 | V23 calibrated ensemble | 16 × 24×24 | **12.95%** | **24.98%** | **43.69%** | **19.36%** | — | лучший быстрый candidate generator |
 | V25 V22+V23 fusion | 16 × 24×24 | 14.32% | 27.32% | 45.61% | 21.05% | — | принятый fusion baseline |
-| **V26 learned union reranker** | **16 × 24×24** | **14.65%** | **27.85%** | **46.09%** | **21.42%** | — | **текущий retrieval-победитель** |
+| V26 learned union reranker | 16 × 24×24 | 14.65% | 27.85% | 46.09% | 21.42% | — | принятый MLP reranker |
+| V27 set-transformer | 16 × 24×24 | 15.14% | 28.17% | 46.95% | 21.99% | — | частично прошёл gate |
+| **V28 multimodal fusion** | **11 × 24×24** | **15.73%** | **29.20%** | **51.45%** | **23.02%** | — | **текущий retrieval-победитель** |
 
 V22 относительно V18 на одних и тех же восьми holdout-сценах:
 
@@ -154,7 +156,7 @@ beta до 3.0; validation выбрал границу 3.0, но holdout objectiv
 
 - Kaggle-скрипты V18/V22 находятся в `.weco/puzzle-hard-finetune-v18` и
   `.weco/puzzle-boundary-reranker-v22`.
-- Remote V23/V24/V25/V26/V27 entrypoints находятся в соответствующих
+- Remote V23/V24/V25/V26/V27/V28 entrypoints находятся в соответствующих
   `.weco/puzzle-*-remote` каталогах.
 - Все remote-скрипты предполагают датасет и checkpoints под `/home/kva`; пути задаются
   константами или переменными окружения в run scripts.
@@ -179,9 +181,34 @@ all-metrics gate не пройден и V26 остаётся принятым re
 7.79% → 8.97%, но translation-aligned placement снизилась 1.39% → 1.22%. Визуализация
 сохранена в `.weco/puzzle-set-transformer-v27-remote/results/assembly_scene_6973.png`.
 
+## V28: RGB + denoised grayscale + learned contours
+
+V28 проверяет прямую мультимодальную подачу. Frozen U-Net и contour-модель строят для
+каждого тайла шесть каналов: raw RGB (3), denoised grayscale, soft contour probability
+и бинарный чёрно-белый contour. Boundary encoder на 5.76M параметров инициализируется
+из V23-XL и дообучается 900 шагов по сценам 0–6699.
+
+Протокол:
+
+- checkpoint selection: 6728–6731;
+- fusion calibration: 6732–6735;
+- единственная финальная оценка: последний свежий split 6989–6999;
+- выбран checkpoint 900 и fusion `alpha=0.70`.
+
+| Модель на сценах 6989–6999 | Top-1 | Top-5 | Top-32 | MRR |
+|---|---:|---:|---:|---:|
+| V27 | 14.38% | 27.07% | 45.75% | 21.09% |
+| V28 standalone | 12.01% | 25.36% | 49.77% | 19.32% |
+| **V27 + V28** | **15.73%** | **29.20%** | **51.45%** | **23.02%** |
+
+V28 прошёл retrieval-gate по всем метрикам. Standalone top-32 показывает, что новые
+модальности прежде всего расширяют множество найденных кандидатов; V27 возвращает им
+точный порядок. На заранее выбранной сцене 6989 adjacency выросла 10.33% → 11.05%,
+translation-aligned placement 1.74% → 2.78%. Все 576 тайлов размещены без повторов.
+
 ## Следующий gate
 
-Главный bottleneck теперь не локальный reranking, а глобальная геометрия: при 8.97%
-правильных adjacency полный solver всё ещё не восстанавливает координатную систему.
-V28 должен обучать row/column/border heads и использовать их как unary constraints в
-глобальном assignment. Для выбора V28 нужен очередной свежий split.
+После V28 больше нет нетронутого terminal test внутри 7000 доступных сцен. Дальнейший
+выбор архитектуры требует нового внешнего split либо cross-validation без повторного
+объявления уже просмотренных сцен независимым тестом. Следующий технический шаг —
+row/column/border heads и unary constraints глобального solver.

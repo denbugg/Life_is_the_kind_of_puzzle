@@ -5,22 +5,22 @@
 Transformer, cross-attention reranking и последующую глобальную сборку.
 
 Актуальная сводка, честные holdout-метрики и статус каждого эксперимента:
-[docs/NEURAL_PIPELINE_V10_V27.md](docs/NEURAL_PIPELINE_V10_V27.md).
+[docs/NEURAL_PIPELINE_V10_V28.md](docs/NEURAL_PIPELINE_V10_V28.md).
 
-Основной подтверждённый результат — V26 learned union reranker поверх V25:
+Основной подтверждённый результат — мультимодальный fusion V27+V28:
 
-- top-1 правильного соседа: **14.65%**;
-- top-5: **27.85%**;
-- top-32: **46.09%**;
-- MRR: **21.42%** на 16 полных пазлах 24×24.
+- top-1 правильного соседа: **15.73%**;
+- top-5: **29.20%**;
+- top-32: **51.45%**;
+- MRR: **23.02%** на 11 новых полных пазлах 24×24.
 
 На удалённой RTX 4060 также обучен быстрый V23 boundary candidate generator.
 Калиброванный V23 ensemble достигает **43.69% recall@32**, fusion V25 — **45.61%**,
 а обучаемое ранжирование V26 — **46.09%**.
 
-V27 set-transformer проверен на новом test split: он немного улучшает top-1, top-32,
-MRR и adjacency сборки относительно V26, но из-за микроскопического снижения top-5
-пока оставлен экспериментальным, а не объявлен новым строгим победителем.
+V28 явно добавляет U-Net denoised grayscale и learned soft/binary contours к RGB.
+На свежих сценах 6989–6999 fusion V27+V28 достигает **15.73% top-1**, **29.20% top-5**,
+**51.45% top-32** и **23.02% MRR**, улучшая V27 по всем retrieval-метрикам.
 
 Датасет: [VSOS AI Initiative PAZZLE](https://www.kaggle.com/datasets/pasha883/vsos-ai-initiative-pazzle).
 Тяжёлые датасеты и checkpoints намеренно не хранятся в Git.

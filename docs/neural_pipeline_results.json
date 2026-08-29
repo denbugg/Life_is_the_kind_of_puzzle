@@ -88,7 +88,7 @@
       "top5": 0.2785326086956522,
       "top32": 0.4608808876811594,
       "mrr": 0.2142466243415907,
-      "status": "current_retrieval_winner"
+      "status": "accepted_mlp_reranker"
     },
     "v27": {
       "boards": 16,
@@ -105,6 +105,28 @@
       "assembly_adjacency": 0.08967391304347826,
       "assembly_translation_aligned_placement": 0.012152777777777778,
       "status": "experimental_partial_gate"
+    },
+    "v28": {
+      "boards": 11,
+      "train_boards": 6700,
+      "selection_boards": 4,
+      "calibration_boards": 4,
+      "parameters": 5759745,
+      "alpha": 0.7,
+      "modalities": [
+        "raw_rgb",
+        "unet_denoised_grayscale",
+        "soft_learned_contour",
+        "binary_learned_contour"
+      ],
+      "top1": 0.15727931488801053,
+      "top5": 0.2919960474308301,
+      "top32": 0.5144927536231885,
+      "mrr": 0.2301826745531028,
+      "assembly_scene": 6989,
+      "assembly_adjacency": 0.1105072463768116,
+      "assembly_translation_aligned_placement": 0.027777777777777776,
+      "status": "current_retrieval_winner"
     }
   }
 }
