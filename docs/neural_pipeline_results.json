@@ -67,7 +67,15 @@
       "status": "rejected"
     },
     "v25": {
-      "status": "prepared_not_evaluated"
+      "boards": 16,
+      "alpha_v22": 0.55,
+      "top1": 0.14322916666666669,
+      "top5": 0.2732110507246377,
+      "top32": 0.45606884057971014,
+      "mrr": 0.21047973528874842,
+      "union_recall_at_32_budget": 0.4301403985507246,
+      "union_recall_at_64_budget": 0.5190783514492754,
+      "status": "current_retrieval_winner"
     }
   }
 }

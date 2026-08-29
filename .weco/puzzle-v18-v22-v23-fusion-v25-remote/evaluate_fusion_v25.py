@@ -21,7 +21,8 @@ import train_boundary_biencoder_v23 as v23
 
 V18_PATH = Path("/home/kva/pazzle_kaggle_winners/v18/best.pt")
 V22_PATH = Path("/home/kva/pazzle_kaggle_winners/v22/boundary_best.pt")
-DATA = Path("/home/kva/pazzle_directional_transformer/data/real/restored_target_order")
+RAW_INPUTS = Path("/home/kva/pazzle_directional_transformer/data/real/train/inputs")
+MAP_FILE = Path("/home/kva/pazzle_kaggle_winners/alignment/real_alignment.npz")
 OUT = ROOT / "outputs"
 CALIBRATION = range(6700, 6720)
 HOLDOUT = range(6957, 6973)
@@ -84,10 +85,15 @@ def union_recall(a,b,k,direction):
     return float(((aa==targets[:,None]).any(1)|(bb==targets[:,None]).any(1)).mean())
 
 
+def load_raw_target_order(scene, maps):
+    image = v10.load_rgb(RAW_INPUTS / f"img_{scene:06d}.png")
+    tiles = v10.image_to_tiles(image)[maps[scene]]
+    return torch.from_numpy(np.ascontiguousarray(tiles.transpose(0, 3, 1, 2))).float().div_(255.0)
+
+
 @torch.inference_mode()
-def score_scene(scene,model18,model22,winner,small,xl,device):
-    board=v23.load_board(DATA/f"img_{scene:06d}.png")
-    tiles=board.reshape(v23.GRID**2,3,v23.TILE,v23.TILE).to(device)
+def score_scene(scene,model18,model22,winner,small,xl,device,maps):
+    tiles=load_raw_target_order(scene,maps).to(device)
     x=tiles.unsqueeze(0)
     base22,refined22=v22.refine(model22,model18,winner,x)
     score_sets=[]
@@ -108,9 +114,10 @@ def score_scene(scene,model18,model22,winner,small,xl,device):
 def main():
     device=torch.device("cuda");torch.backends.cuda.matmul.allow_tf32=True
     model18,model22,small,xl,state18,state22=load_models(device);winner=load_winner(device)
+    maps=np.load(MAP_FILE)["inv"]
     started=time.perf_counter();calibration=[]
     for i,scene in enumerate(CALIBRATION,1):
-        calibration.append(score_scene(scene,model18,model22,winner,small,xl,device))
+        calibration.append(score_scene(scene,model18,model22,winner,small,xl,device,maps))
         print(json.dumps({"event":"calibration_scene","scene":scene,"of":len(CALIBRATION),"seconds":time.perf_counter()-started}),flush=True)
     trials={"v18_v23":[],"v22_v23":[]}
     for key,left_index in (("v18_v23",0),("v22_v23",1)):
@@ -120,7 +127,7 @@ def main():
     selected={key:max(values,key=lambda x:x["objective"]) for key,values in trials.items()}
     rows={"v18":[],"v22":[],"v23":[],"v18_v23":[],"v22_v23":[]};union32=[];union64=[]
     for i,scene in enumerate(HOLDOUT,1):
-        scores=score_scene(scene,model18,model22,winner,small,xl,device)
+        scores=score_scene(scene,model18,model22,winner,small,xl,device,maps)
         rows["v18"].append(metrics(scores[0]));rows["v22"].append(metrics(scores[1]));rows["v23"].append(metrics(scores[2]))
         rows["v18_v23"].append(metrics(blend(scores[0],scores[2],selected["v18_v23"]["alpha"])))
         rows["v22_v23"].append(metrics(blend(scores[1],scores[2],selected["v22_v23"]["alpha"])))
