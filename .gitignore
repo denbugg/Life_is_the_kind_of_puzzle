@@ -15,6 +15,14 @@ KAGGLE_API_for_subs.txt
 WANDB_API.txt
 kaggle_kernel/
 kaggle_outputs/
+.DS_Store
+.runs/
+tmp/
+models/
+*.backup
+.weco/**/.venv/
+.weco/**/output/
+.weco/**/outputs/
 
 # generated boards and downloaded kernels: 1.4 GB and 42 MB, both reproducible
 artifacts/

@@ -1,0 +1,20 @@
+{
+  "id": "phoenix0501/pazzle-boundary-reranker-v22-training",
+  "title": "PAZZLE Boundary Reranker V22 Training",
+  "code_file": "train_boundary_v22.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "phoenix0501/pazzle-real-tile-alignment-cache",
+    "phoenix0501/pazzle-v10-inference-code",
+    "phoenix0501/pazzle-winner-pair-contour-assets"
+  ],
+  "competition_sources": [],
+  "kernel_sources": ["phoenix0501/pazzle-hard-negative-finetune-v18"],
+  "model_sources": []
+}

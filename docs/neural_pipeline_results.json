@@ -1,0 +1,73 @@
+{
+  "schema": "pazzle-neural-pipeline-results-v1",
+  "date": "2026-08-29",
+  "dataset": "pasha883/vsos-ai-initiative-pazzle",
+  "full_board": {
+    "grid": 24,
+    "tiles": 576,
+    "tile_pixels": 20
+  },
+  "results": {
+    "v18": {
+      "boards": 8,
+      "top1": 0.09635416666666667,
+      "top5": 0.19712409420289856,
+      "mrr": 0.15020064364191021,
+      "global_correct_fraction": 0.012586805555555556,
+      "status": "accepted_baseline"
+    },
+    "v22": {
+      "boards": 8,
+      "top1": 0.13383152173913043,
+      "top5": 0.26211503623188404,
+      "mrr": 0.19557651575501073,
+      "global_correct_fraction": 0.016059027777777776,
+      "status": "current_overall_winner"
+    },
+    "v23_small": {
+      "boards": 8,
+      "top1": 0.10326086956521739,
+      "top5": 0.2112771739130435,
+      "top32": 0.39266304347826086,
+      "mrr": 0.1623007536663143,
+      "parameters": 1057921,
+      "train_seconds": 146.76300868403632,
+      "status": "accepted_candidate_generator"
+    },
+    "v23_xl": {
+      "boards": 16,
+      "top1": 0.11616847826086955,
+      "top5": 0.23312952898550723,
+      "top32": 0.4179121376811594,
+      "mrr": 0.17845246544355925,
+      "parameters": 5759745,
+      "train_seconds": 1033.5912129969802,
+      "status": "accepted_candidate_generator"
+    },
+    "v23_blend": {
+      "boards": 16,
+      "top1": 0.12947237318840582,
+      "top5": 0.24983016304347824,
+      "top32": 0.43693387681159424,
+      "mrr": 0.1936216884917672,
+      "weights": {
+        "small": 0.25,
+        "xl": 0.75,
+        "handcrafted_seam": 0.5
+      },
+      "status": "best_fast_candidate_generator"
+    },
+    "v24_calibrated": {
+      "boards": 16,
+      "alpha": 0.025,
+      "top1": 0.13009510869565216,
+      "top5": 0.24875452898550726,
+      "top32": 0.43178215579710144,
+      "mrr": 0.19376267326780447,
+      "status": "rejected"
+    },
+    "v25": {
+      "status": "prepared_not_evaluated"
+    }
+  }
+}

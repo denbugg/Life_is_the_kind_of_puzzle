@@ -1,0 +1,20 @@
+{
+  "id": "phoenix0501/pazzle-hard-negative-finetune-v18",
+  "title": "PAZZLE Hard Negative Finetune V18",
+  "code_file": "train_hard_v18.py",
+  "language": "python",
+  "kernel_type": "script",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": false,
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "pasha883/vsos-ai-initiative-pazzle",
+    "phoenix0501/pazzle-real-tile-alignment-cache",
+    "phoenix0501/pazzle-v10-inference-code",
+    "phoenix0501/pazzle-winner-pair-contour-assets"
+  ],
+  "competition_sources": [],
+  "kernel_sources": ["phoenix0501/pazzle-dense-transformer-v10-full-training"],
+  "model_sources": []
+}
