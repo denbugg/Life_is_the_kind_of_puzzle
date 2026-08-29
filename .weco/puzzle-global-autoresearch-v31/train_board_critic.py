@@ -121,7 +121,7 @@ def select_metrics(scene_data, scenes, coef):
 
 def main():
     device = torch.device("cuda")
-    reranker, heads, unary_weight = s.load_models(device, "fused")
+    reranker, heads, unary_weight = s.load_models(device, "old")
     scene_data = {}
     started = time.perf_counter()
     for index, scene in enumerate(TRAIN + VALID, 1):
@@ -152,4 +152,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

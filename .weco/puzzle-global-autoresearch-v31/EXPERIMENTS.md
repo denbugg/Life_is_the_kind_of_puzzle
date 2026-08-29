@@ -14,3 +14,6 @@
   confidence was rejected early. On validation scene 6981 its candidate oracle
   was `0.10779` versus V30 `0.12862`. V31 now retains V30 raw-normalized pair
   energy and uses mutual rank only in the loop-consensus term.
+- E05a (2026-08-29): larger fused-domain GNN, 475,092 parameters, rejected at
+  `0.1134510870` adjacency versus `0.1169610507` for the old V30 heads on the
+  same fused matrices.

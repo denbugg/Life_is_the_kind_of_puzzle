@@ -230,7 +230,7 @@ def refine(board, raw_right, raw_down, unary, unary_weight, seed,
     return current, best
 
 
-def load_models(device, head_source="fused"):
+def load_models(device, head_source="old"):
     reranker_state = torch.load(v30.V27_ROOT / "outputs/set_reranker_best.pt",
                                 map_location=device, weights_only=True)
     reranker = v30.v27.SetReranker().to(device)
@@ -300,7 +300,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=("smoke", "validation", "final"), default="smoke")
     parser.add_argument("--method", choices=("v30", "v31"), default="v31")
-    parser.add_argument("--heads", choices=("old", "fused"), default="fused")
+    parser.add_argument("--heads", choices=("old", "fused"), default="old")
     parser.add_argument("--rounds", type=int, default=24)
     parser.add_argument("--loop-weight", type=float, default=.5)
     parser.add_argument("--output", default="report.json")

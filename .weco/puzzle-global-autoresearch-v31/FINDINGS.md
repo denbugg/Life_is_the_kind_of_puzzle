@@ -12,3 +12,8 @@
   improved from `0.13587` to `0.15399`/`0.15217`, proving candidate diversity.
 - The next bottleneck is candidate selection/objective alignment, so same-domain
   fused caches and a board critic are now justified.
+- Fused V28 matrices with the old V30 heads reached `0.1169610507` validation
+  adjacency, +6.17% relative to V30 on V27 matrices (`0.1101675725`).
+- A 475,092-parameter fused-domain GNN (2.72x V30) reached only `0.1134510870`
+  with the same solver and matrices. It is rejected despite better domain parity;
+  downstream assembly, not parameter count or proxy head metrics, is decisive.
