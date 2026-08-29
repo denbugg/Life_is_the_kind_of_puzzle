@@ -17,3 +17,7 @@
 - A 475,092-parameter fused-domain GNN (2.72x V30) reached only `0.1134510870`
   with the same solver and matrices. It is rejected despite better domain parity;
   downstream assembly, not parameter count or proxy head metrics, is decisive.
+- Frozen 3-seed portfolio `{350826,360826,380826}` selected by the unchanged
+  target-free V30 objective reached `0.1218297101` validation adjacency,
+  `0.1269837900` composite, and coverage `1.0`. This is +10.59% relative to the
+  V30 validation parity run. Candidate oracle was `0.1237545290`.

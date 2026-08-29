@@ -7,6 +7,8 @@
 | E02 | queued | - | - | iterative repair + 2-opt |
 | E03 | queued | - | - | reciprocal loop objective |
 | E04 | queued | - | - | multiscale stochastic LNS |
+| E05 | passed | 0.1195652174 | +0.0093976449 | frozen seed 350826/360826/380826 tie |
+| E06 | passed | 0.1218297101 | +0.0116621377 | objective-selected 3-seed portfolio |
 
 ## Rejections
 

@@ -16,6 +16,8 @@ def seed_candidates(scene, matrices, heads, unary_weight, device, seed):
     unary = s.v30.unary_from_heads(heads, matrices, device)
     portfolio = s.v30.candidate_portfolio(right, down, seed + scene)
     rows = []
+    visualization = None
+    maps = np.load(s.v30.v25.MAP_FILE)["inv"] if args.split == "final" else None
     for index, (name, board) in enumerate(portfolio.items()):
         refined, score = s.v30.lns_refine(
             board, right, down, unary, unary_weight, seed + scene + index * 97)
@@ -49,17 +51,27 @@ def main():
                "oracle_method": oracle[2], "oracle_adjacency": oracle_metrics["adjacency"],
                **metrics}
         rows.append(row)
+        if args.split == "final" and scene == 6989:
+            tiles = s.v30.v25.load_raw_target_order(scene, maps).permute(0, 2, 3, 1).mul(255).byte().numpy()
+            target = s.v30.v25.v10.load_rgb(
+                s.v30.v25.RAW_INPUTS.parent / "targets" / f"img_{scene:06d}.png")
+            montage = np.hstack((
+                s.v30.labelled(s.v30.render_board(tiles, board), "V31 fused 3-seed global solver"),
+                s.v30.labelled(target, "Clean target (reference)")))
+            visualization = s.OUT / f"assembly_v31_scene_{scene}.png"
+            s.v30.cv2.imwrite(str(visualization), s.v30.cv2.cvtColor(
+                montage, s.v30.cv2.COLOR_RGB2BGR))
         print(json.dumps({"event": "scene", "seconds": time.perf_counter() - started,
                           **row}), flush=True)
     aggregate = {key: float(np.mean([row[key] for row in rows]))
                  for key in ("adjacency", "translation_aligned_placement", "direct_placement",
                              "oracle_adjacency")}
     aggregate["composite"] = aggregate["adjacency"] + .25 * aggregate["translation_aligned_placement"]
-    report = {"split": args.split, "seeds": seeds, "aggregate": aggregate, "rows": rows}
+    report = {"split": args.split, "seeds": seeds, "aggregate": aggregate,
+              "rows": rows, "visualization": str(visualization) if visualization else None}
     (s.OUT / args.output).write_text(json.dumps(report, indent=2))
     print(json.dumps({"event": "complete", **aggregate}), flush=True)
 
 
 if __name__ == "__main__":
     main()
-
