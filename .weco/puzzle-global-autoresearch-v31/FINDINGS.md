@@ -6,4 +6,9 @@
 - V30 repair linearizes against stale movable neighbours.
 - V30 coordinate heads are trained and inferred on different score domains.
 - The old candidate selector gap is almost exhausted; V31 needs new candidates.
-
+- Validation parity is `0.1101675725` adjacency for V30 on scenes 6981--6988.
+- Raw-pair multiscale search with no loop scored `0.1074501812`; loop weight .25
+  scored `0.1073369565`. Both are rejected as selectors, although scene 6985
+  improved from `0.13587` to `0.15399`/`0.15217`, proving candidate diversity.
+- The next bottleneck is candidate selection/objective alignment, so same-domain
+  fused caches and a board critic are now justified.
