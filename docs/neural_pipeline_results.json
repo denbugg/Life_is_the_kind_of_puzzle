@@ -89,6 +89,22 @@
       "top32": 0.4608808876811594,
       "mrr": 0.2142466243415907,
       "status": "current_retrieval_winner"
+    },
+    "v27": {
+      "boards": 16,
+      "train_boards": 20,
+      "validation_boards": 8,
+      "parameters": 1061953,
+      "candidate_union_budget": 64,
+      "beta": 1.35,
+      "top1": 0.15138134057971014,
+      "top5": 0.2817028985507246,
+      "top32": 0.46948596014492755,
+      "mrr": 0.21987213206245348,
+      "assembly_scene": 6973,
+      "assembly_adjacency": 0.08967391304347826,
+      "assembly_translation_aligned_placement": 0.012152777777777778,
+      "status": "experimental_partial_gate"
     }
   }
 }

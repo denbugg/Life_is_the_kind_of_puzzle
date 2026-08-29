@@ -1,4 +1,4 @@
-# Neural pipeline V10–V26: experiments and results
+# Neural pipeline V10–V27: experiments and results
 
 Дата среза: 2026-08-29. Ветка: `codex/contour-normalization`.
 
@@ -154,14 +154,34 @@ beta до 3.0; validation выбрал границу 3.0, но holdout objectiv
 
 - Kaggle-скрипты V18/V22 находятся в `.weco/puzzle-hard-finetune-v18` и
   `.weco/puzzle-boundary-reranker-v22`.
-- Remote V23/V24/V25/V26 entrypoints находятся в соответствующих
+- Remote V23/V24/V25/V26/V27 entrypoints находятся в соответствующих
   `.weco/puzzle-*-remote` каталогах.
 - Все remote-скрипты предполагают датасет и checkpoints под `/home/kva`; пути задаются
   константами или переменными окружения в run scripts.
 - Длинные вычисления следует запускать в уникальной `tmux`-сессии и сохранять log/report.
 
+## V27: query-conditioned set-transformer
+
+V27 заменяет независимый MLP трёхслойным set-transformer шириной 192 (1 061 953
+параметра). Он совместно обрабатывает до 64 кандидатов и обучен на сценах 6700–6719.
+Residual beta=1.35 выбран только на новом gate 6720–6727, финальная оценка выполнена
+один раз на ранее не использованных сценах 6973–6988.
+
+| Модель на новом test split | Top-1 | Top-5 | Top-32 | MRR |
+|---|---:|---:|---:|---:|
+| V25 | 14.75% | 28.04% | 46.71% | 21.63% |
+| V26 | 15.07% | **28.20%** | 46.94% | 21.93% |
+| V27 | **15.14%** | 28.17% | **46.95%** | **21.99%** |
+
+V27 улучшил три метрики, но top-5 снизился на 0.034 процентного пункта, поэтому строгий
+all-metrics gate не пройден и V26 остаётся принятым retrieval-победителем. На заранее
+зафиксированной сцене 6973 global solver разместил все 576 тайлов: adjacency выросла
+7.79% → 8.97%, но translation-aligned placement снизилась 1.39% → 1.22%. Визуализация
+сохранена в `.weco/puzzle-set-transformer-v27-remote/results/assembly_scene_6973.png`.
+
 ## Следующий gate
 
-V27 — query-conditioned set-transformer по закэшированным кандидатам. Он принимается,
-только если превосходит V26 по top-1/top-5/MRR на новом, ещё не использованном gate split;
-текущий holdout больше нельзя многократно использовать для выбора архитектуры.
+Главный bottleneck теперь не локальный reranking, а глобальная геометрия: при 8.97%
+правильных adjacency полный solver всё ещё не восстанавливает координатную систему.
+V28 должен обучать row/column/border heads и использовать их как unary constraints в
+глобальном assignment. Для выбора V28 нужен очередной свежий split.
