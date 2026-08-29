@@ -16,8 +16,6 @@ def seed_candidates(scene, matrices, heads, unary_weight, device, seed):
     unary = s.v30.unary_from_heads(heads, matrices, device)
     portfolio = s.v30.candidate_portfolio(right, down, seed + scene)
     rows = []
-    visualization = None
-    maps = np.load(s.v30.v25.MAP_FILE)["inv"] if args.split == "final" else None
     for index, (name, board) in enumerate(portfolio.items()):
         refined, score = s.v30.lns_refine(
             board, right, down, unary, unary_weight, seed + scene + index * 97)
@@ -36,6 +34,8 @@ def main():
     device = torch.device("cuda")
     reranker, heads, unary_weight = s.load_models(device, "old")
     rows = []
+    visualization = None
+    maps = np.load(s.v30.v25.MAP_FILE)["inv"] if args.split == "final" else None
     started = time.perf_counter()
     for scene in scenes:
         matrices = s.v30.load_eval(scene, reranker, device)
