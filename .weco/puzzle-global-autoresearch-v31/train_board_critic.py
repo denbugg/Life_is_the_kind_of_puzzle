@@ -1,6 +1,7 @@
 """Generate fused-domain solver candidates and train an OOF pairwise board critic."""
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 import time
@@ -120,15 +121,28 @@ def select_metrics(scene_data, scenes, coef):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start", type=int, default=0)
+    parser.add_argument("--stop", type=int, default=len(TRAIN + VALID))
+    parser.add_argument("--generate-only", action="store_true")
+    args = parser.parse_args()
     device = torch.device("cuda")
     reranker, heads, unary_weight = s.load_models(device, "old")
     scene_data = {}
     started = time.perf_counter()
-    for index, scene in enumerate(TRAIN + VALID, 1):
+    all_scenes = TRAIN + VALID
+    for index, scene in enumerate(all_scenes[args.start:args.stop], args.start + 1):
         matrices = s.v30.load_eval(scene, reranker, device)
         scene_data[scene] = scene_candidates(scene, matrices, heads, unary_weight, device)
         print(json.dumps({"event": "candidates", "scene": scene, "index": index,
                           "of": len(TRAIN + VALID), "seconds": time.perf_counter() - started}), flush=True)
+    if args.generate_only:
+        return
+    # A helper process may have populated the disjoint half of the cache.
+    for scene in all_scenes:
+        if scene not in scene_data:
+            matrices = s.v30.load_eval(scene, reranker, device)
+            scene_data[scene] = scene_candidates(scene, matrices, heads, unary_weight, device)
     folds = tuple(tuple(TRAIN[index::4]) for index in range(4))
     trials = []
     for regularization in (1e-4, 1e-3, 1e-2, .1, 1.0, 10.0, 100.0):
