@@ -22,6 +22,12 @@ V28 явно добавляет U-Net denoised grayscale и learned soft/binary 
 На свежих сценах 6989–6999 fusion V27+V28 достигает **15.73% top-1**, **29.20% top-5**,
 **51.45% top-32** и **23.02% MRR**, улучшая V27 по всем retrieval-метрикам.
 
+Глобальный solver V29 строит несколько полных раскладок: сохраняет главный anchor,
+упаковывает дополнительные coordinate-consistent компоненты с разными `top-k`, затем
+применяет Hungarian refinement и swap local search. Маленький confidence-ranker выбирает
+раскладку по seam-score и согласованности графа. В трёхфолдовой оценке на 15 сценах
+adjacency выросла **9.57% → 10.12%**, а composite assembly score — **+5.47%**.
+
 Датасет: [VSOS AI Initiative PAZZLE](https://www.kaggle.com/datasets/pasha883/vsos-ai-initiative-pazzle).
 Тяжёлые датасеты и checkpoints намеренно не хранятся в Git.
 
