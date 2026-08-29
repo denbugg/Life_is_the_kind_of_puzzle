@@ -230,7 +230,7 @@ def refine(board, raw_right, raw_down, unary, unary_weight, seed,
     return current, best
 
 
-def load_models(device):
+def load_models(device, head_source="fused"):
     reranker_state = torch.load(v30.V27_ROOT / "outputs/set_reranker_best.pt",
                                 map_location=device, weights_only=True)
     reranker = v30.v27.SetReranker().to(device)
@@ -239,7 +239,7 @@ def load_models(device):
     state = torch.load(V30_ROOT / "outputs/solver_v30.pt", map_location=device,
                        weights_only=True)
     fused_path = OUT / "fused_heads_v31.pt"
-    if fused_path.exists():
+    if head_source == "fused" and fused_path.exists():
         fused_state = torch.load(fused_path, map_location=device, weights_only=True)
         heads = v30.DirectionalCoordinateGNN(width=fused_state["width"],
                                              steps=fused_state["steps"]).to(device)
@@ -300,13 +300,14 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=("smoke", "validation", "final"), default="smoke")
     parser.add_argument("--method", choices=("v30", "v31"), default="v31")
+    parser.add_argument("--heads", choices=("old", "fused"), default="fused")
     parser.add_argument("--rounds", type=int, default=24)
     parser.add_argument("--loop-weight", type=float, default=.5)
     parser.add_argument("--output", default="report.json")
     args = parser.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda")
-    reranker, heads, unary_weight = load_models(device)
+    reranker, heads, unary_weight = load_models(device, args.heads)
     scenes = (6981,) if args.split == "smoke" else (VALID_SCENES if args.split == "validation" else FINAL_SCENES)
     config = {"rounds": args.rounds, "loop_weight": args.loop_weight}
     rows = []
@@ -318,7 +319,8 @@ def main():
         assert_permutation(row.pop("board"))
         rows.append(row)
         log(event="scene", **row)
-    report = {"split": args.split, "method": args.method, "config": config,
+    report = {"split": args.split, "method": args.method, "heads": args.heads,
+              "config": config,
               "aggregate": aggregate(rows), "scenes": rows}
     path = OUT / args.output
     path.write_text(json.dumps(report, indent=2))
