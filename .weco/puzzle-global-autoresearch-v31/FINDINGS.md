@@ -21,3 +21,12 @@
   target-free V30 objective reached `0.1218297101` validation adjacency,
   `0.1269837900` composite, and coverage `1.0`. This is +10.59% relative to the
   V30 validation parity run. Candidate oracle was `0.1237545290`.
+- On the fixed 15-scene development report the same frozen solver scored
+  `0.1050724638` adjacency and `0.1103386675` composite versus V30
+  `0.1057367150` and `0.1110607890`. It is therefore rejected for production.
+- Its fixed-15 candidate oracle was `0.1100241546`, leaving +4.97% relative over
+  V31 selection and +4.05% over V30. Candidate generation improved; the global
+  selector did not generalize.
+- A 22,657-parameter nonlinear RankNet critic also failed: group-OOF selection
+  `0.1062743887` versus baseline `0.1074240468`, and validation `0.1173007190`
+  versus baseline `0.1191123128`. Aggregated board statistics are insufficient.

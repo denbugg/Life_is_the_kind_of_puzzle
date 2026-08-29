@@ -19,3 +19,8 @@
 - E05a (2026-08-29): larger fused-domain GNN, 475,092 parameters, rejected at
   `0.1134510870` adjacency versus `0.1169610507` for the old V30 heads on the
   same fused matrices.
+- E07 (2026-08-29): 3-seed portfolio failed the fixed-15 promotion gate at
+  `0.1050724638` versus V30 `0.1057367150`; retained as a candidate generator,
+  not as production selector.
+- E08 (2026-08-29): nonlinear 22,657-parameter RankNet board critic rejected;
+  OOF and validation both regressed versus their baselines.
