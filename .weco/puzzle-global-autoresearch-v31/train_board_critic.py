@@ -99,23 +99,38 @@ def fit_ridge(scene_data, scenes, regularization):
     return coef / scale
 
 
-def select_metrics(scene_data, scenes, coef):
-    selected = []
-    baseline = []
-    oracle = []
+def selection_rows(scene_data, scenes, coef):
     rows = []
     for scene in scenes:
         features, labels, names = scene_data[scene]
         candidate = names != "baseline_marker"
+        candidate_indices = np.flatnonzero(candidate)
         scores = features[candidate] @ coef
-        picked = int(np.flatnonzero(candidate)[int(np.argmax(scores))])
+        picked = int(candidate_indices[int(np.argmax(scores))])
         base = int(np.flatnonzero(names == "baseline_marker")[0])
-        best = int(np.flatnonzero(candidate)[int(np.argmax(labels[candidate]))])
+        best = int(candidate_indices[int(np.argmax(labels[candidate]))])
+        rows.append({"scene": scene, "picked": picked, "base": base, "best": best,
+                     "margin": float(scores.max() - features[base] @ coef)})
+    return rows
+
+
+def select_metrics(scene_data, scenes, coef, threshold=0.0):
+    selected = []
+    baseline = []
+    oracle = []
+    rows = []
+    choices = selection_rows(scene_data, scenes, coef)
+    for choice in choices:
+        scene = choice["scene"]
+        features, labels, names = scene_data[scene]
+        picked = choice["picked"] if choice["margin"] > threshold else choice["base"]
+        base, best = choice["base"], choice["best"]
         selected.append(labels[picked]); baseline.append(labels[base]); oracle.append(labels[best])
         rows.append({"scene": scene, "selected": str(names[picked]),
                      "selected_adjacency": float(labels[picked]),
                      "baseline_adjacency": float(labels[base]),
-                     "oracle_adjacency": float(labels[best])})
+                     "oracle_adjacency": float(labels[best]),
+                     "critic_margin": choice["margin"]})
     return {"selected": float(np.mean(selected)), "baseline": float(np.mean(baseline)),
             "oracle": float(np.mean(oracle)), "rows": rows}
 
@@ -145,19 +160,36 @@ def main():
             scene_data[scene] = scene_candidates(scene, matrices, heads, unary_weight, device)
     folds = tuple(tuple(TRAIN[index::4]) for index in range(4))
     trials = []
+    best_trial = None
     for regularization in (1e-4, 1e-3, 1e-2, .1, 1.0, 10.0, 100.0):
-        values = []
+        oof = []
         for heldout in folds:
             fit_scenes = tuple(scene for scene in TRAIN if scene not in heldout)
             coef = fit_ridge(scene_data, fit_scenes, regularization)
-            values.append(select_metrics(scene_data, heldout, coef)["selected"])
-        trials.append({"regularization": regularization, "oof_adjacency": float(np.mean(values))})
-    selected_regularization = max(trials, key=lambda row: row["oof_adjacency"])["regularization"]
+            oof.extend(selection_rows(scene_data, heldout, coef))
+        margins = np.asarray([row["margin"] for row in oof])
+        thresholds = np.unique(np.concatenate(([-1e-12], np.quantile(margins, np.linspace(0, 1, 33)))))
+        for threshold in thresholds:
+            values = []
+            for row in oof:
+                labels = scene_data[row["scene"]][1]
+                picked = row["picked"] if row["margin"] > threshold else row["base"]
+                values.append(labels[picked])
+            trial = {"regularization": regularization, "threshold": float(threshold),
+                     "oof_adjacency": float(np.mean(values))}
+            if best_trial is None or trial["oof_adjacency"] > best_trial["oof_adjacency"]:
+                best_trial = trial
+        trials.append(best_trial.copy() if best_trial["regularization"] == regularization else {
+            "regularization": regularization, "threshold": None,
+            "oof_adjacency": None})
+    selected_regularization = best_trial["regularization"]
+    selected_threshold = best_trial["threshold"]
     coef = fit_ridge(scene_data, TRAIN, selected_regularization)
-    validation = select_metrics(scene_data, VALID, coef)
+    validation = select_metrics(scene_data, VALID, coef, selected_threshold)
     np.savez(s.OUT / "board_critic_v31.npz", coef=coef,
-             regularization=selected_regularization)
+             regularization=selected_regularization, threshold=selected_threshold)
     report = {"trials": trials, "selected_regularization": selected_regularization,
+              "selected_threshold": selected_threshold,
               "validation": validation, "feature_count": int(len(coef)),
               "seconds": time.perf_counter() - started}
     (s.OUT / "board_critic_v31.json").write_text(json.dumps(report, indent=2))
