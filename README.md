@@ -28,6 +28,10 @@ V28 явно добавляет U-Net denoised grayscale и learned soft/binary 
 раскладку по seam-score и согласованности графа. В трёхфолдовой оценке на 15 сценах
 adjacency выросла **9.57% → 10.12%**, а composite assembly score — **+5.47%**.
 
+V30 добавляет направленный GNN с головами `row/column/border` и unary-aware large
+neighborhood search. На 15 сценах adjacency выросла **9.72% → 10.57%**, composite
+score — **0.10260 → 0.11106**. Это на **4.14% выше** лучшего composite V29.
+
 Датасет: [VSOS AI Initiative PAZZLE](https://www.kaggle.com/datasets/pasha883/vsos-ai-initiative-pazzle).
 Тяжёлые датасеты и checkpoints намеренно не хранятся в Git.
 

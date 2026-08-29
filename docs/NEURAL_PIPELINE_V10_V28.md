@@ -237,6 +237,37 @@ V29 повышает composite score на **5.47% относительно basel
 Воспроизводимый evaluator, полный отчёт и заранее выбранная визуализация сцены 6989:
 `.weco/puzzle-global-soft-v29-remote/`.
 
+## V30: graph coordinates + unary-aware LNS
+
+V30 проверяет следующий глобальный уровень. Pairwise edge calibrator обучен на hard
+negatives и достиг AP 0.8127, но показал domain shift между V27 support-score и fused
+V28 score. Поэтому он сохранён как отклонённая абляция (`solver_gamma=0`), а не включён
+в победителя без подтверждения.
+
+Направленный recurrent GNN получает top-k граф связей справа, слева, снизу и сверху.
+Он обучает головы row, column и четырёх границ, после чего их unary score добавляется
+к coarse-to-fine portfolio solver. Финальный этап оптимизирует большие окрестности
+Hungarian assignment и принимает только улучшения совместного pairwise+unary objective.
+
+Validation, не пересекающийся с финальной оценкой, дал:
+
+- row accuracy: **10.35%** против случайных 4.17%;
+- column accuracy: **8.57%**;
+- border F1: **54.65%**;
+- выбранный unary weight: `0.50`.
+
+| Solver на 15 сценах | Adjacency | Translation-aligned | Composite |
+|---|---:|---:|---:|
+| complete baseline | 9.72% | **2.18%** | 0.10260 |
+| **V30 graph unary + LNS** | **10.57%** | 2.13% | **0.11106** |
+
+Прирост относительно same-run baseline: **+8.83% adjacency** и **+8.25% composite**.
+Composite V30 на 4.14% выше предыдущего V29 OOF result 0.10665. На заранее выбранной
+сцене 6989 adjacency выросла **11.23% → 14.67%**.
+
+Код, checkpoint, полный report и визуализация находятся в
+`.weco/puzzle-edge-unary-lns-v30-remote/`.
+
 ## Следующий gate
 
 После V28 больше нет нетронутого terminal test внутри 7000 доступных сцен. Дальнейший
