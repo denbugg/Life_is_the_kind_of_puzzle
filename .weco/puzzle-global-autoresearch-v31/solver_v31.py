@@ -231,9 +231,21 @@ def load_models(device):
     return reranker, heads, float(state["unary_weight"])
 
 
-def solve_scene(scene, matrices, heads, unary_weight, device, config):
+def solve_scene(scene, matrices, heads, unary_weight, device, config, method="v31"):
     right, down = matrices
     unary = v30.unary_from_heads(heads, matrices, device)
+    if method == "v30":
+        started = time.perf_counter()
+        board, selected, scores, _ = v30.solve_v30(
+            matrices, heads, unary_weight, device, scene)
+        metrics = v30.placement_metrics(board)
+        assert_permutation(board)
+        return {
+            "board": board, "selected": selected,
+            "selected_score": float(scores[selected]), "oracle": selected,
+            "oracle_metrics": metrics, "metrics": metrics,
+            "seconds": time.perf_counter() - started,
+        }
     portfolio = v30.candidate_portfolio(right, down, SEED + scene)
     boards = {}
     scores = {}
@@ -266,6 +278,7 @@ def aggregate(rows):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=("smoke", "validation", "final"), default="smoke")
+    parser.add_argument("--method", choices=("v30", "v31"), default="v31")
     parser.add_argument("--rounds", type=int, default=24)
     parser.add_argument("--loop-weight", type=float, default=.5)
     parser.add_argument("--output", default="report.json")
@@ -278,12 +291,13 @@ def main():
     rows = []
     for scene in scenes:
         matrices = v30.load_v27(scene, reranker, device) if scene in VALID_SCENES else v30.load_eval(scene, reranker, device)
-        row = solve_scene(scene, matrices, heads, unary_weight, device, config)
+        row = solve_scene(scene, matrices, heads, unary_weight, device, config, args.method)
         row["scene"] = scene
         assert_permutation(row.pop("board"))
         rows.append(row)
         log(event="scene", **row)
-    report = {"split": args.split, "config": config, "aggregate": aggregate(rows), "scenes": rows}
+    report = {"split": args.split, "method": args.method, "config": config,
+              "aggregate": aggregate(rows), "scenes": rows}
     path = OUT / args.output
     path.write_text(json.dumps(report, indent=2))
     log(event="complete", path=str(path), **report["aggregate"])
