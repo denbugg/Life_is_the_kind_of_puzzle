@@ -20,6 +20,8 @@ board: adjacency 0.234 against the previous 0.192, at equal placement.
 """
 from __future__ import annotations
 
+from quad_rerank import rerank_scores
+
 import numpy as np
 import torch
 
@@ -172,7 +174,7 @@ def votes_for_target(sets, target):
 
 def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
                 margin=0.0, target=0, order="margin", depth=1,
-                weighted=False):
+                weighted=False, quad=0.0):
     """Edges enough of the scorers agree on, strongly enough.
 
     With `target`, the vote bar is chosen PER BOARD so the harvest reaches that
@@ -207,7 +209,7 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     maximise CLEAN COVERAGE at 0.288.  All three beat the eighteen-scorer
     arrangement they replaced.
     """
-    sets = _scorer_sets(models, inputs, device, orientations, depth)
+    sets = _scorer_sets(models, inputs, device, orientations, depth, quad)
     if target:
         votes = votes_for_target(sets, target)
         if weighted:
@@ -236,12 +238,17 @@ def voted_edges(models, inputs, device="cuda", votes=8, orientations=2,
     return {e: m for e, (v, m, x) in out.items()}
 
 
-def _scorer_sets(models, inputs, device, orientations, depth=1):
+def _scorer_sets(models, inputs, device, orientations, depth=1, quad=0.0):
     sets = []
     for model in models:
         for tiles in inputs:
             for orient in ORIENTATIONS[:orientations]:
                 H, V = _calibrated(model, tiles, device, orient)
+                if quad > 0:
+                    # every scorer's opinion re-ranked by square evidence
+                    # BEFORE it votes (M426); this is upstream of the vote,
+                    # where applying it to the fused matrix alone was not
+                    H, V = rerank_scores(H, V, weight=quad)
                 if depth <= 1:
                     sets.append({**_mutual(H, (0, 1)), **_mutual(V, (1, 0))})
                 else:

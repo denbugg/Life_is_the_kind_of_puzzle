@@ -1,0 +1,20 @@
+{
+ "id": "pasha883/vsos-pazzle-chooser-big",
+ "title": "VsOS pazzle chooser big",
+ "code_file": "vsos-pazzle-chooser-big.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": false,
+ "machine_shape": "NvidiaTeslaT4",
+ "dataset_sources": [
+  "pasha883/vsos-ai-initiative-pazzle",
+  "pasha883/vsos-pazzle-chooser-inputs"
+ ],
+ "kernel_sources": [
+  "pasha883/vsos-pazzle-top5-dump"
+ ],
+ "competition_sources": [],
+ "model_sources": []
+}

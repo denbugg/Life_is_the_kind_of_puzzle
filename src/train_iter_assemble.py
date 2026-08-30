@@ -123,6 +123,13 @@ def main():
     ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--eval-every", type=int, default=1000)
     ap.add_argument("--eval-boards", type=int, default=4)
+    ap.add_argument("--resume", default="",
+                    help="continue from a checkpoint. M120 stopped this run at "
+                         "9000 steps of 30000 to free the card, with training "
+                         "accuracy still climbing (row 0.161 to 0.194 to 0.208 "
+                         "against a chance of 0.042) and the reveal response "
+                         "steepening (0.104 to 0.167 to 0.292 at 98% revealed), "
+                         "so its verdict was taken on a third of the schedule")
     ap.add_argument("--out", default="iter_asm_v1.pt")
     a = ap.parse_args()
 
@@ -146,6 +153,12 @@ def main():
 
     model = IterAssemble(4 * ta["dim"] + 6, a.d, a.heads, a.layers, a.ff,
                          mix_init=a.mix_init).to(dev)
+    if a.resume:
+        ck2 = torch.load(Path(CKPT_DIR) / a.resume, map_location=dev,
+                         weights_only=False)
+        model.load_state_dict(ck2["model"] if "model" in ck2 else ck2)
+        print(f"resumed from {a.resume}", flush=True)
+
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=0.01)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, a.lr, total_steps=a.steps,
                                                 pct_start=0.05)

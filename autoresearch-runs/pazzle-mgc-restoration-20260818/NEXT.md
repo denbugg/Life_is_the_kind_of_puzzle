@@ -1,27 +1,65 @@
 # Where this stands
 
-## The target, in numbers
+## The physics of the problem, measured 2026-08-27
 
-**The metric pays for ABSOLUTE PLACEMENT and for nothing else** (M386). At
-matched placement a layout with adjacency 0.250 and one with 0.436 score 0.4041
-and 0.4044; at matched adjacency, doubling placement is worth 0.060.
+Three measurements taken together say what this project is actually up against,
+and they explain every null of that day.
 
-- **0.38 of SSIM needs about 0.41 of placement**, roughly 235 of 576 fragments
-  in exactly the right cell. We deliver 0.012, which is seven.
-- The render is not the problem: the curve predicts 0.264 at our placement and
-  we score 0.2673, so the whole 0.085 deficit against the flat fill is assembly.
-- **The block is bond percolation** (M395) and the knee is in the COUNT of
-  correct bonds, not in precision. On bonds that cluster the way ours do (M407),
-  300 give a block of 44, **400 give 104**, **500 give 231** -- past the 194
-  that pays placement 0.40. So the target is **450 to 500 of our correct
-  bonds**, not the 552 uniform draws would need.
-- M316's "430 edges at precision 0.97" is the wrong shape and is retired.
+**1. The signal is eighty pixels a side, at a per-pixel SNR of about 0.3 (M461).**
+Reading the WHOLE fragment is worse than reading four columns of it -- R@1
+0.2425 against 0.2663 at equal budget -- so adjacency lives at the seam and
+everything further is noise. Those exact columns are the most damaged: the
+generator's blur pads by REPLICATION at a fragment border, so the outermost
+column runs 5% above the middle. Mean absolute corruption is 27 grey levels
+against a natural-image gradient of 5 to 10. Averaging 80 pixels lifts SNR to
+2 or 3, and that is where R@1 0.32 comes from.
 
-| quantity | ours | needed |
-|---|---|---|
-| correct bonds | 348 | 450-500 |
-| largest clean block | 33.7 shipped / 58 best | ~194 |
-| placement | 0.012 | 0.41 |
+**2. Confidence melts with volume (M459).** Precision over a board's first 150
+edges is 0.961. Over its first 430 it is 0.679, so the edges ranked 151 to 430
+are about 0.53. We do not need better edges so much as MORE edges at the
+precision the top already has.
+
+**3. One wrong edge in a hundred halves the connected block (M456).** Holding
+the true edges fixed and adding false ones: connected 350 at precision 1.00,
+186 at 0.99, 65 at 0.95, 25 at 0.90, 18 at our 0.746. A wrong edge does not
+merely fail to help -- it WELDS two islands at a false offset and destroys
+correct structure. The curve is flat below 0.95.
+
+**Together:** the target is 430 edges at precision about 0.98, we have 430 at
+0.68, and every lever that moves precision by a few points -- the centred square
+(+2), the learned selector (+8, M384), consensus (0) -- cannot matter, because
+the payoff curve is flat where we stand.
+
+## What this rules out
+
+Everything that re-reads the same eighty pixels the same way, which is every
+scorer here: they are all BI-ENCODERS taking a dot product of pooled
+descriptors (M107), and capacity (M197, M54), roster (M363, M372), views
+(M372), loss (M403), restored inputs (M292) and a five-candidate chooser at
+2900 boards (M438) are all closed.
+
+Also closed on their own terms: the island programme (capped at 0.2885, M437),
+the content-placement family (M430, M431), the global learned solvers (M89,
+M115, M120, M299), row-first assembly (M330), path cover (M398), the border
+ring (M246), and restoration as a second axis -- perfect restoration of a wrong
+assembly is worth +0.047 and lands at 0.138 against a flat fill's 0.359 (M458).
+
+## What is worth its own line
+
+**Anchoring is worth +0.0195 of SSIM for ONE decision a board** (M455): the
+largest block holds 42.7 fragments and is hung correctly on 2 boards of 48.
+It fails because our blocks avoid the picture's border -- 6.1% of a block's
+fragments are border fragments against a base rate of 16% -- so the frame prior,
+the only absolute signal, has nothing to read.
+
+## The one thing running
+
+A JOINT verifier of a seam (`src/verify_pair.py`), trained as a binary
+classifier for PRECISION AT 430 EDGES rather than by retrieval, zero-initialised
+on the matcher's own score so it starts exactly at the bar. The bar is 0.679.
+If it does not clear it, the honest reading is that the eighty pixels have been
+exhausted and the next move is a different INPUT, not another model on the same
+scores.
 
 ## The one door left, and its size
 

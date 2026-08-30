@@ -51,9 +51,16 @@ def _candidate_edges(R, D, max_edges=900, min_margin=0.0):
 
 
 class _Builder:
-    def __init__(self):
+    def __init__(self, cap=0):
         self.frag_comp = {}
         self.comps = []
+        # M444: an edge that would grow a component past `cap` is refused, so a
+        # larger harvest makes MORE components rather than BIGGER ones. Without
+        # it the extra edges WELD islands together and one wrong edge makes the
+        # whole grown island internally wrong -- at 500 edges the uncapped seed
+        # keeps 7 correct islands of 40 where a cap of two keeps 77, and the
+        # largest truly-connected group goes 50.4 to 127.8.
+        self.cap = int(cap)
 
     def _span_ok(self, comp):
         ys = [p[0] for p in comp.values()]
@@ -68,6 +75,8 @@ class _Builder:
 
     def _add_to_comp(self, cid, frag, coord):
         comp = self.comps[cid]
+        if self.cap and len(comp) + 1 > self.cap:
+            return False
         if coord in comp.values():
             return False
         comp[frag] = coord
@@ -81,6 +90,8 @@ class _Builder:
         if ca == cb:
             return True
         A, B = self.comps[ca], self.comps[cb]
+        if self.cap and len(A) + len(B) > self.cap:
+            return False
         moved = {f: (p[0] + shift[0], p[1] + shift[1]) for f, p in B.items()}
         occ = set(A.values())
         if any(p in occ for p in moved.values()):
@@ -276,7 +287,8 @@ def build_buddies_components(R, D, max_edges=900, min_margin=0.0):
     return builder.components()
 
 
-def build_directed_components(anchors, directions, targets, weights, max_edges=256):
+def build_directed_components(anchors, directions, targets, weights,
+                              max_edges=256, cap=0):
     """Build conflict-safe components from externally calibrated U/D/L/R edges."""
     anchors = np.asarray(anchors, dtype=np.int64)
     directions = np.asarray(directions, dtype=np.int64)
@@ -285,7 +297,7 @@ def build_directed_components(anchors, directions, targets, weights, max_edges=2
     if not (anchors.shape == directions.shape == targets.shape == weights.shape):
         raise ValueError("directed edge arrays must have the same shape")
     deltas = ((-1, 0), (1, 0), (0, -1), (0, 1))
-    builder = _Builder()
+    builder = _Builder(cap)
     order = np.argsort(-weights)[:max_edges]
     for index in order:
         dy, dx = deltas[int(directions[index])]

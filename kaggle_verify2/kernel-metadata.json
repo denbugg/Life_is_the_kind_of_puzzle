@@ -1,0 +1,20 @@
+{
+ "id": "pasha883/vsos-pazzle-verify-hinge",
+ "title": "VsOS pazzle verify hinge",
+ "code_file": "vsos-pazzle-verify-hinge.ipynb",
+ "language": "python",
+ "kernel_type": "notebook",
+ "is_private": true,
+ "enable_gpu": true,
+ "enable_internet": false,
+ "machine_shape": "NvidiaTeslaT4",
+ "dataset_sources": [
+  "pasha883/vsos-ai-initiative-pazzle",
+  "pasha883/vsos-pazzle-chooser-inputs"
+ ],
+ "kernel_sources": [
+  "pasha883/vsos-pazzle-top5-dump"
+ ],
+ "competition_sources": [],
+ "model_sources": []
+}

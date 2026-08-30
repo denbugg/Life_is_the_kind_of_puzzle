@@ -10,6 +10,35 @@ import cv2
 import numpy as np
 
 
+def _demean(x):
+    """Remove each fragment's own grey level, keeping its contrast intact."""
+    a = np.asarray(x, np.float32)
+    g = a.mean(axis=(0, 1), keepdims=True)
+    return np.clip(a - g + 128.0, 0, 255).astype(np.uint8)
+
+
+def _wiener(x, lam):
+    """Undo the generator's 3x3 Gaussian, regularised.
+
+    Separable, so each axis is divided by cos^2(pi f) on its own. The image is
+    extended symmetrically before the transform because the generator padded by
+    reflection, and a plain DFT would wrap the far edge onto the near one.
+    """
+    a = np.asarray(x, np.float32)
+    for axis in (0, 1):
+        n = a.shape[axis]
+        ext = np.concatenate([a, np.flip(a, axis)], axis=axis)
+        f = np.fft.rfft(ext, axis=axis)
+        w = np.fft.rfftfreq(2 * n)
+        k = np.cos(np.pi * w) ** 2
+        g = k / (k * k + lam)
+        shape = [1] * a.ndim
+        shape[axis] = len(g)
+        a = np.fft.irfft(f * g.reshape(shape), n=2 * n, axis=axis)
+        a = np.take(a, np.arange(n), axis=axis)
+    return np.clip(a, 0, 255).astype(np.uint8)
+
+
 ANALYTIC_VIEWS = {
     # M372: mild filtering preserves the signal. The same bilateral at 5/25
     # scores 0.375 against 0.342 at 7/50, and total variation, the most
@@ -21,6 +50,24 @@ ANALYTIC_VIEWS = {
     "median": lambda x: cv2.medianBlur(x, 3),
     "nlm": lambda x: cv2.fastNlMeansDenoisingColored(x, None, 6, 6, 7, 21),
     "bilateral": lambda x: cv2.bilateralFilter(x, 7, 50, 7),
+    # M462: the generator's chain is affine -> NOISE -> 3x3 blur -> JPEG, so
+    # the noise is added BEFORE the blur and what we observe is blurred white
+    # noise, which is CORRELATED. For matched filtering under correlated noise
+    # the statistically correct preprocessing is whitening, and the whitening
+    # operator here is known exactly: the blur is separable [.25, .5, .25],
+    # whose transfer is cos^2(pi f). Every other view in this dict smooths
+    # FURTHER, which works against the signal rather than the noise.
+    # M463: the generator sets x = a*(clean - pivot) + pivot + b with pivot the
+    # fragment's own grey mean, so a fragment's observed mean is exactly
+    # clean_mean + b and b is an independent draw -- IRRECOVERABLE from the
+    # fragment alone, which is why no restorer touches the 22.7 grey levels of
+    # mean error. Matching does not need b, only invariance to b_i - b_j, so
+    # subtracting each fragment's own mean cancels it exactly. This is NOT
+    # M72's z-normalisation, which also divides by a spread that is mostly
+    # noise on a flat fragment.
+    "demean": lambda x: _demean(x),
+    "whiten": lambda x: _wiener(x, 0.08),
+    "whiten_soft": lambda x: _wiener(x, 0.25),
     "unsharp": lambda x: cv2.addWeighted(
         x, 1.6, cv2.GaussianBlur(x, (0, 0), 1.5), -0.6, 0),
 }

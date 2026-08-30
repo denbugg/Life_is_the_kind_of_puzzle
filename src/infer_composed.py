@@ -1,4 +1,8 @@
-"""The submission: assemble all 576, level the seams, restore against the field.
+"""Assemble all 576 tiles and restore the assembled image.
+
+COMPLIANCE: the output is made only from rearranged input tiles followed by
+restoration.  Pixel-field/high-pass composition has been removed from the
+output path: no command-line option can enable pixel averaging or substitution.
 
 What changed since `infer_conformant.py`
 ----------------------------------------
@@ -20,20 +24,15 @@ M179: the per-fragment brightness the generator hands out can be estimated from
 the steps at the seams and removed, with no knowledge of the layout, and it is
 worth about 0.005 at equal detail on top of everything else.
 
-So the picture is built as
-
-    field(x, y)  +  alpha * highpass(restored assembly, sigma)
-
-with every fragment present, unaltered in shape or position, and corrected only
-in brightness -- which is the restoration the organisers ask for by name.
-`alpha` trades detail against score and `sigma` decides at which scale the
-surviving texture lives; both are choices about what an expert should see.
-alpha 0 is the field alone and is not a submission, since it draws no fragments.
+Those measurements describe a rejected historical experiment.  They must not
+be used for submission scoring: the only rendered image is now the restored
+discrete assembly.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import pickle
 import time
 from pathlib import Path
 
@@ -55,8 +54,14 @@ from border_prior import border_prior, border_scores, content_scores
 from harvest_votes import voted_edges, voted_pool
 from place_search import anneal, corroborate, fill_rest, fill_seams, search
 from edge_selector import selected_edges
+from frame_classifier import frame_features, frame_unary
 from level_seams import level
+from deadness import tile_contrast
+from chooser_edges import chooser_edges, load_chooser
+from verify_edges import load_verifier, verify_harvest
+from quad_rerank import quad_rerank
 from merge_corroborated import merge_by_contact, merge_corroborated
+from path_merge import merge_by_paths
 from restore_tile import TileRestorer, to_frags
 from seam_cost import costs_from_models
 from seam_embed import SeamEmbed
@@ -186,7 +191,11 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
                  swap=0.0, depth=1, weighted=False, analytic=(),
                  merge_support=0, selector=None, sel_depth=2, sel_volume=430,
                  sel_decode="greedy", edges_from="votes",
-                 merge_contact=0):
+                 merge_contact=0, merge_paths=0, dead_fill=0.0,
+                 quad=0.0, seed_cap=0, chooser=None, place_top=0,
+                 edge_floor=None, chooser_floor=None, fill_rounds=1,
+                 verifier=None,
+                 frame_classifier=None, learned_frame_weight=0.0):
     """Full 576-fragment bijection. `fill` decides how the leftovers are placed.
 
     The harvest agrees across architectures AND inputs at once (M212, M214),
@@ -210,9 +219,14 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
     pool = None
     if votes:
         CH, CV = costs_from_models(matcher, tiles)
+        if quad > 0:
+            CH, CV = quad_rerank(CH, CV, weight=quad)
         views = ([tiles] + [_restore_tiles(m, tiles, dev) for m in restorers]
                  + [analytic_view(n, tiles) for n in analytic])
-        if edges_from in ("top1", "mutual", "assignment", "margin"):
+        if chooser is not None:
+            agreed = chooser_edges(chooser, tiles, CH, CV, dev, sel_volume,
+                                   chooser_floor)
+        elif edges_from in ("top1", "mutual", "assignment", "margin"):
             agreed = matrix_edges(CH, CV, edges_from, sel_volume)
         elif selector is not None:
             agreed = selected_edges(selector, matcher, views, dev, orientations,
@@ -221,25 +235,80 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
             agreed = voted_edges(matcher, views, dev, votes,
                                  orientations=orientations, margin=margin,
                                  target=vote_target, order=order, depth=depth,
-                                 weighted=weighted)
+                                 weighted=weighted, quad=quad)
         if frame > 0 and (corroboration > 0 or merge_support > 0):
             pool = voted_pool(matcher, views, dev, orientations)
     else:
         CH, CV, agreed = agreed_edges(matcher, restorers, tiles, dev)
+    if verifier is not None and votes:
+        # M456 makes precision at the harvest volume the only figure that
+        # decides anything, so the harvest is RE-ORDERED by a scorer trained
+        # for exactly that. Nothing is dropped; the weight is an ordering
+        # (M270) and `build_directed_components` spends it on conflicts.
+        agreed = verify_harvest(verifier, tiles, CH, CV, agreed, dev)
+    if edge_floor is not None and votes:
+        # M452: keep every harvested edge whose fused score clears a fixed
+        # THRESHOLD, so the volume is chosen per board instead of being a fixed
+        # count. Boards are nothing alike -- placement is heavy-tailed and the
+        # best board carries eighteen times the mean -- so a fixed count makes a
+        # weak board scrape the bottom of its evidence and stops a strong board
+        # short. At a MATCHED average count of 179 edges the adaptive rule holds
+        # a connected group of 71.5 against the fixed rule's 55.4.
+        agreed = {e: w for e, w in agreed.items()
+                  if -(CH if e[2] == (0, 1) else CV)[e[0], e[1]] >= edge_floor}
+    if order == "raw" and votes and verifier is None:
+        # the verifier's logit IS the ordering, so the raw re-weighting must not
+        # run after it -- it did, and overwrote the verifier's output entirely,
+        # which showed as all 24 boards identical to the fourth decimal.
+        # M450: order the harvested edges by the FUSED SCORE itself rather than
+        # by any margin. The margin is a per-fragment quantity and takes one
+        # edge from every fragment whether or not it has anything to say; the
+        # raw tail takes the board's best edges wherever they are. On the stand
+        # that is 157.2 fragments in correct islands against 143.4 and a
+        # connected group of 56.5 against 50.4. M382 is the caution: a purer
+        # ordering did not reach the pipeline because the conflict rule dropped
+        # the disputed edges anyway.
+        agreed = {e: float(-(CH if e[2] == (0, 1) else CV)[e[0], e[1]])
+                  for e in agreed}
     comps = build_directed_components(
         [i for (i, j, o) in agreed],
         [DIR_RIGHT if o == (0, 1) else DIR_DOWN for (i, j, o) in agreed],
-        [j for (i, j, o) in agreed], list(agreed.values()), max_edges=len(agreed))
+        [j for (i, j, o) in agreed], list(agreed.values()),
+        max_edges=len(agreed), cap=seed_cap)
     if merge_support > 0 and pool:
         comps = merge_corroborated(comps, pool, merge_support)
     if merge_contact > 0:
         comps = merge_by_contact(comps, CH, CV, rounds=merge_contact)
+    if merge_paths > 0:
+        comps = merge_by_paths(comps, CH, CV, min_paths=merge_paths)
     placed = comps
     if frame > 0:
         prior = border_prior(border_scores(matcher, tiles, dev),
                              content_scores(border_net, tiles, dev)
                              if border_net is not None else None, content)
+        if frame_classifier is not None:
+            # Bag-relative missing-neighbour probabilities.  Unlike the old
+            # content prior, this is trained on seam distributions of entire
+            # bags and therefore asks whether a plausible neighbour is absent.
+            stats = np.concatenate([tiles.mean((1, 2)), tiles.std((1, 2))], 1) / 255.0
+            feat = frame_features(-CH, -CV, stats)
+            probability = frame_classifier.predict_proba(feat)[:, 1]
+            learned = frame_unary(probability, G).T.reshape(N, G, G)
+            # Residual evidence, not a replacement.  Scale matching makes the
+            # coefficient portable and preserves the calibrated legacy prior.
+            learned = learned - np.mean(learned)
+            learned *= np.std(prior) / max(float(np.std(learned)), 1e-8)
+            prior = prior + float(learned_frame_weight) * learned
         placed = [c for c in comps if len(c) > 1]
+        if place_top:
+            # M451: place only the biggest few as BLOCKS and send the rest to
+            # the fill. M321 measured that placement follows the largest
+            # coherent block alone -- blocks of 19.6, 27.2 and 37.7 fragments
+            # all pay about 0.002 where one of 194 pays 0.40 -- so the smaller
+            # components buy nothing while giving the search sixty-odd more
+            # degrees of freedom, and M449 measured what freedom does to an
+            # optimum: it drifts to the extreme of the noise.
+            placed = sorted(placed, key=len, reverse=True)[:place_top]
         if dissolve > 0:
             # a component we do not trust is not placed as a block; its
             # fragments go to the fill, where colour decides (M358)
@@ -261,7 +330,8 @@ def solve_layout(matcher, restorers, tiles, dev, cell_colour, fill, votes=8,
         else:
             board, _, _ = search(placed, H, V, rounds=6, baseline_q=0.15,
                                  prior=prior, lam=frame)
-        lay = fill_seams(board, H, V)
+        lay = fill_seams(board, H, V, contrast=tile_contrast(tiles),
+                         dead_q=dead_fill, rounds=fill_rounds)
     else:
         lay = np.asarray(solve_components_from_scores(
             (-CH).astype(np.float32), (-CV).astype(np.float32), comps,
@@ -303,42 +373,22 @@ def texture(tiles, lay, r5, dev, do_level, nlm, bilateral):
     return tex.astype(np.float32)
 
 
-def render(tiles, lay, field480, r5, dev, alpha, sigma, do_level, nlm,
-           bilateral=True):
-    tex = texture(tiles, lay, r5, dev, do_level, nlm, bilateral)
-    hi = tex - cv2.GaussianBlur(tex, (0, 0), sigma)
-    return np.rint(field480 + alpha * hi).clip(0, 255).astype(np.uint8)
-
-
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--matcher", nargs="+",
-                    default=["seam_embed_v3.pt", "seam_embed_local.pt",
-                             "seam_embed_wide.pt"],
+                    default=["seam_embed_v3.pt", "seam_embed_local.pt"],
                     help="one or more matchers; several are combined by the "
-                         "pessimistic minimum of M201, worth about +0.02 edge "
-                         "precision when they are of comparable strength")
+                         "pessimistic minimum of M201. The default exactly "
+                         "matches the ensemble used to train the top-5 chooser")
     ap.add_argument("--restorers", nargs="+", default=["none"],
                     help="restorer checkpoints, one extra VIEW of the board "
                          "each; pass `none` for the raw view alone")
     ap.add_argument("--field", default="coarse_field_v2.pt")
     ap.add_argument("--r5", default="E:/pazzle_work/pazzle_fixed_orientation_20260813/"
                                     "R5_restore_unet/r5_capacity_fp32.pt")
-    ap.add_argument("--alpha", type=float, nargs="+", default=[0.5],
-                    help="how much of the assembly's texture survives; several "
-                         "values share one pass, since the layout is the "
-                         "expensive part and re-rendering it is nearly free")
-    ap.add_argument("--sigma", type=float, default=20.0,
-                    help="cut-off of the high-pass, in pixels; one fragment wide, "
-                         "which M182 measured as the optimum at equal detail")
-    ap.add_argument("--no-field", action="store_true",
-                    help="ship the restored assembly itself, with no colour "
-                         "substitution at all. Costs about 0.05 of SSIM and "
-                         "removes every trace of averaging: M210 measured that "
-                         "at full texture the field is worthless at ANY cut-off "
-                         "-- sigma 20 is worth +0.005 and every larger sigma is "
-                         "worse than not using it -- so there is no middle "
-                         "ground between this and the composed picture")
+    ap.add_argument("--no-field", action="store_true", default=True,
+                    help="deprecated compatibility flag; strict no-field output "
+                         "is unconditional")
     ap.add_argument("--votes", type=int, default=10,
                     help="how many of the eighteen scorers must agree on an "
                          "edge; 0 falls back to the old two-view filter. TEN "
@@ -409,9 +459,25 @@ def main():
                     help="only components of at least this size are ever "
                          "dissolved; small ones are cheap to misplace")
     ap.add_argument("--order",
-                    choices=("margin", "max_margin", "votes", "votes_margin"),
-                    default="margin",
-                    help="what orders the edges as components are built. The "
+                    choices=("margin", "max_margin", "votes",
+                             "votes_margin", "raw"),
+                    default="raw",
+                    help="what orders the edges as components are built. "
+                         "DEFAULT raw (M450): the fused score itself, "
+                         "rather than any margin. A margin is a per-fragment "
+                         "quantity and takes one edge from every fragment "
+                         "whether or not it has anything to say; the raw "
+                         "tail takes the board's best edges wherever they "
+                         "are, and M449 measured that axis as strictly "
+                         "monotone in P(adjacent) to the very top -- the "
+                         "best 0.02% of pairs are 98.5% right. On 24 PAIRED "
+                         "boards it moves ADJACENCY 0.2628 to 0.2714, +3.9 "
+                         "sigma with 20 boards up and 3 down, the clearest "
+                         "pipeline signal measured in this run; SSIM leans "
+                         "up at 0.4 sigma and placement leans down at 0.9, "
+                         "which is noise. The older orderings all read a "
+                         "MARGIN and differ only in which scorer's. "
+                         "ORIGINAL NOTE: The "
                          "weight is an ORDERING and nothing else, and M270 "
                          "measured that ordering decides -- the same edges "
                          "shuffled take clean coverage from 0.931 to 0.268. "
@@ -451,6 +517,110 @@ def main():
                          "measured 291.7 correct bonds at 600 edges against "
                          "greedy's 267.0 at 430, with a clean block of 45.6 "
                          "against 41.5. With this, --sel-volume is per direction")
+    ap.add_argument("--chooser", default="choose5_full_none0_best_bonds.pt",
+                    help="a trained five-candidate chooser (M412, M438). The "
+                         "default is the full 6,700-board best-bonds checkpoint. It "
+                         "picks one of each fragment's five best candidates or "
+                         "abstains, and the picks become the harvest. M409 "
+                         "sizes the door: the top-5 shortlist holds 543 correct "
+                         "bonds once the square is centred, against the "
+                         "percolation knee at 450 to 500 and a top-1 harvest of "
+                         "about 348, so this is the only lever measured that "
+                         "could deliver a multiplier rather than a percentage")
+    ap.add_argument("--chooser-floor", type=float, default=None,
+                    help="optional absolute confidence floor for the chooser; "
+                         "selects a board-dependent edge count, while "
+                         "--sel-volume remains a safety cap")
+    ap.add_argument("--verifier", default="verify_hinge.pt",
+                    help="a trained seam verifier (M459). It re-scores every "
+                         "harvested edge with a JOINT model of the two sides of "
+                         "the join, where every scorer in the roster is a "
+                         "bi-encoder taking a dot product of pooled "
+                         "descriptors, and it is trained for PRECISION AT THE "
+                         "HARVEST VOLUME rather than by retrieval. M456 is why: "
+                         "the connected block runs 350 at edge precision 1.00, "
+                         "186 at 0.99 and 18 at the 0.746 we deliver")
+    ap.add_argument("--fill-rounds", type=int, default=1,
+                    help="how many times to re-solve the leftover assignment. "
+                         "The components cover about two hundred fragments, so "
+                         "on the first pass most free cells have NO placed "
+                         "neighbour and their cost row is flat; after one pass "
+                         "every cell has four, and the assignment can be "
+                         "re-solved against them. The fill decides about 330 "
+                         "of the 576 cells (M226)")
+    ap.add_argument("--edge-floor", type=float, default=None,
+                    help="keep every harvested edge whose FUSED SCORE clears "
+                         "this threshold, letting the volume differ per board "
+                         "instead of being the fixed count `--vote-target` "
+                         "sets. M449 calibrated that axis -- the best 0.02%% of "
+                         "pairs are 98.5%% right -- and M452 measured the rule "
+                         "against a fixed count at MATCHED average volume, 179 "
+                         "edges a board either way: connected group 71.5 "
+                         "against 55.4, so what pays is the adaptivity and not "
+                         "the extra edges. Use with a generous --vote-target so "
+                         "the floor, not the count, decides")
+    ap.add_argument("--place-top", type=int, default=0,
+                    help="place only this many of the largest components as "
+                         "blocks and send every other one to the fill; 0 keeps "
+                         "them all. M321 measured that placement follows the "
+                         "largest coherent block ALONE, so the rest buy "
+                         "nothing and cost the search sixty degrees of freedom")
+    ap.add_argument("--seed-cap", type=int, default=0,
+                    help="refuse any harvested edge that would grow a "
+                         "component past this many fragments; 0 is off. M444 "
+                         "measured what the cap is for: the extra edges of a "
+                         "larger harvest WELD islands together and one wrong "
+                         "edge makes the whole grown island internally wrong, "
+                         "so at 500 edges the uncapped seed keeps 7 correct "
+                         "islands of 40 where a cap of two keeps 77. On the "
+                         "stand the largest TRULY CONNECTED group of correct "
+                         "islands goes 50.4 to 127.8 and the island "
+                         "programme's ceiling 0.2885 to 0.3268")
+    ap.add_argument("--quad", type=float, default=0.4,
+                    help="re-rank every scorer's shortlist by the best 2x2 "
+                         "SQUARE a pair can stand in, at this weight; 0 is "
+                         "off. If j sits to the right of i then whatever "
+                         "sits below i must sit to the left of whatever "
+                         "sits below j, and the pairwise score does not "
+                         "contain that. M93's cycle consistency, already in "
+                         "the cost path, is the linear first-order version; "
+                         "M92 and M404 tried the same evidence as a HARD "
+                         "filter and as a REPLACEMENT and both collapsed, "
+                         "while as a weighted term it pays. The term must "
+                         "be CENTRED per row (M441): these are "
+                         "log-assignments, so an uncentred bonus sinks "
+                         "shortlist members below candidates outside the "
+                         "shortlist and corrupts it instead of re-ordering "
+                         "it, which cost 24 correct bonds a board at depth "
+                         "five and reached nothing downstream. Centred, on "
+                         "24 PAIRED boards: recall@1 +0.0121 at 8.4 sigma, "
+                         "recall@5 +0.0086 at 6.4 sigma, and through the "
+                         "pipeline ADJACENCY 0.2575 to 0.2628 at 2.1 sigma "
+                         "with 15 boards up and 7 down. Placement and SSIM "
+                         "lean up and are unproven, which M402 predicts "
+                         "below the percolation knee. Applied to every "
+                         "scorer BEFORE it votes: on the fused matrix alone "
+                         "it leaves the component count untouched, because "
+                         "the harvest never reads that matrix")
+    ap.add_argument("--dead-fill", type=float, default=0.0,
+                    help="hold back this share of the leftover fragments -- the "
+                         "ones with the least information left in them -- and "
+                         "let the textured fragments take their cells first. "
+                         "M69 measured that misplacing a flat fragment costs "
+                         "2.6x less SSIM than misplacing a textured one, and "
+                         "the fill decides about 330 of the 576 cells, so which "
+                         "fragment is wrong where is not a free choice")
+    ap.add_argument("--merge-paths", type=int, default=0,
+                    help="join islands that this many independent, "
+                         "VERTEX-DISJOINT paths through free fragments agree "
+                         "about, with M248's geometric veto and confidence "
+                         "filter. Measured precision 0.034 at one path, 0.206 "
+                         "at two and 0.400 at three -- the same corroboration "
+                         "M248 found on direct contacts, reaching pairs that "
+                         "do not touch. Volume is the wall: 2.5 offers a board "
+                         "at three paths, and the global reconciliation that "
+                         "should filter them cannot, because the hypotheses "
+                         "form a forest and consistency only bites on cycles")
     ap.add_argument("--merge-contact", type=int, default=0,
                     help="after the components are built, join the pair whose "
                          "contact carries the single BEST seam, this many "
@@ -476,9 +646,9 @@ def main():
                          "this many edges, instead of clearing a fixed one. "
                          "OFF by default: it does raise the assembly's "
                          "adjacency, 0.218 to 0.245, but M347 measured the "
-                         "whole pipeline and the gain does not survive the "
-                         "restorer and the field -- SSIM falls at every alpha, "
-                         "0.2711 to 0.2635 at full texture. Kept because the "
+                         "whole historical pipeline. Its old pixel-composition "
+                         "SSIM measurements are invalid for submission. Kept "
+                         "because the "
                          "adjacency gain is real and reproduces, and because a "
                          "later renderer may convert it")
     ap.add_argument("--margin", type=float, default=0.0,
@@ -501,6 +671,13 @@ def main():
     ap.add_argument("--border-net", default="border_net_v2.pt",
                     help="content border detector; blank to use the structural "
                          "one alone")
+    ap.add_argument("--frame-classifier", default="",
+                    help="pickle from train_frame_classifier.py; replaces the "
+                         "legacy border prior with learned bag-relative "
+                         "missing-neighbour probabilities")
+    ap.add_argument("--learned-frame-weight", type=float, default=0.0,
+                    help="scale-matched residual weight of --frame-classifier; "
+                         "0 preserves the legacy prior exactly")
     ap.add_argument("--content", type=float, default=0.0,
                     help="weight of the content border detector relative to the "
                          "structural one. Default off: at 0.5 it lifts every "
@@ -530,6 +707,8 @@ def main():
     ap.add_argument("--out", default=str(Path(SUB_DIR) / "composed_v1"))
     ap.add_argument("--limit", type=int, default=0, help="smoke run; no ZIP")
     ap.add_argument("--validate", type=int, default=24)
+    ap.add_argument("--validate-offset", type=int, default=0,
+                    help="start inside the frozen final-300 validation split")
     ap.add_argument("--dump-validate", default="",
                     help="save the validation renders and their per-board "
                          "metrics to this directory, so a truth-FREE judge of "
@@ -560,7 +739,10 @@ def main():
         m.load_state_dict(ck.get("model", ck))
         m.eval()
         restorers.append(m)
-    field = load_field(Path(CKPT_DIR) / a.field, dev)
+    # A field may supply unary costs to the discrete placement solver, but its
+    # pixels never enter the rendered image.
+    field = (load_field(Path(CKPT_DIR) / a.field, dev)
+             if a.fill == "field" else None)
     r5 = load_unet(a.r5, dev)
     booster = None
     if a.selector:
@@ -575,14 +757,34 @@ def main():
         bnet.load_state_dict(bk["model"])
         bnet.eval()
     report = {k: getattr(a, k) for k in
-              ("matcher", "field", "alpha", "sigma", "fill", "level", "nlm",
-               "bilateral", "no_field", "votes", "margin",
-               "orientations")}
+              ("matcher", "field", "fill", "level", "nlm",
+               "bilateral", "no_field", "votes", "margin", "verifier",
+               "orientations", "chooser", "chooser_floor", "sel_volume",
+               "frame", "validate_offset")}
     print(json.dumps(report), flush=True)
 
+    # loaded once, not once a board
+    chooser_path = Path(a.chooser)
+    if a.chooser and not chooser_path.is_file():
+        chooser_path = Path(CKPT_DIR) / chooser_path
+    booster_chooser = (load_chooser(chooser_path, dev)
+                       if a.chooser else None)
+    verifier_path = Path(a.verifier)
+    if a.verifier and not verifier_path.is_file():
+        verifier_path = Path(CKPT_DIR) / verifier_path
+    seam_verifier = (load_verifier(verifier_path, dev)
+                     if a.verifier else None)
+    learned_frame = None
+    if a.frame_classifier:
+        with open(a.frame_classifier, "rb") as f:
+            learned_frame = pickle.load(f)["model"]
+
     def one(tiles):
-        """One assembly, rendered at every requested alpha."""
-        big, cells = predict_field(field, tiles, dev)
+        """One discrete assembly followed by restoration."""
+        if field is None:
+            cells = np.zeros((N, 3), np.float32)
+        else:
+            _, cells = predict_field(field, tiles, dev)
         lay, nc = solve_layout(matcher, restorers, tiles, dev, cells, a.fill,
                                a.votes, a.margin, a.orientations, a.frame,
                                a.anneal_iters, bnet, a.content, a.place,
@@ -591,27 +793,32 @@ def main():
                                a.step, a.swap, a.depth, a.weighted,
                                a.analytic, a.merge_support, booster,
                                a.sel_depth, a.sel_volume, a.sel_decode,
-                               a.edges, a.merge_contact)
+                               a.edges, a.merge_contact, a.merge_paths,
+                               a.dead_fill, a.quad, a.seed_cap,
+                               booster_chooser, a.place_top,
+                               a.edge_floor, a.chooser_floor, a.fill_rounds,
+                               seam_verifier, learned_frame,
+                               a.learned_frame_weight)
         tex = texture(tiles, lay, r5, dev, a.level, a.nlm, a.bilateral)
-        if a.no_field:
-            out = np.rint(tex).clip(0, 255).astype(np.uint8)
-            return {al: out for al in a.alpha}, lay, nc
-        hi = tex - cv2.GaussianBlur(tex, (0, 0), a.sigma)
-        return {al: np.rint(big + al * hi).clip(0, 255).astype(np.uint8)
-                for al in a.alpha}, lay, nc
+        out = np.rint(tex).clip(0, 255).astype(np.uint8)
+        return out, lay, nc
 
     if a.validate:
         from skimage.metrics import structural_similarity as ssim_fn
         blob = np.load(Path(CACHE_DIR) / "restore_labels.npz", allow_pickle=True)
         names = [str(n) for n in blob["names"][-300:]]
         inv = blob["inv"][-300:]
-        rows = {al: [] for al in a.alpha}
+        restored = []
         common, per_board = [], []
-        for k in range(min(a.validate, len(names))):
+        start = max(0, a.validate_offset)
+        stop = min(start + a.validate, len(names))
+        if start >= stop:
+            raise ValueError("validation offset/count selects no boards")
+        for k in range(start, stop):
             tgt = load_rgb(Path(TRAIN_TGT) / names[k])
             tiles = to_frags(load_rgb(Path(TRAIN_INP) / names[k])).astype(
                 np.float32)[inv[k].astype(np.int64)]
-            imgs, lay, nc = one(tiles)
+            img, lay, nc = one(tiles)
             flat = np.zeros_like(tgt)
             flat[:] = np.rint(tiles.reshape(-1, 3).mean(0)).clip(0, 255).astype(np.uint8)
             bd = np.asarray(lay).reshape(G, G)
@@ -622,43 +829,38 @@ def main():
                         + (bd[1:] == bd[:-1] + G).sum()) / (2 * G * (G - 1))
             common.append([float(ssim_fn(flat, tgt, channel_axis=2, data_range=255)),
                            float(np.mean(lay == np.arange(N))), nc, adj])
-            for al, img in imgs.items():
-                rows[al].append([float(ssim_fn(img, tgt, channel_axis=2,
-                                               data_range=255)), detail(img)])
+            restored.append([float(ssim_fn(img, tgt, channel_axis=2,
+                                            data_range=255)), detail(img)])
             if a.dump_validate:
                 # the rendered board beside its truth-based metrics, so a
                 # truth-FREE judge can be scored against what actually happened
                 dd = Path(a.dump_validate)
                 dd.mkdir(parents=True, exist_ok=True)
-                for al, img in imgs.items():
-                    cv2.imwrite(str(dd / f"{names[k]}_a{int(al*100):03d}.png"),
-                                img[:, :, ::-1])
+                cv2.imwrite(str(dd / names[k]), img[:, :, ::-1])
                 per_board.append({
                     "name": names[k], "place": float(np.mean(lay == np.arange(N))),
                     "adjacency": adj,
                     "lay": [int(x) for x in np.asarray(lay).reshape(-1)],
-                    "ssim": {f"{al:.2f}": float(ssim_fn(img, tgt, channel_axis=2,
-                                                        data_range=255))
-                             for al, img in imgs.items()}})
+                    "ssim": float(ssim_fn(img, tgt, channel_axis=2,
+                                           data_range=255))})
         c = np.mean(common, axis=0)
+        r = np.mean(restored, axis=0)
         report["validation"] = {
             "flat_fill": round(float(c[0]), 4),
             "place_acc": round(float(c[1]), 4),
             "adjacency": round(float(c[3]), 3),
             "components": round(float(c[2]), 1),
-            "alpha": {f"{al:.2f}": {"ssim": round(float(np.mean(v, 0)[0]), 4),
-                                    "vs_flat": round(float(np.mean(v, 0)[0] - c[0]), 4),
-                                    "detail": round(float(np.mean(v, 0)[1]), 1)}
-                      for al, v in rows.items()}}
+            "restored": {"ssim": round(float(r[0]), 4),
+                         "vs_flat": round(float(r[0] - c[0]), 4),
+                         "detail": round(float(r[1]), 1)}}
         print(json.dumps(report["validation"], indent=1), flush=True)
         if a.dump_validate:
             (Path(a.dump_validate) / "per_board.json").write_text(
                 json.dumps(per_board, indent=1), encoding="utf-8")
 
     out = Path(a.out)
-    dirs = {al: out / f"a{int(round(al * 100)):03d}" for al in a.alpha}
-    for d in dirs.values():
-        d.mkdir(parents=True, exist_ok=True)
+    images_dir = out / "images"
+    images_dir.mkdir(parents=True, exist_ok=True)
     names = sorted(p.name for p in Path(a.test_dir).glob("*.png"))
     if a.limit:
         names = names[:a.limit]
@@ -666,8 +868,8 @@ def main():
     t0 = time.time()
     for i, nm in enumerate(names):
         tiles = to_frags(load_rgb(Path(a.test_dir) / nm)).astype(np.float32)
-        for al, img in one(tiles)[0].items():
-            cv2.imwrite(str(dirs[al] / nm), img[:, :, ::-1])
+        img = one(tiles)[0]
+        cv2.imwrite(str(images_dir / nm), img[:, :, ::-1])
         if (i + 1) % 50 == 0:
             el = time.time() - t0
             print(f"  {i+1}/{len(names)}  {el:.0f}s  eta "
@@ -677,13 +879,10 @@ def main():
     if a.limit:
         print("smoke run: no ZIP written", flush=True)
     else:
-        report["zips"] = {}
-        for al, d in dirs.items():
-            z = out / f"submission_composed_a{int(round(al * 100)):03d}.zip"
-            report["zips"][f"{al:.2f}"] = {"zip": str(z),
-                                           "sha256": deterministic_zip(d, names, z)}
-            print(f"wrote {z}\nsha256 {report['zips'][f'{al:.2f}']['sha256']}",
-                  flush=True)
+        z = out / "submission_assembly_restored.zip"
+        report["zip"] = {"path": str(z),
+                         "sha256": deterministic_zip(images_dir, names, z)}
+        print(f"wrote {z}\nsha256 {report['zip']['sha256']}", flush=True)
     (out / "report.json").write_text(json.dumps(report, indent=1))
     print(json.dumps(report, indent=1), flush=True)
 

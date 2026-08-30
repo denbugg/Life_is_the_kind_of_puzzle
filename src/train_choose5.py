@@ -19,12 +19,23 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader, Dataset
 
+import cv2
+
 from choose5 import K, Choose5, choose_loss, seam_patch
 from config import CKPT_DIR, GRID as G, TRAIN_INP
-from infer_coarse_field import load_rgb
 from restore_tile import to_frags
 
 N = G * G
+
+
+def load_rgb(path):
+    """Read one board. Defined here rather than imported from
+    `infer_coarse_field`, whose module chain pulls in the coarse-field model
+    for the sake of four lines and broke the Kaggle run."""
+    img = cv2.imread(str(path), cv2.IMREAD_COLOR)
+    if img is None:
+        raise RuntimeError(f"unreadable: {path}")
+    return np.ascontiguousarray(img[:, :, ::-1])
 
 
 class _NoCache(dict):
@@ -32,6 +43,9 @@ class _NoCache(dict):
 
     def __setitem__(self, k, v):
         pass
+
+    def get(self, k, default=None):
+        return default
 
 
 class Boards(Dataset):
@@ -45,18 +59,22 @@ class Boards(Dataset):
         return len(self.files)
 
     def __getitem__(self, k):
-        if k in self._cache:
-            return self._cache[k]
-        z = np.load(self.files[k])
-        tiles = to_frags(load_rgb(Path(TRAIN_INP) / str(z["name"]))).astype(
-            np.float32)[z["inv"].astype(np.int64)]
-        item = (torch.from_numpy(tiles),
-                {t: (torch.from_numpy(z[f"{t}_idx"].astype(np.int64)),
-                     torch.from_numpy(z[f"{t}_val"]),
-                     torch.from_numpy(z[f"{t}_lab"].astype(np.int64)))
-                 for t in ("h", "v")})
-        self._cache[k] = item
-        return item
+        hit = self._cache.get(k)
+        if hit is None:
+            z = np.load(self.files[k])
+            # cached as UINT8 and converted on the way out: float32 tiles are
+            # 2.76 MB a board, which is 8.7 GB over the 3141 dumps M412 says
+            # this experiment needs, and uint8 is 2.2 GB
+            tiles = to_frags(load_rgb(Path(TRAIN_INP) / str(z["name"])))[
+                z["inv"].astype(np.int64)].astype(np.uint8)
+            hit = (tiles,
+                   {t: (torch.from_numpy(z[f"{t}_idx"].astype(np.int64)),
+                        torch.from_numpy(z[f"{t}_val"]),
+                        torch.from_numpy(z[f"{t}_lab"].astype(np.int64)))
+                    for t in ("h", "v")})
+            self._cache[k] = hit
+        tiles, packs = hit
+        return torch.from_numpy(tiles.astype(np.float32)), packs
 
 
 def collate(batch):
@@ -93,7 +111,8 @@ def run_board(model, tiles, packs, strip, dev, train, none_weight=0.3):
         pick = logits.argmax(1)
         rows.append((int((pick == y).sum()),
                      int(((pick < K) & (pick == y)).sum()),
-                     int((y == 0).sum()), len(keep)))
+                     int((y == 0).sum()), len(keep),
+                     int((pick < K).sum())))
     return loss_sum, rows
 
 
@@ -155,6 +174,7 @@ def main():
         return got / len(held), base / len(held), tot / len(held), np.std(per)
 
     held_ds = [Boards([f])[0] for f in held]
+    best = [-1.0]
     g, b0, tot, sd = evaluate()
     print(f"[init] chooser {g:.1f} correct bonds, matcher top-1 {b0:.1f}, "
           f"{tot:.0f} fragments with a true partner", flush=True)
@@ -178,12 +198,23 @@ def main():
         print(f"[epoch {ep}] loss {np.mean(run):.4f}  chooser {g:.1f} against "
               f"matcher {b0:.1f} correct bonds  (per-board sd {sd:.1f})",
               flush=True)
+        # saved EVERY epoch, not once at the end: a long run on a rented card
+        # is killed by the clock without warning, and M412's own curve peaks in
+        # the middle and then overfits, so the last epoch is not the one to keep
+        save(model, a, best=False)
+        if g > best[0]:
+            best[0] = g
+            save(model, a, best=True)
+            print(f"  best so far, {g:.1f} correct bonds", flush=True)
 
-    out = Path(CKPT_DIR) / a.out
+    print(f"best held-out result {best[0]:.1f} correct bonds")
+
+
+def save(model, a, best):
+    out = Path(CKPT_DIR) / ((a.out[:-3] + "_best.pt") if best else a.out)
     torch.save({"model": model.state_dict(),
                 "args": {k: getattr(a, k) for k in
                          ("ch", "dim", "strip", "layers", "encoder")}}, out)
-    print(f"wrote {out}")
 
 
 if __name__ == "__main__":

@@ -364,7 +364,8 @@ def anneal(components, CH, CV, iters=40000, baseline_q=0.05, t0=6.0, t1=0.05,
     return board, owner
 
 
-def fill_seams(board, CH, CV, seed=0):
+def fill_seams(board, CH, CV, seed=0, contrast=None, dead_q=0.0,
+               rounds=1):
     """Assign the leftover fragments to the leftover cells by seam evidence.
 
     M226 called the fill rule irrelevant and it is -- for SSIM, where a wrong
@@ -387,6 +388,47 @@ def fill_seams(board, CH, CV, seed=0):
     if not len(free) or not len(unused):
         return fill_rest(board, rng)
     unused = unused[rng.permutation(len(unused))]
+    if dead_q > 0 and contrast is not None and len(unused) > 1:
+        # The generator leaves a share of the fragments with no information in
+        # them -- crushed to black or blown out, visible as solid squares in any
+        # render. Their seam scores are noise, so in one joint assignment they
+        # take cells on meaningless evidence, and M69 measured that this is the
+        # expensive way round: misplacing a FLAT fragment costs 2.6x less SSIM
+        # than misplacing a textured one. So let the textured fragments choose
+        # first, over every free cell, and let the dead ones absorb what is
+        # left. The holes stay open for the fragments that can use them.
+        live = unused[np.argsort(-contrast[unused])[:max(
+            int(round((1 - dead_q) * len(unused))), 1)]]
+        lay = _seam_assign(lay, free, live, CH, CV)
+        free = np.nonzero(lay < 0)[0]
+        unused = np.setdiff1d(np.arange(N), lay[lay >= 0])
+        if not len(free) or not len(unused):
+            return lay if not len(free) else fill_rest(lay.reshape(G, G), rng)
+    lay = _seam_assign(lay, free, unused, CH, CV)
+    # A SECOND pass has evidence the first could not: the components cover
+    # about two hundred fragments, so most free cells start with no placed
+    # neighbour at all and their cost row is flat -- M264 caught a tie in
+    # exactly that situation handing over the answer. After one pass every
+    # cell has four neighbours, so the assignment can be re-solved against
+    # them. The placed components are never disturbed; only the leftovers
+    # are re-assigned among themselves.
+    for _ in range(max(rounds - 1, 0)):
+        # the context is the PREVIOUS fill, not an empty board. Blanking every
+        # free cell again restored the original situation exactly and the
+        # second pass returned the first pass's answer to four decimals.
+        lay = _seam_assign(lay, free, unused, CH, CV, context=lay)
+    return lay
+
+
+def _seam_assign(lay, free, unused, CH, CV, context=None):
+    """One Hungarian solve of `unused` fragments into `free` cells by seams.
+
+    `context` supplies the neighbours to score against. On the first pass it is
+    the board with the free cells still empty, so a cell with no placed
+    neighbour has a flat row; on a later pass it is the previous fill, which
+    gives every cell four neighbours to be judged by.
+    """
+    ctx = lay if context is None else context
     C = np.zeros((len(free), len(unused)))
     for k, c in enumerate(free):
         r, q = divmod(int(c), G)
@@ -394,7 +436,7 @@ def fill_seams(board, CH, CV, seed=0):
                                  ((r - 1, q), CV, False), ((r + 1, q), CV, True)):
             if not (0 <= rr < G and 0 <= qq < G):
                 continue
-            v = lay[rr * G + qq]
+            v = ctx[rr * G + qq]
             if v >= 0:
                 C[k] += M[unused, v] if fwd else M[v, unused]
     a, b = linear_sum_assignment(C)
