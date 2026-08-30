@@ -8,15 +8,17 @@
   train/backward smoke on the RTX 4060.
 - M forward smoke with two boards peaked near 268 MB allocated CUDA memory.
 
-## Running
+## Results
 
-- Full order: T-S, T-M, T-MC.
-- Each variant uses four scene-group CV folds, then a final fit and locked
-  validation. OOF margins calibrate fallback to the handcrafted baseline.
+- T-S was rejected by OOF calibration, so fallback reproduced the baseline.
+- T-M improved OOF by `0.0008884` but lost `0.0060009` on locked validation.
+- T-MC improved OOF by `0.0003832` and lost `0.0009058` on validation.
+- Clean/noisy agreement stayed between 0% and 11.5%, falsifying the robustness
+  mechanism. Larger capacity did not solve the selector-identifiability issue.
 
 ## Next levers
 
-- Promote only a group-OOF winner.
-- If all cell-token transformers fail, change the lever to a transformer over
-  the *set of candidate boards* or use the local transformer map only to guide
-  LNS; do not scale parameters blindly.
+- Change the lever to a model over the *set of candidate boards*, where the task
+  is explicitly comparative, or use local error predictions only to guide LNS.
+- Improve candidate oracle before another final-selector experiment; locked
+  validation currently offers only `0.00147` headroom.
