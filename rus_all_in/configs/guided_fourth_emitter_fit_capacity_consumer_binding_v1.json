@@ -1,0 +1,43 @@
+{
+  "schema": "aiijc-guided-fourth-emitter-fit-capacity-consumer-binding-v1",
+  "status": "signed-fixed-capacity-consumer-only",
+  "purpose": "Authorize exactly one post-freeze FIT-label attachment that measures candidate coverage capacity of the frozen four-emitter sidecars; this does not authorize model fitting, DEV evaluation, promotion, terminal/test access, or submission generation.",
+  "producer_protocol": {
+    "path": "configs/guided_fourth_emitter_fit_capacity_preregistered_v1.json",
+    "sha256": "02bdcc09de2c7e063ae52c7d0537721662211338dd5b97de91081363cf9cfdcd"
+  },
+  "frozen_target_free_inputs": {
+    "roster_audit": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/roster-audit.json",
+      "sha256": "c0f7ba5419d290fff1f4ee49087d91e2b198d78f65f82b494d0bdee43e881969"
+    },
+    "metadata": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/target-free-cache.json",
+      "sha256": "dda6f0220f949a9d893d715429b195535490bff69089493e44407c770725df3a"
+    },
+    "pre_label_freeze": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/pre-label-freeze.json",
+      "sha256": "f338ca3ad5ffaa54bae6a94695dd574fe6c53e9dc23b5c1e9cf39bcc4c6f00ef"
+    }
+  },
+  "fixed_consumer": {
+    "runner_mode": "attach-fit-labels",
+    "consumer": "coverage-count-only",
+    "inputs": ["candidates", "valid", "emitter_topk"],
+    "outputs": ["truth_by_source", "target_slots"],
+    "labels_physically_separate": true,
+    "metrics": ["raw_top32", "guided_top32", "legacy_union", "extended_union", "guided_unique_recovered"],
+    "decision_metric": "extended_union_minus_legacy_union_true_neighbours",
+    "threshold_selection_or_sweep": false,
+    "model_training": false,
+    "real_protocol_signed": false
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "verify_all_pre_label_hashes_before_reference_recreation": true,
+    "legacy_cache_modified": false,
+    "guided_pixels_matcher_only": true,
+    "dev_local_terminal_test_or_submission_access": false,
+    "promotion_claim": false
+  }
+}

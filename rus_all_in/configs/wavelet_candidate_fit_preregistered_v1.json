@@ -1,0 +1,77 @@
+{
+  "schema": "aiijc-wavelet-candidate-fit-protocol-v1",
+  "status": "signed-target-free-freeze-only",
+  "purpose": "Freeze exactly one per-tile per-channel one-level Haar-BayesShrink top-32 emitter on organizer-train FIT32 x draw2. No label scoring, tuning, fitting, or non-FIT access is authorised by this config.",
+  "labels_opened_by_freeze_stage": false,
+  "dev_local_terminal_test_or_submission_modes": [],
+  "fixed_recipe": {
+    "name": "per_tile_per_channel_haar_bayesshrink",
+    "levels": 1,
+    "wavelet": "orthonormal_haar",
+    "block_phase": "tile_top_left_nonoverlapping_2x2",
+    "noise_estimator": "diagonal_detail_mad_div_0.67448975",
+    "threshold": "per_detail_bayes_sigma_noise_squared_div_sigma_signal",
+    "thresholding": "soft",
+    "lowpass": "unchanged",
+    "top_k": 32,
+    "matcher_view_only": true
+  },
+  "source_protocol": {
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "fit_draw_indices": [
+      0,
+      1
+    ],
+    "case_seed": 20260914,
+    "case_count": 64
+  },
+  "coverage_gate": {
+    "minimum_incremental_gain_over_all6": 0.003,
+    "interpretation": "below 0.3 percentage points raw incremental coverage is a compact stop"
+  },
+  "volume_matched_null_gate": {
+    "null_model": "for each eligible exact-neighbour miss of frozen all6, uniformly sample without replacement the exact target-blind count of wavelet identities absent from that row's all6 union from the remaining 575-minus-union-size identities",
+    "minimum_specific_excess_absolute_gain": 0.001,
+    "source_bootstrap_lower_bound_must_exceed": 0.0,
+    "interpretation": "retain requires at least +0.1 percentage points exact-neighbour excess beyond matched random volume and a strictly positive 95% source-bootstrap lower bound"
+  },
+  "frozen_inputs": {
+    "local_rank_fit_config": {
+      "path": "configs/local_rank_candidate_fit_preregistered_v1.json",
+      "sha256": "ea11e9cc3c76ea4463ef08c56ca625f99f92298033e87cacf99b8c24b7bd9689"
+    },
+    "local_rank_target_free_metadata": {
+      "path": "outputs/local-rank-candidate-emitter/fit32-draw2-v1/target-free-cache.json",
+      "sha256": "e3c975b3a978ac41bc4045c90d3557f24b68d7f0fbd4957538ec1666e628b78b"
+    },
+    "local_rank_pre_label_freeze": {
+      "path": "outputs/local-rank-candidate-emitter/fit32-draw2-v1/pre-label-freeze.json",
+      "sha256": "941ece63e63d1d4adb2135fc8802618c6583ce066bcae411bf1e4bcc96704aab"
+    },
+    "validation_manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "wavelet_module": {
+      "path": "src/aiijc_puzzle/wavelet_shrink_matcher_view.py",
+      "sha256": "42bd344168611f120d91f29b3b94f3227c3ae8b6f3cade0cd22e76a847dcb1b6"
+    },
+    "wavelet_runner": {
+      "path": "scripts/run_wavelet_candidate_fit_capacity.py",
+      "sha256": "5f381eac1172e13ede08253af9e919b8ad35c04cb85677e3c5bdf5249439bf5d"
+    },
+    "wavelet_tests": {
+      "path": "tests/test_wavelet_shrink_matcher_view.py",
+      "sha256": "da51468f73c9e5288c2417aa901a91871d73bbbfa012d707fadebe2f93e8efcc"
+    }
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "original_upright_tiles_unchanged": true,
+    "wavelet_pixels_matcher_only": true,
+    "candidate_identities_target_blind": true,
+    "append_only_over_frozen_all6": true,
+    "direct_fusion_or_replacement_authorized": false,
+    "dev_local_terminal_test_submission_modes": false
+  }
+}

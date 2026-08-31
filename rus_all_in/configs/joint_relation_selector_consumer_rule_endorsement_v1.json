@@ -1,0 +1,46 @@
+{
+  "schema": "aiijc-joint-relation-selector-consumer-rule-endorsement-v1",
+  "status": "signed-fixed-rule-awaiting-target-free-artifact-hashes",
+  "purpose": "Freeze the complete target-free whole-arm selection and Pareto evaluation rule before either joint DEV or same-case six-arm target-free artifact exists; this endorsement is not executable by itself.",
+  "blocked_template": {
+    "path": "configs/joint_relation_selector_consumer_unsigned_template_v1.json",
+    "sha256": "7eb3f462e642a2792d05ce44f711d44311bb6a9347dfc2434c55ca1c5fce8b53"
+  },
+  "rule_commitment_sha256": "07c4e4af4c0ce427704636b7421eabb4cdec815d3947d759002636efb96631d6",
+  "frozen_implementation": {
+    "module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_consumer.py",
+      "sha256": "e82f1e6e1701ebec41f35c138dc5116357420d8d19fa05103e9fe739ada38dd6"
+    },
+    "runner": {
+      "path": "scripts/run_joint_relation_selector_consumer.py",
+      "sha256": "ed365446b3283e9ad153f5473fad36fc918297f3f3332e9cc6163b7b9e371273"
+    },
+    "tests": {
+      "path": "tests/test_joint_relation_selector_consumer.py",
+      "sha256": "63f2717dde8b90bc6f0b5c6722bfd5f753a47d39b7275ef913f8fbe116a0c6f1"
+    }
+  },
+  "parent_joint_protocol_sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+  "dev_roster_digest": "93112f89096f8e9555172f10f6934fd8dd5abf48a8029b86a8803d507e79e87e",
+  "selection_rule": {
+    "name": "axiswise-fixed-head-dominance-then-frozen-lexicographic-v1",
+    "fixed_head_fraction": 0.05,
+    "fixed_head_count_per_axis": 29,
+    "candidate_layouts": "exactly the six existing frozen strict whole-arm layouts",
+    "eligibility": "right and down head hits each nondecreasing versus incumbent and total head hits strictly increasing",
+    "tie_break": ["total head hits", "minimum per-axis hit delta", "summed joint confidence", "summed learned head logits", "frozen HGB score", "frozen arm order"],
+    "new_edge_or_layout_synthesis": false
+  },
+  "evaluation_gate": {
+    "mean_satisfied_pairs_delta_minimum": 0.0,
+    "mean_exact_tiles_delta_minimum": 0.0,
+    "mean_absolute_manhattan_delta_maximum": 0.0,
+    "mean_radius2_recall_delta_minimum": 0.0,
+    "require_at_least_one_changed_case": true,
+    "require_at_least_one_strict_aggregate_improvement": true,
+    "posthoc_rule_or_threshold_change": false
+  },
+  "execution_authorized": false,
+  "required_before_execution": ["verified joint DEV target-free archive/meta/freeze hashes", "verified same-case target-free six-arm roster archive/meta/freeze hashes", "separate signed executable config preserving every endorsed rule field"]
+}

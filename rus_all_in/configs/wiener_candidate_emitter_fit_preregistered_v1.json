@@ -1,0 +1,63 @@
+{
+  "schema": "aiijc-wiener-candidate-emitter-fit-protocol-v1",
+  "status": "signed-target-free-freeze-only",
+  "purpose": "Freeze one CPU-only local-Wiener top-32 candidate emitter on the immutable organizer-train FIT32 x draw2 roster. This config cannot authorize label scoring or any DEV, local, terminal, competition-test, submission, model-fit, or parameter-selection action.",
+  "labels_opened_by_freeze_stage": false,
+  "dev_local_terminal_test_or_submission_modes": [],
+  "fixed_recipe": {
+    "name": "per_tile_per_channel_local_wiener",
+    "window": 3,
+    "padding": "reflect",
+    "noise_variance": "mean_local_variance_per_tile_channel",
+    "top_k": 32,
+    "matcher_view_only": true
+  },
+  "source_protocol": {
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "fit_draw_indices": [
+      0,
+      1
+    ],
+    "case_seed": 20260914,
+    "case_count": 64
+  },
+  "coverage_gate": {
+    "minimum_absolute_gain": 0.01,
+    "minimum_positive_source_groups": 24,
+    "interpretation": "exploratory FIT candidate-supply retention only; never promotion evidence"
+  },
+  "frozen_inputs": {
+    "guided_fit_config": {
+      "path": "configs/guided_fourth_emitter_fit_capacity_preregistered_v1.json",
+      "sha256": "02bdcc09de2c7e063ae52c7d0537721662211338dd5b97de91081363cf9cfdcd"
+    },
+    "guided_target_free_metadata": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/target-free-cache.json",
+      "sha256": "dda6f0220f949a9d893d715429b195535490bff69089493e44407c770725df3a"
+    },
+    "validation_manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "wiener_module": {
+      "path": "src/aiijc_puzzle/wiener_matcher_view.py",
+      "sha256": "70ebbbdff32f86e9c5657ff2ab5b203899d6a13f158acfd757b535f916238ad1"
+    },
+    "wiener_runner": {
+      "path": "scripts/run_wiener_candidate_emitter_fit_capacity.py",
+      "sha256": "081254e73b699baa268d0a3c25ae49d28281fc40c56ca26ff24dc8cb76dd20a6"
+    },
+    "wiener_tests": {
+      "path": "tests/test_wiener_matcher_view.py",
+      "sha256": "befa0b47a7972c56dd666bd479948befda6285ec38c664371e59e5a0da00ca26"
+    }
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "original_upright_tiles_unchanged": true,
+    "filtered_pixels_matcher_only": true,
+    "candidate_identities_target_blind": true,
+    "legacy_candidate_cache_read_only": true,
+    "output_images_or_submissions_written": false
+  }
+}

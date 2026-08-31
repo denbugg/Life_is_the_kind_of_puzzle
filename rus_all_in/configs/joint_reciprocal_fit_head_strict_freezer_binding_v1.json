@@ -1,0 +1,55 @@
+{
+  "schema": "aiijc-joint-reciprocal-fit-head-strict-freezer-binding-v1",
+  "status": "signed-fixed-target-free-freezer",
+  "purpose": "Bind the completed single v2 FIT endpoint to one inference-only fixed-5% FIT-head freeze whose NPZ loader never materialises target_slots; no scoring or DEV access is authorized.",
+  "parent_protocol": {
+    "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+    "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"
+  },
+  "frozen_implementation": {
+    "strict_freezer": {
+      "path": "scripts/freeze_joint_reciprocal_fit_heads_target_free.py",
+      "sha256": "0a9332e8871c83bafa5408d3774bc25c6455e62c46e5b0cc10fc6973bd129524"
+    },
+    "strict_freezer_test": {
+      "path": "tests/test_freeze_joint_reciprocal_fit_heads_target_free.py",
+      "sha256": "45908bd7105a0f0986b650dc718c881d57893b1159472f04ad07d06cc2c70674"
+    },
+    "fit_runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_real.py",
+      "sha256": "7b6f760155f86c9c3c465a8833c9c71687123b0ac248a64d55b91d0f8c1ad82c"
+    },
+    "model": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "13a5a649815c1dd48d9db69ca30d3303e3f70237688657156f4c19d7ae196ad3"
+    }
+  },
+  "fixed_invocation": {
+    "config": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+    "experiment_dir": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2",
+    "device": "mps",
+    "allow_nondeterministic_mps": true,
+    "fixed_fraction_per_axis_per_board": 0.05,
+    "requested_count_per_axis_per_board": 29,
+    "exclusive_outputs": [
+      "fit/frozen-target-free-reciprocal-heads.npz",
+      "fit/frozen-target-free-reciprocal-heads.json",
+      "fit/reciprocal-heads-pre-score-freeze.json"
+    ]
+  },
+  "loader_contract": {
+    "full_member_names_inspected": ["auxiliary", "candidates", "dino_sides", "emitter_topk", "raw_baseline", "raw_sides", "target_slots", "valid"],
+    "materialised_allowlist": ["auxiliary", "candidates", "dino_sides", "emitter_topk", "raw_baseline", "raw_sides", "valid"],
+    "label_members_materialised": [],
+    "target_slots_payload_access": false,
+    "strict_loader_schema": "aiijc-joint-reciprocal-strict-target-free-fit-cache-loader-v1"
+  },
+  "authorization_boundary": {
+    "require_complete_1752_step_endpoint_and_report": true,
+    "fit_head_label_scoring": false,
+    "structured_consumer_preregistered_before_any_label_load": true,
+    "dev_pixels_or_labels": false,
+    "local_or_terminal": false,
+    "competition_test_or_submission": false
+  }
+}

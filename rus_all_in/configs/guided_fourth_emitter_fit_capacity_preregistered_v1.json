@@ -1,0 +1,240 @@
+{
+  "schema": "aiijc-guided-fourth-emitter-fit-capacity-protocol-v1",
+  "status": "signed-fit-cache-capacity-only-not-real-protocol",
+  "purpose": "Build one target-free guided-fourth-emitter sidecar over the immutable tri-emitter FIT32 x draw2 caches. This is cache/capacity plumbing only and cannot authorize any real DEV, local, terminal, test or submission run.",
+  "real_protocol_signed": false,
+  "labels_stage_requires_separate_authorization": true,
+  "fixed_candidate_path": {
+    "legacy_emitters": [
+      "raw_d64_ot",
+      "adapter_step1600",
+      "dinov2_boundary"
+    ],
+    "fourth_emitter": "guided_standalone_r2_eps1600",
+    "top_k_per_emitter": 32,
+    "legacy_slot_width": 96,
+    "extended_slot_width": 128,
+    "guided_auxiliary_dim": 7,
+    "legacy_slots_byte_stable": true,
+    "raw_top32_always_retained": true,
+    "guided_new_identities_append_only": true,
+    "guided_recipe": {
+      "radius": 2,
+      "epsilon_uint8_squared": 1600.0,
+      "fusion_weight": 0.5,
+      "standalone_recovery": "2*fused-minus-bilateral"
+    }
+  },
+  "source_protocol": {
+    "fit_filenames": [
+      "img_000934.png",
+      "img_001317.png",
+      "img_001988.png",
+      "img_006170.png",
+      "img_002442.png",
+      "img_000789.png",
+      "img_003117.png",
+      "img_002434.png",
+      "img_004562.png",
+      "img_000867.png",
+      "img_002813.png",
+      "img_006141.png",
+      "img_006402.png",
+      "img_004204.png",
+      "img_006205.png",
+      "img_002727.png",
+      "img_004951.png",
+      "img_001111.png",
+      "img_000043.png",
+      "img_003181.png",
+      "img_000413.png",
+      "img_001093.png",
+      "img_005873.png",
+      "img_004418.png",
+      "img_002898.png",
+      "img_004595.png",
+      "img_001345.png",
+      "img_001996.png",
+      "img_000694.png",
+      "img_005357.png",
+      "img_005123.png",
+      "img_005951.png"
+    ],
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "fit_draw_indices": [
+      0,
+      1
+    ],
+    "case_seed": 20260914,
+    "forbidden_rosters": {
+      "opened_local16": {
+        "digest": "25ea956a8514d72cb09b8093f12999534995cf75fb18b383834acf38693ca47f",
+        "filenames": [
+          "img_005112.png",
+          "img_003267.png",
+          "img_006830.png",
+          "img_003532.png",
+          "img_001373.png",
+          "img_000065.png",
+          "img_006854.png",
+          "img_006107.png",
+          "img_003052.png",
+          "img_005135.png",
+          "img_006888.png",
+          "img_005993.png",
+          "img_002755.png",
+          "img_000454.png",
+          "img_004705.png",
+          "img_000225.png"
+        ]
+      },
+      "protected_terminal16": {
+        "digest": "2a39d853772aa2c6d23d8b7dbc59f726e2f3a3ecfe098e96ad065c1bbd6d65a6",
+        "filenames": [
+          "img_000181.png",
+          "img_001541.png",
+          "img_003049.png",
+          "img_003731.png",
+          "img_000013.png",
+          "img_003547.png",
+          "img_003602.png",
+          "img_001242.png",
+          "img_003903.png",
+          "img_006494.png",
+          "img_004199.png",
+          "img_006322.png",
+          "img_000943.png",
+          "img_006464.png",
+          "img_006818.png",
+          "img_001766.png"
+        ]
+      },
+      "opened_socket_dev32": {
+        "digest": "93112f89096f8e9555172f10f6934fd8dd5abf48a8029b86a8803d507e79e87e",
+        "filenames": [
+          "img_004604.png",
+          "img_006179.png",
+          "img_004153.png",
+          "img_001598.png",
+          "img_006463.png",
+          "img_000896.png",
+          "img_000968.png",
+          "img_001364.png",
+          "img_004060.png",
+          "img_003856.png",
+          "img_005219.png",
+          "img_004516.png",
+          "img_006404.png",
+          "img_004233.png",
+          "img_005956.png",
+          "img_001000.png",
+          "img_006967.png",
+          "img_004934.png",
+          "img_005632.png",
+          "img_005309.png",
+          "img_004280.png",
+          "img_001953.png",
+          "img_006794.png",
+          "img_001490.png",
+          "img_006879.png",
+          "img_006563.png",
+          "img_000928.png",
+          "img_005550.png",
+          "img_003769.png",
+          "img_004729.png",
+          "img_006705.png",
+          "img_003595.png"
+        ]
+      },
+      "opened_guided_dev16": {
+        "digest": "13f7fe84262f9c4d0aee7ce80dfdc1edeec3ce7f1b5082f06ae5c6aceda6fa5f",
+        "filenames": [
+          "img_002555.png",
+          "img_000865.png",
+          "img_001561.png",
+          "img_004284.png",
+          "img_006553.png",
+          "img_002209.png",
+          "img_002637.png",
+          "img_002147.png",
+          "img_003004.png",
+          "img_000436.png",
+          "img_005142.png",
+          "img_000261.png",
+          "img_000676.png",
+          "img_000530.png",
+          "img_003308.png",
+          "img_005798.png"
+        ]
+      }
+    }
+  },
+  "legacy_cache_inventory_digest": "7f8bb8f03223866582211973b1ee2c2829527d12d560e4480ccd607333efc80e",
+  "stage_protocol": {
+    "audit": "metadata-only roster, no-repeat and immutable legacy cache hash audit",
+    "freeze_fit": "replay exactly 64 dirty FIT bags without constructing references; save append-only guided sidecars and pre-label hashes",
+    "attach_fit_labels": "blocked pending separate authorization and consumer binding; verify every pre-label hash before recreating FIT references",
+    "dev_mode_available": false,
+    "local_mode_available": false,
+    "terminal_mode_available": false,
+    "competition_test_mode_available": false,
+    "submission_mode_available": false
+  },
+  "capacity_gate": {
+    "minimum_total_novel_slots": 1,
+    "require_candidate_coverage_nonregression": true,
+    "promotion_claim": false
+  },
+  "frozen_inputs": {
+    "legacy_tri_report": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/report.json",
+      "sha256": "29686696e606f7b8c0aed51ba6baa24ba87cfcb68841a143b01b3c921b543b0b"
+    },
+    "authoritative_roster_audit": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/roster-audit-v1/report.json",
+      "sha256": "6105680a08ee4140d56b7a326cc6539c4b958d12052a4922b99d9ecfced79797"
+    },
+    "legacy_tri_config": {
+      "path": "configs/tri_emitter_edge_verifier_full_preregistered_v1.json",
+      "sha256": "093c7444fadba7d1d9470ce8d62d311374aa01e3bebc712972a5079f9c58fa12"
+    },
+    "legacy_tri_module": {
+      "path": "src/aiijc_puzzle/tri_emitter_edge_verifier.py",
+      "sha256": "dd647d73482e1efae34948d01d33a6b6e3df3efce43dd42a82842f712a52a546"
+    },
+    "fixed_guided_config": {
+      "path": "configs/guided_matcher_view_opened32_v1.json",
+      "sha256": "5a868a6bda64dfd33db40827b7b9c40b72ff80f2d1b093196838d840c83db1c2"
+    },
+    "fixed_guided_module": {
+      "path": "src/aiijc_puzzle/guided_matcher_view.py",
+      "sha256": "2902ad2a2c83fea9bdd2d6657c99184190c0e030ac777b5fde39b3e32028f8ed"
+    },
+    "guided_supply_evidence": {
+      "path": "outputs/guided-matcher-view/supply-diagnostic-opened32-v1/report.json",
+      "sha256": "ce55e1b61fea3a1494a1bf60eac1fa67c81d127fd2ee797a1ce9cef50621870a"
+    },
+    "fourth_emitter_module": {
+      "path": "src/aiijc_puzzle/guided_fourth_emitter.py",
+      "sha256": "19af34df610182b354848ff168dbb6d42cf904c7d21c223c13bedabaa9ff7672"
+    },
+    "capacity_runner": {
+      "path": "scripts/run_guided_fourth_emitter_fit_capacity.py",
+      "sha256": "9bc60743b9de54f152c9d56d52f36e408b9ea42351aa671f1d59fa0bbed50cc3"
+    },
+    "validation_manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    }
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "guided_pixels_matcher_only": true,
+    "candidate_identities_target_blind": true,
+    "legacy_npz_modified": false,
+    "output_tiles_modified_or_rendered": false,
+    "strict_original_upright_permutation_requirement_unchanged": true,
+    "weco_written": false,
+    "git_written": false
+  }
+}

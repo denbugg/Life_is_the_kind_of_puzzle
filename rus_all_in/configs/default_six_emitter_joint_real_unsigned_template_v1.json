@@ -1,0 +1,248 @@
+{
+  "schema": "aiijc-default-six-emitter-joint-real-protocol-v1",
+  "status": "unsigned-template-blocked-no-training-binding-or-fresh-dev",
+  "purpose": "Target-free implementation template for one compact rank-only raw+adapter1600+DINO+guided+Wiener+Haar joint verifier. This file is intentionally unsigned and cannot authorise FIT training, label access, DEV/local/terminal/competition-test scoring, solver use, promotion or submission generation.",
+  "real_protocol_signed": false,
+  "blocked_reasons": [
+    "The existing physically separated FIT labels and their binding authorise capacity counting only; model training requires a new signed consumer binding.",
+    "The source-disjoint DEV32 used for the tri-v2 prerequisite is already scored. No fresh organizer-train source remains for independent expanded-consumer promotion.",
+    "No real default-six compact cache, FIT endpoint or evaluation freeze exists; this scaffold has synthetic tests only."
+  ],
+  "tri_v2_dev_prerequisite": {
+    "required": true,
+    "satisfied": true,
+    "score_path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/dev/score.json",
+    "score_sha256": "9548487b73481d5ec01963911a75c62d117ae634d7105df708edad1802be5274",
+    "status": "pass-emitter-eligible-decoder-still-separate",
+    "gate_passed": true,
+    "pooled_r1_gain": 0.007133152173913054,
+    "pooled_r5_gain": 0.011690443840579712,
+    "fixed_head_precision_gain": {
+      "right": 0.11422413793103448,
+      "down": 0.09267241379310343,
+      "pooled": 0.10344827586206895
+    },
+    "each_axis_nonnegative": true,
+    "decoder_authorised": false
+  },
+  "fixed_model": {
+    "architecture": "joint-reciprocal-default-six-rank-only-v1",
+    "emitter_order": [
+      "raw",
+      "adapter1600",
+      "dinov2",
+      "guided",
+      "wiener",
+      "haar_bayesshrink"
+    ],
+    "wavelet_sidecar_source_indices": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6
+    ],
+    "top_k_per_emitter": 32,
+    "dynamic_compact_width": true,
+    "theoretical_width_cap": 192,
+    "supply_feature_schema": "interleaved-membership-and-zero-based-rank-quality-v1",
+    "supply_feature_dim": 12,
+    "direct_score_fusion": false,
+    "legacy_head_scope": "legacy_slot_present_only",
+    "novel_tri_auxiliary": "forbidden_not_zero_imputed",
+    "legacy_masked_gather_identity": "source_tile",
+    "guided_only_path": "frozen-guided-baseline-plus-guided-residual",
+    "wiener_haar_only_path": "neutral-zero-plus-rank-membership-supply-residual",
+    "legacy_backbone_frozen": true,
+    "guided_residual": "LayerNorm(7)-Linear(7,16)-GELU-Linear(16,1)-zero-final",
+    "supply_residual": "LayerNorm(12)-Linear(12,16)-GELU-Linear(16,1)-zero-final",
+    "parameter_counts": {
+      "total": 41717,
+      "trainable": 414
+    },
+    "learned_row_none_per_axis": true,
+    "learned_column_none_per_axis": true,
+    "confidence_bias_and_temperature": true,
+    "local_rank": {
+      "wavelet_sidecar_source_index": 5,
+      "enabled": false,
+      "future_requirement": "separate learned reject plus row-conditioned volume-matched-null confirmation"
+    },
+    "rank_only_limitation": "Continuous Wiener/Haar scores and full tri score statistics for novel identities are not frozen. A future content upgrade must rematerialise those target-free statistics or train a separately frozen novel-edge content head."
+  },
+  "target_free_cache_consumer": {
+    "legacy_safe_keys": [
+      "raw_sides",
+      "dino_sides",
+      "candidates",
+      "valid",
+      "auxiliary",
+      "raw_baseline",
+      "emitter_topk"
+    ],
+    "guided_sidecar_keys": [
+      "candidates",
+      "valid",
+      "legacy_slot",
+      "guided_auxiliary",
+      "guided_baseline",
+      "emitter_topk",
+      "legacy_identity_digest_ascii",
+      "identity_digest_ascii"
+    ],
+    "wavelet_sidecar_keys": [
+      "emitter_topk"
+    ],
+    "wavelet_sidecar_shape": [
+      7,
+      2,
+      576,
+      32
+    ],
+    "wavelet_sidecar_dtype": "int32",
+    "guided_valid_slot_compaction": true,
+    "candidate_append_order": [
+      "guided_compact",
+      "wiener",
+      "haar_bayesshrink"
+    ],
+    "all_emitter_top32_retained": true,
+    "candidate_rows_unique_and_self_free": true,
+    "legacy_and_guided_back_pointers_exact": true,
+    "local_rank_ignored_even_though_present_in_source_sidecar": true,
+    "archive_extra_or_label_keys_rejected": true,
+    "identity_mapping_and_feature_digest_required": true,
+    "exclusive_write_and_verified_load_required": true
+  },
+  "objective": {
+    "row_cross_entropy_weight": 1.0,
+    "column_cross_entropy_weight": 1.0,
+    "confidence_bce_weight": 0.25,
+    "delta_l2_weight": 0.001,
+    "softmin_tau": 0.25,
+    "fixed_reciprocal_fraction_per_axis_per_board": 0.05,
+    "threshold_fraction_roster_or_emitter_weight_sweep": false
+  },
+  "proposed_training": {
+    "authorised": false,
+    "legacy_endpoint_path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/joint_reciprocal_endpoint.pt",
+    "legacy_endpoint_sha256": "66244123312b794ea6c1ae077f608653db99a122473a47d25712a374e3fe7747",
+    "initialisation": "exact tri-v2 state transplant; guided and supply final layers remain zero",
+    "trainable_scope": "guided residual, supply residual, row/column NONE, confidence bias and temperature only",
+    "fit_case_count": 64,
+    "one_endpoint_one_seed": true,
+    "checkpoint_selection": "single-final-endpoint-no-selection",
+    "labels_must_be_physically_separate_and_newly_bound": true,
+    "no_nearby_architecture_loss_schedule_or_feature_sweep": true
+  },
+  "proposed_evaluation": {
+    "authorised": false,
+    "fresh_dev_available": false,
+    "current_dev_reuse_role": "diagnostic-only-never-independent-promotion",
+    "decoder_solver_and_submission_opening": false
+  },
+  "implementation_artifacts": {
+    "model_cache_and_freeze_module": {
+      "path": "src/aiijc_puzzle/default_six_emitter_joint_verifier.py",
+      "sha256": "67ac564a0b2b0971130259faf1dab8f8c78ec9ddcaa1f9fa38309c4bbcdd65fe"
+    },
+    "synthetic_contract_tests": {
+      "path": "tests/test_default_six_emitter_joint_verifier.py",
+      "sha256": "980d430a43904928f8d28fe9dd5cd92bc588e9d10ffe95e6a8bb984a0ea18e6a"
+    },
+    "unsigned_template_test": {
+      "path": "tests/test_default_six_emitter_joint_real_template.py",
+      "sha256": "7a8c490ec5fbd4614df6645cfd77b0d2710894e373ff24cdbec79fd51afdf24f"
+    },
+    "unsigned_design": {
+      "path": "docs/experiments/six-emitter-joint-consumer-design-unsigned.md",
+      "sha256": "4c47ed544258227ed49e2bc29418f41b05b09e6f09574ad8c311954f014a7cc8"
+    }
+  },
+  "immutable_input_artifacts": {
+    "tri_edge_module": {
+      "path": "src/aiijc_puzzle/tri_emitter_edge_verifier.py",
+      "sha256": "dd647d73482e1efae34948d01d33a6b6e3df3efce43dd42a82842f712a52a546"
+    },
+    "joint_objective_module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "13a5a649815c1dd48d9db69ca30d3303e3f70237688657156f4c19d7ae196ad3"
+    },
+    "guided_consumer_module": {
+      "path": "src/aiijc_puzzle/guided_four_emitter_joint_verifier.py",
+      "sha256": "625c8f307d73d1e7a37a081a0da365aed74a341c9813585ce9b8c8a32d4c089f"
+    },
+    "guided_sidecar_module": {
+      "path": "src/aiijc_puzzle/guided_fourth_emitter.py",
+      "sha256": "19af34df610182b354848ff168dbb6d42cf904c7d21c223c13bedabaa9ff7672"
+    },
+    "legacy_tri_report": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/report.json",
+      "sha256": "29686696e606f7b8c0aed51ba6baa24ba87cfcb68841a143b01b3c921b543b0b"
+    },
+    "tri_v2_endpoint": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/joint_reciprocal_endpoint.pt",
+      "sha256": "66244123312b794ea6c1ae077f608653db99a122473a47d25712a374e3fe7747"
+    },
+    "tri_v2_signed_config": {
+      "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+      "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"
+    },
+    "tri_v2_dev_score": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/dev/score.json",
+      "sha256": "9548487b73481d5ec01963911a75c62d117ae634d7105df708edad1802be5274"
+    },
+    "guided_target_free_metadata": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/target-free-cache.json",
+      "sha256": "dda6f0220f949a9d893d715429b195535490bff69089493e44407c770725df3a"
+    },
+    "guided_pre_label_freeze": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/pre-label-freeze.json",
+      "sha256": "f338ca3ad5ffaa54bae6a94695dd574fe6c53e9dc23b5c1e9cf39bcc4c6f00ef"
+    },
+    "wavelet_signed_config": {
+      "path": "configs/wavelet_candidate_fit_preregistered_v1.json",
+      "sha256": "bc4640887a0ab0517e2773bc1430ef1d7414df4e7d1ae311447c9f6674b7fb11"
+    },
+    "wavelet_target_free_metadata": {
+      "path": "outputs/wavelet-candidate-emitter/fit32-draw2-v1/target-free-cache.json",
+      "sha256": "368c8e362e41eaab9552537005a32d2edcb9e0459018059a8b8bb58f74cd8979"
+    },
+    "wavelet_pre_label_freeze": {
+      "path": "outputs/wavelet-candidate-emitter/fit32-draw2-v1/pre-label-freeze.json",
+      "sha256": "cd1c72b462b56ebcfeb6f10ccf10cb70d52102103fc5493b9beb340df5e09adb"
+    },
+    "wavelet_capacity_report": {
+      "path": "outputs/wavelet-candidate-emitter/fit32-draw2-v1/capacity-report.json",
+      "sha256": "0e57b96d7bf3e6549795b8fb916001e9120e0d6ca8643ff358899f3b6731f0db"
+    },
+    "separated_fit_labels": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+      "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+    },
+    "coverage_only_label_binding": {
+      "path": "configs/guided_fourth_emitter_fit_capacity_consumer_binding_v1.json",
+      "sha256": "a8eb61c3ac4f2803f91c65af45a3ae82b12ae2559ec613b6ca7cbb8ba358ee2e"
+    }
+  },
+  "stage_protocol": {
+    "synthetic_contract_validation": true,
+    "real_target_free_fit_freeze": "not-created-not-authorised",
+    "real_fit_training": "blocked",
+    "dev_scoring": "blocked-no-fresh-panel",
+    "decoder_solver_local_terminal_competition_test_submission": "not-authorised"
+  },
+  "legality": {
+    "labels_opened_by_scaffolding": false,
+    "real_fit_or_dev_outputs_created": false,
+    "signed_artifacts_modified": false,
+    "mps_used": false,
+    "weco_used": false,
+    "candidate_identities_target_blind": true,
+    "local_rank_excluded": true,
+    "pixels_modified_or_rendered": false,
+    "output_material_if_later_used": "original upright tile identities only"
+  },
+  "hash_review_required_before_any_signature": true
+}

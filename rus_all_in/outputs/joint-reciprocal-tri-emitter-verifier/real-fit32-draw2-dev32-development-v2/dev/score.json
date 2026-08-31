@@ -1,0 +1,134 @@
+{
+  "schema": "aiijc-joint-reciprocal-real-dev-score-v1",
+  "status": "pass-emitter-eligible-decoder-still-separate",
+  "config_sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+  "metrics": {
+    "case_count": 32,
+    "retrieval": {
+      "raw_d64_ot": {
+        "right_total": 17664,
+        "right_hits_at_1": 3132,
+        "right_hits_at_5": 6328,
+        "down_total": 17664,
+        "down_hits_at_1": 3510,
+        "down_hits_at_5": 6859,
+        "pooled_total": 35328,
+        "pooled_hits_at_1": 6642,
+        "pooled_hits_at_5": 13187,
+        "right_r1": 0.17730978260869565,
+        "right_r5": 0.3582427536231884,
+        "down_r1": 0.19870923913043478,
+        "down_r5": 0.38830389492753625,
+        "pooled_r1": 0.18800951086956522,
+        "pooled_r5": 0.3732733242753623
+      },
+      "joint_reciprocal": {
+        "right_total": 17664,
+        "right_hits_at_1": 3303,
+        "right_hits_at_5": 6519,
+        "down_total": 17664,
+        "down_hits_at_1": 3591,
+        "down_hits_at_5": 7081,
+        "pooled_total": 35328,
+        "pooled_hits_at_1": 6894,
+        "pooled_hits_at_5": 13600,
+        "right_r1": 0.18699048913043478,
+        "right_r5": 0.36905570652173914,
+        "down_r1": 0.20329483695652173,
+        "down_r5": 0.4008718297101449,
+        "pooled_r1": 0.19514266304347827,
+        "pooled_r5": 0.384963768115942
+      }
+    },
+    "fixed_5_percent_reciprocal_head": {
+      "raw_d64_ot": {
+        "right": {
+          "selected": 928,
+          "correct": 699,
+          "requested": 928,
+          "precision": 0.7532327586206896,
+          "coverage_complete": true
+        },
+        "down": {
+          "selected": 928,
+          "correct": 744,
+          "requested": 928,
+          "precision": 0.8017241379310345,
+          "coverage_complete": true
+        },
+        "pooled": {
+          "selected": 1856,
+          "correct": 1443,
+          "requested": 1856,
+          "precision": 0.7774784482758621,
+          "coverage_complete": true
+        }
+      },
+      "joint_reciprocal": {
+        "right": {
+          "selected": 928,
+          "correct": 805,
+          "requested": 928,
+          "precision": 0.8674568965517241,
+          "coverage_complete": true
+        },
+        "down": {
+          "selected": 928,
+          "correct": 830,
+          "requested": 928,
+          "precision": 0.8943965517241379,
+          "coverage_complete": true
+        },
+        "pooled": {
+          "selected": 1856,
+          "correct": 1635,
+          "requested": 1856,
+          "precision": 0.880926724137931,
+          "coverage_complete": true
+        }
+      }
+    },
+    "union": {
+      "identities_unchanged": true,
+      "raw_top32_preserved": true,
+      "coverage_nonregression": true
+    },
+    "freeze": {
+      "archive_sha256": "0391cfa8a91a4c67c057bc12ccbfebfb2c3684e7303a06baaa23ab769ee345a5",
+      "metadata_sha256": "af88421578d299e1d34f0c8ef28860e357514bc63b8185297096038ef30d0292",
+      "verified_before_reference_loading": true
+    }
+  },
+  "gate": {
+    "retrieval_gains": {
+      "right_r1": 0.009680706521739135,
+      "right_r5": 0.01081295289855072,
+      "down_r1": 0.004585597826086946,
+      "down_r5": 0.012567934782608647,
+      "pooled_r1": 0.007133152173913054,
+      "pooled_r5": 0.011690443840579712
+    },
+    "fixed_head_precision_gains": {
+      "right": 0.11422413793103448,
+      "down": 0.09267241379310343,
+      "pooled": 0.10344827586206895
+    },
+    "fixed_head_coverage_complete": true,
+    "each_axis_nonnegative": true,
+    "union_identity_and_coverage_nonregression": true,
+    "thresholds": {
+      "pooled_r1_gain_minimum": 0.005,
+      "pooled_r5_gain_minimum": 0.0,
+      "pooled_fixed_head_precision_gain_minimum": 0.02,
+      "per_axis_gain_minimum": 0.0,
+      "logic": "all pooled thresholds, fixed coverage and every right/down R1/R5/head-precision gain simultaneously"
+    },
+    "passed": true
+  },
+  "target_freeze_verified_before_labels": true,
+  "terminal16_opened": false,
+  "decoder_run": false,
+  "competition_test_accessed": false,
+  "submission_or_production_modified": false,
+  "weco_logged": false
+}

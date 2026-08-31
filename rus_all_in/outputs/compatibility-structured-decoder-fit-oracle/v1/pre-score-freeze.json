@@ -1,0 +1,28 @@
+{
+  "schema": "aiijc-structured-decoder-fit-oracle-control-freeze-v1",
+  "created_before_exact_reference_scoring": true,
+  "contains_exact_references_or_labels": false,
+  "config_sha256": "6985fe5548af48adc9ee8628179259b4863dbed8a37f9ccebbd993067d49b7e1",
+  "artifacts": {
+    "archive": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.npz",
+      "sha256": "f567be7e1c9e2b5fa4cb64d896c709ebd0fa1595fa52b4f6d40106c2a6c228d0"
+    },
+    "metadata": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.json",
+      "sha256": "f3b0911324da8fb3342fa3a21804169ba46f9e9531fb018df29a7c634e13dd9d"
+    },
+    "head_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz",
+      "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"
+    },
+    "head_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json",
+      "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"
+    },
+    "config": {
+      "path": "configs/structured_decoder_fit_oracle_v1.json",
+      "sha256": "6985fe5548af48adc9ee8628179259b4863dbed8a37f9ccebbd993067d49b7e1"
+    }
+  }
+}

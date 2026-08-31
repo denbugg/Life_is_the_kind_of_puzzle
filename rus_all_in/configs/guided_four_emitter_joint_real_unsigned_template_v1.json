@@ -1,0 +1,245 @@
+{
+  "schema": "aiijc-guided-four-emitter-joint-real-protocol-v1",
+  "status": "unsigned-template-blocked-no-source-disjoint-dev32",
+  "purpose": "Implementation-ready template for a 128-slot joint raw+adapter1600+DINO+fixed-guided verifier. This file is intentionally unsigned and cannot authorize FIT training, DEV scoring, terminal/test access, promotion, or submission generation.",
+  "real_protocol_signed": false,
+  "blocked_reasons": [
+    "Recursive inventory leaves 0 of 5600 organizer-train sources fresh, so a source-disjoint DEV32 cannot be created.",
+    "The exact completed tri-v2 legacy endpoint path and SHA-256 have not been bound into this template.",
+    "Existing separated FIT labels were authorized for coverage counting only; model-training use needs a new signed consumer authorization."
+  ],
+  "fixed_model": {
+    "architecture": "joint-reciprocal-guided-four-emitter-verifier-v1",
+    "candidate_roster": "raw+adapter1600+DINO+guided-standalone-top32-stable-append-only-union",
+    "candidate_width": 128,
+    "legacy_slot_range": [
+      0,
+      95
+    ],
+    "guided_append_only_slot_range": [
+      96,
+      127
+    ],
+    "legacy_auxiliary_dim": 19,
+    "guided_auxiliary_dim": 7,
+    "dino_projection_dim": 16,
+    "legacy_content_width": 32,
+    "legacy_hidden": 96,
+    "guided_residual_width": 16,
+    "legacy_raw_baseline_retained": true,
+    "legacy_relation_residual_retained": true,
+    "guided_row_z_baseline_for_new_slots": true,
+    "guided_residual_zero_initialised": true,
+    "legacy_joint_state_transplant_required": true,
+    "learned_row_none_per_axis": true,
+    "learned_column_none_per_axis": true,
+    "absolute_position_or_source_identity": false
+  },
+  "cache_consumer": {
+    "legacy_target_free_keys": [
+      "raw_sides",
+      "dino_sides",
+      "candidates",
+      "valid",
+      "auxiliary",
+      "raw_baseline",
+      "emitter_topk"
+    ],
+    "guided_sidecar_keys": [
+      "candidates",
+      "valid",
+      "legacy_slot",
+      "guided_auxiliary",
+      "guided_baseline",
+      "emitter_topk",
+      "legacy_identity_digest_ascii",
+      "identity_digest_ascii"
+    ],
+    "label_keys_for_future_signed_training_consumer": [
+      "truth_by_source",
+      "target_slots"
+    ],
+    "target_free_cache_must_reject_label_keys": true,
+    "legacy_candidate_valid_auxiliary_baseline_and_topk_prefix_exact": true,
+    "legacy_npz_byte_immutable": true,
+    "raw_top32_retained": true,
+    "guided_identity_append_only": true
+  },
+  "objective": {
+    "row_cross_entropy_weight": 1.0,
+    "column_cross_entropy_weight": 1.0,
+    "confidence_bce_weight": 0.25,
+    "delta_l2_weight": 0.001,
+    "softmin_tau": 0.25,
+    "learned_none": true,
+    "fixed_reciprocal_fraction_per_axis_per_board": 0.05,
+    "threshold_or_fraction_sweep": false
+  },
+  "proposed_training": {
+    "authorised": false,
+    "initialisation": "exact state transplant from one completed tri-v2 final endpoint; new guided residual remains zero-initialised",
+    "legacy_endpoint": null,
+    "legacy_endpoint_sha256": null,
+    "capacity_checkpoint_reuse": false,
+    "optimizer": "AdamW",
+    "seed": 20260920,
+    "optimizer_updates": 1752,
+    "learning_rate": 0.0001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "checkpoint_selection": "single-final-endpoint-no-selection",
+    "all_model_parameters_trainable": true,
+    "no_nearby_architecture_loss_weight_or_schedule_sweep": true
+  },
+  "source_protocol": {
+    "fit_role": "reuse the existing 64 target-free FIT sidecars only after a separately signed model-training label consumer",
+    "fit_filenames": [
+      "img_000934.png",
+      "img_001317.png",
+      "img_001988.png",
+      "img_006170.png",
+      "img_002442.png",
+      "img_000789.png",
+      "img_003117.png",
+      "img_002434.png",
+      "img_004562.png",
+      "img_000867.png",
+      "img_002813.png",
+      "img_006141.png",
+      "img_006402.png",
+      "img_004204.png",
+      "img_006205.png",
+      "img_002727.png",
+      "img_004951.png",
+      "img_001111.png",
+      "img_000043.png",
+      "img_003181.png",
+      "img_000413.png",
+      "img_001093.png",
+      "img_005873.png",
+      "img_004418.png",
+      "img_002898.png",
+      "img_004595.png",
+      "img_001345.png",
+      "img_001996.png",
+      "img_000694.png",
+      "img_005357.png",
+      "img_005123.png",
+      "img_005951.png"
+    ],
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "fit_draw_indices": [
+      0,
+      1
+    ],
+    "fit_case_count": 64,
+    "dev_role": "required fresh source-disjoint discovery panel",
+    "dev_filenames": [],
+    "dev_source_count": 0,
+    "dev_draw_indices": [],
+    "dev_status": "inventory-blocked-not-created",
+    "local_terminal_competition_test_available": false
+  },
+  "proposed_single_dev_gate": {
+    "authorised": false,
+    "control": "completed frozen tri-v2 final endpoint on the exact same frozen DEV identities",
+    "candidate": "one final four-emitter endpoint",
+    "pooled_r1_gain_minimum": 0.005,
+    "pooled_r5_gain_minimum": 0.0,
+    "pooled_fixed_head_precision_gain_minimum": 0.02,
+    "per_axis_r1_r5_and_head_precision_gain_minimum": 0.0,
+    "fixed_head_fraction": 0.05,
+    "candidate_identity_coverage_nonregression": true,
+    "all_conditions_required": true,
+    "threshold_sweep": false,
+    "promotion_claim": false
+  },
+  "capacity_evidence": {
+    "claim": "FIT supply capacity only, not ranking or confidence evidence",
+    "directed_true_neighbours": 70656,
+    "raw_top32_coverage": 0.6620669157608695,
+    "guided_top32_coverage": 0.47612375452898553,
+    "legacy_union_coverage": 0.7548262001811594,
+    "extended_union_coverage": 0.7902938179347826,
+    "extended_minus_legacy_absolute_gain": 0.03546761775362317,
+    "guided_unique_true_neighbours": 2506
+  },
+  "inventory_blocker": {
+    "recursive_artifact_count": 454,
+    "organizer_train_count": 5600,
+    "excluded_train_count": 5600,
+    "eligible_train_count": 0,
+    "minimal_proof": "A prior signed recursive snapshot excluded 5593 train sources and left seven; the later signed FIT audit scored all seven.",
+    "fresh_dev32_created": false,
+    "resolution_required_before_signing": "new organizer-labelled sources or an explicitly authorised non-fresh reuse policy signed before scoring"
+  },
+  "implementation_artifacts": {
+    "model_and_cache_consumer": {
+      "path": "src/aiijc_puzzle/guided_four_emitter_joint_verifier.py",
+      "sha256": "625c8f307d73d1e7a37a081a0da365aed74a341c9813585ce9b8c8a32d4c089f"
+    },
+    "capacity_tests": {
+      "path": "tests/test_guided_four_emitter_joint_verifier.py",
+      "sha256": "9ca4bf3afe169a079d660feff0dd61370b18b453d56dc542c42dfe5a9c339336"
+    },
+    "roster_audit_module": {
+      "path": "src/aiijc_puzzle/four_emitter_real_roster.py",
+      "sha256": "80c16091571999fbeafc75bb00830ddfd7e70928e3c66a27aa315309cca84794"
+    },
+    "roster_audit_runner": {
+      "path": "scripts/audit_guided_four_emitter_real_roster.py",
+      "sha256": "d010ff2026e9cd09eae7172f24704e37093ea9927f1f0acaedab3adc55fd302d"
+    },
+    "roster_audit_report": {
+      "path": "outputs/guided-fourth-emitter/real-protocol-roster-audit-v1/report.json",
+      "sha256": "9227a06f45daa1aa2c63e3e17f630a2f400dc969d7258648f542d0d9c29b77c5"
+    }
+  },
+  "observed_dependencies_requiring_hash_review_before_any_signature": {
+    "tri_edge_module": {
+      "path": "src/aiijc_puzzle/tri_emitter_edge_verifier.py",
+      "sha256": "dd647d73482e1efae34948d01d33a6b6e3df3efce43dd42a82842f712a52a546"
+    },
+    "joint_objective_module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "13a5a649815c1dd48d9db69ca30d3303e3f70237688657156f4c19d7ae196ad3"
+    },
+    "target_free_sidecar_metadata": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/target-free-cache.json",
+      "sha256": "dda6f0220f949a9d893d715429b195535490bff69089493e44407c770725df3a"
+    },
+    "pre_label_freeze": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/pre-label-freeze.json",
+      "sha256": "f338ca3ad5ffaa54bae6a94695dd574fe6c53e9dc23b5c1e9cf39bcc4c6f00ef"
+    },
+    "coverage_only_labels": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+      "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+    },
+    "coverage_only_consumer_binding": {
+      "path": "configs/guided_fourth_emitter_fit_capacity_consumer_binding_v1.json",
+      "sha256": "a8eb61c3ac4f2803f91c65af45a3ae82b12ae2559ec613b6ca7cbb8ba358ee2e"
+    },
+    "capacity_report": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/capacity-report.json",
+      "sha256": "70fb7c6f42d6b9a36ee16c9214b1c17b57ce5b27882a09017f9a80aa8af194d0"
+    }
+  },
+  "stage_protocol": {
+    "validate_code_and_synthetic_capacity": true,
+    "real_fit": "blocked",
+    "freeze_dev": "blocked",
+    "score_dev": "blocked",
+    "local_terminal_competition_test_submission": "not available"
+  },
+  "legality": {
+    "organizer_train_only_if_future_fit_authorised": true,
+    "guided_pixels_matcher_only": true,
+    "candidate_identities_target_blind_and_immutable": true,
+    "output_original_upright_tile_permutation_only": true,
+    "rotated_warped_replaced_or_synthetic_output_tiles": false,
+    "dev_local_terminal_test_or_submission_accessed": false,
+    "weco_written": false,
+    "git_written": false
+  }
+}

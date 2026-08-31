@@ -1,0 +1,16 @@
+{
+  "schema": "aiijc-joint-reciprocal-real-fit-runtime-failure-v1",
+  "status": "failed-step-1-no-endpoint-no-dev-access",
+  "config_sha256": "e7f735556f95329ab393d86dc730960762854992dd029547e5cc49071ee0b164",
+  "device": "cpu",
+  "step": 1,
+  "observed_loss": 7.76077127456665,
+  "observed_grad_norm": "NaN",
+  "failure": "valid edge logits became non-finite after the first CPU optimizer step",
+  "endpoint_written": false,
+  "fit_report_written": false,
+  "dev_pixels_or_labels_opened": false,
+  "terminal16_opened": false,
+  "competition_test_accessed": false,
+  "decision": "stop unchanged protocol; diagnose the finite-forward/non-finite-gradient operation, add a regression test, and require a new signed config/hash before any rerun"
+}

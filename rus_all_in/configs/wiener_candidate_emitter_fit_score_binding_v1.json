@@ -1,0 +1,18 @@
+{
+  "schema": "aiijc-wiener-candidate-emitter-fit-score-binding-v1",
+  "status": "signed-post-freeze-fit-coverage-only",
+  "purpose": "Authorize one label-reading pass after the Wiener target-free top-32 identities and every cache hash were frozen. The only allowed consumer is aggregate exact-neighbour FIT coverage counting.",
+  "experiment_config_sha256": "66bb44649219a5ced0f8474a02b4e6f6d5a02d3b63327325953ff1725d948945",
+  "pre_label_freeze_sha256": "ee54db7420f74c6654e85a691591dd0b01a60ae0738162a0e4b0de5d1391895c",
+  "separated_fit_labels_metadata": {
+    "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+    "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+  },
+  "scope": {
+    "fit_coverage_counts_only": true,
+    "model_fit": false,
+    "parameter_selection": false,
+    "dev_local_terminal_test_submission": false
+  },
+  "interpretation": "FIT-only cache capacity; not source-disjoint evaluation, promotion, solver gain, or leaderboard evidence"
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "aiijc-wiener-guided-five-emitter-fit-coverage-v1",
+  "status": "retain-wiener-as-fifth-candidate-supply-emitter",
+  "claim": "FIT-only frozen candidate coverage; not model, solver, DEV, promotion, or submission evidence",
+  "pre_label_identity_freezes": {
+    "wiener": {
+      "path": "outputs/wiener-candidate-emitter/fit32-draw2-v1/pre-label-freeze.json",
+      "sha256": "ee54db7420f74c6654e85a691591dd0b01a60ae0738162a0e4b0de5d1391895c"
+    },
+    "guided_target_free_metadata": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/target-free-cache.json",
+      "sha256": "dda6f0220f949a9d893d715429b195535490bff69089493e44407c770725df3a"
+    }
+  },
+  "separated_fit_labels_metadata": {
+    "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+    "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+  },
+  "directed_true_neighbours": 70656,
+  "coverage_counts": {
+    "right": {
+      "eligible": 35328,
+      "legacy_union": 26354,
+      "legacy_plus_guided": 27663,
+      "legacy_plus_wiener": 27634,
+      "all_five": 28147,
+      "wiener_unique_over_legacy_plus_guided": 484
+    },
+    "down": {
+      "eligible": 35328,
+      "legacy_union": 26979,
+      "legacy_plus_guided": 28176,
+      "legacy_plus_wiener": 28198,
+      "all_five": 28666,
+      "wiener_unique_over_legacy_plus_guided": 490
+    },
+    "pooled": {
+      "eligible": 70656,
+      "legacy_union": 53333,
+      "legacy_plus_guided": 55839,
+      "legacy_plus_wiener": 55832,
+      "all_five": 56813,
+      "wiener_unique_over_legacy_plus_guided": 974,
+      "guided_unique_over_legacy_plus_wiener": 981,
+      "guided_and_wiener_shared_new_over_legacy": 1525
+    }
+  },
+  "coverage_rates": {
+    "legacy_union": 0.7548262001811594,
+    "legacy_plus_guided": 0.7902938179347826,
+    "legacy_plus_wiener": 0.7901947463768116,
+    "all_five": 0.8040789175724637
+  },
+  "incremental_wiener_over_legacy_plus_guided": {
+    "additional_true_neighbours": 974,
+    "absolute_rate_gain": 0.01378509963768116,
+    "positive_source_groups": 32,
+    "source_group_count": 32,
+    "mean_unique_per_case": 15.21875,
+    "source_group_bootstrap_ci95_unique_per_case": [
+      13.734375,
+      16.78125
+    ]
+  },
+  "decision": {
+    "retain_as_append_only_candidate_supply": true,
+    "replace_guided_or_legacy_emitter": false,
+    "direct_score_fusion_authorized": false,
+    "fresh_real_protocol_authorized": false,
+    "reason": "Wiener is near-parity with guided alone but still supplies 974 exact neighbours absent from the complete legacy-plus-guided top-32 union, with positive recovery on every source group."
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "all_candidate_identities_frozen_before_label_read": true,
+    "preprocessing_matcher_view_only": true,
+    "original_upright_tiles_unchanged": true,
+    "dev_local_terminal_test_or_submission_accessed": false
+  }
+}

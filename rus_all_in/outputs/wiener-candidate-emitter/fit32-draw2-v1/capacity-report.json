@@ -1,0 +1,1568 @@
+{
+  "schema": "aiijc-wiener-candidate-emitter-fit-capacity-report-v1",
+  "status": "retain-as-candidate-supply",
+  "claim": "FIT-only candidate coverage; not real evaluation or promotion evidence",
+  "config_sha256": "66bb44649219a5ced0f8474a02b4e6f6d5a02d3b63327325953ff1725d948945",
+  "binding_sha256": "025b0f8744b1143e0a110885896535cbf899edbc2e72ce76890a595d202518ac",
+  "pre_label_freeze_verified_before_labels": true,
+  "coverage_counts": {
+    "right": {
+      "eligible": 35328,
+      "raw_top32": 22925,
+      "wiener_top32": 15728,
+      "legacy_union": 26354,
+      "extended_union": 27634,
+      "wiener_unique_recovered": 1280
+    },
+    "down": {
+      "eligible": 35328,
+      "raw_top32": 23854,
+      "wiener_top32": 16496,
+      "legacy_union": 26979,
+      "extended_union": 28198,
+      "wiener_unique_recovered": 1219
+    },
+    "pooled": {
+      "eligible": 70656,
+      "raw_top32": 46779,
+      "wiener_top32": 32224,
+      "legacy_union": 53333,
+      "extended_union": 55832,
+      "wiener_unique_recovered": 2499
+    }
+  },
+  "pooled_coverage_rates": {
+    "raw_top32": 0.6620669157608695,
+    "wiener_top32": 0.45606884057971014,
+    "legacy_union": 0.7548262001811594,
+    "extended_union": 0.7901947463768116
+  },
+  "legacy_to_extended": {
+    "additional_true_neighbours": 2499,
+    "absolute_rate_gain": 0.03536854619565222,
+    "positive_source_groups": 32,
+    "source_group_count": 32,
+    "mean_unique_per_case": 39.046875,
+    "source_group_bootstrap_ci95_unique_per_case": [
+      36.390625,
+      41.734375
+    ]
+  },
+  "gate": {
+    "minimum_absolute_gain": 0.01,
+    "minimum_positive_source_groups": 24,
+    "interpretation": "exploratory FIT candidate-supply retention only; never promotion evidence",
+    "passed": true
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "wiener_pixels_matcher_only": true,
+    "original_upright_tiles_unchanged": true,
+    "labels_physically_separate": true,
+    "dev_local_terminal_test_or_submission_accessed": false
+  },
+  "artifacts": {
+    "config": {
+      "path": "configs/wiener_candidate_emitter_fit_preregistered_v1.json",
+      "sha256": "66bb44649219a5ced0f8474a02b4e6f6d5a02d3b63327325953ff1725d948945"
+    },
+    "binding": {
+      "path": "configs/wiener_candidate_emitter_fit_score_binding_v1.json",
+      "sha256": "025b0f8744b1143e0a110885896535cbf899edbc2e72ce76890a595d202518ac"
+    },
+    "target_free_metadata": {
+      "path": "outputs/wiener-candidate-emitter/fit32-draw2-v1/target-free-cache.json",
+      "sha256": "9e51c5f75e100b5fb7fc96de8deb4df79d33bfb3f0fad2f9748e63d97ed21b99"
+    },
+    "pre_label_freeze": {
+      "path": "outputs/wiener-candidate-emitter/fit32-draw2-v1/pre-label-freeze.json",
+      "sha256": "ee54db7420f74c6654e85a691591dd0b01a60ae0738162a0e4b0de5d1391895c"
+    },
+    "separated_fit_labels_metadata": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+      "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+    },
+    "runner": {
+      "path": "scripts/run_wiener_candidate_emitter_fit_capacity.py",
+      "sha256": "081254e73b699baa268d0a3c25ae49d28281fc40c56ca26ff24dc8cb76dd20a6"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/wiener_matcher_view.py",
+      "sha256": "70ebbbdff32f86e9c5657ff2ab5b203899d6a13f158acfd757b535f916238ad1"
+    }
+  },
+  "cases": [
+    {
+      "source_filename": "img_000934.png",
+      "draw_index": 0,
+      "case_id": "synthetic-7f40cf8712970cdd",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 412,
+          "wiener_top32": 284,
+          "legacy_union": 455,
+          "extended_union": 475,
+          "wiener_unique_recovered": 20
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 388,
+          "wiener_top32": 301,
+          "legacy_union": 460,
+          "extended_union": 483,
+          "wiener_unique_recovered": 23
+        }
+      }
+    },
+    {
+      "source_filename": "img_000934.png",
+      "draw_index": 1,
+      "case_id": "synthetic-a02bfbda0060eed4",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 399,
+          "wiener_top32": 286,
+          "legacy_union": 456,
+          "extended_union": 477,
+          "wiener_unique_recovered": 21
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 396,
+          "wiener_top32": 285,
+          "legacy_union": 455,
+          "extended_union": 475,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_001317.png",
+      "draw_index": 0,
+      "case_id": "synthetic-2b3e3f3bfec2a1f0",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 347,
+          "wiener_top32": 211,
+          "legacy_union": 402,
+          "extended_union": 428,
+          "wiener_unique_recovered": 26
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 387,
+          "wiener_top32": 221,
+          "legacy_union": 433,
+          "extended_union": 454,
+          "wiener_unique_recovered": 21
+        }
+      }
+    },
+    {
+      "source_filename": "img_001317.png",
+      "draw_index": 1,
+      "case_id": "synthetic-145edb27e2e691bd",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 349,
+          "wiener_top32": 208,
+          "legacy_union": 409,
+          "extended_union": 429,
+          "wiener_unique_recovered": 20
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 392,
+          "wiener_top32": 225,
+          "legacy_union": 437,
+          "extended_union": 459,
+          "wiener_unique_recovered": 22
+        }
+      }
+    },
+    {
+      "source_filename": "img_001988.png",
+      "draw_index": 0,
+      "case_id": "synthetic-a45446c658b45865",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 322,
+          "wiener_top32": 220,
+          "legacy_union": 381,
+          "extended_union": 402,
+          "wiener_unique_recovered": 21
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 305,
+          "wiener_top32": 208,
+          "legacy_union": 360,
+          "extended_union": 386,
+          "wiener_unique_recovered": 26
+        }
+      }
+    },
+    {
+      "source_filename": "img_001988.png",
+      "draw_index": 1,
+      "case_id": "synthetic-3107da7314e23dd1",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 329,
+          "wiener_top32": 211,
+          "legacy_union": 379,
+          "extended_union": 396,
+          "wiener_unique_recovered": 17
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 310,
+          "wiener_top32": 199,
+          "legacy_union": 357,
+          "extended_union": 376,
+          "wiener_unique_recovered": 19
+        }
+      }
+    },
+    {
+      "source_filename": "img_006170.png",
+      "draw_index": 0,
+      "case_id": "synthetic-79e760d94f8285ea",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 325,
+          "wiener_top32": 247,
+          "legacy_union": 383,
+          "extended_union": 402,
+          "wiener_unique_recovered": 19
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 328,
+          "wiener_top32": 228,
+          "legacy_union": 405,
+          "extended_union": 425,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_006170.png",
+      "draw_index": 1,
+      "case_id": "synthetic-b8771f8d7e49f73a",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 348,
+          "wiener_top32": 233,
+          "legacy_union": 393,
+          "extended_union": 415,
+          "wiener_unique_recovered": 22
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 338,
+          "wiener_top32": 237,
+          "legacy_union": 398,
+          "extended_union": 414,
+          "wiener_unique_recovered": 16
+        }
+      }
+    },
+    {
+      "source_filename": "img_002442.png",
+      "draw_index": 0,
+      "case_id": "synthetic-7fce073b3ff72fba",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 351,
+          "wiener_top32": 246,
+          "legacy_union": 414,
+          "extended_union": 432,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 428,
+          "wiener_top32": 303,
+          "legacy_union": 468,
+          "extended_union": 484,
+          "wiener_unique_recovered": 16
+        }
+      }
+    },
+    {
+      "source_filename": "img_002442.png",
+      "draw_index": 1,
+      "case_id": "synthetic-ac1b4c7ea1cb4bb4",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 331,
+          "wiener_top32": 237,
+          "legacy_union": 400,
+          "extended_union": 426,
+          "wiener_unique_recovered": 26
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 409,
+          "wiener_top32": 287,
+          "legacy_union": 455,
+          "extended_union": 475,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_000789.png",
+      "draw_index": 0,
+      "case_id": "synthetic-fef930414c9f9df4",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 365,
+          "wiener_top32": 212,
+          "legacy_union": 411,
+          "extended_union": 427,
+          "wiener_unique_recovered": 16
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 355,
+          "wiener_top32": 236,
+          "legacy_union": 401,
+          "extended_union": 418,
+          "wiener_unique_recovered": 17
+        }
+      }
+    },
+    {
+      "source_filename": "img_000789.png",
+      "draw_index": 1,
+      "case_id": "synthetic-943fb37420c1435e",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 348,
+          "wiener_top32": 206,
+          "legacy_union": 407,
+          "extended_union": 423,
+          "wiener_unique_recovered": 16
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 349,
+          "wiener_top32": 235,
+          "legacy_union": 399,
+          "extended_union": 418,
+          "wiener_unique_recovered": 19
+        }
+      }
+    },
+    {
+      "source_filename": "img_003117.png",
+      "draw_index": 0,
+      "case_id": "synthetic-2e552293fa11ed81",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 392,
+          "wiener_top32": 239,
+          "legacy_union": 436,
+          "extended_union": 447,
+          "wiener_unique_recovered": 11
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 381,
+          "wiener_top32": 269,
+          "legacy_union": 422,
+          "extended_union": 443,
+          "wiener_unique_recovered": 21
+        }
+      }
+    },
+    {
+      "source_filename": "img_003117.png",
+      "draw_index": 1,
+      "case_id": "synthetic-5b39fdc4e0c915a2",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 402,
+          "wiener_top32": 247,
+          "legacy_union": 450,
+          "extended_union": 462,
+          "wiener_unique_recovered": 12
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 373,
+          "wiener_top32": 263,
+          "legacy_union": 420,
+          "extended_union": 436,
+          "wiener_unique_recovered": 16
+        }
+      }
+    },
+    {
+      "source_filename": "img_002434.png",
+      "draw_index": 0,
+      "case_id": "synthetic-040473490151517b",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 313,
+          "wiener_top32": 190,
+          "legacy_union": 375,
+          "extended_union": 401,
+          "wiener_unique_recovered": 26
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 343,
+          "wiener_top32": 221,
+          "legacy_union": 395,
+          "extended_union": 419,
+          "wiener_unique_recovered": 24
+        }
+      }
+    },
+    {
+      "source_filename": "img_002434.png",
+      "draw_index": 1,
+      "case_id": "synthetic-97747a263b8e3ce6",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 332,
+          "wiener_top32": 183,
+          "legacy_union": 389,
+          "extended_union": 411,
+          "wiener_unique_recovered": 22
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 344,
+          "wiener_top32": 193,
+          "legacy_union": 391,
+          "extended_union": 413,
+          "wiener_unique_recovered": 22
+        }
+      }
+    },
+    {
+      "source_filename": "img_004562.png",
+      "draw_index": 0,
+      "case_id": "synthetic-dafd1de3b286317f",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 406,
+          "wiener_top32": 237,
+          "legacy_union": 454,
+          "extended_union": 461,
+          "wiener_unique_recovered": 7
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 384,
+          "wiener_top32": 228,
+          "legacy_union": 427,
+          "extended_union": 438,
+          "wiener_unique_recovered": 11
+        }
+      }
+    },
+    {
+      "source_filename": "img_004562.png",
+      "draw_index": 1,
+      "case_id": "synthetic-e9ddc8dc7cb1af9d",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 410,
+          "wiener_top32": 255,
+          "legacy_union": 453,
+          "extended_union": 462,
+          "wiener_unique_recovered": 9
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 388,
+          "wiener_top32": 248,
+          "legacy_union": 436,
+          "extended_union": 454,
+          "wiener_unique_recovered": 18
+        }
+      }
+    },
+    {
+      "source_filename": "img_000867.png",
+      "draw_index": 0,
+      "case_id": "synthetic-cee62ce0cb9acd71",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 394,
+          "wiener_top32": 263,
+          "legacy_union": 444,
+          "extended_union": 461,
+          "wiener_unique_recovered": 17
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 433,
+          "wiener_top32": 304,
+          "legacy_union": 475,
+          "extended_union": 487,
+          "wiener_unique_recovered": 12
+        }
+      }
+    },
+    {
+      "source_filename": "img_000867.png",
+      "draw_index": 1,
+      "case_id": "synthetic-7961a5dbc15203ca",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 395,
+          "wiener_top32": 258,
+          "legacy_union": 448,
+          "extended_union": 466,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 418,
+          "wiener_top32": 323,
+          "legacy_union": 459,
+          "extended_union": 478,
+          "wiener_unique_recovered": 19
+        }
+      }
+    },
+    {
+      "source_filename": "img_002813.png",
+      "draw_index": 0,
+      "case_id": "synthetic-0144e2465bf4e034",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 364,
+          "wiener_top32": 208,
+          "legacy_union": 408,
+          "extended_union": 420,
+          "wiener_unique_recovered": 12
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 359,
+          "wiener_top32": 209,
+          "legacy_union": 402,
+          "extended_union": 428,
+          "wiener_unique_recovered": 26
+        }
+      }
+    },
+    {
+      "source_filename": "img_002813.png",
+      "draw_index": 1,
+      "case_id": "synthetic-08d575544519b149",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 359,
+          "wiener_top32": 216,
+          "legacy_union": 415,
+          "extended_union": 429,
+          "wiener_unique_recovered": 14
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 372,
+          "wiener_top32": 210,
+          "legacy_union": 416,
+          "extended_union": 431,
+          "wiener_unique_recovered": 15
+        }
+      }
+    },
+    {
+      "source_filename": "img_006141.png",
+      "draw_index": 0,
+      "case_id": "synthetic-93ddcbaf68cfd7ec",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 339,
+          "wiener_top32": 207,
+          "legacy_union": 388,
+          "extended_union": 403,
+          "wiener_unique_recovered": 15
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 332,
+          "wiener_top32": 218,
+          "legacy_union": 386,
+          "extended_union": 398,
+          "wiener_unique_recovered": 12
+        }
+      }
+    },
+    {
+      "source_filename": "img_006141.png",
+      "draw_index": 1,
+      "case_id": "synthetic-03a7b3c732c58408",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 338,
+          "wiener_top32": 217,
+          "legacy_union": 397,
+          "extended_union": 419,
+          "wiener_unique_recovered": 22
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 355,
+          "wiener_top32": 215,
+          "legacy_union": 394,
+          "extended_union": 407,
+          "wiener_unique_recovered": 13
+        }
+      }
+    },
+    {
+      "source_filename": "img_006402.png",
+      "draw_index": 0,
+      "case_id": "synthetic-6526efe12a62739e",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 428,
+          "wiener_top32": 328,
+          "legacy_union": 477,
+          "extended_union": 498,
+          "wiener_unique_recovered": 21
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 444,
+          "wiener_top32": 329,
+          "legacy_union": 474,
+          "extended_union": 488,
+          "wiener_unique_recovered": 14
+        }
+      }
+    },
+    {
+      "source_filename": "img_006402.png",
+      "draw_index": 1,
+      "case_id": "synthetic-e11454c00c079e62",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 430,
+          "wiener_top32": 324,
+          "legacy_union": 474,
+          "extended_union": 495,
+          "wiener_unique_recovered": 21
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 437,
+          "wiener_top32": 342,
+          "legacy_union": 488,
+          "extended_union": 498,
+          "wiener_unique_recovered": 10
+        }
+      }
+    },
+    {
+      "source_filename": "img_004204.png",
+      "draw_index": 0,
+      "case_id": "synthetic-b857708da776b61f",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 284,
+          "wiener_top32": 183,
+          "legacy_union": 345,
+          "extended_union": 371,
+          "wiener_unique_recovered": 26
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 310,
+          "wiener_top32": 192,
+          "legacy_union": 376,
+          "extended_union": 396,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_004204.png",
+      "draw_index": 1,
+      "case_id": "synthetic-abfe5d19fc61d1d1",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 275,
+          "wiener_top32": 184,
+          "legacy_union": 349,
+          "extended_union": 384,
+          "wiener_unique_recovered": 35
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 322,
+          "wiener_top32": 205,
+          "legacy_union": 379,
+          "extended_union": 394,
+          "wiener_unique_recovered": 15
+        }
+      }
+    },
+    {
+      "source_filename": "img_006205.png",
+      "draw_index": 0,
+      "case_id": "synthetic-cbddcae9da56c081",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 394,
+          "wiener_top32": 244,
+          "legacy_union": 445,
+          "extended_union": 456,
+          "wiener_unique_recovered": 11
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 424,
+          "wiener_top32": 319,
+          "legacy_union": 467,
+          "extended_union": 486,
+          "wiener_unique_recovered": 19
+        }
+      }
+    },
+    {
+      "source_filename": "img_006205.png",
+      "draw_index": 1,
+      "case_id": "synthetic-60e33980cb737ad9",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 401,
+          "wiener_top32": 267,
+          "legacy_union": 450,
+          "extended_union": 465,
+          "wiener_unique_recovered": 15
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 426,
+          "wiener_top32": 314,
+          "legacy_union": 476,
+          "extended_union": 490,
+          "wiener_unique_recovered": 14
+        }
+      }
+    },
+    {
+      "source_filename": "img_002727.png",
+      "draw_index": 0,
+      "case_id": "synthetic-91942fb6144f0c80",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 390,
+          "wiener_top32": 342,
+          "legacy_union": 435,
+          "extended_union": 454,
+          "wiener_unique_recovered": 19
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 371,
+          "wiener_top32": 301,
+          "legacy_union": 428,
+          "extended_union": 451,
+          "wiener_unique_recovered": 23
+        }
+      }
+    },
+    {
+      "source_filename": "img_002727.png",
+      "draw_index": 1,
+      "case_id": "synthetic-ae72c65fc9647d19",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 379,
+          "wiener_top32": 336,
+          "legacy_union": 440,
+          "extended_union": 467,
+          "wiener_unique_recovered": 27
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 361,
+          "wiener_top32": 307,
+          "legacy_union": 424,
+          "extended_union": 461,
+          "wiener_unique_recovered": 37
+        }
+      }
+    },
+    {
+      "source_filename": "img_004951.png",
+      "draw_index": 0,
+      "case_id": "synthetic-4522d85f1310bbcb",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 358,
+          "wiener_top32": 263,
+          "legacy_union": 421,
+          "extended_union": 447,
+          "wiener_unique_recovered": 26
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 371,
+          "wiener_top32": 264,
+          "legacy_union": 414,
+          "extended_union": 438,
+          "wiener_unique_recovered": 24
+        }
+      }
+    },
+    {
+      "source_filename": "img_004951.png",
+      "draw_index": 1,
+      "case_id": "synthetic-d24537b0a80f2098",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 360,
+          "wiener_top32": 275,
+          "legacy_union": 417,
+          "extended_union": 445,
+          "wiener_unique_recovered": 28
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 378,
+          "wiener_top32": 256,
+          "legacy_union": 431,
+          "extended_union": 451,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_001111.png",
+      "draw_index": 0,
+      "case_id": "synthetic-3a608ca98cc84c1b",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 308,
+          "wiener_top32": 253,
+          "legacy_union": 374,
+          "extended_union": 403,
+          "wiener_unique_recovered": 29
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 349,
+          "wiener_top32": 275,
+          "legacy_union": 431,
+          "extended_union": 449,
+          "wiener_unique_recovered": 18
+        }
+      }
+    },
+    {
+      "source_filename": "img_001111.png",
+      "draw_index": 1,
+      "case_id": "synthetic-4eb0a5ab405d4a6f",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 329,
+          "wiener_top32": 273,
+          "legacy_union": 396,
+          "extended_union": 414,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 384,
+          "wiener_top32": 302,
+          "legacy_union": 431,
+          "extended_union": 450,
+          "wiener_unique_recovered": 19
+        }
+      }
+    },
+    {
+      "source_filename": "img_000043.png",
+      "draw_index": 0,
+      "case_id": "synthetic-a3047f8b5d2fb5c0",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 416,
+          "wiener_top32": 256,
+          "legacy_union": 457,
+          "extended_union": 471,
+          "wiener_unique_recovered": 14
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 451,
+          "wiener_top32": 285,
+          "legacy_union": 485,
+          "extended_union": 499,
+          "wiener_unique_recovered": 14
+        }
+      }
+    },
+    {
+      "source_filename": "img_000043.png",
+      "draw_index": 1,
+      "case_id": "synthetic-3ad95f276688296a",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 421,
+          "wiener_top32": 270,
+          "legacy_union": 458,
+          "extended_union": 476,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 448,
+          "wiener_top32": 280,
+          "legacy_union": 479,
+          "extended_union": 495,
+          "wiener_unique_recovered": 16
+        }
+      }
+    },
+    {
+      "source_filename": "img_003181.png",
+      "draw_index": 0,
+      "case_id": "synthetic-6b33d2d6163e9ac6",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 393,
+          "wiener_top32": 281,
+          "legacy_union": 450,
+          "extended_union": 469,
+          "wiener_unique_recovered": 19
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 361,
+          "wiener_top32": 265,
+          "legacy_union": 410,
+          "extended_union": 431,
+          "wiener_unique_recovered": 21
+        }
+      }
+    },
+    {
+      "source_filename": "img_003181.png",
+      "draw_index": 1,
+      "case_id": "synthetic-1b60885576416049",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 392,
+          "wiener_top32": 278,
+          "legacy_union": 451,
+          "extended_union": 465,
+          "wiener_unique_recovered": 14
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 373,
+          "wiener_top32": 283,
+          "legacy_union": 416,
+          "extended_union": 443,
+          "wiener_unique_recovered": 27
+        }
+      }
+    },
+    {
+      "source_filename": "img_000413.png",
+      "draw_index": 0,
+      "case_id": "synthetic-3cf033fadf7525d7",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 380,
+          "wiener_top32": 287,
+          "legacy_union": 422,
+          "extended_union": 443,
+          "wiener_unique_recovered": 21
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 340,
+          "wiener_top32": 262,
+          "legacy_union": 396,
+          "extended_union": 416,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_000413.png",
+      "draw_index": 1,
+      "case_id": "synthetic-51ee3c8e0b2ecd03",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 365,
+          "wiener_top32": 267,
+          "legacy_union": 419,
+          "extended_union": 437,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 353,
+          "wiener_top32": 266,
+          "legacy_union": 414,
+          "extended_union": 435,
+          "wiener_unique_recovered": 21
+        }
+      }
+    },
+    {
+      "source_filename": "img_001093.png",
+      "draw_index": 0,
+      "case_id": "synthetic-9321a18859897647",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 316,
+          "wiener_top32": 218,
+          "legacy_union": 360,
+          "extended_union": 374,
+          "wiener_unique_recovered": 14
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 290,
+          "wiener_top32": 206,
+          "legacy_union": 343,
+          "extended_union": 364,
+          "wiener_unique_recovered": 21
+        }
+      }
+    },
+    {
+      "source_filename": "img_001093.png",
+      "draw_index": 1,
+      "case_id": "synthetic-e3c8fafede48d7e2",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 302,
+          "wiener_top32": 213,
+          "legacy_union": 375,
+          "extended_union": 400,
+          "wiener_unique_recovered": 25
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 288,
+          "wiener_top32": 176,
+          "legacy_union": 359,
+          "extended_union": 379,
+          "wiener_unique_recovered": 20
+        }
+      }
+    },
+    {
+      "source_filename": "img_005873.png",
+      "draw_index": 0,
+      "case_id": "synthetic-f5adb788a82db37a",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 400,
+          "wiener_top32": 273,
+          "legacy_union": 445,
+          "extended_union": 460,
+          "wiener_unique_recovered": 15
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 451,
+          "wiener_top32": 289,
+          "legacy_union": 479,
+          "extended_union": 497,
+          "wiener_unique_recovered": 18
+        }
+      }
+    },
+    {
+      "source_filename": "img_005873.png",
+      "draw_index": 1,
+      "case_id": "synthetic-6b29c3ad920be9f3",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 403,
+          "wiener_top32": 279,
+          "legacy_union": 471,
+          "extended_union": 485,
+          "wiener_unique_recovered": 14
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 410,
+          "wiener_top32": 272,
+          "legacy_union": 453,
+          "extended_union": 467,
+          "wiener_unique_recovered": 14
+        }
+      }
+    },
+    {
+      "source_filename": "img_004418.png",
+      "draw_index": 0,
+      "case_id": "synthetic-7f560d3e0452184b",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 449,
+          "wiener_top32": 303,
+          "legacy_union": 480,
+          "extended_union": 496,
+          "wiener_unique_recovered": 16
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 385,
+          "wiener_top32": 285,
+          "legacy_union": 426,
+          "extended_union": 451,
+          "wiener_unique_recovered": 25
+        }
+      }
+    },
+    {
+      "source_filename": "img_004418.png",
+      "draw_index": 1,
+      "case_id": "synthetic-63aff652a7c532c8",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 434,
+          "wiener_top32": 300,
+          "legacy_union": 479,
+          "extended_union": 498,
+          "wiener_unique_recovered": 19
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 396,
+          "wiener_top32": 259,
+          "legacy_union": 441,
+          "extended_union": 455,
+          "wiener_unique_recovered": 14
+        }
+      }
+    },
+    {
+      "source_filename": "img_002898.png",
+      "draw_index": 0,
+      "case_id": "synthetic-f488984596bacffc",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 262,
+          "wiener_top32": 176,
+          "legacy_union": 333,
+          "extended_union": 364,
+          "wiener_unique_recovered": 31
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 292,
+          "wiener_top32": 188,
+          "legacy_union": 347,
+          "extended_union": 370,
+          "wiener_unique_recovered": 23
+        }
+      }
+    },
+    {
+      "source_filename": "img_002898.png",
+      "draw_index": 1,
+      "case_id": "synthetic-f6b9a6ff2aba0d81",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 265,
+          "wiener_top32": 166,
+          "legacy_union": 326,
+          "extended_union": 354,
+          "wiener_unique_recovered": 28
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 288,
+          "wiener_top32": 185,
+          "legacy_union": 344,
+          "extended_union": 375,
+          "wiener_unique_recovered": 31
+        }
+      }
+    },
+    {
+      "source_filename": "img_004595.png",
+      "draw_index": 0,
+      "case_id": "synthetic-ef1016fa1482cb94",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 376,
+          "wiener_top32": 309,
+          "legacy_union": 427,
+          "extended_union": 454,
+          "wiener_unique_recovered": 27
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 428,
+          "wiener_top32": 351,
+          "legacy_union": 469,
+          "extended_union": 486,
+          "wiener_unique_recovered": 17
+        }
+      }
+    },
+    {
+      "source_filename": "img_004595.png",
+      "draw_index": 1,
+      "case_id": "synthetic-85c51cea988eb46f",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 382,
+          "wiener_top32": 322,
+          "legacy_union": 430,
+          "extended_union": 458,
+          "wiener_unique_recovered": 28
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 443,
+          "wiener_top32": 345,
+          "legacy_union": 488,
+          "extended_union": 504,
+          "wiener_unique_recovered": 16
+        }
+      }
+    },
+    {
+      "source_filename": "img_001345.png",
+      "draw_index": 0,
+      "case_id": "synthetic-6a7a697e81049da7",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 326,
+          "wiener_top32": 202,
+          "legacy_union": 385,
+          "extended_union": 412,
+          "wiener_unique_recovered": 27
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 357,
+          "wiener_top32": 234,
+          "legacy_union": 411,
+          "extended_union": 441,
+          "wiener_unique_recovered": 30
+        }
+      }
+    },
+    {
+      "source_filename": "img_001345.png",
+      "draw_index": 1,
+      "case_id": "synthetic-4fda63a323891fbe",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 332,
+          "wiener_top32": 222,
+          "legacy_union": 389,
+          "extended_union": 413,
+          "wiener_unique_recovered": 24
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 363,
+          "wiener_top32": 242,
+          "legacy_union": 410,
+          "extended_union": 434,
+          "wiener_unique_recovered": 24
+        }
+      }
+    },
+    {
+      "source_filename": "img_001996.png",
+      "draw_index": 0,
+      "case_id": "synthetic-f7774a2e754a7d7a",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 415,
+          "wiener_top32": 338,
+          "legacy_union": 463,
+          "extended_union": 480,
+          "wiener_unique_recovered": 17
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 460,
+          "wiener_top32": 359,
+          "legacy_union": 490,
+          "extended_union": 498,
+          "wiener_unique_recovered": 8
+        }
+      }
+    },
+    {
+      "source_filename": "img_001996.png",
+      "draw_index": 1,
+      "case_id": "synthetic-0bb7d19701ff0446",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 437,
+          "wiener_top32": 345,
+          "legacy_union": 475,
+          "extended_union": 493,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 439,
+          "wiener_top32": 358,
+          "legacy_union": 474,
+          "extended_union": 495,
+          "wiener_unique_recovered": 21
+        }
+      }
+    },
+    {
+      "source_filename": "img_000694.png",
+      "draw_index": 0,
+      "case_id": "synthetic-bad2f2212abf2ae8",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 297,
+          "wiener_top32": 194,
+          "legacy_union": 354,
+          "extended_union": 383,
+          "wiener_unique_recovered": 29
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 357,
+          "wiener_top32": 202,
+          "legacy_union": 405,
+          "extended_union": 424,
+          "wiener_unique_recovered": 19
+        }
+      }
+    },
+    {
+      "source_filename": "img_000694.png",
+      "draw_index": 1,
+      "case_id": "synthetic-a383479947460736",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 271,
+          "wiener_top32": 183,
+          "legacy_union": 342,
+          "extended_union": 365,
+          "wiener_unique_recovered": 23
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 359,
+          "wiener_top32": 221,
+          "legacy_union": 409,
+          "extended_union": 426,
+          "wiener_unique_recovered": 17
+        }
+      }
+    },
+    {
+      "source_filename": "img_005357.png",
+      "draw_index": 0,
+      "case_id": "synthetic-c7f6da057f79ea9d",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 381,
+          "wiener_top32": 264,
+          "legacy_union": 419,
+          "extended_union": 439,
+          "wiener_unique_recovered": 20
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 414,
+          "wiener_top32": 281,
+          "legacy_union": 450,
+          "extended_union": 464,
+          "wiener_unique_recovered": 14
+        }
+      }
+    },
+    {
+      "source_filename": "img_005357.png",
+      "draw_index": 1,
+      "case_id": "synthetic-5e769363fd704ed9",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 378,
+          "wiener_top32": 258,
+          "legacy_union": 422,
+          "extended_union": 445,
+          "wiener_unique_recovered": 23
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 399,
+          "wiener_top32": 282,
+          "legacy_union": 435,
+          "extended_union": 459,
+          "wiener_unique_recovered": 24
+        }
+      }
+    },
+    {
+      "source_filename": "img_005123.png",
+      "draw_index": 0,
+      "case_id": "synthetic-c1d016556584f27a",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 356,
+          "wiener_top32": 207,
+          "legacy_union": 406,
+          "extended_union": 422,
+          "wiener_unique_recovered": 16
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 399,
+          "wiener_top32": 250,
+          "legacy_union": 449,
+          "extended_union": 460,
+          "wiener_unique_recovered": 11
+        }
+      }
+    },
+    {
+      "source_filename": "img_005123.png",
+      "draw_index": 1,
+      "case_id": "synthetic-06eade9dbdb18a3e",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 358,
+          "wiener_top32": 218,
+          "legacy_union": 414,
+          "extended_union": 435,
+          "wiener_unique_recovered": 21
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 390,
+          "wiener_top32": 262,
+          "legacy_union": 441,
+          "extended_union": 459,
+          "wiener_unique_recovered": 18
+        }
+      }
+    },
+    {
+      "source_filename": "img_005951.png",
+      "draw_index": 0,
+      "case_id": "synthetic-47d9084c02118a00",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 197,
+          "wiener_top32": 150,
+          "legacy_union": 256,
+          "extended_union": 276,
+          "wiener_unique_recovered": 20
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 238,
+          "wiener_top32": 166,
+          "legacy_union": 288,
+          "extended_union": 305,
+          "wiener_unique_recovered": 17
+        }
+      }
+    },
+    {
+      "source_filename": "img_005951.png",
+      "draw_index": 1,
+      "case_id": "synthetic-17b4404affb65249",
+      "coverage": {
+        "right": {
+          "eligible": 552,
+          "raw_top32": 215,
+          "wiener_top32": 156,
+          "legacy_union": 276,
+          "extended_union": 294,
+          "wiener_unique_recovered": 18
+        },
+        "down": {
+          "eligible": 552,
+          "raw_top32": 238,
+          "wiener_top32": 170,
+          "legacy_union": 298,
+          "extended_union": 315,
+          "wiener_unique_recovered": 17
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "schema": "aiijc-joint-native-head-arm-fit-config-v1",
+  "status": "signed-fixed-protocol",
+  "config_path": "configs/joint_native_head_arm_fit_v1.json",
+  "created_at": "2026-08-31",
+  "purpose": "Exactly one target-blind FIT64 joint-native layout arm: consume the already frozen fixed-5-percent reciprocal head as component anchors, then use frozen raw-side seam costs and the existing deterministic component-placement/Hungarian-fill solver.",
+  "scope": {
+    "panel": "exact immutable opened FIT32 sources x draws 0,1 = 64 cases",
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "source_count": 32,
+    "draw_indices": [0, 1],
+    "case_count": 64,
+    "primary_comparator": "already frozen relation-selector control layout",
+    "raw_arm_comparator": "unavailable: the frozen control archive does not store it and repeated historical matcher inference is forbidden",
+    "dev32_local_terminal_test_competition_or_submission_access": false,
+    "model_training_or_inference": false,
+    "whole_arm_reselection": false,
+    "threshold_topk_tail_config_or_seed_sweep": false
+  },
+  "construction": {
+    "candidate_edges": "exact frozen fixed-5-percent reciprocal head only",
+    "edge_priority": "global joint-confidence descending; tie axis right-before-down, source, target",
+    "dense_cost": "mean-square frozen RGB-plus-gradient right-left and bottom-top side sequences",
+    "placement_fill": "existing prioritized raw-tail component placement and Hungarian fill",
+    "protected_tail": false,
+    "whole_arm_selection": false,
+    "requested_per_axis": 29,
+    "solver_config": {
+      "baseline_quantile": 0.15,
+      "search_rounds": 6,
+      "border_weight": 0.0,
+      "random_seed": 0,
+      "component_cap": 0,
+      "fill_rounds": 1
+    }
+  },
+  "freeze_score_order": {
+    "freeze": "validate all sibling identities/hashes; materialise only raw_sides and fixed-head arrays; freeze all 64 strict original-upright layouts and pre-score hashes",
+    "score": "verify config, upstream inputs and own pre-score hashes before materialising candidates/target_slots; reconstruct exact FIT references and run the one fixed score",
+    "reference_members_forbidden_during_freeze": ["target_slots", "truth", "reference", "correct", "label"]
+  },
+  "metrics": {
+    "primary": "satisfied-pair delta versus frozen relation-selector control",
+    "safety": ["exact tiles", "absolute mean Manhattan", "radius2 recall"],
+    "robustness": "case and source-block W/T/L; mean/median/Q25/Q75/min/max; 100000-draw deterministic source bootstrap; largest positive/harm contribution and leave-largest-source means",
+    "delta_orientation": "positive always means candidate improvement; control-candidate for Manhattan, candidate-control otherwise",
+    "bootstrap": {
+      "unit": "source_filename with both draws retained",
+      "resamples": 100000,
+      "interval": "percentile-95",
+      "base_seed": 20260831,
+      "metric_seed_stride": 1009
+    }
+  },
+  "gate": {
+    "pair_mean_strictly_positive": true,
+    "pair_source_bootstrap_95pct_lower_nonnegative": true,
+    "exact_mean_nonnegative": true,
+    "manhattan_benefit_mean_nonnegative": true,
+    "radius2_mean_nonnegative": true
+  },
+  "frozen_inputs": {
+    "head_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz",
+      "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"
+    },
+    "head_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json",
+      "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"
+    },
+    "head_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/reciprocal-heads-pre-score-freeze.json",
+      "sha256": "5921efae286e97da430a2bca3cc1fe4dcd711db412a70fa488472158bdc98448"
+    },
+    "control_archive": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.npz",
+      "sha256": "f567be7e1c9e2b5fa4cb64d896c709ebd0fa1595fa52b4f6d40106c2a6c228d0"
+    },
+    "control_metadata": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.json",
+      "sha256": "f3b0911324da8fb3342fa3a21804169ba46f9e9531fb018df29a7c634e13dd9d"
+    },
+    "control_pre_score_freeze": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/pre-score-freeze.json",
+      "sha256": "1c59cc32a14888337f9720a001efa83ce759dbac9ee31dadd20441562eb67fb9"
+    },
+    "tri_fit_report": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/report.json",
+      "sha256": "29686696e606f7b8c0aed51ba6baa24ba87cfcb68841a143b01b3c921b543b0b"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_native_head_arm.py",
+      "sha256": "a1f878b7e9511ec8ad97472a343120d91764c5df2d6039b6ab9e1df9d67d8f5a"
+    },
+    "runner": {
+      "path": "scripts/run_joint_native_head_arm_fit.py",
+      "sha256": "ef3b6fa4a4b4d995e64487f08a34f0008525231a196c47ca700886796c83c90d"
+    },
+    "tests": {
+      "path": "tests/test_joint_native_head_arm.py",
+      "sha256": "03704f954c373721eea8acea49cd737f7ed2ec6ebad66d709669d7253979cd91"
+    },
+    "raw_tail_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    },
+    "prioritized_solver": {
+      "path": "src/aiijc_puzzle/taska_edge_calibrator.py",
+      "sha256": "1915d250ed077040ec5df8a5e3ec79a9f040dc550b8b8330d5e7b664cd4a8fc5"
+    },
+    "existing_solver_config": {
+      "path": "src/aiijc_puzzle/taska_pair_pipeline.py",
+      "sha256": "b355f424bfd673f11ee559e3dbd8b858875bede7c42abc0b45c494e74170ad69"
+    },
+    "metric_module": {
+      "path": "src/aiijc_puzzle/structured_decoder_fit_oracle.py",
+      "sha256": "05268c8556ccb151407ee418aa7b0abc5d7a8ff4572fab3cd290989d12ddb1e7"
+    }
+  },
+  "forbidden": {
+    "dev32": true,
+    "opened_local": true,
+    "terminal": true,
+    "competition_test": true,
+    "submission_or_production": true,
+    "model_training_or_inference": true,
+    "whole_arm_selection": true,
+    "sweep_or_posthoc_rule_change": true,
+    "weco": true,
+    "git": true
+  }
+}

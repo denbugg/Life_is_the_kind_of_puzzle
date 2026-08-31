@@ -1,0 +1,26 @@
+{
+  "schema": "aiijc-joint-reciprocal-real-fit-runtime-invocation-v1",
+  "status": "declared-during-running-fit-before-endpoint-write",
+  "config": {
+    "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+    "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"
+  },
+  "mode": "fit",
+  "experiment_dir": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2",
+  "device": "mps",
+  "allow_nondeterministic_mps": true,
+  "torch_deterministic_algorithms": true,
+  "torch_deterministic_algorithms_warn_only": true,
+  "known_runtime_warnings": [
+    "index_put_with_accumulate_mps has no deterministic implementation",
+    "scatter_reduce_mps has no deterministic implementation"
+  ],
+  "single_seed": 20260913,
+  "optimizer_updates": 1752,
+  "checkpoint_selection": "single-final-endpoint-no-selection",
+  "resume_or_warm_start": false,
+  "endpoint_written_at_declaration": false,
+  "dev_pixels_or_labels_opened_at_declaration": false,
+  "terminal16_opened": false,
+  "competition_test_accessed": false
+}

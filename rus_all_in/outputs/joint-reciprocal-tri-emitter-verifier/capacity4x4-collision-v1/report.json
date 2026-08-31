@@ -1,0 +1,149 @@
+{
+  "schema": "aiijc-joint-reciprocal-tri-emitter-capacity-v1",
+  "status": "fail-stop",
+  "scope": "synthetic-4x4-collision-capacity-only",
+  "config_sha256": "20c5fc68c21ed3c4d1833f69b531f3c284716fb0fb6adf77aa23bdb6377af17b",
+  "case": {
+    "grid": "4x4",
+    "tile_count": 16,
+    "candidate_width": 8,
+    "axes": 2,
+    "hard_many_to_one_collision_targets": [
+      5,
+      10
+    ],
+    "organizer_sources": 0
+  },
+  "training": {
+    "seed": 20260916,
+    "steps": 600,
+    "initial_loss": 4.2646708488464355,
+    "final_loss": 0.02999245561659336,
+    "final_to_initial_loss_ratio": 0.007032771503269969,
+    "final_components_mean_over_axes": {
+      "row_cross_entropy": 0.0037417877465486526,
+      "column_cross_entropy": 0.0028497963212430477,
+      "confidence_bce": 0.00014291270053945482,
+      "delta_regularization": 23.365142822265625
+    }
+  },
+  "axes": [
+    {
+      "axis": "right",
+      "row_all_r1": 1.0,
+      "column_all_r1": 1.0,
+      "row_exact_edge_r1": 1.0,
+      "column_exact_edge_r1": 1.0,
+      "row_none_accuracy": 1.0,
+      "column_none_accuracy": 1.0,
+      "positive_confidence_minimum": 6.4055986404418945,
+      "hard_collision_confidence_maximum": -8.708012580871582,
+      "fixed_head_fraction": 0.05,
+      "fixed_head_requested_count": 1,
+      "fixed_head_selected_count": 1,
+      "fixed_head_precision": 1.0,
+      "reciprocal_winner_count": 12,
+      "transpose_confidence_max_abs_error": 0.000682830810546875,
+      "relabel_confidence_max_abs_error": 0.0006775856018066406
+    },
+    {
+      "axis": "down",
+      "row_all_r1": 1.0,
+      "column_all_r1": 1.0,
+      "row_exact_edge_r1": 1.0,
+      "column_exact_edge_r1": 1.0,
+      "row_none_accuracy": 1.0,
+      "column_none_accuracy": 1.0,
+      "positive_confidence_minimum": 6.418022632598877,
+      "hard_collision_confidence_maximum": -8.710107803344727,
+      "fixed_head_fraction": 0.05,
+      "fixed_head_requested_count": 1,
+      "fixed_head_selected_count": 1,
+      "fixed_head_precision": 1.0,
+      "reciprocal_winner_count": 12,
+      "transpose_confidence_max_abs_error": 0.0007205009460449219,
+      "relabel_confidence_max_abs_error": 0.0007243156433105469
+    }
+  ],
+  "confidence_separation": {
+    "positive_minimum": 6.4055986404418945,
+    "hard_collision_maximum": -8.708012580871582,
+    "minimum_gap": 15.113611221313477
+  },
+  "gate": {
+    "classification_passed": true,
+    "confidence_separation_passed": true,
+    "fixed_5_percent_head_passed": true,
+    "transpose_and_relabel_invariants_passed": false,
+    "loss_ratio_passed": true,
+    "passed": false,
+    "thresholds": {
+      "r1_minimum": 1.0,
+      "loss_ratio_maximum": 0.25,
+      "positive_confidence_strictly_above_every_hard_collision": true,
+      "head_precision_minimum": 1.0,
+      "invariance_max_abs_error": 1e-05,
+      "all_conditions_simultaneously": true
+    }
+  },
+  "contract": {
+    "architecture": "joint-reciprocal-tri-emitter-verifier-v1",
+    "content_backbone": "vectorized-tri-emitter-relation-local-verifier-v1",
+    "dino_projection_dim": 8,
+    "auxiliary_dim": 19,
+    "width": 16,
+    "hidden": 48,
+    "learned_none": {
+      "row": true,
+      "column": true,
+      "per_axis": true
+    },
+    "objective": {
+      "row_cross_entropy_weight": 1.0,
+      "column_cross_entropy_weight": 1.0,
+      "confidence_bce_weight": 0.25,
+      "delta_l2_weight": 0.001
+    },
+    "confidence": {
+      "operator": "differentiable-soft-min-of-row-and-column-margins",
+      "tau": 0.25,
+      "learned_bias": true,
+      "learned_positive_temperature": true
+    },
+    "deployment_head": {
+      "reciprocal_row_and_column_top1": true,
+      "fixed_fraction_per_axis_per_board": 0.05,
+      "threshold_sweep": false
+    },
+    "candidate_identities_mutated": false,
+    "absolute_position_or_source_identity": false,
+    "pixels_modified": false,
+    "output_material": "original upright tile identities only"
+  },
+  "artifacts": {
+    "config": {
+      "path": "configs/joint_reciprocal_tri_emitter_capacity_preregistered_v1.json",
+      "sha256": "20c5fc68c21ed3c4d1833f69b531f3c284716fb0fb6adf77aa23bdb6377af17b"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "ed2d75f3202f45fa7d5c88f63b325eff552163e97ad63da06aaffea616f80df7"
+    },
+    "runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_capacity.py",
+      "sha256": "fd18a8cb1d9edbd139bcdb5a3acdb3ca005905f16094c6fab82e734d5e2c9e77"
+    },
+    "test": {
+      "path": "tests/test_joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "7ca2a9995729a5afaf182a58fa71382de29e126132db3874948dd66f184ec1ad"
+    },
+    "checkpoint": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/capacity4x4-collision-v1/capacity_model.pt",
+      "sha256": "bb7e4df1e5e27667d661af0cfb388c5dd53fde352d0f2a81c463688f7add14d7"
+    }
+  },
+  "real_fit_or_dev_or_terminal_panel_opened": false,
+  "competition_test_accessed": false,
+  "decoder_run": false,
+  "weco_logged": false
+}

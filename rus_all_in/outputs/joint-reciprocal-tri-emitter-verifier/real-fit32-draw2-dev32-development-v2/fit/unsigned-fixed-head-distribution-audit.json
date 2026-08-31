@@ -1,0 +1,134 @@
+{
+  "schema": "aiijc-joint-reciprocal-v2-fit-fixed-head-unsigned-audit-v1",
+  "status": "unsigned-posthoc-fit-diagnostic-only",
+  "created_date": "2026-08-31",
+  "contract": {
+    "case_count": 64,
+    "source_count": 32,
+    "draws_per_source": 2,
+    "selected_per_axis_per_case": 29,
+    "selected_pooled_per_case": 58,
+    "coverage_fraction_nominal": 0.05,
+    "quantile_method": "numpy-linear",
+    "descriptive_precision_thresholds": [0.8, 0.9]
+  },
+  "aggregate_reproduction": {
+    "right": {"selected": 1856, "correct": 1633, "precision": 0.8798491379310345},
+    "down": {"selected": 1856, "correct": 1708, "precision": 0.9202586206896551},
+    "pooled": {"selected": 3712, "correct": 3341, "precision": 0.9000538793103449},
+    "coverage_complete": true
+  },
+  "precision_distributions": {
+    "per_case": {
+      "right": {"unit_count": 64, "selected_per_unit": 29, "mean": 0.8798491379310345, "median": 0.896551724137931, "q25": 0.8275862068965517, "q75": 0.9310344827586207, "minimum": 0.7241379310344828, "maximum": 1.0, "count_ge_0_80": 56, "count_ge_0_90": 19},
+      "down": {"unit_count": 64, "selected_per_unit": 29, "mean": 0.9202586206896551, "median": 0.9310344827586207, "q25": 0.8620689655172413, "q75": 1.0, "minimum": 0.7586206896551724, "maximum": 1.0, "count_ge_0_80": 57, "count_ge_0_90": 36},
+      "pooled": {"unit_count": 64, "selected_per_unit": 58, "mean": 0.9000538793103448, "median": 0.9137931034482759, "q25": 0.8620689655172413, "q75": 0.9482758620689655, "minimum": 0.7413793103448276, "maximum": 0.9827586206896551, "count_ge_0_80": 61, "count_ge_0_90": 33}
+    },
+    "paired_source": {
+      "right": {"unit_count": 32, "selected_per_unit": 58, "mean": 0.8798491379310345, "median": 0.896551724137931, "q25": 0.8448275862068966, "q75": 0.9310344827586207, "minimum": 0.7413793103448276, "maximum": 0.9827586206896551, "count_ge_0_80": 29, "count_ge_0_90": 12},
+      "down": {"unit_count": 32, "selected_per_unit": 58, "mean": 0.9202586206896552, "median": 0.9482758620689655, "q25": 0.8706896551724138, "q75": 0.9655172413793104, "minimum": 0.7758620689655172, "maximum": 1.0, "count_ge_0_80": 31, "count_ge_0_90": 21},
+      "pooled": {"unit_count": 32, "selected_per_unit": 116, "mean": 0.9000538793103449, "median": 0.9094827586206897, "q25": 0.8663793103448276, "q75": 0.9396551724137931, "minimum": 0.7758620689655172, "maximum": 0.9741379310344828, "count_ge_0_80": 30, "count_ge_0_90": 16}
+    }
+  },
+  "paired_source_bootstrap": {
+    "seed": 20260921,
+    "draws": 20000,
+    "unit": "source_with_two_paired_draws",
+    "right": {"point_mean": 0.8798491379310345, "ci95": [0.859375, 0.8992591594827575]},
+    "down": {"point_mean": 0.9202586206896552, "ci95": [0.8970905172413793, 0.9418103448275863]},
+    "pooled": {"point_mean": 0.9000538793103449, "ci95": [0.8822737068965517, 0.9167564655172414]}
+  },
+  "worst_cases": [
+    {"prefix": "case_0023", "source_filename": "img_006141.png", "draw_index": 1, "right_correct": 21, "down_correct": 22, "pooled_correct_of_58": 43, "pooled_precision": 0.7413793103448276},
+    {"prefix": "case_0049", "source_filename": "img_002898.png", "draw_index": 1, "right_correct": 21, "down_correct": 23, "pooled_correct_of_58": 44, "pooled_precision": 0.7586206896551724},
+    {"prefix": "case_0004", "source_filename": "img_001988.png", "draw_index": 0, "right_correct": 24, "down_correct": 22, "pooled_correct_of_58": 46, "pooled_precision": 0.7931034482758621},
+    {"prefix": "case_0058", "source_filename": "img_005357.png", "draw_index": 0, "right_correct": 22, "down_correct": 25, "pooled_correct_of_58": 47, "pooled_precision": 0.8103448275862069},
+    {"prefix": "case_0022", "source_filename": "img_006141.png", "draw_index": 0, "right_correct": 24, "down_correct": 23, "pooled_correct_of_58": 47, "pooled_precision": 0.8103448275862069},
+    {"prefix": "case_0003", "source_filename": "img_001317.png", "draw_index": 1, "right_correct": 23, "down_correct": 25, "pooled_correct_of_58": 48, "pooled_precision": 0.8275862068965517},
+    {"prefix": "case_0048", "source_filename": "img_002898.png", "draw_index": 0, "right_correct": 24, "down_correct": 24, "pooled_correct_of_58": 48, "pooled_precision": 0.8275862068965517},
+    {"prefix": "case_0006", "source_filename": "img_006170.png", "draw_index": 0, "right_correct": 24, "down_correct": 24, "pooled_correct_of_58": 48, "pooled_precision": 0.8275862068965517}
+  ],
+  "worst_paired_sources": [
+    {"source_filename": "img_006141.png", "right_correct": 45, "down_correct": 45, "pooled_correct_of_116": 90, "pooled_precision": 0.7758620689655172},
+    {"source_filename": "img_002898.png", "right_correct": 45, "down_correct": 47, "pooled_correct_of_116": 92, "pooled_precision": 0.7931034482758621},
+    {"source_filename": "img_005357.png", "right_correct": 43, "down_correct": 54, "pooled_correct_of_116": 97, "pooled_precision": 0.8362068965517241},
+    {"source_filename": "img_006170.png", "right_correct": 49, "down_correct": 48, "pooled_correct_of_116": 97, "pooled_precision": 0.8362068965517241},
+    {"source_filename": "img_001317.png", "right_correct": 47, "down_correct": 51, "pooled_correct_of_116": 98, "pooled_precision": 0.8448275862068966}
+  ],
+  "source_influence": {
+    "right": {
+      "max_correct_source": {"source_filename": "img_004418.png", "correct_of_58": 57, "share_of_all_correct": 0.03490508266993264},
+      "max_error_source": {"source_filename": "img_005357.png", "errors_of_58": 15, "share_of_all_errors": 0.06726457399103139},
+      "removal_improves_precision_most": {"source_filename": "img_005357.png", "leave_one_precision": 0.8843159065628476, "leave_one_minus_full": 0.004466768631813167},
+      "removal_hurts_precision_most": {"source_filename": "img_004418.png", "leave_one_precision": 0.8765294771968855, "leave_one_minus_full": -0.0033196607341490214}
+    },
+    "down": {
+      "max_correct_source": {"source_filename": "img_003117.png", "correct_of_58": 58, "share_of_all_correct": 0.03395784543325527},
+      "max_error_source": {"source_filename": "img_006141.png", "errors_of_58": 13, "share_of_all_errors": 0.08783783783783784},
+      "removal_improves_precision_most": {"source_filename": "img_006141.png", "leave_one_precision": 0.924916573971079, "leave_one_minus_full": 0.004657953281423821},
+      "removal_hurts_precision_most": {"source_filename": "img_003117.png", "leave_one_precision": 0.917686318131257, "leave_one_minus_full": -0.002572302558398132}
+    },
+    "pooled": {
+      "max_correct_source": {"source_filename": "img_004562.png", "correct_of_116": 113, "share_of_all_correct": 0.03382220891948518},
+      "max_error_source": {"source_filename": "img_006141.png", "errors_of_116": 26, "share_of_all_errors": 0.07008086253369272},
+      "removal_improves_precision_most": {"source_filename": "img_006141.png", "leave_one_precision": 0.9040600667408232, "leave_one_minus_full": 0.004006187430478314},
+      "removal_hurts_precision_most": {"source_filename": "img_004562.png", "leave_one_precision": 0.8976640711902113, "leave_one_minus_full": -0.002389808120133563}
+    }
+  },
+  "confidence_calibration": {
+    "fixed_edges": ["-inf", -8, -4, -2, -1, 0, 1, 2, 4, 8, "inf"],
+    "interval_convention": "[lower,upper)",
+    "selection_use": false,
+    "right": {
+      "confidence_summary": {"count": 1856, "mean": 1.4262667939725235, "median": 1.221256971359253, "q25": 0.6861866116523743, "q75": 1.9520599842071533, "minimum": -0.6140390038490295, "maximum": 7.145167827606201},
+      "nonempty_bins": [
+        {"lower": -1, "upper": 0, "count": 49, "correct": 28, "precision": 0.5714285714285714},
+        {"lower": 0, "upper": 1, "count": 717, "correct": 569, "precision": 0.793584379358438},
+        {"lower": 1, "upper": 2, "count": 649, "correct": 603, "precision": 0.9291217257318952},
+        {"lower": 2, "upper": 4, "count": 391, "correct": 383, "precision": 0.979539641943734},
+        {"lower": 4, "upper": 8, "count": 50, "correct": 50, "precision": 1.0}
+      ]
+    },
+    "down": {
+      "confidence_summary": {"count": 1856, "mean": 1.7786543609811283, "median": 1.579713523387909, "q25": 1.0379786789417267, "q75": 2.370919942855835, "minimum": -0.7509167194366455, "maximum": 6.76187801361084},
+      "nonempty_bins": [
+        {"lower": -1, "upper": 0, "count": 21, "correct": 14, "precision": 0.6666666666666666},
+        {"lower": 0, "upper": 1, "count": 405, "correct": 327, "precision": 0.8074074074074075},
+        {"lower": 1, "upper": 2, "count": 792, "correct": 740, "precision": 0.9343434343434344},
+        {"lower": 2, "upper": 4, "count": 579, "correct": 568, "precision": 0.9810017271157168},
+        {"lower": 4, "upper": 8, "count": 59, "correct": 59, "precision": 1.0}
+      ]
+    },
+    "pooled": {
+      "confidence_summary": {"count": 3712, "mean": 1.602460503578186, "median": 1.3913941383361816, "q25": 0.8520656824111938, "q75": 2.1620888710021973, "minimum": -0.7509167194366455, "maximum": 7.145167827606201},
+      "nonempty_bins": [
+        {"lower": -1, "upper": 0, "count": 70, "correct": 42, "precision": 0.6},
+        {"lower": 0, "upper": 1, "count": 1122, "correct": 896, "precision": 0.7985739750445633},
+        {"lower": 1, "upper": 2, "count": 1441, "correct": 1343, "precision": 0.9319916724496877},
+        {"lower": 2, "upper": 4, "count": 970, "correct": 951, "precision": 0.9804123711340206},
+        {"lower": 4, "upper": 8, "count": 109, "correct": 109, "precision": 1.0}
+      ]
+    }
+  },
+  "raw_or_prior_tri_same_contract_comparison": {
+    "status": "unavailable",
+    "reason": "No target-free raw/prior-tri head was frozen on this FIT64 roster at exactly 29 selected reciprocal edges per axis per case. Existing prior diagnostics use native or other coverage, or another panel. Reconstructing a comparator now would introduce a post-hoc head policy."
+  },
+  "artifacts": {
+    "signed_score": {"path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/reciprocal-heads-score.json", "sha256": "d7601a30fe008c05b331b71a6ddd2eb3d110fb39bd25291a1a8de2e22a80d81c"},
+    "target_free_archive": {"path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz", "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"},
+    "target_free_metadata": {"path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json", "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"},
+    "pre_score_freeze": {"path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/reciprocal-heads-pre-score-freeze.json", "sha256": "5921efae286e97da430a2bca3cc1fe4dcd711db412a70fa488472158bdc98448"},
+    "fit_endpoint": {"path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/joint_reciprocal_endpoint.pt", "sha256": "66244123312b794ea6c1ae077f608653db99a122473a47d25712a374e3fe7747"},
+    "config": {"path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json", "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"}
+  },
+  "boundary": {
+    "organizer_train_fit_only": true,
+    "already_frozen_and_scored_head_only": true,
+    "new_model_threshold_or_checkpoint_selection": false,
+    "dev_local_terminal_test_submission_accessed": false,
+    "promotion_claim": false,
+    "calibration_bins_used_for_selection": false,
+    "signed_artifacts_modified": false
+  }
+}

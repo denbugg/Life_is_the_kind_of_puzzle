@@ -1,0 +1,141 @@
+{
+  "schema": "aiijc-joint-relation-selector-consumer-protocol-v1",
+  "status": "unsigned-template-blocked-awaiting-target-free-sibling-freezes",
+  "purpose": "One bounded target-free projection of the fixed joint 5% heads onto the existing frozen six-arm relation-selector layout roster; no new layout synthesis and no tuning.",
+  "joint_protocol_sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+  "rule_commitment_sha256": "07c4e4af4c0ce427704636b7421eabb4cdec815d3947d759002636efb96631d6",
+  "source_protocol": {
+    "dev_filenames": [
+      "img_004604.png",
+      "img_006179.png",
+      "img_004153.png",
+      "img_001598.png",
+      "img_006463.png",
+      "img_000896.png",
+      "img_000968.png",
+      "img_001364.png",
+      "img_004060.png",
+      "img_003856.png",
+      "img_005219.png",
+      "img_004516.png",
+      "img_006404.png",
+      "img_004233.png",
+      "img_005956.png",
+      "img_001000.png",
+      "img_006967.png",
+      "img_004934.png",
+      "img_005632.png",
+      "img_005309.png",
+      "img_004280.png",
+      "img_001953.png",
+      "img_006794.png",
+      "img_001490.png",
+      "img_006879.png",
+      "img_006563.png",
+      "img_000928.png",
+      "img_005550.png",
+      "img_003769.png",
+      "img_004729.png",
+      "img_006705.png",
+      "img_003595.png"
+    ],
+    "dev_digest": "93112f89096f8e9555172f10f6934fd8dd5abf48a8029b86a8803d507e79e87e",
+    "dev_draw_index": 0,
+    "dev_case_seed": 20260908
+  },
+  "selection": {
+    "grid_size": 24,
+    "tile_count": 576,
+    "relation_count": 1104,
+    "arm_names": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "fixed_head_fraction": 0.05,
+    "fixed_head_count_per_axis": 29,
+    "selection_rule": "axiswise-fixed-head-dominance-then-frozen-lexicographic-v1",
+    "eligibility": "head hits must be no lower than the incumbent on right and down separately, and total head hits must be strictly higher",
+    "tie_break": [
+      "maximum total fixed-head hits",
+      "maximum minimum per-axis hit delta versus incumbent",
+      "maximum summed selected joint confidence",
+      "maximum summed learned logit on selected head edges",
+      "maximum frozen relation-selector expected-correct score",
+      "frozen arm roster order"
+    ],
+    "layout_synthesis": false,
+    "allow_only_existing_whole_arm": true,
+    "output_pixels": false,
+    "original_upright_tile_identities_only": true
+  },
+  "evaluation_gate": {
+    "mean_satisfied_pairs_delta_minimum": 0.0,
+    "mean_exact_tiles_delta_minimum": 0.0,
+    "mean_absolute_manhattan_delta_maximum": 0.0,
+    "mean_radius2_recall_delta_minimum": 0.0,
+    "require_at_least_one_changed_case": true,
+    "require_at_least_one_strict_aggregate_improvement": true
+  },
+  "frozen_inputs": {
+    "joint_protocol": {
+      "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+      "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"
+    },
+    "joint_archive": {
+      "path": "__PENDING_JOINT_DEV_FREEZE__/frozen-target-free-predictions.npz",
+      "sha256": "__PENDING__"
+    },
+    "joint_metadata": {
+      "path": "__PENDING_JOINT_DEV_FREEZE__/frozen-target-free-predictions.json",
+      "sha256": "__PENDING__"
+    },
+    "joint_pre_score_freeze": {
+      "path": "__PENDING_JOINT_DEV_FREEZE__/pre-score-freeze.json",
+      "sha256": "__PENDING__"
+    },
+    "relation_roster_archive": {
+      "path": "__PENDING_SAME_CASE_TARGET_FREE_RELATION_ROSTER__/frozen-target-free-roster.npz",
+      "sha256": "__PENDING__"
+    },
+    "relation_roster_metadata": {
+      "path": "__PENDING_SAME_CASE_TARGET_FREE_RELATION_ROSTER__/frozen-target-free-roster.json",
+      "sha256": "__PENDING__"
+    },
+    "relation_roster_pre_score_freeze": {
+      "path": "__PENDING_SAME_CASE_TARGET_FREE_RELATION_ROSTER__/pre-score-freeze.json",
+      "sha256": "__PENDING__"
+    },
+    "relation_selector_model": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/frozen-relation-classifier.pkl",
+      "sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b"
+    },
+    "relation_selector_confirmation_report": {
+      "path": "outputs/taska-relation-truth-selector/formal-confirmation-v1/report.json",
+      "sha256": "d260872251077e1515251b6c7afc316af25df75045c8119112dff4f36c68ea23"
+    },
+    "relation_selector_pipeline": {
+      "path": "src/aiijc_puzzle/taska_relation_selector_pipeline.py",
+      "sha256": "1020ebc28777ba02872a82613bbb433d802e9e2b3e6fc04a5cbd2b81e49e7976"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_consumer.py",
+      "sha256": "e82f1e6e1701ebec41f35c138dc5116357420d8d19fa05103e9fe739ada38dd6"
+    },
+    "runner": {
+      "path": "scripts/run_joint_relation_selector_consumer.py",
+      "sha256": "ed365446b3283e9ad153f5473fad36fc918297f3f3332e9cc6163b7b9e371273"
+    }
+  },
+  "blocked_reason": "The v2 joint DEV archive and an independently target-free same-case six-arm relation-selector roster do not exist yet. A reviewer must verify their hashes, populate implementation hashes, and create a separate signed config before freeze; this template must never be signed in place.",
+  "access_so_far": {
+    "dev_pixels_opened": false,
+    "dev_labels_or_references_opened": false,
+    "opened_local_or_terminal_reused": false,
+    "competition_test_accessed": false,
+    "training_or_tuning_run": false
+  }
+}

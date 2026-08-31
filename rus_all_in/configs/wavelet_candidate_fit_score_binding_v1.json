@@ -1,0 +1,16 @@
+{
+  "schema": "aiijc-wavelet-candidate-fit-score-binding-v1",
+  "status": "signed-post-freeze-fit-coverage-only",
+  "purpose": "Authorise exactly one FIT aggregate coverage and preregistered volume-matched-null label pass after all Haar-BayesShrink candidate identities were frozen.",
+  "experiment_config_sha256": "bc4640887a0ab0517e2773bc1430ef1d7414df4e7d1ae311447c9f6674b7fb11",
+  "pre_label_freeze_sha256": "cd1c72b462b56ebcfeb6f10ccf10cb70d52102103fc5493b9beb340df5e09adb",
+  "separated_fit_labels_metadata": {
+    "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+    "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+  },
+  "scope": {
+    "fit_coverage_counts_only": true,
+    "model_fit_or_parameter_selection": false,
+    "dev_local_terminal_test_submission": false
+  }
+}

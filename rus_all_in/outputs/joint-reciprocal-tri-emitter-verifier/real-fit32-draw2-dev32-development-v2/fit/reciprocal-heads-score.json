@@ -1,0 +1,47 @@
+{
+  "schema": "aiijc-joint-reciprocal-fit-heads-score-v1",
+  "status": "complete-fit-diagnostic-only",
+  "config_sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+  "target_freeze_verified_before_fit_label_loading": true,
+  "fixed_5_percent_head": {
+    "right": {
+      "selected": 1856,
+      "correct": 1633,
+      "requested": 1856,
+      "precision": 0.8798491379310345,
+      "coverage_complete": true
+    },
+    "down": {
+      "selected": 1856,
+      "correct": 1708,
+      "requested": 1856,
+      "precision": 0.9202586206896551,
+      "coverage_complete": true
+    },
+    "pooled": {
+      "selected": 3712,
+      "correct": 3341,
+      "requested": 3712,
+      "precision": 0.9000538793103449,
+      "coverage_complete": true
+    }
+  },
+  "artifacts": {
+    "target_free_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz",
+      "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"
+    },
+    "target_free_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json",
+      "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"
+    },
+    "pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/reciprocal-heads-pre-score-freeze.json",
+      "sha256": "5921efae286e97da430a2bca3cc1fe4dcd711db412a70fa488472158bdc98448"
+    }
+  },
+  "dev_pixels_or_labels_opened": false,
+  "terminal16_opened": false,
+  "competition_test_accessed": false,
+  "promotion_claim": false
+}

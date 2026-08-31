@@ -1,0 +1,107 @@
+{
+  "schema": "aiijc-joint-reciprocal-tri-emitter-capacity-preregistration-v2",
+  "status": "signed-fixed-protocol",
+  "created_before_v2_capacity_training_or_scoring": true,
+  "supersedes": {
+    "config": {
+      "path": "configs/joint_reciprocal_tri_emitter_capacity_preregistered_v1.json",
+      "sha256": "20c5fc68c21ed3c4d1833f69b531f3c284716fb0fb6adf77aa23bdb6377af17b"
+    },
+    "fail_stop_report": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/capacity4x4-collision-v1/report.json",
+      "sha256": "dd1fd17453fda056ea840fac76156fb2ef1d30b0d77ac7e823b16590a7bcd948"
+    },
+    "reason": "v1 passed every learned capacity metric but its mathematically symmetric leave-one-out logsumexp lost about 7e-4 float32 precision when one edge dominated; v2 computes the selected winner denominator by explicit masking while retaining exactly the same model, data, objective, seed, endpoint and gates"
+  },
+  "purpose": "authoritative synthetic-only plumbing check for the materially new joint outgoing/incoming tri-emitter verifier",
+  "no_repeat_contract": {
+    "retained": "unchanged vectorized tri-emitter ordered raw seam, DINO boundary and scalar auxiliary content backbone",
+    "new": "one sparse assignment objective jointly supervises outgoing rows, incoming columns, explicit NONE and calibrated two-sided confidence",
+    "forbidden": [
+      "opened local16 confidence replay",
+      "coverage or threshold sweep",
+      "real FIT, DEV or terminal scoring",
+      "decoder, production or submission changes"
+    ]
+  },
+  "fixed_architecture": {
+    "module": "joint-reciprocal-tri-emitter-verifier-v1",
+    "content_backbone": "unchanged vectorized-tri-emitter-relation-local-verifier-v1",
+    "model_width": 16,
+    "model_hidden": 48,
+    "dino_projection_dim": 8,
+    "learned_none": "separate row and column scalar logits per axis",
+    "absolute_position_source_identity_or_target_pixels": false,
+    "candidate_identity_mutation": false
+  },
+  "fixed_objective": {
+    "row_cross_entropy_weight": 1.0,
+    "column_cross_entropy_weight": 1.0,
+    "confidence_bce_weight": 0.25,
+    "confidence_label": "exact directed edge truth for every valid candidate including row winners, column winners and many-to-one collisions",
+    "two_sided_margin": "edge logit minus logsumexp of all other valid assignments including learned NONE, separately for row and column",
+    "differentiable_minimum_tau": 0.25,
+    "confidence_calibration": "learned bias and positive softplus temperature with minimum 0.001",
+    "delta_l2_weight": 0.001
+  },
+  "fixed_deployment_head": {
+    "rule": "reciprocal row-top1 and column-top1 then calibrated two-sided confidence descending",
+    "fraction_per_axis_per_board": 0.05,
+    "count_rule": "ceil(0.05 * tile_count)",
+    "tie_break": "confidence descending, source identity ascending, target identity ascending",
+    "nearby_fraction_or_threshold_sweep": false
+  },
+  "capacity": {
+    "scope": "synthetic-only",
+    "grid": 4,
+    "tile_count": 16,
+    "axes": 2,
+    "candidate_width": 8,
+    "construction": "matched ordered boundary content plus a raw-favoured many-to-one collision target on each axis",
+    "seed": 20260916,
+    "steps": 600,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "torch_threads": 1,
+    "model_width": 16,
+    "model_hidden": 48,
+    "gate": {
+      "r1_minimum": 1.0,
+      "loss_ratio_maximum": 0.25,
+      "positive_confidence_strictly_above_every_hard_collision": true,
+      "head_precision_minimum": 1.0,
+      "invariance_max_abs_error": 0.00001,
+      "all_conditions_simultaneously": true
+    }
+  },
+  "numerical_repair_only": {
+    "v1_formula": "leave-one-out logsumexp via log(exp(total)-exp(edge)) for every edge",
+    "v2_formula": "same expression for non-winners; explicitly mask the selected argmax before logsumexp for the sole cancellation-prone winner",
+    "objective_or_gate_changed": false,
+    "capacity_data_seed_endpoint_or_hyperparameter_changed": false
+  },
+  "frozen_implementation": {
+    "module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "ba7d7295d48f2212dc2e1cafdc6564cc05b671ecbd5bba5a7d7724b98563567b"
+    },
+    "runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_capacity.py",
+      "sha256": "ce3a4f19ebc6a00d8f2b9282d980d923bc582f4373f6f1e4a3981fd29bb1fbf4"
+    },
+    "test": {
+      "path": "tests/test_joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "bed87b50204981574b4b0d9f50a47ffbafe4b24bbb34edec02c9b43638f683f1"
+    }
+  },
+  "data_and_legality": {
+    "organizer_sources": 0,
+    "organizer_train_or_test_access": false,
+    "real_fit_dev_terminal_panels_opened": false,
+    "pixels_modified": false,
+    "decoder_run": false,
+    "submission_or_production_modified": false,
+    "weco_log_reserved_or_written": false
+  }
+}

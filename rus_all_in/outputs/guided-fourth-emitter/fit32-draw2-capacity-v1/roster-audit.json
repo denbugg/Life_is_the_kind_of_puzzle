@@ -1,0 +1,74 @@
+{
+  "schema": "aiijc-guided-fourth-emitter-roster-audit-v1",
+  "status": "pass-target-free-cache-freeze-authorised",
+  "config_sha256": "02bdcc09de2c7e063ae52c7d0537721662211338dd5b97de91081363cf9cfdcd",
+  "scope": {
+    "metadata_only": true,
+    "organizer_pixels_loaded": false,
+    "exact_or_recovered_labels_loaded": false,
+    "legacy_npz_contents_loaded": false,
+    "models_run": false,
+    "dev_local_terminal_test_or_submission_accessed": false,
+    "real_protocol_signed": false
+  },
+  "fit": {
+    "source_count": 32,
+    "draw_indices": [
+      0,
+      1
+    ],
+    "case_count": 64,
+    "ordered_source_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "legacy_cache_inventory_digest": "7f8bb8f03223866582211973b1ee2c2829527d12d560e4480ccd607333efc80e"
+  },
+  "forbidden_overlap_audit": {
+    "opened_local16": {
+      "source_count": 16,
+      "digest": "25ea956a8514d72cb09b8093f12999534995cf75fb18b383834acf38693ca47f",
+      "fit_overlap_count": 0
+    },
+    "protected_terminal16": {
+      "source_count": 16,
+      "digest": "2a39d853772aa2c6d23d8b7dbc59f726e2f3a3ecfe098e96ad065c1bbd6d65a6",
+      "fit_overlap_count": 0
+    },
+    "opened_socket_dev32": {
+      "source_count": 32,
+      "digest": "93112f89096f8e9555172f10f6934fd8dd5abf48a8029b86a8803d507e79e87e",
+      "fit_overlap_count": 0
+    },
+    "opened_guided_dev16": {
+      "source_count": 16,
+      "digest": "13f7fe84262f9c4d0aee7ce80dfdc1edeec3ce7f1b5082f06ae5c6aceda6fa5f",
+      "fit_overlap_count": 0
+    }
+  },
+  "no_repeat_decision": {
+    "guided_recipe_parameters_closed_to_tuning": true,
+    "same_panel_tuning_forbidden": true,
+    "new_hypothesis": "guided standalone top32 only as a fourth candidate-supply emitter",
+    "confidence_replacement": false
+  },
+  "cache_contract": {
+    "legacy_npz_byte_immutable": true,
+    "new_sidecar_schema": "aiijc-guided-fourth-emitter-target-free-fit-cache-v1",
+    "legacy_slots_0_through_95_preserved": true,
+    "guided_novel_slots_96_through_127_only": true,
+    "raw_top32_retained": true,
+    "target_labels_separate_after_pre_label_hash_freeze": true
+  },
+  "artifacts": {
+    "config": {
+      "path": "configs/guided_fourth_emitter_fit_capacity_preregistered_v1.json",
+      "sha256": "02bdcc09de2c7e063ae52c7d0537721662211338dd5b97de91081363cf9cfdcd"
+    },
+    "runner": {
+      "path": "scripts/run_guided_fourth_emitter_fit_capacity.py",
+      "sha256": "9bc60743b9de54f152c9d56d52f36e408b9ea42351aa671f1d59fa0bbed50cc3"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/guided_fourth_emitter.py",
+      "sha256": "19af34df610182b354848ff168dbb6d42cf904c7d21c223c13bedabaa9ff7672"
+    }
+  }
+}

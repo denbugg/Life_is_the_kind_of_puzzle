@@ -1,0 +1,3718 @@
+{
+  "schema": "aiijc-guided-four-emitter-real-roster-audit-v1",
+  "status": "blocked-no-source-disjoint-organizer-train-dev32",
+  "scope": {
+    "metadata_only": true,
+    "pixels_loaded": false,
+    "labels_or_exact_references_loaded": false,
+    "models_or_predictions_run": false,
+    "dev_local_terminal_test_or_submission_accessed": false
+  },
+  "semantic_rule": "recursively union every explicit source-panel *_filenames roster and every row-wise source_filename from configs/**/*.json and outputs/**/*.json; the organizer manifest universe is not scanned as an experiment artifact",
+  "recursive_inventory": {
+    "artifact_count": 454,
+    "artifact_inventory_digest": "2a6971742e8d4b94970e641ddc1b7c0bb16ad1b374ebe9dea37c596f81bbb1d2",
+    "source_union_count_all_manifest_splits": 6041,
+    "source_union_digest": "236d79abeabcdc69f5bf2468c6ab800ca2d3262a6803885602f95462dfac9cf9",
+    "organizer_train_count": 5600,
+    "organizer_train_digest": "24812cf05931cb152fb6df4c4d2055dd229a610b0665990ebcd9d06df7635be1",
+    "excluded_train_count": 5600,
+    "eligible_train_count": 0,
+    "eligible_train_filenames": [],
+    "artifacts": [
+      {
+        "path": "configs/component_relation_cyclic_fresh_gate_v1.json",
+        "sha256": "7bfd475c5c65bf56d4627eaf718cdf06eb12ce6fdf9f939e13a682782c225b44",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "8437b4def5e772558a23250dfb9069b0c3b7c5326e04d752886b08f38c4f18c5"
+      },
+      {
+        "path": "configs/direct_hard_edge_board_priority_preregistered_v1.json",
+        "sha256": "11ba187b5a739a54193e6f869f443a9bcd04d1559c641c8d3b3ffd0151f514fb",
+        "declared_count": 288,
+        "row_count": 0,
+        "union_count": 288,
+        "union_digest": "9adf54f8eaab089668ed9843353e705e66fc176559585fe1a6e515c93bd2a204"
+      },
+      {
+        "path": "configs/direct_hard_edge_fresh64_confirmation_v1.json",
+        "sha256": "6056fcc57898935c59d9575e7fa2371f9b003fb4843decb115d69e41f0e1735e",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "97d0b13907b66088c7a9919f5e1ddd51e6ff8694450082068f704f2fbd5a5c87"
+      },
+      {
+        "path": "configs/direct_rank_delta_component_selector_fresh64_confirmation_v1.json",
+        "sha256": "23cfb043a2260b8c0f0458a1a47bcf37740a96fae29c6ef3a9484d7ff8234285",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "configs/fullres_relation_fusion_decoder_d2_preregistered_v1.json",
+        "sha256": "46ae0388fee837efbb1bb47f665a442f1badab62bfc6279b6728c1f5a840114a",
+        "declared_count": 40,
+        "row_count": 0,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "configs/fullres_relation_fusion_preregistered_v1.json",
+        "sha256": "b83e819d161524dccb37dabbee6faf7470a27b835a598eded9c8285fe487d7b5",
+        "declared_count": 48,
+        "row_count": 0,
+        "union_count": 48,
+        "union_digest": "e090b3ed2274b49f9710065cf370cf9024bd8d9539eae8c652811826cd9696c9"
+      },
+      {
+        "path": "configs/guided_fourth_emitter_fit_capacity_preregistered_v1.json",
+        "sha256": "02bdcc09de2c7e063ae52c7d0537721662211338dd5b97de91081363cf9cfdcd",
+        "declared_count": 32,
+        "row_count": 0,
+        "union_count": 32,
+        "union_digest": "89e29f30d0ace0af95883b73040abc7062bb23151f6b521c91616c352c95ca17"
+      },
+      {
+        "path": "configs/guided_matcher_supply_diagnostic_opened32_v1.json",
+        "sha256": "cdcbf5fca69f158401352466e40f9bc9c59d0169f1890fbe8367d5e7db99d039",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "configs/guided_matcher_view_opened32_v1.json",
+        "sha256": "5a868a6bda64dfd33db40827b7b9c40b72ff80f2d1b093196838d840c83db1c2",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v1.json",
+        "sha256": "e7f735556f95329ab393d86dc730960762854992dd029547e5cc49071ee0b164",
+        "declared_count": 96,
+        "row_count": 0,
+        "union_count": 96,
+        "union_digest": "ab785caefb2158f7a71164c963c0930678aee3b096cef92c2f72c9707841094d"
+      },
+      {
+        "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+        "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+        "declared_count": 96,
+        "row_count": 0,
+        "union_count": 96,
+        "union_digest": "ab785caefb2158f7a71164c963c0930678aee3b096cef92c2f72c9707841094d"
+      },
+      {
+        "path": "configs/joint_reciprocal_tri_emitter_real_unsigned_template_v1.json",
+        "sha256": "6aa649e330d0fce986cd83a12755343c92597ef991ca676fbc3c95a6f8c2e813",
+        "declared_count": 96,
+        "row_count": 0,
+        "union_count": 96,
+        "union_digest": "ab785caefb2158f7a71164c963c0930678aee3b096cef92c2f72c9707841094d"
+      },
+      {
+        "path": "configs/joint_relation_selector_consumer_unsigned_template_v1.json",
+        "sha256": "53448346aacdd06f34de2fb3c5d41e581614d11761606b7dbbc87131007df9b8",
+        "declared_count": 32,
+        "row_count": 0,
+        "union_count": 32,
+        "union_digest": "249d2aa244f2f0fa0f7875d4946d7b789b7223d72f9f7e8893b13888f10c1a2d"
+      },
+      {
+        "path": "configs/pair_safe_cyclic_origin_fit_audit_exclusions_v1.json",
+        "sha256": "6abe38774ac4b40dc4315fafc8f53410c8d9973b1f06f13feaab6c9676941afd",
+        "declared_count": 5893,
+        "row_count": 0,
+        "union_count": 5893,
+        "union_digest": "a4c8ec43bf93f5b72c2a8855d277c8cfc219db2fa066043f5fdde25f8513487a"
+      },
+      {
+        "path": "configs/pair_safe_cyclic_origin_fit_audit_v1.json",
+        "sha256": "768215ca7bd035d8f8851ff32210d0beed0e6c2d37461b78b80692739740cf27",
+        "declared_count": 7,
+        "row_count": 0,
+        "union_count": 7,
+        "union_digest": "ab6448beb8bb96d5b75bff46b8c12922e2856ed4287bafab2f34d11efc15f964"
+      },
+      {
+        "path": "configs/raw_twin_union_reranker_fresh64_confirmation_v1.json",
+        "sha256": "545890095e1ca928e4f56a837596be0d9801d3adc66ae44885a9aa10f262b721",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "configs/taska_confirmed_arm_portfolio_v1.json",
+        "sha256": "968c86e4d9dc6ad4fb67cee4ddd4064f4ebb7c2ad060e36b67bb1b38d177f3cc",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "544956a96a8ab4cdc3c882f9a84204a3521bb30d6aa2de9f32af4600c67f023e"
+      },
+      {
+        "path": "configs/taska_focal_gated_protected_tail_fresh16_confirmation_v1.json",
+        "sha256": "d07744a88e4155e3a4f157cb896221d79d137c12379b7ae79bd9820f6024953c",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "fff2f9b2ca739369fd7b52c6700e68e4271d57cce0eb843e451f43bd18267088"
+      },
+      {
+        "path": "configs/taska_focal_gated_tail192_fresh16_capacity_v1.json",
+        "sha256": "6ab12dfae4ffec924b66928027edf1d42d562be9c85f1f6cc3ace27d8d1e01db",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "169130eb3a538518d4394e1b979bdb528345c33876bbc84d5c49a9894d2c5746"
+      },
+      {
+        "path": "configs/taska_fullres_focal_gated_tail_fresh32_confirmation_v1.json",
+        "sha256": "742a427ba5cc844afedb7107c39bd0ba9cbe246fad4daf0fd6ae959cf4846794",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "f46136ee2e7a697dc98b3eb9f7f3d81fb75bfa06165de7aaf564977a2f1cb993"
+      },
+      {
+        "path": "configs/taska_protected_tail_fresh32_confirmation_v1.json",
+        "sha256": "9854ef20c479ab358887896b81bf93263a3bdcd7d7014d6a310b7134fb4daad7",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "configs/taska_relation_truth_selector_confirmation_v1.json",
+        "sha256": "3d903eb595d1c0d152a8b53c7c9fa578b5b012227eeb03ab629a7dd24d5ce4e9",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "82f4509a2aad0381493dc1b5f8edad8924c95733aa59a71c2ee974f48b2ac851"
+      },
+      {
+        "path": "configs/taska_seam_held300_diagnostic_v1.json",
+        "sha256": "112d5b4bcc78708091f4d0cbf47865f7dc6bd9276a0c8280a91de152c1b928d7",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "configs/taska_seam_replay_opened32_v1.json",
+        "sha256": "06396905bdf7b552e165e207262d5a0654d19af3d35b2d557501551ca46da359",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "configs/taska_selective_fullres_union_fusion_fresh32_confirmation_v1.json",
+        "sha256": "11b713d0475306d8e1e1397f8563132d74ef5b8957e85e1e58a5e4f57f018190",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "23d20d0375aee0fca4182d5457be829befe6560cc32c4279f4846f0b5387474d"
+      },
+      {
+        "path": "configs/taska_selective_vote500_fresh32_confirmation_v1.exclusions.json",
+        "sha256": "286000ad6f6d1e47932bee8e4e672c2bd7a856bf019346e28e95660a22ab561e",
+        "declared_count": 356,
+        "row_count": 0,
+        "union_count": 356,
+        "union_digest": "0da687471cc49a7ad75f4c5029994a869c30cd9ff5dae54933bba539b18ee61f"
+      },
+      {
+        "path": "configs/taska_selective_vote500_fresh32_confirmation_v1.json",
+        "sha256": "181d562e2d3cc337404608508e8fca6c25bbebf89d584e67744d30a961656628",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "5b58f3768ce2bb919b0c438f3058c545231df2645faa4ba1879dad7a7e32551b"
+      },
+      {
+        "path": "configs/tile_position_distance_metric_validation_v1.json",
+        "sha256": "635c4c6e437c9173d0dbf37cbe4f09f4e613f39d487ae1d1ea9a2e35e69e1622",
+        "declared_count": 32,
+        "row_count": 0,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "configs/union_hard_edge_cutoff_continuation_opened32_v1.json",
+        "sha256": "491995ba8d287ffc899af2927db781ee2116a7c35aae7b6f6a387c5297e7c05b",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "configs/union_hard_edge_priority_pilot_v1.json",
+        "sha256": "3cc28b93d88f7e13366740f59a230635a98a528cb11e5e941a0ce3fa9256e7f6",
+        "declared_count": 80,
+        "row_count": 0,
+        "union_count": 80,
+        "union_digest": "17c9ca11fc40200f304f8380d426fbe191712d0ae772b68f649cbe27bdc0136f"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/axis-development-source64-draw2-replay/report.json",
+        "sha256": "167093dcfa98be544c405845118749d184c1e49ec1f6cfd422c2b2fef0690d9f",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "2415c2bd68cb6c99ed397639d7515a857a0c821898ee04bf59bc3a312ec390a9"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/component-translation-scale-confirm-source64-draw2/report.json",
+        "sha256": "894cf97731fcdb5df05f4409b93f6821fcd05a4f9d282612aa2b8999075c5505",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "2415c2bd68cb6c99ed397639d7515a857a0c821898ee04bf59bc3a312ec390a9"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/component-translation-scale-d64-head32-train2048-s1600/report.json",
+        "sha256": "14e86ca445bfd48c929d9d97a1c6a12a64ad13741acf27e08ab65a48d9e3a17a",
+        "declared_count": 2048,
+        "row_count": 0,
+        "union_count": 2048,
+        "union_digest": "03939e82049a0e5a47d6d989852676e14a6005c65ea1a4d0f4b0eff642311bb5"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/component-translation-smoke-train8-s2/report.json",
+        "sha256": "7e211eb2cb6f08a5bd0d326c9d7f63ba5c6174195b64e092bfb10e0d3b8e3cc3",
+        "declared_count": 8,
+        "row_count": 0,
+        "union_count": 8,
+        "union_digest": "85eb451a10b8a09c0e13cfe29661ffef778ac8967b17cc0826c06be2ee18a186"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/confirm-d64-frozen-head32-set2-source32-draw2/report.json",
+        "sha256": "552164bdcf0ee14e2f39d3f78ba542534d6d62df4c6c38dd47f414a4d517212d",
+        "declared_count": 32,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "5e906ee315b87b5eb31e20f0f5e971f5fda7685ed10c73e1c44e55df149e433e"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/coordinate-cyclic-origin-source64-draw2-development/frozen_predictions.json",
+        "sha256": "1aa7ded322745643ec3430b927792bc93fa2c9285c5188da2aa3eb62ce237688",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "2415c2bd68cb6c99ed397639d7515a857a0c821898ee04bf59bc3a312ec390a9"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/coordinate-cyclic-origin-source64-draw2-development/report.json",
+        "sha256": "654c376192d3fb8fae46597820b006a3174f4b68769857dca7a6e98ec8456839",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "2415c2bd68cb6c99ed397639d7515a857a0c821898ee04bf59bc3a312ec390a9"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/development-axis-unaries-source32-draw2/report.json",
+        "sha256": "b89dda421cf5b48333b6da94198766bea55128632c9976c4c099195d1d7361ce",
+        "declared_count": 32,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "5e906ee315b87b5eb31e20f0f5e971f5fda7685ed10c73e1c44e55df149e433e"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/development-compose-cyclic-source32-draw2/report.json",
+        "sha256": "76f7e304a12b67f35fd9e41530bf4880dfe87662d2fcff2cfeacd19e8324ce70",
+        "declared_count": 32,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "5e906ee315b87b5eb31e20f0f5e971f5fda7685ed10c73e1c44e55df149e433e"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/pilot-d64-frozen-head32-set2-train512-s400-eval16/report.json",
+        "sha256": "c3cb6c8fbdce608a1e956a21fc790e952c370833b4bd434a4ce89f21e14aefc5",
+        "declared_count": 528,
+        "row_count": 16,
+        "union_count": 528,
+        "union_digest": "751dac86a80566950eb7cc4fe53dc34800c7557d98fd34c63e00020739b22e76"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/smoke-d64-head32/report.json",
+        "sha256": "a7c6f90305c1f4603b2f73044bbf7de2d5aca795177147105857f3e07551c0c3",
+        "declared_count": 3,
+        "row_count": 1,
+        "union_count": 3,
+        "union_digest": "221a1209167d5cf14f3ed3f92f4ff2e42523cb8b4b657a3432fec9e69ef02dac"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/transpose-continuation-benchmark-mps-train1-s1/report.json",
+        "sha256": "b1feca260b6359963e68d52ecd81e66d8c4291b9c9c4fa584382034533e70e71",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "c8a4e863fe97d6ead1ccf4a11b03f1c7be6a40cfa2d2e0bad7b8b9b335fc45c3"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/transpose-continuation-d64-train192-s300-source64-draw2/report.json",
+        "sha256": "b27fd07de29b6b5e9ca2eb48d5cfb04f2861c234ead971eedf5e3d74921ac765",
+        "declared_count": 256,
+        "row_count": 64,
+        "union_count": 256,
+        "union_digest": "137f7c91aa01fe4564fc99cb4df0e90d346f7d774fbcb5293815d9304b199aac"
+      },
+      {
+        "path": "outputs/absolute-coordinate-sorter/transpose-continuation-smoke-train1-s1/report.json",
+        "sha256": "b13c21bbe8fa0a050ade5dce041244f54da56ebbb0673b002d29ca43aa644539",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "13055c07d374c141d120a5fcb0189cd072a08a0171cff9c0ad6f255f50098b27"
+      },
+      {
+        "path": "outputs/border-pointer/baseline-guided-repair-margin1-b4-b16-top16-exact16/frozen_predictions.json",
+        "sha256": "c468ab5c6d96376ab813f95799da884e2edad5b6c88a8928ce6c8e5d19947d07",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "4c02e979f2491e1dccb7803144f082d417d961b339c016770d473c6796ef0db0"
+      },
+      {
+        "path": "outputs/border-pointer/baseline-guided-repair-margin1-b4-b16-top16-exact16/report.json",
+        "sha256": "ff28f4d767c5630b35a86eed3733aa25ae64fef61c7810fdc90d6d2d84d3e054",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "4c02e979f2491e1dccb7803144f082d417d961b339c016770d473c6796ef0db0"
+      },
+      {
+        "path": "outputs/border-pointer/benchmark-grid24-step1-cpu/report.json",
+        "sha256": "72b7c21060530a20b17059d502d50d6c96b040426cf1c45a7c7136b021166474",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "23910b98e6b9a77b0089f2a0d048a46bc61fb997e0e2292634187cc6f921b2b1"
+      },
+      {
+        "path": "outputs/border-pointer/benchmark-grid24-step1-cpu/selection_commitment.json",
+        "sha256": "190c6093971457df0ca2fdf133b4a4478f32a4bf030c88e71772cb73954fa59a",
+        "declared_count": 49,
+        "row_count": 0,
+        "union_count": 49,
+        "union_digest": "20151f3a0f6dc264bbcf75e03ecfc282690b68a1d4902d25fc4ba1bbb8984442"
+      },
+      {
+        "path": "outputs/border-pointer/benchmark-grid24-step1-mps/report.json",
+        "sha256": "b0cf5e37076569e7d9853791b2bcb8284ca6e6b7589ea53e28e6ec478ecd2776",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "23910b98e6b9a77b0089f2a0d048a46bc61fb997e0e2292634187cc6f921b2b1"
+      },
+      {
+        "path": "outputs/border-pointer/benchmark-grid24-step1-mps/selection_commitment.json",
+        "sha256": "190c6093971457df0ca2fdf133b4a4478f32a4bf030c88e71772cb73954fa59a",
+        "declared_count": 49,
+        "row_count": 0,
+        "union_count": 49,
+        "union_digest": "20151f3a0f6dc264bbcf75e03ecfc282690b68a1d4902d25fc4ba1bbb8984442"
+      },
+      {
+        "path": "outputs/border-pointer/capacity-grid4-s120-mps/report.json",
+        "sha256": "6fa8b5060dd5a90d8cafbc7a02a1b498b1b83fe965e481c2a2102ed8932f82a8",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "23910b98e6b9a77b0089f2a0d048a46bc61fb997e0e2292634187cc6f921b2b1"
+      },
+      {
+        "path": "outputs/border-pointer/capacity-grid4-s120-mps/selection_commitment.json",
+        "sha256": "0234459b94b44e212cd684efac049a1cbcfc1f6fe637d0191419fa2300cb2e48",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "23910b98e6b9a77b0089f2a0d048a46bc61fb997e0e2292634187cc6f921b2b1"
+      },
+      {
+        "path": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/frozen_predictions.json",
+        "sha256": "b77d241ad177e6b2d433a6fc03a9cfc871e295d4ec0fa01d29ccf20d4fe3d05e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "4c02e979f2491e1dccb7803144f082d417d961b339c016770d473c6796ef0db0"
+      },
+      {
+        "path": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/report.json",
+        "sha256": "7ae2c770e09ed61e0ffa67cc11fa836f09570c2f91ba7f22d751f404c7f9ce44",
+        "declared_count": 144,
+        "row_count": 16,
+        "union_count": 144,
+        "union_digest": "3a4c2a4120ce688b8f504c2475d9bb79378d8f0704aba6961554aecc4c16d07f"
+      },
+      {
+        "path": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/selection_commitment.json",
+        "sha256": "08676c2f656e67277a081293933d33da253f13e542702c5982d15712863c5d33",
+        "declared_count": 192,
+        "row_count": 0,
+        "union_count": 192,
+        "union_digest": "4fcb14382c203307d2a23b5b228ad34ff24673cc86d33884976f0e9774317f1b"
+      },
+      {
+        "path": "outputs/border-pointer/smoke-grid4-step1-mps/report.json",
+        "sha256": "4beb27abb6e5aeec3be52f3b2813d48f581529dacb0c0cb99d2036f5685aa6b7",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "23910b98e6b9a77b0089f2a0d048a46bc61fb997e0e2292634187cc6f921b2b1"
+      },
+      {
+        "path": "outputs/border-pointer/smoke-grid4-step1-mps/selection_commitment.json",
+        "sha256": "0234459b94b44e212cd684efac049a1cbcfc1f6fe637d0191419fa2300cb2e48",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "23910b98e6b9a77b0089f2a0d048a46bc61fb997e0e2292634187cc6f921b2b1"
+      },
+      {
+        "path": "outputs/component-absolute-placer/v1-fit256-s600-eval32/frozen_predictions.json",
+        "sha256": "aa1ae32597216688572cb274b6cb4be5b9279e69447f1d5a93e1b58e7fccb2d5",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "b01a0970fd61f921799b4da40390080746a4911134f8232f6b9fef9789574a3b"
+      },
+      {
+        "path": "outputs/component-absolute-placer/v1-fit256-s600-eval32/report.json",
+        "sha256": "9dfe0434541d77122ac16e052405f34c643ebed8317dacfdb422ced8f5166070",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "8887ac80783e3141fd8fc35c146befa635056343b089b3ede4c8d60fe52a9f2c"
+      },
+      {
+        "path": "outputs/component-absolute-placer/v1-selection/selection_commitment.json",
+        "sha256": "2b2b0c90e559ca2a6c7898d8eaccc4f8944a73c35d7d78722e0bb30939e0ebe6",
+        "declared_count": 288,
+        "row_count": 0,
+        "union_count": 288,
+        "union_digest": "30b04978745320741f8047e5dd9393002bd32cc17d9c7f39c12056bbd7c08bc8"
+      },
+      {
+        "path": "outputs/component-relation-confidence/fresh-source64-draw2-v1_1-cyclic5/frozen_predictions.json",
+        "sha256": "c486149e1659eb7555f977d872fd7c6b7d58e88e11248d1233002c996d46dbbb",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "8437b4def5e772558a23250dfb9069b0c3b7c5326e04d752886b08f38c4f18c5"
+      },
+      {
+        "path": "outputs/component-relation-confidence/fresh-source64-draw2-v1_1-cyclic5/report.json",
+        "sha256": "98d9912b2e27981a8f7904fb4306eeefb637890ea0587864e93127bd3ec4878a",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "8437b4def5e772558a23250dfb9069b0c3b7c5326e04d752886b08f38c4f18c5"
+      },
+      {
+        "path": "outputs/component-relation-confidence/v1_1-decoder40/report.json",
+        "sha256": "bc3a51ccee85693e4c39455fab769ea40231fc58149bf4c99ed7e96cf3480688",
+        "declared_count": 40,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "8fdbb7c94d079d4fcc57672ad3a2dae957b9916c784fbd2ec8634eafa0a4826f"
+      },
+      {
+        "path": "outputs/component-relation-confidence/v1_1-local32-confirm24/component_relation_confidence.json",
+        "sha256": "c60293e5d4053689952fcfeda9d6ed98c559da86c7f3e44558bf88707dad4f5a",
+        "declared_count": 32,
+        "row_count": 0,
+        "union_count": 32,
+        "union_digest": "e927cb4d62238efeb14074b58f2d4715340d6b0302cf65c2d5ec2e1b8c1e7c8c"
+      },
+      {
+        "path": "outputs/component-relation-confidence/v1_1-local32-confirm24/report.json",
+        "sha256": "7c0874c27049820a63e176321c512180fe09b5e47b051675992d016d5dc56e56",
+        "declared_count": 96,
+        "row_count": 24,
+        "union_count": 96,
+        "union_digest": "447d78180bea9388ce37ac4aeff1353f5d96c90a85bea730a450489339ed9b2e"
+      },
+      {
+        "path": "outputs/component-relation-confidence/v1_2-relation-forest-development/report.json",
+        "sha256": "7962fb0b42bcc310060fb123abab1158ab48766a78cc995dd998fb6a454357db",
+        "declared_count": 40,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "8fdbb7c94d079d4fcc57672ad3a2dae957b9916c784fbd2ec8634eafa0a4826f"
+      },
+      {
+        "path": "outputs/component-relation-confidence/v1_2h-relation-forest-hybrid-development/report.json",
+        "sha256": "07aae8b8a84d01438fa1d20139623ade4544f4a9c28f9aa0e4f8d91ea09c6268",
+        "declared_count": 40,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "8fdbb7c94d079d4fcc57672ad3a2dae957b9916c784fbd2ec8634eafa0a4826f"
+      },
+      {
+        "path": "outputs/component-relation-confidence/v1_3-cyclic-border5-development/report.json",
+        "sha256": "5aa1655109d1be19f356568c37e6c0b46175ce9ad5a634b46e9a21c911c9ec57",
+        "declared_count": 40,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "8fdbb7c94d079d4fcc57672ad3a2dae957b9916c784fbd2ec8634eafa0a4826f"
+      },
+      {
+        "path": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/report.json",
+        "sha256": "5fe204c395a4f9481e978e8d6480fc900af32fe24fd78d0247f0b7bff1263fa7",
+        "declared_count": 5536,
+        "row_count": 32,
+        "union_count": 5536,
+        "union_digest": "1993ecb2342ea3e9abc6183e6099ff41bc0d679e22da58012ba9642452d5e158"
+      },
+      {
+        "path": "outputs/component-shift-head/train-only-d32-h64-train2048-s800/report.json",
+        "sha256": "a7c7fd230d2738c6e625c6b6ad8656b1c191b21d36bb886977f97e8fde39cf21",
+        "declared_count": 5300,
+        "row_count": 0,
+        "union_count": 5300,
+        "union_digest": "c0fb02dc0d269bebe6a01910ca3079bfe78f50774eb705f3d01cbd83c715b40d"
+      },
+      {
+        "path": "outputs/content-verifier/calibration12-confirm.json",
+        "sha256": "b2e54584dedb645aaf5100ddfddd8673ab43be31b5850510dd115e2bf7d14161",
+        "declared_count": 44,
+        "row_count": 0,
+        "union_count": 44,
+        "union_digest": "72da06869c4815e3f2262dfdad55418b11dc8fa0c07012125c5d1237313e9aa9"
+      },
+      {
+        "path": "outputs/content-verifier/calibration32x12.json",
+        "sha256": "ff62592cfc8b3bb45df527b057335275f2cff7fdd116e99ab26408ff33f1c439",
+        "declared_count": 44,
+        "row_count": 0,
+        "union_count": 44,
+        "union_digest": "72da06869c4815e3f2262dfdad55418b11dc8fa0c07012125c5d1237313e9aa9"
+      },
+      {
+        "path": "outputs/content-verifier/holdout12.json",
+        "sha256": "9bd16d2c9b03b3d79e7bcb84aaa0eba76e38a95a62a4d25bde9710a92f8a4e9a",
+        "declared_count": 44,
+        "row_count": 0,
+        "union_count": 44,
+        "union_digest": "3e653827b9388cb697bd931fc21140e387c8097727b4921d23a29c59146f68e9"
+      },
+      {
+        "path": "outputs/content-verifier/scale128-calibration24-final.json",
+        "sha256": "5749665c12addecd46b709ff55d651d0d27f175d14cfc26b8c6f85d02f1f3bb4",
+        "declared_count": 152,
+        "row_count": 0,
+        "union_count": 152,
+        "union_digest": "3da43d8741dfa412f13eef91408a563cef989bbc1dfb3e3d588c832825507504"
+      },
+      {
+        "path": "outputs/content-verifier/scale128-calibration24.json",
+        "sha256": "22acb1a313c8be6c28b310741e8bd589b83c091c6f867a136b70c945325f3d08",
+        "declared_count": 152,
+        "row_count": 0,
+        "union_count": 152,
+        "union_digest": "3da43d8741dfa412f13eef91408a563cef989bbc1dfb3e3d588c832825507504"
+      },
+      {
+        "path": "outputs/content-verifier/smoke.json",
+        "sha256": "f190699b71d244e3cc23cdbdad31b1e662c624b02dc00e2fe8ddce7bc085a43d",
+        "declared_count": 4,
+        "row_count": 0,
+        "union_count": 4,
+        "union_digest": "015462183fc6d5ff27ff426c83c222fa328f03eee0157911e65c4aa68f567689"
+      },
+      {
+        "path": "outputs/dinov2-boundary-candidate-screen/opened-local16-v1/frozen-target-free-candidates.json",
+        "sha256": "5681bea5726881efb3882fe5ac1ae3f686d3c3ce1ee8a6de7288774eb6f60ba9",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/dinov2-boundary-candidate-screen/smoke1-v1/frozen-target-free-candidates.json",
+        "sha256": "5c9a9dd7e71931de8ec0e5eb3cf38e05c19b2f694ef15f82820175a49de16ffc",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "5fbc0a8828a2de351509975f6ca9d2ddcca31503cd00d7a8b00cd733183faa64"
+      },
+      {
+        "path": "outputs/direct-hard-edge-priority/frozen-v1-fresh64-draw0/report.json",
+        "sha256": "dbaab629fb6ba76ac0653a1c936aa1739283e9338097e002666cc5f022bd7dc6",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "97d0b13907b66088c7a9919f5e1ddd51e6ff8694450082068f704f2fbd5a5c87"
+      },
+      {
+        "path": "outputs/direct-hard-edge-priority/v1-fit256-s600-d1-32-cpu/origin-transfer/frozen_predictions.json",
+        "sha256": "f66e20670607c6bc3252ec1715a9f7cd6e31bc435a612934b3a78756572a23a4",
+        "declared_count": 32,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "b1ef7d08a28f592eba9b187347c5e4149b32de1bd52b432832a0c41e9c9fb52a"
+      },
+      {
+        "path": "outputs/direct-hard-edge-priority/v1-fit256-s600-d1-32-cpu/origin-transfer/report.json",
+        "sha256": "203d6973429a2dc79d925e2e006984415aa4fd0daf8e78cfb2d1cfc89e5c8a8e",
+        "declared_count": 32,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "b1ef7d08a28f592eba9b187347c5e4149b32de1bd52b432832a0c41e9c9fb52a"
+      },
+      {
+        "path": "outputs/direct-hard-edge-priority/v1-fit256-s600-d1-32-cpu/report.json",
+        "sha256": "546d0c9aefa3bd52d9db3ebd973fccc0a7d24a6d43753b97361e0cf7eb361885",
+        "declared_count": 288,
+        "row_count": 32,
+        "union_count": 288,
+        "union_digest": "9adf54f8eaab089668ed9843353e705e66fc176559585fe1a6e515c93bd2a204"
+      },
+      {
+        "path": "outputs/direct-rank-delta-component-selector/fresh64-v1/frozen-target-free-layouts.json",
+        "sha256": "70525d7636fbc520f42d813ac3c46a3cb0ed4e78eb0a97dafa93445143e620b0",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "outputs/direct-rank-delta-component-selector/fresh64-v1/report.json",
+        "sha256": "b50c6df0df62d7f0f89f97d28dd87594d5656d31983b2f49a95e38792b87b46e",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "outputs/direct-rank-delta-component-selector/opened64-v1/frozen-target-free-layouts.json",
+        "sha256": "23962a85373526941d0efd40ffee04d5c22884b7049dd22e52b8499648e79c57",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/direct-rank-delta-component-selector/opened64-v1/report.json",
+        "sha256": "e4ce1b6f63ee22d4c2a50148b14f4b1abc4ed7512159673c269578dd6e11b756",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/opened64-v1/frozen-target-free-layouts.json",
+        "sha256": "e132160bc42b1d43aea0b5f0a133e14a94efd7fe67bd7ff918cdafe9141cb154",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/opened64-v1/report.json",
+        "sha256": "b0933cbef5f1334c174fc3e23ef3b897ad463ef1c52c3beb124db1a3e12d2e19",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/opened8-v1/frozen-target-free-layouts.json",
+        "sha256": "8e69de5b4c089cc1b295992674531313ed4aa23d4821f8e6ab280d45063d4102",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/opened8-v1/report.json",
+        "sha256": "f5d02888cd2e18529b302a87db7e96074aecc919eccafa53c435243e651df989",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/rank-delta-opened64-v1/frozen-target-free-layouts.json",
+        "sha256": "010e7bd630dd2cb53d6a8f3979a7a107465a0a8b9df03d1ecadddefdb6d08b54",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/rank-delta-opened64-v1/report.json",
+        "sha256": "e6651ba79db0705bcfb94633d018dbd9ac56dfc8030b25d577cce7554dff4546",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/rank-delta-opened8-v1/frozen-target-free-layouts.json",
+        "sha256": "92f2af201fbe113e64de04074d25699e027d29e9b45dec17e8704886243b6208",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/rank-delta-opened8-v1/report.json",
+        "sha256": "9281fdd867f1b3cc2928bcc4dd93982b96545610ef14e882b70dc5b87b0ad0e3",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/rank-delta-smoke1-v1/frozen-target-free-layouts.json",
+        "sha256": "c0ff33c3302edd61ac5732840e2b386e12be815e3ec303566e8af795632e802a",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/rank-delta-smoke1-v1/report.json",
+        "sha256": "a502c798e5c306b07f2c702b20098f2c09026a8156c358a6789827f5d834e60a",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/smoke1-v1/frozen-target-free-layouts.json",
+        "sha256": "6f3bcf6dd2b4d8f80d5d72d65d0ec45130087228bef617150313bbb557c1d3ec",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/direct-residual-union-priority/smoke1-v1/report.json",
+        "sha256": "e58e45c9831d035a941bbb6a3d71b151203f4e2df3744f1101c79d8352c35181",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/drunet-matcher/train-offset512-count16/selection-decision.json",
+        "sha256": "443aedcc21af416b373b2d09e230357ac8776acb10f8e81d912e952c988f0136",
+        "declared_count": 8,
+        "row_count": 0,
+        "union_count": 8,
+        "union_digest": "6b6381d4bd1f2d5a38895eb17337edf2885ee8ce26ca51e9ab6e13a63887b29e"
+      },
+      {
+        "path": "outputs/dualnaf-matcher/pilot-calibration-offset192-count12.json",
+        "sha256": "83184b549146f1db37ec6b16ca0cc2c99fdd7cccec6b328c5088fb909d46b13e",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "7b8b997663c767fc5120b41481d37040a61ab5f461a922b38ab379d9be327f8c"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-cpu/frozen_local_predictions.json",
+        "sha256": "3fd67c506f67fd2dddb250af9a827ce3739478a953de9df8ca8bb3c6c3f68c93",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "59e386084ea0c97cc0f9c39e44467e7954a1e314fc2b1a62c9f1a628c9cc9792"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-cpu/report.json",
+        "sha256": "6ff49d4a62ba7bef3ff957e0c78e8237edb80029c46763a520355a6c774de0b5",
+        "declared_count": 2,
+        "row_count": 1,
+        "union_count": 2,
+        "union_digest": "01a0350671323ed301d97c88315df2f28d740869ef9caef6ff10d53058b97365"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-mps/frozen_local_predictions.json",
+        "sha256": "3d4b51c371941da73b47d2266ac3195fb3ca186b363e361bceebb966b6b153f7",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "59e386084ea0c97cc0f9c39e44467e7954a1e314fc2b1a62c9f1a628c9cc9792"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-mps/report.json",
+        "sha256": "cc9d62f3edcf1c4da357d89453ec484fe07d477c6be902d3779499da81cfcd4b",
+        "declared_count": 2,
+        "row_count": 1,
+        "union_count": 2,
+        "union_digest": "01a0350671323ed301d97c88315df2f28d740869ef9caef6ff10d53058b97365"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-cpu/frozen_local_predictions.json",
+        "sha256": "83cb3eaceb6c2801180804b8a906f12a8c8fbc660557a0fc10940ecdd2c70b0c",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "59e386084ea0c97cc0f9c39e44467e7954a1e314fc2b1a62c9f1a628c9cc9792"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-cpu/report.json",
+        "sha256": "069f51e138df4a2419caab7c2cb5e93554ea7be7fe682c2c76e7e4fe2a2347c7",
+        "declared_count": 2,
+        "row_count": 1,
+        "union_count": 2,
+        "union_digest": "01a0350671323ed301d97c88315df2f28d740869ef9caef6ff10d53058b97365"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-mps/frozen_local_predictions.json",
+        "sha256": "bcea533c637734b6f9d295096e9b0866f141b72265709181f81ebc441d15bccb",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "59e386084ea0c97cc0f9c39e44467e7954a1e314fc2b1a62c9f1a628c9cc9792"
+      },
+      {
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-mps/report.json",
+        "sha256": "9d45bafc42ff5ee97d9d89823decc2b289ed082fc698f261d8920d4e0e610069",
+        "declared_count": 2,
+        "row_count": 1,
+        "union_count": 2,
+        "union_digest": "01a0350671323ed301d97c88315df2f28d740869ef9caef6ff10d53058b97365"
+      },
+      {
+        "path": "outputs/e13-corruption-border/pilot-grid24-train256-s400-eval16-mps/frozen_local_predictions.json",
+        "sha256": "6a3514879063b1efaf78e10d4d9cce6b5bcd784315d9f68b031e06721f9fce5a",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "1335a9f18b2de87d28181919c4be0d9a422aec6d624e880b8c3e55fab79f05af"
+      },
+      {
+        "path": "outputs/e13-corruption-border/pilot-grid24-train256-s400-eval16-mps/report.json",
+        "sha256": "2f7e2de1e333e1e136d89143d90cad05a0c58c08c711bd39b8aff988fb8721b4",
+        "declared_count": 272,
+        "row_count": 208,
+        "union_count": 272,
+        "union_digest": "c982a679bc504c1cfe6a474804cae86dfc90c1bf77a213336de5d8d543f8a890"
+      },
+      {
+        "path": "outputs/edge-ranker/manual-tail-raw-checkpoint-cal24-offset204/report.json",
+        "sha256": "e7c94a91f647ab59499bc69cccb501c04c4b99da6b024d2ee0fff0b3bd8caaee",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "9ca2a98052f06c76a18b5445763a41d467038f205b70d203876e05aedfa0add8"
+      },
+      {
+        "path": "outputs/edge-ranker/plumbing-cpu/report.json",
+        "sha256": "365014a2e05f8abeeeba2f658b2ad8835a351c44a5ff8b24278d81ef1d518ba1",
+        "declared_count": 2,
+        "row_count": 0,
+        "union_count": 2,
+        "union_digest": "f740acd9e0aff63f9a0243dee8a62d77f8cf6e7c95b0878675a45a34947f7e5c"
+      },
+      {
+        "path": "outputs/edge-ranker/scale-dual-train64-cal12/report.json",
+        "sha256": "baf0667e4428d2f4893f5123afdf505af8e44ffb05fe526d92bd1f0d1bb3089f",
+        "declared_count": 76,
+        "row_count": 0,
+        "union_count": 76,
+        "union_digest": "5d632befd082e33dc4b82b8219278b89d4c2ed6c5530b62779b2635993ba0d21"
+      },
+      {
+        "path": "outputs/edge-ranker/scale-raw-k16-train256-cal24-offset228/final-tail-primary/report.json",
+        "sha256": "6fe6790f470c3e39a28d3c5c050feac1cd08623b7db3677d4f2102d7028ddad9",
+        "declared_count": 256,
+        "row_count": 0,
+        "union_count": 256,
+        "union_digest": "f3c083b9b3bb1192fde73b1ce81d927f60b1451ad1d8766260c504805c323047"
+      },
+      {
+        "path": "outputs/edge-ranker/scale-raw-k16-train256-cal24-offset228/report.json",
+        "sha256": "1a95fb25ecb49e832be3cf38af0c980c77ee8e87c668849ed169bf495157a74f",
+        "declared_count": 280,
+        "row_count": 0,
+        "union_count": 280,
+        "union_digest": "55c21203401c42f215ab92bc2cd8783b9f56a4011210068b833fd024d89650dd"
+      },
+      {
+        "path": "outputs/edge-ranker/scale-raw-train64-cal12/report.json",
+        "sha256": "a016ea96f5bb7d9a5ce4940d5a6c75288d6a0e234775dade114c777205c3af26",
+        "declared_count": 76,
+        "row_count": 0,
+        "union_count": 76,
+        "union_digest": "5d632befd082e33dc4b82b8219278b89d4c2ed6c5530b62779b2635993ba0d21"
+      },
+      {
+        "path": "outputs/edge-ranker/smoke-dual-train16-cal4/report.json",
+        "sha256": "df98ef9137c83a36fa69dd7f466b8ceabe8fe481a9e2032bec2a82accda3aa94",
+        "declared_count": 20,
+        "row_count": 0,
+        "union_count": 20,
+        "union_digest": "7670fffbc38dfcfe609240715e2a02c2db850e36f92714eb7c2853ed8449c6a6"
+      },
+      {
+        "path": "outputs/edge-ranker/smoke-raw-train16-cal4/report.json",
+        "sha256": "9d7de3f70c0d8643c2215fc8573aaee2f13d6d45af205606f63c69ad4bfe269a",
+        "declared_count": 20,
+        "row_count": 0,
+        "union_count": 20,
+        "union_digest": "7670fffbc38dfcfe609240715e2a02c2db850e36f92714eb7c2853ed8449c6a6"
+      },
+      {
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/bottleneck_diagnostic.json",
+        "sha256": "806512b437f520cae7b26a2f473042d8db545c04e39bd30d849fa753235a25b4",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "f28c66bf0e84b1383b9541a5b46d46bf0e5b7c96d5744496f271a9f7f10b772f"
+      },
+      {
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/bottleneck_diagnostic_v2.json",
+        "sha256": "b825d4e2021bbffa99a6bf26001cdee306784c9bc97f4f8363bd68ccb15558ef",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "f28c66bf0e84b1383b9541a5b46d46bf0e5b7c96d5744496f271a9f7f10b772f"
+      },
+      {
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/frozen_predictions.json",
+        "sha256": "1fb112b60ba2e23744cb609946d6d4b8f018eb3ffd56b161385665d45310851a",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "f28c66bf0e84b1383b9541a5b46d46bf0e5b7c96d5744496f271a9f7f10b772f"
+      },
+      {
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/report.json",
+        "sha256": "80fe0d28ffcab11bdd2cbb43f9a2f4012d1c38d9034ca8287d55775c70b45c2e",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "f28c66bf0e84b1383b9541a5b46d46bf0e5b7c96d5744496f271a9f7f10b772f"
+      },
+      {
+        "path": "outputs/frame-side-origin/v1-selection/selection_commitment.json",
+        "sha256": "2cdfca00618671ddeab6fd829f97ce49d2f975d9c977ec248a043872de89f7b4",
+        "declared_count": 288,
+        "row_count": 0,
+        "union_count": 288,
+        "union_digest": "34f365d5d6e6f428b3f42bf7a25a30f0209b270064f5940536956138e2441007"
+      },
+      {
+        "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/frozen_local_predictions.json",
+        "sha256": "eadaa94aa757034d7ef283eec6d5740b6ad28285b64f76ef9c4c0cb9cf9f704b",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/preregistered-local-gate.json",
+        "sha256": "828195facd4a861aa0d1232b0e656eed81a80855ce7b560c1ce88ca49898ffb8",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/report.json",
+        "sha256": "780f6b065ba769bef8b3ffd30cf0bcb781b2040258835964b122725e732fccc7",
+        "declared_count": 64,
+        "row_count": 32,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/frozen_local_predictions.json",
+        "sha256": "cb9b68d9d70fdf057b6b0674d84abbabd21724b1ea6efb31e4f33b84c4928a38",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "63349f1ba5c8e6c36e9d705c5ac9a3ddbcc91a375c8ec48df083832fa8b79d1c"
+      },
+      {
+        "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/preregistered-local-gate.json",
+        "sha256": "b1e7caf8ff07a52f8e33b90c0a1f354e126937bc6ad94fa5d3d8a1a29c599990",
+        "declared_count": 3,
+        "row_count": 0,
+        "union_count": 3,
+        "union_digest": "9eb74f238c37f56d258b487b5bc10b47866cc21af9278b8311d0d87fae908486"
+      },
+      {
+        "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/report.json",
+        "sha256": "e5d161057168b60d360d50b1faa610e8c55186b7639d7a69ce1d4b1aaaaae49f",
+        "declared_count": 3,
+        "row_count": 1,
+        "union_count": 3,
+        "union_digest": "9eb74f238c37f56d258b487b5bc10b47866cc21af9278b8311d0d87fae908486"
+      },
+      {
+        "path": "outputs/fullres-fusion-fragment-solver/smoke1-mps-v2/frozen-target-free-layouts.json",
+        "sha256": "769d2103f80412ace69bf0ed2c48ed862c03584c99c6a55bc42848e74c3939a5",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "cdb9bea9eb7f2e6b712f662519addbd1a9da8cf645efda7bfd424a4bcdd4e2e8"
+      },
+      {
+        "path": "outputs/fullres-fusion-fragment-solver/smoke1-mps-v2/report.json",
+        "sha256": "0727eb102925a5396d7e65a163d3fa850e2580f78ec8c30bc843f22604bcc5e1",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "cdb9bea9eb7f2e6b712f662519addbd1a9da8cf645efda7bfd424a4bcdd4e2e8"
+      },
+      {
+        "path": "outputs/fullres-fusion-union-priority/opened40-mps-v1/frozen-target-free-layouts-and-priorities.json",
+        "sha256": "26b8068eb380568a613c8ecb46b9fe3307e09b49c481b52414964db04108360c",
+        "declared_count": 0,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "outputs/fullres-fusion-union-priority/opened40-mps-v1/report.json",
+        "sha256": "82a11a6267c9538106bf531e62fa3cc6f86844fc33b7b3262aa199908e4f4329",
+        "declared_count": 0,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "outputs/fullres-fusion-union-priority/opened8-mps-v1/frozen-target-free-layouts-and-priorities.json",
+        "sha256": "c563d962c3ce701581406a0563a6369ca9953a6d44fb8353f291b1b10800d995",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "b8247d1596752b5c896be91da1e052d7d1f95fedb60d050d12fbf1c3bd7e5131"
+      },
+      {
+        "path": "outputs/fullres-fusion-union-priority/opened8-mps-v1/report.json",
+        "sha256": "78e2483218215b67a463a1412dc5c5a486cfec3ed06bfa6e9f595f330cf1a4ef",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "b8247d1596752b5c896be91da1e052d7d1f95fedb60d050d12fbf1c3bd7e5131"
+      },
+      {
+        "path": "outputs/fullres-fusion-union-priority/smoke1-mps-v1/frozen-target-free-layouts-and-priorities.json",
+        "sha256": "44f71f1730f8b7ff1d854320ca6c4b272e4751e5e0c632fa75372a5cbe1d4bff",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "cdb9bea9eb7f2e6b712f662519addbd1a9da8cf645efda7bfd424a4bcdd4e2e8"
+      },
+      {
+        "path": "outputs/fullres-fusion-union-priority/smoke1-mps-v1/report.json",
+        "sha256": "db999fe0d9c51980423d2a138d921c108983988040d9b6180875cb67156766cd",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "cdb9bea9eb7f2e6b712f662519addbd1a9da8cf645efda7bfd424a4bcdd4e2e8"
+      },
+      {
+        "path": "outputs/fullres-relation-fusion/conversion-audit-opened-source40/report.json",
+        "sha256": "f17f14224ed7b5f1b8eb33a3440c76d6dd33bdb8ff32c7d081dd7a44b9180dc0",
+        "declared_count": 0,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "outputs/fullres-relation-fusion/conversion-audit-opened-source40-v2/report.json",
+        "sha256": "9fd18c091583d0020f88a91b026541c707c9188f13fa0c6ada2170d241cc62e8",
+        "declared_count": 0,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "outputs/fullres-relation-fusion/decoder-d2-source40-draw1/frozen_predictions.json",
+        "sha256": "74c5bd64e3e34827e7fd130651894c7bc560f13499b8e5ac2d3716c8d12268c6",
+        "declared_count": 0,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "outputs/fullres-relation-fusion/decoder-d2-source40-draw1/report.json",
+        "sha256": "8884375df68870b8b06e62e975d26ac2a829294ac99a7fdd0fa665214a71729e",
+        "declared_count": 40,
+        "row_count": 40,
+        "union_count": 40,
+        "union_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6"
+      },
+      {
+        "path": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/report.json",
+        "sha256": "3afbd75773370a7f80ba95060b0a7f0dfb4a3343fac69019a79170641f7a42c9",
+        "declared_count": 48,
+        "row_count": 16,
+        "union_count": 48,
+        "union_digest": "e090b3ed2274b49f9710065cf370cf9024bd8d9539eae8c652811826cd9696c9"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/local16/frozen-target-free-retrieval.json",
+        "sha256": "3e026cdf1ab2e63bd6d1f67778179e5d7cd1bda84f53487f07566b7372732495",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/report.json",
+        "sha256": "5fafb0307586669c7b7c9eaa4699fda1a3bd1250ca921fc48dd7e86af0bdefbb",
+        "declared_count": 64,
+        "row_count": 32,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/one-step-benchmark-v1/benchmark.json",
+        "sha256": "567882147dddc0d10bb7feddc7e23291d38eec7df547750e6d72337f01ab3dd0",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/checkpoint400-local16/frozen-target-free-retrieval.json",
+        "sha256": "490d670b87b7d8a03f068651180fc90b4f0418ade293f2dddde08fbb8b7e482c",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/local16/frozen-target-free-retrieval.json",
+        "sha256": "93c0e2159f761ec05faca6038ecf9fb031e1522f9381588638aa6a2ea40f87e2",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/report.json",
+        "sha256": "47ce8b176d2da5b6c278af6bc66be27464d87465cca6507a94e57e569f0ec796",
+        "declared_count": 64,
+        "row_count": 32,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/scale3200-server-v1/local16/frozen-target-free-retrieval.json",
+        "sha256": "fa9aae5aa1514e5fb193a65123a306c103089fd5d4cabe110cfa0339983d8b7e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/fullres-retrieval-adapter/scale3200-server-v1/report.json",
+        "sha256": "325f0ffb552b13b388f7eb59d23687a816406d0162ee036980c70b46202eca7a",
+        "declared_count": 64,
+        "row_count": 32,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/frozen-local-predictions.json",
+        "sha256": "812aa70f0da72cac650bb5811550f14b73a7c04c54be2d9eea597e1ad9338fce",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "c45ca0ce1dfa9add7ba81de76de4ef8c6b2950ee0b3ca6efe2c74a11ef636217"
+      },
+      {
+        "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/selection-commitment.json",
+        "sha256": "bce6acb5faac2b7a3599495f5c1e40ffd4fb8c3e1a16c1ca24d432fb9611596f",
+        "declared_count": 280,
+        "row_count": 0,
+        "union_count": 280,
+        "union_digest": "8074d6e29fb01ca01b0ab890e2289243c3ea9f9ca9faf44e524812033765050a"
+      },
+      {
+        "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/target-aware-supply-diagnostic.json",
+        "sha256": "9d19b65dfad735f488ffab3507e06be85aaccc3aa38d6b700355b82e9828fb24",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "c45ca0ce1dfa9add7ba81de76de4ef8c6b2950ee0b3ca6efe2c74a11ef636217"
+      },
+      {
+        "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+        "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "89e29f30d0ace0af95883b73040abc7062bb23151f6b521c91616c352c95ca17"
+      },
+      {
+        "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/target-free-cache.json",
+        "sha256": "dda6f0220f949a9d893d715429b195535490bff69089493e44407c770725df3a",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "89e29f30d0ace0af95883b73040abc7062bb23151f6b521c91616c352c95ca17"
+      },
+      {
+        "path": "outputs/guided-matcher-view/opened32-v1/frozen-target-free-layouts.json",
+        "sha256": "c18bf4796fdc7e11908bbee3d3ec86f1f0ecb50f32f9b2b2db9905cdb9d8342e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/guided-matcher-view/opened32-v1/report.json",
+        "sha256": "b5ac8fcb05253559a44310115ff571f8001c43df097013148ec64d720ac3cb0d",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/guided-matcher-view/supply-diagnostic-opened32-v1/frozen-target-free-scores.json",
+        "sha256": "b6612bbb91eac6ee0d8c198b5668fe751ba9fa7834882ca40fd853b94fd6740e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/guided-matcher-view/supply-diagnostic-opened32-v1/report.json",
+        "sha256": "ce55e1b61fea3a1494a1bf60eac1fa67c81d127fd2ee797a1ce9cef50621870a",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/hbt-recovery/pilot-train256-cal12-offset72/report.json",
+        "sha256": "4a91806c36d72a572861c3114dfead927ddf3270960c646fd64c28f25c04ff27",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "c23e651a96aa521c16e594caa32eca68ea7e79112f68b388d2ba3e2f5cad93f9"
+      },
+      {
+        "path": "outputs/hbt-recovery/pilot-train256-fresh-cal12-offset84/report.json",
+        "sha256": "c3f2a519fc4af35515b325de7b427402dddb9cfd5b6301b7d001231c3d5f8599",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "14214d0ac4a7ccad3d25fb1b4733455e4c93a9bde2b7157cbb5a120bfb6decea"
+      },
+      {
+        "path": "outputs/hbt-recovery/smoke/report.json",
+        "sha256": "c41b2ad38da782765b935709a9c96d651256762645b90364677ba27691dd980a",
+        "declared_count": 3,
+        "row_count": 0,
+        "union_count": 3,
+        "union_digest": "9f4cb03f65663d5f10727f64d590cdbcbb4e0b83df1ffba76fd67327efc31701"
+      },
+      {
+        "path": "outputs/hungarian-top150-raw-tail/opened32-v1/frozen-target-free-layouts.json",
+        "sha256": "d2a5f904a370208666e3800cf0546801ed801c82e4b30bae08801cd9512c7c6e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/hungarian-top150-raw-tail/opened32-v1/report.json",
+        "sha256": "59e0408cc2164cc58d9c1380fb2ed828480cbead225535bc89ee0aa474e462c2",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/joint-reciprocal-tri-emitter-verifier/roster-audit-v1/report.json",
+        "sha256": "6105680a08ee4140d56b7a326cc6539c4b958d12052a4922b99d9ecfced79797",
+        "declared_count": 80,
+        "row_count": 0,
+        "union_count": 80,
+        "union_digest": "b179f438e75df946a25a265d487f47030bab39bd2674d0ad7ad4e43b6f7ca1f0"
+      },
+      {
+        "path": "outputs/learned-membership-rank-delta-composition/opened-fresh64-v1/frozen-target-free-priorities-layouts.json",
+        "sha256": "3e2812bbc45f8353ccea9348349561c8c11a4938edd50227304fa2a8bcaebe4d",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "outputs/learned-membership-rank-delta-composition/opened-fresh64-v1/report.json",
+        "sha256": "f32353d5933794927b7db85035db8e3779623a5d96c9894e4a6dc949cd679ffa",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "outputs/learned-no-qap/opened-fresh64-v1/frozen-target-free-priorities-layouts.json",
+        "sha256": "12940b1004c74d953944b50ded93e39142a619bdcf1a2f2dba3e865092b7a812",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "outputs/learned-no-qap/opened-fresh64-v1/report.json",
+        "sha256": "9c4cf0fd96afd94a8796a5ce9b9e8cc3ca49d208666a9a7f0674bfa49cef7539",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "a945d021f24ce45239d040a5f6097f81ffc4ffe743ea1108ea33644f982c93d2"
+      },
+      {
+        "path": "outputs/novel-analog-layout/calibration24.json",
+        "sha256": "5cbb6449b7d14f51a7f21cd75bb013fc6c991b138955ce3303567dbc94a74b23",
+        "declared_count": 536,
+        "row_count": 0,
+        "union_count": 536,
+        "union_digest": "c5077b3b0b644a5be6fef06c44aabcbe7e4e9f1442ff7baea29bd91f765caddd"
+      },
+      {
+        "path": "outputs/pair-safe-cyclic-origin-fit-audit/v1/frozen-target-free-eval.json",
+        "sha256": "20fa98eff87a056cb36b0d6742aa11dd77286be01bc7fefa12bde0d76a598956",
+        "declared_count": 0,
+        "row_count": 7,
+        "union_count": 7,
+        "union_digest": "ab6448beb8bb96d5b75bff46b8c12922e2856ed4287bafab2f34d11efc15f964"
+      },
+      {
+        "path": "outputs/pair-safe-cyclic-origin-fit-audit/v1/report.json",
+        "sha256": "c45584401f2b6de230f7f9e8e14e026c1f3b53c4c46ae9557930c19d8e9c3e96",
+        "declared_count": 7,
+        "row_count": 7,
+        "union_count": 7,
+        "union_digest": "ab6448beb8bb96d5b75bff46b8c12922e2856ed4287bafab2f34d11efc15f964"
+      },
+      {
+        "path": "outputs/pasha883-pairwise-audit/last4-full576/report.json",
+        "sha256": "c91e992a388a1ee3d2820b3a313f154a388cc6b619e4f828a28862d9d26296fb",
+        "declared_count": 4,
+        "row_count": 0,
+        "union_count": 4,
+        "union_digest": "5f920380be4b2e13283b95c93d45ca8cf592674338bc8bb5587822317ef0c7c9"
+      },
+      {
+        "path": "outputs/raw-twin-union-reranker/frozen-v2-fresh64-draw0/exact-bottleneck-oracle-v1.json",
+        "sha256": "501ee494a805498126f4b8c4c4677f0f13b4b4a7ee02b21cc2f37048635b41d2",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/raw-twin-union-reranker/frozen-v2-fresh64-draw0/frozen-target-free-predictions.json",
+        "sha256": "1b28edcc65c647fc68bfdf0b4322a99a69acfceb15d876b03c4713a99347ef9c",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/raw-twin-union-reranker/frozen-v2-fresh64-draw0/report.json",
+        "sha256": "c4ae8cb6fff97cc5a2901f922273e0702db373e25eb03986dd8af089582d04f7",
+        "declared_count": 64,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0"
+      },
+      {
+        "path": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/frozen-dirty-only-predictions.json",
+        "sha256": "67cabfb2b6e4349c7290e116d8a5d3e74dd4995e18cd911842a97652bd82aa69",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "9e37879360adfc915b37f7604e53807a4810a65dc6c805a6910e139077865fcc"
+      },
+      {
+        "path": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/selection-commitment.json",
+        "sha256": "71ae4f5095489613857fcd25c541fe496da0d6861f6ff604850147dd04b91cd2",
+        "declared_count": 280,
+        "row_count": 0,
+        "union_count": 280,
+        "union_digest": "2ec31d2d980bab4dd5bab15ffcca3c6e73400cddbd2faa42a54606ec6812ea41"
+      },
+      {
+        "path": "outputs/restoration-r6/attempt-00-double-nlm-cal12.json",
+        "sha256": "84caf406654253a108e3a844599181b83cc9154184a067c164009517f9a67446",
+        "declared_count": 14,
+        "row_count": 0,
+        "union_count": 14,
+        "union_digest": "7a4658a2b32f72c99fef903166908bc4f8686cd726c7c4653bca38e825fa0f45"
+      },
+      {
+        "path": "outputs/restoration-r6/attempt-01-double-nlm-cal12-corrected.json",
+        "sha256": "2abc1d1f294b1afbb1dc25a6e449b50a18d5a80ff50f806b27f0fbbabed4920b",
+        "declared_count": 14,
+        "row_count": 0,
+        "union_count": 14,
+        "union_digest": "7a4658a2b32f72c99fef903166908bc4f8686cd726c7c4653bca38e825fa0f45"
+      },
+      {
+        "path": "outputs/restoration-r6/attempt-01-double-nlm-cal48.json",
+        "sha256": "11512a453e205fc0fb600882ad8d899dc5c47c231253411f6860e72adc1e2d19",
+        "declared_count": 50,
+        "row_count": 0,
+        "union_count": 50,
+        "union_digest": "73b3a333fbd0d14f4311551d64c864f99c8c55b0cc4f28196b762f92ee3aa5d0"
+      },
+      {
+        "path": "outputs/restoration-r6/attempt-01-double-nlm-holdout48.json",
+        "sha256": "7136160fe25fe1f1cba80a99eb9a31f0bcd979bc0049fe656ff9025c70542e3e",
+        "declared_count": 50,
+        "row_count": 0,
+        "union_count": 50,
+        "union_digest": "11aef7c6cce2d81e33b0588ed9e4f57585e59f2b9213fcb37a87de796eb264d0"
+      },
+      {
+        "path": "outputs/restoration-r6/compliant-iterative-nlm-fresh-calibration24.json",
+        "sha256": "ec07f65e60b74231943776937a710cc6a994f2cc07be01dd496ace6583d7961a",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "7b8b997663c767fc5120b41481d37040a61ab5f461a922b38ab379d9be327f8c"
+      },
+      {
+        "path": "outputs/restoration-r6/compliant-layout-transfer-calibration12-iterative.json",
+        "sha256": "829f38551e8ccc7656654b0058423aa62f90e50d5f0457f49b9d94224a0f8184",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "7b8b997663c767fc5120b41481d37040a61ab5f461a922b38ab379d9be327f8c"
+      },
+      {
+        "path": "outputs/restoration-r6/compliant-layout-transfer-calibration12.json",
+        "sha256": "1ad705d0882b884534ff17eb260358d0d4ce76811437a9059d76d80be6d25ebe",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "7b8b997663c767fc5120b41481d37040a61ab5f461a922b38ab379d9be327f8c"
+      },
+      {
+        "path": "outputs/restoration-r6/compliant-r6-medium-train256-step2000-h10.json",
+        "sha256": "6a5e03e98b64bdaeff00990efbb61ff33dfe98bc2b8cfb23669136bd5c7a2855",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "7b8b997663c767fc5120b41481d37040a61ab5f461a922b38ab379d9be327f8c"
+      },
+      {
+        "path": "outputs/restoration-r6/compliant-speed-gate-dualnaf50.json",
+        "sha256": "cbbbdcc788b7da34d3e8cfa4f41e312113fc40aca9657b43fa4a8f1f498ae6e0",
+        "declared_count": 34,
+        "row_count": 0,
+        "union_count": 34,
+        "union_digest": "5102ad75a1f8e2575b06525af6caa8d340ded67c394417f24a84955500d9553f"
+      },
+      {
+        "path": "outputs/restoration-r6/smoke-dual.json",
+        "sha256": "470e8353ac0b613998af0004d70f6af7375e1e2f308f0d8669652702a4c9202c",
+        "declared_count": 3,
+        "row_count": 0,
+        "union_count": 3,
+        "union_digest": "253b614c58198e34c679b66d48b18d328f73d7eeffc761e0cb49edc2d1f6965b"
+      },
+      {
+        "path": "outputs/restored-border-ranker/benchmark-step1-cpu/frozen_local_predictions.json",
+        "sha256": "ca5effb4c16a90fe6e35abfea58546e82b1f300151bfce67f2081bbdd2dc3e79",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "166eb6722793747d0f980dcd0ccd857d9e0853db72fd77b26a33c0eee58ca0c5"
+      },
+      {
+        "path": "outputs/restored-border-ranker/benchmark-step1-cpu/report.json",
+        "sha256": "51ef11b31a3af60519cc8080ed9f3d9e386e66578627a6e0aee2bc303d777e3d",
+        "declared_count": 2,
+        "row_count": 1,
+        "union_count": 2,
+        "union_digest": "71d142bf297590246a60571438dacad9f0fd048d6ba831e091a22e9b78e56739"
+      },
+      {
+        "path": "outputs/restored-border-ranker/benchmark-step1-mps/frozen_local_predictions.json",
+        "sha256": "b8545f23b5008fe6ff46d7065befc0cc0b2fb1848c3f44b7f6966c52be24cf69",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "166eb6722793747d0f980dcd0ccd857d9e0853db72fd77b26a33c0eee58ca0c5"
+      },
+      {
+        "path": "outputs/restored-border-ranker/benchmark-step1-mps/report.json",
+        "sha256": "a4988a9da43150fa9c3dd14c5a1b0a7aeb2b36c810bf0f40b2123a028b20823f",
+        "declared_count": 2,
+        "row_count": 1,
+        "union_count": 2,
+        "union_digest": "71d142bf297590246a60571438dacad9f0fd048d6ba831e091a22e9b78e56739"
+      },
+      {
+        "path": "outputs/restored-border-ranker/pilot-train256-s400-eval16-mps/frozen_local_predictions.json",
+        "sha256": "4d8363a2048b2e9e503b2910401164567357c6b665d6c628c4293c7965c1e5ee",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "f72c9e11ace3fe8aaf114016930168e7757e91ebb48952f22a352d5a0cee233d"
+      },
+      {
+        "path": "outputs/restored-border-ranker/pilot-train256-s400-eval16-mps/report.json",
+        "sha256": "5b58ca446a541b3a33fcda7243cee7bec7b4cba68e463889b6f3f0d1f37e47be",
+        "declared_count": 272,
+        "row_count": 204,
+        "union_count": 272,
+        "union_digest": "3009688bf0a014920310ef99639579da47b3b7bcb229497d79531f6c1e285536"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/calibrated-order-decoder144-exact24/frozen_predictions.json",
+        "sha256": "cca90e017c0de1483c05322519537735839bface458070f87d8c9780dd3bd64d",
+        "declared_count": 24,
+        "row_count": 0,
+        "union_count": 24,
+        "union_digest": "55b6de9296bd06ae0be854605fcd6dba74272c57491a02943f90712dd5fa3303"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/calibrated-order-decoder144-exact24/report.json",
+        "sha256": "6abcbbfe9dd3e489625829f9b5289d46f081cdbdc532616b702dcac69ca2a5d4",
+        "declared_count": 536,
+        "row_count": 24,
+        "union_count": 536,
+        "union_digest": "abb3ecef1f330cf1b8ac69dc0bd400fa0daa1e52bd835c19a90222f37a41a6e5"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/calibrated-order-smoke-exact2/frozen_predictions.json",
+        "sha256": "1f967e15ff8399fbcb4e56c389eaa145eef2b6b0c47f31b74f3957cc15848576",
+        "declared_count": 2,
+        "row_count": 0,
+        "union_count": 2,
+        "union_digest": "99978966ec41b7452f69771fa9b78e6e3e47dd07e7f013375daf83ebd34b61ca"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/calibrated-order-smoke-exact2/report.json",
+        "sha256": "f502862fae04971d4423aba1fc3c4eb2e4c1c9a0ce05082279088d107a0467de",
+        "declared_count": 514,
+        "row_count": 2,
+        "union_count": 514,
+        "union_digest": "a3e51d8c5d9938d04fdbf017ada8ed03273f711ab104bc3f95276592036400ab"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d32-v2-fit32-confirm16/confirm_dirty_features.json",
+        "sha256": "0e86b3ab33579165db814152b153ad97907e582318d72afc8832dc128e40592f",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "ccd6ae6142450b94cd39b2b8d823563a698068461d9b21f0c7a3e37c8dc02e98"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d32-v2-fit32-confirm16/fit_dirty_features.json",
+        "sha256": "ccf6e407a2378c8dde87dc56631da3d2e352d13e9496c39c39c91bed42b1c418",
+        "declared_count": 32,
+        "row_count": 0,
+        "union_count": 32,
+        "union_digest": "f6eafbea5263ae8481ee572cb06b5b0ddeda4607de24f0b7d45c2082bb419ffc"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d32-v2-fit32-confirm16/report.json",
+        "sha256": "cb1805a89bd587840f383a9a44569d4539efac313a643067c1d0b6db141d4e49",
+        "declared_count": 560,
+        "row_count": 0,
+        "union_count": 560,
+        "union_digest": "3cc67dcda2d02be955734b2acaa4a508aeee591527552d34adfd354a6addce3b"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/confirm_dirty_features.json",
+        "sha256": "b7bf78a3f9ed3e1e8d61c6c28a05a22796a098b877de339c0e6671b089d46ab1",
+        "declared_count": 16,
+        "row_count": 0,
+        "union_count": 16,
+        "union_digest": "e25c4e581807ba5804120ea8de29baf53377cb6cda8027f40319f9c12ee843a2"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/fit_dirty_features.json",
+        "sha256": "c2c4c818b851251518b4f35b99c35694d1299f9be42c0a574ed42c3348e39cf7",
+        "declared_count": 32,
+        "row_count": 0,
+        "union_count": 32,
+        "union_digest": "6fbec49d33912be629e269a88ca62e14cccebbc72ea6c8995c306f1deeed5ec4"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/paired_confirmation_analysis.json",
+        "sha256": "b748fc46f9020ded6fa15b35d9ed2bc9c6be0bec3f220c7861a1c457af8a1fe9",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "e25c4e581807ba5804120ea8de29baf53377cb6cda8027f40319f9c12ee843a2"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/report.json",
+        "sha256": "442cbb1c6b38044ed72dda5d64c4479d7415555aa8e9ebdfd6a895072cf41762",
+        "declared_count": 1104,
+        "row_count": 0,
+        "union_count": 1104,
+        "union_digest": "136d5afcf93e2c0b9594de4b68a0cc46320d1cba81aed1cb0f8723e7751ce4e6"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/smoke-fit2-confirm1/confirm_dirty_features.json",
+        "sha256": "9fb338a0b4976ada609a9c55683cbb18bdb84316c702c4f997a1aa8926c00dc6",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "47d26e2ad426a8e1923a551a422c3cd24703e87e2ab0f4996b7e01ed0d11d337"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/smoke-fit2-confirm1/fit_dirty_features.json",
+        "sha256": "1283c3daee6a663467191be2e849b9f1e50dfe03a91751c4ee098f0d4a5e193a",
+        "declared_count": 2,
+        "row_count": 0,
+        "union_count": 2,
+        "union_digest": "4bcfea1db02b726fb4af687ef3a821eba0c9dc90fe7897176e8122b32871a485"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/smoke-fit2-confirm1/report.json",
+        "sha256": "53965cb25796bd5817bd30bac60a6266ad315dc8e7313b3a1c1e0095e8fa5ca6",
+        "declared_count": 515,
+        "row_count": 0,
+        "union_count": 515,
+        "union_digest": "13e3577987178dfd9d5b47a7b6b7499351cf836e6a65e89fd72c85f9c6873cb8"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/smoke-v2-fit2-confirm1/confirm_dirty_features.json",
+        "sha256": "781290cf6d6b12eb90289ca9c06671a796dbf2811b40b3de8b27e5d964a9c79b",
+        "declared_count": 1,
+        "row_count": 0,
+        "union_count": 1,
+        "union_digest": "efbf08c047cbd0aa77bab8fca84355b8dd5cc21e660caf09eae422bdfe24a3fa"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/smoke-v2-fit2-confirm1/fit_dirty_features.json",
+        "sha256": "902bd15584857b398880f93e11a7bab2c4fbcd6c398f823ab5c5174bbdbee1df",
+        "declared_count": 2,
+        "row_count": 0,
+        "union_count": 2,
+        "union_digest": "a7ecc18882b831a8a0e37d4e8dabcbc4a4388d0def7193644ecdbb6496e8a645"
+      },
+      {
+        "path": "outputs/socket-confidence-calibration/smoke-v2-fit2-confirm1/report.json",
+        "sha256": "07d5eb24f625a66b256675157c887b0b9691a259851e6fb0d310265879932d41",
+        "declared_count": 515,
+        "row_count": 0,
+        "union_count": 515,
+        "union_digest": "3a2031fadd42c134a9530233730592a87d1708555da10292b1ffc24e05a98174"
+      },
+      {
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2/frozen_predictions.json",
+        "sha256": "7d1c8b9e2783a84e63ad278d358fe3c4151e5528c18d40a7fc984429991436d3",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "464cc60ea2436ee21a4bf90f7c739150f17db420919619f0a91909fa913f80be"
+      },
+      {
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2/report.json",
+        "sha256": "a08e7ac6bce8216acca0e8a626acafb699887dfad8a786490b023d280d419f27",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "464cc60ea2436ee21a4bf90f7c739150f17db420919619f0a91909fa913f80be"
+      },
+      {
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2-protocol-v2/frozen_predictions.json",
+        "sha256": "e019144bc7eb3c155bc414822df39101206362f15cd95b5c4e21b9bf1008d3ba",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "464cc60ea2436ee21a4bf90f7c739150f17db420919619f0a91909fa913f80be"
+      },
+      {
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2-protocol-v2/report.json",
+        "sha256": "932206de447f325bdb95466762cf3e6c32e94eb70cf370351dedd5500396fe62",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "464cc60ea2436ee21a4bf90f7c739150f17db420919619f0a91909fa913f80be"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2/frozen_predictions.json",
+        "sha256": "e5d6f007410649dad0d2959be1126f407179c4aa23798d6773cc1d761ceec759",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2488e2e29a46aaeeebedecfb226153a8a775d6a2321af1c3217b5043582b4b25"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2/report.json",
+        "sha256": "fc8638b9ab45cec530fcdb5982c481fe0d0ddbe2eb15e6bc7cbbd61e78c84189",
+        "declared_count": 513,
+        "row_count": 1,
+        "union_count": 513,
+        "union_digest": "3d8101a7805dc63de9945893f7077bf4d1f21b10be3438df8125264253a0dc7d"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2-decoder/frozen_predictions.json",
+        "sha256": "02d6368c7a2d5a0441fede7bca75059ce50407b4c5da2c93eb418ca3048ae834",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2488e2e29a46aaeeebedecfb226153a8a775d6a2321af1c3217b5043582b4b25"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2-decoder/report.json",
+        "sha256": "68ee382ef23a193baf3724ea969c5b601281f04abdda009e5e564b93c1b8cf58",
+        "declared_count": 513,
+        "row_count": 1,
+        "union_count": 513,
+        "union_digest": "3d8101a7805dc63de9945893f7077bf4d1f21b10be3438df8125264253a0dc7d"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-v2-d64-source16-draw2/frozen_predictions.json",
+        "sha256": "ed1bc53bc72eddcad44d9153c62fbf81240efc605cacb208985e7ce0d2237aa7",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "464cc60ea2436ee21a4bf90f7c739150f17db420919619f0a91909fa913f80be"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-v2-d64-source16-draw2/report.json",
+        "sha256": "58fe3b7e240d49259904d2193dab38f2ab0812bbba5d92f0bf0e36c6d6f3aca3",
+        "declared_count": 1072,
+        "row_count": 16,
+        "union_count": 1072,
+        "union_digest": "e34fecaa48c1ad939595be60f6452f5d750af8a72a1fc0c0676de2115b735d1b"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-v2-source8-draw1/frozen_predictions.json",
+        "sha256": "9ee48d1fe2d9ba721a81af0fe6afa4afdddf9003a17712b6245c4d07b5060ff3",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "896c18cb9da20edbb26747d5742e6a75e1c18a9b0a514fe933bd37e4df95a581"
+      },
+      {
+        "path": "outputs/socket-matcher/exact-synthetic-v2-source8-draw1/report.json",
+        "sha256": "9358828611135909905c0074f39d4a67e93ef244657e3f2f4f44807330069df3",
+        "declared_count": 520,
+        "row_count": 8,
+        "union_count": 520,
+        "union_digest": "e296ee30f7abec9f60c6fe9bd442e9acb34df5683d13f446e94a4b2d07da6df5"
+      },
+      {
+        "path": "outputs/socket-matcher/global-cyclic-translation-v1-fresh-source24-draw2/frozen_predictions.json",
+        "sha256": "06cdea0085f19fa2b4cfa8494e42d8005003f280b24dd7d6c8c9fe6e6f49dc5a",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "a5ca7a874ed39f4da1dd659fb2a6fc59d219ae4ca38c0b6b32d2e4819e11e9cf"
+      },
+      {
+        "path": "outputs/socket-matcher/global-cyclic-translation-v1-fresh-source24-draw2/report.json",
+        "sha256": "beacfeb5ad052cf4ab6fe158f46405e92a064b757f069c7074e36a52f4d83571",
+        "declared_count": 1080,
+        "row_count": 24,
+        "union_count": 1080,
+        "union_digest": "46c3b6b369cf81013fa06838d297bd73aba4c6907f1f348f15030fa0f0e69b32"
+      },
+      {
+        "path": "outputs/socket-matcher/paired-v2-d64-vs-v3-source24-draw2/frozen_predictions.json",
+        "sha256": "2a48931a47f1e517257a58a7874397235648694165e81f6f435ab1cf47348da5",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "ad28954a441510c406fbea5d5678bbb07d50ae2d26a6771437960b09c1a3836f"
+      },
+      {
+        "path": "outputs/socket-matcher/paired-v2-d64-vs-v3-source24-draw2/report.json",
+        "sha256": "32660841b3d7bd89bd09eaa5f33e790fa47f8c4f89652651c9460f6f64313437",
+        "declared_count": 1080,
+        "row_count": 24,
+        "union_count": 1080,
+        "union_digest": "7c1c3b6f99b2379cde17c9ffb09310ece9b30fe53b30e2b678e7c1791e818c99"
+      },
+      {
+        "path": "outputs/socket-matcher/paired-v3-d64-vs-v2-source24-draw2/frozen_predictions.json",
+        "sha256": "ee29799617b9ae2d40149f0ea4acd20b174fac66f6931fc5bfea8c6b66bbd8d5",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "ad28954a441510c406fbea5d5678bbb07d50ae2d26a6771437960b09c1a3836f"
+      },
+      {
+        "path": "outputs/socket-matcher/paired-v3-d64-vs-v2-source24-draw2/report.json",
+        "sha256": "ee1cee337314cdf0f6bf18c1d4ae6b43f13f80db0c87400c49a4ce24c4c146b9",
+        "declared_count": 1112,
+        "row_count": 24,
+        "union_count": 1112,
+        "union_digest": "28156f715a9c769c44f4dae397460fda4cf5210da5440153d85ad672bb1bd422"
+      },
+      {
+        "path": "outputs/socket-matcher/pilot-train64-s100-r100-dev8-v1/report.json",
+        "sha256": "77122bd627b559417f817c81bf0dd97665905b46de38ec45f7465f5117a6e6b6",
+        "declared_count": 72,
+        "row_count": 0,
+        "union_count": 72,
+        "union_digest": "677926381707dc4788d109f27d1d2ad34355ae1982adbdd10fa548e6a7e241a9"
+      },
+      {
+        "path": "outputs/socket-matcher/scale-train256-continue-r400-dev16-v1/report.json",
+        "sha256": "9fbcb98392b83a8e12d21adab43363047374898daf68458238495498fae4d754",
+        "declared_count": 272,
+        "row_count": 0,
+        "union_count": 272,
+        "union_digest": "d2301cfa15c760ba60204c57dca0fb77a18fb2292ab1f1457fc9c033802ba727"
+      },
+      {
+        "path": "outputs/socket-matcher/smoke-init-v1/report.json",
+        "sha256": "0d229fb3909f0741a4dac29168cfd7e17de8c6790315f7c7fc1218bffa836bdb",
+        "declared_count": 4,
+        "row_count": 0,
+        "union_count": 4,
+        "union_digest": "059789081cb1dd6782f30377931b66804633f1efde7137b0cdf56f57c1f7fb16"
+      },
+      {
+        "path": "outputs/socket-matcher/smoke-v1/report.json",
+        "sha256": "e3cfa4ae8a3ea9a8525794d97edde2ec3e528ce7f6dd85ec0101509eaec4236b",
+        "declared_count": 4,
+        "row_count": 0,
+        "union_count": 4,
+        "union_digest": "059789081cb1dd6782f30377931b66804633f1efde7137b0cdf56f57c1f7fb16"
+      },
+      {
+        "path": "outputs/socket-matcher/smoke-v2-border-head/report.json",
+        "sha256": "5affcc20fc9ec5918dc789ae5c3cc848a8fe994195a8c7685425dc89bfff7276",
+        "declared_count": 4,
+        "row_count": 0,
+        "union_count": 4,
+        "union_digest": "6e9224886e92954bff73ba1c71e80aad47d3027bdb22afed7338926ceee139d4"
+      },
+      {
+        "path": "outputs/socket-matcher/v2-border-train512-s300-r100-dev24/report.json",
+        "sha256": "d9f1522a2befc76161b7f5ef25887138db0562ca4db30d1ff778c8fc6413b26f",
+        "declared_count": 536,
+        "row_count": 0,
+        "union_count": 536,
+        "union_digest": "3ed69c3a8c512ebb7fe5f277fa2a82a0ff7566f92b64c489a868ffb6f7a1145f"
+      },
+      {
+        "path": "outputs/socket-matcher/v2-checkpoint-confirm-dev24-decoder-prior005/report.json",
+        "sha256": "aba24f50af794033d0ef23851c9210a72b55494937c7bae5777e519e426ab79c",
+        "declared_count": 25,
+        "row_count": 0,
+        "union_count": 25,
+        "union_digest": "ab124ac234e09d9f9adf9562f02f9503a449bd32a3ed3134e6cf2d253b8b14a8"
+      },
+      {
+        "path": "outputs/socket-matcher/v2-checkpoint-fresh-dev24-decoder-prior005/report.json",
+        "sha256": "1b2ddc65bdbe3529d0f52446e8832c791d787bd3ee3a7f684b68937c9eb9cd40",
+        "declared_count": 25,
+        "row_count": 0,
+        "union_count": 25,
+        "union_digest": "11f7648d4f70bf049912f5eff0b8eab9751a3b49efd39a3da497e94c4f1eb12f"
+      },
+      {
+        "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/report.json",
+        "sha256": "ff461744ed214848e65bfac5f006bc543776a057c8df7ab68c021dabca3942e5",
+        "declared_count": 1056,
+        "row_count": 0,
+        "union_count": 1056,
+        "union_digest": "a6178391ac0ede9f0c8e8bc74260094e59e5b533fd9f2ea2df6966c528e34720"
+      },
+      {
+        "path": "outputs/socket-matcher/v3-d64-continue-s500-r125-dev32/report.json",
+        "sha256": "dc0212c043ffa845a0df7a951936d1474dad4b50510121fc4b43af4b5bf7061a",
+        "declared_count": 1056,
+        "row_count": 0,
+        "union_count": 1056,
+        "union_digest": "9a93b1c41ece3d3e8b8a4fc28633c5fec117c9089d2ce9a1e74437c619b03c52"
+      },
+      {
+        "path": "outputs/socket-matcher/v3-d64-global-cyclic-fresh-source24-draw2/frozen_predictions.json",
+        "sha256": "2691ad31c8b717265db5912dbddc9d4f9db92acf9cbdb2b3922e34a515324438",
+        "declared_count": 0,
+        "row_count": 24,
+        "union_count": 24,
+        "union_digest": "ad28954a441510c406fbea5d5678bbb07d50ae2d26a6771437960b09c1a3836f"
+      },
+      {
+        "path": "outputs/socket-matcher/v3-d64-global-cyclic-fresh-source24-draw2/report.json",
+        "sha256": "3a4bdb394c77c03e7e8b4926be79f9d34e8bface18eda68ea625da328649ed0e",
+        "declared_count": 1112,
+        "row_count": 24,
+        "union_count": 1112,
+        "union_digest": "28156f715a9c769c44f4dae397460fda4cf5210da5440153d85ad672bb1bd422"
+      },
+      {
+        "path": "outputs/socket-permutation-flow/capacity-grid4-s400-d96-l3/report.json",
+        "sha256": "454ac297e03a6e0b42a284d44d95a39567dfd8d8518e96019d534f1d224868c9",
+        "declared_count": 2,
+        "row_count": 0,
+        "union_count": 2,
+        "union_digest": "22ee878680c371886f2cf5866a9ccb5c2b8a59b38f54c555bc427fd61f838f73"
+      },
+      {
+        "path": "outputs/socket-permutation-flow/pilot-grid24-train16-s300-d96-l3/report.json",
+        "sha256": "353819b0727fb9c6708ce697adabd04dc6c8bdfd1a944bed50148072db47ad90",
+        "declared_count": 20,
+        "row_count": 0,
+        "union_count": 20,
+        "union_digest": "814a072c692bc53f613e3c920c20f7bda1c40e15a7d917fa98e10e4e47f59e18"
+      },
+      {
+        "path": "outputs/socket-permutation-flow/smoke/report.json",
+        "sha256": "bf1e843233b7829072c55c63d2119068416171ac6555133affc62610f473bd19",
+        "declared_count": 2,
+        "row_count": 0,
+        "union_count": 2,
+        "union_digest": "22ee878680c371886f2cf5866a9ccb5c2b8a59b38f54c555bc427fd61f838f73"
+      },
+      {
+        "path": "outputs/socket-ranker-fusion/fresh-train24-ranks2560-2585-k5/report.json",
+        "sha256": "0a0ffda7aa87ba648cea21629e357df8cdf712ebf03c23d0002c7b5bb172c348",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "9ca2a98052f06c76a18b5445763a41d467038f205b70d203876e05aedfa0add8"
+      },
+      {
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/frozen_predictions.json",
+        "sha256": "1e9f49c2324041d564a1b38eba35fb889a729cb224b3e2e8b679808738c7bc02",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "6dc6ecd915055f021e0437b106d9ef57e3ed318c1dea7caa2880442fb56d02cb"
+      },
+      {
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/quadratic_energy_analysis.json",
+        "sha256": "f493c7162337ea24b3fc00590314e0f5eedd55335df862c66d67400193bd42df",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "6dc6ecd915055f021e0437b106d9ef57e3ed318c1dea7caa2880442fb56d02cb"
+      },
+      {
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/report.json",
+        "sha256": "a12ca65775facb0717e81fbeaa3735a6fde2ca186f93b428e2985180825ce115",
+        "declared_count": 80,
+        "row_count": 16,
+        "union_count": 80,
+        "union_digest": "ddb10d1a3e15fb4cfc0e2be6fc506aa94b0733abcd8478192793d94acce89ba2"
+      },
+      {
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/selection_commitment.json",
+        "sha256": "bbe66d8474b838823a02ca5817b2f19007b8f5cfd0e16d1a02d736277f0a84de",
+        "declared_count": 80,
+        "row_count": 0,
+        "union_count": 80,
+        "union_digest": "ddb10d1a3e15fb4cfc0e2be6fc506aa94b0733abcd8478192793d94acce89ba2"
+      },
+      {
+        "path": "outputs/taska-adjacent-tail/fresh32-v1/frozen-target-free-eval.json",
+        "sha256": "3118fcfa760c2586f36cf1994f8345c73de17f9869fb76496811505583d7344f",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-adjacent-tail/fresh32-v1/report.json",
+        "sha256": "4e91091f352e12e1c46e950652938c036cd0d938945b89335788ed9cd75e8e08",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-adjacent-tail/held300-v1/frozen-target-free-eval.json",
+        "sha256": "094c90984b8bf1ce3ab45620f5bdf1f94e78ebb93c6e2aaa42a32ef0549c5939",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-adjacent-tail/held300-v1/report.json",
+        "sha256": "70d43e048016ff892cd780e69d8cfb51a3ac6539d10f4312186c1ef8bba5dce5",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-adjacent-tail/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "a0310e02d897bc7c4d2dfd996334c48bd3e3af2f4041214b5a731819a8c9f811",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-adjacent-tail/opened32-v1/report.json",
+        "sha256": "e60382e5cfe79311dcfecf956e0c9ae9c834c034cd1e9e0cacd2a9185c107acd",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-component-relation-anchor/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "601bc18b6b04c3bd5be260a97cf0e31134ff20a22422283a1e176c6d3b983782",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-component-relation-anchor/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "2d2a521c8040521af4313c07900fd161135114a2992b39f64b741e9bde4917dc",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-component-relation-anchor/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "6a323e8c8449d57d2b44848305f134e305a9b9b38c72844673c3520448efe7fd",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-component-relation-anchor/fixed-v1/report.json",
+        "sha256": "693f26d4851c72b0d80812392521df85b93570d18e513b761e348abd74b17316",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-component-relation-anchor/smoke-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "e8d61cac4fe7875ad55390b745d8cf7c763a438c8d9f7112dd286cac013fe3d5",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-confidence-pruning/held300-q25-v1/frozen-target-free-layouts.json",
+        "sha256": "fb969d945553a0a8aff6632f788b055db1214c25d27f5e8298f8a30ee9f17ef6",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-confidence-pruning/held300-q25-v1/report.json",
+        "sha256": "eb8c0390d5da46f78d27aeaa5db5a2ba92876dfdacd4b73727137be0ed120de6",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-confidence-pruning/opened32-family-v1/frozen-target-free-layouts.json",
+        "sha256": "2dab6f24b431ee2e1480a0b8209306f54b5edd6395cc2f7c1fe109a0eeceb7c5",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-confidence-pruning/opened32-family-v1/report.json",
+        "sha256": "91188caf85cf5ddba5977d8dcfc466a3f371f769533e052de9de1bb76184adf9",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-confirmed-arm-portfolio/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "40f8d7d13329336988c67ff6043b1ac502785ddacad89b2a2103a0edd63138d6",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-confirmed-arm-portfolio/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "b2bb4148c9b0abb298ce7b603586bb8a8d381ce2ec6ec87549cc9154d5b72721",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-confirmed-arm-portfolio/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "51e67a24e047ae44de49f139e4d40521940ae281ac02d90c06207baa8a17fa41",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-confirmed-arm-portfolio/fixed-v1/report.json",
+        "sha256": "35905df43f6769d2dd75751ee88bff4e535397e07f521c51c79a748b796e103a",
+        "declared_count": 16,
+        "row_count": 64,
+        "union_count": 80,
+        "union_digest": "6b87b411116a7a199ea7b2ecfc3c3aed9e4cccd1983f4c8f68bcda1ba4490ae8"
+      },
+      {
+        "path": "outputs/taska-confirmed-arm-portfolio/formal-source16-draw2-v1/frozen-target-free-eval.json",
+        "sha256": "855435b234809841a79f7398280be0e21af4557ab3e72edf9522258d8f0e2696",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "544956a96a8ab4cdc3c882f9a84204a3521bb30d6aa2de9f32af4600c67f023e"
+      },
+      {
+        "path": "outputs/taska-confirmed-arm-portfolio/formal-source16-draw2-v1/report.json",
+        "sha256": "7d1024b26afe4a2e031818fe19f09b7ca48cc249655e020805f33effb7fa2f1a",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "544956a96a8ab4cdc3c882f9a84204a3521bb30d6aa2de9f32af4600c67f023e"
+      },
+      {
+        "path": "outputs/taska-consensus-component-arm/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "006bb813e56a274344087b2e0ec73d009531b37e671c2b5e2d5e7850efedc481",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-consensus-component-arm/opened32-v1/report.json",
+        "sha256": "a84e8e41f528f269ab04134eeab15fa731f80eb8c8fb27d86974ee1b2179d4aa",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-context-bridge-relocator/fixed-v1/local32/frozen-target-free-context.json",
+        "sha256": "ded11ab6190da17f0c7074cbabc0b28d5c09f61409afdb215178a249a79e45b5",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-context-bridge-relocator/fixed-v1/report.json",
+        "sha256": "e8d208f70cc3fa398cbb97905f116a7d70d5cad869d101dfe133271f12e096c2",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-context-bridge-relocator/smoke-v1/local32/frozen-target-free-context.json",
+        "sha256": "ded11ab6190da17f0c7074cbabc0b28d5c09f61409afdb215178a249a79e45b5",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-context-protector/fixed-v1/local32/frozen-target-free-context.json",
+        "sha256": "ded11ab6190da17f0c7074cbabc0b28d5c09f61409afdb215178a249a79e45b5",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-context-protector/fixed-v1/report.json",
+        "sha256": "896b125290f335746084697ab606f45b6ee0aa585c3ebd70401c77d6782dec3b",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-context-protector/smoke-v1/smoke1/frozen-target-free-context.json",
+        "sha256": "ded11ab6190da17f0c7074cbabc0b28d5c09f61409afdb215178a249a79e45b5",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-cross-arm-component-anchor/local32-v1/frozen-target-free-eval.json",
+        "sha256": "c57eeabd10510c8360aa0d328cc802ecf43522b91f4509285546473ad28a9329",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-cross-arm-component-anchor/local32-v1/report.json",
+        "sha256": "2ddc08db57592b5d3daf45f2a43904c39651fcbb53a2dcecad9aeede8a21d222",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-dense-contact-consensus-feasibility/fixed-v1/frozen-target-free-consensus.json",
+        "sha256": "a77157fdd3318904ed434bf00df048c3211f357a05b8378b780e7353ecd7f069",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "7f5e36942d6bfa4dae61804154a6ad25f767e9af76af4b16b3de673eaec36da6"
+      },
+      {
+        "path": "outputs/taska-dense-contact-consensus-feasibility/fixed-v1/report.json",
+        "sha256": "e201bdb2121360128cdef993990c2a8b7c56bb8a41b8614b6ff262e0a68bcfbf",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "7f5e36942d6bfa4dae61804154a6ad25f767e9af76af4b16b3de673eaec36da6"
+      },
+      {
+        "path": "outputs/taska-drunet-unique-supply/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "02f96121ab918bbe3a120df5b2739e14d57da9ffa742320e8b184d3a3b344140",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-drunet-unique-supply/fixed-v1/report.json",
+        "sha256": "8e15139f297553529ff94242d4aa18139233c8c678dbdfebd85f70823aab9590",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-drunet-unique-supply/smoke1-cpu-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "a92ad16d94cbae64fb2fbfaec3a9ad3781b34cdad1d132cb8bf896bd4dd14446",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-edge-calibrator/train256-v1/roster.json",
+        "sha256": "e940944865f0a4f93e6f6a9782c33c2da1566ffb8ef1253e88bec369d30c630c",
+        "declared_count": 256,
+        "row_count": 0,
+        "union_count": 256,
+        "union_digest": "417ffaaa7b4bd14031cfb18bfc6a7b485cdfa6daf59f91942a12134528e247fc"
+      },
+      {
+        "path": "outputs/taska-equivariant-square/smoke1-mps-v1/frozen-target-free-eval.json",
+        "sha256": "5dbbc895bdf329294c1360be777ec3e7c239e2aba9e5a21f2f27574aa3f39d35",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-equivariant-square/smoke1-mps-v1/report.json",
+        "sha256": "f21260259e4bf832039531a671d13ec858d09db623eddadba7dd7d18a6e80cf9",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-focal-current-finetune/v1/local-gate-target-free.json",
+        "sha256": "30d6dd6ebe0e4d492bf43fce8436494e93e165066cf08b27b74ce4470aaadd8e",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-current-finetune/v1/report.json",
+        "sha256": "cd451fe06ee63a93775fee1595265556d74a95c4d2885c152555404917c82770",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train224-v1/extension128-focal-harvest.json",
+        "sha256": "4133b4d733b21b714c38c0ab2819149e5cf8c61e4283ce0b7e4261558f7584c5",
+        "declared_count": 0,
+        "row_count": 128,
+        "union_count": 128,
+        "union_digest": "39dc5eb50c031dd664e127ba37d4597d1980030857013e0b44c5110e45372aae"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train224-v1/local32/frozen-target-free-eval.json",
+        "sha256": "16509acef5035b60cbe0d953ec8d0a66375500562d290a8125f61a36caf43a9c",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train224-v1/report.json",
+        "sha256": "11eb7b56f47f051e47f3e7b59d995f32e025db3e9160ad5ff37eaf9ff29f06de",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train96-v1/fresh-exact-confirmation-report.json",
+        "sha256": "1e9641e721b0dd6c0c3fea4775b92198c6037331703a98945ed52ebd537c03d8",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train96-v1/fresh32-exact-override/frozen-target-free-eval.json",
+        "sha256": "024be2cc842c2c4e7aec8df0a3d10d5f8ea185011f825a9bdb69580f7ee797fb",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train96-v1/held32/frozen-target-free-eval.json",
+        "sha256": "cbe6a774fb3fd3a6095e0124c5f484736ede963c0f6682d93ac49d67fe7c384a",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/frozen-target-free-eval.json",
+        "sha256": "78a10b5f3581ef89a1dadae284906cd6f85ec7708250154b4ef4b819cd01a62c",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-feature-stacker/train96-v1/report.json",
+        "sha256": "cb2fca61e2f715abe096d9e2d10b4951825628c402adbaad6103aae7a054a485",
+        "declared_count": 0,
+        "row_count": 48,
+        "union_count": 48,
+        "union_digest": "bddb54cc98bcb4e67e4e59c17b0858fb3d045dfecb4d09b6452d997723381664"
+      },
+      {
+        "path": "outputs/taska-focal-gated-protected-tail/fresh16-confirmation-v1/frozen-target-free-eval.json",
+        "sha256": "eb2e6881b6bec62fc42629b061fd7e8aba8d911e2b1fd935f5a28e93c83cb75b",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "fff2f9b2ca739369fd7b52c6700e68e4271d57cce0eb843e451f43bd18267088"
+      },
+      {
+        "path": "outputs/taska-focal-gated-protected-tail/fresh16-confirmation-v1/report.json",
+        "sha256": "850a4a8034d3d8f0b783391ad7cfade9661afd4ec695753a9fb07737b562edd3",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "fff2f9b2ca739369fd7b52c6700e68e4271d57cce0eb843e451f43bd18267088"
+      },
+      {
+        "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "d89e5deb634bfc90b0cfb6c30b0916ce58c8deb769e659f26d3e437f52bafd1f",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/held32/frozen-target-free-eval.json",
+        "sha256": "8b50eb17e95948700590ec65e85659f7ce688a7165b7b6a3729da81b5b8c7f96",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/local32/frozen-target-free-eval.json",
+        "sha256": "3f63d9f188c2f7e4b5b5a51b4b0a93ed4316a5c8fa2e1ed60ecc25bf315e4448",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/report.json",
+        "sha256": "80c43ed8c8dd090315b2a1e3b45572debb7de5139d70817bd6acc9d2aaab4a6e",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-focal-gated-tail-capacity/tail192-fresh16-v1/frozen-target-free-eval.json",
+        "sha256": "9ed7eab98a775563bb6997c35092caf91ce09b50709007d3bafc0ebbc7dc77a9",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "169130eb3a538518d4394e1b979bdb528345c33876bbc84d5c49a9894d2c5746"
+      },
+      {
+        "path": "outputs/taska-focal-gated-tail-capacity/tail192-fresh16-v1/report.json",
+        "sha256": "0b34cd736c1f412bf3895ef9cc9d25406b966a89fbf148f5bf56fcca783016e0",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "169130eb3a538518d4394e1b979bdb528345c33876bbc84d5c49a9894d2c5746"
+      },
+      {
+        "path": "outputs/taska-focal-nonlinear-stacker/train96-v1/local32-target-free.json",
+        "sha256": "d2a360876328f4e145b0eaeaa27d962177f2f7ed53f993d0e580ad25edde7fca",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-nonlinear-stacker/train96-v1/report.json",
+        "sha256": "59b6cc84a900e8f19e3555b7a1b8285a72d0959c70d6462d4470d6e0101febf2",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-pairwise-ranker/train96-v1/local32/frozen-target-free-eval.json",
+        "sha256": "3898851b66e81a1ca736f8bfc842ef71da2c6e7a3ac6c6ac6afb5347b7fd691f",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-pairwise-ranker/train96-v1/report.json",
+        "sha256": "62bc146393e139bf2513a01f9f5812e0e6e6df1dbd206ae7dcf4b8366c8be01b",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-focal-rank-fusion/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "2e63cb4e6e4258d9b35923fb3fb62d9a995fe807003ea71789c49eaa88494ca1",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-focal-rank-fusion/opened32-v1/report.json",
+        "sha256": "cf0283c8ecc58bf60c23ad23a0664f627801d3826daf0013e1a4b73979adef27",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v1/frozen-target-free-eval.json",
+        "sha256": "6d0091230ea10edb77c7c2da31a7f7ce604006616997a5ad02b7201d8432a840",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v1/report.json",
+        "sha256": "675e4ba7b7867f455c9fcb917557d85d059c3f02be40562123c2972662e9da71",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v2/frozen-target-free-eval.json",
+        "sha256": "6d0091230ea10edb77c7c2da31a7f7ce604006616997a5ad02b7201d8432a840",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v2/report.json",
+        "sha256": "abb2f16b150457c9bd23e9439f49a7023f207adb06acf3b81e8931ea9788bd34",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v1/frozen-target-free-eval.json",
+        "sha256": "301ba535f04b63ff8da48a0a83b5f207521d4b57f1bdbb61ceb58dbee57daff2",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v1/report.json",
+        "sha256": "33b99a96f2ee801afa2b681ac379903e25a436ed30dcfeec76a98c7a11294a87",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v2/frozen-target-free-eval.json",
+        "sha256": "301ba535f04b63ff8da48a0a83b5f207521d4b57f1bdbb61ceb58dbee57daff2",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v2/report.json",
+        "sha256": "b0700098b6a7e232a56cc268c3f2bc14ab9d1af3e5bd84304d5674b40a72a103",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v1/frozen-target-free-eval.json",
+        "sha256": "8e6be1d0f4b2652b784141d7c53d7fb63394e8bda6af3b076a9fd5721f07c9d5",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v1/report.json",
+        "sha256": "ee7bf0511cd1ef14b1b9937146309bd19bf3d1396b2790ec60cf901dba57fac7",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v2/frozen-target-free-eval.json",
+        "sha256": "8e6be1d0f4b2652b784141d7c53d7fb63394e8bda6af3b076a9fd5721f07c9d5",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v2/report.json",
+        "sha256": "4ac3ee90c2e03f44051435a2eee9d6a7baec771ab8c5b7d7f7478e7dfb54880a",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-fresh32-leader-confirmation/fresh-held32-mps-v1/frozen-target-free-eval.json",
+        "sha256": "311a1b3dc42bfb317a2c5cde1cee319de86ceba85622cb376fe4bfb83e2b53b1",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-fresh32-leader-confirmation/fresh-held32-mps-v1/report.json",
+        "sha256": "4db1e100f674613308f2cbca1e4be60c6687be3e9b3b446df16e442bc6cfbb7d",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-fresh32-leader-confirmation/smoke1-mps-v1/frozen-target-free-eval.json",
+        "sha256": "660b66e0299b255902d9fdb305baa14c585dae3e658ff52c4769ef2e5baf8ac4",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2584af60984e1478047319382ddc6d50be8ae3b772a315b7ac1fa6783306ffbf"
+      },
+      {
+        "path": "outputs/taska-fresh32-leader-confirmation/smoke1-mps-v1/report.json",
+        "sha256": "9bd435f290fd2899529fc0ff128ab3199c37dca71271553ce3e94a498b1fd141",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2584af60984e1478047319382ddc6d50be8ae3b772a315b7ac1fa6783306ffbf"
+      },
+      {
+        "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "11637f7961b228ef1bad09004b373b3da5a4e721f3767b2531556e571003f732",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "6518fb9703b2bfd78697a8d7f7f332a5c3053423f2915976eb2d7a4f5e412e5b",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/report.json",
+        "sha256": "7997582df01a1d452d65bb8021ef22cbccd809141d0b965286eaaa8a9dc0d48f",
+        "declared_count": 0,
+        "row_count": 48,
+        "union_count": 48,
+        "union_digest": "bddb54cc98bcb4e67e4e59c17b0858fb3d045dfecb4d09b6452d997723381664"
+      },
+      {
+        "path": "outputs/taska-fullres-focal-gated-tail/fresh32-confirmation-v1/frozen-target-free-eval.json",
+        "sha256": "b74dc4e8f115c62aad32093b1aefcb5c76721669e2753b9bf8e14e9786b6aedc",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "f46136ee2e7a697dc98b3eb9f7f3d81fb75bfa06165de7aaf564977a2f1cb993"
+      },
+      {
+        "path": "outputs/taska-fullres-focal-gated-tail/fresh32-confirmation-v1/report.json",
+        "sha256": "6f02f83407eb15f42c696d1f458b658465d94bfd5c3087135cfc6cbcd548ecf3",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "f46136ee2e7a697dc98b3eb9f7f3d81fb75bfa06165de7aaf564977a2f1cb993"
+      },
+      {
+        "path": "outputs/taska-fullres-translation-consensus/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "9501c1a6c584fbf45362d9a3bdfe16ed1dff1a62f6f7932c026d8ba86e77dcd7",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-fullres-translation-consensus/fixed-v1/report.json",
+        "sha256": "e05383a56fe3e138b11c77f33b17581fdced129f1595561a573d450c1dab1613",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-fullres-translation-consensus/preliminary-float32-bug-v0/local32/frozen-target-free-eval.json",
+        "sha256": "9501c1a6c584fbf45362d9a3bdfe16ed1dff1a62f6f7932c026d8ba86e77dcd7",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-fullres-translation-consensus/preliminary-float32-bug-v0/report.json",
+        "sha256": "6e2a772cb917505c777f4bcc032765a06954c4e9fe81cf47b72c15337df4825e",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-fullres-union-voter/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "af8e1a398bbdbb069870e5224857e758720eb252f2314bd9cf0c527d351c5f3f",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-fullres-union-voter/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "116b5e77bc01329ffab0f850b4aaa79194d79a0ac6239f0243142c9752724b13",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-fullres-union-voter/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "e5574bbea6ff83bb5caded5152d14ed22d56e9043229ee577cff7bda65f9ea20",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-fullres-union-voter/fixed-v1/report.json",
+        "sha256": "d67a7ed7e2cd9e7c333052ab4db9d0b32e444980da83939f0e54e7f88c7195b8",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-fullres-union-voter/smoke1-mps-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "266efffeec1865aad22b5a6f76455e7276614337ee1510b8fd33b8c9764b405e",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-fullres-unique-edge-calibrator/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "2842a2c7a98bf5e4e03f5d2be860a6d00a0442d7526a157a28371209f04df3b5",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-fullres-unique-edge-calibrator/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "1f6a917a5b0ad29eb3c7a32c05492af02cba5a3fc56302142fefaac04c773311",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-fullres-unique-edge-calibrator/fixed-v1/report.json",
+        "sha256": "91bfad9817ab9fe82337a6f76201f1544c8209eff1b56dd4a5a9d7bdd7c6cb00",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "f2e6bbf52e7fd15d169ad489be8077df0b17af959f0be55a93588ea6d30f57d5"
+      },
+      {
+        "path": "outputs/taska-incidence-gnn/extension128-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "414dee67a161fde10b2fb6e25e1111b89bf91780eca45057152ec83f567868c8",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-incidence-gnn/extension128-v1/held32/frozen-target-free-eval.json",
+        "sha256": "4fbd220677b0d1510e0f63b4b9ec6e15e842bbc24005aaee98cff88dcd865068",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-incidence-gnn/extension128-v1/local32/frozen-target-free-eval.json",
+        "sha256": "01eb2c4eadc552aaf06bf4278fcc4ad1cecce0018cd173fbbb8e31e5f087a0c8",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-incidence-gnn/extension128-v1/report.json",
+        "sha256": "7e01c49e3f251dd7a7fd739991d896f94f8b19e6165515e238df1859a17d6575",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-joint-component-pose/pilot-v1/cache/metadata.json",
+        "sha256": "301c4a25d3387a17e672c7055601b9879506e19b4730e24ddc9423d657abd953",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "7f5e36942d6bfa4dae61804154a6ad25f767e9af76af4b16b3de673eaec36da6"
+      },
+      {
+        "path": "outputs/taska-joint-component-pose/pilot-v1/local32-frozen-predictions.json",
+        "sha256": "9e2053e9955d3c712ec1fb845715092392b987810ad8cad03575e1043fa14270",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-joint-component-pose/pilot-v1/report.json",
+        "sha256": "1f47494059e063b4dccf7d0b7c27b6eb092d905d878321b19c601f69135f83bc",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-monotone-components/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "7702d34071def4b41c3cb9c40887fae5f7fdebc1e5330977651a6d46bd838bb5",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-monotone-components/opened32-v1/report.json",
+        "sha256": "c1c0f5836a0a26f6b334e97796b42f252be70e25625d66f09e680dd4c54389b2",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-multistart-portfolio/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "aae9953c1d6b26364bf4aaa07aa03a123380dd22c0805305b3d5cc100619a632",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-multistart-portfolio/opened32-v1/report.json",
+        "sha256": "fb702460e35e5408dd65c157f2f2f847786b971ecedc81cee95fea40f79276db",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/frozen-target-free-eval.json",
+        "sha256": "1acb5d0000dd76e48fb6c079827fa2113bb56f541905fc97ced9656b8d7fe53f",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/report.json",
+        "sha256": "3b42fa8dd367c12ad14964441c41c4690d600cf18e5edc039cfd1d66599722d9",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-rawlog-tail/held300-v1/frozen-target-free-eval.json",
+        "sha256": "9685b9eeeb67f0cc3a4f3acb8ca65ec5b4c5eb5f1914ae85912b14fcb79c2d7a",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-rawlog-tail/held300-v1/report.json",
+        "sha256": "da5e95ef6c85e11643d09f96ad21feae39071204e5adce7868f815426d460921",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-rawlog-tail/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "bb21a8f77a9b714414b71ce4b96080a2cbe64c71c5e746bcf8e7b8b23e1ac582",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-rawlog-tail/opened32-v1/report.json",
+        "sha256": "db1ce296014d294a53ff54fde5550b4a573a151fb64011f8b2726711d278255e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-relation-ranked-union/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "e72ac526bdb35f8dae2e6075c0ae4eac014a8ecc0c94ddf8b2c97f91679951b0",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-relation-ranked-union/fixed-v1/report.json",
+        "sha256": "cee46746aac04e19e4c008d46092611cdd0cc32dfbd1eea6951eab9988d4cca4",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/fixed-v1/fresh32/frozen-target-free-relations.json",
+        "sha256": "47b3fbe6c9752ba3512490f697b8899cbf5447863bd17b21efa22e083ac8415b",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/fixed-v1/held32/frozen-target-free-relations.json",
+        "sha256": "fec001d773e7268b695c5e28c5d5e03feac7ab20ab766d283ff11e5fed295fe7",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/fixed-v1/local32/frozen-target-free-relations.json",
+        "sha256": "2e6a43f257010c0fdede29bd469c43db92415045978d505d6192f1a677808c86",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/fixed-v1/report.json",
+        "sha256": "022739dec8a47465f588a3ad9e45660ffbfa327a6f1647bd1517134c01420c39",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/formal-confirmation-v1/frozen-target-free-eval.json",
+        "sha256": "4ae4b8f27d3d6abef21581b189e84c456768c3935d975cec389952b40fdba64c",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "82f4509a2aad0381493dc1b5f8edad8924c95733aa59a71c2ee974f48b2ac851"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/formal-confirmation-v1/report.json",
+        "sha256": "d260872251077e1515251b6c7afc316af25df75045c8119112dff4f36c68ea23",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "82f4509a2aad0381493dc1b5f8edad8924c95733aa59a71c2ee974f48b2ac851"
+      },
+      {
+        "path": "outputs/taska-relation-truth-selector/formal-pareto-audit-v1/report.json",
+        "sha256": "66b954947113c2f9d81108ee1e489c0db8d695a7a3033f1f7e396e311d05bc2a",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "82f4509a2aad0381493dc1b5f8edad8924c95733aa59a71c2ee974f48b2ac851"
+      },
+      {
+        "path": "outputs/taska-retrieval-adapter-unique-supply/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "19aaa15af13740fcc950f22a01c38c2664050e6d5fe15be5033353341e074371",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-retrieval-adapter-unique-supply/fixed-v1/report.json",
+        "sha256": "4f36424d04180438d8098cd0a154b9d8553b13b3f26b8748be8adb69dd191c0b",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-row-phase-dp/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "d6f61022d78c69fd98ad6a9d7d052ff7d9d4dfaf315442f1f9e05ea7592c4d7f",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-row-phase-dp/fixed-v1/report.json",
+        "sha256": "5e787ea9b45d7f37cf2c69350514533f297e35204ca2e7e48fd729c18ecf5438",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-row-phase-dp/smoke-preregistered-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "8646dcabb271f1d8348b209b7fe9a0322017f0fc7b4a9d68e5b4453952dcd53a",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.json",
+        "sha256": "91710486233f45bda2b8aab019c508d1e6a0f75e282a6ce9a47aee93d9bf0a8d",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/report.json",
+        "sha256": "a5e2da7c59d144e461acbb5d3baa35118115aea4a96161cef4b95c95ba8aee19",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-seam-replay/opened32-mps-v1/frozen-target-free-eval.json",
+        "sha256": "f327664bc9db353b53b8f05738f94a5baaf8eefec1c708ae92f5032c37ce6eaf",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-seam-replay/opened32-mps-v1/report.json",
+        "sha256": "058ec75e0df744e960e8a00fd495e8d33ac5f3911ebcf14a6ed60f419b679635",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-seam-replay/smoke-one-v1/frozen-target-free-eval.json",
+        "sha256": "34a18dfb7278e13ee80142cf789f213aa644afe5e7b2fc622aeb6fb8d8bc5404",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-seam-replay/smoke-one-v1/report.json",
+        "sha256": "c9c435d059e77cbbcea694c12d79f7d30b4db3a5b521734b462165f8d592dc92",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-seam-replay/smoke1-mps-v1/frozen-target-free-eval.json",
+        "sha256": "34a18dfb7278e13ee80142cf789f213aa644afe5e7b2fc622aeb6fb8d8bc5404",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-seam-replay/smoke1-mps-v1/report.json",
+        "sha256": "837c1baf27874af3b2a77dec48cfc9549801fb6923cdc1c31e0e2d2ebadff43b",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "c65d7e332460001d67b2dc2052a2dd3a2e6c62d08f3a936c7723ecec6dac6794",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "f37d23bd44c1565ae560c46ed6b6f33b4500b52168147ba114ff8debc59f0bf4",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "106ac31d166c1b244a498c3cc76f59d4730601e6fba3a35fa6721eb7f18befa1",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/report.json",
+        "sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/frozen-target-free-eval.json",
+        "sha256": "2b66d8ff95620dc27e9874ffd4bd62b67f065aee5bf4a46f980f9759a68d1a83",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "23d20d0375aee0fca4182d5457be829befe6560cc32c4279f4846f0b5387474d"
+      },
+      {
+        "path": "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/report.json",
+        "sha256": "4d0ea850e101cb56a4f70dc6ff164201c09af047dcb669e3c81e19488661e555",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "23d20d0375aee0fca4182d5457be829befe6560cc32c4279f4846f0b5387474d"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "63e2b73fcba695ac5078784562dd9374b1e49ae6bf0a604cb7558632923ad55a",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "1eb4b1c47fb0451236aa36c09d37aed7e74fb05a2fc73e80cad700fc18abd870",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "551c42efae81e1fbfb6ffb1523b75aaffd12b5717ffef0acab6bf5267c30ac2c",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/fixed-v1/report.json",
+        "sha256": "2d9f328159c3c80280a0112f3fb663765c9b94fe650cd4639d8cc4ae5c1a0d18",
+        "declared_count": 0,
+        "row_count": 64,
+        "union_count": 64,
+        "union_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/fresh32-formal-confirmation-v1/frozen-target-free-eval.json",
+        "sha256": "da22056b0a82eaa16ff4d2be72d327b757f5c54c783b6e406cb847d7ce949668",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "5b58f3768ce2bb919b0c438f3058c545231df2645faa4ba1879dad7a7e32551b"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/fresh32-formal-confirmation-v1/report.json",
+        "sha256": "981d2ac218671bee4faaae090e24ebddaf7f075d1129ad9e562d218eec12bfc4",
+        "declared_count": 16,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "5b58f3768ce2bb919b0c438f3058c545231df2645faa4ba1879dad7a7e32551b"
+      },
+      {
+        "path": "outputs/taska-selective-vote500/smoke1-mps-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "522bb805b773b93c666355eaea520e4dfaf6b6e2d79d684bfacff2bcc0476cfc",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-six-arm-component-shift-diagnostic/local32-v1/report-v2.json",
+        "sha256": "e39acd60288852f64678412a413936ef7ceb20634c5a199174698ff1a1c86121",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-six-arm-component-shift-diagnostic/local32-v1/report.json",
+        "sha256": "597f79a534d41f8c45a0cf5c483305c77fb8e77e3208eeed82a066304b73a309",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-selections.json",
+        "sha256": "cb17d197d42b9161b1b16a6298038e599eab8872a2eea66eb6be6a196f8a27e4",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.json",
+        "sha256": "990d6d6ddefddaab47f327ca640427e6f515564a331c8c15244917263abe77fd",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-six-arm-learned-selector/fixed-v1/report.json",
+        "sha256": "9fb6354d3fe6588e90ca52cc3c950a366874c1151ea031e1631b4990be19fb62",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-six-arm-learned-selector/preprereg-smoke-v0/preprereg-smoke1/frozen-target-free-arms.json",
+        "sha256": "ca003ec0f47a75fe41217067ef8d9e22ef713c43ea143b0489c375fae66cf310",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-six-arm-learned-selector/signed-smoke-v1/smoke1/frozen-target-free-arms.json",
+        "sha256": "ca003ec0f47a75fe41217067ef8d9e22ef713c43ea143b0489c375fae66cf310",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-socket-cyclic-origin-transfer/local32-selector-feasibility-v1/report.json",
+        "sha256": "8a18ea2f95fc4eeab6dd951054660c03d41f174c7f4bd714bf109049219e9525",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.json",
+        "sha256": "9fab4bb4d3c74fbedc623e7f5ae1d75973f2c87f8309cacc3f3895a82e319d2d",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/report.json",
+        "sha256": "9317254528490fdd1a8b09ddac0feffd97981d04ef3076910b2657974acb0d10",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-structural-origin/opened32-mps-v1/frozen-target-free-eval.json",
+        "sha256": "89296302090c8e7c475a8bed5085e5d9de2e311f668de935324776f0c7b25e76",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-structural-origin/opened32-mps-v1/report.json",
+        "sha256": "376ff1a1713bb4bb5d97874b59927197241ad7898762c2111977b0529e29dfa6",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/taska-structural-origin/smoke1-mps-v1/frozen-target-free-eval.json",
+        "sha256": "778cafa8a5604e76bf5042ca9add12b5dd94369bccd3a5accf173c35435e979a",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-structural-origin/smoke1-mps-v1/report.json",
+        "sha256": "b78f0364a505118facff3e38c38e923666b3a84cb6a7374f48e2ccfbcf98444f",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+      },
+      {
+        "path": "outputs/taska-twin-unique-supply/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "a820ccf62844b6985cf58b8044fea731cdad8d696b2d76a6735f5ce901f2362e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+      },
+      {
+        "path": "outputs/taska-twin-unique-supply/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "a4399716a7803c2f19b37c9d681055885c56c83675194d4c3dfdac7d606d8204",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-twin-unique-supply/fixed-v1/report.json",
+        "sha256": "3dd619c93561d0bb9971d92c40c84d82c104d098217a8a8eb1290f0edafd71d8",
+        "declared_count": 0,
+        "row_count": 48,
+        "union_count": 48,
+        "union_digest": "bddb54cc98bcb4e67e4e59c17b0858fb3d045dfecb4d09b6452d997723381664"
+      },
+      {
+        "path": "outputs/taska-twin-unique-supply/smoke1-final-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "9031d8d0a0c717f9802d96e265234f61ff7940e86c7baee7f6dc211e21bde063",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-twin-unique-supply/smoke1-v1/smoke1/frozen-target-free-eval.json",
+        "sha256": "b7c84a4a609aa8b97744822d9e26783ddfb85cfd7733085474c5a76707aa99c9",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-twin-unique-supply/smoke1-v2/smoke1/frozen-target-free-eval.json",
+        "sha256": "b7c84a4a609aa8b97744822d9e26783ddfb85cfd7733085474c5a76707aa99c9",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-vote500/local-gated-mps-v1/local32/frozen-target-free-eval.json",
+        "sha256": "2c1054faae796d8a0440b2d9c815e7723693f7329a79535e71f49a70d18cd06b",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-vote500/local-gated-mps-v1/report.json",
+        "sha256": "cb83241315448f6de48e97cf4d5d4771a456e60d53f9ffb44ee7d0ca299e1770",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/taska-vote500/smoke1-mps-v1/local32/frozen-target-free-eval.json",
+        "sha256": "f943ef60795cc43f115b678c690815ae71d72628c495036ac6bae4748cfa2e69",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-vote500/smoke1-mps-v1/report.json",
+        "sha256": "f526ea328b653366e8f1dc866021fb7b47ec404e1c73da25934d880d0cf74574",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-vote500/smoke1-samepass-mps-v1/local32/frozen-target-free-eval.json",
+        "sha256": "4ec5e726b2584dfb9c1fb91e5b08b6cc5401aec9e87c2b71a9d33cb3281edb93",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/taska-vote500/smoke1-samepass-mps-v1/report.json",
+        "sha256": "926d445ec64f672e8af2f76286a2ab9802e9cc77919243f88f8dc1cc101264f5",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+      },
+      {
+        "path": "outputs/tile-position-distance-validation/fixed-v1/frozen-layout-roster.json",
+        "sha256": "cc1bcbfe2a39fdd1255151ff3d515a1fe6c4a7e8305670fcd3ab4c11bd85b3b1",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/tile-position-distance-validation/fixed-v1/report.json",
+        "sha256": "57308b3bc944226022fcba0a52a55fa2ffd50391f0aa41b368f28c1bb9957ad6",
+        "declared_count": 32,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/tile-position-distance-validation/relation-selector-bridge-v1/report.json",
+        "sha256": "2f14336e91ca889e9c8777f90ee596a7f390cfeacb7a82378a140b42a9781104",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "82f4509a2aad0381493dc1b5f8edad8924c95733aa59a71c2ee974f48b2ac851"
+      },
+      {
+        "path": "outputs/tile-position-distance-validation/socket-origin-bridge-v1/report.json",
+        "sha256": "46613d8b05aca57df1391b712f07d858760349c031edeab0c8ef16c7df54a6cc",
+        "declared_count": 0,
+        "row_count": 32,
+        "union_count": 32,
+        "union_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+      },
+      {
+        "path": "outputs/tilewise-dualnaf/no-atlas-calibration-offset96-count12-h10.json",
+        "sha256": "6c498170838ee4da0c2006d5341752b96e295c34d98c554dd1c8d4d5261f8443",
+        "declared_count": 268,
+        "row_count": 0,
+        "union_count": 268,
+        "union_digest": "7b8b997663c767fc5120b41481d37040a61ab5f461a922b38ab379d9be327f8c"
+      },
+      {
+        "path": "outputs/tri-emitter-edge-verifier/capacity4x4-v1/report.json",
+        "sha256": "073751c46dcd915136fa7dae3194942117199487adfe4daec9a46fd8a5cbe17c",
+        "declared_count": 64,
+        "row_count": 0,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/opened-local16/frozen-target-free-predictions.json",
+        "sha256": "f49313a86b8c6e0e8413840728da1a13e70b2a8b24e33fe4f550710bbaedeb19",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "d0beac0f6c60aced17ef73a2eb54d042f935a24d634bb98056381be8e645634a"
+      },
+      {
+        "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/report.json",
+        "sha256": "29686696e606f7b8c0aed51ba6baa24ba87cfcb68841a143b01b3c921b543b0b",
+        "declared_count": 64,
+        "row_count": 32,
+        "union_count": 64,
+        "union_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/d1-opened8-conservative-anchor-v1/frozen-target-free-layouts.json",
+        "sha256": "043f5068ccfe33518b740ed1ace30d47a3883a4d4f9190a424dbc2737542151d",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/d1-opened8-conservative-anchor-v1/report.json",
+        "sha256": "92947cef1e5b84a83f3b83b6152a448f9850c9eedefdfc2e8d733988f4028f02",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/d1-opened8-qap-guard-v1/frozen-target-free-layouts.json",
+        "sha256": "51063f0f81690947e8f3384d351292fe6114f1bea109f97805e4bca4f1617cda",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/d1-opened8-qap-guard-v1/report.json",
+        "sha256": "07cda7ba1f7c5baa413b7b4b65390cf62808cd4bdf130e07e64fc92dbb9bf21b",
+        "declared_count": 0,
+        "row_count": 8,
+        "union_count": 8,
+        "union_digest": "d2a019879d3dd4badb2df63057eba60f1e40c5d3b4c5a0045dd0a4bd53f45eec"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/smoke1-conservative-anchor-v1/frozen-target-free-layouts.json",
+        "sha256": "46311a138e1bce33f804acebffc3d74c78bc1c66a3ac03d03962436a63519404",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/smoke1-conservative-anchor-v1/report.json",
+        "sha256": "772c69a7a7a6e812801a90b09131a156f1ac1bf7d6e3faa2704f941ee2305cb7",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/smoke1-rigid-only-milp-v1/frozen-target-free-layouts.json",
+        "sha256": "baa00d06bc2d401e86a013e0cd4a2ef5cc75076882158a436804ef7755e4cac6",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/smoke1-rigid-only-milp-v1/report.json",
+        "sha256": "15e4c1a2edce3c309a638f757469ec35ac7b254c358d6483eebe9b71d262d996",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/smoke1-v1/frozen-target-free-layouts.json",
+        "sha256": "ccd69d0f0dc2c8ef3544baab525a6d6334ec9b654a6ae1e72d3b6299548545ad",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/union-fragment-synchronizer/smoke1-v1/report.json",
+        "sha256": "f01ce272cf32c2353c6edaa0d34432d9859a306db1c1b4ca4a34c0dbb7fe89c0",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "09e451862de0228fc601f8fd8f8c287908ee0a8cf93853f6dd33905878c0448e"
+      },
+      {
+        "path": "outputs/union-hard-edge-cutoff-continuation/opened32-v1/frozen-target-free-eval.json",
+        "sha256": "d95e93921dbcf7ba612a1c12b4876e9a73ba3cae8cd17b2711d97cc829f82249",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/union-hard-edge-cutoff-continuation/opened32-v1/report.json",
+        "sha256": "27638ac08c013c65b8a0cdf6611c94eba873a2dee8bdc3b32d672b7ec38567f9",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/pilot-v1/selection-commitment.json",
+        "sha256": "12525391bf310c9180f1d8c2ad7242836b2a9f53b6ef8304b25c5a57b727a5b5",
+        "declared_count": 80,
+        "row_count": 0,
+        "union_count": 80,
+        "union_digest": "17c9ca11fc40200f304f8380d426fbe191712d0ae772b68f649cbe27bdc0136f"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/pilot-v1-final/benchmark-one-case.json",
+        "sha256": "77a4e167491109a003aecd2237fb235e65e78a64086ecba8ef21c3c96caac9d8",
+        "declared_count": 0,
+        "row_count": 1,
+        "union_count": 1,
+        "union_digest": "978edd51fb23912e9218d36b7f546a28464200560dfc7aa3d90ea5ba39b559a0"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/pilot-v1-final/frozen-target-free-eval.json",
+        "sha256": "b0e26d3fdf2a05169d6ba18c3ec62561470f205f64c4bf454e8142f8ae39edac",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/pilot-v1-final/report.json",
+        "sha256": "c4cf10f37f10a709e5390f2bd05555ecf0304ab958f7ca6ebde713cbb9f17e5e",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/pilot-v1-final/selection-commitment.json",
+        "sha256": "575bb43d850ec3276b61aef616cfa9f2f5fa6f31db35f417d6852b9a38dac540",
+        "declared_count": 80,
+        "row_count": 0,
+        "union_count": 80,
+        "union_digest": "17c9ca11fc40200f304f8380d426fbe191712d0ae772b68f649cbe27bdc0136f"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/pilot-v1-final/target-free-cache/metadata.json",
+        "sha256": "2aa1d4a747cd08dca60a7bd66f5a347df9511c0f29e0f7be3877a2a2fcb0f6b5",
+        "declared_count": 0,
+        "row_count": 80,
+        "union_count": 80,
+        "union_digest": "17c9ca11fc40200f304f8380d426fbe191712d0ae772b68f649cbe27bdc0136f"
+      },
+      {
+        "path": "outputs/union-hard-edge-priority/roster-audit-v1.json",
+        "sha256": "2f3105037095c5c1ebc1c116d5fea3689d0dbd540bf8e9b746d5f429659d8dea",
+        "declared_count": 3256,
+        "row_count": 0,
+        "union_count": 3256,
+        "union_digest": "e6fb5e0421e66af0a5bebc24cee87b05d898cb313ad91b6f5193b202ad9aef3e"
+      },
+      {
+        "path": "outputs/union-v2-submission/predictions/run.json",
+        "sha256": "03108a4d32ddbe577b6a8783d7b7650e7f36e261721e67eb0e4cb95ccfe99044",
+        "declared_count": 700,
+        "row_count": 0,
+        "union_count": 700,
+        "union_digest": "4a756a18a18cf6c039c1fa6f622ca258f5f91f1cbf99aa9103490f3e0345217d"
+      },
+      {
+        "path": "outputs/whole-layout-cyclic-origin/v1-fit256-s400-eval16/frozen_predictions.json",
+        "sha256": "c876c1eed6c63df31ff477af70d32d6f8bc2508e10b3144a5d6590ed2dbb3872",
+        "declared_count": 0,
+        "row_count": 16,
+        "union_count": 16,
+        "union_digest": "df0010aedf797fb028ee42340e4064d94aed9a40ddcb5d8214a8e0e2fb865bde"
+      },
+      {
+        "path": "outputs/whole-layout-cyclic-origin/v1-fit256-s400-eval16/report.json",
+        "sha256": "1ebcac2b45b14e1834b9a671ddfdc9e16342f10f2bd3019529c1107e7a5c5e7c",
+        "declared_count": 272,
+        "row_count": 16,
+        "union_count": 272,
+        "union_digest": "cfd16ede528317b1d8098da7b86c65ac129754a9f68c79e837c89a9fb30914f5"
+      },
+      {
+        "path": "outputs/whole-layout-cyclic-origin/v1-selection/selection_commitment.json",
+        "sha256": "a8fe3a97f0ed0cee8a210aac725d0e82fb335116ebd355b3aa6133cfea97f94b",
+        "declared_count": 272,
+        "row_count": 0,
+        "union_count": 272,
+        "union_digest": "cfd16ede528317b1d8098da7b86c65ac129754a9f68c79e837c89a9fb30914f5"
+      }
+    ]
+  },
+  "minimal_inventory_blocker": {
+    "organizer_train_count": 5600,
+    "previously_excluded_train_count": 5593,
+    "final_complement_scored_source_count": 7,
+    "prior_final_overlap_count": 0,
+    "covered_train_count": 5600,
+    "remaining_fresh_train_count": 0,
+    "remaining_fresh_train_filenames": [],
+    "complete_inventory_blocker": true,
+    "signed_prior_snapshot": {
+      "path": "configs/pair_safe_cyclic_origin_fit_audit_exclusions_v1.json",
+      "sha256": "6abe38774ac4b40dc4315fafc8f53410c8d9973b1f06f13feaab6c9676941afd"
+    },
+    "signed_prior_snapshot_excluded_train_count": 5593,
+    "signed_prior_snapshot_complement": [
+      "img_000245.png",
+      "img_002692.png",
+      "img_002990.png",
+      "img_004519.png",
+      "img_004979.png",
+      "img_005848.png",
+      "img_006234.png"
+    ],
+    "final_complement_config": {
+      "path": "configs/pair_safe_cyclic_origin_fit_audit_v1.json",
+      "sha256": "768215ca7bd035d8f8851ff32210d0beed0e6c2d37461b78b80692739740cf27"
+    },
+    "final_complement_report": {
+      "path": "outputs/pair-safe-cyclic-origin-fit-audit/v1/report.json",
+      "sha256": "c45584401f2b6de230f7f9e8e14e026c1f3b53c4c46ae9557930c19d8e9c3e96"
+    },
+    "final_complement_case_count": 56,
+    "proof": "The earlier signed recursive snapshot excluded 5593 organizer-train sources and left exactly seven. Its later signed FIT audit used and scored all seven, so 5593 + 7 covers all 5600 train sources."
+  },
+  "proposed_dev32": {
+    "selection_namespace": "aiijc-guided-four-emitter-real-dev32-v1",
+    "selection_seed": 20260919,
+    "requested_source_count": 32,
+    "source_filenames": [],
+    "status": "not-created-inventory-blocked",
+    "blocked_reason": "zero organizer-train sources remain outside all recursively declared matcher, solver, fit and scored-panel rosters"
+  },
+  "decision": {
+    "real_protocol_may_be_signed": false,
+    "unsigned_implementation_template_allowed": true,
+    "required_external_change": "new organizer-labelled sources or an explicitly authorised reuse policy whose non-fresh claim and role are signed before any scoring"
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/four_emitter_real_roster.py",
+      "sha256": "80c16091571999fbeafc75bb00830ddfd7e70928e3c66a27aa315309cca84794"
+    },
+    "runner": {
+      "path": "scripts/audit_guided_four_emitter_real_roster.py",
+      "sha256": "d010ff2026e9cd09eae7172f24704e37093ea9927f1f0acaedab3adc55fd302d"
+    }
+  }
+}

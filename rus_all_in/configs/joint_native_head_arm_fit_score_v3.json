@@ -1,0 +1,127 @@
+{
+  "schema": "aiijc-joint-native-head-arm-fit-score-binding-v3",
+  "status": "signed-one-field-overlay",
+  "config_path": "configs/joint_native_head_arm_fit_score_v3.json",
+  "created_at": "2026-08-31",
+  "purpose": "Protocol-only metadata repair layered over the immutable v2 scoring binding. It corrects exactly one transcribed target_sha256 from the already frozen validation manifest and changes no construction, layout, control, head, order, gate, seed, tail, metric, or scorer rule.",
+  "allowed_change_count": 1,
+  "correction": {
+    "filename": "img_001111.png",
+    "field": "target_sha256",
+    "roster_index": 17,
+    "from_sha256": "e7fc469f23514e74ff886526be94400c6c6dedc07966fbeafe8dedb6c199b24",
+    "to_sha256": "e7fc469f23514e74ff886526be94400c6c6dedc07966fbeafe8dedbd6c199b24",
+    "json_path": [
+      "repair_only",
+      "source_roster",
+      17,
+      "target_sha256"
+    ],
+    "authoritative_source": "frozen-validation-manifest-metadata",
+    "derived_from_target_pixels": false
+  },
+  "immutable_commitment": {
+    "construction_changed": false,
+    "layout_or_control_changed": false,
+    "head_or_order_changed": false,
+    "gate_changed": false,
+    "seed_changed": false,
+    "tail_added": false,
+    "metric_or_scorer_rule_changed": false,
+    "whole_arm_selection_added": false,
+    "retry_or_tuning_authorized": false
+  },
+  "bound_inputs": {
+    "v1_config": {
+      "path": "configs/joint_native_head_arm_fit_v1.json",
+      "sha256": "44c95deffd41c64614db8b8e1228cdc5cb19faee2565373cbce7fe2596dde00e"
+    },
+    "v1_sidecar": {
+      "path": "configs/joint_native_head_arm_fit_v1.json.sha256",
+      "sha256": "5f59a9016c3422a82db75c8532829325b073966831c1035743e31aea026cae56"
+    },
+    "v2_config": {
+      "path": "configs/joint_native_head_arm_fit_score_v2.json",
+      "sha256": "d860e105faf34e18ee3acab4383d391a1459e5bd336a70d47058e77e0e1faa61"
+    },
+    "v2_sidecar": {
+      "path": "configs/joint_native_head_arm_fit_score_v2.json.sha256",
+      "sha256": "9a314209d720e1917eb871863aa383e11be2780f1bc7b0c251d659f83c66ae6f"
+    },
+    "candidate_archive": {
+      "path": "outputs/joint-native-head-arm-fit/fixed-v1/frozen-target-free-layouts.npz",
+      "sha256": "409490e093da5d0214eecbc83ba2fb3f2bd78dba959c158e8831601394e3b9b4"
+    },
+    "candidate_metadata": {
+      "path": "outputs/joint-native-head-arm-fit/fixed-v1/frozen-target-free-layouts.json",
+      "sha256": "fc6645c520a6cfa5640a0ad62ec3ad39b00ed9715ae647e28fc0c9f7bd3c08f3"
+    },
+    "candidate_pre_score_freeze": {
+      "path": "outputs/joint-native-head-arm-fit/fixed-v1/pre-score-freeze.json",
+      "sha256": "73813b24429a86dc0334a1859168a5fb5b9fff101a7dd4a36c344a1dfb09dee8"
+    },
+    "control_archive": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.npz",
+      "sha256": "f567be7e1c9e2b5fa4cb64d896c709ebd0fa1595fa52b4f6d40106c2a6c228d0"
+    },
+    "control_metadata": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.json",
+      "sha256": "f3b0911324da8fb3342fa3a21804169ba46f9e9531fb018df29a7c634e13dd9d"
+    },
+    "head_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz",
+      "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"
+    },
+    "head_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json",
+      "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"
+    },
+    "head_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/reciprocal-heads-pre-score-freeze.json",
+      "sha256": "5921efae286e97da430a2bca3cc1fe4dcd711db412a70fa488472158bdc98448"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "v2_scorer": {
+      "path": "scripts/score_joint_native_head_arm_fit_v2.py",
+      "sha256": "1b19babce0b8e1d09d07b352a987b975f7a1058931483289d6e65c90d90cc48b"
+    },
+    "v2_tests": {
+      "path": "tests/test_score_joint_native_head_arm_fit_v2.py",
+      "sha256": "c68857a47a91fa5bbf5c40d765e57de0910735309a1972d19ed9d81cab17147a"
+    },
+    "v3_wrapper": {
+      "path": "scripts/score_joint_native_head_arm_fit_v3.py",
+      "sha256": "a1beec239ecc0b47e02ec1342952357f8a2fd10c34ddedf51cbac6b01c9b7b5c"
+    },
+    "v3_tests": {
+      "path": "tests/test_score_joint_native_head_arm_fit_v3.py",
+      "sha256": "cab145b635f5dd2e8cfe4418d35e938be38ceaada77d6c438c39b8fb5eda7c62"
+    },
+    "exact_synthetic_generator": {
+      "path": "src/aiijc_puzzle/synthetic_socket_evaluation.py",
+      "sha256": "b69b929a39b81197eff3341affade7dc5679626acb8dc6c259da358e55faec23"
+    },
+    "image_split_protocol": {
+      "path": "src/aiijc_puzzle/protocol.py",
+      "sha256": "53dca94dce2523f22a6a9bfba7f6f5e604890b66b7f3d91c9fca47307bf60468"
+    }
+  },
+  "forbidden": {
+    "change_v1_or_v2_signed_artifacts": true,
+    "change_layouts_controls_heads_order_gate_seed_tail_or_scorer": true,
+    "derive_correction_from_target_pixels": true,
+    "retry_or_tune_after_actual_score": true,
+    "dev32": true,
+    "opened_local": true,
+    "terminal": true,
+    "competition_test": true,
+    "submission": true,
+    "model_training_or_inference": true,
+    "whole_arm_selection": true,
+    "weco": true,
+    "git": true
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "schema": "aiijc-wavelet-candidate-fit-capacity-report-v1",
+  "status": "retain-as-seventh-candidate-supply",
+  "claim": "FIT-only append-only candidate coverage; not ranking, solver, DEV, or promotion evidence",
+  "config_sha256": "bc4640887a0ab0517e2773bc1430ef1d7414df4e7d1ae311447c9f6674b7fb11",
+  "binding_sha256": "3c2f05afcd5b2bf6ad7fd42fbe693806b91182f441cc17177a4c0e94667ff9a6",
+  "coverage_counts": {
+    "right": {
+      "eligible": 35328,
+      "all6_union": 28549,
+      "wavelet_top32": 15529,
+      "all7_union": 28793,
+      "wavelet_unique_over_all6": 244
+    },
+    "down": {
+      "eligible": 35328,
+      "all6_union": 29044,
+      "wavelet_top32": 16167,
+      "all7_union": 29255,
+      "wavelet_unique_over_all6": 211
+    },
+    "pooled": {
+      "eligible": 70656,
+      "all6_union": 57593,
+      "wavelet_top32": 31696,
+      "all7_union": 58048,
+      "wavelet_unique_over_all6": 455
+    }
+  },
+  "pooled_coverage_rates": {
+    "all6_union": 0.8151183197463768,
+    "wavelet_top32": 0.4485960144927536,
+    "all7_union": 0.8215579710144928
+  },
+  "volume_matched_uniform_null": {
+    "definition": "conditional on an eligible all6 miss, uniformly sample the same target-blind count of identities newly proposed by wavelet from the identities absent from all6",
+    "direction_counts": {
+      "right": {
+        "eligible_all6_misses": 6779.0,
+        "new_unique_proposals_on_misses": 25487.0,
+        "actual_unique_hits": 244.0,
+        "uniform_volume_matched_expected_hits": 55.3096493113708,
+        "specific_excess_hits": 188.69035068862925
+      },
+      "down": {
+        "eligible_all6_misses": 6284.0,
+        "new_unique_proposals_on_misses": 23428.0,
+        "actual_unique_hits": 211.0,
+        "uniform_volume_matched_expected_hits": 50.854124037656526,
+        "specific_excess_hits": 160.14587596234352
+      }
+    },
+    "pooled_counts": {
+      "eligible_all6_misses": 13063.0,
+      "new_unique_proposals_on_misses": 48915.0,
+      "actual_unique_hits": 455.0,
+      "uniform_volume_matched_expected_hits": 106.16377334902732,
+      "specific_excess_hits": 348.8362266509728
+    },
+    "actual_available_miss_hit_rate": 0.034831202633392025,
+    "uniform_null_available_miss_hit_rate": 0.008127059124935108,
+    "specific_excess_available_miss_hit_rate": 0.026704143508456915,
+    "specific_excess_hits": 348.8362266509728,
+    "specific_excess_absolute_gain": 0.0049371069215774,
+    "case_excess_direction_counts_64": {
+      "positive": 64,
+      "zero": 0,
+      "negative": 0
+    },
+    "source_excess_direction_counts_32": {
+      "positive": 32,
+      "zero": 0,
+      "negative": 0
+    },
+    "mean_specific_excess_per_case": 5.450566041421448,
+    "source_bootstrap_ci95_specific_excess_per_case": [
+      4.596951333517668,
+      6.337451569239585
+    ],
+    "source_bootstrap_ci95_specific_excess_absolute_gain": [
+      0.004163905193403685,
+      0.005740445261992378
+    ]
+  },
+  "incremental_over_all6": {
+    "additional_true_neighbours": 455,
+    "absolute_rate_gain": 0.0064396512681159646,
+    "direction_additional": {
+      "right": 244,
+      "down": 211
+    },
+    "case_direction_counts_64": {
+      "positive": 64,
+      "zero": 0,
+      "negative": 0
+    },
+    "source_direction_counts_32": {
+      "positive": 32,
+      "zero": 0,
+      "negative": 0
+    },
+    "mean_unique_per_case": 7.109375,
+    "median_unique_per_case": 7.0,
+    "min_unique_per_case": 3,
+    "max_unique_per_case": 17,
+    "source_bootstrap_ci95_unique_per_case": [
+      6.203125,
+      8.0625
+    ],
+    "source_bootstrap_ci95_absolute_rate_gain": [
+      0.005618772644927536,
+      0.007302989130434783
+    ],
+    "case_bootstrap_ci95_unique_per_case": [
+      6.359375,
+      7.875
+    ]
+  },
+  "gate": {
+    "raw_incremental": {
+      "minimum_incremental_gain_over_all6": 0.003,
+      "interpretation": "below 0.3 percentage points raw incremental coverage is a compact stop",
+      "passed": true
+    },
+    "volume_matched_null": {
+      "null_model": "for each eligible exact-neighbour miss of frozen all6, uniformly sample without replacement the exact target-blind count of wavelet identities absent from that row's all6 union from the remaining 575-minus-union-size identities",
+      "minimum_specific_excess_absolute_gain": 0.001,
+      "source_bootstrap_lower_bound_must_exceed": 0.0,
+      "interpretation": "retain requires at least +0.1 percentage points exact-neighbour excess beyond matched random volume and a strictly positive 95% source-bootstrap lower bound",
+      "specific_excess_size_passed": true,
+      "source_bootstrap_lower_passed": true
+    },
+    "passed": true
+  },
+  "legality": {
+    "organizer_train_fit_only": true,
+    "wavelet_pixels_matcher_only": true,
+    "original_upright_tiles_unchanged": true,
+    "identities_frozen_before_labels": true,
+    "direct_fusion_or_replacement_authorized": false,
+    "dev_local_terminal_test_or_submission_accessed": false
+  },
+  "artifacts": {
+    "config": {
+      "path": "configs/wavelet_candidate_fit_preregistered_v1.json",
+      "sha256": "bc4640887a0ab0517e2773bc1430ef1d7414df4e7d1ae311447c9f6674b7fb11"
+    },
+    "binding": {
+      "path": "configs/wavelet_candidate_fit_score_binding_v1.json",
+      "sha256": "3c2f05afcd5b2bf6ad7fd42fbe693806b91182f441cc17177a4c0e94667ff9a6"
+    },
+    "metadata": {
+      "path": "outputs/wavelet-candidate-emitter/fit32-draw2-v1/target-free-cache.json",
+      "sha256": "368c8e362e41eaab9552537005a32d2edcb9e0459018059a8b8bb58f74cd8979"
+    },
+    "freeze": {
+      "path": "outputs/wavelet-candidate-emitter/fit32-draw2-v1/pre-label-freeze.json",
+      "sha256": "cd1c72b462b56ebcfeb6f10ccf10cb70d52102103fc5493b9beb340df5e09adb"
+    },
+    "labels": {
+      "path": "outputs/guided-fourth-emitter/fit32-draw2-capacity-v1/separated-fit-labels.json",
+      "sha256": "b362471301b44596fcb00290b3c9fcbf75885f3415f0fabe0259d044bb0de264"
+    },
+    "runner": {
+      "path": "scripts/run_wavelet_candidate_fit_capacity.py",
+      "sha256": "5f381eac1172e13ede08253af9e919b8ad35c04cb85677e3c5bdf5249439bf5d"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/wavelet_shrink_matcher_view.py",
+      "sha256": "42bd344168611f120d91f29b3b94f3227c3ae8b6f3cade0cd22e76a847dcb1b6"
+    }
+  }
+}

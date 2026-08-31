@@ -1,0 +1,155 @@
+{
+  "schema": "aiijc-joint-reciprocal-scale256-real-protocol-v1",
+  "status": "signed-fixed-protocol",
+  "purpose": "one FIT256x2 from-scratch joint-reciprocal endpoint followed only by separately staged target-free DEV64 freeze and post-freeze score",
+  "fixed_model": {
+    "architecture": "joint-reciprocal-tri-emitter-verifier-v1",
+    "candidate_roster": "raw+adapter1600+DINO-top32-stable-union",
+    "dino_projection_dim": 16,
+    "auxiliary_dim": 19,
+    "width": 32,
+    "hidden": 96,
+    "one_endpoint_one_seed_no_checkpoint_selection": true,
+    "capacity_checkpoint_reuse": false
+  },
+  "objective": {
+    "row_cross_entropy_weight": 1.0,
+    "column_cross_entropy_weight": 1.0,
+    "confidence_bce_weight": 0.25,
+    "delta_l2_weight": 0.001,
+    "softmin_tau": 0.25,
+    "learned_none": true,
+    "fixed_reciprocal_fraction_per_axis_per_board": 0.05
+  },
+  "training": {
+    "from_scratch": true,
+    "seed": 20260913,
+    "epochs": 3,
+    "optimizer_updates": 1752,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "torch_threads": 6,
+    "checkpoint_selection": "single-final-endpoint-no-selection"
+  },
+  "source_contract": {
+    "selection_namespace": "aiijc-joint-reciprocal-scale256-fit256-dev64-v1",
+    "selection_seed": 20260913,
+    "fit_source_count": 256,
+    "fit_digest": "5b3d9c56d8bc2eaf0fec6cf54b1dcc3c888ca5647d7fee4e2860928339708370",
+    "fit_draw_indices": [
+      0,
+      1
+    ],
+    "fit_case_seed": 20260914,
+    "fit_case_count": 512,
+    "reserved_dev_source_count": 64,
+    "reserved_dev_digest": "5c6cb5b9b204a38c78e79936ff34235dae9896cfc13d6edaf12dfad635bcdb8e",
+    "dev_draw_index": 0,
+    "dev_case_seed": 20260908,
+    "parent_exclusion_count": 1120,
+    "parent_exclusion_digest": "d93311aa39c3c4ccc349928a3e6269103f540affde585e889e3980d2f21227e2"
+  },
+  "dev_gate": {
+    "pooled_r1_gain_minimum": 0.005,
+    "pooled_r5_gain_minimum": 0.0,
+    "pooled_fixed_head_precision_gain_minimum": 0.02,
+    "per_axis_gain_minimum": 0.0,
+    "logic": "all pooled thresholds, fixed coverage and every right/down R1/R5/head-precision gain simultaneously"
+  },
+  "stage_contract": {
+    "fit": {
+      "fit_cache_pixels_opened": false,
+      "known_synthetic_target_slots_opened": true,
+      "reserved_dev_metadata_only": true,
+      "reserved_dev_pixels_opened": false,
+      "reserved_dev_labels_opened": false
+    },
+    "freeze_dev": {
+      "requires_completed_fit_endpoint": true,
+      "reserved_dev_pixels_opened_for_target_free_synthetic_cases": true,
+      "reserved_dev_labels_opened": false
+    },
+    "score_dev": {
+      "requires_verified_target_free_freeze": true,
+      "reserved_dev_labels_opened_only_after_freeze_hashes": true
+    },
+    "terminal_or_competition_test_mode": false,
+    "warmstart_or_resume": false,
+    "weco_run": false
+  },
+  "frozen_inputs": {
+    "fit_cache_report": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-cache-v1/report.json",
+      "sha256": "04c0bf7edebc8809f854a95bf97b361ad28fec5b12eb26e54d4c780b2c8d823d"
+    },
+    "scale_cache_config": {
+      "path": "configs/joint_reciprocal_scale256_fit_cache_preregistered_v1.json",
+      "sha256": "3e397e7ff3a565de2b1ab412f71f8e5b7d500649b40a51be2ed97805ecc7344e"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "adapter1600_checkpoint": {
+      "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/adapter_step1600.pt",
+      "sha256": "51beee8dea615e00440f90737ee537244dcf26934e9e292ac7a33bea235e6a48"
+    },
+    "dino_checkpoint": {
+      "path": "artifacts/foundation-semantics/dinov2-vits14-official/dinov2_vits14_pretrain.pth",
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+    },
+    "socket_parent_report": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/report.json",
+      "sha256": "ff461744ed214848e65bfac5f006bc543776a057c8df7ab68c021dabca3942e5"
+    },
+    "adapter_parent_report": {
+      "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/report.json",
+      "sha256": "47ce8b176d2da5b6c278af6bc66be27464d87465cca6507a94e57e569f0ec796"
+    },
+    "capacity_report": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/capacity4x4-collision-v2/report.json",
+      "sha256": "94b769da114553ec98212abca4de758a587dc52661c54c66fd4eda03e8b8ed7c"
+    },
+    "base_module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "13a5a649815c1dd48d9db69ca30d3303e3f70237688657156f4c19d7ae196ad3"
+    },
+    "base_runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_real.py",
+      "sha256": "7b6f760155f86c9c3c465a8833c9c71687123b0ac248a64d55b91d0f8c1ad82c"
+    },
+    "base_runner_test": {
+      "path": "tests/test_run_joint_reciprocal_tri_emitter_real.py",
+      "sha256": "1475fbf62b35302ca2582e52ab8d1c0f8c6da832ad93ec734334ec7d88813146"
+    },
+    "materializer_runner": {
+      "path": "scripts/materialize_joint_reciprocal_scale_fit_cache.py",
+      "sha256": "aed6817da76d6a9d307e3931461040c89c25793dec72063884b6ad91bfa060b3"
+    },
+    "scale_wrapper": {
+      "path": "scripts/run_joint_reciprocal_scale256_real.py",
+      "sha256": "0699a685b11c20bbce4d1ad2cd5c7631b9f00f7a00ea3a55234cb7f6e04ef907"
+    },
+    "generic_target_free_freezer": {
+      "path": "scripts/freeze_joint_reciprocal_fit_heads_target_free_generic.py",
+      "sha256": "adc2b4ac0b3419f32d0f96ec9db4bf942067a33bca4a42e72315dd15a656d166"
+    },
+    "scale_wrapper_test": {
+      "path": "tests/test_run_joint_reciprocal_scale256_real.py",
+      "sha256": "2b8824dc010bf9e03b68eb043b4af2d987b1a84ecdfaf262479bdd976adc96c9"
+    },
+    "generic_target_free_freezer_test": {
+      "path": "tests/test_freeze_joint_reciprocal_fit_heads_target_free_generic.py",
+      "sha256": "fc38de6a48e9c111080e859c33c6d6f88f3e66b32827b949b08b803e1dfe8a72"
+    },
+    "unsigned_template": {
+      "path": "configs/joint_reciprocal_scale256_real_unsigned_template_v1.json",
+      "sha256": "f5e562398eb103c18d7c767bd56cf9afbbee42c71a0044661389c93210dc7212"
+    }
+  }
+}

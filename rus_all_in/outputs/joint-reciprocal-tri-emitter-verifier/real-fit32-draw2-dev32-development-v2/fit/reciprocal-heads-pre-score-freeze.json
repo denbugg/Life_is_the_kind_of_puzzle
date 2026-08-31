@@ -1,0 +1,42 @@
+{
+  "schema": "aiijc-joint-reciprocal-fit-heads-pre-score-freeze-v1",
+  "created_before_fit_head_label_scoring": true,
+  "contains_target_slots_truth_or_reference_labels": false,
+  "label_cache_members_materialised": false,
+  "strict_target_free_loader_schema": "aiijc-joint-reciprocal-strict-target-free-fit-cache-loader-v1",
+  "config_sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+  "artifacts": {
+    "archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz",
+      "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"
+    },
+    "metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json",
+      "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"
+    },
+    "fit_endpoint": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/joint_reciprocal_endpoint.pt",
+      "sha256": "66244123312b794ea6c1ae077f608653db99a122473a47d25712a374e3fe7747"
+    },
+    "fit_report": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/report.json",
+      "sha256": "478f9a6902f595f9228d30d9b5029fbfc5e7a1878a0228ec3dd50693743966c4"
+    },
+    "config": {
+      "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+      "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"
+    },
+    "runner": {
+      "path": "scripts/freeze_joint_reciprocal_fit_heads_target_free.py",
+      "sha256": "0a9332e8871c83bafa5408d3774bc25c6455e62c46e5b0cc10fc6973bd129524"
+    },
+    "fit_runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_real.py",
+      "sha256": "7b6f760155f86c9c3c465a8833c9c71687123b0ac248a64d55b91d0f8c1ad82c"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "13a5a649815c1dd48d9db69ca30d3303e3f70237688657156f4c19d7ae196ad3"
+    }
+  }
+}

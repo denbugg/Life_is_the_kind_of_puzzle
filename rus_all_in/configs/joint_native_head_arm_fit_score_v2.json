@@ -1,0 +1,145 @@
+{
+  "schema": "aiijc-joint-native-head-arm-fit-score-binding-v2",
+  "status": "signed-fixed-protocol",
+  "config_path": "configs/joint_native_head_arm_fit_score_v2.json",
+  "created_at": "2026-08-31",
+  "purpose": "Protocol-only scorer repair for the immutable v1 joint-native FIT64 layout freeze. The v1 scoring attempt could not reconstruct a complete grid from sparse cache target_slots; this binding changes only exact-reference reconstruction after all frozen hashes/layout bytes are verified.",
+  "immutable_v1_commitments": {
+    "construction_changed": false,
+    "layout_or_control_changed": false,
+    "head_or_order_changed": false,
+    "gate_changed": false,
+    "seed_changed": false,
+    "tail_added": false,
+    "whole_arm_selection_added": false
+  },
+  "repair_only": {
+    "v1_construction_config_sha256": "44c95deffd41c64614db8b8e1228cdc5cb19faee2565373cbce7fe2596dde00e",
+    "layout_pair_digest": "34183d3acea165f1924e772ae0cccd333461d9ae5485a9647db360c48188ad91",
+    "fit_case_seed": 20260914,
+    "draw_indices": [0, 1],
+    "v1_score_artifact_created": false,
+    "v1_partial_target_slots_read_count": 1,
+    "v1_usable_exact_reference_created": false,
+    "v1_case_metric_count": 0,
+    "v1_failure_reason": "Sparse target_slots only labels exact neighbours present in the 96-candidate union, so the first attempted full-grid reconstruction had multiple top-left candidates and failed before a usable exact reference or any case metric/report.",
+    "v2_reference_reconstruction": "After config signature and complete frozen-layout bit proof, load the exact 32 organizer-train target images, split their original upright 20px tiles, and call the existing make_exact_synthetic_case once for each frozen draw with seed 20260914.",
+    "raw_arm_unavailable_reason": "The frozen FIT64 control archive stores only the relation-selector winner; reconstructing the historical raw TASKA arm would require forbidden repeated matcher inference.",
+    "source_roster": [
+      {"filename": "img_000934.png", "target_sha256": "ff3bb6473802e013ac94940d52e8148a835e9290eab7b07b6f8686fb0c00d57d"},
+      {"filename": "img_001317.png", "target_sha256": "b0921e3e80504cabe33e65f8fda3ce49247ed4bc7ae898488987c29cf4af19f9"},
+      {"filename": "img_001988.png", "target_sha256": "137d92b1ccf6b7b928b665de2cb5dda71eefde4d2b641be459bb7289be4e71ac"},
+      {"filename": "img_006170.png", "target_sha256": "60cb83ec0fff11304726623957feebc11fd5740276c96793527203a23885ea8d"},
+      {"filename": "img_002442.png", "target_sha256": "a96cb9f9381279df886f6ba3dd4c356b4d29cb6be5cf40fc03b06c27c800ee49"},
+      {"filename": "img_000789.png", "target_sha256": "610e2a38f75ddcdd5a45f0503a64e622dfcc2c1ee845b4902dde684210b1552d"},
+      {"filename": "img_003117.png", "target_sha256": "878f89ee58d3da0b9ed30e62e7cef495c752c3b0bdb0e5d029e352acecc3f031"},
+      {"filename": "img_002434.png", "target_sha256": "7fc982c88ef8ab731806ac97bcec0da949ad16c75de4eaeb2d40d525c7cf94de"},
+      {"filename": "img_004562.png", "target_sha256": "ef27dd944c498f554cf020232c35e07e3d45682da81b10d4d45a20a943c95f37"},
+      {"filename": "img_000867.png", "target_sha256": "d144b620c50419befc045b6f8febc30a9894873c4eb26c0b65c3a687f0400c6d"},
+      {"filename": "img_002813.png", "target_sha256": "24cfa74e0e0632e72fb5fc25ab07b11d74e0e638f157e2fd612b2672882e346e"},
+      {"filename": "img_006141.png", "target_sha256": "1c0b9fd60df043ad71f1414374182fc2c6301e8d41359052363ee9ab736baeed"},
+      {"filename": "img_006402.png", "target_sha256": "6bbbf3d885a5b020b56db3a6223fe5fe3967b0f27e0ad97e579b545256dfbd92"},
+      {"filename": "img_004204.png", "target_sha256": "d45a49e5f2996c7d2b6fb2ad7f5d5409de2c4d3a3ee7bdcafa4ada789e2419c8"},
+      {"filename": "img_006205.png", "target_sha256": "f97818a5aa24fc322ec692a08931684d74232561b3348a3f8c0d3dd10c9a17b8"},
+      {"filename": "img_002727.png", "target_sha256": "dc22630eeebdc8dd6df91160711ed4dadc6579d2601db564ec42fcd89ff990bf"},
+      {"filename": "img_004951.png", "target_sha256": "17f2b5e2ac7734a2c9f619623836e172fab8095b13c596e0298a571162354f66"},
+      {"filename": "img_001111.png", "target_sha256": "e7fc469f23514e74ff886526be94400c6c6dedc07966fbeafe8dedb6c199b24"},
+      {"filename": "img_000043.png", "target_sha256": "6aa63a9f279f0343a564cc3051a71ffdd6b7eeb51d6bcd7f7f1e77f58372b3d5"},
+      {"filename": "img_003181.png", "target_sha256": "a71d0d1470029daf2ce84305866286b750b436544affc58b1e06d5233e011887"},
+      {"filename": "img_000413.png", "target_sha256": "edb91e8d4e289ddd43b9e8f2a4e3a0e10c2a3a2710480a6c0d51b09bcc716f6b"},
+      {"filename": "img_001093.png", "target_sha256": "2deab5d6e478e84768b1f1a65bb771859b54318b2df32750ac84ade580171eb2"},
+      {"filename": "img_005873.png", "target_sha256": "b456c03e0dd7ab7a84ce5d58028e5dae0120422dc00bd22f414d0ac80da4b6f6"},
+      {"filename": "img_004418.png", "target_sha256": "f58ad418b5ae981c9884298ce7cfc6212007d3de883794f185d4b88b42f8144d"},
+      {"filename": "img_002898.png", "target_sha256": "b155d680ad8e8f74e666eaa6f034a2fb6daf0172f7e2475960eb8335c4ddf369"},
+      {"filename": "img_004595.png", "target_sha256": "b101fbec47de51e970f881dfae78edc1c60c69dbc24869ab4547e84942cc6585"},
+      {"filename": "img_001345.png", "target_sha256": "0f4c63d4ca934f066b136c23a3f54fd764ed46b21fb9301cb04824f16c2d076f"},
+      {"filename": "img_001996.png", "target_sha256": "9501d828402f6a790e0c6d76f1e8ade6c34a1ddacfc0288fea4c8951c48739c9"},
+      {"filename": "img_000694.png", "target_sha256": "337f1f101980ffb07affca0aae03db9c37bed0a7fbf61fedf8057b67b70c5711"},
+      {"filename": "img_005357.png", "target_sha256": "733ce849c053af6dd65daf68403a1f8305d3a1ec0179f02140111ba005378206"},
+      {"filename": "img_005123.png", "target_sha256": "aba7b4ec1fdbebd9c450b74254fd74e3c66177218a7b7db381f1be94f9128273"},
+      {"filename": "img_005951.png", "target_sha256": "260e088725162d530e182f5aa54f9e6ab46de596c29ef4ce7efb5959f6fc4d73"}
+    ]
+  },
+  "frozen_inputs_gate_copy": {
+    "pair_mean_strictly_positive": true,
+    "pair_source_bootstrap_95pct_lower_nonnegative": true,
+    "exact_mean_nonnegative": true,
+    "manhattan_benefit_mean_nonnegative": true,
+    "radius2_mean_nonnegative": true
+  },
+  "frozen_inputs": {
+    "v1_construction_config": {
+      "path": "configs/joint_native_head_arm_fit_v1.json",
+      "sha256": "44c95deffd41c64614db8b8e1228cdc5cb19faee2565373cbce7fe2596dde00e"
+    },
+    "v1_construction_sidecar": {
+      "path": "configs/joint_native_head_arm_fit_v1.json.sha256",
+      "sha256": "5f59a9016c3422a82db75c8532829325b073966831c1035743e31aea026cae56"
+    },
+    "candidate_archive": {
+      "path": "outputs/joint-native-head-arm-fit/fixed-v1/frozen-target-free-layouts.npz",
+      "sha256": "409490e093da5d0214eecbc83ba2fb3f2bd78dba959c158e8831601394e3b9b4"
+    },
+    "candidate_metadata": {
+      "path": "outputs/joint-native-head-arm-fit/fixed-v1/frozen-target-free-layouts.json",
+      "sha256": "fc6645c520a6cfa5640a0ad62ec3ad39b00ed9715ae647e28fc0c9f7bd3c08f3"
+    },
+    "candidate_pre_score_freeze": {
+      "path": "outputs/joint-native-head-arm-fit/fixed-v1/pre-score-freeze.json",
+      "sha256": "73813b24429a86dc0334a1859168a5fb5b9fff101a7dd4a36c344a1dfb09dee8"
+    },
+    "control_archive": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.npz",
+      "sha256": "f567be7e1c9e2b5fa4cb64d896c709ebd0fa1595fa52b4f6d40106c2a6c228d0"
+    },
+    "control_metadata": {
+      "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/frozen-target-free-controls.json",
+      "sha256": "f3b0911324da8fb3342fa3a21804169ba46f9e9531fb018df29a7c634e13dd9d"
+    },
+    "head_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.npz",
+      "sha256": "f2a60ccfc5d8d09d25e4648bf7226e1364b3bd2575275be6bb6a7b9ac562257c"
+    },
+    "head_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/frozen-target-free-reciprocal-heads.json",
+      "sha256": "1f1e6784fd61b913b560d6149af2ef5fea3a2473455744e82bca6bfa75f84153"
+    },
+    "head_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/fit/reciprocal-heads-pre-score-freeze.json",
+      "sha256": "5921efae286e97da430a2bca3cc1fe4dcd711db412a70fa488472158bdc98448"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "v2_scorer": {
+      "path": "scripts/score_joint_native_head_arm_fit_v2.py",
+      "sha256": "1b19babce0b8e1d09d07b352a987b975f7a1058931483289d6e65c90d90cc48b"
+    },
+    "v2_tests": {
+      "path": "tests/test_score_joint_native_head_arm_fit_v2.py",
+      "sha256": "c68857a47a91fa5bbf5c40d765e57de0910735309a1972d19ed9d81cab17147a"
+    },
+    "exact_synthetic_generator": {
+      "path": "src/aiijc_puzzle/synthetic_socket_evaluation.py",
+      "sha256": "b69b929a39b81197eff3341affade7dc5679626acb8dc6c259da358e55faec23"
+    },
+    "image_split_protocol": {
+      "path": "src/aiijc_puzzle/protocol.py",
+      "sha256": "53dca94dce2523f22a6a9bfba7f6f5e604890b66b7f3d91c9fca47307bf60468"
+    }
+  },
+  "forbidden": {
+    "change_v1_layouts_controls_heads_order_gate_seed_tail_or_construction": true,
+    "retry_or_tuning_after_score": true,
+    "dev32": true,
+    "opened_local": true,
+    "terminal": true,
+    "competition_test": true,
+    "submission": true,
+    "model_training_or_inference": true,
+    "whole_arm_selection": true,
+    "weco": true,
+    "git": true
+  }
+}

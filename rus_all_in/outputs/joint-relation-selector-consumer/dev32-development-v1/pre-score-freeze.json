@@ -1,0 +1,50 @@
+{
+  "schema": "aiijc-joint-relation-selector-pre-score-freeze-v1",
+  "created_before_exact_reference_reconstruction": true,
+  "contains_evaluation_references_or_labels": false,
+  "config_sha256": "ca02160c4129cc1cb8b1f42b2e5a3dbd1a5ad31b341ea7e1f51807d78f5e394d",
+  "input_artifacts": {
+    "joint_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/dev/frozen-target-free-predictions.npz",
+      "sha256": "0391cfa8a91a4c67c057bc12ccbfebfb2c3684e7303a06baaa23ab769ee345a5"
+    },
+    "joint_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/dev/frozen-target-free-predictions.json",
+      "sha256": "af88421578d299e1d34f0c8ef28860e357514bc63b8185297096038ef30d0292"
+    },
+    "joint_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/real-fit32-draw2-dev32-development-v2/dev/pre-score-freeze.json",
+      "sha256": "8f150848ca1364b6e4b81a67c95ccc668516b7e929ea9521a65655c1fb2977c4"
+    },
+    "relation_roster_archive": {
+      "path": "outputs/taska-relation-selector-roster/v2-dev32-draw0-v1/frozen-target-free-roster.npz",
+      "sha256": "70796da247644dcf63d136b253e38a87ca00a90c6b3c45c43ae64880bbb59f2b"
+    },
+    "relation_roster_metadata": {
+      "path": "outputs/taska-relation-selector-roster/v2-dev32-draw0-v1/frozen-target-free-roster.json",
+      "sha256": "5877423acb1c6c4d10f6fc33dc930c99dfd7bda56c1da7e644d7021e7881b88d"
+    },
+    "relation_roster_pre_score_freeze": {
+      "path": "outputs/taska-relation-selector-roster/v2-dev32-draw0-v1/pre-score-freeze.json",
+      "sha256": "5e16c0ee84833cefba35bed4f621e035e6a5f31fc58b006954963ce69e37b390"
+    }
+  },
+  "artifacts": {
+    "archive": {
+      "path": "outputs/joint-relation-selector-consumer/dev32-development-v1/frozen-target-free-selection.npz",
+      "sha256": "eba729701f009b3d81c3e6f73cc5a246778f71fbba4487a3d80706a4dd73f386"
+    },
+    "metadata": {
+      "path": "outputs/joint-relation-selector-consumer/dev32-development-v1/frozen-target-free-selection.json",
+      "sha256": "95ca63cf635c32699c6cb5e380af3ad015e51edfc12dbfc1b51bebc136d9de18"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_consumer.py",
+      "sha256": "e82f1e6e1701ebec41f35c138dc5116357420d8d19fa05103e9fe739ada38dd6"
+    },
+    "runner": {
+      "path": "scripts/run_joint_relation_selector_consumer.py",
+      "sha256": "ed365446b3283e9ad153f5473fad36fc918297f3f3332e9cc6163b7b9e371273"
+    }
+  }
+}

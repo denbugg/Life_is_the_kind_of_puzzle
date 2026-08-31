@@ -1,0 +1,179 @@
+{
+  "schema": "aiijc-joint-native-head-arm-fit-read-only-audit-v1",
+  "status": "fail-stop-do-not-promote",
+  "signed_score_report": {
+    "path": "outputs/joint-native-head-arm-fit/fixed-v1/score-v2.json",
+    "sha256": "33277e20097c47a33037188b4db98f547565b9aaa8b4a17854899fe39d061971",
+    "note": "The filename/schema remain v2 because the unchanged v2 scorer was invoked through the signed v3 one-field metadata overlay. The report config_sha256 is the v3 config hash."
+  },
+  "protocol": {
+    "v1_scoring_attempt": {
+      "partial_target_slots_reads": 1,
+      "usable_exact_references": 0,
+      "case_metrics": 0,
+      "score_artifact_created": false,
+      "failure": "Sparse 96-union target_slots did not cover the full grid; reconstruction failed at the first case with multiple possible top-left nodes."
+    },
+    "v2_validation_attempt": {
+      "status": "superseded-before-target-access",
+      "organizer_target_images_opened": false,
+      "make_exact_synthetic_case_calls": 0,
+      "case_metrics": 0,
+      "score_artifact_created": false,
+      "failure": "One source-roster SHA was transcribed without one character and failed target-free manifest validation."
+    },
+    "v3_overlay": {
+      "changed_leaf_count": 1,
+      "changed_json_path": [
+        "repair_only",
+        "source_roster",
+        17,
+        "target_sha256"
+      ],
+      "filename": "img_001111.png",
+      "authoritative_manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+      "derived_from_target_pixels": false,
+      "all_64_layout_pairs_bit_identical_before_exact_reconstruction": true,
+      "layout_pair_digest": "34183d3acea165f1924e772ae0cccd333461d9ae5485a9647db360c48188ad91",
+      "actual_score_runs": 1,
+      "retry_or_tuning_runs": 0
+    }
+  },
+  "target_free_construction": {
+    "case_count": 64,
+    "changed_from_control_count": 64,
+    "requested_fixed_head_edges_per_case": 58,
+    "realised_fixed_head_edges": {
+      "mean": 57.609375,
+      "minimum": 56,
+      "maximum": 58
+    },
+    "component_count": {
+      "mean": 39.140625,
+      "minimum": 24,
+      "maximum": 47
+    },
+    "placed_component_tiles": {
+      "mean": 96.640625,
+      "minimum": 81,
+      "maximum": 105
+    },
+    "strict_576_original_upright_permutations": true
+  },
+  "aggregate_absolute": {
+    "control_mean": {
+      "satisfied_pairs": 349.484375,
+      "exact_tiles": 2.671875,
+      "mean_absolute_manhattan": 15.508246527777779,
+      "radius2_recall": 0.023166232638888888
+    },
+    "candidate_mean": {
+      "satisfied_pairs": 69.0625,
+      "exact_tiles": 0.890625,
+      "mean_absolute_manhattan": 16.092447916666664,
+      "radius2_recall": 0.021511501736111112
+    }
+  },
+  "benefit_delta_candidate_minus_control": {
+    "satisfied_pairs": {
+      "case_distribution": {
+        "mean": -280.421875,
+        "median": -283.0,
+        "q25": -340.25,
+        "q75": -216.5,
+        "minimum": -472.0,
+        "maximum": -122.0,
+        "wins_ties_losses": [0, 0, 64]
+      },
+      "source_distribution": {
+        "wins_ties_losses": [0, 0, 32],
+        "bootstrap_mean_95pct_ci": [-309.71875, -251.109375]
+      },
+      "tail": {
+        "positive_total": 0.0,
+        "largest_harm_share": 0.0510391708920711,
+        "leave_largest_harm_source_mean": -274.69354838709677
+      }
+    },
+    "exact_tiles": {
+      "case_distribution": {
+        "mean": -1.78125,
+        "median": 0.0,
+        "q25": -1.0,
+        "q75": 1.0,
+        "minimum": -46.0,
+        "maximum": 4.0,
+        "wins_ties_losses": [24, 20, 20]
+      },
+      "source_distribution": {
+        "wins_ties_losses": [12, 6, 14],
+        "bootstrap_mean_95pct_ci": [-3.953125, -0.0625]
+      },
+      "tail": {
+        "largest_positive_share": 0.16129032258064516,
+        "largest_harm_share": 0.32413793103448274,
+        "leave_largest_positive_source_mean": -1.9193548387096775,
+        "leave_largest_harm_source_mean": -1.0806451612903225
+      }
+    },
+    "manhattan_benefit": {
+      "definition": "control mean absolute Manhattan minus candidate mean absolute Manhattan; positive is better",
+      "case_distribution": {
+        "mean": -0.5842013888888891,
+        "median": -0.5520833333333321,
+        "q25": -1.526041666666667,
+        "q75": 0.4878472222222223,
+        "minimum": -4.003472222222221,
+        "maximum": 3.447916666666668,
+        "wins_ties_losses": [24, 0, 40]
+      },
+      "source_distribution": {
+        "wins_ties_losses": [9, 0, 23],
+        "bootstrap_mean_95pct_ci": [-0.9666883680555557, -0.21321614583333331]
+      },
+      "tail": {
+        "largest_positive_share": 0.21712448860315625,
+        "largest_harm_share": 0.12452431289640588,
+        "leave_largest_positive_source_mean": -0.6446572580645163,
+        "leave_largest_harm_source_mean": -0.5040882616487457
+      }
+    },
+    "radius2_recall": {
+      "case_distribution": {
+        "mean": -0.0016547309027777775,
+        "median": 0.005208333333333333,
+        "q25": -0.0034722222222222225,
+        "q75": 0.013888888888888888,
+        "minimum": -0.11979166666666666,
+        "maximum": 0.036458333333333336,
+        "wins_ties_losses": [41, 2, 21]
+      },
+      "source_distribution": {
+        "wins_ties_losses": [19, 0, 13],
+        "bootstrap_mean_95pct_ci": [-0.010660807291666664, 0.006184895833333332]
+      },
+      "tail": {
+        "largest_positive_share": 0.12455516014234876,
+        "largest_harm_share": 0.28070175438596495,
+        "leave_largest_positive_source_mean": -0.0026881720430107525,
+        "leave_largest_harm_source_mean": 0.0009800627240143375
+      }
+    }
+  },
+  "gate": {
+    "pair_mean_strictly_positive": false,
+    "pair_source_bootstrap_95pct_lower_nonnegative": false,
+    "exact_mean_nonnegative": false,
+    "manhattan_benefit_mean_nonnegative": false,
+    "radius2_mean_nonnegative": false,
+    "passed": false
+  },
+  "verdict": "Do not promote. A high-precision 5% reciprocal head is useful evidence but is far too sparse to serve as the primary layout generator with the frozen raw-tail fill. All 64 cases lose satisfied pairs, and exact/Manhattan means are also significantly negative. Future use should preserve the strong full-board control and integrate head edges as local constraints or repair signals rather than rebuild the whole layout from them.",
+  "scope": {
+    "fit_only": true,
+    "dev_local_terminal_test_or_competition_accessed": false,
+    "model_training_or_inference_run": false,
+    "whole_arm_reselection_run": false,
+    "weco_logged": false
+  }
+}

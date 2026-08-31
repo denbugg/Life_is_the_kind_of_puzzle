@@ -1,0 +1,51 @@
+{
+  "schema": "aiijc-structured-decoder-exact-tail-audit-v1",
+  "status": "complete-read-only-primary-report-tail-audit",
+  "scope": "derived only from the frozen primary FIT oracle report; no labels opened",
+  "primary_report": {
+    "path": "outputs/compatibility-structured-decoder-fit-oracle/v1/report.json",
+    "sha256": "bc3ad541df586911d14d90d74d599e2528085c9c62d2e71c66bdafe0bdb88621"
+  },
+  "metrics": {
+    "case_count": 64,
+    "exact_delta": {
+      "mean": 0.0,
+      "median": 0.0,
+      "q25": 0.0,
+      "q75": 0.0,
+      "quantile_method": "linear"
+    },
+    "absolute_exact": {
+      "control": {
+        "zero_count": 37,
+        "zero_share": 0.578125,
+        "at_most_one_count": 51,
+        "at_most_one_share": 0.796875
+      },
+      "pair_safe_ceiling": {
+        "zero_count": 37,
+        "zero_share": 0.578125,
+        "at_most_one_count": 51,
+        "at_most_one_share": 0.796875
+      }
+    },
+    "win_tie_loss": {
+      "win_count": 0,
+      "tie_count": 64,
+      "loss_count": 0,
+      "win_share": 0.0,
+      "tie_share": 1.0,
+      "loss_share": 0.0
+    },
+    "positive_concentration": {
+      "total_positive_exact_gain": 0,
+      "largest_positive_exact_gain": 0,
+      "largest_positive_share": 0.0,
+      "leave_largest_positive_mean_exact_delta": 0.0,
+      "removed_largest_positive": null
+    }
+  },
+  "reference_or_cache_labels_opened": false,
+  "primary_report_or_signed_artifacts_modified": false,
+  "weco_logged": false
+}

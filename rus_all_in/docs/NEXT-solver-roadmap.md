@@ -20,16 +20,40 @@ denoised pixels. Порядок ниже оптимизирован по expecte
   связь с SSIM, а cyclic-aligned distance может счесть неверную глобальную
   фазу perfect. Поэтому metric contract: absolute exact primary,
   absolute Manhattan secondary, radius2 companion, pairs и same-tail SSIM отдельно.
+- [Exact tail-risk audit](experiments/exact-mean-tail-risk-audit.md) показал,
+  что headline `12.875` cyclic-origin exact имел median `1`, а один sample
+  создавал `83.93%` всей positive mass. Поэтому каждый следующий exact-срез
+  дополнительно обязан публиковать median/Q25/Q75, zero и `<=1` fractions,
+  W/T/L, source bootstrap CI, max contribution и leave-largest-positive mean.
+  Heavy-tail mean сохраняется как discovery signal, но не является promotion
+  без повторяемости по независимым sources/draws.
 - [Tri-emitter verifier](experiments/tri-emitter-edge-verifier.md) уже
   конвертировал часть raw + adapter1600 + DINO supply: raw-relative
   R@1/R@5 `+1.053/+1.234 pp`. На fixed matched coverage 3/5/10% его
   reciprocal precision выше raw на `+5.094/+6.569/+6.059 pp`. Но native
   tail слишком длинный: на matched 7,329 edges precision хуже raw на
   `-1.774 pp`; поэтому decoder не открывался.
+- Новый signed tri-v2 уже прошёл source-disjoint DEV32 gate: pooled R@1/R@5
+  выросли на `+0.7133/+1.1690 pp`, а precision fixed 5% reciprocal head — на
+  `+10.3448 pp`; right/down были неотрицательны. Поэтому следующий bounded
+  retrieval-consumer может наследовать этот endpoint, но decoder всё ещё
+  остаётся отдельным решением.
+- Fixed Haar-BayesShrink — подтверждённый candidate-supply emitter. Поверх
+  старого all6 он дал `+455` exact-neighbour hits при row-conditioned
+  volume-matched null `106.164`: specific excess `+348.836`, или
+  `+0.4937 pp`, source-CI95 `[+0.4164,+0.5740]`, `64/64` cases positive.
+  Научно оправданный expanded roster теперь raw+adapter+DINO+guided+Wiener+
+  Haar; local-rank остаётся optional-only, потому что его volume-corrected
+  excess всего около `+0.0281 pp`.
 - [HGB-ranked all-edge union](experiments/taska-relation-ranked-union.md)
   обрушился ещё на local32: `326.750→199.500`, delta `-127.250`
   pairs. Высокий relation AUC не разрешает безусловный
   независимый edge synthesis.
+- [Joint-native head-first rebuild](experiments/joint-native-head-arm-fit.md)
+  проверил противоположную крайность: 58 high-precision reciprocal
+  edges почти всегда реализуются, но разрушают остальную глобальную
+  структуру (`349.484→69.063` pairs, `0/64` wins). Значит, head нужен
+  как repair/constraint поверх current layout, а не как замена layout.
 
 ## Приоритеты
 
@@ -282,12 +306,21 @@ strict roll of all original upright tiles.
    synthetic output pixels are forbidden.
 6. Competition test and official submission remain closed until a separately
    authorised compliant same-tail end-to-end promotion.
+7. Candidate-supply gate обязан сравнивать новый emitter с точным
+   row-conditioned volume-matched null: для каждого miss использовать реально
+   добавленное в этой строке число novel identities и оставшийся universe.
+   Raw coverage gain без этой поправки может быть почти целиком куплен шириной
+   union, как показал local-rank; Haar-BayesShrink прошёл именно исправленный
+   gate.
 
 ## Recommended execution order
 
-1. Implement direction 1 capacity test and one new small source-disjoint
-   discovery. This is the fastest path to a number and directly addresses the
-   current verifier's only failed gate.
+1. Preserve the passed tri-v2 DEV decision and implement the unsigned expanded
+   six-emitter consumer described in
+   `experiments/six-emitter-joint-consumer-design-unsigned.md`: Haar is the
+   sixth default source, local-rank is excluded. Sign and run it only under a
+   new FIT label-consumer contract; the already opened DEV is diagnostic, not
+   fresh promotion evidence.
 2. In parallel on the large GPU, run the already signed adapter3200 supply
    continuation and prepare direction 2 at scale. Do not block direction 1 on
    adapter3200.
