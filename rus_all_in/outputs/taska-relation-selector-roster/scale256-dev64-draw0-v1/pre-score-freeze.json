@@ -1,0 +1,57 @@
+{
+  "schema": "aiijc-taska-relation-selector-target-free-roster-freeze-v1",
+  "created_before_exact_reference_reconstruction": true,
+  "contains_evaluation_references_or_labels": false,
+  "config_sha256": "0356e875b7f345a56b80f002efe32696d427d4ad9b8bb97717e4d2fdf59a7a81",
+  "source_case_count": 64,
+  "verified_relation_selector_sha256": {
+    "parent_selective_solver": "8bb23f6ff6402bfde3a2ec8701ea8ddffff86711fbd71e48993eb6d29a8e1fbc",
+    "parent_fusion_solver": "13ba0e8f5c09c84dfef8c25711805e334a7afd5f0e9e80db749415f566ed6348",
+    "parent_fullres_supply_solver": "9bf412349380d96ec6f5529a7775870843a2cc99a3251bc0e0cf86b2bb3fbd26",
+    "parent_raw_solver": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486",
+    "parent_parent_report": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af",
+    "parent_confirmation_config": "11b713d0475306d8e1e1397f8563132d74ef5b8957e85e1e58a5e4f57f018190",
+    "parent_confirmation_report": "4d0ea850e101cb56a4f70dc6ff164201c09af047dcb669e3c81e19488661e555",
+    "parent_fullres_denoiser": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c",
+    "parent_pipeline": "2760708dcca9d9df723886ffb17e202f6f9688a1afa19ba3a5e6f6352556fe0c",
+    "relation_selector": "1c91b3f18d2fe08dce59217bbdf446a4638fabf4eec19b91cacd988de8cd48e2",
+    "six_arm_preparer": "cb37af0e278c7b8143bac65a538b349ade85ad1dd07079d4c13837da469bd1a6",
+    "focal_tail": "33d64d7202a3b65b925d12c77d10e00429968ab70cfdd4b47a52d738dc1224c1",
+    "layout_portfolio": "e8e1064969d1c70483cb62c47af8b3555bc82d77103056317cb39b2d0ee42c0f",
+    "development_config": "5fac92c3a2c6c562f18a6e38065d1d2dcc13131a74e29ab5cf079213d1b6bacd",
+    "development_report": "022739dec8a47465f588a3ad9e45660ffbfa327a6f1647bd1517134c01420c39",
+    "relation_model": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b",
+    "relation_model_freeze": "b8f6a360cdeffb38f80a978aac9305a9e34cb7284af12345c98ba517f586908d",
+    "confirmation_config": "3d903eb595d1c0d152a8b53c7c9fa578b5b012227eeb03ab629a7dd24d5ce4e9",
+    "confirmation_report": "d260872251077e1515251b6c7afc316af25df75045c8119112dff4f36c68ea23",
+    "confirmation_archive": "4cd0346333813cea3576f6db40ea517dcc45fdd5aa81a432a351cf4afdd73131",
+    "confirmation_metadata": "4ae4b8f27d3d6abef21581b189e84c456768c3935d975cec389952b40fdba64c",
+    "confirmation_pre_score_freeze": "97a6d2344669ff6f18ece5085e001de3b6b1f04db89e3154510df42b501757b7"
+  },
+  "artifacts": {
+    "archive": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.npz",
+      "sha256": "d0d31d127b4148068394c203b92c2c51c3e0f85d6ef482c51e38892f0e74216e"
+    },
+    "metadata": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.json",
+      "sha256": "465bea8bc3fbdfa0ae7282a5b6683c9a33b3cde9d937ac3fbf9e2a081759f5e0"
+    },
+    "preregistration": {
+      "path": "configs/taska_relation_selector_roster_scale256_dev64_preregistered_v1.json",
+      "sha256": "0356e875b7f345a56b80f002efe32696d427d4ad9b8bb97717e4d2fdf59a7a81"
+    },
+    "joint_protocol": {
+      "path": "configs/joint_reciprocal_scale256_real_preregistered_v1.json",
+      "sha256": "e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b"
+    },
+    "production_pipeline": {
+      "path": "src/aiijc_puzzle/taska_relation_selector_pipeline.py",
+      "sha256": "1020ebc28777ba02872a82613bbb433d802e9e2b3e6fc04a5cbd2b81e49e7976"
+    },
+    "freezer": {
+      "path": "scripts/freeze_taska_relation_selector_roster_target_free.py",
+      "sha256": "3b98381675d9becb6fe494126006a93083caae8621e057e38afe6837b67e1f27"
+    }
+  }
+}

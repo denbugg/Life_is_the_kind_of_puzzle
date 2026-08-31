@@ -83,6 +83,38 @@ prediction outputs в snapshot не входят.
 | signed FIT256→DEV64 transition config | `e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b` |
 | default-six unsigned template | `5db0860c7dd0b14c1cf36894f1a3c4e2bc3ccc32d43df8042059cd0f34f11647` |
 
+## Scale256 fixed DEV64 one-shot
+
+После target-free freeze добавлен один неизменяемый descriptive score всех
+`11` заранее объявленных layouts на `64` sources × один draw. Это не
+post-hoc selector и не promotion: signed evaluator явно запрещает ranking,
+threshold tuning и выбор кандидата по открытым DEV64 labels.
+
+- incumbent: exact mean/median `1.875/0`, pairs mean `352.641`;
+- `selective_vote500_focal`: exact mean `6.672`, paired delta `+4.797`
+  (source-bootstrap CI95 `[+0.375,+11.454]`), но pairs delta `-5.734`
+  (CI95 `[-9.953,-1.906]`);
+- `union_dense_dominance` изменил только один case: `+1` pair и `-1` exact,
+  поэтому это single-case signal, а не устойчивый новый leader;
+- exact остаётся heavy-tailed: у selective-arm median всего `1`, а один source
+  даёт `51.4%` положительной exact-mass. Любое продолжение требует нового
+  untouched split.
+
+В snapshot входят signed/unsigned protocols, target-free six-arm и portfolio
+freezers, fail-closed evaluator, unit tests, compact JSON metadata/receipts,
+полный one-shot JSON report и Weco step 162. Ключевые hashes:
+
+| Artifact | SHA-256 |
+|---|---|
+| six-arm signed config | `0356e875b7f345a56b80f002efe32696d427d4ad9b8bb97717e4d2fdf59a7a81` |
+| six-arm target-free archive | `d0d31d127b4148068394c203b92c2c51c3e0f85d6ef482c51e38892f0e74216e` |
+| portfolio signed config | `9d3a935cadaeef39a15e7ba3b15044266bba1fd7b80cc86d79cab610b5cabb05` |
+| portfolio target-free archive | `476f0dd447b77f851ddd455770faf4152fcf1b7dd64c874bc21d5135ddb5a7f6` |
+| evaluator signed config | `4fa2cea71287afb6cccc5c8ed28d0487c58c88a9ac9032519025502431763318` |
+| immutable one-shot report | `f1dd1694470923c47cbba4a27f56deb4cd152b0b85f81a21198aae2d3af776de` |
+| full results document | `2c2314836c5984a82176b21c07de9b8f54e014a4fcb4085a7430e2e245c1b261` |
+| Weco step 162 journal | `d5fe14a1047845a4ac52ab2d6e1aae5c4ad495f7d085b62514d7a171fc80d948` |
+
 ## Included runtime/evidence chain
 
 Promoted relation selector может fail-closed проверить весь frozen runtime
@@ -118,16 +150,17 @@ Scale3200 is represented only by the signed config, runner/tests/docs and
 - tri fit caches and 28 MiB frozen prediction array;
 - non-required fusion 72 MiB evaluation archive and fullres 7 MiB prediction cache;
 - DINOv2 and DRUNet checkpoints; neither is part of the promoted relation arm;
-- all new joint NPZ/PT endpoints, target-free prediction/layout archives and
-  the complete 3.342 GiB FIT256 cache. Signed configs retain their canonical
-  paths/hashes, so artifact-bound replay checks deliberately fail closed here;
+- large new joint/relation target-free NPZ arrays, portfolio NPZ, FIT256
+  endpoint/checkpoint and the complete 3.342 GiB FIT256 cache. Their signed
+  configs, canonical paths/hashes and compact JSON metadata/receipts are
+  included, so missing-array replay checks deliberately fail closed here;
 - guided-four target-free cache, pre-label metadata and separated FIT labels;
   их hashes остаются в unsigned blocked template, но сами label/cache artifacts
   не нужны для воспроизведения roster-inventory blocker;
-- the in-progress `scale-fit256-draw2-dev64-real-v1` live directory/log. This
-  snapshot makes no claim about its unfinished training or DEV result;
-- all in-progress BasinCycle Stage-B code/config/report files. They were
-  intentionally left in the canonical workspace until that work is stable.
+- duplicate scale256 evaluator stdout log; the immutable JSON report is the
+  canonical score artifact;
+- all moving BasinCycle Stage-B v3 and six-emitter code/config/report files.
+  They remain in the canonical workspace until that work is stable.
 
 For optional research reproduction, download only from the official locations
 and verify before use:
@@ -169,6 +202,13 @@ At snapshot time:
   v2 manifest-roster unit test is artifact-independent and is included in the
   passing `100/100`. In the canonical workspace the joint-native v1/v2/v3 slice
   passed `10/10` before the one authorised score;
+- the new scale256 six-arm/portfolio/evaluator slice passes Ruff and its exact
+  artifact-independent portable invocation passes `28/28`. Running all 29
+  synchronized tests yields one intentional fail-closed check because the
+  59 MiB joint prediction NPZ is deliberately omitted. A separate read-only
+  sanity pass verified four signed configs, all locally present records in
+  three receipt chains, the immutable `64×11` report SHA and both no-selection /
+  no-competition-test flags;
 - in this portable copy, the earlier promoted-relation subset passed `20/20`,
   and the promoted relation adapter verified all `22/22` pinned
   source/model/report/archive SHA records. Four canonical slice tests require
@@ -177,9 +217,9 @@ At snapshot time:
 - the pre-joint full collection had 13 known legacy/hash/MPS failures. The
   expanded portable tree also contains the explicitly omitted artifact-bound
   checks above, so this snapshot does **not** claim the full suite is green.
-- `git diff --cached --check` retains one intentional EOF-blank warning for
-  `scripts/freeze_joint_reciprocal_fit_heads_target_free.py`: its exact bytes are
-  bound by signed config/report SHA
-  `0a9332e8871c83bafa5408d3774bc25c6455e62c46e5b0cc10fc6973bd129524`.
-  The two unbound EOF warnings were removed; the frozen script was not rewritten
-  or re-signed for whitespace-only cleanup.
+- the current staged diff retains one intentional EOF-blank warning for signed
+  `configs/scale256_frozen_layout_evaluator_preregistered_v1.json`; its exact
+  bytes are bound by SHA
+  `4fa2cea71287afb6cccc5c8ed28d0487c58c88a9ac9032519025502431763318`.
+  The previously documented frozen-head script remains unchanged and was not
+  re-signed for whitespace-only cleanup.

@@ -3,15 +3,96 @@
     "run_id": "c2876967-cca7-44a6-83dd-1fca125c237e",
     "metric": "exact_tiles_per_board",
     "goal": "maximize",
-    "baseline_step": 0
+    "baseline_step": 0,
+    "last_robustness_audit_step": 161,
+    "last_fixed_report_all_step": 162,
+    "warning": "mean exact is heavy-tailed; no leader claim without median, tail fractions, largest-source contribution, leave-largest-positive mean and source-group uncertainty"
   },
   "solver_adjacency_pairs": {
     "run_id": "6bf52932-d716-4959-bee4-d652d7286cba",
     "metric": "satisfied_adjacent_pairs_per_board",
     "secondary_metric": "adjacency_recall",
     "pair_denominator": 1104,
+    "comparison_warning": "raw absolute means from different frozen source panels are not directly rank-comparable",
     "goal": "maximize",
-    "baseline_step": 0
+    "baseline_step": 0,
+    "last_fixed_report_all_step": 157
+  },
+  "solver_adjusted_pairs": {
+    "run_id": "84896552-8f11-434a-9350-357b8e3d3feb",
+    "metric": "pair_delta_vs_same_panel_control",
+    "raw_pairs_secondary_only": true,
+    "goal": "maximize",
+    "baseline_step": 0,
+    "last_fixed_report_all_step": 5
+  },
+  "solver_absolute_manhattan": {
+    "run_id": "effeda86-4312-45bd-8e6b-b420aa96c4d1",
+    "metric": "mean_absolute_manhattan_cells",
+    "cyclic_aligned_diagnostic_only": true,
+    "goal": "minimize",
+    "baseline_step": 0,
+    "last_fixed_report_all_step": 4
+  },
+  "matcher_fullres_adapter_r1_gain": {
+    "run_id": "40431b97-2f2d-4750-b8d5-e899b9b25f4e",
+    "metric": "pooled_r1_gain_vs_raw",
+    "secondary_metrics": [
+      "pooled_r5_gain_vs_raw",
+      "matched_reciprocal_precision_gain_vs_raw",
+      "raw_union_top32_gain"
+    ],
+    "goal": "maximize",
+    "baseline_step": 0,
+    "warning": "retrieval-only development signal; decoder and terminal remain separately gated"
+  },
+  "matcher_guided_auxiliary_supply": {
+    "run_id": "a8fcf81c-ddeb-4400-bbd7-2d0fa74a73d5",
+    "metric": "union_top32_gain_vs_bilateral",
+    "secondary_metrics": [
+      "guided_fused_r1_gain",
+      "guided_fused_r5_gain",
+      "guided_reciprocal5_precision_gain"
+    ],
+    "goal": "maximize",
+    "baseline_step": 0,
+    "warning": "posthoc opened-development supply diagnostic only; guided view is an auxiliary emitter, not a confidence replacement or promotable endpoint"
+  },
+  "matcher_guided_fourth_fit_capacity": {
+    "run_id": "bbf63e6e-392e-4520-989d-e5712c768f94",
+    "metric": "fit_union_coverage_gain_vs_legacy",
+    "secondary_metrics": [
+      "guided_top32_coverage",
+      "extended_union_coverage",
+      "additional_true_neighbours"
+    ],
+    "goal": "maximize",
+    "baseline_step": 0,
+    "warning": "FIT cache/capacity only; this is candidate supply, not ranking, confidence, real DEV, promotion, or submission evidence"
+  },
+  "matcher_wiener_fit_capacity": {
+    "run_id": "891eb46c-bcd9-41ca-b8e9-64f4d4f14f6b",
+    "metric": "fit_union_coverage_gain_vs_legacy",
+    "secondary_metrics": [
+      "wiener_top32_coverage",
+      "five_emitter_union_coverage",
+      "wiener_unique_over_legacy_plus_guided"
+    ],
+    "goal": "maximize",
+    "baseline_step": 0,
+    "dashboard_role": "archival-capacity-only",
+    "warning": "created before the dashboard-consolidation correction; FIT-only candidate supply, never a solver/promotion claim"
+  },
+  "matcher_joint_reciprocal_real": {
+    "run_id": "8ec60b73-615d-492b-8111-1c02ed6d0acb",
+    "metric": "pooled_r1_gain_vs_raw",
+    "secondary_metrics": [
+      "pooled_r5_gain_vs_raw",
+      "fixed_head_precision_gain_vs_raw"
+    ],
+    "goal": "maximize",
+    "baseline_step": 0,
+    "warning": "single FIT32x2 endpoint and source-disjoint DEV32 only; step 1 records a pre-DEV finite-gradient runtime failure"
   },
   "official_ssim": {
     "run_id": "080b97ed-d29c-4aa0-b68f-427331537a8c",

@@ -1,0 +1,54 @@
+{
+  "schema": "aiijc-joint-relation-selector-scale256-portfolio-freeze-v1",
+  "created_before_any_dev64_reference_or_label_access": true,
+  "contains_exact_references_or_labels": false,
+  "config_sha256": "9d3a935cadaeef39a15e7ba3b15044266bba1fd7b80cc86d79cab610b5cabb05",
+  "input_artifacts": {
+    "joint_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.npz",
+      "sha256": "b2b153b728227950f1645dab2bf77d581c17a0fcd707c71dd96f1fadc4beb0e3"
+    },
+    "joint_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.json",
+      "sha256": "701eb6499a29a2a422b7633d658d9331f7d210ae4f2699182a40497d5c8139e9"
+    },
+    "joint_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/pre-score-freeze.json",
+      "sha256": "e7c33f520bfc12d66434d46cfe4704871cfa3f0c76f2ce380ebdfbb43932fdd9"
+    },
+    "relation_roster_archive": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.npz",
+      "sha256": "d0d31d127b4148068394c203b92c2c51c3e0f85d6ef482c51e38892f0e74216e"
+    },
+    "relation_roster_metadata": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.json",
+      "sha256": "465bea8bc3fbdfa0ae7282a5b6683c9a33b3cde9d937ac3fbf9e2a081759f5e0"
+    },
+    "relation_roster_pre_score_freeze": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/pre-score-freeze.json",
+      "sha256": "c9af0b839a82d84f7f072a547b43ff263edf9417b20bc280c8d1bd3db4e8d775"
+    }
+  },
+  "artifacts": {
+    "archive": {
+      "path": "outputs/joint-relation-selector-portfolio/scale256-dev64-v1/frozen-target-free-portfolio.npz",
+      "sha256": "476f0dd447b77f851ddd455770faf4152fcf1b7dd64c874bc21d5135ddb5a7f6"
+    },
+    "metadata": {
+      "path": "outputs/joint-relation-selector-portfolio/scale256-dev64-v1/frozen-target-free-portfolio.json",
+      "sha256": "4ce0f01186163a06bc446eccff283950db914501617ec2b40a8a243d6a5872e8"
+    },
+    "config": {
+      "path": "configs/joint_relation_selector_scale256_portfolio_preregistered_v1.json",
+      "sha256": "9d3a935cadaeef39a15e7ba3b15044266bba1fd7b80cc86d79cab610b5cabb05"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_portfolio.py",
+      "sha256": "b337413e4f256caf280631ccef00bc280e277eacd0aafcd8c20d7484e51584d6"
+    },
+    "runner": {
+      "path": "scripts/freeze_joint_relation_selector_scale256_portfolio.py",
+      "sha256": "faa2850f8a5727224d8b78316ae8ec5d09761a198999c935236766aa088dbfbb"
+    }
+  }
+}

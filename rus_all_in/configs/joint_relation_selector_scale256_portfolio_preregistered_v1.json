@@ -1,0 +1,203 @@
+{
+  "schema": "aiijc-joint-relation-selector-scale256-portfolio-protocol-v1",
+  "status": "signed-fixed-protocol",
+  "purpose": "Freeze KEEP, the historical fixed-head comparator, and two fixed full-evidence selectors over exactly the existing six strict scale256 DEV64 layouts before any reference or label access.",
+  "joint_protocol_sha256": "e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b",
+  "rule_commitment_sha256": "54e5ecf7ce5f0844d4cb376a79655cd2985ee0c0cd0d62e531ffa2215c3b3f05",
+  "source_protocol": {
+    "dev_filenames": [
+      "img_000877.png",
+      "img_003361.png",
+      "img_005409.png",
+      "img_001616.png",
+      "img_004314.png",
+      "img_002432.png",
+      "img_000753.png",
+      "img_004774.png",
+      "img_005391.png",
+      "img_002504.png",
+      "img_002017.png",
+      "img_005172.png",
+      "img_000798.png",
+      "img_005961.png",
+      "img_004520.png",
+      "img_004498.png",
+      "img_000700.png",
+      "img_000987.png",
+      "img_003466.png",
+      "img_001545.png",
+      "img_003828.png",
+      "img_003811.png",
+      "img_003008.png",
+      "img_000783.png",
+      "img_003933.png",
+      "img_005024.png",
+      "img_006366.png",
+      "img_001425.png",
+      "img_004451.png",
+      "img_000621.png",
+      "img_001801.png",
+      "img_003663.png",
+      "img_001523.png",
+      "img_000805.png",
+      "img_006085.png",
+      "img_001291.png",
+      "img_001165.png",
+      "img_003183.png",
+      "img_004482.png",
+      "img_000436.png",
+      "img_006065.png",
+      "img_000624.png",
+      "img_003709.png",
+      "img_006216.png",
+      "img_005204.png",
+      "img_005977.png",
+      "img_002780.png",
+      "img_005619.png",
+      "img_006151.png",
+      "img_005233.png",
+      "img_004997.png",
+      "img_000532.png",
+      "img_000602.png",
+      "img_006333.png",
+      "img_006558.png",
+      "img_003719.png",
+      "img_006122.png",
+      "img_005549.png",
+      "img_000859.png",
+      "img_005919.png",
+      "img_002155.png",
+      "img_003773.png",
+      "img_006620.png",
+      "img_000960.png"
+    ],
+    "dev_digest": "5c6cb5b9b204a38c78e79936ff34235dae9896cfc13d6edaf12dfad635bcdb8e",
+    "dev_draw_index": 0,
+    "dev_case_seed": 20260908
+  },
+  "selection": {
+    "grid_size": 24,
+    "tile_count": 576,
+    "relation_count_per_layout": 1104,
+    "arm_names": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "portfolio_member_names": [
+      "incumbent_keep",
+      "fixed_head_comparator",
+      "union_dense_dominance",
+      "source_normalized_dominance"
+    ],
+    "members": {
+      "incumbent_keep": "exact relation-selector incumbent layout",
+      "fixed_head_comparator": "unchanged axiswise fixed-5%-head dominance comparator",
+      "union_dense_dominance": "axiswise-union-coverage-dense-confidence-dominance-v1",
+      "source_normalized_dominance": "axiswise-source-normalized-full-evidence-floor-v1"
+    },
+    "union_dense_eligibility": "union coverage count and mean dense two-sided confidence each weakly nonregressing versus incumbent on right and down; at least one strict improvement",
+    "union_dense_tie_break": [
+      "total union-coverage delta",
+      "minimum per-axis union-coverage delta",
+      "total mean-confidence delta",
+      "minimum per-axis mean-confidence delta",
+      "frozen expected-correct score",
+      "frozen arm order"
+    ],
+    "source_normalization": {
+      "within_source_per_axis": true,
+      "formula": "tanh(((value-mean)/population_std)/2)",
+      "constant_row_value": 0.0,
+      "epsilon": 1e-12,
+      "logit_weight": 0.5,
+      "dense_two_sided_confidence_weight": 0.5,
+      "missing_component_floor": "minimum valid normalized component - 1",
+      "missing_edge_offset": 1.0,
+      "tanh_scale": 2.0
+    },
+    "source_normalized_eligibility": "combined full-edge score weakly nonregressing versus incumbent on right and down separately; at least one strict improvement",
+    "source_normalized_tie_break": [
+      "total combined-score delta",
+      "minimum per-axis combined-score delta",
+      "fewest missing realised edges",
+      "frozen expected-correct score",
+      "frozen arm order"
+    ],
+    "layout_synthesis": false,
+    "only_exact_existing_whole_arm_layouts": true,
+    "tile_id_equivariant": true,
+    "labels_or_references_used": false,
+    "posthoc_member_selection": false
+  },
+  "future_scoring_contract": {
+    "status": "not-authorized-by-this-freezer",
+    "report_every_member_transparently": true,
+    "metrics": [
+      "satisfied_pairs",
+      "adjusted_pairs",
+      "exact_tiles",
+      "absolute_mean_manhattan",
+      "radius2_recall"
+    ],
+    "selection_from_dev_labels": false
+  },
+  "frozen_inputs": {
+    "joint_protocol": {
+      "path": "configs/joint_reciprocal_scale256_real_preregistered_v1.json",
+      "sha256": "e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b"
+    },
+    "joint_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.npz",
+      "sha256": "b2b153b728227950f1645dab2bf77d581c17a0fcd707c71dd96f1fadc4beb0e3"
+    },
+    "joint_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.json",
+      "sha256": "701eb6499a29a2a422b7633d658d9331f7d210ae4f2699182a40497d5c8139e9"
+    },
+    "joint_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/pre-score-freeze.json",
+      "sha256": "e7c33f520bfc12d66434d46cfe4704871cfa3f0c76f2ce380ebdfbb43932fdd9"
+    },
+    "relation_roster_archive": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.npz",
+      "sha256": "d0d31d127b4148068394c203b92c2c51c3e0f85d6ef482c51e38892f0e74216e"
+    },
+    "relation_roster_metadata": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.json",
+      "sha256": "465bea8bc3fbdfa0ae7282a5b6683c9a33b3cde9d937ac3fbf9e2a081759f5e0"
+    },
+    "relation_roster_pre_score_freeze": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/pre-score-freeze.json",
+      "sha256": "c9af0b839a82d84f7f072a547b43ff263edf9417b20bc280c8d1bd3db4e8d775"
+    },
+    "legacy_module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_consumer.py",
+      "sha256": "e82f1e6e1701ebec41f35c138dc5116357420d8d19fa05103e9fe739ada38dd6"
+    },
+    "legacy_runner": {
+      "path": "scripts/run_joint_relation_selector_consumer.py",
+      "sha256": "ed365446b3283e9ad153f5473fad36fc918297f3f3332e9cc6163b7b9e371273"
+    },
+    "portfolio_module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_portfolio.py",
+      "sha256": "b337413e4f256caf280631ccef00bc280e277eacd0aafcd8c20d7484e51584d6"
+    },
+    "portfolio_runner": {
+      "path": "scripts/freeze_joint_relation_selector_scale256_portfolio.py",
+      "sha256": "faa2850f8a5727224d8b78316ae8ec5d09761a198999c935236766aa088dbfbb"
+    }
+  },
+  "blocked_reason": "The target-free sibling and implementation hashes are recorded for review, but this template is deliberately non-executable. Independently verify the contracts, then create a separate signed config. Never sign or execute this template in place.",
+  "execution_authorized": false,
+  "access_so_far": {
+    "dev64_pixels_opened": false,
+    "dev64_references_or_labels_opened": false,
+    "local_or_terminal_reused": false,
+    "competition_test_accessed": false,
+    "mps_or_weco_run": false
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "schema": "aiijc-scale256-frozen-layout-evaluator-protocol-v1",
+  "status": "unsigned-template-blocked-before-dev64-reference-access",
+  "purpose": "One fixed report-all comparison of the scale256 joint incumbent, all six frozen relation arms, and all four frozen portfolio members after every target-free receipt verifies.",
+  "joint_protocol_sha256": "e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b",
+  "rule_commitment_sha256": "8994ced8fc06bcee2d07f44c0ce2c701859e6bc984b47b4d03e20bf97d1a0e7f",
+  "source_protocol": {
+    "dev_filenames": [
+      "img_000877.png",
+      "img_003361.png",
+      "img_005409.png",
+      "img_001616.png",
+      "img_004314.png",
+      "img_002432.png",
+      "img_000753.png",
+      "img_004774.png",
+      "img_005391.png",
+      "img_002504.png",
+      "img_002017.png",
+      "img_005172.png",
+      "img_000798.png",
+      "img_005961.png",
+      "img_004520.png",
+      "img_004498.png",
+      "img_000700.png",
+      "img_000987.png",
+      "img_003466.png",
+      "img_001545.png",
+      "img_003828.png",
+      "img_003811.png",
+      "img_003008.png",
+      "img_000783.png",
+      "img_003933.png",
+      "img_005024.png",
+      "img_006366.png",
+      "img_001425.png",
+      "img_004451.png",
+      "img_000621.png",
+      "img_001801.png",
+      "img_003663.png",
+      "img_001523.png",
+      "img_000805.png",
+      "img_006085.png",
+      "img_001291.png",
+      "img_001165.png",
+      "img_003183.png",
+      "img_004482.png",
+      "img_000436.png",
+      "img_006065.png",
+      "img_000624.png",
+      "img_003709.png",
+      "img_006216.png",
+      "img_005204.png",
+      "img_005977.png",
+      "img_002780.png",
+      "img_005619.png",
+      "img_006151.png",
+      "img_005233.png",
+      "img_004997.png",
+      "img_000532.png",
+      "img_000602.png",
+      "img_006333.png",
+      "img_006558.png",
+      "img_003719.png",
+      "img_006122.png",
+      "img_005549.png",
+      "img_000859.png",
+      "img_005919.png",
+      "img_002155.png",
+      "img_003773.png",
+      "img_006620.png",
+      "img_000960.png"
+    ],
+    "dev_digest": "5c6cb5b9b204a38c78e79936ff34235dae9896cfc13d6edaf12dfad635bcdb8e",
+    "dev_draw_index": 0,
+    "dev_case_seed": 20260908
+  },
+  "evaluation_contract": {
+    "grid_size": 24,
+    "tile_count": 576,
+    "satisfied_pair_denominator": 1104,
+    "one_shot_report_path": "outputs/joint-relation-selector-portfolio/scale256-dev64-v1/score-fixed-one-shot-v1.json",
+    "incumbent_name": "incumbent_joint_layout",
+    "candidate_names_in_report_order": [
+      "incumbent_joint_layout",
+      "relation_arm/raw",
+      "relation_arm/logistic",
+      "relation_arm/focal_top5",
+      "relation_arm/nonlinear",
+      "relation_arm/selective_vote500_focal",
+      "relation_arm/combined_union_focal",
+      "portfolio/incumbent_keep",
+      "portfolio/fixed_head_comparator",
+      "portfolio/union_dense_dominance",
+      "portfolio/source_normalized_dominance"
+    ],
+    "metric_directions": {
+      "exact_count": "higher_is_better",
+      "exact_rate": "higher_is_better",
+      "satisfied_pairs": "higher_is_better",
+      "satisfied_pairs_rate": "higher_is_better",
+      "manhattan_l1_per_tile": "lower_is_better",
+      "radius_le_1_rate": "higher_is_better",
+      "radius_le_2_rate": "higher_is_better"
+    },
+    "adjusted_satisfied_pairs_definition": "paired candidate-minus-incumbent satisfied-pair count on the exact same synthetic case; no extra penalty or normalization",
+    "distance_definition": "absolute tile-to-true-position Manhattan distance in board cells; no translation or cyclic alignment",
+    "source_statistics": {
+      "cluster_key": "source_filename",
+      "expected_source_count": 64,
+      "expected_draw_indices": [
+        0
+      ],
+      "within_source_reducer": "arithmetic mean over registered cases",
+      "quantile_method": "linear",
+      "reported_distribution_fields": [
+        "mean",
+        "median",
+        "q25",
+        "q75",
+        "minimum",
+        "maximum"
+      ],
+      "win_tie_loss_basis": "benefit-oriented source-mean delta",
+      "tie_epsilon": 1e-12,
+      "bootstrap": {
+        "unit": "source cluster",
+        "resamples": 20000,
+        "seed": 20260901,
+        "interval": "equal-tail 95 percent",
+        "shared_indices_across_candidates_and_metrics": true
+      },
+      "tail_diagnostics": [
+        "worst source by benefit delta",
+        "largest-positive-source share of positive benefit mass",
+        "mean after removing largest positive source"
+      ]
+    },
+    "multiplicity_policy": {
+      "report_every_declared_candidate_separately": true,
+      "deduplicate_for_weighting_or_selection": false,
+      "report_per_case_layout_equivalence_classes": true,
+      "report_pairwise_equal-case-counts": true
+    },
+    "policy": {
+      "selection_or_promotion_from_dev64_labels": false,
+      "candidate_ranking": false,
+      "metric_or_threshold_tuning_after_open": false,
+      "one_fixed_report_only": true,
+      "competition_test_or_submission_access": false
+    }
+  },
+  "frozen_inputs": {
+    "joint_protocol": {
+      "path": "configs/joint_reciprocal_scale256_real_preregistered_v1.json",
+      "sha256": "e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b"
+    },
+    "joint_archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.npz",
+      "sha256": "b2b153b728227950f1645dab2bf77d581c17a0fcd707c71dd96f1fadc4beb0e3"
+    },
+    "joint_metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.json",
+      "sha256": "701eb6499a29a2a422b7633d658d9331f7d210ae4f2699182a40497d5c8139e9"
+    },
+    "joint_pre_score_freeze": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/pre-score-freeze.json",
+      "sha256": "e7c33f520bfc12d66434d46cfe4704871cfa3f0c76f2ce380ebdfbb43932fdd9"
+    },
+    "relation_roster_protocol": {
+      "path": "configs/taska_relation_selector_roster_scale256_dev64_preregistered_v1.json",
+      "sha256": "0356e875b7f345a56b80f002efe32696d427d4ad9b8bb97717e4d2fdf59a7a81"
+    },
+    "relation_roster_archive": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.npz",
+      "sha256": "d0d31d127b4148068394c203b92c2c51c3e0f85d6ef482c51e38892f0e74216e"
+    },
+    "relation_roster_metadata": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/frozen-target-free-roster.json",
+      "sha256": "465bea8bc3fbdfa0ae7282a5b6683c9a33b3cde9d937ac3fbf9e2a081759f5e0"
+    },
+    "relation_roster_pre_score_freeze": {
+      "path": "outputs/taska-relation-selector-roster/scale256-dev64-draw0-v1/pre-score-freeze.json",
+      "sha256": "c9af0b839a82d84f7f072a547b43ff263edf9417b20bc280c8d1bd3db4e8d775"
+    },
+    "portfolio_protocol": {
+      "path": "configs/joint_relation_selector_scale256_portfolio_preregistered_v1.json",
+      "sha256": "9d3a935cadaeef39a15e7ba3b15044266bba1fd7b80cc86d79cab610b5cabb05"
+    },
+    "portfolio_archive": {
+      "path": "outputs/joint-relation-selector-portfolio/scale256-dev64-v1/frozen-target-free-portfolio.npz",
+      "sha256": "476f0dd447b77f851ddd455770faf4152fcf1b7dd64c874bc21d5135ddb5a7f6"
+    },
+    "portfolio_metadata": {
+      "path": "outputs/joint-relation-selector-portfolio/scale256-dev64-v1/frozen-target-free-portfolio.json",
+      "sha256": "4ce0f01186163a06bc446eccff283950db914501617ec2b40a8a243d6a5872e8"
+    },
+    "portfolio_pre_reference_freeze": {
+      "path": "outputs/joint-relation-selector-portfolio/scale256-dev64-v1/pre-reference-freeze.json",
+      "sha256": "f930c8adc64622fc5d78634c3374d76c21126d3af7acd6a23465ef9681aad6e9"
+    },
+    "portfolio_module": {
+      "path": "src/aiijc_puzzle/joint_relation_selector_portfolio.py",
+      "sha256": "b337413e4f256caf280631ccef00bc280e277eacd0aafcd8c20d7484e51584d6"
+    },
+    "portfolio_runner": {
+      "path": "scripts/freeze_joint_relation_selector_scale256_portfolio.py",
+      "sha256": "faa2850f8a5727224d8b78316ae8ec5d09761a198999c935236766aa088dbfbb"
+    },
+    "legacy_runner": {
+      "path": "scripts/run_joint_relation_selector_consumer.py",
+      "sha256": "ed365446b3283e9ad153f5473fad36fc918297f3f3332e9cc6163b7b9e371273"
+    },
+    "layout_metric": {
+      "path": "src/aiijc_puzzle/layout_evaluation.py",
+      "sha256": "b2641059b9829e4809267a1c36471641d0a8d5b9f47172137264b2157b3677c1"
+    },
+    "distance_metric": {
+      "path": "src/aiijc_puzzle/tile_position_distance.py",
+      "sha256": "5c916249c84f0d1ac3d5c0788921b2fa2356e2c6c1b513f7f07a571c2c21c171"
+    },
+    "synthetic_reference_helper": {
+      "path": "src/aiijc_puzzle/synthetic_socket_evaluation.py",
+      "sha256": "b69b929a39b81197eff3341affade7dc5679626acb8dc6c259da358e55faec23"
+    },
+    "board_loader": {
+      "path": "scripts/run_fullres_boundary_denoiser.py",
+      "sha256": "3afa0340ecc2f857e501fc86e866feb32bd4a8789cd445fc66442dd00c5ac274"
+    },
+    "validation_manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "evaluator_runner": {
+      "path": "scripts/evaluate_scale256_frozen_layout_portfolio.py",
+      "sha256": "74a379658be39d1304a679331b93c22d4bb468aea7ddc0d71b6b6f8573a5473d"
+    }
+  },
+  "blocked_reason": "This is an unsigned audit template. Review the fixed metric/statistics policy and evaluator implementation, then create a separate signed copy before any DEV64 reference reconstruction. Do not sign or execute this file in place.",
+  "execution_authorized": false,
+  "access_so_far": {
+    "dev64_references_or_labels_opened_by_this_evaluator": false,
+    "competition_test_or_submission_accessed": false,
+    "weco_run": false
+  }
+}

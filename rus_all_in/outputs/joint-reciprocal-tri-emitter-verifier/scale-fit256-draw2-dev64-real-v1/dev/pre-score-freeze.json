@@ -1,0 +1,28 @@
+{
+  "schema": "aiijc-joint-reciprocal-pre-score-freeze-v1",
+  "created_before_exact_reference_scoring": true,
+  "contains_exact_references_or_labels": false,
+  "config_sha256": "e3fe4aa5c594b149c4dab93960aabf220754d82bf938edef852658356fc9bf3b",
+  "artifacts": {
+    "archive": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.npz",
+      "sha256": "b2b153b728227950f1645dab2bf77d581c17a0fcd707c71dd96f1fadc4beb0e3"
+    },
+    "metadata": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/dev/frozen-target-free-predictions.json",
+      "sha256": "701eb6499a29a2a422b7633d658d9331f7d210ae4f2699182a40497d5c8139e9"
+    },
+    "fit_endpoint": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/scale-fit256-draw2-dev64-real-v1/fit/joint_reciprocal_endpoint.pt",
+      "sha256": "7d3692f0b051b638cf1ade643fbb21a58bb68d0022de0fff053441f7c54a4cac"
+    },
+    "runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_real.py",
+      "sha256": "7b6f760155f86c9c3c465a8833c9c71687123b0ac248a64d55b91d0f8c1ad82c"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/joint_reciprocal_tri_emitter_verifier.py",
+      "sha256": "13a5a649815c1dd48d9db69ca30d3303e3f70237688657156f4c19d7ae196ad3"
+    }
+  }
+}

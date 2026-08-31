@@ -1,0 +1,162 @@
+{
+  "schema": "aiijc-taska-relation-selector-roster-protocol-v1",
+  "status": "unsigned-template-blocked-before-dev-pixel-access",
+  "purpose": "Freeze the unchanged SHA-gated six-arm relation-selector layouts, HGB relation features/scores and incumbent on the exact joint-v2 DEV32 dirty tile bags, without constructing labels or references.",
+  "joint_protocol_sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880",
+  "rule_commitment_sha256": "723455a54dc29708b91689544e8bb996c69138ae58a0a8de728bd80adff4cf97",
+  "source_protocol": {
+    "dev_filenames": [
+      "img_004604.png",
+      "img_006179.png",
+      "img_004153.png",
+      "img_001598.png",
+      "img_006463.png",
+      "img_000896.png",
+      "img_000968.png",
+      "img_001364.png",
+      "img_004060.png",
+      "img_003856.png",
+      "img_005219.png",
+      "img_004516.png",
+      "img_006404.png",
+      "img_004233.png",
+      "img_005956.png",
+      "img_001000.png",
+      "img_006967.png",
+      "img_004934.png",
+      "img_005632.png",
+      "img_005309.png",
+      "img_004280.png",
+      "img_001953.png",
+      "img_006794.png",
+      "img_001490.png",
+      "img_006879.png",
+      "img_006563.png",
+      "img_000928.png",
+      "img_005550.png",
+      "img_003769.png",
+      "img_004729.png",
+      "img_006705.png",
+      "img_003595.png"
+    ],
+    "dev_digest": "93112f89096f8e9555172f10f6934fd8dd5abf48a8029b86a8803d507e79e87e",
+    "dev_draw_index": 0,
+    "dev_case_seed": 20260908
+  },
+  "runtime": {
+    "device": "mps",
+    "inference_batch": 576,
+    "model_or_threshold_tuning": false,
+    "existing_sha_gated_pipeline_only": true
+  },
+  "output_contract": {
+    "arm_names": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "relation_feature_names": [
+      "raw_cost",
+      "outgoing_rank_fraction",
+      "incoming_rank_fraction",
+      "outgoing_margin_from_best",
+      "incoming_margin_from_best",
+      "outgoing_best_signed_gap",
+      "incoming_best_signed_gap",
+      "outgoing_cost_zscore",
+      "incoming_cost_zscore",
+      "axis_is_down",
+      "post_six_arm_support",
+      "post_six_arm_support_fraction",
+      "pre_six_arm_support",
+      "pre_tail_realised",
+      "tail_created",
+      "arm_supply_member",
+      "arm_supply_logit",
+      "arm_supply_focal_positive",
+      "provenance_current",
+      "provenance_selective_new",
+      "provenance_unique_fullres",
+      "realised_by_control",
+      "arm_is_control",
+      "arm_raw",
+      "arm_logistic",
+      "arm_focal_top5",
+      "arm_nonlinear",
+      "arm_selective_vote500_focal",
+      "arm_combined_union_focal"
+    ],
+    "relation_rows_per_arm": 1104,
+    "strict_original_upright_permutations": true,
+    "contains_pixels": false,
+    "contains_exact_references_or_labels": false,
+    "normalized_case_key_allowlist": [
+      "relation_arm_combined_union_focal_layout",
+      "relation_arm_focal_top5_layout",
+      "relation_arm_logistic_layout",
+      "relation_arm_nonlinear_layout",
+      "relation_arm_raw_layout",
+      "relation_arm_selective_vote500_focal_layout",
+      "relation_expected_correct_scores",
+      "relation_features",
+      "relation_truth_selector_layout"
+    ]
+  },
+  "frozen_inputs": {
+    "joint_protocol": {
+      "path": "configs/joint_reciprocal_tri_emitter_real_preregistered_v2.json",
+      "sha256": "c8ffae9c11d5d101f92f0b769b0d5f6e6bfc68f771239bc18c83af0b2b401880"
+    },
+    "joint_runner": {
+      "path": "scripts/run_joint_reciprocal_tri_emitter_real.py",
+      "sha256": "7b6f760155f86c9c3c465a8833c9c71687123b0ac248a64d55b91d0f8c1ad82c"
+    },
+    "validation_manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "board_loader": {
+      "path": "scripts/run_fullres_boundary_denoiser.py",
+      "sha256": "3afa0340ecc2f857e501fc86e866feb32bd4a8789cd445fc66442dd00c5ac274"
+    },
+    "production_pipeline": {
+      "path": "src/aiijc_puzzle/taska_relation_selector_pipeline.py",
+      "sha256": "1020ebc28777ba02872a82613bbb433d802e9e2b3e6fc04a5cbd2b81e49e7976"
+    },
+    "relation_model": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/frozen-relation-classifier.pkl",
+      "sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b"
+    },
+    "relation_confirmation_config": {
+      "path": "configs/taska_relation_truth_selector_confirmation_v1.json",
+      "sha256": "3d903eb595d1c0d152a8b53c7c9fa578b5b012227eeb03ab629a7dd24d5ce4e9"
+    },
+    "relation_confirmation_report": {
+      "path": "outputs/taska-relation-truth-selector/formal-confirmation-v1/report.json",
+      "sha256": "d260872251077e1515251b6c7afc316af25df75045c8119112dff4f36c68ea23"
+    },
+    "relation_confirmation_runner": {
+      "path": "scripts/run_taska_relation_truth_selector_confirmation.py",
+      "sha256": "d04299b0e69a12abb0e063a919407deb692254860ab53c084255ad1a97e5330e"
+    },
+    "fusion_confirmation_runner": {
+      "path": "scripts/run_taska_selective_fullres_union_fusion_fresh32_confirmation.py",
+      "sha256": "f38356446da7283d42fb8c14ce2c024a74c5f57a1c9133ca3f107f54bdd5a654"
+    },
+    "freezer": {
+      "path": "scripts/freeze_taska_relation_selector_roster_target_free.py",
+      "sha256": "3b98381675d9becb6fe494126006a93083caae8621e057e38afe6837b67e1f27"
+    }
+  },
+  "blocked_reason": "A reviewer must verify this exact source/runtime/output contract, replace status only in a separate signed config, and create its sidecar before the first DEV pixel is loaded. This template must never be executed or signed in place.",
+  "access_so_far": {
+    "dev_pixels_opened": false,
+    "dev_labels_or_exact_references_opened": false,
+    "opened_local_or_terminal_reused": false,
+    "competition_test_accessed": false,
+    "inference_or_tuning_run": false
+  }
+}
