@@ -1,0 +1,129 @@
+{
+  "schema": "aiijc-taska-selective-vote500-fresh32-confirmation-config-v1",
+  "experiment": "taska-selective-vote500-fresh32-confirmation-v1",
+  "purpose": "One formal source16 x draw2 confirmation of the unchanged selective target500 layout solver after pair-oriented promotion evidence.",
+  "protocol": {
+    "config_and_sha_sidecar_created_before_inference_or_scoring": true,
+    "exclusion_snapshot_created_before_roster_selection": true,
+    "target_free_layouts_edges_logits_and_provenance_frozen_before_references": true,
+    "single_fixed_panel_only": true,
+    "threshold_arm_budget_or_roster_sweep": false,
+    "current_taska_lineage_disjoint_only": true,
+    "universal_or_model_freshness_claimed": false
+  },
+  "panel": {
+    "selection_namespace": "aiijc-taska-selective-vote500-fresh32-formal-confirmation-v1-source16xdraw2",
+    "selection_seed": 2026083198,
+    "selection_algorithm": "From organizer-train filenames img_006700..img_006999, exclude the complete frozen explicit-source union, sort by sha256(namespace\\0seed\\0filename) with filename tie-break, and take the first 16.",
+    "universe_minimum": "img_006700.png",
+    "universe_maximum": "img_006999.png",
+    "organizer_train_universe_count": 242,
+    "organizer_train_universe_digest": "6db97f9dc1c833d68ced9f229fcca918bfd5d60c7782263d6aca91b25170aea5",
+    "exclusion_union_count": 356,
+    "exclusion_union_digest": "0da687471cc49a7ad75f4c5029994a869c30cd9ff5dae54933bba539b18ee61f",
+    "excluded_in_universe_count": 28,
+    "eligible_count": 214,
+    "eligible_digest": "6729b8fd69f1ecc96dab8fe76f7d7c01ad1adf61b579f26510bc8177a4afefa1",
+    "source_filenames": [
+      "img_006909.png",
+      "img_006976.png",
+      "img_006857.png",
+      "img_006771.png",
+      "img_006757.png",
+      "img_006982.png",
+      "img_006739.png",
+      "img_006924.png",
+      "img_006886.png",
+      "img_006722.png",
+      "img_006991.png",
+      "img_006952.png",
+      "img_006749.png",
+      "img_006899.png",
+      "img_006752.png",
+      "img_006988.png"
+    ],
+    "source_count": 16,
+    "draws": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "source_order_digest": "6b1f56946db4d52fa66d98d325e2f2afa3a46564910bcb6498bf8cec47ee041e",
+    "cases_digest": "ee065790b982c016fff40ddfd28f86f82a15204346fc71c9aa9acc49d88178f3"
+  },
+  "candidate": {
+    "entrypoint": "aiijc_puzzle.taska_selective_vote500.solve_selective_vote500",
+    "matcher_passes_per_case": 1,
+    "matcher_vote_target": 500,
+    "same_pass_current_vote_target": 350,
+    "new_edges": "target500 minus same-pass current350",
+    "new_edge_acceptance": "recovered train_exact_top5 focal logit >= 0.0",
+    "portfolio_arms": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal"
+    ],
+    "selector": "minimum original TASKA all-1104-bond seam cost",
+    "control": "same-pass current350 four-arm winner plus focal-gated tail96",
+    "candidate_layout": "five-arm winner plus winner-aligned focal-gated tail96",
+    "tail_max_swaps": 96,
+    "focal_logit_threshold": 0.0,
+    "threshold_arm_or_budget_sweep": false
+  },
+  "evaluation": {
+    "primary_metric": "candidate_minus_control_satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": [
+      "adjacency_recall",
+      "exact_tiles_per_board"
+    ],
+    "bootstrap_unit": "source_with_two_draws",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 500160198,
+    "confirmation_gate": {
+      "pair_delta_mean_at_least": 2.0,
+      "pair_delta_ci95_lower_at_least": 0.0
+    }
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "exclusion_snapshot": {
+      "path": "configs/taska_selective_vote500_fresh32_confirmation_v1.exclusions.json",
+      "sha256": "286000ad6f6d1e47932bee8e4e672c2bd7a856bf019346e28e95660a22ab561e"
+    },
+    "exclusion_snapshot_sidecar": {
+      "path": "configs/taska_selective_vote500_fresh32_confirmation_v1.exclusions.json.sha256",
+      "sha256": "755ba3f04899bbacf59aa7aaa8d31f8733de5e8c8364da80b2649b87508a39f0"
+    },
+    "tail192_reservation": {
+      "path": "configs/taska_focal_gated_tail192_fresh16_capacity_v1.json",
+      "sha256": "6ab12dfae4ffec924b66928027edf1d42d562be9c85f1f6cc3ace27d8d1e01db"
+    },
+    "fullres_combo_confirmation": {
+      "path": "configs/taska_fullres_focal_gated_tail_fresh32_confirmation_v1.json",
+      "sha256": "742a427ba5cc844afedb7107c39bd0ba9cbe246fad4daf0fd6ae959cf4846794"
+    },
+    "selective_solver": {
+      "path": "src/aiijc_puzzle/taska_selective_vote500.py",
+      "sha256": "8bb23f6ff6402bfde3a2ec8701ea8ddffff86711fbd71e48993eb6d29a8e1fbc"
+    },
+    "raw_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    }
+  },
+  "legality": {
+    "organizer_train_sources_only": true,
+    "dirty_tiles_only_for_candidate_inference": true,
+    "targets_or_exact_references_in_candidate_inference": false,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "rotated_warped_replaced_or_constant_tiles": false,
+    "competition_test_forbidden": true,
+    "postprocessing_used": false
+  }
+}

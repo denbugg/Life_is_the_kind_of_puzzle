@@ -1,0 +1,44 @@
+{
+  "schema": "aiijc-tile-position-distance-pre-score-freeze-v1",
+  "created_before_any_distance_or_ssim_scoring": true,
+  "candidate_count": 768,
+  "terminal_held_fresh_or_competition_test_accessed": false,
+  "artifacts": {
+    "layout_archive": {
+      "path": "outputs/tile-position-distance-validation/fixed-v1/frozen-layout-roster.npz",
+      "sha256": "a789d49fd65e4ba6556c235217817b3e9635a35a9a6e719b307d8c5070392fe0"
+    },
+    "layout_metadata": {
+      "path": "outputs/tile-position-distance-validation/fixed-v1/frozen-layout-roster.json",
+      "sha256": "cc1bcbfe2a39fdd1255151ff3d515a1fe6c4a7e8305670fcd3ab4c11bd85b3b1"
+    },
+    "preregistration": {
+      "path": "configs/tile_position_distance_metric_validation_v1.json",
+      "sha256": "635c4c6e437c9173d0dbf37cbe4f09f4e613f39d487ae1d1ea9a2e35e69e1622"
+    },
+    "six_arm_archive": {
+      "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.npz",
+      "sha256": "0f8458650c901a406747d25f54849068891ee39a5b3be5061828d08df25b7814"
+    },
+    "six_arm_metadata": {
+      "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.json",
+      "sha256": "990d6d6ddefddaab47f327ca640427e6f515564a331c8c15244917263abe77fd"
+    },
+    "socket_transfer_archive": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.npz",
+      "sha256": "92bda45e3a3347aebbebf5ba111a80b08ef280705a325e291120749279ca8592"
+    },
+    "socket_transfer_metadata": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.json",
+      "sha256": "9fab4bb4d3c74fbedc623e7f5ae1d75973f2c87f8309cacc3f3895a82e319d2d"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/tile_position_distance.py",
+      "sha256": "5c916249c84f0d1ac3d5c0788921b2fa2356e2c6c1b513f7f07a571c2c21c171"
+    },
+    "runner": {
+      "path": "scripts/validate_tile_position_distance_metric.py",
+      "sha256": "919ccc9cecbc5bee356d812e4403d1a9a72ca603e083be575c744f417956e582"
+    }
+  }
+}

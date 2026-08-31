@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-30T10:00:00+03:00",
+  "purpose": "Preregistered legal research-only BM3D restoration screen on reused calibration",
+  "novelty": {
+    "repository_search": "No BM3D or block-matching 3D denoising experiment was present in docs, outputs, configs, scripts, src, tests, pyproject.toml, or uv.lock before this screen",
+    "production_unchanged": true
+  },
+  "data": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_file_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4",
+    "selection_namespace": "aiijc-puzzle-experiments-v1",
+    "selection_seed": 20260829,
+    "split": "calibration",
+    "primary_offset": 276,
+    "primary_count": 24,
+    "primary_filenames_sha256": "eda60f632677a6da07d263ef559ad4d5a99e38fbef072f45fbca50f842b49708",
+    "primary_input_roster_sha256": "a5c6797ab5c3faef52575a4e11752289605808b094a494c439883afc99678f10",
+    "confirmation_offset": 252,
+    "confirmation_count": 24,
+    "confirmation_filenames_sha256": "1bd59c6db73fa4af59e4304949c87512a3a4bb700845ad2bbe0ef677d48a27f1",
+    "confirmation_input_roster_sha256": "8fad7006df590bd692471dd67dec597571d8e9033137811d215b0277e7ee418e",
+    "primary_confirmation_disjoint": true,
+    "historical_exposure": {
+      "globally_fresh": false,
+      "legacy_full_calibration": "Every filename was scored in outputs/legacy-upgrade/calibration700-champion/report.json",
+      "other_current_primary_calibration_overlap": [],
+      "other_current_confirmation_calibration_overlap": [
+        "img_002173.png in novel-analog-layout/calibration24",
+        "img_006455.png in novel-analog-layout/calibration24",
+        "img_006917.png in novel-analog-layout/calibration24"
+      ],
+      "competition_test_basename_note": "Same basenames in competition test are different content-addressed files and do not count as training-record overlap",
+      "interpretation": "reused-calibration evidence only; not untouched holdout or source-disjoint"
+    },
+    "confirmation_access_rule": "Do not render, decode, or score confirmation unless a primary candidate passes every quantitative and manual gate",
+    "holdout_access": false,
+    "competition_test_access": false
+  },
+  "dependency": {
+    "install": "uv run --with bm3d==4.0.3 --with bm4d==4.2.5 --with numpy==2.4.6 --with scipy==1.17.1 --with PyWavelets==1.9.0",
+    "source": "official Python Package Index",
+    "project_url": "https://pypi.org/project/bm3d/4.0.3/",
+    "wheel": "bm3d-4.0.3-py3-none-any.whl",
+    "wheel_sha256": "fc4dfc0de0cd810fcb6ad198e1d0c6f99cf19d41f2ec69ff867674cfb9f2a775",
+    "bm3d_version": "4.0.3",
+    "runtime_pins": {
+      "bm4d": "4.2.5",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "PyWavelets": "1.9.0"
+    },
+    "license_classifier": "Free for non-commercial use",
+    "license_scope_for_this_experiment": "informational non-commercial research only",
+    "submission_contents": "PNG predictions only; no BM3D/BM4D package code, binary, or modified software",
+    "authors_to_credit_if_results_are_public": [
+      "Ymir Makinen",
+      "Lucio Azzari",
+      "Alessandro Foi",
+      "Kostadin Dabov",
+      "Alessandro Foi",
+      "Vladimir Katkovnik",
+      "Karen Egiazarian"
+    ]
+  },
+  "shared_pipeline": {
+    "layout": "true no-atlas bilateral solve_buddies(max_edges=96)",
+    "strict_raw_permutation_audit": true,
+    "postassembly": "frozen RGB seam offsets then bounded luminance gains",
+    "rgb_config_sha256": "4adfd9b614e8556b7de5c1f527d759d15d29c0f74e20aa26ff87900dd773ec9a",
+    "luma_config_sha256": "7488cad2ae7cc75792d6ff0ff2ea0a38fa778979083ffd5c161c857b68fd550f",
+    "bm3d_api": "bm3d.bm3d_rgb",
+    "bm3d_input": "harmonized uint8 RGB converted to float64 and divided by 255",
+    "bm3d_profile": "np",
+    "bm3d_colorspace": "opp",
+    "bm3d_stages": "both hard-thresholding and Wiener stages via bm3d_rgb default",
+    "bm3d_output": "clip float64 to [0,1], multiply by 255, numpy.rint, cast uint8",
+    "nlm": "proper RGB-BGR-RGB OpenCV colored NLM, template=7, search=21",
+    "blend50_formula": "uint8 floor((uint16(bm3d_sigma_0_16)+uint16(nlm_h20)+1)/2)"
+  },
+  "arms": [
+    {"id": "A", "name": "nlm_h20_baseline", "role": "control"},
+    {"id": "B", "name": "nlm_h28_reference", "role": "diagnostic_safe_reference"},
+    {"id": "C", "name": "bm3d_rgb_sigma_0_12", "role": "candidate"},
+    {"id": "D", "name": "bm3d_rgb_sigma_0_16", "role": "candidate"},
+    {"id": "E", "name": "bm3d_rgb_sigma_0_20", "role": "candidate"},
+    {"id": "F", "name": "bm3d_rgb_sigma_0_16_then_nlm_h10", "role": "candidate"},
+    {"id": "G", "name": "blend50_bm3d_sigma_0_16_nlm_h20", "role": "candidate"}
+  ],
+  "primary_gate_per_candidate": {
+    "mean_final_ssim_min": 0.27,
+    "paired_gain_ci95_lower_vs_A_strictly_greater_than": 0.0,
+    "wins_vs_A_min": 18,
+    "within_tile_luma_gradient_ratio_vs_A_mean_min": 0.8,
+    "within_tile_luma_gradient_ratio_vs_A_board_min": 0.7,
+    "within_tile_luma_laplacian_ratio_vs_A_mean_min": 0.75,
+    "within_tile_luma_laplacian_ratio_vs_A_board_min": 0.65,
+    "clipped_fraction_increase_vs_A_board_max": 0.01,
+    "all_seven_predictions_pixel_distinct_on_every_board": true,
+    "manual_severe_new_artifact_boards_max": 0
+  },
+  "selection_rule": {
+    "winner": "highest mean final SSIM among C through G that pass every primary quantitative and manual gate",
+    "tie_break": "lexicographic arm id C,D,E,F,G",
+    "if_none_pass": "primary FAIL; do not open confirmation",
+    "post_target_parameter_changes": false
+  },
+  "confirmation_gate": {
+    "only_A_and_frozen_primary_winner": true,
+    "winner_configuration_unchanged": true,
+    "same_thresholds_as_primary": true,
+    "manual_severe_new_artifact_boards_max": 0
+  },
+  "prediction_commitment": {
+    "required_before_any_target_decode_in_each_stage": true,
+    "primary_scope": "all seven final uint8 RGB predictions, shared strict layout, input/source/runtime hashes, and target-free structural diagnostics for 24 boards",
+    "confirmation_scope": "A and the unchanged frozen winner only",
+    "target_pixels_stored_in_commitment": false
+  },
+  "compliance": {
+    "corresponding_board_pixels_only": true,
+    "all_576_original_tiles_used_exactly_once_before_restoration": true,
+    "references_generation_or_templates": false,
+    "tile_rotation_resampling_warp_or_substitution": false,
+    "cross_board_pixels": false,
+    "targets_during_inference": false,
+    "full_canvas_denoising_after_strict_layout_only": true
+  }
+}

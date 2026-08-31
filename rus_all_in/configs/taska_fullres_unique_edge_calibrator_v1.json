@@ -1,0 +1,69 @@
+{
+  "schema": "aiijc-taska-fullres-unique-edge-calibrator-config-v1",
+  "experiment": "taska-fullres-unique-edge-calibrator-v1",
+  "created_before_held_or_fresh_candidate_inference_or_scoring": true,
+  "hypothesis": "A single source-disjoint linear probability model can remove low-quality edges from the already accepted unique-fullres supply without changing the confirmed selective-plus-fullres fusion consumer.",
+  "fit": {
+    "panel": "existing local32 only",
+    "examples": "already accepted unique-fullres directed edges only",
+    "labels": "exact directed adjacency from organizer-train targets, fit-time only",
+    "feature_order": [
+      "recovered_focal_logit",
+      "restored_support_count",
+      "raw_directional_seam_cost",
+      "raw_outgoing_rank_fraction",
+      "raw_incoming_rank_fraction",
+      "raw_outgoing_margin_from_best",
+      "raw_incoming_margin_from_best",
+      "axis_is_down"
+    ],
+    "rank_definition": "strictly-lower fraction among the 575 non-self directional costs",
+    "margin_definition": "edge cost minus best non-self directional cost in the corresponding outgoing row or incoming column",
+    "estimator": "StandardScaler then LogisticRegression",
+    "logistic_regression": {
+      "C": 1.0,
+      "class_weight": null,
+      "max_iter": 1000,
+      "random_state": 0,
+      "solver": "lbfgs"
+    },
+    "decision_threshold": 0.5,
+    "feature_selection_or_parameter_threshold_sweep": false
+  },
+  "candidate": {
+    "parent": "confirmed selective-target500 plus unique-fullres fusion",
+    "control": "exact frozen unfiltered fusion final layout",
+    "change": "replace the unfiltered unique-fullres suffix by only unique-fullres edges with calibrated probability >= 0.5",
+    "fullres_parent_acceptance_unchanged": "support >= 3/4 and recovered focal logit >= 0",
+    "selective_supply_unchanged": true,
+    "portfolio_arms_unchanged": true,
+    "original_dense_cost_selector_unchanged": true,
+    "focal_gated_tail96_unchanged": true,
+    "matcher_rerun": false
+  },
+  "evaluation": {
+    "sequence": ["held32", "fresh32"],
+    "held_pair_delta_gate": 0.0,
+    "primary_metric": "candidate_minus_confirmed_fusion_satisfied_adjacent_pairs_per_board",
+    "secondary_metrics": ["adjacency_recall", "exact_tiles_per_board"],
+    "pair_denominator": 1104,
+    "bootstrap_unit": "source",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 20260831104,
+    "formal_confirmation_only_if_useful": true
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "targets_absent_from_inference": true,
+    "restored_pixels_matcher_only": true,
+    "strict_original_upright_tile_permutation": true,
+    "competition_test_forbidden": true,
+    "postprocessing_used": false,
+    "production_or_submission_modified": false
+  },
+  "frozen_parents": {
+    "fusion_report_sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af",
+    "fusion_module_sha256": "13ba0e8f5c09c84dfef8c25711805e334a7afd5f0e9e80db749415f566ed6348",
+    "raw_solver_sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+  }
+}

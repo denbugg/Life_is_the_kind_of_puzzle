@@ -1,0 +1,212 @@
+{
+  "schema": "aiijc-drunet-sigma50-protected-all700-measurement-v1",
+  "protocol_version": 1,
+  "status": "immutable_fixed_B_only_protocol_frozen_before_current_calibration700_prediction_or_target_decode",
+  "created_on": "2026-08-30",
+  "purpose": "Measure the single train-justified legal B candidate on all 700 calibration records and, only after a fail-closed calibration gate, exact unchanged holdout700; no arm selection, tuning, production change, or competition-test access",
+  "train_evidence_binding": {
+    "interpretation": "formal reproduction on historically decoded train records; not fresh discovery",
+    "config": "configs/drunet_goal_cycle2_train_preregistered_v2.json",
+    "config_sha256": "b163d1060c2ce8a88890a7f671971f2603564d360bdf7f88940968d0665a00db",
+    "report": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/report.json",
+    "report_sha256": "9898716bceb11892c0f7955ceebfeced573b7e9b9ae4bdda76781cb9e78d8f99",
+    "prediction_commitment": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/prediction-commitment.json",
+    "prediction_commitment_sha256": "d8eb8314a6a281ad62371bd884267247376fa3d2ee09b71840742dfec4177120",
+    "external_commitment_receipt": "outputs/drunet-goal-cycle2-v2/train-offset528-count16.commitment-receipt.json",
+    "external_commitment_receipt_sha256": "4ccb02425cd9538606e54d17cc08127af4a3a9eaff37657a68d61a73ba5ddbc1",
+    "selection_decision": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/selection-decision.json",
+    "selection_decision_sha256": "5b26f02878cb502b5e4650d3a87cce20d56c8cd87d5e7e3f6c7d88fa85ceb866",
+    "fixed_candidate": "B_drunet50_protected_h28_h50_t60",
+    "selection_first_8": {
+      "baseline_A_mean_ssim": 0.2997361877846292,
+      "candidate_B_mean_ssim": 0.3024077499812491,
+      "mean_delta": 0.002671562196619872,
+      "wins_ties_losses": [8, 0, 0]
+    },
+    "verification_last_8": {
+      "baseline_A_mean_ssim": 0.2854445820585976,
+      "candidate_B_mean_ssim": 0.28757119260020453,
+      "mean_delta": 0.002126610541606948,
+      "wins_ties_losses": [8, 0, 0]
+    },
+    "all_16_descriptive": {
+      "baseline_A_mean_ssim": 0.2925903849216134,
+      "candidate_B_mean_ssim": 0.2949894712907268,
+      "mean_delta": 0.0023990863691134,
+      "wins_ties_losses": [16, 0, 0]
+    },
+    "B_target_free_diagnostics_vs_current_D": {
+      "mean_luma_gradient_ratio": 0.9780822233707307,
+      "minimum_luma_gradient_ratio": 0.9621117210405077,
+      "mean_chroma_gradient_ratio": 0.9795075917334443,
+      "minimum_chroma_gradient_ratio": 0.9593986123647874,
+      "mean_laplacian_ratio": 1.0127672788642084,
+      "minimum_laplacian_ratio": 0.9986517853021274,
+      "mean_grid_ratio": 1.0092279065097962,
+      "maximum_grid_ratio": 1.0161594151308067,
+      "total_exact_constant_tile_increase": 0,
+      "near_flat_std_lt_2_delta_mean_max": [0.875, 5]
+    },
+    "rejected_arms": {
+      "C_drunet50_h28_tilewise_drunet30_alpha_0_5": "rejected under unchanged cycle2 preservation gate; strong tile-grid and near-flat artifacts",
+      "D_half_B_half_C": "rejected under unchanged cycle2 preservation gate; strong tile-grid and near-flat artifacts",
+      "cycle2_v2_gate_is_not_weakened_or_rewritten": true
+    },
+    "why_fixed_B_broad_measurement_is_separate": "B improved all 16 train boards and remained within the older established h28-safe structural envelope; broad measurement has no candidate selection"
+  },
+  "data": {
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "calibration": {
+      "split": "calibration",
+      "offset": 0,
+      "count": 700,
+      "filenames_sha256": "8c384af37afa3db09480feedd3d4bd7b7f4d2edbf132b29c9941551cdf68083d",
+      "input_roster_sha256": "c0f47c07776d008ea0323cee889fccfd7ccde120b1fa79cfbc04cb6987201893",
+      "historical_target_exposure": {
+        "freshness_claim": false,
+        "globally_historically_exposed": true,
+        "legacy_calibration700_exposed_all_700_targets": true,
+        "current_measurement_commits_predictions_before_its_own_target_decode": true
+      }
+    },
+    "holdout": {
+      "split": "holdout",
+      "offset": 0,
+      "count": 700,
+      "filenames_sha256": "5bf0464dd7caf88df895ae4bacfd2375ee912ec127c9a5de88cbf9dbe51e7836",
+      "input_roster_sha256": "0d1bc01e8cfe9c7f8dd1295299bf3c0247b0816c1af4147c64e0a04591c08afe",
+      "historical_target_exposure": {
+        "freshness_claim": false,
+        "workspace_may_have_historically_exposed_targets": true,
+        "no_independence_or_freshness_claim": true,
+        "record_roster_disjoint_from_calibration": true,
+        "current_measurement_must_commit_predictions_before_its_own_target_decode": true
+      }
+    },
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4"
+  },
+  "fixed_pipeline": {
+    "layout": "dirty-input-only bilateral directional scores -> solve_buddies(max_edges=96)",
+    "raw_audit": "before any restoration: 576 unique upright source tiles, exact declared reassembly, identical source tile multiset and raw pixels",
+    "harmonizer": "frozen default seam-graph RGB offsets followed by frozen default bounded seam-graph luminance gains",
+    "neural_restoration": "one shared official colour DRUNet sigma50 call over the complete roster as independent upright 20x20 tiles; reflect pad +4 right/bottom per tile; exact crop back to 20x20; no cross-tile context",
+    "neural_canvas": "assemble the 576 restored identities in the already-audited predicted layout without changing identity or geometry",
+    "nlm": "from that single DRUNet50 canvas compute exactly one independent colored-NLM pass at each h20, h28, and h50",
+    "mask": "fixed t60 Sobel mask from the independent h20 image, union exact 20-pixel grid lines, one 3x3 dilation, Gaussian sigma1 softening",
+    "blend": "round(soft_mask * independent_h28 + (1-soft_mask) * independent_h50), clip uint8",
+    "edge_budget": 96,
+    "drunet_sigma_255": 50,
+    "drunet_batch_size": 144,
+    "nlm_strengths": [20, 28, 50],
+    "sobel_threshold": 60.0,
+    "single_candidate_only": "B_drunet50_protected_h28_h50_t60",
+    "target_free_safety_reference_only": "R_drunet50_h28_safety_reference",
+    "same_board_pixels_only": true,
+    "all_576_input_tiles_used_exactly_once": true,
+    "upright_20x20_geometry_unchanged": true,
+    "rotation_flip_resize_warp": false,
+    "cross_board_reference_template_or_target_pixels": false,
+    "constant_or_near_flat_tile_substitution": false,
+    "generation": false,
+    "multiple_or_iterative_nlm_passes": false
+  },
+  "measurement": {
+    "only_target_scored_output": "B_drunet50_protected_h28_h50_t60",
+    "safety_reference_is_not_target_scored": true,
+    "no_B_C_D_selection_or_comparison": true,
+    "exact_contest_ssim_per_board": true,
+    "fixed_ranked_folds_10x70": true,
+    "fixed_quantiles": [0.0, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 1.0],
+    "target_blind_artifacts_must_be_immutable_and_hash_committed_before_score": true,
+    "resumable_prepare_only_before_commitment": true,
+    "score_refuses_without_readonly_commitment_and_external_receipt": true
+  },
+  "broad_completion_rule_fixed_before_calibration_score": {
+    "calibration700_candidate_mean_ssim_closed_interval": [0.27, 0.28],
+    "all_700_strict_provenance_audits_must_pass": true,
+    "target_free_safety_gate_must_pass": true,
+    "if_all_pass": "prepare and commit the exact unchanged candidate on holdout700 before decoding any holdout target, then score once",
+    "otherwise": "do not prepare, commit, or decode holdout700 in this measurement",
+    "holdout_method_parameters_thresholds_and_code_must_be_identical": true,
+    "holdout_freshness_claim": false
+  },
+  "target_free_safety_gate": {
+    "reference": "same DRUNet50 canvas followed by one independent colored-NLM h28 pass",
+    "threshold_source": "configs/edge_protected_nlm_h28safe_reused_calibration_preregistered_v2.json established h28-safe thresholds, plus cycle2 v2 preregistered exact/near-flat count thresholds",
+    "mean_luma_gradient_retention_at_least": 0.8,
+    "minimum_luma_gradient_retention_at_least": 0.7,
+    "mean_chroma_gradient_retention_at_least": 0.8,
+    "minimum_chroma_gradient_retention_at_least": 0.7,
+    "mean_laplacian_retention_at_least": 0.72,
+    "minimum_laplacian_retention_at_least": 0.6,
+    "mean_grid_ratio_at_most": 1.05,
+    "maximum_grid_ratio_at_most": 1.12,
+    "mean_protected_fraction_range": [0.4, 0.75],
+    "every_board_protected_fraction_range": [0.3, 0.85],
+    "maximum_clipped_fraction_increase": 0.01,
+    "candidate_total_exact_spatially_constant_tiles_must_not_exceed_reference": true,
+    "mean_near_flat_std_lt_2_tile_count_increase_at_most": 2.0,
+    "maximum_board_near_flat_std_lt_2_tile_count_increase_at_most": 6,
+    "std_lt_4_counts_reported_descriptively": true,
+    "every_candidate_must_be_pixel_distinct_from_reference": true
+  },
+  "model_provenance": {
+    "architecture": "official KAIR colour DRUNet UNetRes discriminative Gaussian denoiser",
+    "official_repository": "https://github.com/cszn/KAIR",
+    "official_commit": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e",
+    "license": "MIT",
+    "license_sha256": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "parameter_count": 32640960,
+    "strict_state_dict_load": true
+  },
+  "runtime": {
+    "canonical_prediction_device": "mps",
+    "noncanonical_cpu_or_cuda_uint8_rounding_may_differ": true,
+    "canonical_predictions_are_content_hash_bound": true,
+    "colab_command": "python scripts/run_drunet_sigma50_protected_all700.py --phase prepare --stage calibration --device cuda --run",
+    "colab_note": "CUDA is executable for reproducibility but noncanonical; canonical MPS prediction hashes remain authoritative for this measurement"
+  },
+  "asset_sha256": {
+    "LICENSE": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "drunet_color.pth": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "models/basicblock.py": "48406db8867394ac5ae233ebeec7711ac10acfc3a6bbf0072c33aa77d659b6fd",
+    "models/network_unet.py": "8043b6350f1589d5f08892e3be0b4d12c5a502058014285107b7360696d12bf5"
+  },
+  "source_sha256": {
+    "scripts/run_drunet_sigma50_protected_all700.py": "64563820beec56fccf00fc11f899411c175274d46c50a124154ca37bd857bde6",
+    "src/aiijc_puzzle/compliant_atlas_decoder.py": "86704849112b66fa2355c1a07c89c409f0f77ea48e175099ae54337f74a0196d",
+    "src/aiijc_puzzle/drunet_goal_cycle2.py": "b49913044fcec261b29d1f788f1fb48e1e5f972aba6706942543c017b8462838",
+    "src/aiijc_puzzle/drunet_sigma50_protected_broad.py": "b0b73fb30787394f839a8449a7e7c898e92269a65cef613b5152c90b53db5a9f",
+    "src/aiijc_puzzle/edge_protected_nlm.py": "e817068e5ef9ffa1cce82a09cc5d8c7763adf0ff680cacfde7b4b1224ff0259f",
+    "src/aiijc_puzzle/legacy_upgrade.py": "3908f7c192a0f9b43e288b17f7614b66456b2bf20e4539e09aa9f5c5ae2a4586",
+    "src/aiijc_puzzle/nlm_luma_chroma.py": "6d743edfedaf287e49944e56fcb094714214890b9623ceb7036e98a66ec7dbd3",
+    "src/aiijc_puzzle/postassembly_harmonizer.py": "4f7a44ab0781d6da8cee88ed956c34e92d756417162855ee4b1cd84b017dcb41",
+    "src/aiijc_puzzle/pretrained_tile_denoiser.py": "9b79f27d6b8570d65f64e21f703e20bb880ee9d000adb7675cb89c673f4a196e",
+    "src/aiijc_puzzle/protocol.py": "c97fcb5e6eb07abe6a91480c525f63b72a73bfb0aec7df4d51971e82b2f481be"
+  },
+  "access_contract": {
+    "prepare_must_not_read_target_pngs": true,
+    "score_order": [
+      "verify all 700 committed artifacts and raw provenance",
+      "write immutable target-access receipt",
+      "decode targets",
+      "compute fixed metrics"
+    ],
+    "calibration_targets_may_be_decoded_only_after_prediction_commitment_and_receipt": true,
+    "holdout_is_fail_closed_until_readonly_calibration_report_passes_every_gate": true,
+    "competition_test_access": false,
+    "submission_outputs_modified": false,
+    "previous_cycle2_artifacts_modified": false
+  },
+  "forbidden_after_freeze": [
+    "changing layout, harmonization, sigma, h, mask, blend, threshold, safety reference, or gate",
+    "adding or selecting another arm from calibration results",
+    "opening holdout unless every calibration broad gate check passes",
+    "claiming calibration or holdout freshness or source-family independence",
+    "opening competition-test data or changing production/submission outputs"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "schema": "aiijc-fullres-retrieval-adapter-scale3200-preregistered-v1",
+  "created_before_training_or_scale3200_scoring": true,
+  "status": "signed-fixed-protocol",
+  "purpose": "one fixed from-scratch 3200-step continuation of the positive matched 400-to-1600 retrieval and union-supply slope",
+  "justification": {
+    "scale1600_report": {
+      "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/report.json",
+      "sha256": "47ce8b176d2da5b6c278af6bc66be27464d87465cca6507a94e57e569f0ec796"
+    },
+    "step1600_minus_step400": {
+      "pooled_r1_gain": 0.002321105072463747,
+      "pooled_r5_gain": 0.003453351449275388,
+      "raw_union_top32_gain": 0.007189764492753659,
+      "matched_reciprocal_precision_gain": 0.006855184233076239
+    },
+    "no_parameter_or_threshold_sweep": true
+  },
+  "frozen_implementation": {
+    "architecture": "unchanged FullResolutionRetrievalAdapter width32 blocks8 residual32/255 without spatial downsampling",
+    "module": {
+      "path": "src/aiijc_puzzle/fullres_retrieval_adapter.py",
+      "sha256": "fc28b6c361a2e637ae23fcff1d1b0c03fc85aada8076c06035c899a491be35b6"
+    },
+    "loss": "unchanged frozen d64 Socket exact-neighbour partial-OT NLL plus raw row/column CE and boundary guard",
+    "features": "unchanged raw RGB plus per-tile channel-standardised RGB inside the stride-one adapter",
+    "no_architecture_loss_feature_or_augmentation_change": true
+  },
+  "frozen_inputs": {
+    "source_roster_report": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/report.json",
+      "sha256": "780f6b065ba769bef8b3ffd30cf0bcb781b2040258835964b122725e732fccc7"
+    },
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+      "parameters_frozen": true,
+      "mode": "eval"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "pilot_report": {
+      "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/report.json",
+      "sha256": "5fafb0307586669c7b7c9eaa4699fda1a3bd1250ca921fc48dd7e86af0bdefbb"
+    }
+  },
+  "source_protocol": {
+    "fit_sources": 32,
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "local_sources": 16,
+    "local_digest": "25ea956a8514d72cb09b8093f12999534995cf75fb18b383834acf38693ca47f",
+    "terminal_sources": 16,
+    "terminal_digest": "2a39d853772aa2c6d23d8b7dbc59f726e2f3a3ecfe098e96ad065c1bbd6d65a6",
+    "fit_local_terminal_source_disjoint": true,
+    "local_panel_already_touched_and_scaling_diagnostic_only": true,
+    "terminal_target_files_never_opened": true,
+    "competition_test_forbidden": true
+  },
+  "training": {
+    "from_scratch": true,
+    "seed": 20260911,
+    "steps": 3200,
+    "fixed_checkpoints": [1600, 3200],
+    "stream": "np.random.default_rng(seed+17), same source/corruption/permutation formula extended to 3200; first 1600 specs exactly match scale1600",
+    "one_full_board_per_update": true,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0002,
+    "gradient_clip": 1.0,
+    "scheduler": "CosineAnnealingLR over the full 3200-step trajectory, eta_min=0.05*learning_rate",
+    "checkpoint1600_is_matched_within_this_trajectory_not_weight_identical_to_old_1600": true,
+    "independent_per_tile_corruption": {
+      "contrast": [0.7, 1.3],
+      "brightness_offset_uint8": [-30.0, 30.0],
+      "gaussian_noise_sigma_uint8": [40.0, 55.0],
+      "blur": "separable reflect 1-2-1 blur3",
+      "jpeg_quality": [35, 50],
+      "bag_shuffle_independent_each_update": true
+    }
+  },
+  "evaluation": {
+    "synthetic_case_seed": 20260908,
+    "draw_index": 0,
+    "raw_parallel_control": "immutable raw d64 partial-OT",
+    "variants": ["raw_d64_ot", "adapter_step1600", "adapter_step3200"],
+    "metrics": [
+      "pooled and directional R@1/R@5/R@32",
+      "native reciprocal precision and coverage",
+      "checkpoint1600-vs-checkpoint3200 precision at one matched reciprocal coverage",
+      "directional and pooled raw-top32 union coverage"
+    ],
+    "freeze_before_reference_scoring": true,
+    "no_threshold_weight_architecture_loss_feature_or_augmentation_sweep": true
+  },
+  "local16_terminal_open_gate": {
+    "comparison": "adapter_step3200 minus immutable raw_d64_ot",
+    "pooled_r1_gain_minimum": 0.005,
+    "pooled_r5_gain_minimum": 0.0,
+    "matched_reciprocal_precision_gain_minimum": 0.002,
+    "matched_reciprocal_coverage_minimum": 0.03,
+    "matched_step1600_to_step3200_r5_nonnegative": true,
+    "matched_step1600_to_step3200_union_nonnegative": true,
+    "logic": "all conditions simultaneously"
+  },
+  "terminal16_transfer_gate": {
+    "opened_only_after_local_gate": true,
+    "comparison": "adapter_step3200 minus immutable raw_d64_ot",
+    "pooled_r1_gain_minimum": 0.0,
+    "pooled_r5_gain_minimum": 0.0,
+    "matched_reciprocal_precision_gain_minimum": 0.0,
+    "matched_reciprocal_coverage_minimum": 0.03,
+    "logic": "all conditions simultaneously"
+  },
+  "decoder": {
+    "included_in_runner": false,
+    "eligible_only_if_terminal_transfer_gate_passes": true,
+    "strict_original_upright_permutation_required": true,
+    "adapter_pixels_in_output": false
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "raw_d64_evidence_immutable": true,
+    "adapter_pixels_matcher_only": true,
+    "competition_test_access": false,
+    "submission_output_postprocess_or_production_change": false
+  },
+  "weco": {
+    "checkpoint3200_local_step": 153,
+    "terminal_step_if_opened": 154,
+    "parent_step": 139,
+    "log_only_successfully_executed_metrics": true
+  }
+}

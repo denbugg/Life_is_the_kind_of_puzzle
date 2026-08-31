@@ -1,0 +1,160 @@
+{
+  "schema": "aiijc-taska-seam-held300-diagnostic-v1",
+  "experiment": "taska-seam-held300-diagnostic-v1",
+  "purpose": "One fixed legal source-held diagnostic of the opened32 TASKA seam and raw-tail recipe on a precommitted 16-source x 2-draw panel from historical matcher sources 6700..6999. The range was excluded from matcher fitting but exposed to historical model selection, so no fresh promotion is claimed.",
+  "protocol": {
+    "single_candidate_arm": true,
+    "hyperparameter_or_arm_sweep": false,
+    "roster_committed_before_selected_targets_opened": true,
+    "predictions_matrices_harvest_and_layouts_frozen_before_references": true,
+    "historical_matcher_training_disjoint": true,
+    "historical_model_selection_exposed": true,
+    "fresh_promotion_claimed": false
+  },
+  "panel": {
+    "selection_namespace": "aiijc-taska-seam-held300-diagnostic-v1-source16xdraw2",
+    "selection_seed": 2087291821,
+    "selection_algorithm": "sha256(namespace\\0seed\\0filename) ascending, filename tie-break",
+    "eligible_minimum": "img_006700.png",
+    "eligible_maximum": "img_006999.png",
+    "eligible_count": 300,
+    "eligible_digest": "8f736ea53d6bb377c82b0286d51381d2305365266dd02286fb417a9d028729d5",
+    "source_filenames": [
+      "img_006756.png",
+      "img_006878.png",
+      "img_006926.png",
+      "img_006927.png",
+      "img_006793.png",
+      "img_006795.png",
+      "img_006748.png",
+      "img_006869.png",
+      "img_006755.png",
+      "img_006934.png",
+      "img_006949.png",
+      "img_006877.png",
+      "img_006977.png",
+      "img_006883.png",
+      "img_006701.png",
+      "img_006789.png"
+    ],
+    "source_count": 16,
+    "draws": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "source_order_digest": "9876aebe37330d923b803d8d01a33e9bf17699a8a9b2cb2363fd22909a92d234",
+    "cases_digest": "f9d70aa1858564abcf8296b244338c8d5a06817ac29e5e2e48eaf656c6404e1d",
+    "opened32_overlap_count": 0
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "opened32_recipe": {
+      "path": "configs/taska_seam_replay_opened32_v1.json",
+      "sha256": "06396905bdf7b552e165e207262d5a0654d19af3d35b2d557501551ca46da359"
+    },
+    "matcher_v3": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_v3.pt",
+      "sha256": "6f0917d66d908f6cc0f4c1fcb949d3bcbadcba2490a6f7b5a12596e61de9730e"
+    },
+    "matcher_local": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_local.pt",
+      "sha256": "5932853a73961d261b494368a4db04633fecc5996771c14d64f49ef00c7cfe73"
+    }
+  },
+  "matcher": {
+    "kinds": [
+      "v3",
+      "local"
+    ],
+    "views": [
+      "raw",
+      "median",
+      "bilateral"
+    ],
+    "orientations": 2,
+    "fusion": "per-model-sinkhorn-then-elementwise-min",
+    "sinkhorn_iterations": 20,
+    "cycle_rounds": 3,
+    "cycle_weight": 0.35,
+    "acyclic_weight": 3.0,
+    "sinkhorn_slack": 0
+  },
+  "harvest": {
+    "depth": 1,
+    "votes_fallback": 10,
+    "vote_target": 350,
+    "weighted": false,
+    "margin": 0.0,
+    "order": "raw_fused_score",
+    "quad_weight": 0.0,
+    "historical_quad_0_4_excluded_as_target_id_dependent": true
+  },
+  "solver": {
+    "name": "raw-tail-global",
+    "baseline_quantile": 0.15,
+    "search_rounds": 6,
+    "random_seed": 0,
+    "component_cap": 0,
+    "fill_rounds": 1,
+    "border_unary": false,
+    "border_weight": 0.0
+  },
+  "evaluation": {
+    "primary_metric": "satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": [
+      "adjacency_recall",
+      "exact_tiles_per_board"
+    ],
+    "bootstrap_unit": "source_with_two_draws",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 934711727,
+    "full_panel_requires_exactly_32_cases": true
+  },
+  "runtime_sources": {
+    "diagnostic_runner": {
+      "path": "scripts/run_taska_seam_held300_diagnostic.py",
+      "sha256": "f78250719a9a09642ec2a33af867c157a3a9fce148bcd794caefd96b29b7c227"
+    },
+    "layout_evaluation": {
+      "path": "src/aiijc_puzzle/layout_evaluation.py",
+      "sha256": "b2641059b9829e4809267a1c36471641d0a8d5b9f47172137264b2157b3677c1"
+    },
+    "protocol": {
+      "path": "src/aiijc_puzzle/protocol.py",
+      "sha256": "53dca94dce2523f22a6a9bfba7f6f5e604890b66b7f3d91c9fca47307bf60468"
+    },
+    "raw_tail_global_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    },
+    "restoration_corruption": {
+      "path": "src/aiijc_puzzle/restoration_r6.py",
+      "sha256": "8ea4b05824ebbbf9fd3f50185e3405aa22a6b48054948b6fdec60ab137b1d5f3"
+    },
+    "synthetic_case_generator": {
+      "path": "src/aiijc_puzzle/synthetic_socket_evaluation.py",
+      "sha256": "b69b929a39b81197eff3341affade7dc5679626acb8dc6c259da358e55faec23"
+    },
+    "taska_seam_matcher": {
+      "path": "src/aiijc_puzzle/taska_seam_matcher.py",
+      "sha256": "9b0d3783e3fc3065f427d7d50e8d5ca5e8d755c006844f6905bd5633a7b80790"
+    }
+  },
+  "legality": {
+    "organizer_train_sources_only": true,
+    "dirty_tiles_only_for_candidate_inference": true,
+    "restored_or_denoised_pixels_emitted": false,
+    "target_ids_or_exact_references_in_candidate_inference": false,
+    "chooser_used": false,
+    "verifier_used": false,
+    "border_prior_used": false,
+    "index_derived_boundary_mask_used": false,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "competition_test_forbidden": true
+  }
+}

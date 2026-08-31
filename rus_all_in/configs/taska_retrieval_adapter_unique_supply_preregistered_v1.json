@@ -1,0 +1,115 @@
+{
+  "schema": "aiijc-taska-retrieval-adapter-unique-supply-preregistered-v1",
+  "created_before_candidate_target_decode": true,
+  "status": "frozen-before-target-assisted-scoring",
+  "purpose": "one nominator-only adapter-step400 top32 continuation above the confirmed six-arm selective plus unique-fullres fusion",
+  "no_repeat_boundary": {
+    "naf_fullres_union": "the old NAF view used four v3/local restored scorers with support>=3/4; this emitter is trained through frozen d64 exact-neighbour ranking and uses one reciprocal-rank top32 contract",
+    "twin_unique": "the Twin emitter intersected direct Twin top32 with Union-v2 hard top144; this emitter uses only adapter-step400 frozen d64 top32 ranks",
+    "drunet_unique": "the DRUNet emitter used width6 grayscale descriptor mutual top1 and was OOD for the dirty focal verifier; this run has a target-free breadth stop and an explicit fixed local focal-calibration gate",
+    "forbidden_repeats": [
+      "topk or reciprocal-rank threshold sweep",
+      "focal threshold sweep",
+      "new standalone selector arm",
+      "raw dense score replacement or fusion",
+      "tail budget or six-arm roster sweep"
+    ]
+  },
+  "frozen_inputs": {
+    "adapter_checkpoint": {
+      "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/adapter_step400.pt",
+      "sha256": "00ca56f1be2c8e99bc8ef19b0d9190862d6bd5e4fb8b36fbe926087cd3945cb0",
+      "step": 400
+    },
+    "adapter_report": {
+      "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/report.json",
+      "sha256": "5fafb0307586669c7b7c9eaa4699fda1a3bd1250ca921fc48dd7e86af0bdefbb"
+    },
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "focal_checkpoint": {
+      "path": "artifacts/prior-taska/ckpt/verify_pair_best.pt",
+      "sha256": "3bcc89a12e7b539304484b441688b4b9fb1c3711e918befed9cdef7c17f776e7"
+    },
+    "confirmed_fusion_report": {
+      "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/report.json",
+      "sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af"
+    },
+    "raw_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    }
+  },
+  "nominator": {
+    "adapter_checkpoint": "step400 only",
+    "socket_view": "adapter pixels are matcher-only and pass through the frozen d64 partial-OT SocketMatcher",
+    "topk": 32,
+    "reciprocal_contract": "within the mutual row-top32 and column-top32 graph, each source and target independently selects the edge minimizing (max rank, rank sum, row rank, column rank, ids); nominate only mutually selected edges",
+    "deduplicate_before_focal": [
+      "current",
+      "selective accepted",
+      "confirmed fullres accepted"
+    ],
+    "dirty_visible_focal_logit_minimum": 0.0,
+    "raw_d64_top32_saved_as_parallel_control": true
+  },
+  "target_free_feasibility_gate": {
+    "control_replay_count": 32,
+    "mean_unique_proposed_minimum": 2.0,
+    "mean_focal_accepted_minimum": 1.0,
+    "mean_focal_accepted_maximum": 64.0,
+    "failure_action": "stop before any local target decode"
+  },
+  "local_focal_calibration_gate": {
+    "accepted_precision_minimum": 0.25,
+    "accepted_precision_not_below_ungated_unique_precision": true,
+    "accepted_true_edges_per_board_minimum": 0.5,
+    "no_threshold_sweep": true
+  },
+  "solver": {
+    "extension": "append accepted unique adapter edges only to the existing combined_union_focal evidence",
+    "standalone_adapter_arm": false,
+    "selector_roster": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "selector_objective": "unchanged original TASKA all-1104-bond raw seam cost",
+    "tail": "unchanged focal-gated non-adjacent tail96",
+    "raw_dense_costs_unchanged": true
+  },
+  "panel_gates": {
+    "local32": {
+      "pair_delta_minimum": 0.0,
+      "exact_delta_minimum": -1.0,
+      "also_requires_focal_calibration_gate": true
+    },
+    "held32": {
+      "pair_delta_minimum": 0.25
+    },
+    "fresh32": {
+      "opened_only_after_held_gate": true
+    }
+  },
+  "freeze_and_legality": {
+    "target_free_archive_before_each_reference_decode": true,
+    "local_freeze_completed_and_reported_before_local_target_decode": true,
+    "competition_test_access": false,
+    "adapter_and_raw_socket_pixels_matcher_only": true,
+    "future_layouts_use_only_original_upright_tiles": true,
+    "strict_permutation_required": true,
+    "postprocess_submission_or_production_change": false
+  },
+  "weco": {
+    "local_step": 132,
+    "held_step": 133,
+    "fresh_step": 134,
+    "parent_step": 102,
+    "log_only_executed_metrics": true
+  }
+}

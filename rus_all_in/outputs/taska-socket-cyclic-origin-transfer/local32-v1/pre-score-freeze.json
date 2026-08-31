@@ -1,0 +1,37 @@
+{
+  "schema": "aiijc-taska-socket-cyclic-origin-transfer-pre-score-v1",
+  "created_before_exact_reference_reconstruction": true,
+  "contains_evaluation_references_or_labels": false,
+  "terminal_or_fresh_accessed": false,
+  "competition_test_accessed": false,
+  "artifacts": {
+    "candidate_archive": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.npz",
+      "sha256": "92bda45e3a3347aebbebf5ba111a80b08ef280705a325e291120749279ca8592"
+    },
+    "candidate_metadata": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.json",
+      "sha256": "9fab4bb4d3c74fbedc623e7f5ae1d75973f2c87f8309cacc3f3895a82e319d2d"
+    },
+    "preregistration": {
+      "path": "configs/taska_socket_cyclic_origin_transfer_v1.json",
+      "sha256": "776414e1849da9eb1c77c23200aa826bcb9f28f1ae328b57953f97aa471da414"
+    },
+    "checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "six_arm_archive": {
+      "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.npz",
+      "sha256": "0f8458650c901a406747d25f54849068891ee39a5b3be5061828d08df25b7814"
+    },
+    "six_arm_metadata": {
+      "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.json",
+      "sha256": "990d6d6ddefddaab47f327ca640427e6f515564a331c8c15244917263abe77fd"
+    },
+    "six_arm_freeze": {
+      "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/pre-arm-score-freeze.json",
+      "sha256": "b4684b1c7fc9cd6701ee4abd0001029b59626b3714dc35a41525905e9e8d4261"
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "aiijc-taska-relation-truth-selector-confirmation-freeze-v1",
+  "created_before_exact_reference_reconstruction": true,
+  "contains_evaluation_references_or_labels": false,
+  "all_six_layouts_features_expected_scores_and_choice_frozen": true,
+  "verified_taska_artifact_sha256": {
+    "matcher_v3": "6f0917d66d908f6cc0f4c1fcb949d3bcbadcba2490a6f7b5a12596e61de9730e",
+    "matcher_local": "5932853a73961d261b494368a4db04633fecc5996771c14d64f49ef00c7cfe73",
+    "logistic_calibrator": "adc76ee87fc112d4ca3eeb676cdec6b7d103c596d62a9848ba65ee5ef384b1ac",
+    "focal_verifier": "3bcc89a12e7b539304484b441688b4b9fb1c3711e918befed9cdef7c17f776e7",
+    "nonlinear_calibrator": "2a5f95bd9d8e08e57b8bd02e242e25ef4661036ed3b1985fda1d70ee1bf9d2a6",
+    "raw_tail_global_solver": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+  },
+  "device": "mps:0",
+  "mps_bitwise_reproducibility_claimed": false,
+  "artifacts": {
+    "preregistration": {
+      "path": "configs/taska_relation_truth_selector_confirmation_v1.json",
+      "sha256": "3d903eb595d1c0d152a8b53c7c9fa578b5b012227eeb03ab629a7dd24d5ce4e9"
+    },
+    "preregistration_sidecar": {
+      "path": "configs/taska_relation_truth_selector_confirmation_v1.json.sha256",
+      "sha256": "ef37c820dc194b10c3a86b88acea605f10db4d9e08ee1060bf944f45033e3fe0"
+    },
+    "exclusion_snapshot": {
+      "path": "configs/taska_relation_truth_selector_confirmation_exclusions_v1.json",
+      "sha256": "46d3acccc593998b4afcdf0e53459649aa8cd17cfbf0145631162b6ebca4661f"
+    },
+    "exclusion_snapshot_sidecar": {
+      "path": "configs/taska_relation_truth_selector_confirmation_exclusions_v1.json.sha256",
+      "sha256": "10a27e0c9c7e8420f50956581648d670617c184e379718e4519e58ebcbae37d3"
+    },
+    "relation_model": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/frozen-relation-classifier.pkl",
+      "sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b"
+    },
+    "frozen_archive": {
+      "path": "outputs/taska-relation-truth-selector/formal-confirmation-v1/frozen-target-free-eval.npz",
+      "sha256": "4cd0346333813cea3576f6db40ea517dcc45fdd5aa81a432a351cf4afdd73131"
+    },
+    "frozen_metadata": {
+      "path": "outputs/taska-relation-truth-selector/formal-confirmation-v1/frozen-target-free-eval.json",
+      "sha256": "4ae4b8f27d3d6abef21581b189e84c456768c3935d975cec389952b40fdba64c"
+    },
+    "confirmation_runner": {
+      "path": "scripts/run_taska_relation_truth_selector_confirmation.py",
+      "sha256": "d04299b0e69a12abb0e063a919407deb692254860ab53c084255ad1a97e5330e"
+    },
+    "parent_confirmation_runner": {
+      "path": "scripts/run_taska_selective_fullres_union_fusion_fresh32_confirmation.py",
+      "sha256": "f38356446da7283d42fb8c14ce2c024a74c5f57a1c9133ca3f107f54bdd5a654"
+    },
+    "relation_selector": {
+      "path": "src/aiijc_puzzle/taska_relation_truth_selector.py",
+      "sha256": "1c91b3f18d2fe08dce59217bbdf446a4638fabf4eec19b91cacd988de8cd48e2"
+    },
+    "six_arm_preparer": {
+      "path": "src/aiijc_puzzle/taska_six_arm_learned_selector.py",
+      "sha256": "cb37af0e278c7b8143bac65a538b349ade85ad1dd07079d4c13837da469bd1a6"
+    },
+    "fusion_solver": {
+      "path": "src/aiijc_puzzle/taska_selective_fullres_fusion.py",
+      "sha256": "13ba0e8f5c09c84dfef8c25711805e334a7afd5f0e9e80db749415f566ed6348"
+    },
+    "raw_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    },
+    "fullres_denoiser_checkpoint": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/fullres_boundary_denoiser.pt",
+      "sha256": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c"
+    },
+    "matcher_v3_checkpoint": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_v3.pt",
+      "sha256": "6f0917d66d908f6cc0f4c1fcb949d3bcbadcba2490a6f7b5a12596e61de9730e"
+    },
+    "matcher_local_checkpoint": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_local.pt",
+      "sha256": "5932853a73961d261b494368a4db04633fecc5996771c14d64f49ef00c7cfe73"
+    },
+    "logistic_calibrator": {
+      "path": "outputs/taska-edge-calibrator/train256-v1/calibrator.npz",
+      "sha256": "adc76ee87fc112d4ca3eeb676cdec6b7d103c596d62a9848ba65ee5ef384b1ac"
+    },
+    "focal_checkpoint": {
+      "path": "artifacts/prior-taska/ckpt/verify_pair_best.pt",
+      "sha256": "3bcc89a12e7b539304484b441688b4b9fb1c3711e918befed9cdef7c17f776e7"
+    },
+    "nonlinear_calibrator": {
+      "path": "outputs/taska-nonlinear-calibrator/train256-v1/calibrator.npz",
+      "sha256": "2a5f95bd9d8e08e57b8bd02e242e25ef4661036ed3b1985fda1d70ee1bf9d2a6"
+    }
+  }
+}

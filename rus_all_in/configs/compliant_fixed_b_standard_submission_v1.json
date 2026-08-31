@@ -1,0 +1,103 @@
+{
+  "schema": "aiijc-fixed-b-standard-production-authorization-v1",
+  "status": "CALIBRATION700_AND_UNCHANGED_HOLDOUT700_NUMERIC_PROVENANCE_SAFETY_FLATNESS_MANUAL_PASS",
+  "production_authorized_by_root": true,
+  "canonical_device": "mps",
+  "promoted_arm": "B_drunet50_protected_h28_h50_t60",
+  "pipeline": {
+    "layout": "bilateral directional scores -> solve_buddies(max_edges=96)",
+    "strict_upright_tile_bijection": true,
+    "harmonizer": "RGB seam offsets -> bounded luminance gains",
+    "drunet": {
+      "architecture": "official colour DRUNet UNetRes",
+      "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+      "sigma_255": 50.0,
+      "tile_input": [
+        20,
+        20,
+        3
+      ],
+      "same_tile_reflect_padding_right_bottom": [
+        4,
+        4
+      ],
+      "exact_crop": [
+        20,
+        20
+      ],
+      "batch_size": 144,
+      "cross_tile_context": false,
+      "cross_board_context": false
+    },
+    "nlm": {
+      "independent_single_pass_strengths": [
+        20,
+        28,
+        50
+      ],
+      "h_color_equals_h": true,
+      "template_window": 7,
+      "search_window": 21
+    },
+    "mask": {
+      "source": "DRUNet50 then independent h20",
+      "sobel_threshold": 60.0,
+      "all_20px_grid_boundaries_protected": true,
+      "dilation": "3x3 one iteration",
+      "softening": "Gaussian sigma1"
+    },
+    "blend": "rint(soft*h28 + (1-soft)*h50), clip uint8",
+    "constant_or_near_flat_tile_substitution": false
+  },
+  "evidence": {
+    "measurement_config": {
+      "path": "configs/drunet_sigma50_protected_all700_measurement_v1.json",
+      "sha256": "a402fc682b0db96b60004fa2c33ea70baf06035cb4971b8ee0778ceb1b7f05ac"
+    },
+    "production_runtime_manifest": {
+      "path": "outputs/compliant-fixed-b-standard-preflight-v1/runtime-manifest.json",
+      "sha256": "166b8a60b8c4ea41aba3642a1b7a51c59841e5a8d22478e80ce6c20df03d0565",
+      "digest_sha256": "56d075e6eaee0b1f2ef030727438c84ddde3e94c642a75e54d5cfcb31b89628f"
+    },
+    "calibration_commitment": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/calibration700/prediction-commitment.json",
+      "sha256": "13a61821d616ad01eee79f45db51dc223d1c041fe502ff84525e6259e623853c"
+    },
+    "calibration_commitment_receipt": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/calibration700/commitment-receipt.json",
+      "sha256": "4c5f689efc26a75348e218704fb32de8594e40b893457a2d07e6b7c6398fa0ab"
+    },
+    "calibration_target_access_receipt": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/calibration700/targets-opened-receipt.json",
+      "sha256": "ff48100dd81acf007a174fa685e7362bfa0f127260f2d062892c7346556464f1"
+    },
+    "calibration_report": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/calibration700/report.json",
+      "sha256": "06934d5a2450ef3752a88c0d9f8ab90b17b5f0a3d859ef8cc67dbb4da3392590"
+    },
+    "calibration_manual_review": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/calibration700/manual-review.json",
+      "sha256": "cd347ab92d037b6c086b8a4946d1bfaf1ffde9f6d08c2d7a421639ce9540e3d8"
+    },
+    "holdout_commitment": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/holdout700/prediction-commitment.json",
+      "sha256": "6df1f7b6d8d318a6dce6d81d6c35890cdb05e1c6481c1351b92d2393341298f2"
+    },
+    "holdout_commitment_receipt": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/holdout700/commitment-receipt.json",
+      "sha256": "94bb83b4e1f8ada29e05ee378cd890c849e4ab070b1266dba9c52b45069edf4f"
+    },
+    "holdout_target_access_receipt": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/holdout700/targets-opened-receipt.json",
+      "sha256": "0db6269d587b91caf5dd6962f6d02db00aec248e81f81a1dedffea43134a3147"
+    },
+    "holdout_report": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/holdout700/report.json",
+      "sha256": "05a4f2fab4d0dd07624e5a54c143004302cf4df78a15460388775fa0b1013d07"
+    },
+    "holdout_manual_review": {
+      "path": "outputs/drunet-sigma50-protected/all700-measurement-v1/holdout700/manual-review.json",
+      "sha256": "30880261fe19afee448c0cf997e1d1e7261e348bf9aa6c51f299d78bc86d759e"
+    }
+  }
+}

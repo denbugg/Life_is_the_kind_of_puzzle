@@ -1,0 +1,14 @@
+{
+  "schema": "aiijc-aborted-training-before-scoring-v1",
+  "status": "aborted-before-first-signed-checkpoint-and-before-any-local-or-terminal-scoring",
+  "reason": "MPS was reprioritized to the higher-value tri-emitter verifier; the signed scale3200 protocol remains server-ready",
+  "completed_updates": 400,
+  "first_signed_checkpoint_step": 1600,
+  "checkpoint_written": false,
+  "target_or_reference_accessed": false,
+  "local_metrics_computed": false,
+  "terminal_metrics_computed": false,
+  "competition_test_accessed": false,
+  "production_or_submission_modified": false,
+  "preregistration": "configs/fullres_retrieval_adapter_scale3200_preregistered_v1.json"
+}

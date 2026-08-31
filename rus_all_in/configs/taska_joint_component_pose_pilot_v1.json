@@ -1,0 +1,71 @@
+{
+  "schema": "aiijc-taska-joint-component-pose-preregistration-v1",
+  "registered_after": "no-repeat audit plus opened-panel candidate-space coverage diagnostic",
+  "registered_before": "feature-cache materialization, model initialization, training, local inference, or local scoring",
+  "hypothesis": "dense top-8 TASKA boundary contacts provide a sufficiently covered translation roster; an edge-aware all-component graph Transformer can improve conditional shift retrieval and jointly anchor up to four components without a raw-seam veto",
+  "no_repeat_boundary": {
+    "generic_component_set_absolute_head": "not run because component_absolute_placer already combined native component pixels, board-set attention, purity and joint feasible absolute offsets and remained at chance",
+    "selected_supply_relation_roster": "stopped before fit because it covered only 0.3604% of fit components and 0.6267% of fit dominant support",
+    "whole_layout_origin": "not repeated; no standalone roll or frame head",
+    "component_relation_reranker": "reused only as evidence that relation ranking can transfer; this model jointly contextualizes every component and scores TASKA dense-contact pose candidates rather than independent Socket relation queries",
+    "socket_permutation_flow": "does not dissolve rigid components into tile-slot Hungarian logits"
+  },
+  "coverage_diagnostic": {
+    "dense_top8_fit_component_coverage": 0.19567567567567568,
+    "dense_top8_fit_dominant_support_coverage": 0.48306025197467195,
+    "dense_top8_fit_pure_tile_coverage": 0.24013657056145676,
+    "dense_top8_local_component_coverage": 0.22979397781299524,
+    "dense_top8_local_dominant_support_coverage": 0.5316421535555256,
+    "dense_top8_local_pure_tile_coverage": 0.2492777548493603
+  },
+  "fit_panel": "formal source16 x draw2 organizer-train confirmed six-arm archive",
+  "local_panel": "held source16 x draw2 organizer-train confirmed six-arm archive",
+  "dense_contact_topk": 8,
+  "candidate_cap_per_nontrivial_component": 128,
+  "candidate_roster": "four directional dense cost queries per member tile; external-component top8 contacts imply feasible rigid shifts; zero shift retained",
+  "node_evidence": "dirty-only tile colour, boundary and gradient descriptors pooled per real component plus current geometry",
+  "graph_evidence": "all directed component-pair contact aggregates; two sparse relation-message plus global self-attention layers",
+  "candidate_evidence": "rank, normalized cost, support, target diversity, direction and destination geometry",
+  "width": 64,
+  "layers": 2,
+  "heads": 4,
+  "capacity_steps": 80,
+  "capacity_seed": 2026083121,
+  "capacity_learning_rate": 0.002,
+  "pilot_steps": 240,
+  "pilot_seed": 2026083122,
+  "pilot_learning_rate": 0.0005,
+  "augmentations": "component-order permutation every update, Gaussian standardized-feature jitter, 15% pair-feature dropout, 10% candidate-feature dropout, paired independent corruption draws",
+  "feature_jitter_sigma": 0.03,
+  "pair_feature_dropout": 0.15,
+  "candidate_feature_dropout": 0.1,
+  "maximum_anchors": 4,
+  "coverage_threshold": 0.5,
+  "purity_threshold": 0.5,
+  "candidate_probability_threshold": 0.05,
+  "decoder": "place up to four learned anchors jointly, preserve remaining baseline components when collision-free, repack by minimum baseline displacement, Hungarian-fill deferred tiles",
+  "raw_seam_veto": false,
+  "capacity_gate": "conditional shift R@1 at least 0.80 on one fit board after 80 steps",
+  "local_retrieval_gate": "support-weighted R@1 gain at least +0.02 and R@5 loss no worse than -0.01 versus identical raw candidate roster",
+  "local_layout_gate": "exact delta strictly positive and satisfied-pair delta at least -1 per board",
+  "heavy_run_policy": "prepare server-scale continuation only if every capacity, retrieval and layout gate passes; otherwise stop without a longer run",
+  "no_sweep": true,
+  "fixed_source_sha256": {
+    "src/aiijc_puzzle/taska_joint_component_pose.py": "7bf3f877f797a1bb3f9326e5423c9f3fc12ec844efd19660e819f4dd4e36a512",
+    "scripts/run_taska_joint_component_pose.py": "9648b032fa0fb1a9f4fd2e14c0d4089464278235bb9bb24ea4ea280317db93af"
+  },
+  "fixed_input_sha256": {
+    "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/frozen-target-free-eval.npz": "1cbc3b38aff3ac6af5a5ac263d4fbb9cf57b449710a1716513aa6f55477d43e0",
+    "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/frozen-target-free-eval.json": "2b66d8ff95620dc27e9874ffd4bd62b67f065aee5bf4a46f980f9759a68d1a83",
+    "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.npz": "6cfb766c1e693a2fec535d683f187a89f2d63632a282ff199e6aa708caafe469",
+    "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.json": "f37d23bd44c1565ae560c46ed6b6f33b4500b52168147ba114ff8debc59f0bf4",
+    "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.npz": "0876d7acd6be7ebe863f831de568586c837da52cc603df4ff8d7c5a6b0d441df"
+  },
+  "legality": {
+    "organizer_train_targets_only": true,
+    "competition_test_accessed": false,
+    "strict_original_upright_576_tile_permutation": true,
+    "pixels_modified": false,
+    "production_or_submission_modified": false
+  }
+}

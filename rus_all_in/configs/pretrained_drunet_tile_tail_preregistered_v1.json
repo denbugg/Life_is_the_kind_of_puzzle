@@ -1,0 +1,184 @@
+{
+  "schema": "aiijc-pretrained-drunet-tile-tail-preregistration-v1",
+  "status": "preregistered_before_any_calibration_target_decode_in_this_experiment",
+  "purpose": "Preregistered reused-calibration-only screen of one train-selected legal discriminative tile denoiser tail",
+  "created_on": "2026-08-30",
+  "train_only_development": {
+    "report": "outputs/pretrained-tile-denoiser/train-development-offset512-count16/report.json",
+    "report_sha256": "7c64c96661c82e0a684a89e696763efcb35c818c32e7ad0c668d9fdd0a4ce6b0",
+    "split": "train",
+    "offset": 512,
+    "count": 16,
+    "selection_first_8": {
+      "selected_arm": "drunet_sigma40_then_nlm28",
+      "mean_ssim": 0.29088160204969205,
+      "delta_vs_h20": 0.015854135405480075,
+      "wins_vs_h20": 8,
+      "delta_vs_h28": 0.005682194795328482,
+      "wins_vs_h28": 8
+    },
+    "disjoint_verification_last_8": {
+      "mean_ssim": 0.2581747082414224,
+      "delta_vs_h20": 0.017997450782629598,
+      "wins_vs_h20": 8,
+      "delta_vs_h28": 0.006352829988105095,
+      "wins_vs_h28": 8
+    },
+    "material_signal_gate_passed": true,
+    "calibration_targets_accessed_during_development": false
+  },
+  "model_provenance": {
+    "architecture": "colour DRUNet UNetRes, discriminatively trained Gaussian denoiser; not diffusion, GAN, or other generative synthesis model",
+    "official_repository": "https://github.com/cszn/KAIR",
+    "official_commit": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e",
+    "repository_license": "MIT",
+    "license_sha256": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "checkpoint_url": "https://github.com/cszn/KAIR/releases/download/v1.0/drunet_color.pth",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "official_basicblock_source_sha256": "48406db8867394ac5ae233ebeec7711ac10acfc3a6bbf0072c33aa77d659b6fd",
+    "official_network_unet_source_sha256": "8043b6350f1589d5f08892e3be0b4d12c5a502058014285107b7360696d12bf5",
+    "parameter_count": 32640960,
+    "strict_state_dict_load_required": true,
+    "submission_contains_only_result_pngs": true,
+    "submission_contains_checkpoint_or_vendor_code": false
+  },
+  "data": {
+    "split": "calibration",
+    "selection_algorithm": "shared sha256-ranked experiment subset from the frozen manifest",
+    "primary_offset": 384,
+    "primary_count": 24,
+    "primary_filenames_sha256": "b10adba9d984cf912222e0f3941a036993003f32595225362040782cfce0f7fe",
+    "primary_input_roster_sha256": "3b840123a7a3dc1c1f5d348931944495ec3a80562b4edd858e8e883a0c70b15a",
+    "confirmation_offset": 600,
+    "confirmation_count": 24,
+    "confirmation_filenames_sha256": "2d0d864dc1ca9e63a9f429fdedc62ed0ea2aa06d8eed447713dc587f9bcffbda",
+    "confirmation_input_roster_sha256": "dd3abcc5d879a987644c1c9f535b954cf395c4bf14551d8ce2949e56edd25469",
+    "primary_confirmation_disjoint": true,
+    "historical_target_exposure": {
+      "globally_fresh": false,
+      "statement": "Every calibration target name was already present in the legacy calibration700 champion report; these panels are reused calibration and are only disjoint from each other and current reserved panels.",
+      "primary_current_experiment_overlap": {
+        "count": 1,
+        "filenames": [
+          "img_005968.png"
+        ],
+        "artifact": "outputs/compliant-atlas-decoder/fresh-calibration24-ablation.json"
+      },
+      "confirmation_current_experiment_overlap": {
+        "count": 2,
+        "rows": [
+          {
+            "filename": "img_005816.png",
+            "artifact": "outputs/candidate-supply/calibration2-smoke.json"
+          },
+          {
+            "filename": "img_006808.png",
+            "artifact": "outputs/novel-analog-layout/calibration24.json"
+          }
+        ]
+      },
+      "same_basename_competition_test_artifacts_are_not_counted_as_calibration_target_exposure": true,
+      "active_panel_reservations_disjoint": {
+        "dense_safe_tail_primary": "60:120",
+        "dense_safe_tail_confirmation": "0:60",
+        "edge_ranker_residual_primary": "192:216",
+        "edge_ranker_residual_confirmation": "216:240"
+      }
+    }
+  },
+  "arm_names": [
+    "A_nlm_h20",
+    "B_nlm_h28",
+    "C_drunet_sigma40_then_nlm_h28"
+  ],
+  "arms": [
+    {
+      "name": "A_nlm_h20",
+      "role": "baseline",
+      "pipeline": "strict bilateral buddies96 layout -> frozen RGB offsets -> frozen bounded luma gains -> one full-canvas OpenCV colored NLM h20"
+    },
+    {
+      "name": "B_nlm_h28",
+      "role": "strong_reference",
+      "pipeline": "strict bilateral buddies96 layout -> frozen RGB offsets -> frozen bounded luma gains -> one full-canvas OpenCV colored NLM h28"
+    },
+    {
+      "name": "C_drunet_sigma40_then_nlm_h28",
+      "role": "only_candidate",
+      "pipeline": "strict bilateral buddies96 layout -> frozen RGB offsets -> frozen bounded luma gains -> official color DRUNet sigma=40 independently on each corresponding upright 20x20 tile -> exact reassembly -> exactly one full-canvas OpenCV colored NLM h28"
+    }
+  ],
+  "network_inference_contract": {
+    "input_per_tile": "20x20 RGB float32 in [0,1] concatenated with one constant sigma/255 map",
+    "sigma_255": 40,
+    "padding": "same-tile reflection only, right=4 and bottom=4, producing 24x24",
+    "output_crop": "top-left exact 20x20",
+    "batch_size": 144,
+    "batches_per_board": 4,
+    "batching_has_no_cross_sample_layers": true,
+    "model_batchnorm_present": false,
+    "quantization": "clip [0,1], multiply 255, numpy rint, uint8",
+    "device_for_primary_freeze": "mps",
+    "candidate_predictions_and_all_hashes_frozen_before_target_decode": true
+  },
+  "geometry_contract": {
+    "layout": "shared bilateral-only buddies96 tile-at-position permutation",
+    "raw_permutation_audit_required_before_restoration": true,
+    "tile_identity_and_layout_index_unchanged_by_restoration": true,
+    "upright_orientation_unchanged": true,
+    "tile_size_before_and_after_network": 20,
+    "same_board_pixels_only": true,
+    "cross_tile_neural_context": false,
+    "cross_board_context": false,
+    "resize": false,
+    "warp": false,
+    "rotation": false,
+    "flip": false,
+    "reference_or_template_pixels": false,
+    "generation_or_substitution": false
+  },
+  "primary_gate": {
+    "candidate_mean_ssim_at_least": 0.27,
+    "paired_bootstrap_ci95_lower_vs_h20_strictly_positive": true,
+    "paired_bootstrap_ci95_lower_vs_h28_strictly_positive": true,
+    "wins_vs_h20_at_least": 18,
+    "wins_vs_h28_at_least": 18,
+    "target_free_safety": {
+      "within_tile_gradient_ratio_vs_h28_mean_at_least": 0.85,
+      "within_tile_gradient_ratio_vs_h28_board_min_at_least": 0.8,
+      "within_tile_laplacian_ratio_vs_h28_mean_at_least": 0.85,
+      "within_tile_laplacian_ratio_vs_h28_board_min_at_least": 0.8,
+      "grid_seam_ratio_vs_h28_every_board_range": [
+        0.75,
+        1.05
+      ],
+      "global_rgb_std_ratio_vs_h28_every_board_range": [
+        0.95,
+        1.05
+      ],
+      "maximum_abs_rgb_mean_shift_vs_h28_at_most": 2.0,
+      "maximum_board_mean_abs_pixel_change_vs_h28_at_most": 4.0,
+      "maximum_clipped_fraction_increase_vs_h28_at_most": 0.005,
+      "all_raw_permutation_audits_pass": true,
+      "all_three_predictions_distinct_every_board": true
+    },
+    "separate_root_manual_review": {
+      "required_before_confirmation": true,
+      "compare": "B_nlm_h28 vs C_drunet_sigma40_then_nlm_h28 at full tile-preserving resolution",
+      "severe_artifacts": 0,
+      "material_loss_of_faces_text_or_structure": false,
+      "manual_review_file_must_name_reviewer_root": true
+    }
+  },
+  "confirmation_policy": {
+    "keep_targets_unopened_unless_every_primary_quantitative_gate_and_root_manual_gate_pass": true,
+    "no_retuning": true,
+    "same_model_checkpoint_sigma_padding_crop_batching_layout_harmonizer_and_nlm": true,
+    "same_absolute_ci_win_and_safety_gates": true
+  },
+  "forbidden_access": {
+    "holdout": true,
+    "competition_test_for_scoring_or_tuning": true,
+    "external_images_or_templates": true
+  }
+}

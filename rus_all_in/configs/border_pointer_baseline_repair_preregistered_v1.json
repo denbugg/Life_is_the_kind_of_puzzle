@@ -1,0 +1,64 @@
+{
+  "schema": "aiijc-border-pointer-baseline-repair-preregistered-v1",
+  "frozen_at": "2026-08-30",
+  "registered_after_initial_pilot_scoring_but_before_rescue_prediction_or_scoring": true,
+  "purpose": "one bounded same-panel development rescue of the failed free-running pointer",
+  "initial_pilot": {
+    "report": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/report.json",
+    "report_sha256": "7ae2c770e09ed61e0ffa67cc11fa836f09570c2f91ba7f22d751f404c7f9ce44",
+    "checkpoint_sha256": "c404c76f732d85554dd1f5bc7db17a6fe0275f356f39dffe60f54a2e8a2dcb5d",
+    "evaluation_source_digest": "443c82f2e983ba34561bd6546848adcc04f87a6001b0276c378113e2712f694c",
+    "observed_reason_for_rescue": "oracle-prefix pointer accuracy 42.19% but greedy adjacency 5.63%; test whether conditional signal can repair rather than replace decoder144"
+  },
+  "fixed_algorithm": {
+    "start_layout": "matched frozen d64 partial-OT decoder144 strict permutation",
+    "raster_prefix": "current repaired baseline sequence",
+    "proposal": "best unused BorderPointer candidate at the current fixed raster slot",
+    "acceptance_logit_margin": 1.0,
+    "accepted_repair_budgets": [
+      4,
+      16
+    ],
+    "repair_operation": "swap proposed tile with its unique future position",
+    "socket_guard": {
+      "source": "frozen d64 partial-OT real scores",
+      "supported_edge_topk": 16,
+      "affected_grid_edges_only": true,
+      "accept_only_if_supported_edge_count_after_is_not_less_than_before": true
+    },
+    "strict_permutation_required": true,
+    "truth_used_during_prediction": false,
+    "weight_or_margin_sweep": false
+  },
+  "conditional_diagnostic": {
+    "baseline_prefix": "full recurrent pointer with decoder144 identities as causal prefix",
+    "no_prefix": "same absolute slot/key/border pointer with recurrent and left/up identity context reset",
+    "same_used_identity_mask": true,
+    "exclude_positions_whose_true_tile_was_already_consumed_by_the_baseline_prefix": true,
+    "publish": [
+      "eligible coverage",
+      "conditional R@1",
+      "conditional R@5"
+    ]
+  },
+  "evaluation": {
+    "panel": "same already-opened exact16x1 only",
+    "predictions_frozen_before_rescue_reference_scoring": true,
+    "metrics": [
+      "exact tiles per board",
+      "row and column counts",
+      "adjacency",
+      "accepted and vetoed repair counts"
+    ],
+    "development_only": true,
+    "confidence_interval_required": false,
+    "promotion_authorized": false,
+    "fresh_source64_draw2_opened": false,
+    "competition_test_opened": false
+  },
+  "low_discovery_signal": {
+    "exact": "at least one extra exact tile total across 16 boards with adjacency loss no worse than 0.5 percentage points",
+    "geometry": "non-negative adjacency delta with exact loss no worse than one tile total",
+    "otherwise": "close this free-running/causal-repair decoder formulation; retain field checkpoint only for calibrated relation fusion or sparse QAP"
+  }
+}

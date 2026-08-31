@@ -1,0 +1,497 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiijc-puzzle.local/schemas/submission-compliance-v2.json",
+  "title": "AIIJC Puzzle frozen-method and artifact-integrity attestation",
+  "description": "Fail-closed evidence contract for provenance, upright tile bijection, raw geometry, frozen-method execution and restoration-tail integrity. It deliberately does not claim the hidden ground-truth permutation, reconstruction accuracy or manual acceptance.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "scope",
+    "correct_hidden_layout_proven",
+    "proof_limitation",
+    "method",
+    "policy",
+    "runtime_manifest",
+    "input_snapshot",
+    "archive",
+    "per_board"
+  ],
+  "properties": {
+    "schema": {
+      "const": "aiijc-puzzle-submission-compliance-v2"
+    },
+    "status": {
+      "const": "METHOD_COMPLIANT_LAYOUT_ACCURACY_UNPROVEN"
+    },
+    "scope": {
+      "const": "provenance_bijection_geometry_and_tail_only"
+    },
+    "correct_hidden_layout_proven": {
+      "const": false
+    },
+    "proof_limitation": {
+      "const": "PASS proves corresponding-input provenance, upright 20x20 strict bijection, raw geometry, the frozen solver implementation, and the frozen restoration tail only; it does not prove the hidden ground-truth permutation, reconstruction accuracy, or manual acceptance."
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output_derived_only_from_corresponding_input",
+        "all_576_input_tiles_used_exactly_once",
+        "tile_identity_preserved",
+        "tile_geometry_preserved_before_restoration",
+        "restoration_after_layout_only",
+        "targets_used",
+        "reference_images_used",
+        "source_lookup_used",
+        "external_templates_used",
+        "cross_board_pixels_used",
+        "tile_substitution_used",
+        "filename_or_board_overrides_used"
+      ],
+      "properties": {
+        "output_derived_only_from_corresponding_input": {
+          "const": true
+        },
+        "all_576_input_tiles_used_exactly_once": {
+          "const": true
+        },
+        "tile_identity_preserved": {
+          "const": true
+        },
+        "tile_geometry_preserved_before_restoration": {
+          "const": true
+        },
+        "restoration_after_layout_only": {
+          "const": true
+        },
+        "targets_used": {
+          "const": false
+        },
+        "reference_images_used": {
+          "const": false
+        },
+        "source_lookup_used": {
+          "const": false
+        },
+        "external_templates_used": {
+          "const": false
+        },
+        "cross_board_pixels_used": {
+          "const": false
+        },
+        "tile_substitution_used": {
+          "const": false
+        },
+        "filename_or_board_overrides_used": {
+          "const": false
+        }
+      }
+    },
+    "runtime_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "files",
+        "versions",
+        "digest_sha256"
+      ],
+      "properties": {
+        "files": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "src/aiijc_puzzle/compliant_submission.py",
+            "src/aiijc_puzzle/compliant_atlas_decoder.py",
+            "src/aiijc_puzzle/legacy_upgrade.py",
+            "src/aiijc_puzzle/postassembly_harmonizer.py",
+            "src/aiijc_puzzle/protocol.py",
+            "src/aiijc_puzzle/pixel_tails.py",
+            "src/aiijc_puzzle/candidate_supply.py",
+            "src/aiijc_puzzle/novel_analog_layout.py",
+            "scripts/run_compliant_submission.py",
+            "scripts/validate_compliant_submission.py",
+            "configs/submission-compliance.schema.json",
+            "configs/postassembly_rgb_offset_v1.json",
+            "configs/postassembly_luminance_gain_v1.json",
+            "configs/frozen_submission_h20x1_fallback_v1.json",
+            "uv.lock"
+          ],
+          "properties": {
+            "src/aiijc_puzzle/compliant_submission.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/compliant_atlas_decoder.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/legacy_upgrade.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/postassembly_harmonizer.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/protocol.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/pixel_tails.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/candidate_supply.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "src/aiijc_puzzle/novel_analog_layout.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "scripts/run_compliant_submission.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "scripts/validate_compliant_submission.py": {
+              "$ref": "#/$defs/sha256"
+            },
+            "configs/submission-compliance.schema.json": {
+              "$ref": "#/$defs/sha256"
+            },
+            "configs/postassembly_rgb_offset_v1.json": {
+              "$ref": "#/$defs/sha256"
+            },
+            "configs/postassembly_luminance_gain_v1.json": {
+              "$ref": "#/$defs/sha256"
+            },
+            "configs/frozen_submission_h20x1_fallback_v1.json": {
+              "$ref": "#/$defs/sha256"
+            },
+            "uv.lock": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "versions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "python",
+            "numpy",
+            "opencv",
+            "scipy",
+            "pillow",
+            "scikit_image",
+            "scikit_learn"
+          ],
+          "properties": {
+            "python": {
+              "type": "string",
+              "minLength": 1
+            },
+            "numpy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "opencv": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scipy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pillow": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scikit_image": {
+              "type": "string",
+              "minLength": 1
+            },
+            "scikit_learn": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "digest_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "input_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_archive_sha256",
+        "filenames_sha256",
+        "file_count",
+        "regular_files_only",
+        "symlinks_rejected"
+      ],
+      "properties": {
+        "source_archive_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "filenames_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "const": 700
+        },
+        "regular_files_only": {
+          "const": true
+        },
+        "symlinks_rejected": {
+          "const": true
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "file_count",
+        "root_only",
+        "filenames_match_input_snapshot",
+        "format",
+        "mode",
+        "width",
+        "height",
+        "filenames"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "const": 700
+        },
+        "root_only": {
+          "const": true
+        },
+        "filenames_match_input_snapshot": {
+          "const": true
+        },
+        "format": {
+          "const": "PNG"
+        },
+        "mode": {
+          "const": "RGB"
+        },
+        "width": {
+          "const": 480
+        },
+        "height": {
+          "const": 480
+        },
+        "filenames": {
+          "type": "array",
+          "minItems": 700,
+          "maxItems": 700,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[^/\\\\]+\\.png$"
+          }
+        }
+      }
+    },
+    "per_board": {
+      "type": "array",
+      "minItems": 700,
+      "maxItems": 700,
+      "items": {
+        "$ref": "#/$defs/board"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "board": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "input_sha256",
+        "tile_at_position",
+        "layout_sha256",
+        "raw_assembly_sha256",
+        "restoration",
+        "output_png_sha256"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.png$"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "tile_at_position": {
+          "type": "array",
+          "minItems": 576,
+          "maxItems": 576,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 575
+          }
+        },
+        "layout_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_assembly_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "restoration": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "input_is_raw_assembly",
+            "pixel_restoration_only",
+            "layout_changed",
+            "spatial_warp_used",
+            "external_or_cross_board_pixels_used",
+            "pipeline_config_sha256",
+            "harmonizers",
+            "harmonized_array_sha256",
+            "nlm",
+            "output_array_sha256"
+          ],
+          "properties": {
+            "name": {
+              "const": "historical-rgb-seam-offsets_then-bounded-luminance-gains_then-opencv-fastNlMeansDenoisingColored-rgb-h20-hColor20-template7-search21-passes1"
+            },
+            "input_is_raw_assembly": {
+              "const": true
+            },
+            "pixel_restoration_only": {
+              "const": true
+            },
+            "layout_changed": {
+              "const": false
+            },
+            "spatial_warp_used": {
+              "const": false
+            },
+            "external_or_cross_board_pixels_used": {
+              "const": false
+            },
+            "pipeline_config_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "harmonizers": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "order",
+                "rgb_seam_offsets",
+                "bounded_luminance_gains"
+              ],
+              "properties": {
+                "order": {
+                  "const": [
+                    "rgb_seam_offsets",
+                    "bounded_luminance_gains"
+                  ]
+                },
+                "rgb_seam_offsets": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "config_sha256",
+                    "target_blind"
+                  ],
+                  "properties": {
+                    "name": {
+                      "const": "historical_additive_rgb_seam_graph_offsets"
+                    },
+                    "config_sha256": {
+                      "$ref": "#/$defs/sha256"
+                    },
+                    "target_blind": {
+                      "const": true
+                    }
+                  }
+                },
+                "bounded_luminance_gains": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "name",
+                    "config_sha256",
+                    "target_blind"
+                  ],
+                  "properties": {
+                    "name": {
+                      "const": "historical_bounded_luminance_seam_graph_gains"
+                    },
+                    "config_sha256": {
+                      "$ref": "#/$defs/sha256"
+                    },
+                    "target_blind": {
+                      "const": true
+                    }
+                  }
+                }
+              }
+            },
+            "harmonized_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "nlm": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "proper_rgb_bgr_roundtrip",
+                "h",
+                "h_color",
+                "template_window_size",
+                "search_window_size",
+                "passes"
+              ],
+              "properties": {
+                "name": {
+                  "const": "opencv_fast_nl_means_colored"
+                },
+                "proper_rgb_bgr_roundtrip": {
+                  "const": true
+                },
+                "h": {
+                  "const": 20
+                },
+                "h_color": {
+                  "const": 20
+                },
+                "template_window_size": {
+                  "const": 7
+                },
+                "search_window_size": {
+                  "const": 21
+                },
+                "passes": {
+                  "const": 1
+                }
+              }
+            },
+            "output_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "output_png_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

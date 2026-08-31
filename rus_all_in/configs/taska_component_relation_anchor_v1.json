@@ -1,0 +1,32 @@
+{
+  "schema": "aiijc-taska-component-relation-anchor-preregistration-v1",
+  "registered_after": "target-assisted diagnostic and target-blind local32 feasibility probe only",
+  "registered_before": "all held32 and fresh32 candidate construction or scoring",
+  "candidate": "one post-tail rigid component translation from relation votes",
+  "control": "exact frozen confirmed six-arm fusion final layout",
+  "component_definition": "components of focal-kept selected-supply edges already realised by the control layout; singleton components are ineligible",
+  "component_focal_threshold": 0.0,
+  "relation_hypotheses": "each cross-component selected-supply directed edge proposes the unique endpoint-component translation that would realise it",
+  "relation_score": "sum softplus(focal_logit), then vote support, then lower all-bond cost as deterministic tie breaks",
+  "move": "translate exactly one nontrivial component and row-major relocate only directly displaced tiles into vacated cells",
+  "objective_guard": "candidate original TASKA all-1104-bond raw seam cost must be strictly lower than control",
+  "minimum_all_bond_cost_gain": 0.0,
+  "fallback": "return control bit-for-bit when no eligible improving hypothesis exists",
+  "local_exact_gate": "strictly_positive",
+  "local_pair_gate": 0.0,
+  "held_exact_gate": 0.0,
+  "held_pair_gate": 0.0,
+  "primary_metric": "exact_tiles_per_board",
+  "secondary_metric": "satisfied_adjacent_pairs_per_board",
+  "no_sweep": true,
+  "fixed_source_sha256": {
+    "scripts/run_taska_component_relation_anchor.py": "bf4266b1ef6af0162c3b49d9ccf9dd615caf0b689b5d6aba9561acf1dd278b38",
+    "src/aiijc_puzzle/taska_component_relation_anchor.py": "d16cce8452d9d5ce827ca96d544d300a74361e9c8d75a3a6f346f8b2b7b3d06f"
+  },
+  "legality": {
+    "train_targets_only_for_evaluation": true,
+    "competition_test_accessed": false,
+    "strict_576_upright_permutation": true,
+    "pixels_modified": false
+  }
+}

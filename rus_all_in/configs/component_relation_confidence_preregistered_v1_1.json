@@ -1,0 +1,146 @@
+{
+  "experiment": "d64-component-relation-confidence-v1.1",
+  "registered_before_confirm24_target_access": true,
+  "policy_revision": {
+    "reason": "User requested a lower-sensitivity discovery threshold for promising signals.",
+    "scope": "Decoder40 eligibility only; the completed v1 metrics and strict promotion criteria are unchanged.",
+    "recorded_before_confirm24_target_access": true
+  },
+  "competition_test_authorized": false,
+  "frozen_inputs": {
+    "relation_checkpoint": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/component_relation_reranker.pt",
+    "relation_checkpoint_sha256": "bab833bbbef2f73c17d6ae87ce383989138fea9bc48f4015ed1bfdc5b3c1f0ae",
+    "relation_report": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/report.json",
+    "relation_report_sha256": "5fe204c395a4f9481e978e8d6480fc900af32fe24fd78d0247f0b7bff1263fa7",
+    "socket_checkpoint": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+    "candidate_supply": "raw-only",
+    "proposal_topk_per_view": 8,
+    "candidate_cap_per_query": 64,
+    "component_edge_budget_per_axis": 144
+  },
+  "calibration_fit": {
+    "source": "already-opened v1 local32 only",
+    "count": 32,
+    "digest": "a11e3954ca20bb5da520b2e28d035f5d9a210f1f0a209ddc1c5bddec758899b5",
+    "synthetic_seed": 20270909,
+    "draw_index": 0,
+    "estimator": "standardized L2 logistic regression",
+    "regularization_c": 1.0,
+    "class_weight": "balanced",
+    "maximum_iterations": 1000,
+    "random_seed": 20260910,
+    "inference_contract": "query features only; no labels, targets, source identity, tile identity, or absolute coordinates"
+  },
+  "reserved64_split": {
+    "split_rule": "first 24 and remaining 40 in the already-frozen deterministic reserved64 order",
+    "parent_digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc",
+    "confirm24": {
+      "count": 24,
+      "digest": "4f4a74350d04aa88757baae3742f17f8f728c81a71f1b7a14b7d1a8e45bfa3c6",
+      "filenames": [
+        "img_006107.png",
+        "img_002442.png",
+        "img_000694.png",
+        "img_006205.png",
+        "img_006464.png",
+        "img_001317.png",
+        "img_006888.png",
+        "img_005993.png",
+        "img_001373.png",
+        "img_001541.png",
+        "img_001345.png",
+        "img_006141.png",
+        "img_006854.png",
+        "img_001111.png",
+        "img_003731.png",
+        "img_004418.png",
+        "img_000454.png",
+        "img_002434.png",
+        "img_003602.png",
+        "img_000789.png",
+        "img_005951.png",
+        "img_001996.png",
+        "img_006322.png",
+        "img_006402.png"
+      ]
+    },
+    "decoder40": {
+      "count": 40,
+      "digest": "19f1b34d1e63f95d7d8dd9d7c6d21f9d58114991868ad5c86e515b03f1650b69",
+      "filenames": [
+        "img_004951.png",
+        "img_000934.png",
+        "img_005123.png",
+        "img_000013.png",
+        "img_003052.png",
+        "img_006494.png",
+        "img_004562.png",
+        "img_002755.png",
+        "img_004705.png",
+        "img_004199.png",
+        "img_003547.png",
+        "img_001093.png",
+        "img_000065.png",
+        "img_005357.png",
+        "img_004204.png",
+        "img_003532.png",
+        "img_001242.png",
+        "img_000043.png",
+        "img_002813.png",
+        "img_006818.png",
+        "img_005112.png",
+        "img_004595.png",
+        "img_003267.png",
+        "img_005873.png",
+        "img_002898.png",
+        "img_000867.png",
+        "img_001988.png",
+        "img_003049.png",
+        "img_000413.png",
+        "img_000943.png",
+        "img_002727.png",
+        "img_005135.png",
+        "img_003181.png",
+        "img_000181.png",
+        "img_003117.png",
+        "img_000225.png",
+        "img_001766.png",
+        "img_006170.png",
+        "img_003903.png",
+        "img_006830.png"
+      ]
+    }
+  },
+  "confirm24": {
+    "synthetic_seed": 20280909,
+    "draw_index": 0,
+    "ranking_contract": "calibration may sort queries, never candidates within a query",
+    "decoder_eligibility_gate": {
+      "minimum_learned_pair_translation_r1_gain_over_raw": 0.02,
+      "minimum_learned_pair_translation_r5_gain_over_raw": 0.02,
+      "ranking_r1_r5_must_be_bitwise_unchanged_by_calibration": true,
+      "top32_either": {
+        "minimum_correct_attachments_per_board_gain_over_raw": 0.25,
+        "minimum_matched_precision_gain_over_raw": 0.01
+      },
+      "minimum_top144_correct_attachments_per_board_gain_over_raw": 0.0,
+      "all_non_either_conditions_required": true,
+      "authorization_on_pass": "open decoder40 only; not model promotion"
+    }
+  },
+  "decoder40": {
+    "open_only_if_confirm24_decoder_eligibility_passes": true,
+    "synthetic_seed": 20290909,
+    "draw_index": 0,
+    "baseline": "frozen default decoder144",
+    "treatment": "same decoder144 with top32 calibrated learned attachments adding 0.25 * hard-edge-priority standard deviation * calibrated probability to matching hard component edges only",
+    "strict_original_tile_permutation_required": true,
+    "promotion_gate": {
+      "minimum_mean_exact_tiles_gain_per_board": 0.5,
+      "minimum_source_cluster_bootstrap_95ci_lower_exact_gain": 0.0,
+      "maximum_adjacency_regression_fraction": 0.002,
+      "strict_original_tile_permutation_all_boards": true,
+      "all_conditions_required": true
+    }
+  }
+}

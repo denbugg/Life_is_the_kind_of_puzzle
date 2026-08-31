@@ -1,0 +1,72 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "aiijc-puzzle"
+version = "0.1.0"
+description = "Reproducible workspace for the AIIJC puzzle reconstruction task"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "jsonschema>=4.23",
+    "matplotlib>=3.9",
+    "numpy>=1.26",
+    "opencv-python-headless>=4.10",
+    "pandas>=2.2",
+    "pillow>=10.4",
+    "pyyaml>=6.0",
+    "rich>=13.9",
+    "scikit-image>=0.24",
+    "scikit-learn>=1.5",
+    "scipy>=1.13",
+    "tqdm>=4.66",
+]
+
+[project.scripts]
+aiijc-check = "aiijc_puzzle.environment:main"
+aiijc-taska-best-pair = "aiijc_puzzle.taska_best_pair_pipeline:main"
+aiijc-taska-best-pair-fusion = "aiijc_puzzle.taska_best_pair_fusion_pipeline:main"
+aiijc-taska-relation-selector = "aiijc_puzzle.taska_relation_selector_pipeline:main"
+
+[dependency-groups]
+deep-learning = [
+    "albumentations>=2.0",
+    "timm>=1.0",
+    "torch>=2.5",
+    "torchvision>=0.20",
+]
+dev = [
+    "pytest>=8.3",
+    "pytest-cov>=6.0",
+    "ruff>=0.9",
+]
+notebook = [
+    "ipykernel>=6.29",
+    "jupyterlab>=4.3",
+    "seaborn>=0.13",
+]
+optimization = [
+    "networkx>=3.4",
+    "optuna>=4.0",
+    "ortools>=9.11",
+]
+
+[tool.uv]
+default-groups = ["deep-learning", "dev", "notebook", "optimization"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [
+    "notebooks/baseline.ipynb",
+    "notebooks/reproduce_compliant_drunet_protected_colab.ipynb",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]

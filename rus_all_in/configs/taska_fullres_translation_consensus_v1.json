@@ -1,0 +1,58 @@
+{
+  "schema": "aiijc-taska-fullres-translation-consensus-config-v1",
+  "experiment": "taska-fullres-translation-consensus-v1",
+  "created_after_opened_local_diagnostic_but_before_candidate_inference_or_scoring": true,
+  "diagnostic": {
+    "panel": "already-opened local32 only",
+    "target_assisted": true,
+    "unique_fullres_edges": 375,
+    "unique_fullres_true_edges": 169,
+    "unique_true_builder_accepted": 141,
+    "unique_true_realised_in_combined_pre_tail": 134,
+    "unique_true_realised_in_final_six_arm": 88,
+    "cross_component_repeated_translation_edges": 8,
+    "cross_component_repeated_translation_true_edges": 6,
+    "cross_component_repeated_translation_groups": 4,
+    "purpose": "diagnostic and one hypothesis selection only; labels are absent from the fixed rule"
+  },
+  "candidate": {
+    "parent": "confirmed selective-target500 plus unique-fullres six-arm fusion",
+    "control": "exact frozen confirmed fusion final layout",
+    "base_components": "build unchanged selective current-plus-accepted-new components with original recovered focal priorities",
+    "unique_edge_translation": "for each unique-fullres edge joining two distinct base components, compute the rigid translation required to satisfy the directed right/down relation; canonicalize component-pair order and translation sign",
+    "consensus_rule": "an edge is consensus-supported iff at least two unique-fullres edges propose the identical translation for the same unordered pair of distinct base components",
+    "priority_rule": "preserve every non-consensus priority; move all consensus-supported unique edges above the previous global maximum using nextafter(max,+inf) plus original_priority-minus-minimum_consensus_priority, preserving their relative focal order",
+    "consensus_minimum": 2,
+    "candidate_arm": "replace only the existing combined_union_focal component-build priority with translation-consensus-first priority",
+    "portfolio_arm_count": 6,
+    "confirmed_unmodified_combined_arm_also_in_candidate_roster": false,
+    "selector": "unchanged minimum original TASKA cost over all 1104 board bonds",
+    "tail": "unchanged focal-logit-zero protected non-adjacent tail96 using original unboosted focal logits",
+    "matcher_or_denoiser_rerun": false,
+    "threshold_weight_budget_feature_or_arm_sweep": false
+  },
+  "evaluation": {
+    "sequence": ["local32", "held32", "fresh32"],
+    "open_held_and_fresh_only_if_local_pair_delta_strictly_positive": true,
+    "primary_metric": "candidate_minus_confirmed_fusion_satisfied_adjacent_pairs_per_board",
+    "secondary_metrics": ["adjacency_recall", "exact_tiles_per_board"],
+    "pair_denominator": 1104,
+    "bootstrap_unit": "source",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 20260831106
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "targets_absent_from_candidate_inference": true,
+    "restored_pixels_matcher_only": true,
+    "strict_original_upright_tile_permutation": true,
+    "competition_test_forbidden": true,
+    "postprocessing_used": false,
+    "production_or_submission_modified": false
+  },
+  "frozen_parents": {
+    "fusion_report_sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af",
+    "fusion_module_sha256": "13ba0e8f5c09c84dfef8c25711805e334a7afd5f0e9e80db749415f566ed6348",
+    "raw_solver_sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+  }
+}

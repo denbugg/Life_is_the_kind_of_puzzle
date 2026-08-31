@@ -1,0 +1,65 @@
+# Python and tooling
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+tmp/
+
+# Local configuration and OS files
+.env
+.DS_Store
+
+# Data and generated artifacts
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+outputs/*
+!outputs/.gitkeep
+artifacts/*
+!artifacts/.gitkeep
+
+# Common model and array artifacts outside the managed folders
+*.ckpt
+*.onnx
+*.pt
+*.pth
+*.npy
+*.npz
+
+# Curated portable snapshot evidence.  The parent repository ignores all
+# *.pt/*.npz files, so these exact, reviewed paths are explicitly re-enabled.
+!artifacts/prior-taska/
+!artifacts/prior-taska/ckpt/
+!artifacts/prior-taska/ckpt/seam_embed_v3.pt
+!artifacts/prior-taska/ckpt/seam_embed_local.pt
+!artifacts/prior-taska/ckpt/verify_pair_best.pt
+
+!outputs/weco-observe/
+!outputs/weco-observe/**
+!outputs/taska-edge-calibrator/
+!outputs/taska-edge-calibrator/**
+!outputs/taska-nonlinear-calibrator/
+!outputs/taska-nonlinear-calibrator/**
+!outputs/fullres-boundary-denoiser/
+!outputs/fullres-boundary-denoiser/**
+!outputs/taska-selective-fullres-union-fusion/
+!outputs/taska-selective-fullres-union-fusion/**
+!outputs/taska-relation-truth-selector/
+!outputs/taska-relation-truth-selector/**
+!outputs/taska-socket-cyclic-origin-transfer/
+!outputs/taska-socket-cyclic-origin-transfer/**
+!outputs/tile-position-distance-validation/
+!outputs/tile-position-distance-validation/**
+!outputs/tri-emitter-edge-verifier/
+!outputs/tri-emitter-edge-verifier/**
+!outputs/fullres-retrieval-adapter/
+!outputs/fullres-retrieval-adapter/**

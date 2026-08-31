@@ -1,0 +1,1454 @@
+{
+  "schema": "aiijc-taska-selective-vote500-confirmation-exclusions-v1",
+  "created_before_confirmation_inference_or_scoring": true,
+  "collection": {
+    "config_glob": "configs/taska*.json",
+    "output_glob": "outputs/taska-*/**/*.json",
+    "policy": "Conservatively collect every explicit img_XXXXXX.png string from all prior TASKA config and JSON output metadata.",
+    "artifact_count": 178,
+    "artifact_inventory_digest": "4f4ecc1dcef84c1109700661a908820ae0f52495d5f21381c9b2d61ddb09d545"
+  },
+  "required_signed_reservations": {
+    "tail192": {
+      "path": "configs/taska_focal_gated_tail192_fresh16_capacity_v1.json",
+      "sha256": "6ab12dfae4ffec924b66928027edf1d42d562be9c85f1f6cc3ace27d8d1e01db"
+    },
+    "fullres_combo_confirmation": {
+      "path": "configs/taska_fullres_focal_gated_tail_fresh32_confirmation_v1.json",
+      "sha256": "742a427ba5cc844afedb7107c39bd0ba9cbe246fad4daf0fd6ae959cf4846794"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "configs/taska_edge_calibrator_train256_v1.json",
+      "sha256": "6fa0bc5d6a31bcc0c9efaa359edc56580d84f2499b7aed9f3616a0c12044a091",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "configs/taska_focal_current_finetune_v1.json",
+      "sha256": "94dce4a73410f9d40cf52b136af27116ddabf79dd5948c68307839e1e7bc6a23",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "configs/taska_focal_gated_protected_tail_fresh16_confirmation_v1.json",
+      "sha256": "d07744a88e4155e3a4f157cb896221d79d137c12379b7ae79bd9820f6024953c",
+      "explicit_source_count": 18,
+      "explicit_source_digest": "67234389dde264e9d9cb5c7f603ad750013808785d203cb972ebae096dcbc8f0"
+    },
+    {
+      "path": "configs/taska_focal_gated_tail192_fresh16_capacity_v1.json",
+      "sha256": "6ab12dfae4ffec924b66928027edf1d42d562be9c85f1f6cc3ace27d8d1e01db",
+      "explicit_source_count": 18,
+      "explicit_source_digest": "470d1be96397d1f3a7c4ccb3ab5d41633d28c016cdba1cc26aa8f1e6fed6a20b"
+    },
+    {
+      "path": "configs/taska_focal_raw_rank_fusion_v1.json",
+      "sha256": "7b0deaa73a0224491513726fd4805a5750b053c606ea90375b928c2aa4ee83b2",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "configs/taska_fullres_focal_gated_tail_fresh32_confirmation_v1.json",
+      "sha256": "742a427ba5cc844afedb7107c39bd0ba9cbe246fad4daf0fd6ae959cf4846794",
+      "explicit_source_count": 18,
+      "explicit_source_digest": "00bd79819c6be5dffab3126c3ac918134c9fb81165081e6e3be4406e384af5bd"
+    },
+    {
+      "path": "configs/taska_protected_tail_fresh32_confirmation_v1.json",
+      "sha256": "9854ef20c479ab358887896b81bf93263a3bdcd7d7014d6a310b7134fb4daad7",
+      "explicit_source_count": 50,
+      "explicit_source_digest": "8172be12a5f9d2d12aee6846ff6ae365fee530c452ee8a5315e2fd649dcbb1e0"
+    },
+    {
+      "path": "configs/taska_seam_held300_diagnostic_v1.json",
+      "sha256": "112d5b4bcc78708091f4d0cbf47865f7dc6bd9276a0c8280a91de152c1b928d7",
+      "explicit_source_count": 18,
+      "explicit_source_digest": "5d5fc95059c08be1226490ed70bd87a7cb4dadb162d8b7b38c843e172f7cfaec"
+    },
+    {
+      "path": "configs/taska_seam_replay_opened32_v1.json",
+      "sha256": "06396905bdf7b552e165e207262d5a0654d19af3d35b2d557501551ca46da359",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/fresh32-v1/frozen-target-free-eval.json",
+      "sha256": "3118fcfa760c2586f36cf1994f8345c73de17f9869fb76496811505583d7344f",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/fresh32-v1/pre-score-freeze.json",
+      "sha256": "540b51236a4ad811d7d137e355f8a6b5d9c1b8532f6a9cfd9ebc8e1aaac8115d",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/fresh32-v1/report.json",
+      "sha256": "4e91091f352e12e1c46e950652938c036cd0d938945b89335788ed9cd75e8e08",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/held300-v1/frozen-target-free-eval.json",
+      "sha256": "094c90984b8bf1ce3ab45620f5bdf1f94e78ebb93c6e2aaa42a32ef0549c5939",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/held300-v1/pre-score-freeze.json",
+      "sha256": "8cfd0521d20ed778d079187ac53a8f72a4dfa341883ca9743209469adf5a259b",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/held300-v1/report.json",
+      "sha256": "70d43e048016ff892cd780e69d8cfb51a3ac6539d10f4312186c1ef8bba5dce5",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/opened32-v1/frozen-target-free-eval.json",
+      "sha256": "a0310e02d897bc7c4d2dfd996334c48bd3e3af2f4041214b5a731819a8c9f811",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/opened32-v1/pre-score-freeze.json",
+      "sha256": "1abac3f3941d34a002a500e7935332a43cbf6780fa1fb0750740cc901c029735",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-adjacent-tail/opened32-v1/report.json",
+      "sha256": "e60382e5cfe79311dcfecf956e0c9ae9c834c034cd1e9e0cacd2a9185c107acd",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/held300-q25-v1/frozen-target-free-layouts.json",
+      "sha256": "fb969d945553a0a8aff6632f788b055db1214c25d27f5e8298f8a30ee9f17ef6",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/held300-q25-v1/pre-score-freeze.json",
+      "sha256": "a4c2320190d639c955501acbce82dfa26c292817f307ba59b14a81c831efb6d0",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/held300-q25-v1/report.json",
+      "sha256": "eb8c0390d5da46f78d27aeaa5db5a2ba92876dfdacd4b73727137be0ed120de6",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/opened32-family-v1/frozen-target-free-layouts.json",
+      "sha256": "2dab6f24b431ee2e1480a0b8209306f54b5edd6395cc2f7c1fe109a0eeceb7c5",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/opened32-family-v1/pre-score-freeze.json",
+      "sha256": "d8ef0b39ec1074bb93200fbd17958716741c9ad7e746ddde9a3b82c630554b5c",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/opened32-family-v1/report.json",
+      "sha256": "91188caf85cf5ddba5977d8dcfc466a3f371f769533e052de9de1bb76184adf9",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-confidence-pruning/preregistered-family-v1.json",
+      "sha256": "5f26010eb30e8aa83dfafc9608fd756f1cb4c96f73535e63f9cd26dd146b5aea",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-consensus-component-arm/opened32-v1/frozen-target-free-eval.json",
+      "sha256": "006bb813e56a274344087b2e0ec73d009531b37e671c2b5e2d5e7850efedc481",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-consensus-component-arm/opened32-v1/pre-score-freeze.json",
+      "sha256": "35e0ba36f7ed71ee88c04a4a114c11e6e0c7a51d98074876577c437f0764184a",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-consensus-component-arm/opened32-v1/report.json",
+      "sha256": "a84e8e41f528f269ab04134eeab15fa731f80eb8c8fb27d86974ee1b2179d4aa",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-edge-calibrator/train256-v1/calibrator.json",
+      "sha256": "9a175b1cec1e6e6bd176e78ae80e16af78df8a00277836aaf67a8daf78782758",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-edge-calibrator/train256-v1/locked-panel-report.json",
+      "sha256": "20311e8aede6b2165c1f86a224eab5251444498ddcafa08e22088324e21f7d26",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-edge-calibrator/train256-v1/roster.json",
+      "sha256": "e940944865f0a4f93e6f6a9782c33c2da1566ffb8ef1253e88bec369d30c630c",
+      "explicit_source_count": 256,
+      "explicit_source_digest": "417ffaaa7b4bd14031cfb18bfc6a7b485cdfa6daf59f91942a12134528e247fc"
+    },
+    {
+      "path": "outputs/taska-edge-calibrator-audit/external-train-roster-preregistration-v1.json",
+      "sha256": "36515c283448d1216af047a1ad7e2e434c50a5216d56d6d6ab741d06c78820c5",
+      "explicit_source_count": 2,
+      "explicit_source_digest": "04e2067657c4e37d5c3d81406a6afeffc0f5d56a2e381a6bd53efb2383e3bee0"
+    },
+    {
+      "path": "outputs/taska-edge-calibrator-audit/independent-audit-v1.json",
+      "sha256": "30babce9364d54c678125a79f6488b66d792e0e463c0d3358e4f14dc68e3c03b",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "5ce2e6b973f2d512dab7f045bebb673498cc8070e989a9acb25dc46ba9977fdb"
+    },
+    {
+      "path": "outputs/taska-equivariant-square/smoke1-mps-v1/frozen-target-free-eval.json",
+      "sha256": "5dbbc895bdf329294c1360be777ec3e7c239e2aba9e5a21f2f27574aa3f39d35",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-equivariant-square/smoke1-mps-v1/pre-score-freeze.json",
+      "sha256": "c6e40b8ce593c97c1d00a04525776a53fa58f4c02ab4d5793c2f459611ca595c",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-equivariant-square/smoke1-mps-v1/report.json",
+      "sha256": "f21260259e4bf832039531a671d13ec858d09db623eddadba7dd7d18a6e80cf9",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-focal-current-finetune/v1/local-gate-target-free.json",
+      "sha256": "30d6dd6ebe0e4d492bf43fce8436494e93e165066cf08b27b74ce4470aaadd8e",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-current-finetune/v1/report.json",
+      "sha256": "cd451fe06ee63a93775fee1595265556d74a95c4d2885c152555404917c82770",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train224-v1/extension128-focal-harvest.json",
+      "sha256": "4133b4d733b21b714c38c0ab2819149e5cf8c61e4283ce0b7e4261558f7584c5",
+      "explicit_source_count": 128,
+      "explicit_source_digest": "39dc5eb50c031dd664e127ba37d4597d1980030857013e0b44c5110e45372aae"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train224-v1/local32/frozen-target-free-eval.json",
+      "sha256": "16509acef5035b60cbe0d953ec8d0a66375500562d290a8125f61a36caf43a9c",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train224-v1/local32/pre-score-freeze.json",
+      "sha256": "ef0302efdc169e7ef772edc19cffc0b2d0dd305da20e8dc428496c41aab0e2a9",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train224-v1/report.json",
+      "sha256": "11eb7b56f47f051e47f3e7b59d995f32e025db3e9160ad5ff37eaf9ff29f06de",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train224-v1/training-stacked-features.json",
+      "sha256": "e43fdd4a8235f7508f2d651534450afb73225f8e8134ac711bb621dc79a90482",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/fresh-exact-confirmation-report.json",
+      "sha256": "1e9641e721b0dd6c0c3fea4775b92198c6037331703a98945ed52ebd537c03d8",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/fresh32-exact-override/frozen-target-free-eval.json",
+      "sha256": "024be2cc842c2c4e7aec8df0a3d10d5f8ea185011f825a9bdb69580f7ee797fb",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/fresh32-exact-override/pre-score-freeze.json",
+      "sha256": "e64ecf2d70f00060d95d0bbcf94826261e90bacbeabcd5cd07f5236e213448f5",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/held32/frozen-target-free-eval.json",
+      "sha256": "cbe6a774fb3fd3a6095e0124c5f484736ede963c0f6682d93ac49d67fe7c384a",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/held32/pre-score-freeze.json",
+      "sha256": "b989e36048737b9ea0a95f98b6d3ac517c65e16cfa4f29d8e23e442b4945ea1a",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/frozen-target-free-eval.json",
+      "sha256": "78a10b5f3581ef89a1dadae284906cd6f85ec7708250154b4ef4b819cd01a62c",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/pre-score-freeze.json",
+      "sha256": "35e2121ecd344be52ab905bd52dbfcdfbb5e69dfe9f256c2c138dccfaafb05ed",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/report.json",
+      "sha256": "cb2fca61e2f715abe096d9e2d10b4951825628c402adbaad6103aae7a054a485",
+      "explicit_source_count": 48,
+      "explicit_source_digest": "bddb54cc98bcb4e67e4e59c17b0858fb3d045dfecb4d09b6452d997723381664"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/three-panel-descriptive-report.json",
+      "sha256": "a307dfd1b36fb4772b18d14222125b404805fdaf4a289ed58a2ad9ddef6f4380",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/training-stacked-features.json",
+      "sha256": "9be904b42e1b90beb4e203a7a31587841ec23dc6e1fcd172bff63103b78104c8",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/fresh16-confirmation-v1/frozen-target-free-eval.json",
+      "sha256": "eb2e6881b6bec62fc42629b061fd7e8aba8d911e2b1fd935f5a28e93c83cb75b",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "fff2f9b2ca739369fd7b52c6700e68e4271d57cce0eb843e451f43bd18267088"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/fresh16-confirmation-v1/pre-score-freeze.json",
+      "sha256": "0c11be99191bcd6699ecb9047baf34c637486dd6d90445535aaff822623ed198",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/fresh16-confirmation-v1/report.json",
+      "sha256": "850a4a8034d3d8f0b783391ad7cfade9661afd4ec695753a9fb07737b562edd3",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "fff2f9b2ca739369fd7b52c6700e68e4271d57cce0eb843e451f43bd18267088"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/fresh32/frozen-target-free-eval.json",
+      "sha256": "d89e5deb634bfc90b0cfb6c30b0916ce58c8deb769e659f26d3e437f52bafd1f",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/fresh32/pre-score-freeze.json",
+      "sha256": "6f858122763bab58a3a2d2015526c335f9e4465c0f26397bfa4f90e10ea167da",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/held32/frozen-target-free-eval.json",
+      "sha256": "8b50eb17e95948700590ec65e85659f7ce688a7165b7b6a3729da81b5b8c7f96",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/held32/pre-score-freeze.json",
+      "sha256": "a120d9cc1cfb85c11e647a87637abed95c86bf2e275dd8bd440e852011cbda63",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/local32/frozen-target-free-eval.json",
+      "sha256": "3f63d9f188c2f7e4b5b5a51b4b0a93ed4316a5c8fa2e1ed60ecc25bf315e4448",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/local32/pre-score-freeze.json",
+      "sha256": "c348510d1becf5cff251ebb6e7d7ddb40b3afdba61242917f4afae3cb9f30f92",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-gated-protected-tail/logit0-v1/report.json",
+      "sha256": "80c43ed8c8dd090315b2a1e3b45572debb7de5139d70817bd6acc9d2aaab4a6e",
+      "explicit_source_count": 64,
+      "explicit_source_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+    },
+    {
+      "path": "outputs/taska-focal-gated-tail-capacity/tail192-fresh16-v1/frozen-target-free-eval.json",
+      "sha256": "9ed7eab98a775563bb6997c35092caf91ce09b50709007d3bafc0ebbc7dc77a9",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "169130eb3a538518d4394e1b979bdb528345c33876bbc84d5c49a9894d2c5746"
+    },
+    {
+      "path": "outputs/taska-focal-gated-tail-capacity/tail192-fresh16-v1/pre-score-freeze.json",
+      "sha256": "d509434c745723d03fb227041c38e52dfcc0eb2eb947c473e61fa54c9441a474",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-gated-tail-capacity/tail192-fresh16-v1/report.json",
+      "sha256": "0b34cd736c1f412bf3895ef9cc9d25406b966a89fbf148f5bf56fcca783016e0",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "169130eb3a538518d4394e1b979bdb528345c33876bbc84d5c49a9894d2c5746"
+    },
+    {
+      "path": "outputs/taska-focal-nonlinear-stacker/train96-v1/local32-pre-score-freeze.json",
+      "sha256": "d772cf28b9628e5ec121fc6fc437413da78af9f35d4e8a4596ae75cd507a66da",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-nonlinear-stacker/train96-v1/local32-target-free.json",
+      "sha256": "d2a360876328f4e145b0eaeaa27d962177f2f7ed53f993d0e580ad25edde7fca",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-nonlinear-stacker/train96-v1/report.json",
+      "sha256": "59b6cc84a900e8f19e3555b7a1b8285a72d0959c70d6462d4470d6e0101febf2",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-pairwise-ranker/train96-v1/local32/frozen-target-free-eval.json",
+      "sha256": "3898851b66e81a1ca736f8bfc842ef71da2c6e7a3ac6c6ac6afb5347b7fd691f",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-pairwise-ranker/train96-v1/local32/pre-score-freeze.json",
+      "sha256": "5ed402e58fe501a4f490092330ce00d955bbc65bf9732ec38f4e7ea47756f739",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-pairwise-ranker/train96-v1/report.json",
+      "sha256": "62bc146393e139bf2513a01f9f5812e0e6e6df1dbd206ae7dcf4b8366c8be01b",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-focal-rank-fusion/opened32-v1/frozen-target-free-eval.json",
+      "sha256": "2e63cb4e6e4258d9b35923fb3fb62d9a995fe807003ea71789c49eaa88494ca1",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-focal-rank-fusion/opened32-v1/pre-score-freeze.json",
+      "sha256": "4a04e882200b0c2e2d63b30370aff41bc172e017f51b876bd58cb38756e803e2",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-rank-fusion/opened32-v1/report.json",
+      "sha256": "cf0283c8ecc58bf60c23ad23a0664f627801d3826daf0013e1a4b73979adef27",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v1/frozen-target-free-eval.json",
+      "sha256": "6d0091230ea10edb77c7c2da31a7f7ce604006616997a5ad02b7201d8432a840",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v1/pre-score-freeze.json",
+      "sha256": "52ec8677ac2cbe8a8d5399528e5a240b450a7615bcd1ac2ee1eabf521960aded",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v1/report.json",
+      "sha256": "675e4ba7b7867f455c9fcb917557d85d059c3f02be40562123c2972662e9da71",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v2/frozen-target-free-eval.json",
+      "sha256": "6d0091230ea10edb77c7c2da31a7f7ce604006616997a5ad02b7201d8432a840",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v2/pre-score-freeze.json",
+      "sha256": "12f6777e563ca4215e681ed80772a1434e012fba559b855e22d2ca5266541029",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-historical-tip-top8-cpu-v2/report.json",
+      "sha256": "abb2f16b150457c9bd23e9439f49a7023f207adb06acf3b81e8931ea9788bd34",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v1/frozen-target-free-eval.json",
+      "sha256": "301ba535f04b63ff8da48a0a83b5f207521d4b57f1bdbb61ceb58dbee57daff2",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v1/pre-score-freeze.json",
+      "sha256": "7af197d5a2676bd90afe931106ede36cb04f3ad75da77402b7c7be4da34af09f",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v1/report.json",
+      "sha256": "33b99a96f2ee801afa2b681ac379903e25a436ed30dcfeec76a98c7a11294a87",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v2/frozen-target-free-eval.json",
+      "sha256": "301ba535f04b63ff8da48a0a83b5f207521d4b57f1bdbb61ceb58dbee57daff2",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v2/pre-score-freeze.json",
+      "sha256": "5faf81531665d7148cb797f904de28702263547f66bf2a092a58f1936aed5522",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v2/report.json",
+      "sha256": "b0700098b6a7e232a56cc268c3f2bc14ab9d1af3e5bd84304d5674b40a72a103",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v1/frozen-target-free-eval.json",
+      "sha256": "8e6be1d0f4b2652b784141d7c53d7fb63394e8bda6af3b076a9fd5721f07c9d5",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v1/pre-score-freeze.json",
+      "sha256": "23be04919a751aa33f68e94fa94fdaa29461fd37fbb136e2ed27dfd718993802",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v1/report.json",
+      "sha256": "ee7bf0511cd1ef14b1b9937146309bd19bf3d1396b2790ec60cf901dba57fac7",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v2/frozen-target-free-eval.json",
+      "sha256": "8e6be1d0f4b2652b784141d7c53d7fb63394e8bda6af3b076a9fd5721f07c9d5",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v2/pre-score-freeze.json",
+      "sha256": "718e274fcf9c19715a60b722be69c6d42b2e65855d19af545d700ab2e8d5a6c1",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v2/report.json",
+      "sha256": "4ac3ee90c2e03f44051435a2eee9d6a7baec771ab8c5b7d7f7478e7dfb54880a",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-fresh32-leader-confirmation/fresh-held32-mps-v1/frozen-target-free-eval.json",
+      "sha256": "311a1b3dc42bfb317a2c5cde1cee319de86ceba85622cb376fe4bfb83e2b53b1",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-fresh32-leader-confirmation/fresh-held32-mps-v1/pre-score-freeze.json",
+      "sha256": "d88bae41096261c7ba97126977048db18e2dd4d31bf292ce73a693220ff66696",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fresh32-leader-confirmation/fresh-held32-mps-v1/report.json",
+      "sha256": "4db1e100f674613308f2cbca1e4be60c6687be3e9b3b446df16e442bc6cfbb7d",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-fresh32-leader-confirmation/smoke1-mps-v1/frozen-target-free-eval.json",
+      "sha256": "660b66e0299b255902d9fdb305baa14c585dae3e658ff52c4769ef2e5baf8ac4",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2584af60984e1478047319382ddc6d50be8ae3b772a315b7ac1fa6783306ffbf"
+    },
+    {
+      "path": "outputs/taska-fresh32-leader-confirmation/smoke1-mps-v1/pre-score-freeze.json",
+      "sha256": "65dd0ee06ec980d983f9500a98ae606450316a90e703ff5f67d74de95ed926d6",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fresh32-leader-confirmation/smoke1-mps-v1/report.json",
+      "sha256": "9bd435f290fd2899529fc0ff128ab3199c37dca71271553ce3e94a498b1fd141",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2584af60984e1478047319382ddc6d50be8ae3b772a315b7ac1fa6783306ffbf"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/held32/frozen-target-free-eval.json",
+      "sha256": "11637f7961b228ef1bad09004b373b3da5a4e721f3767b2531556e571003f732",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/held32/pre-score-freeze.json",
+      "sha256": "2fd8f2f8979c2f2c1826fa1e8ed618beee3623981e03ea72b7cb78d9ae5d7301",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/local32/frozen-target-free-eval.json",
+      "sha256": "6518fb9703b2bfd78697a8d7f7f332a5c3053423f2915976eb2d7a4f5e412e5b",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/local32/pre-score-freeze.json",
+      "sha256": "a48ecf7db25e3b44c3e2946d7f4eec37445f38c6ea11443d1105454becf43a4f",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fixed-v1/report.json",
+      "sha256": "7997582df01a1d452d65bb8021ef22cbccd809141d0b965286eaaa8a9dc0d48f",
+      "explicit_source_count": 48,
+      "explicit_source_digest": "bddb54cc98bcb4e67e4e59c17b0858fb3d045dfecb4d09b6452d997723381664"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fresh32-confirmation-v1/frozen-target-free-eval.json",
+      "sha256": "b74dc4e8f115c62aad32093b1aefcb5c76721669e2753b9bf8e14e9786b6aedc",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "f46136ee2e7a697dc98b3eb9f7f3d81fb75bfa06165de7aaf564977a2f1cb993"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fresh32-confirmation-v1/pre-score-freeze.json",
+      "sha256": "ac711ca1c56da57b62e681464657443b7e452f8982901c98b7ae241ee182ee10",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-focal-gated-tail/fresh32-confirmation-v1/report.json",
+      "sha256": "6f02f83407eb15f42c696d1f458b658465d94bfd5c3087135cfc6cbcd548ecf3",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "f46136ee2e7a697dc98b3eb9f7f3d81fb75bfa06165de7aaf564977a2f1cb993"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/fresh32/frozen-target-free-eval.json",
+      "sha256": "af8e1a398bbdbb069870e5224857e758720eb252f2314bd9cf0c527d351c5f3f",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/fresh32/pre-score-freeze.json",
+      "sha256": "69fdd637e7684398a7938442bfb8d808f225c56b3dbe95a69250a3125c7d6547",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/held32/frozen-target-free-eval.json",
+      "sha256": "116b5e77bc01329ffab0f850b4aaa79194d79a0ac6239f0243142c9752724b13",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/held32/pre-score-freeze.json",
+      "sha256": "0f3f44e0bd7d36ba49ed19a469d10b7b5ecda9ed4871dd60cec326e048c2deff",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/local32/frozen-target-free-eval.json",
+      "sha256": "e5574bbea6ff83bb5caded5152d14ed22d56e9043229ee577cff7bda65f9ea20",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/local32/pre-score-freeze.json",
+      "sha256": "dfce253658ff99322cc0c3a08629602f805873def8be23b390e68eea4d7add65",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/fixed-v1/report.json",
+      "sha256": "d67a7ed7e2cd9e7c333052ab4db9d0b32e444980da83939f0e54e7f88c7195b8",
+      "explicit_source_count": 64,
+      "explicit_source_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/smoke1-mps-v1/report.json",
+      "sha256": "7eed0a48785bc54877391b01aa6e8ace1ca0f19e9cae79c79cee7d454602a5e3",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/smoke1-mps-v1/smoke1/frozen-target-free-eval.json",
+      "sha256": "266efffeec1865aad22b5a6f76455e7276614337ee1510b8fd33b8c9764b405e",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+    },
+    {
+      "path": "outputs/taska-fullres-union-voter/smoke1-mps-v1/smoke1/pre-score-freeze.json",
+      "sha256": "cc1c82a032aa5942fafa9e4c98efa78ddfffb99810f8c4bf0dfcf6b607725d83",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/fresh32/frozen-target-free-eval.json",
+      "sha256": "414dee67a161fde10b2fb6e25e1111b89bf91780eca45057152ec83f567868c8",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/fresh32/pre-score-freeze.json",
+      "sha256": "c821c5ddb141e406cc404c890d759bc90ffd88100e7dfc42190910b51c0c1258",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/held32/frozen-target-free-eval.json",
+      "sha256": "4fbd220677b0d1510e0f63b4b9ec6e15e842bbc24005aaee98cff88dcd865068",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/held32/pre-score-freeze.json",
+      "sha256": "c4175ee7e21441f3146cd7a9af39b424d6ee12d603353203acabec4aa1f29542",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/incidence-gnn-contract.json",
+      "sha256": "65d52b62033fada7df6404ad25f63c3049b0f22ae5049cc79225067bef191a68",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/local32/frozen-target-free-eval.json",
+      "sha256": "01eb2c4eadc552aaf06bf4278fcc4ad1cecce0018cd173fbbb8e31e5f087a0c8",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/local32/pre-score-freeze.json",
+      "sha256": "cff80d6b3554e0bb7094745aa5a90295f69c2b7c5db0e46df102a26fe93de80f",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-incidence-gnn/extension128-v1/report.json",
+      "sha256": "7e01c49e3f251dd7a7fd739991d896f94f8b19e6165515e238df1859a17d6575",
+      "explicit_source_count": 64,
+      "explicit_source_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+    },
+    {
+      "path": "outputs/taska-monotone-components/opened32-v1/frozen-target-free-eval.json",
+      "sha256": "7702d34071def4b41c3cb9c40887fae5f7fdebc1e5330977651a6d46bd838bb5",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-monotone-components/opened32-v1/pre-score-freeze.json",
+      "sha256": "f626c7d9e2b4cbc4380078c5d5dec8fdfd1705c5e2e2057c7590222f263a0b4a",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-monotone-components/opened32-v1/report.json",
+      "sha256": "c1c0f5836a0a26f6b334e97796b42f252be70e25625d66f09e680dd4c54389b2",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-multistart-portfolio/opened32-v1/frozen-target-free-eval.json",
+      "sha256": "aae9953c1d6b26364bf4aaa07aa03a123380dd22c0805305b3d5cc100619a632",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-multistart-portfolio/opened32-v1/pre-score-freeze.json",
+      "sha256": "762262de01fc384626ea7a6f76b39b1e55b8aee022903c85442a1beb634fbe53",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-multistart-portfolio/opened32-v1/report.json",
+      "sha256": "fb702460e35e5408dd65c157f2f2f847786b971ecedc81cee95fea40f79276db",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-nonlinear-calibrator/train256-v1/metadata.json",
+      "sha256": "775b1c78147ae2f791448427bef5227e305c8fd4e2dd629c7b677f5886ed88c8",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/frozen-target-free-eval.json",
+      "sha256": "1acb5d0000dd76e48fb6c079827fa2113bb56f541905fc97ced9656b8d7fe53f",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/pre-score-freeze.json",
+      "sha256": "6ee9db9e8a9bce4d7dcebc88c1ac2ce4a75848ed29e0d5c0adf81e9b4170f891",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/report.json",
+      "sha256": "3b42fa8dd367c12ad14964441c41c4690d600cf18e5edc039cfd1d66599722d9",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-rawlog-tail/held300-v1/frozen-target-free-eval.json",
+      "sha256": "9685b9eeeb67f0cc3a4f3acb8ca65ec5b4c5eb5f1914ae85912b14fcb79c2d7a",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-rawlog-tail/held300-v1/pre-score-freeze.json",
+      "sha256": "9915be5a4cd9ea72cb04e5a3e798546589109247a90cfcddb55cd32bbbbc3592",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-rawlog-tail/held300-v1/report.json",
+      "sha256": "da5e95ef6c85e11643d09f96ad21feae39071204e5adce7868f815426d460921",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-rawlog-tail/opened32-v1/frozen-target-free-eval.json",
+      "sha256": "bb21a8f77a9b714414b71ce4b96080a2cbe64c71c5e746bcf8e7b8b23e1ac582",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-rawlog-tail/opened32-v1/pre-score-freeze.json",
+      "sha256": "3d7b47d1973fc737bf985948d309052e4bf937504bc8b0e9db48a83f5fd320e1",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-rawlog-tail/opened32-v1/report.json",
+      "sha256": "db1ce296014d294a53ff54fde5550b4a573a151fb64011f8b2726711d278255e",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.json",
+      "sha256": "91710486233f45bda2b8aab019c508d1e6a0f75e282a6ce9a47aee93d9bf0a8d",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/pre-score-freeze.json",
+      "sha256": "e99afba9819561ea647acbcf2cce5c1472241cdaeef1e064bb8ec5982eb2d9d0",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/report.json",
+      "sha256": "a5e2da7c59d144e461acbb5d3baa35118115aea4a96161cef4b95c95ba8aee19",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-seam-replay/opened32-mps-v1/frozen-target-free-eval.json",
+      "sha256": "f327664bc9db353b53b8f05738f94a5baaf8eefec1c708ae92f5032c37ce6eaf",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-seam-replay/opened32-mps-v1/pre-score-freeze.json",
+      "sha256": "1fb1d3e7f078d1529f88138e58fe8a5e2921aaf7312a0229501783048488b6e9",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-seam-replay/opened32-mps-v1/report.json",
+      "sha256": "058ec75e0df744e960e8a00fd495e8d33ac5f3911ebcf14a6ed60f419b679635",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-seam-replay/smoke-one-v1/frozen-target-free-eval.json",
+      "sha256": "34a18dfb7278e13ee80142cf789f213aa644afe5e7b2fc622aeb6fb8d8bc5404",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-seam-replay/smoke-one-v1/pre-score-freeze.json",
+      "sha256": "421c8bb4949e756b20baa1e0fda73675e9c391a3170bca472c11b4061054b094",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-seam-replay/smoke-one-v1/report.json",
+      "sha256": "c9c435d059e77cbbcea694c12d79f7d30b4db3a5b521734b462165f8d592dc92",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-seam-replay/smoke1-mps-v1/frozen-target-free-eval.json",
+      "sha256": "34a18dfb7278e13ee80142cf789f213aa644afe5e7b2fc622aeb6fb8d8bc5404",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-seam-replay/smoke1-mps-v1/pre-score-freeze.json",
+      "sha256": "bc4aaf3a53753120c66b56b7fddca51e48702cfbea8be7651e962eb29bc5371f",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-seam-replay/smoke1-mps-v1/report.json",
+      "sha256": "837c1baf27874af3b2a77dec48cfc9549801fb6923cdc1c31e0e2d2ebadff43b",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/fresh32/frozen-target-free-eval.json",
+      "sha256": "63e2b73fcba695ac5078784562dd9374b1e49ae6bf0a604cb7558632923ad55a",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "a1c9ca49ec8e93abf8e32d903b3643abb82a64715dfd89889b2c74d1c6fb0dc6"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/fresh32/pre-score-freeze.json",
+      "sha256": "025a6aa6b66ae23527db35bc777d404c3a01ba4671a8a3d09f692ab3c8b493a5",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/held32/frozen-target-free-eval.json",
+      "sha256": "1eb4b1c47fb0451236aa36c09d37aed7e74fb05a2fc73e80cad700fc18abd870",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "59785595547368f320b0e99952573fef3dcbf9fca85ce0b98694d765c37f89c7"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/held32/pre-score-freeze.json",
+      "sha256": "2e938e39a035fa6ded367293f5a68fb1c7df038cc57de03a73b4252917fb6b00",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/local32/frozen-target-free-eval.json",
+      "sha256": "551c42efae81e1fbfb6ffb1523b75aaffd12b5717ffef0acab6bf5267c30ac2c",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/local32/pre-score-freeze.json",
+      "sha256": "ff3abdc1014e7b261f83d34290222b4616f2b6c9a6e63c8ffa65d2ad82cf89e6",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/fixed-v1/report.json",
+      "sha256": "2d9f328159c3c80280a0112f3fb663765c9b94fe650cd4639d8cc4ae5c1a0d18",
+      "explicit_source_count": 64,
+      "explicit_source_digest": "5a6b8fc2321a9f7722f7fd5f13a16b1ed118f570e3642c41ef8a131015e05634"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/smoke1-mps-v1/report.json",
+      "sha256": "faa00bc7231914ff578f4526f278c9833c98d4d3a20b03ab4c80a273891762ce",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/smoke1-mps-v1/smoke1/frozen-target-free-eval.json",
+      "sha256": "522bb805b773b93c666355eaea520e4dfaf6b6e2d79d684bfacff2bcc0476cfc",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+    },
+    {
+      "path": "outputs/taska-selective-vote500/smoke1-mps-v1/smoke1/pre-score-freeze.json",
+      "sha256": "455ab801dd3461a6d68856c77e001cf1e69aec16d020e63c7fcf9c108f1f79ad",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-structural-origin/opened32-mps-v1/frozen-target-free-eval.json",
+      "sha256": "89296302090c8e7c475a8bed5085e5d9de2e311f668de935324776f0c7b25e76",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-structural-origin/opened32-mps-v1/pre-score-freeze.json",
+      "sha256": "f10af199e8d3f6b4b00ebffabbe3aea1fe79a006d0ba21c838d5a109841d06bc",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-structural-origin/opened32-mps-v1/report.json",
+      "sha256": "376ff1a1713bb4bb5d97874b59927197241ad7898762c2111977b0529e29dfa6",
+      "explicit_source_count": 16,
+      "explicit_source_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9"
+    },
+    {
+      "path": "outputs/taska-structural-origin/smoke1-mps-v1/frozen-target-free-eval.json",
+      "sha256": "778cafa8a5604e76bf5042ca9add12b5dd94369bccd3a5accf173c35435e979a",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-structural-origin/smoke1-mps-v1/pre-score-freeze.json",
+      "sha256": "ee03e22ba4d6da363442bb2309b37599f8e9848a9fe679fee446f7c989ad8ed7",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-structural-origin/smoke1-mps-v1/report.json",
+      "sha256": "b78f0364a505118facff3e38c38e923666b3a84cb6a7374f48e2ccfbcf98444f",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "2ee7b5b101c00809c7fff2c9099b0081fadf0298adfb2ab0cf17339e0e650259"
+    },
+    {
+      "path": "outputs/taska-vote500/local-gated-mps-v1/local32/frozen-target-free-eval.json",
+      "sha256": "2c1054faae796d8a0440b2d9c815e7723693f7329a79535e71f49a70d18cd06b",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-vote500/local-gated-mps-v1/local32/pre-score-freeze.json",
+      "sha256": "d30b3d5ae1e735558282bdb5f2c1eb84f224d920fdd52027253f7eed5229d770",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-vote500/local-gated-mps-v1/report.json",
+      "sha256": "cb83241315448f6de48e97cf4d5d4771a456e60d53f9ffb44ee7d0ca299e1770",
+      "explicit_source_count": 32,
+      "explicit_source_digest": "e7e2d1fcd9c85f9bf8661f60f9d7b068452240a7c670dceb27442c4ffacbaf60"
+    },
+    {
+      "path": "outputs/taska-vote500/smoke1-mps-v1/local32/frozen-target-free-eval.json",
+      "sha256": "f943ef60795cc43f115b678c690815ae71d72628c495036ac6bae4748cfa2e69",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+    },
+    {
+      "path": "outputs/taska-vote500/smoke1-mps-v1/local32/pre-score-freeze.json",
+      "sha256": "2793e96a6b3f7c33af3e5f7ed5f675ce9fbf9d4072277e7e388b60d548ece08d",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-vote500/smoke1-mps-v1/report.json",
+      "sha256": "f526ea328b653366e8f1dc866021fb7b47ec404e1c73da25934d880d0cf74574",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+    },
+    {
+      "path": "outputs/taska-vote500/smoke1-samepass-mps-v1/local32/frozen-target-free-eval.json",
+      "sha256": "4ec5e726b2584dfb9c1fb91e5b08b6cc5401aec9e87c2b71a9d33cb3281edb93",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+    },
+    {
+      "path": "outputs/taska-vote500/smoke1-samepass-mps-v1/local32/pre-score-freeze.json",
+      "sha256": "8f688e76dadd8976f4ad8c6cc5295d84833c85da4491a4da5783e388e5af712d",
+      "explicit_source_count": 0,
+      "explicit_source_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "outputs/taska-vote500/smoke1-samepass-mps-v1/report.json",
+      "sha256": "926d445ec64f672e8af2f76286a2ab9802e9cc77919243f88f8dc1cc101264f5",
+      "explicit_source_count": 1,
+      "explicit_source_digest": "7cbd7be031eb96d4561f68dce122bea31d27071bdcbca9a2391af8aa68fdd7ea"
+    }
+  ],
+  "explicit_source_union": {
+    "count": 356,
+    "digest": "0da687471cc49a7ad75f4c5029994a869c30cd9ff5dae54933bba539b18ee61f",
+    "source_filenames": [
+      "img_000053.png",
+      "img_000062.png",
+      "img_000083.png",
+      "img_000121.png",
+      "img_000150.png",
+      "img_000153.png",
+      "img_000183.png",
+      "img_000185.png",
+      "img_000187.png",
+      "img_000202.png",
+      "img_000214.png",
+      "img_000246.png",
+      "img_000261.png",
+      "img_000284.png",
+      "img_000313.png",
+      "img_000342.png",
+      "img_000345.png",
+      "img_000405.png",
+      "img_000436.png",
+      "img_000502.png",
+      "img_000511.png",
+      "img_000530.png",
+      "img_000533.png",
+      "img_000590.png",
+      "img_000600.png",
+      "img_000638.png",
+      "img_000639.png",
+      "img_000676.png",
+      "img_000680.png",
+      "img_000719.png",
+      "img_000836.png",
+      "img_000842.png",
+      "img_000865.png",
+      "img_000876.png",
+      "img_000940.png",
+      "img_000962.png",
+      "img_001069.png",
+      "img_001072.png",
+      "img_001123.png",
+      "img_001155.png",
+      "img_001156.png",
+      "img_001168.png",
+      "img_001176.png",
+      "img_001217.png",
+      "img_001257.png",
+      "img_001269.png",
+      "img_001305.png",
+      "img_001334.png",
+      "img_001352.png",
+      "img_001353.png",
+      "img_001369.png",
+      "img_001372.png",
+      "img_001396.png",
+      "img_001478.png",
+      "img_001504.png",
+      "img_001552.png",
+      "img_001561.png",
+      "img_001587.png",
+      "img_001596.png",
+      "img_001668.png",
+      "img_001693.png",
+      "img_001706.png",
+      "img_001714.png",
+      "img_001724.png",
+      "img_001748.png",
+      "img_001779.png",
+      "img_001796.png",
+      "img_001797.png",
+      "img_001819.png",
+      "img_001838.png",
+      "img_001853.png",
+      "img_001872.png",
+      "img_001895.png",
+      "img_001926.png",
+      "img_002005.png",
+      "img_002013.png",
+      "img_002020.png",
+      "img_002045.png",
+      "img_002075.png",
+      "img_002097.png",
+      "img_002100.png",
+      "img_002120.png",
+      "img_002147.png",
+      "img_002171.png",
+      "img_002209.png",
+      "img_002213.png",
+      "img_002230.png",
+      "img_002233.png",
+      "img_002250.png",
+      "img_002282.png",
+      "img_002287.png",
+      "img_002346.png",
+      "img_002387.png",
+      "img_002459.png",
+      "img_002471.png",
+      "img_002473.png",
+      "img_002489.png",
+      "img_002494.png",
+      "img_002499.png",
+      "img_002537.png",
+      "img_002555.png",
+      "img_002559.png",
+      "img_002604.png",
+      "img_002637.png",
+      "img_002648.png",
+      "img_002661.png",
+      "img_002695.png",
+      "img_002696.png",
+      "img_002725.png",
+      "img_002779.png",
+      "img_002793.png",
+      "img_002819.png",
+      "img_002892.png",
+      "img_002901.png",
+      "img_002919.png",
+      "img_002968.png",
+      "img_003004.png",
+      "img_003022.png",
+      "img_003031.png",
+      "img_003039.png",
+      "img_003054.png",
+      "img_003114.png",
+      "img_003133.png",
+      "img_003149.png",
+      "img_003199.png",
+      "img_003203.png",
+      "img_003221.png",
+      "img_003222.png",
+      "img_003308.png",
+      "img_003330.png",
+      "img_003407.png",
+      "img_003408.png",
+      "img_003409.png",
+      "img_003415.png",
+      "img_003429.png",
+      "img_003434.png",
+      "img_003440.png",
+      "img_003445.png",
+      "img_003466.png",
+      "img_003469.png",
+      "img_003499.png",
+      "img_003517.png",
+      "img_003559.png",
+      "img_003577.png",
+      "img_003589.png",
+      "img_003602.png",
+      "img_003626.png",
+      "img_003679.png",
+      "img_003696.png",
+      "img_003700.png",
+      "img_003707.png",
+      "img_003715.png",
+      "img_003719.png",
+      "img_003742.png",
+      "img_003778.png",
+      "img_003791.png",
+      "img_003800.png",
+      "img_003847.png",
+      "img_003890.png",
+      "img_003904.png",
+      "img_003920.png",
+      "img_003931.png",
+      "img_003976.png",
+      "img_004011.png",
+      "img_004025.png",
+      "img_004070.png",
+      "img_004135.png",
+      "img_004183.png",
+      "img_004208.png",
+      "img_004221.png",
+      "img_004275.png",
+      "img_004284.png",
+      "img_004297.png",
+      "img_004314.png",
+      "img_004326.png",
+      "img_004333.png",
+      "img_004405.png",
+      "img_004443.png",
+      "img_004505.png",
+      "img_004507.png",
+      "img_004535.png",
+      "img_004623.png",
+      "img_004630.png",
+      "img_004642.png",
+      "img_004663.png",
+      "img_004665.png",
+      "img_004666.png",
+      "img_004681.png",
+      "img_004776.png",
+      "img_004779.png",
+      "img_004826.png",
+      "img_004874.png",
+      "img_004878.png",
+      "img_004917.png",
+      "img_004928.png",
+      "img_004929.png",
+      "img_004944.png",
+      "img_004956.png",
+      "img_005035.png",
+      "img_005042.png",
+      "img_005071.png",
+      "img_005077.png",
+      "img_005082.png",
+      "img_005115.png",
+      "img_005142.png",
+      "img_005183.png",
+      "img_005195.png",
+      "img_005203.png",
+      "img_005212.png",
+      "img_005233.png",
+      "img_005246.png",
+      "img_005247.png",
+      "img_005254.png",
+      "img_005286.png",
+      "img_005292.png",
+      "img_005332.png",
+      "img_005439.png",
+      "img_005450.png",
+      "img_005491.png",
+      "img_005507.png",
+      "img_005541.png",
+      "img_005559.png",
+      "img_005586.png",
+      "img_005613.png",
+      "img_005689.png",
+      "img_005722.png",
+      "img_005724.png",
+      "img_005745.png",
+      "img_005770.png",
+      "img_005795.png",
+      "img_005798.png",
+      "img_005801.png",
+      "img_005882.png",
+      "img_005904.png",
+      "img_005908.png",
+      "img_005924.png",
+      "img_005934.png",
+      "img_005937.png",
+      "img_005985.png",
+      "img_005990.png",
+      "img_006056.png",
+      "img_006063.png",
+      "img_006077.png",
+      "img_006083.png",
+      "img_006145.png",
+      "img_006154.png",
+      "img_006161.png",
+      "img_006162.png",
+      "img_006168.png",
+      "img_006177.png",
+      "img_006181.png",
+      "img_006213.png",
+      "img_006219.png",
+      "img_006238.png",
+      "img_006257.png",
+      "img_006295.png",
+      "img_006313.png",
+      "img_006322.png",
+      "img_006339.png",
+      "img_006343.png",
+      "img_006383.png",
+      "img_006400.png",
+      "img_006409.png",
+      "img_006418.png",
+      "img_006419.png",
+      "img_006420.png",
+      "img_006421.png",
+      "img_006422.png",
+      "img_006425.png",
+      "img_006429.png",
+      "img_006435.png",
+      "img_006438.png",
+      "img_006440.png",
+      "img_006441.png",
+      "img_006443.png",
+      "img_006444.png",
+      "img_006445.png",
+      "img_006447.png",
+      "img_006454.png",
+      "img_006460.png",
+      "img_006462.png",
+      "img_006463.png",
+      "img_006470.png",
+      "img_006476.png",
+      "img_006480.png",
+      "img_006487.png",
+      "img_006489.png",
+      "img_006495.png",
+      "img_006509.png",
+      "img_006511.png",
+      "img_006519.png",
+      "img_006524.png",
+      "img_006527.png",
+      "img_006529.png",
+      "img_006532.png",
+      "img_006540.png",
+      "img_006541.png",
+      "img_006543.png",
+      "img_006553.png",
+      "img_006560.png",
+      "img_006565.png",
+      "img_006575.png",
+      "img_006577.png",
+      "img_006579.png",
+      "img_006583.png",
+      "img_006584.png",
+      "img_006586.png",
+      "img_006599.png",
+      "img_006603.png",
+      "img_006606.png",
+      "img_006610.png",
+      "img_006621.png",
+      "img_006624.png",
+      "img_006633.png",
+      "img_006655.png",
+      "img_006657.png",
+      "img_006658.png",
+      "img_006675.png",
+      "img_006682.png",
+      "img_006688.png",
+      "img_006689.png",
+      "img_006699.png",
+      "img_006700.png",
+      "img_006701.png",
+      "img_006716.png",
+      "img_006727.png",
+      "img_006732.png",
+      "img_006748.png",
+      "img_006755.png",
+      "img_006756.png",
+      "img_006770.png",
+      "img_006772.png",
+      "img_006784.png",
+      "img_006789.png",
+      "img_006793.png",
+      "img_006795.png",
+      "img_006805.png",
+      "img_006809.png",
+      "img_006811.png",
+      "img_006833.png",
+      "img_006862.png",
+      "img_006866.png",
+      "img_006869.png",
+      "img_006877.png",
+      "img_006878.png",
+      "img_006883.png",
+      "img_006893.png",
+      "img_006906.png",
+      "img_006926.png",
+      "img_006927.png",
+      "img_006934.png",
+      "img_006949.png",
+      "img_006951.png",
+      "img_006977.png",
+      "img_006993.png",
+      "img_006999.png"
+    ]
+  },
+  "freshness_claim": "Current TASKA-lineage source-disjoint only; not universal or model fresh."
+}

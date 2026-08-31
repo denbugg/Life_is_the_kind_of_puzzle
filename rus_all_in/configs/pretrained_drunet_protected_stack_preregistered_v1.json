@@ -1,0 +1,208 @@
+{
+  "schema": "aiijc-pretrained-drunet-protected-stack-preregistration-v1",
+  "status": "preregistered_before_any_calibration_target_decode_in_this_combined_experiment",
+  "purpose": "One fixed legal composition of the independently robust DRUNet40 and exact v1 threshold-40 protected-NLM mechanisms; not a sweep",
+  "created_on": "2026-08-30",
+  "fixed_train_sanity": {
+    "report": "outputs/pretrained-drunet-protected-stack/train-sanity-offset512-count16/report.json",
+    "report_sha256": "9833bedcdcf8e317e0724aa09dbef34c268e0e89adde4b60a90bf610236e9ad9",
+    "split": "train",
+    "offset": 512,
+    "count": 16,
+    "parameter_selection_from_report_forbidden": true,
+    "mean_ssim": {
+      "A_original_nlm_h20": 0.2576023620515024,
+      "B_original_nlm_h28": 0.26851064275384046,
+      "C_drunet_sigma40_then_nlm_h28": 0.2745281551455572,
+      "D_drunet_sigma40_protected_h28_h40_t40": 0.276525320604905
+    },
+    "D_vs_B": {
+      "mean_delta": 0.008014677851064508,
+      "paired_bootstrap_ci95": [
+        0.007191023035418354,
+        0.008888903868987934
+      ],
+      "wins": 16
+    },
+    "D_vs_C": {
+      "mean_delta": 0.00199716545934772,
+      "paired_bootstrap_ci95": [
+        0.001751690468184407,
+        0.0022619990090764716
+      ],
+      "wins": 16
+    },
+    "calibration_targets_accessed": false
+  },
+  "data": {
+    "split": "calibration",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "primary_offset": 264,
+    "primary_count": 120,
+    "primary_filenames_sha256": "11d0dc7ce4d7a797a93b81c13766ad8990b6e60d84f101a80b94f05016c5ab94",
+    "primary_input_roster_sha256": "0f8ff23503dcbb8a2414e28ced46e5eb2179ad7bacb27a38d94295f66df2be05",
+    "confirmation_offset": 408,
+    "confirmation_count": 120,
+    "confirmation_filenames_sha256": "e0f4c4c5dbf2dcb0d7d659ceda8b131ab4eec53c600c4cfaab10be07450c25bc",
+    "confirmation_input_roster_sha256": "b17546c377a915f38925c466f6f8c53b0cd3dec4e73de31569f9485af1d7c450",
+    "primary_confirmation_filename_overlap": 0,
+    "overlap_ledger": "configs/pretrained_drunet_protected_stack_overlap_ledger_v1.json",
+    "overlap_ledger_sha256": "c2a793a2155cd7ffadc7b7ddf93141756683239dc864f6b55f736ab7c5535a71",
+    "historical_target_exposure": {
+      "freshness_claim": false,
+      "globally_historically_exposed": true,
+      "legacy_calibration700_contains_every_primary_and_confirmation_record": true,
+      "primary_and_confirmation_are_only_disjoint_from_each_other": true,
+      "all_preexisting_json_basename_overlaps_are_bound_by_the_overlap_ledger": true,
+      "same_basename_competition_test_records_are_not_claimed_as_calibration_target_access": true
+    }
+  },
+  "model_provenance": {
+    "architecture": "colour DRUNet UNetRes, discriminatively trained Gaussian denoiser; not generative",
+    "official_repository": "https://github.com/cszn/KAIR",
+    "official_commit": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e",
+    "repository_license": "MIT",
+    "license_sha256": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "checkpoint_url": "https://github.com/cszn/KAIR/releases/download/v1.0/drunet_color.pth",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "official_basicblock_source_sha256": "48406db8867394ac5ae233ebeec7711ac10acfc3a6bbf0072c33aa77d659b6fd",
+    "official_network_unet_source_sha256": "8043b6350f1589d5f08892e3be0b4d12c5a502058014285107b7360696d12bf5",
+    "parameter_count": 32640960,
+    "strict_state_dict_load_required": true,
+    "submission_contains_result_pngs_only": true
+  },
+  "runtime_reproducibility": {
+    "canonical_prediction_device": "mps",
+    "canonical_predictions_are_content_hash_bound": true,
+    "noncanonical_cpu_or_cuda_reproduction_may_differ_by_uint8_rounding": true,
+    "noncanonical_device_outputs_must_not_replace_the_frozen_primary_or_confirmation_predictions": true
+  },
+  "arm_names": [
+    "A_original_nlm_h20",
+    "B_original_nlm_h28",
+    "C_drunet_sigma40_then_nlm_h28",
+    "D_drunet_sigma40_protected_h28_h40_t40"
+  ],
+  "arms": [
+    {
+      "name": "A_original_nlm_h20",
+      "role": "baseline",
+      "pipeline": "shared strict layout and RGB/luma harmonizer, then one colored NLM h20 on the original harmonized canvas"
+    },
+    {
+      "name": "B_original_nlm_h28",
+      "role": "strong_reference",
+      "pipeline": "shared strict layout and RGB/luma harmonizer, then one colored NLM h28 on the original harmonized canvas"
+    },
+    {
+      "name": "C_drunet_sigma40_then_nlm_h28",
+      "role": "neural_reference",
+      "pipeline": "independent tilewise DRUNet sigma40, exact assembly, then one colored NLM h28"
+    },
+    {
+      "name": "D_drunet_sigma40_protected_h28_h40_t40",
+      "role": "only_candidate",
+      "pipeline": "independent tilewise DRUNet sigma40 -> exact assembly -> independently compute h20/h28/h40 -> exact v1 t40 mask from DRUNet+h20 -> take DRUNet+h28 at protected pixels and DRUNet+h40 in flat pixels"
+    }
+  ],
+  "fixed_composition": {
+    "layout": "dirty-only bilateral scores -> solve_buddies(max_edges=96)",
+    "raw_permutation_audit_before_restoration": true,
+    "harmonizer": "frozen RGB seam offsets -> frozen bounded luma gains",
+    "drunet_sigma_255": 40,
+    "drunet_tile_input": "20x20 RGB plus constant sigma/255 map",
+    "same_tile_reflection_padding": "right=4,bottom=4 to 24x24",
+    "crop": "exact top-left 20x20",
+    "batch_size": 144,
+    "neural_outputs_reassembled_at_unchanged_layout_indices": true,
+    "nlm_outputs_from_one_common_drunet_canvas": {
+      "mask_source": "one independent colored NLM h20",
+      "safe_source": "one independent colored NLM h28",
+      "flat_source": "one independent colored NLM h40",
+      "template_window": 7,
+      "search_window": 21
+    },
+    "exact_v1_t40_mask": {
+      "grayscale": "cv2 RGB2GRAY on DRUNet+h20 uint8",
+      "sobel": "CV_32F dx/dy ksize=3, cv2.magnitude",
+      "threshold": 40.0,
+      "grid": "protect coordinate-1:coordinate+1 for every 20-pixel boundary",
+      "dilation": "3x3 uint8, one iteration",
+      "softening": "Gaussian sigmaX=sigmaY=1",
+      "blend": "rint(soft*h28 + (1-soft)*h40), clip uint8"
+    },
+    "no_sequential_nlm": true,
+    "no_parameter_sweep_or_selection": true
+  },
+  "geometry_contract": {
+    "strict_shared_layout": true,
+    "all_576_upright_tiles_preserved_one_to_one": true,
+    "tile_identity_and_layout_index_unchanged_after_audit": true,
+    "same_board_pixels_only": true,
+    "cross_tile_neural_context": false,
+    "cross_board_context": false,
+    "resize": false,
+    "warp": false,
+    "rotation": false,
+    "flip": false,
+    "external_reference_or_template_pixels": false,
+    "generation_or_substitution": false
+  },
+  "primary_gate": {
+    "D_mean_ssim_at_least": 0.27,
+    "D_paired_bootstrap_ci95_lower_vs_B_strictly_positive": true,
+    "D_paired_bootstrap_ci95_lower_vs_C_strictly_positive": true,
+    "D_wins_vs_B_at_least": 90,
+    "D_wins_vs_C_at_least": 90,
+    "strict_original_h28_safe_target_free_gate": {
+      "mean_luminance_gradient_retention_at_least": 0.9,
+      "minimum_board_luminance_gradient_retention_at_least": 0.8,
+      "mean_chroma_gradient_retention_at_least": 0.8,
+      "minimum_board_chroma_gradient_retention_at_least": 0.6,
+      "mean_luminance_laplacian_retention_at_least": 0.9,
+      "minimum_board_luminance_laplacian_retention_at_least": 0.8,
+      "mean_grid_ratio_relative_to_B_at_most": 1.08,
+      "maximum_board_grid_ratio_relative_to_B_at_most": 1.15,
+      "mean_protected_fraction_range": [
+        0.4,
+        0.75
+      ],
+      "every_board_protected_fraction_range": [
+        0.3,
+        0.85
+      ],
+      "maximum_abs_global_rgb_mean_shift_vs_B_at_most": 3.0,
+      "every_board_global_rgb_std_ratio_vs_B_range": [
+        0.9,
+        1.05
+      ],
+      "maximum_board_mean_abs_pixel_change_vs_B_at_most": 8.0,
+      "maximum_clipped_fraction_increase_vs_B_at_most": 0.01,
+      "all_raw_permutation_audits_pass": true,
+      "all_four_predictions_distinct_every_board": true
+    },
+    "manual_root_gate": {
+      "required_before_confirmation": true,
+      "all_120_full_canvas_triplets": true,
+      "compare": "B original h28, C DRUNet+h28, and D combined",
+      "severe_new_artifacts_allowed": 0,
+      "material_face_text_or_object_structure_loss_allowed": false,
+      "mask_halo_or_boundary_damage_allowed": false,
+      "review_must_bind_preregistration_primary_report_commitment_receipt_and_prediction_roster_hashes": true,
+      "manual_review_file_must_be_read_only": true
+    }
+  },
+  "confirmation_policy": {
+    "targets_remain_unopened_until_every_primary_quantitative_and_root_manual_gate_passes": true,
+    "no_retuning": true,
+    "same_fixed_composition_and_gate": true
+  },
+  "forbidden": [
+    "calibration target decode before prediction commitment",
+    "holdout or competition-test scoring/tuning",
+    "new h, sigma, threshold, mask, blend, or routing after train sanity or primary",
+    "geometry change, reference pixels, tile substitution, or generation",
+    "changes to frozen DRUNet C experiment or existing production outputs"
+  ]
+}

@@ -1,0 +1,200 @@
+{
+  "schema": "aiijc-taska-fullres-focal-gated-tail-fresh32-confirmation-config-v1",
+  "experiment": "taska-fullres-focal-gated-tail-fresh32-confirmation-v1",
+  "purpose": "One truly disjoint 16-source x 2-draw end-to-end confirmation of the already fixed fullres candidate-supply plus focal-gated tail96 composition.",
+  "protocol": {
+    "reservation_dependency_fixed_before_roster_selection": true,
+    "config_and_sha_sidecar_created_before_inference_or_scoring": true,
+    "target_free_layouts_edges_logits_and_provenance_frozen_before_reference_reconstruction": true,
+    "one_panel_only": true,
+    "threshold_budget_arm_or_roster_sweep": false,
+    "tail192_reserved_sources_excluded": true,
+    "all_signed_taska_and_fullres_sources_excluded": true,
+    "historical_fullres_explicit_sources_excluded_conservatively": true,
+    "competition_test_forbidden": true
+  },
+  "panel": {
+    "selection_namespace": "aiijc-taska-fullres-focal-gated-tail-e2e-fresh32-confirmation-v1-source16xdraw2",
+    "selection_seed": 2026083194,
+    "selection_algorithm": "From img_006400..img_006699, recursively collect explicit img_XXXXXX.png strings from the SHA-signed tail192 reservation and all of its non-manifest signed dependencies, plus every separately signed historical fullres artifact below; exclude their union, then sort by sha256(namespace\\0seed\\0filename), filename tie-break, and take the first 16.",
+    "universe_minimum": "img_006400.png",
+    "universe_maximum": "img_006699.png",
+    "universe_count": 300,
+    "universe_digest": "8a238634f75e90f3f3a8714d8a4bbeb54e5c96c137aee5e05393bc1ac52a1381",
+    "exclusion_rosters": {
+      "tail192_signed_dependencies_and_reserved": {
+        "count": 402,
+        "digest": "097af3704c3a905405fa111c8fb6e0faffe88ffc3d10f4deb4df734a14ce52bc"
+      },
+      "historical_fullres_explicit": {
+        "count": 435,
+        "digest": "f802a651db3eef0bf84ca52a1338d36ad14e5092ace56ef5e3212e77c85ebe2a"
+      }
+    },
+    "exclusion_union_count": 753,
+    "exclusion_union_digest": "a268d87bfe9ceda261c707703c0e16d83a73863847e1e491b3160674ee13be62",
+    "excluded_in_universe_count": 66,
+    "eligible_count": 234,
+    "eligible_digest": "a7094156046a9293078539c7e7bc8fc3063c2b47a64dc58abce81df7ed337f19",
+    "source_filenames": [
+      "img_006543.png",
+      "img_006429.png",
+      "img_006603.png",
+      "img_006487.png",
+      "img_006444.png",
+      "img_006476.png",
+      "img_006462.png",
+      "img_006419.png",
+      "img_006621.png",
+      "img_006421.png",
+      "img_006655.png",
+      "img_006480.png",
+      "img_006409.png",
+      "img_006509.png",
+      "img_006445.png",
+      "img_006540.png"
+    ],
+    "source_count": 16,
+    "draws": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "source_order_digest": "3120b719d7cbf496f5505e0459ecdf597a98637c841c8ef843eb11945adf6c1a",
+    "cases_digest": "999667ad4ee95b35cc76537a7e1b99f3f3d96b2dc92c8c42eca80baeef0ac745"
+  },
+  "candidate": {
+    "matcher_vote_target": 350,
+    "current_matcher_views": [
+      "raw",
+      "median",
+      "bilateral"
+    ],
+    "current_scorer_count": 12,
+    "portfolio_arms": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear"
+    ],
+    "portfolio_selector": "minimum original all-1104-bond TASKA seam cost",
+    "control": "current four-arm selector plus all-current-candidate tail96",
+    "restored_scorers": "v3/local x first two audited orientations",
+    "restored_scorer_count": 4,
+    "new_edge_rule": "absent from current harvest, support >= 3/4, then recovered train_exact_top5 focal logit >= 0.0",
+    "new_edge_support_minimum": 3,
+    "new_edge_focal_logit_minimum": 0.0,
+    "fullres": "five-arm selector including fullres_union_focal, followed by all-edge tail96 protecting current+accepted-new only for a fullres winner and current otherwise",
+    "combo": "the identical five-arm pre-tail winner, followed by focal-logit>=0 protected tail96 over the winner-aligned candidate set",
+    "focal_mode": "train_exact_top5",
+    "focal_protection_logit_threshold": 0.0,
+    "tail_max_swaps": 96,
+    "tail_minimum_gain": 1e-09,
+    "threshold_budget_orientation_arm_or_panel_sweep": false,
+    "restored_pixels_matcher_only": true,
+    "raw_dense_cost_matrices_unchanged": true
+  },
+  "evaluation": {
+    "primary_metric": "combo_minus_control_satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "required_ablations": [
+      "fullres_minus_control",
+      "combo_minus_fullres"
+    ],
+    "secondary_metrics": [
+      "adjacency_recall",
+      "exact_tiles_per_board"
+    ],
+    "bootstrap_unit": "source_with_two_draws",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 94083126,
+    "confirmation_gate": {
+      "combo_minus_control_pair_delta_mean_at_least": 2.0,
+      "combo_minus_control_pair_delta_ci95_lower_at_least": 0.0
+    }
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "tail192_reservation": {
+      "path": "configs/taska_focal_gated_tail192_fresh16_capacity_v1.json",
+      "sha256": "6ab12dfae4ffec924b66928027edf1d42d562be9c85f1f6cc3ace27d8d1e01db"
+    },
+    "fullres_relation_fusion_decoder_preregistration": {
+      "path": "configs/fullres_relation_fusion_decoder_d2_preregistered_v1.json",
+      "sha256": "46ae0388fee837efbb1bb47f665a442f1badab62bfc6279b6728c1f5a840114a"
+    },
+    "fullres_relation_fusion_preregistration": {
+      "path": "configs/fullres_relation_fusion_preregistered_v1.json",
+      "sha256": "b83e819d161524dccb37dabbee6faf7470a27b835a598eded9c8285fe487d7b5"
+    },
+    "fullres_twin_preregistration": {
+      "path": "configs/fullres_twin_side_matcher_preregistered_v1.json",
+      "sha256": "39fbcb33a00c88b0a45b122c888f1f80acce307fe7a7172f2b9ff6712435dd64"
+    },
+    "fullres_boundary_report": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/report.json",
+      "sha256": "780f6b065ba769bef8b3ffd30cf0bcb781b2040258835964b122725e732fccc7"
+    },
+    "fullres_boundary_smoke_report": {
+      "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/report.json",
+      "sha256": "e5d161057168b60d360d50b1faa610e8c55186b7639d7a69ce1d4b1aaaaae49f"
+    },
+    "fullres_fragment_smoke_report": {
+      "path": "outputs/fullres-fusion-fragment-solver/smoke1-mps-v2/report.json",
+      "sha256": "0727eb102925a5396d7e65a163d3fa850e2580f78ec8c30bc843f22604bcc5e1"
+    },
+    "fullres_union_opened40_report": {
+      "path": "outputs/fullres-fusion-union-priority/opened40-mps-v1/report.json",
+      "sha256": "82a11a6267c9538106bf531e62fa3cc6f86844fc33b7b3262aa199908e4f4329"
+    },
+    "fullres_union_opened8_report": {
+      "path": "outputs/fullres-fusion-union-priority/opened8-mps-v1/report.json",
+      "sha256": "78e2483218215b67a463a1412dc5c5a486cfec3ed06bfa6e9f595f330cf1a4ef"
+    },
+    "fullres_union_smoke_report": {
+      "path": "outputs/fullres-fusion-union-priority/smoke1-mps-v1/report.json",
+      "sha256": "db999fe0d9c51980423d2a138d921c108983988040d9b6180875cb67156766cd"
+    },
+    "fullres_conversion_audit_v2_report": {
+      "path": "outputs/fullres-relation-fusion/conversion-audit-opened-source40-v2/report.json",
+      "sha256": "9fd18c091583d0020f88a91b026541c707c9188f13fa0c6ada2170d241cc62e8"
+    },
+    "fullres_conversion_audit_report": {
+      "path": "outputs/fullres-relation-fusion/conversion-audit-opened-source40/report.json",
+      "sha256": "f17f14224ed7b5f1b8eb33a3440c76d6dd33bdb8ff32c7d081dd7a44b9180dc0"
+    },
+    "fullres_decoder_report": {
+      "path": "outputs/fullres-relation-fusion/decoder-d2-source40-draw1/report.json",
+      "sha256": "8884375df68870b8b06e62e975d26ac2a829294ac99a7fdd0fa665214a71729e"
+    },
+    "fullres_relation_report": {
+      "path": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/report.json",
+      "sha256": "3afbd75773370a7f80ba95060b0a7f0dfb4a3343fac69019a79170641f7a42c9"
+    },
+    "fullres_twin_report": {
+      "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/report.json",
+      "sha256": "e39709b01f5772ce84198591ef40fa482952d7ad8b1de9b8aeb97cb9ebbfb275"
+    },
+    "fullres_twin_selection_commitment": {
+      "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/selection-commitment.json",
+      "sha256": "bce6acb5faac2b7a3599495f5c1e40ffd4fb8c3e1a16c1ca24d432fb9611596f"
+    },
+    "fullres_denoiser_checkpoint": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/fullres_boundary_denoiser.pt",
+      "sha256": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c"
+    }
+  },
+  "legality": {
+    "organizer_train_sources_only": true,
+    "dirty_tiles_only_for_candidate_inference": true,
+    "targets_or_exact_references_in_candidate_inference": false,
+    "restored_pixels_matcher_only": true,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "rotated_warped_replaced_or_constant_tiles": false,
+    "competition_test_forbidden": true,
+    "postprocessing_used": false
+  }
+}

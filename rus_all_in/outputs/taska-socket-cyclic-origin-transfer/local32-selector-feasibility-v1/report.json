@@ -1,0 +1,1660 @@
+{
+  "schema": "aiijc-taska-socket-cyclic-selector-opened-local-feasibility-v1",
+  "status": "opened-local-diagnostic-only",
+  "contains_target_assisted_labels": true,
+  "new_exact_reference_or_panel_opened": false,
+  "terminal_or_fresh_accessed": false,
+  "competition_test_accessed": false,
+  "hard_utility": {
+    "positive": "candidate exact_delta > 0 and per-board pair_delta >= -2",
+    "otherwise": "reject candidate",
+    "pair_floor": -2
+  },
+  "all32_oracle": {
+    "exact_positive_oracle": {
+      "selected_board_count": 4,
+      "mean_exact_delta_per_all_boards": 9.53125,
+      "mean_pair_delta_per_all_boards": -0.4375,
+      "selected_exact_delta_sum": 305.0,
+      "selected_pair_delta_sum": -14.0
+    },
+    "hard_pair_safe_exact_oracle": {
+      "selected_board_count": 2,
+      "mean_exact_delta_per_all_boards": 8.1875,
+      "mean_pair_delta_per_all_boards": -0.125,
+      "selected_exact_delta_sum": 262.0,
+      "selected_pair_delta_sum": -4.0
+    },
+    "positive_counts": {
+      "exact_positive": 4,
+      "hard_pair_safe_exact": 2
+    }
+  },
+  "socket_lineage_disjoint26_oracle": {
+    "exact_positive_oracle": {
+      "selected_board_count": 3,
+      "mean_exact_delta_per_all_boards": 1.8846153846153846,
+      "mean_pair_delta_per_all_boards": -0.46153846153846156,
+      "selected_exact_delta_sum": 49.0,
+      "selected_pair_delta_sum": -12.0
+    },
+    "hard_pair_safe_exact_oracle": {
+      "selected_board_count": 1,
+      "mean_exact_delta_per_all_boards": 0.23076923076923078,
+      "mean_pair_delta_per_all_boards": -0.07692307692307693,
+      "selected_exact_delta_sum": 6.0,
+      "selected_pair_delta_sum": -2.0
+    },
+    "positive_counts": {
+      "exact_positive": 3,
+      "hard_pair_safe_exact": 1
+    }
+  },
+  "source_grouped_oof": {
+    "protocol": {
+      "scope": "17 changed local32 boards only; unchanged rolls are no-ops",
+      "splitter": "LeaveOneGroupOut(source_filename)",
+      "model": "StandardScaler -> LogisticRegression(C=1, class_weight=balanced, liblinear, random_state=0)",
+      "fixed_probability_threshold": 0.5,
+      "model_features": [
+        "socket_total_gain",
+        "socket_row_margin",
+        "socket_column_margin",
+        "raw_taska_cost_delta_per_pair",
+        "toroidal_roll_l1",
+        "nonzero_axis_count",
+        "six_arm_full_roll_support_fraction",
+        "six_arm_positive_gain_support_fraction"
+      ],
+      "exploratory_only": true
+    },
+    "changed_board_count": 17,
+    "positive_count": 2,
+    "negative_count": 15,
+    "roc_auc": 0.23333333333333334,
+    "selected_positive_precision": 0.0,
+    "positive_recall": 0.0,
+    "selected_on_changed_denominator": {
+      "selected_board_count": 5,
+      "mean_exact_delta_per_all_boards": -4.529411764705882,
+      "mean_pair_delta_per_all_boards": -2.823529411764706,
+      "selected_exact_delta_sum": -77.0,
+      "selected_pair_delta_sum": -48.0
+    },
+    "selected_on_all32_denominator": {
+      "selected_board_count": 5,
+      "mean_exact_delta_per_all_boards": -2.40625,
+      "mean_pair_delta_per_all_boards": -1.5,
+      "selected_exact_delta_sum": -77.0,
+      "selected_pair_delta_sum": -48.0
+    },
+    "univariate_auc": {
+      "socket_total_gain": {
+        "signed_auc": 0.3333333333333333,
+        "best_orientation_auc": 0.6666666666666667
+      },
+      "socket_row_margin": {
+        "signed_auc": 0.30000000000000004,
+        "best_orientation_auc": 0.7
+      },
+      "socket_column_margin": {
+        "signed_auc": 0.2,
+        "best_orientation_auc": 0.8
+      },
+      "raw_taska_cost_delta_per_pair": {
+        "signed_auc": 0.4666666666666667,
+        "best_orientation_auc": 0.5333333333333333
+      },
+      "toroidal_roll_l1": {
+        "signed_auc": 0.75,
+        "best_orientation_auc": 0.75
+      },
+      "nonzero_axis_count": {
+        "signed_auc": 0.6166666666666667,
+        "best_orientation_auc": 0.6166666666666667
+      },
+      "six_arm_full_roll_support_fraction": {
+        "signed_auc": 0.6166666666666667,
+        "best_orientation_auc": 0.6166666666666667
+      },
+      "six_arm_positive_gain_support_fraction": {
+        "signed_auc": 0.4,
+        "best_orientation_auc": 0.6
+      }
+    },
+    "rows": [
+      {
+        "prefix": "case_0001",
+        "source_filename": "img_001156.png",
+        "label": 0,
+        "probability": 0.7761708573526819,
+        "selected": true
+      },
+      {
+        "prefix": "case_0005",
+        "source_filename": "img_003499.png",
+        "label": 0,
+        "probability": 0.12539183118800254,
+        "selected": false
+      },
+      {
+        "prefix": "case_0006",
+        "source_filename": "img_002013.png",
+        "label": 0,
+        "probability": 0.27759864878236296,
+        "selected": false
+      },
+      {
+        "prefix": "case_0008",
+        "source_filename": "img_004666.png",
+        "label": 0,
+        "probability": 0.21839864781436077,
+        "selected": false
+      },
+      {
+        "prefix": "case_0009",
+        "source_filename": "img_003742.png",
+        "label": 0,
+        "probability": 0.4004708742183432,
+        "selected": false
+      },
+      {
+        "prefix": "case_0011",
+        "source_filename": "img_006162.png",
+        "label": 0,
+        "probability": 0.7135797715064311,
+        "selected": true
+      },
+      {
+        "prefix": "case_0012",
+        "source_filename": "img_006177.png",
+        "label": 0,
+        "probability": 0.5704561826468715,
+        "selected": true
+      },
+      {
+        "prefix": "case_0013",
+        "source_filename": "img_004944.png",
+        "label": 0,
+        "probability": 0.9450660895967528,
+        "selected": true
+      },
+      {
+        "prefix": "case_0016",
+        "source_filename": "img_005724.png",
+        "label": 0,
+        "probability": 0.02977651346171539,
+        "selected": false
+      },
+      {
+        "prefix": "case_0017",
+        "source_filename": "img_001668.png",
+        "label": 0,
+        "probability": 0.30605216740413205,
+        "selected": false
+      },
+      {
+        "prefix": "case_0019",
+        "source_filename": "img_006343.png",
+        "label": 1,
+        "probability": 0.14437749708116837,
+        "selected": false
+      },
+      {
+        "prefix": "case_0021",
+        "source_filename": "img_002471.png",
+        "label": 0,
+        "probability": 0.05661665573552011,
+        "selected": false
+      },
+      {
+        "prefix": "case_0024",
+        "source_filename": "img_004443.png",
+        "label": 0,
+        "probability": 0.6522037478519619,
+        "selected": true
+      },
+      {
+        "prefix": "case_0025",
+        "source_filename": "img_000405.png",
+        "label": 0,
+        "probability": 0.3457471278002719,
+        "selected": false
+      },
+      {
+        "prefix": "case_0027",
+        "source_filename": "img_004011.png",
+        "label": 0,
+        "probability": 0.17103385001041485,
+        "selected": false
+      },
+      {
+        "prefix": "case_0029",
+        "source_filename": "img_006495.png",
+        "label": 0,
+        "probability": 0.005908899165104485,
+        "selected": false
+      },
+      {
+        "prefix": "case_0030",
+        "source_filename": "img_002819.png",
+        "label": 1,
+        "probability": 0.09412420219920972,
+        "selected": false
+      }
+    ]
+  },
+  "rows": [
+    {
+      "prefix": "case_0000",
+      "source_filename": "img_004917.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 91.48059542104602,
+        "socket_column_margin": 23.050366211682558,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.6666666666666666,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 0.6666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 4,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 4,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0001",
+      "source_filename": "img_001156.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 17.605073368176818,
+        "socket_row_gain": 17.605073368176818,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 17.605073368176818,
+        "socket_column_margin": 39.69367474503815,
+        "raw_taska_cost_delta_per_pair": 0.30335428855260427,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.6067085771052085,
+        "toroidal_roll_l1": 8.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.5,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 0.8333333333333334,
+        "six_arm_positive_gain_support_fraction": 0.6666666666666666,
+        "six_arm_mean_gain_for_control_roll": 4.911683123248319
+      },
+      "diagnostics": {
+        "row_roll": 8,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 3,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 5,
+        "six_arm_positive_gain_support": 4,
+        "six_arm_gains_for_control_roll": [
+          -36.65636576898396,
+          17.82878313958645,
+          8.005483325570822,
+          -56.50046465173364,
+          17.605073368176818,
+          79.18758932687342
+        ]
+      },
+      "exact_delta": -1,
+      "pair_delta": -14,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0002",
+      "source_filename": "img_001396.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 82.21191915124655,
+        "socket_column_margin": 83.64165947027504,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.5,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 0.8333333333333334,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 3,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 5,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0003",
+      "source_filename": "img_000121.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 48.06284141540527,
+        "socket_column_margin": 45.08224389329553,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 1.0,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 6,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0004",
+      "source_filename": "img_001372.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 56.33815765939653,
+        "socket_column_margin": 50.880943313241005,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.6666666666666666,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 0.6666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 4,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 4,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0005",
+      "source_filename": "img_003499.png",
+      "checkpoint_lineage_overlap": true,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 51.22242726571858,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 51.22242726571858,
+        "socket_row_margin": 16.32892855256796,
+        "socket_column_margin": 45.58243218809366,
+        "raw_taska_cost_delta_per_pair": 0.16324893210011118,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.32649786420022237,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 9.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.5,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.8333333333333334,
+        "six_arm_mean_gain_for_control_roll": 32.39291932930549
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 15,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 3,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 5,
+        "six_arm_gains_for_control_roll": [
+          44.45717381313443,
+          37.22534927725792,
+          -17.59720041975379,
+          69.60244961082935,
+          9.447316428646445,
+          51.22242726571858
+        ]
+      },
+      "exact_delta": -3,
+      "pair_delta": -15,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0006",
+      "source_filename": "img_002013.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 65.3817069362849,
+        "socket_row_gain": 65.3817069362849,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 10.52228208258748,
+        "socket_column_margin": 18.32249833829701,
+        "raw_taska_cost_delta_per_pair": 0.2519932140434242,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.5039864280868483,
+        "toroidal_roll_l1": 2.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.16666666666666666,
+        "six_arm_column_roll_support_fraction": 0.6666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.3333333333333333,
+        "six_arm_mean_gain_for_control_roll": -30.35964319203049
+      },
+      "diagnostics": {
+        "row_roll": 22,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 1,
+        "six_arm_column_roll_support": 4,
+        "six_arm_positive_gain_support": 2,
+        "six_arm_gains_for_control_roll": [
+          -52.97597770951688,
+          -108.24538489617407,
+          -50.109132051467896,
+          -46.35072289034724,
+          65.3817069362849,
+          10.141651459038258
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": -5,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0007",
+      "source_filename": "img_003039.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 88.87468891590834,
+        "socket_column_margin": 2.5660586543381214,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0008",
+      "source_filename": "img_004666.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 65.19215248152614,
+        "socket_row_gain": 65.19215248152614,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 25.10587140917778,
+        "socket_column_margin": 42.982888439670205,
+        "raw_taska_cost_delta_per_pair": 0.17523419974452775,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.3504683994890555,
+        "toroidal_roll_l1": 7.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.16666666666666666,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.3333333333333333,
+        "six_arm_mean_gain_for_control_roll": -21.00061798871805
+      },
+      "diagnostics": {
+        "row_roll": 7,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 1,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 2,
+        "six_arm_gains_for_control_roll": [
+          -24.60608134418726,
+          -83.04987945966423,
+          100.05298417620361,
+          65.19215248152614,
+          -67.69271827302873,
+          -115.90016551315784
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": -5,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0009",
+      "source_filename": "img_003742.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 55.40111572667956,
+        "socket_row_gain": 55.40111572667956,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 28.73952985741198,
+        "socket_column_margin": 20.250765088945627,
+        "raw_taska_cost_delta_per_pair": 0.04265052255620991,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.08530104511241982,
+        "toroidal_roll_l1": 1.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.3333333333333333,
+        "six_arm_row_roll_support_fraction": 0.3333333333333333,
+        "six_arm_column_roll_support_fraction": 0.6666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.5,
+        "six_arm_mean_gain_for_control_roll": -6.263557676536341
+      },
+      "diagnostics": {
+        "row_roll": 23,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 2,
+        "six_arm_row_roll_support": 2,
+        "six_arm_column_roll_support": 4,
+        "six_arm_positive_gain_support": 3,
+        "six_arm_gains_for_control_roll": [
+          -70.0079026594758,
+          -33.491948334500194,
+          -47.17257947102189,
+          46.9188168477267,
+          55.40111572667956,
+          10.771151831373572
+        ]
+      },
+      "exact_delta": 42,
+      "pair_delta": -4,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0010",
+      "source_filename": "img_006077.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 55.24072806164622,
+        "socket_column_margin": 76.32350674644113,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.8333333333333334,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 0.8333333333333334,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 5,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 5,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0011",
+      "source_filename": "img_006162.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 10.181399699300528,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 10.181399699300528,
+        "socket_row_margin": 29.529351510107517,
+        "socket_column_margin": 10.181399699300528,
+        "raw_taska_cost_delta_per_pair": 0.19546213208873203,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.39092426417746406,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 6.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.16666666666666666,
+        "six_arm_mean_gain_for_control_roll": -75.3480040167148
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 6,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 1,
+        "six_arm_gains_for_control_roll": [
+          -123.17024069279432,
+          -79.87903482094407,
+          -136.7764418385923,
+          -77.75192710012197,
+          -44.69177934713662,
+          10.181399699300528
+        ]
+      },
+      "exact_delta": -3,
+      "pair_delta": -13,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0012",
+      "source_filename": "img_006177.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 95.6579589471221,
+        "socket_row_gain": 42.980685437098145,
+        "socket_column_gain": 52.67727351002395,
+        "socket_row_margin": 39.23538994602859,
+        "socket_column_margin": 35.16324445605278,
+        "raw_taska_cost_delta_per_pair": 0.20297775639261564,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.29800666707392404,
+        "raw_taska_vertical_cost_delta_per_pair": 0.10794884571130725,
+        "toroidal_roll_l1": 15.0,
+        "nonzero_axis_count": 2.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.16666666666666666,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.3333333333333333,
+        "six_arm_mean_gain_for_control_roll": -23.86643035678814
+      },
+      "diagnostics": {
+        "row_roll": 19,
+        "column_roll": 14,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 1,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 2,
+        "six_arm_gains_for_control_roll": [
+          95.6579589471221,
+          -1.8595327120274305,
+          -87.05482401698828,
+          21.46417072415352,
+          -137.91239107772708,
+          -33.49396400526166
+        ]
+      },
+      "exact_delta": 1,
+      "pair_delta": -6,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0013",
+      "source_filename": "img_004944.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 58.599579364061356,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 58.599579364061356,
+        "socket_row_margin": 9.041717782616615,
+        "socket_column_margin": 28.73627494648099,
+        "raw_taska_cost_delta_per_pair": 0.05789393379498084,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.11578786758996168,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 4.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.6666666666666666,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 0.8333333333333334,
+        "six_arm_positive_gain_support_fraction": 0.8333333333333334,
+        "six_arm_mean_gain_for_control_roll": 21.575889435907204
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 20,
+        "six_arm_full_roll_support": 4,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 5,
+        "six_arm_positive_gain_support": 5,
+        "six_arm_gains_for_control_roll": [
+          48.409755419939756,
+          -27.325969010591507,
+          13.647501658648252,
+          58.599579364061356,
+          18.062234591692686,
+          18.062234591692686
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": -6,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0014",
+      "source_filename": "img_005908.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 94.53585678897798,
+        "socket_column_margin": 20.201107818633318,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.8333333333333334,
+        "six_arm_row_roll_support_fraction": 0.8333333333333334,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 5,
+        "six_arm_row_roll_support": 5,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0015",
+      "source_filename": "img_004776.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 33.196903586387634,
+        "socket_column_margin": 77.11176104471087,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.5,
+        "six_arm_row_roll_support_fraction": 0.5,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 3,
+        "six_arm_row_roll_support": 3,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0016",
+      "source_filename": "img_005724.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 133.642876598984,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 133.642876598984,
+        "socket_row_margin": 49.90457220003009,
+        "socket_column_margin": 79.146121468395,
+        "raw_taska_cost_delta_per_pair": 0.14250523996525916,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.2850104799305183,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 3.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.3333333333333333,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 0.3333333333333333,
+        "six_arm_positive_gain_support_fraction": 0.3333333333333333,
+        "six_arm_mean_gain_for_control_roll": -66.141955091618
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 21,
+        "six_arm_full_roll_support": 2,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 2,
+        "six_arm_positive_gain_support": 2,
+        "six_arm_gains_for_control_roll": [
+          -138.39886715449393,
+          -157.4760378021747,
+          -236.68362315371633,
+          -89.88860883004963,
+          91.95252979174256,
+          133.642876598984
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0017",
+      "source_filename": "img_001668.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 190.05269054882228,
+        "socket_row_gain": 56.89530845917761,
+        "socket_column_gain": 133.15738208964467,
+        "socket_row_margin": 56.89530845917761,
+        "socket_column_margin": 36.99095907062292,
+        "raw_taska_cost_delta_per_pair": 0.19749477752686842,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.2591397597899903,
+        "raw_taska_vertical_cost_delta_per_pair": 0.13584979526374652,
+        "toroidal_roll_l1": 16.0,
+        "nonzero_axis_count": 2.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.3333333333333333,
+        "six_arm_column_roll_support_fraction": 0.3333333333333333,
+        "six_arm_positive_gain_support_fraction": 0.16666666666666666,
+        "six_arm_mean_gain_for_control_roll": -36.20592795405537
+      },
+      "diagnostics": {
+        "row_roll": 9,
+        "column_roll": 7,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 2,
+        "six_arm_column_roll_support": 2,
+        "six_arm_positive_gain_support": 1,
+        "six_arm_gains_for_control_roll": [
+          -105.62140588276088,
+          -40.208353355526924,
+          -110.2227415367961,
+          -149.48116000555456,
+          190.05269054882228,
+          -1.7545974925160408
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": -7,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0018",
+      "source_filename": "img_002346.png",
+      "checkpoint_lineage_overlap": true,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 9.491126291453838,
+        "socket_column_margin": 44.191798113286495,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.5,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 3,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0019",
+      "source_filename": "img_006343.png",
+      "checkpoint_lineage_overlap": true,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 16.94941144809127,
+        "socket_row_gain": 16.94941144809127,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 16.94941144809127,
+        "socket_column_margin": 27.725072875618935,
+        "raw_taska_cost_delta_per_pair": 0.23443210913219314,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.4688642182643863,
+        "toroidal_roll_l1": 5.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.5,
+        "six_arm_row_roll_support_fraction": 0.5,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.5,
+        "six_arm_mean_gain_for_control_roll": -1.1820893560846646
+      },
+      "diagnostics": {
+        "row_roll": 5,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 3,
+        "six_arm_row_roll_support": 3,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 3,
+        "six_arm_gains_for_control_roll": [
+          -33.152867222204804,
+          70.5573266968131,
+          4.429802091792226,
+          -7.612850753590465,
+          -58.26335839740932,
+          16.94941144809127
+        ]
+      },
+      "exact_delta": 256,
+      "pair_delta": -2,
+      "hard_pair_safe": true,
+      "safe_exact_positive": true
+    },
+    {
+      "prefix": "case_0020",
+      "source_filename": "img_002287.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 4.940756598487496,
+        "socket_column_margin": 144.68304332718253,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 1.0,
+        "six_arm_row_roll_support_fraction": 1.0,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 6,
+        "six_arm_row_roll_support": 6,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0021",
+      "source_filename": "img_002471.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 162.55386825464666,
+        "socket_row_gain": 147.78891301900148,
+        "socket_column_gain": 14.764955235645175,
+        "socket_row_margin": 147.78891301900148,
+        "socket_column_margin": 14.764955235645175,
+        "raw_taska_cost_delta_per_pair": 0.12181182731865851,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.1528600167602881,
+        "raw_taska_vertical_cost_delta_per_pair": 0.09076363787702892,
+        "toroidal_roll_l1": 2.0,
+        "nonzero_axis_count": 2.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.16666666666666666,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.16666666666666666,
+        "six_arm_mean_gain_for_control_roll": -323.6629081148033
+      },
+      "diagnostics": {
+        "row_roll": 23,
+        "column_roll": 23,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 1,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 1,
+        "six_arm_gains_for_control_roll": [
+          -520.1288387868553,
+          -417.621701836586,
+          -521.128954173997,
+          -497.024326717481,
+          162.55386825464666,
+          -148.62749542854726
+        ]
+      },
+      "exact_delta": -1,
+      "pair_delta": -3,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0022",
+      "source_filename": "img_002901.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 34.00616595707834,
+        "socket_column_margin": 21.67915816232562,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.3333333333333333,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 0.3333333333333333,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 2,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 2,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0023",
+      "source_filename": "img_001872.png",
+      "checkpoint_lineage_overlap": true,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 26.557887697592378,
+        "socket_column_margin": 19.76108755171299,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.3333333333333333,
+        "six_arm_column_roll_support_fraction": 0.3333333333333333,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 2,
+        "six_arm_column_roll_support": 2,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0024",
+      "source_filename": "img_004443.png",
+      "checkpoint_lineage_overlap": true,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 41.726536992937326,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 41.726536992937326,
+        "socket_row_margin": 84.73882913962007,
+        "socket_column_margin": 9.823322147130966,
+        "raw_taska_cost_delta_per_pair": 0.1902025366856622,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.3804050733713244,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 11.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.8333333333333334,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.16666666666666666,
+        "six_arm_mean_gain_for_control_roll": -56.62325192553302
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 13,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 5,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 1,
+        "six_arm_gains_for_control_roll": [
+          -117.59442257136106,
+          -53.77052612230182,
+          -43.75162534415722,
+          -125.36756291240454,
+          -40.98191159591079,
+          41.726536992937326
+        ]
+      },
+      "exact_delta": -74,
+      "pair_delta": -9,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0025",
+      "source_filename": "img_000405.png",
+      "checkpoint_lineage_overlap": true,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 163.66502357646823,
+        "socket_row_gain": 46.45423783734441,
+        "socket_column_gain": 117.21078573912382,
+        "socket_row_margin": 10.811542123556137,
+        "socket_column_margin": 35.17539696767926,
+        "raw_taska_cost_delta_per_pair": 0.3710241354192081,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.4895956975178442,
+        "raw_taska_vertical_cost_delta_per_pair": 0.2524525733205719,
+        "toroidal_roll_l1": 5.0,
+        "nonzero_axis_count": 2.0,
+        "six_arm_full_roll_support_fraction": 0.3333333333333333,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 0.3333333333333333,
+        "six_arm_positive_gain_support_fraction": 0.5,
+        "six_arm_mean_gain_for_control_roll": -6.126039379586776
+      },
+      "diagnostics": {
+        "row_roll": 2,
+        "column_roll": 3,
+        "six_arm_full_roll_support": 2,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 2,
+        "six_arm_positive_gain_support": 3,
+        "six_arm_gains_for_control_roll": [
+          -79.60310709662735,
+          168.7239769231528,
+          2.5416904501616955,
+          -83.25610363483429,
+          163.66502357646823,
+          -208.82771649584174
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": -4,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0026",
+      "source_filename": "img_002695.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 27.879547581076622,
+        "socket_column_margin": 5.2238283306360245,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.6666666666666666,
+        "six_arm_row_roll_support_fraction": 0.6666666666666666,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 4,
+        "six_arm_row_roll_support": 4,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0027",
+      "source_filename": "img_004011.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 28.931993221864104,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 28.931993221864104,
+        "socket_row_margin": 43.43366180546582,
+        "socket_column_margin": 15.467311531305313,
+        "raw_taska_cost_delta_per_pair": 0.18197868766593814,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.3639573753318763,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 4.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.8333333333333334,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.8333333333333334,
+        "six_arm_mean_gain_for_control_roll": 7.3346325779954595
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 20,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 5,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 5,
+        "six_arm_gains_for_control_roll": [
+          14.142653550952673,
+          -42.852659203112125,
+          16.03417174331844,
+          14.425390794873238,
+          28.931993221864104,
+          13.326245360076427
+        ]
+      },
+      "exact_delta": -1,
+      "pair_delta": -11,
+      "hard_pair_safe": false,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0028",
+      "source_filename": "img_005559.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 27.401217609643936,
+        "socket_column_margin": 45.17607736773789,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.8333333333333334,
+        "six_arm_row_roll_support_fraction": 0.8333333333333334,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 5,
+        "six_arm_row_roll_support": 5,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0029",
+      "source_filename": "img_006495.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 154.50367537885904,
+        "socket_row_gain": 154.50367537885904,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 149.87148389406502,
+        "socket_column_margin": 57.988936856389046,
+        "raw_taska_cost_delta_per_pair": 0.21841625527789196,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.4368325105557839,
+        "toroidal_roll_l1": 3.0,
+        "nonzero_axis_count": 1.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.3333333333333333,
+        "six_arm_column_roll_support_fraction": 0.3333333333333333,
+        "six_arm_positive_gain_support_fraction": 0.3333333333333333,
+        "six_arm_mean_gain_for_control_roll": 23.308475230354816
+      },
+      "diagnostics": {
+        "row_roll": 3,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 2,
+        "six_arm_column_roll_support": 2,
+        "six_arm_positive_gain_support": 2,
+        "six_arm_gains_for_control_roll": [
+          -22.389991740696132,
+          -9.855567874386907,
+          199.09050211776048,
+          -101.87796848732978,
+          -79.61979801207781,
+          154.50367537885904
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": -1,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    },
+    {
+      "prefix": "case_0030",
+      "source_filename": "img_002819.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": true,
+      "features": {
+        "socket_total_gain": 66.57265520095825,
+        "socket_row_gain": 65.77351152151823,
+        "socket_column_gain": 0.7991436794400215,
+        "socket_row_margin": 24.484729379415512,
+        "socket_column_margin": 0.7991436794400215,
+        "raw_taska_cost_delta_per_pair": 0.08178918776178287,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.13969308440236078,
+        "raw_taska_vertical_cost_delta_per_pair": 0.023885291121204966,
+        "toroidal_roll_l1": 20.0,
+        "nonzero_axis_count": 2.0,
+        "six_arm_full_roll_support_fraction": 0.16666666666666666,
+        "six_arm_row_roll_support_fraction": 0.16666666666666666,
+        "six_arm_column_roll_support_fraction": 0.16666666666666666,
+        "six_arm_positive_gain_support_fraction": 0.16666666666666666,
+        "six_arm_mean_gain_for_control_roll": -189.67394934718808
+      },
+      "diagnostics": {
+        "row_roll": 13,
+        "column_roll": 9,
+        "six_arm_full_roll_support": 1,
+        "six_arm_row_roll_support": 1,
+        "six_arm_column_roll_support": 1,
+        "six_arm_positive_gain_support": 1,
+        "six_arm_gains_for_control_roll": [
+          -125.53577581420541,
+          -353.20394983142614,
+          -299.35081419348717,
+          -264.22054589539766,
+          66.57265520095825,
+          -162.30526554957032
+        ]
+      },
+      "exact_delta": 6,
+      "pair_delta": -2,
+      "hard_pair_safe": true,
+      "safe_exact_positive": true
+    },
+    {
+      "prefix": "case_0031",
+      "source_filename": "img_006154.png",
+      "checkpoint_lineage_overlap": false,
+      "changed": false,
+      "features": {
+        "socket_total_gain": 0.0,
+        "socket_row_gain": 0.0,
+        "socket_column_gain": 0.0,
+        "socket_row_margin": 82.38353429734707,
+        "socket_column_margin": 128.89931257627904,
+        "raw_taska_cost_delta_per_pair": 0.0,
+        "raw_taska_horizontal_cost_delta_per_pair": 0.0,
+        "raw_taska_vertical_cost_delta_per_pair": 0.0,
+        "toroidal_roll_l1": 0.0,
+        "nonzero_axis_count": 0.0,
+        "six_arm_full_roll_support_fraction": 0.8333333333333334,
+        "six_arm_row_roll_support_fraction": 0.8333333333333334,
+        "six_arm_column_roll_support_fraction": 1.0,
+        "six_arm_positive_gain_support_fraction": 0.0,
+        "six_arm_mean_gain_for_control_roll": 0.0
+      },
+      "diagnostics": {
+        "row_roll": 0,
+        "column_roll": 0,
+        "six_arm_full_roll_support": 5,
+        "six_arm_row_roll_support": 5,
+        "six_arm_column_roll_support": 6,
+        "six_arm_positive_gain_support": 0,
+        "six_arm_gains_for_control_roll": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "exact_delta": 0,
+      "pair_delta": 0,
+      "hard_pair_safe": true,
+      "safe_exact_positive": false
+    }
+  ],
+  "runtime_seconds": 3.7615872499882244,
+  "artifacts": {
+    "step147_report": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/report.json",
+      "sha256": "9317254528490fdd1a8b09ddac0feffd97981d04ef3076910b2657974acb0d10"
+    },
+    "step147_archive": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.npz",
+      "sha256": "92bda45e3a3347aebbebf5ba111a80b08ef280705a325e291120749279ca8592"
+    },
+    "step147_metadata": {
+      "path": "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.json",
+      "sha256": "9fab4bb4d3c74fbedc623e7f5ae1d75973f2c87f8309cacc3f3895a82e319d2d"
+    },
+    "six_arm_archive": {
+      "path": "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.npz",
+      "sha256": "0f8458650c901a406747d25f54849068891ee39a5b3be5061828d08df25b7814"
+    },
+    "raw_taska_cost_archive": {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/frozen-target-free-eval.npz",
+      "sha256": "e615659915d6bb17710403833b46b78d64916e4910afd7effa834a9f46d98e27"
+    },
+    "raw_taska_cost_metadata": {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/frozen-target-free-eval.json",
+      "sha256": "78a10b5f3581ef89a1dadae284906cd6f85ec7708250154b4ef4b819cd01a62c"
+    },
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "script": {
+      "path": "scripts/diagnose_taska_socket_cyclic_selector_feasibility.py",
+      "sha256": "618f93353ec61b5a15474380600e7e5c75cd4fce6c383a54521e138e83113a0c"
+    }
+  }
+}

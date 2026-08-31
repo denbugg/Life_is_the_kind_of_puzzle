@@ -1,0 +1,90 @@
+{
+  "schema": "aiijc-taska-confirmed-arm-portfolio-preregistration-v1",
+  "created_before_candidate_target_scoring": true,
+  "objective": "test one fixed confirmed-arm integration for satisfied adjacent pairs",
+  "control": "exact frozen six-arm selective plus unique-fullres fusion final layout",
+  "control_roster": [
+    "raw",
+    "logistic",
+    "focal_top5",
+    "nonlinear",
+    "selective_vote500_focal",
+    "combined_union_focal"
+  ],
+  "selector_roster": [
+    "raw",
+    "logistic",
+    "focal_top5",
+    "nonlinear",
+    "selective_vote500_focal",
+    "combined_union_focal",
+    "fullres_union_focal"
+  ],
+  "new_arm": "independently confirmed standalone fullres union pre-tail layout",
+  "selector": "minimum original TASKA all-1104-bond raw seam cost",
+  "tail": "winner-aligned focal-logit-zero non-adjacent tail96",
+  "local_pair_gate": 0.0,
+  "held_pair_gate": 0.5,
+  "panel_order": [
+    "local32",
+    "held32",
+    "fresh32",
+    "formal_source16_draw2"
+  ],
+  "fresh_open_rule": "open only after local mean >= 0 and held mean >= 0.5 pairs per board",
+  "formal_open_rule": "open only after local, held, and fresh gates complete successfully",
+  "formal_gate": {
+    "pair_mean_minimum": 0.5,
+    "source_cluster_ci95_lower_minimum": 0.0
+  },
+  "formal_roster_selection": {
+    "candidate_range": "img_005700.png through img_006399.png",
+    "exclusion_source": "all source ids explicitly present in signed configs before preregistration",
+    "ranking": "ascending sha256 of taska-confirmed-arm-portfolio-formal-v1-before-target-scoring:<six-digit-source-id>",
+    "draw_indices": [0, 1],
+    "source_filenames": [
+      "img_005737.png",
+      "img_006348.png",
+      "img_005986.png",
+      "img_006296.png",
+      "img_006187.png",
+      "img_006258.png",
+      "img_006103.png",
+      "img_006229.png",
+      "img_005984.png",
+      "img_006365.png",
+      "img_006019.png",
+      "img_006357.png",
+      "img_006024.png",
+      "img_005914.png",
+      "img_005719.png",
+      "img_005891.png"
+    ],
+    "source_draw_digest": "bdd4ce63532771635829ee0631e3006fe3f542bb8a4a46f1e6b833108c768eeb"
+  },
+  "fixed_source_sha256": {
+    "portfolio_module": "f5f9e5677b54d0500886bffedca267a157bc2eec077803fc5f30a27bf09ca794",
+    "runner": "78d680e46c35d4a1185f0af2e68a3649d6cbd98098fe0388eea894c6f1529754",
+    "raw_solver": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486",
+    "fusion_parent_report": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af"
+  },
+  "matcher_rerun_on_common_panels": false,
+  "targets_used_only_after_target_free_freeze": true,
+  "competition_test_accessed": false,
+  "postprocessing": false,
+  "strict_original_upright_permutation": true,
+  "no_sweep": true,
+  "prohibited_followups_on_opened_panels": [
+    "arm additions or removals",
+    "selector threshold, weight, learned guard, or proxy sweep",
+    "focal threshold or tail budget sweep",
+    "seed or roster search"
+  ],
+  "weco_parent_pair_step": 102,
+  "weco_steps": {
+    "local32": 109,
+    "held32": 110,
+    "fresh32": 111,
+    "formal_source16_draw2": 112
+  }
+}

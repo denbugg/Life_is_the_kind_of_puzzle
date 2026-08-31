@@ -1,0 +1,63 @@
+{
+  "schema": "aiijc-taska-focal-raw-rank-fusion-preregistration-v1",
+  "created_before_fusion_scoring": true,
+  "purpose": "One parameter-free target-free ordering fusion between frozen raw TASKA priority and recovered focal top-5 logits, plus its one natural composition with the already-fixed protected-tail polish.",
+  "candidate_membership": "unchanged frozen TASKA harvest",
+  "matcher_costs": "unchanged original TASKA right/down matrices",
+  "solver": {
+    "baseline_quantile": 0.15,
+    "search_rounds": 6,
+    "border_weight": 0.0,
+    "random_seed": 0,
+    "component_cap": 0,
+    "fill_rounds": 1
+  },
+  "focal_contract": {
+    "feature_mode": "train_exact_top5",
+    "checkpoint_sha256": "3bcc89a12e7b539304484b441688b4b9fb1c3711e918befed9cdef7c17f776e7"
+  },
+  "fusion_contract": {
+    "raw_priority": "negative original TASKA cost for the candidate edge axis",
+    "grouping": "independently within the current board and edge axis",
+    "rank_ties": "average midrank",
+    "rank_scale": "(midrank - 1) / (axis_candidate_count - 1); singleton groups map to 0.5",
+    "aggregation": "arithmetic mean of raw-priority percentile and focal-logit percentile",
+    "weight_raw": 0.5,
+    "weight_focal": 0.5,
+    "larger_is_better": true,
+    "exact_aggregate_ties": "stable frozen candidate order",
+    "threshold_or_alpha_sweep": false
+  },
+  "evaluated_arms": {
+    "fusion": "fused priority affects only rigid-component build order",
+    "fusion_then_protected_tail": {
+      "input": "fusion layout",
+      "max_swaps": 24,
+      "minimum_gain": 1e-9,
+      "protected_tiles": "all endpoints of frozen harvested edges realised by the fusion layout"
+    }
+  },
+  "evaluation_gate": "score both frozen arms on opened32; run the unchanged held300 panel only if fusion pair delta versus raw is nonnegative",
+  "pair_denominator": 1104,
+  "panels": {
+    "opened32": {
+      "parent_archive": "outputs/taska-seam-replay/opened32-mps-v1/frozen-target-free-eval.npz",
+      "parent_archive_sha256": "1880940897caeec6b87631d53e1aede1f809955a7acd3e56da9bcf432939e994",
+      "focal_archive": "outputs/taska-focal-verifier/opened32-train-exact-top5-cpu-v2/frozen-target-free-eval.npz",
+      "focal_archive_sha256": "60243ab924da96d8bb49b072458c4710c65b8195b8d2c31eff1132b59ee56fd2"
+    },
+    "held300": {
+      "parent_archive": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.npz",
+      "parent_archive_sha256": "0876d7acd6be7ebe863f831de568586c837da52cc603df4ff8d7c5a6b0d441df",
+      "focal_archive": "outputs/taska-focal-verifier/held300-train-exact-top5-cpu-v2/frozen-target-free-eval.npz",
+      "focal_archive_sha256": "7d4ad494ab572d1ac3c94ab73a49b54e80b26baba489dfbd56f732a5c43394c5"
+    }
+  },
+  "legality": {
+    "uses_targets_or_exact_references_during_inference": false,
+    "uses_filename_or_source_grid_coordinates_during_inference": false,
+    "changes_candidate_membership": false,
+    "changes_fragment_pixels_or_orientation": false,
+    "output_is_strict_permutation_of_all_576_original_upright_tiles": true
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "schema": "aiijc-raw-twin-union-reranker-v2-preregistered",
+  "frozen_at": "2026-08-30",
+  "status": "amended-and-refrozen-before-capacity-benchmark-roster-or-new-target-access",
+  "authorization": "root approved after frozen fullres-twin supply diagnostic 9d19b65d",
+  "experiment": "raw d64 top32 union fullres-twin top32 bidirectional listwise reranker v2",
+  "activation_evidence": {
+    "frozen_d1_report": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/report.json",
+    "frozen_d1_report_sha256": "e39709b01f5772ce84198591ef40fa482952d7ad8b1de9b8aeb97cb9ebbfb275",
+    "target_aware_diagnostic": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/target-aware-supply-diagnostic.json",
+    "target_aware_diagnostic_sha256": "9d19b65dfad735f488ffab3507e06be85aaccc3aa38d6b700355b82e9828fb24",
+    "twin_only_correct_top32_edges_per_board": 81.875,
+    "raw_twin_union_coverage_gain_percentage_points": 7.416213768115942,
+    "mean_union_candidates_per_physical_query": 48.95297403381642,
+    "incoming_rank_auc": 0.6237357781105805,
+    "low_sequence_variance_auc": 0.6144773280770561,
+    "warning": "The old target-aware eval24 AUC diagnostic motivated this now-frozen feature family; every old eval24 source is excluded from v2 fit/eval and it cannot tune v2 parameters, gates or thresholds."
+  },
+  "frozen_inputs": {
+    "socket_d64": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "fullres_twin": {
+      "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/fullres-twin-side-matcher.pt",
+      "sha256": "c5b44901e8da459e3c48b6e7af7153c5d7eed26f1c1b52c8712c4fa0dc4ea8ae"
+    },
+    "frozen_checkpoints_strict_eval": true,
+    "no_direct_hard_edge_checkpoint_dependency": true
+  },
+  "distinction_from_fullres_relation_fusion": {
+    "candidate_unit": "individual directed tile edge in immutable raw32 union twin32 union frozen-raw-hard projection, not component-contact relation query",
+    "new_supply": "ordered fullres-twin embeddings rather than restored-RGB d64/descriptor supply",
+    "context": "simultaneous outgoing-row, incoming-column and board-axis DeepSets summaries",
+    "supervision": "bidirectional row and incoming-column listwise exact-neighbour CE plus board hard-edge auxiliary",
+    "projection": "learned sparse matrix with outside-union forbidden, original d64 border logits, partial OT and exact one-to-one hard projection",
+    "token_interaction": "frozen d64 tile context source, target, absolute difference and product",
+    "not_repeated": "no component forest score substitution, restored pixels, fixed raw/restored averaging or QAP"
+  },
+  "selection": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_split": "train",
+    "namespace": "aiijc-raw-twin-union-reranker-v2-20330917",
+    "seed": 20330917,
+    "fit_sources": 256,
+    "evaluation_sources": 24,
+    "draws_per_source": 1,
+    "exclusions": "complete frozen d64 and fullres-twin checkpoint training ancestry plus all explicit current eval/evaluation/local/confirm/decoder/source panels, including fullres-twin eval24",
+    "fit_eval_disjoint": true,
+    "write_and_hash_commitment_before_selected_target_access": true,
+    "freeze_dirty_only_predictions_before_exact_scoring": true,
+    "calibration_holdout_and_competition_test_forbidden": true
+  },
+  "candidate_roster": {
+    "directions": [
+      "right",
+      "down"
+    ],
+    "raw_candidates_per_query": 32,
+    "twin_candidates_per_query": 32,
+    "frozen_raw_hard_projection_edges_per_axis": 552,
+    "operation": "stable raw32 union twin32 union every edge in the untouched frozen raw d64 exact hard projection; self excluded; outside-union score fixed to -10000",
+    "raw_candidate_roster_immutable": true,
+    "maximum_candidates_per_query": 65,
+    "zero_residual_reproduces_raw_d64_scores_and_order_only_on_union_candidates": true,
+    "restricted_ot_equivalence_to_full_raw_not_claimed": true,
+    "rationale": "row-top32 alone can omit an edge selected after global row-column conflict resolution; injecting the full frozen raw hard projection guarantees one feasible all-inside-union cardinality matching"
+  },
+  "features": {
+    "frozen_d64_token_interactions": [
+      "source_token_64",
+      "target_token_64",
+      "absolute_difference_64",
+      "product_64"
+    ],
+    "raw_and_twin_evidence": [
+      "board_standardised score",
+      "outgoing and incoming reciprocal ranks",
+      "row and column competitor margins",
+      "raw/twin top32 membership",
+      "frozen raw exact hard-projection membership",
+      "top1 reciprocal flags"
+    ],
+    "ordered_twin_evidence": [
+      "20-position dot mean",
+      "dot standard deviation",
+      "dot minimum",
+      "dot maximum",
+      "source and target tangent variation"
+    ],
+    "socket_border_evidence": "frozen outgoing/incoming d64 border logits standardised per board",
+    "target_tile_index_or_grid_coordinate": false
+  },
+  "model": {
+    "hidden_dimension": 64,
+    "edge_encoder_layers": 2,
+    "context": "outgoing row mean/max, incoming column mean/max, axis-board mean/max",
+    "permutation_equivariant": "head exactly; candidate construction for non-tied scores, with stable target-id tie breaking only for exact frozen-score ties",
+    "residual_limit": 2.0,
+    "last_layer_zero_initialised": true,
+    "input_index_embedding": false,
+    "pixel_prediction": false
+  },
+  "training": {
+    "fit_sources": 256,
+    "updates": 400,
+    "maximum_updates": 400,
+    "one_exact_synthetic_full_board_per_update": true,
+    "objective": "equal row-listwise and incoming-column-listwise CE, 0.15 within-axis hardest-negative pairwise auxiliary, 0.001 residual L2",
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0002,
+    "gradient_clip": 1.0,
+    "capacity_grid": 4,
+    "capacity_before_full_fit": true,
+    "cpu_mps_device_benchmark_before_full_fit": true
+  },
+  "inference": {
+    "learned_dense_matrix": "candidate scores scattered into 576x576; diagonal and outside-union -10000",
+    "forbidden_mass_audit": "float32 exp(-10000) underflows to exact zero and every final learned hard-projection edge must be asserted inside the immutable union",
+    "partial_ot": "frozen d64 outgoing/incoming border logits, unmatched capacity 24, 12 Sinkhorn iterations",
+    "hard_projection": "existing exact N-grid one-to-one partial matching per axis",
+    "fixed_hard_edge_budget_per_axis": 144,
+    "baseline": "untouched full frozen raw d64 log assignments and exact hard projection; no restricted-OT equivalence claim",
+    "decoder": "decoder144 plus unchanged cyclic-border5 only after D1 local gate"
+  },
+  "d1_gate": {
+    "ranking_arm": "pooled partial-OT R1 delta >= +0.0025 and R5 delta >= 0",
+    "hard_edge_arm": "fixed top144 correct projected edges delta >= +2.0 edges/board and selected-edge precision delta >= 0",
+    "pass_logic": "ranking_arm OR hard_edge_arm",
+    "projected_all_edges_correct_count_reported": true,
+    "decoder_if_pass": "run matched decoder144+cyclic-border5 on the same already-opened D1, descriptive exact/adjacency only",
+    "decoder_if_fail": false,
+    "promotion_or_default_change": false
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "no_target_at_inference": true,
+    "strict_original_upright_tile_identities_if_decoder_runs": true,
+    "no_restored_or_generated_output_pixels": true,
+    "no_holdout_or_competition_test": true
+  }
+}

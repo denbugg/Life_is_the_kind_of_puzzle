@@ -1,0 +1,978 @@
+{
+  "frozen_inputs": {
+    "base_config": "configs/raw_twin_union_reranker_v2_preregistered.json",
+    "base_config_sha256": "6741e92e832a630f1b83bde6edc8a341a348f52daa82313c40a8f32c7c1173d4",
+    "base_report": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/report.json",
+    "base_report_sha256": "0a5f0bb990654a0e191430bbf05796332c2f6fce181d51b05ee8b11ba1477bc4",
+    "component_selection": "outputs/component-absolute-placer/v1-selection/selection_commitment.json",
+    "component_selection_sha256": "2b2b0c90e559ca2a6c7898d8eaccc4f8944a73c35d7d78722e0bb30939e0ebe6",
+    "no_retrain_recalibration_hparam_or_inference_semantics_change": true,
+    "socket_checkpoint": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+    "socket_checkpoint_sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+    "twin_checkpoint": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/fullres-twin-side-matcher.pt",
+    "twin_checkpoint_sha256": "c5b44901e8da459e3c48b6e7af7153c5d7eed26f1c1b52c8712c4fa0dc4ea8ae",
+    "union_checkpoint": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/raw-twin-union-reranker-v2.pt",
+    "union_checkpoint_sha256": "a5f882ab3c827e4e3779be3372c62d2a8fb9cd95d3558fd30cc566a9c3137f79",
+    "union_selection": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/selection-commitment.json",
+    "union_selection_sha256": "71ae4f5095489613857fcd25c541fe496da0d6861f6ff604850147dd04b91cd2"
+  },
+  "gate": {
+    "clustered_ci": {
+      "bootstrap_resamples": 20000,
+      "cluster": "source; exactly one draw per source",
+      "confidence": 0.95,
+      "exact_ci_is_reported_but_not_an_additional_gate": true,
+      "seed": 20331018
+    },
+    "projected_and_top144_edge_deltas": "reported, not additional gate",
+    "submission_candidate_all_required": {
+      "adjacency_delta_strictly_positive": true,
+      "all_layouts_strict_original_permutations": true,
+      "exact_tiles_delta_mean_minimum": 0.25
+    }
+  },
+  "inference": {
+    "candidate_roster": "stable raw32 union twin32 union every edge in the untouched frozen raw d64 exact hard projection; self excluded; outside-union score fixed to -10000",
+    "comparator": "untouched full frozen raw d64 log assignments and exact hard projection; no restricted-OT equivalence claim",
+    "decoder": "unchanged decoder144 plus cyclic-border5",
+    "device": "cpu",
+    "hard_projection": "existing exact N-grid one-to-one partial matching per axis",
+    "partial_ot": "frozen d64 outgoing/incoming border logits, unmatched capacity 24, 12 Sinkhorn iterations"
+  },
+  "legality": {
+    "competition_test_opened": false,
+    "holdout_opened": false,
+    "layout": "strict permutation of original upright tile identities",
+    "organizer_train_only": true,
+    "pixel_replacement_or_generation": false,
+    "target_available_to_inference": false
+  },
+  "purpose": "frozen-model CPU fresh64 confirmation for final submission candidate",
+  "registered_before_dirty_prediction_generation": true,
+  "registered_before_selected_target_access": true,
+  "schema": "aiijc-raw-twin-union-reranker-fresh64-confirmation-v1",
+  "selection": {
+    "component_fit_eval_excluded": 288,
+    "draw_indices": [
+      0
+    ],
+    "excluded_filename_count": 2909,
+    "excluded_filename_digest": "472c7a6b43c375097c606cb752cfff2dad60a9cd9da91c97561e0fd82f124b2b",
+    "exclusion_registry": [
+      {
+        "panel_filename_count": 64,
+        "path": "configs/component_relation_confidence_preregistered_v1_1.json",
+        "sha256": "a029377e4b5629b1906e960c825bbf5a347fda15ed0f6c5369e0dfcd3f4a76ab"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "configs/component_relation_cyclic_fresh_gate_v1.json",
+        "sha256": "7bfd475c5c65bf56d4627eaf718cdf06eb12ce6fdf9f939e13a682782c225b44"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "configs/direct_hard_edge_board_priority_preregistered_v1.json",
+        "sha256": "11ba187b5a739a54193e6f869f443a9bcd04d1559c641c8d3b3ffd0151f514fb"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "configs/direct_hard_edge_fresh64_confirmation_v1.json",
+        "sha256": "6056fcc57898935c59d9575e7fa2371f9b003fb4843decb115d69e41f0e1735e"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "configs/fullres_relation_fusion_decoder_d2_preregistered_v1.json",
+        "sha256": "46ae0388fee837efbb1bb47f665a442f1badab62bfc6279b6728c1f5a840114a"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "configs/fullres_relation_fusion_preregistered_v1.json",
+        "sha256": "b83e819d161524dccb37dabbee6faf7470a27b835a598eded9c8285fe487d7b5"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/absolute-coordinate-sorter/axis-development-source64-draw2-replay/report.json",
+        "sha256": "167093dcfa98be544c405845118749d184c1e49ec1f6cfd422c2b2fef0690d9f"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/absolute-coordinate-sorter/component-translation-scale-confirm-source64-draw2/report.json",
+        "sha256": "894cf97731fcdb5df05f4409b93f6821fcd05a4f9d282612aa2b8999075c5505"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/absolute-coordinate-sorter/confirm-d64-frozen-head32-set2-source32-draw2/report.json",
+        "sha256": "552164bdcf0ee14e2f39d3f78ba542534d6d62df4c6c38dd47f414a4d517212d"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/absolute-coordinate-sorter/coordinate-cyclic-origin-source64-draw2-development/frozen_predictions.json",
+        "sha256": "1aa7ded322745643ec3430b927792bc93fa2c9285c5188da2aa3eb62ce237688"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/absolute-coordinate-sorter/coordinate-cyclic-origin-source64-draw2-development/report.json",
+        "sha256": "654c376192d3fb8fae46597820b006a3174f4b68769857dca7a6e98ec8456839"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/absolute-coordinate-sorter/development-axis-unaries-source32-draw2/report.json",
+        "sha256": "b89dda421cf5b48333b6da94198766bea55128632c9976c4c099195d1d7361ce"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/absolute-coordinate-sorter/development-compose-cyclic-source32-draw2/report.json",
+        "sha256": "76f7e304a12b67f35fd9e41530bf4880dfe87662d2fcff2cfeacd19e8324ce70"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/absolute-coordinate-sorter/pilot-d64-frozen-head32-set2-train512-s400-eval16/report.json",
+        "sha256": "c3cb6c8fbdce608a1e956a21fc790e952c370833b4bd434a4ce89f21e14aefc5"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/absolute-coordinate-sorter/smoke-d64-head32/report.json",
+        "sha256": "a7c6f90305c1f4603b2f73044bbf7de2d5aca795177147105857f3e07551c0c3"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/absolute-coordinate-sorter/transpose-continuation-d64-train192-s300-source64-draw2/report.json",
+        "sha256": "b27fd07de29b6b5e9ca2eb48d5cfb04f2861c234ead971eedf5e3d74921ac765"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/border-pointer/baseline-guided-repair-margin1-b4-b16-top16-exact16/frozen_predictions.json",
+        "sha256": "c468ab5c6d96376ab813f95799da884e2edad5b6c88a8928ce6c8e5d19947d07"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/border-pointer/baseline-guided-repair-margin1-b4-b16-top16-exact16/report.json",
+        "sha256": "ff28f4d767c5630b35a86eed3733aa25ae64fef61c7810fdc90d6d2d84d3e054"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/frozen_predictions.json",
+        "sha256": "b77d241ad177e6b2d433a6fc03a9cfc871e295d4ec0fa01d29ccf20d4fe3d05e"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/report.json",
+        "sha256": "7ae2c770e09ed61e0ffa67cc11fa836f09570c2f91ba7f22d751f404c7f9ce44"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/border-pointer/pilot-d64-train128-s400-exact16-mps/selection_commitment.json",
+        "sha256": "08676c2f656e67277a081293933d33da253f13e542702c5982d15712863c5d33"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/component-absolute-placer/v1-fit256-s600-eval32/frozen_predictions.json",
+        "sha256": "aa1ae32597216688572cb274b6cb4be5b9279e69447f1d5a93e1b58e7fccb2d5"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/component-absolute-placer/v1-fit256-s600-eval32/report.json",
+        "sha256": "9dfe0434541d77122ac16e052405f34c643ebed8317dacfdb422ced8f5166070"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/component-absolute-placer/v1-selection/selection_commitment.json",
+        "sha256": "2b2b0c90e559ca2a6c7898d8eaccc4f8944a73c35d7d78722e0bb30939e0ebe6"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/component-relation-confidence/fresh-source64-draw2-v1_1-cyclic5/frozen_predictions.json",
+        "sha256": "c486149e1659eb7555f977d872fd7c6b7d58e88e11248d1233002c996d46dbbb"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/component-relation-confidence/fresh-source64-draw2-v1_1-cyclic5/report.json",
+        "sha256": "98d9912b2e27981a8f7904fb4306eeefb637890ea0587864e93127bd3ec4878a"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/component-relation-confidence/v1_1-decoder40/report.json",
+        "sha256": "bc3a51ccee85693e4c39455fab769ea40231fc58149bf4c99ed7e96cf3480688"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/component-relation-confidence/v1_1-local32-confirm24/report.json",
+        "sha256": "7c0874c27049820a63e176321c512180fe09b5e47b051675992d016d5dc56e56"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/component-relation-confidence/v1_2-relation-forest-development/report.json",
+        "sha256": "7962fb0b42bcc310060fb123abab1158ab48766a78cc995dd998fb6a454357db"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/component-relation-confidence/v1_2h-relation-forest-hybrid-development/report.json",
+        "sha256": "07aae8b8a84d01438fa1d20139623ade4544f4a9c28f9aa0e4f8d91ea09c6268"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/component-relation-confidence/v1_3-cyclic-border5-development/report.json",
+        "sha256": "5aa1655109d1be19f356568c37e6c0b46175ce9ad5a634b46e9a21c911c9ec57"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/report.json",
+        "sha256": "5fe204c395a4f9481e978e8d6480fc900af32fe24fd78d0247f0b7bff1263fa7"
+      },
+      {
+        "panel_filename_count": 48,
+        "path": "outputs/content-substitution/calibration-48/aggregate.json",
+        "sha256": "3da30fdad4e86fd6ea0969135a2e2b7366de9800bb234f11124510e9a795d40c"
+      },
+      {
+        "panel_filename_count": 48,
+        "path": "outputs/content-substitution/holdout-48/aggregate.json",
+        "sha256": "7a16a4c208621a63e315ba73c54c877ce59565ac5cc2c20b6a160b9c14a48db7"
+      },
+      {
+        "panel_filename_count": 8,
+        "path": "outputs/content-substitution/manifest-smoke-8/aggregate.json",
+        "sha256": "848a9d1cf8894e47285d4537d7591b765578ed048cd22a39cd9f52a5734a78f0"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/content-verifier/calibration12-confirm.json",
+        "sha256": "b2e54584dedb645aaf5100ddfddd8673ab43be31b5850510dd115e2bf7d14161"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/content-verifier/calibration32x12.json",
+        "sha256": "ff62592cfc8b3bb45df527b057335275f2cff7fdd116e99ab26408ff33f1c439"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/content-verifier/holdout12.json",
+        "sha256": "9bd16d2c9b03b3d79e7bcb84aaa0eba76e38a95a62a4d25bde9710a92f8a4e9a"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/content-verifier/scale128-calibration24-final.json",
+        "sha256": "5749665c12addecd46b709ff55d651d0d27f175d14cfc26b8c6f85d02f1f3bb4"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/content-verifier/scale128-calibration24.json",
+        "sha256": "22acb1a313c8be6c28b310741e8bd589b83c091c6f867a136b70c945325f3d08"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/content-verifier/smoke.json",
+        "sha256": "f190699b71d244e3cc23cdbdad31b1e662c624b02dc00e2fe8ddce7bc085a43d"
+      },
+      {
+        "panel_filename_count": 64,
+        "path": "outputs/direct-hard-edge-priority/frozen-v1-fresh64-draw0/report.json",
+        "sha256": "dbaab629fb6ba76ac0653a1c936aa1739283e9338097e002666cc5f022bd7dc6"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/direct-hard-edge-priority/v1-fit256-s600-d1-32-cpu/origin-transfer/frozen_predictions.json",
+        "sha256": "f66e20670607c6bc3252ec1715a9f7cd6e31bc435a612934b3a78756572a23a4"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/direct-hard-edge-priority/v1-fit256-s600-d1-32-cpu/origin-transfer/report.json",
+        "sha256": "203d6973429a2dc79d925e2e006984415aa4fd0daf8e78cfb2d1cfc89e5c8a8e"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/direct-hard-edge-priority/v1-fit256-s600-d1-32-cpu/report.json",
+        "sha256": "546d0c9aefa3bd52d9db3ebd973fccc0a7d24a6d43753b97361e0cf7eb361885"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-cpu/frozen_local_predictions.json",
+        "sha256": "3fd67c506f67fd2dddb250af9a827ce3739478a953de9df8ca8bb3c6c3f68c93"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-cpu/report.json",
+        "sha256": "6ff49d4a62ba7bef3ff957e0c78e8237edb80029c46763a520355a6c774de0b5"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-mps/frozen_local_predictions.json",
+        "sha256": "3d4b51c371941da73b47d2266ac3195fb3ca186b363e361bceebb966b6b153f7"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid24-step1-mps/report.json",
+        "sha256": "cc9d62f3edcf1c4da357d89453ec484fe07d477c6be902d3779499da81cfcd4b"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-cpu/frozen_local_predictions.json",
+        "sha256": "83cb3eaceb6c2801180804b8a906f12a8c8fbc660557a0fc10940ecdd2c70b0c"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-cpu/report.json",
+        "sha256": "069f51e138df4a2419caab7c2cb5e93554ea7be7fe682c2c76e7e4fe2a2347c7"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-mps/frozen_local_predictions.json",
+        "sha256": "bcea533c637734b6f9d295096e9b0866f141b72265709181f81ebc441d15bccb"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/e13-corruption-border/benchmark-grid4-step1-mps/report.json",
+        "sha256": "9d45bafc42ff5ee97d9d89823decc2b289ed082fc698f261d8920d4e0e610069"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/e13-corruption-border/pilot-grid24-train256-s400-eval16-mps/frozen_local_predictions.json",
+        "sha256": "6a3514879063b1efaf78e10d4d9cce6b5bcd784315d9f68b031e06721f9fce5a"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/e13-corruption-border/pilot-grid24-train256-s400-eval16-mps/report.json",
+        "sha256": "2f7e2de1e333e1e136d89143d90cad05a0c58c08c711bd39b8aff988fb8721b4"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/edge-protected-nlm/confirmation-calibration-offset144-count24/report.json",
+        "sha256": "23e9c3545b62b010fe083adcdba5508ef3dc3a70ed49ddca342d12245824ea23"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/edge-protected-nlm/primary-calibration-offset120-count24/report.json",
+        "sha256": "eb74df7c97cf37b7fc8b8913fa2ad0265eea48b2009a5d5a4702f42604dd0d12"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/edge-protected-nlm-v2/confirmation-calibration-offset0-count60/report.json",
+        "sha256": "1f541d606a6b78727cb6013fe0bf9e5e3e092072b3bf994c3e0cda3170547252"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/edge-protected-nlm-v2/primary-calibration-offset60-count60/report.json",
+        "sha256": "0f81dd82fee9c71724311a178f91f7997c1ca3466540ae7be96f775481363139"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/edge-ranker/conservative-fusion-k16/primary-cal360-count24/report.json",
+        "sha256": "461409da22e60cf8d41abaeb65c3ba48c887cf8bc187ebb4e451ccc40768c6e8"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/edge-ranker/manual-tail-raw-checkpoint-cal24-offset204/report.json",
+        "sha256": "e7c94a91f647ab59499bc69cccb501c04c4b99da6b024d2ee0fff0b3bd8caaee"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/edge-ranker/plumbing-cpu/report.json",
+        "sha256": "365014a2e05f8abeeeba2f658b2ad8835a351c44a5ff8b24278d81ef1d518ba1"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/edge-ranker/scale-dual-train64-cal12/report.json",
+        "sha256": "baf0667e4428d2f4893f5123afdf505af8e44ffb05fe526d92bd1f0d1bb3089f"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/edge-ranker/scale-raw-k16-train256-cal24-offset228/final-tail-primary/report.json",
+        "sha256": "6fe6790f470c3e39a28d3c5c050feac1cd08623b7db3677d4f2102d7028ddad9"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/edge-ranker/scale-raw-k16-train256-cal24-offset228/report.json",
+        "sha256": "1a95fb25ecb49e832be3cf38af0c980c77ee8e87c668849ed169bf495157a74f"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/edge-ranker/scale-raw-train64-cal12/report.json",
+        "sha256": "a016ea96f5bb7d9a5ce4940d5a6c75288d6a0e234775dade114c777205c3af26"
+      },
+      {
+        "panel_filename_count": 4,
+        "path": "outputs/edge-ranker/smoke-dual-train16-cal4/report.json",
+        "sha256": "df98ef9137c83a36fa69dd7f466b8ceabe8fe481a9e2032bec2a82accda3aa94"
+      },
+      {
+        "panel_filename_count": 4,
+        "path": "outputs/edge-ranker/smoke-raw-train16-cal4/report.json",
+        "sha256": "9d7de3f70c0d8643c2215fc8573aaee2f13d6d45af205606f63c69ad4bfe269a"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/bottleneck_diagnostic.json",
+        "sha256": "806512b437f520cae7b26a2f473042d8db545c04e39bd30d849fa753235a25b4"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/bottleneck_diagnostic_v2.json",
+        "sha256": "b825d4e2021bbffa99a6bf26001cdee306784c9bc97f4f8363bd68ccb15558ef"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/frozen_predictions.json",
+        "sha256": "1fb112b60ba2e23744cb609946d6d4b8f018eb3ffd56b161385665d45310851a"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/frame-side-origin/v1-fit256-s600-eval32/report.json",
+        "sha256": "80fe0d28ffcab11bdd2cbb43f9a2f4012d1c38d9034ca8287d55775c70b45c2e"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/frame-side-origin/v1-selection/selection_commitment.json",
+        "sha256": "2cdfca00618671ddeab6fd829f97ce49d2f975d9c977ec248a043872de89f7b4"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/frozen_local_predictions.json",
+        "sha256": "eadaa94aa757034d7ef283eec6d5740b6ad28285b64f76ef9c4c0cb9cf9f704b"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/preregistered-local-gate.json",
+        "sha256": "828195facd4a861aa0d1232b0e656eed81a80855ce7b560c1ce88ca49898ffb8"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/report.json",
+        "sha256": "780f6b065ba769bef8b3ffd30cf0bcb781b2040258835964b122725e732fccc7"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/frozen_local_predictions.json",
+        "sha256": "cb9b68d9d70fdf057b6b0674d84abbabd21724b1ea6efb31e4f33b84c4928a38"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/preregistered-local-gate.json",
+        "sha256": "b1e7caf8ff07a52f8e33b90c0a1f354e126937bc6ad94fa5d3d8a1a29c599990"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/fullres-boundary-denoiser/smoke-train1-s1-eval1-auto/report.json",
+        "sha256": "e5d161057168b60d360d50b1faa610e8c55186b7639d7a69ce1d4b1aaaaae49f"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/fullres-relation-fusion/conversion-audit-opened-source40/report.json",
+        "sha256": "f17f14224ed7b5f1b8eb33a3440c76d6dd33bdb8ff32c7d081dd7a44b9180dc0"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/fullres-relation-fusion/conversion-audit-opened-source40-v2/report.json",
+        "sha256": "9fd18c091583d0020f88a91b026541c707c9188f13fa0c6ada2170d241cc62e8"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/fullres-relation-fusion/decoder-d2-source40-draw1/frozen_predictions.json",
+        "sha256": "74c5bd64e3e34827e7fd130651894c7bc560f13499b8e5ac2d3716c8d12268c6"
+      },
+      {
+        "panel_filename_count": 40,
+        "path": "outputs/fullres-relation-fusion/decoder-d2-source40-draw1/report.json",
+        "sha256": "8884375df68870b8b06e62e975d26ac2a829294ac99a7fdd0fa665214a71729e"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/report.json",
+        "sha256": "3afbd75773370a7f80ba95060b0a7f0dfb4a3343fac69019a79170641f7a42c9"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/frozen-local-predictions.json",
+        "sha256": "812aa70f0da72cac650bb5811550f14b73a7c04c54be2d9eea597e1ad9338fce"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/selection-commitment.json",
+        "sha256": "bce6acb5faac2b7a3599495f5c1e40ffd4fb8c3e1a16c1ca24d432fb9611596f"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/target-aware-supply-diagnostic.json",
+        "sha256": "9d19b65dfad735f488ffab3507e06be85aaccc3aa38d6b700355b82e9828fb24"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/hbt-recovery/pilot-train256-cal12-offset72/report.json",
+        "sha256": "4a91806c36d72a572861c3114dfead927ddf3270960c646fd64c28f25c04ff27"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/hbt-recovery/pilot-train256-fresh-cal12-offset84/report.json",
+        "sha256": "c3f2a519fc4af35515b325de7b427402dddb9cfd5b6301b7d001231c3d5f8599"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/hbt-recovery/smoke/report.json",
+        "sha256": "c41b2ad38da782765b935709a9c96d651256762645b90364677ba27691dd980a"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/nlm-luma-chroma/primary-calibration-offset468-count36/report.json",
+        "sha256": "2a80faffffedb313141d14abc901b2d4f27c9b08d9466a6acea6a55fccac6153"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/novel-analog-layout/calibration24.json",
+        "sha256": "5cbb6449b7d14f51a7f21cd75bb013fc6c991b138955ce3303567dbc94a74b23"
+      },
+      {
+        "panel_filename_count": 4,
+        "path": "outputs/pasha883-pairwise-audit/last4-full576/report.json",
+        "sha256": "c91e992a388a1ee3d2820b3a313f154a388cc6b619e4f828a28862d9d26296fb"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/frozen-dirty-only-predictions.json",
+        "sha256": "67cabfb2b6e4349c7290e116d8a5d3e74dd4995e18cd911842a97652bd82aa69"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/selection-commitment.json",
+        "sha256": "71ae4f5095489613857fcd25c541fe496da0d6861f6ff604850147dd04b91cd2"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/restoration-r6/attempt-00-double-nlm-cal12.json",
+        "sha256": "84caf406654253a108e3a844599181b83cc9154184a067c164009517f9a67446"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/restoration-r6/attempt-01-double-nlm-cal12-corrected.json",
+        "sha256": "2abc1d1f294b1afbb1dc25a6e449b50a18d5a80ff50f806b27f0fbbabed4920b"
+      },
+      {
+        "panel_filename_count": 48,
+        "path": "outputs/restoration-r6/attempt-01-double-nlm-cal48.json",
+        "sha256": "11512a453e205fc0fb600882ad8d899dc5c47c231253411f6860e72adc1e2d19"
+      },
+      {
+        "panel_filename_count": 48,
+        "path": "outputs/restoration-r6/attempt-01-double-nlm-holdout48.json",
+        "sha256": "7136160fe25fe1f1cba80a99eb9a31f0bcd979bc0049fe656ff9025c70542e3e"
+      },
+      {
+        "panel_filename_count": 12,
+        "path": "outputs/restoration-r6/compliant-r6-medium-train256-step2000-h10.json",
+        "sha256": "6a5e03e98b64bdaeff00990efbb61ff33dfe98bc2b8cfb23669136bd5c7a2855"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/restoration-r6/compliant-speed-gate-dualnaf50.json",
+        "sha256": "cbbbdcc788b7da34d3e8cfa4f41e312113fc40aca9657b43fa4a8f1f498ae6e0"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/restoration-r6/smoke-dual.json",
+        "sha256": "470e8353ac0b613998af0004d70f6af7375e1e2f308f0d8669652702a4c9202c"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/restored-border-ranker/benchmark-step1-cpu/frozen_local_predictions.json",
+        "sha256": "ca5effb4c16a90fe6e35abfea58546e82b1f300151bfce67f2081bbdd2dc3e79"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/restored-border-ranker/benchmark-step1-cpu/report.json",
+        "sha256": "51ef11b31a3af60519cc8080ed9f3d9e386e66578627a6e0aee2bc303d777e3d"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/restored-border-ranker/benchmark-step1-mps/frozen_local_predictions.json",
+        "sha256": "b8545f23b5008fe6ff46d7065befc0cc0b2fb1848c3f44b7f6966c52be24cf69"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/restored-border-ranker/benchmark-step1-mps/report.json",
+        "sha256": "a4988a9da43150fa9c3dd14c5a1b0a7aeb2b36c810bf0f40b2123a028b20823f"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/restored-border-ranker/pilot-train256-s400-eval16-mps/frozen_local_predictions.json",
+        "sha256": "4d8363a2048b2e9e503b2910401164567357c6b665d6c628c4293c7965c1e5ee"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/restored-border-ranker/pilot-train256-s400-eval16-mps/report.json",
+        "sha256": "5b58ca446a541b3a33fcda7243cee7bec7b4cba68e463889b6f3f0d1f37e47be"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-confidence-calibration/calibrated-order-decoder144-exact24/frozen_predictions.json",
+        "sha256": "cca90e017c0de1483c05322519537735839bface458070f87d8c9780dd3bd64d"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-confidence-calibration/calibrated-order-decoder144-exact24/report.json",
+        "sha256": "6abcbbfe9dd3e489625829f9b5289d46f081cdbdc532616b702dcac69ca2a5d4"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-confidence-calibration/calibrated-order-smoke-exact2/frozen_predictions.json",
+        "sha256": "1f967e15ff8399fbcb4e56c389eaa145eef2b6b0c47f31b74f3957cc15848576"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-confidence-calibration/calibrated-order-smoke-exact2/report.json",
+        "sha256": "f502862fae04971d4423aba1fc3c4eb2e4c1c9a0ce05082279088d107a0467de"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-confidence-calibration/d32-v2-fit32-confirm16/confirm_dirty_features.json",
+        "sha256": "0e86b3ab33579165db814152b153ad97907e582318d72afc8832dc128e40592f"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/socket-confidence-calibration/d32-v2-fit32-confirm16/fit_dirty_features.json",
+        "sha256": "ccf6e407a2378c8dde87dc56631da3d2e352d13e9496c39c39c91bed42b1c418"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-confidence-calibration/d32-v2-fit32-confirm16/report.json",
+        "sha256": "cb1805a89bd587840f383a9a44569d4539efac313a643067c1d0b6db141d4e49"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/confirm_dirty_features.json",
+        "sha256": "b7bf78a3f9ed3e1e8d61c6c28a05a22796a098b877de339c0e6671b089d46ab1"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/fit_dirty_features.json",
+        "sha256": "c2c4c818b851251518b4f35b99c35694d1299f9be42c0a574ed42c3348e39cf7"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/paired_confirmation_analysis.json",
+        "sha256": "b748fc46f9020ded6fa15b35d9ed2bc9c6be0bec3f220c7861a1c457af8a1fe9"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-confidence-calibration/d64-v2-fit32-confirm16/report.json",
+        "sha256": "442cbb1c6b38044ed72dda5d64c4479d7415555aa8e9ebdfd6a895072cf41762"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-confidence-calibration/smoke-fit2-confirm1/confirm_dirty_features.json",
+        "sha256": "9fb338a0b4976ada609a9c55683cbb18bdb84316c702c4f997a1aa8926c00dc6"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-confidence-calibration/smoke-fit2-confirm1/fit_dirty_features.json",
+        "sha256": "1283c3daee6a663467191be2e849b9f1e50dfe03a91751c4ee098f0d4a5e193a"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-confidence-calibration/smoke-fit2-confirm1/report.json",
+        "sha256": "53965cb25796bd5817bd30bac60a6266ad315dc8e7313b3a1c1e0095e8fa5ca6"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-confidence-calibration/smoke-v2-fit2-confirm1/confirm_dirty_features.json",
+        "sha256": "781290cf6d6b12eb90289ca9c06671a796dbf2811b40b3de8b27e5d964a9c79b"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-confidence-calibration/smoke-v2-fit2-confirm1/fit_dirty_features.json",
+        "sha256": "902bd15584857b398880f93e11a7bab2c4fbcd6c398f823ab5c5174bbdbee1df"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-confidence-calibration/smoke-v2-fit2-confirm1/report.json",
+        "sha256": "07d5eb24f625a66b256675157c887b0b9691a259851e6fb0d310265879932d41"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2/frozen_predictions.json",
+        "sha256": "7d1c8b9e2783a84e63ad278d358fe3c4151e5528c18d40a7fc984429991436d3"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2/report.json",
+        "sha256": "a08e7ac6bce8216acca0e8a626acafb699887dfad8a786490b023d280d419f27"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2-protocol-v2/frozen_predictions.json",
+        "sha256": "e019144bc7eb3c155bc414822df39101206362f15cd95b5c4e21b9bf1008d3ba"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-full-cycle/v2-d64-decoder144-cyclic5-h20-matched-source16-draw2-protocol-v2/report.json",
+        "sha256": "932206de447f325bdb95466762cf3e6c32e94eb70cf370351dedd5500396fe62"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2/frozen_predictions.json",
+        "sha256": "e5d6f007410649dad0d2959be1126f407179c4aa23798d6773cc1d761ceec759"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2/report.json",
+        "sha256": "fc8638b9ab45cec530fcdb5982c481fe0d0ddbe2eb15e6bc7cbbd61e78c84189"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2-decoder/frozen_predictions.json",
+        "sha256": "02d6368c7a2d5a0441fede7bca75059ce50407b4c5da2c93eb418ca3048ae834"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-matcher/exact-synthetic-smoke-v2-decoder/report.json",
+        "sha256": "68ee382ef23a193baf3724ea969c5b601281f04abdda009e5e564b93c1b8cf58"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-matcher/exact-synthetic-v2-d64-source16-draw2/frozen_predictions.json",
+        "sha256": "ed1bc53bc72eddcad44d9153c62fbf81240efc605cacb208985e7ce0d2237aa7"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-matcher/exact-synthetic-v2-d64-source16-draw2/report.json",
+        "sha256": "58fe3b7e240d49259904d2193dab38f2ab0812bbba5d92f0bf0e36c6d6f3aca3"
+      },
+      {
+        "panel_filename_count": 8,
+        "path": "outputs/socket-matcher/exact-synthetic-v2-source8-draw1/frozen_predictions.json",
+        "sha256": "9ee48d1fe2d9ba721a81af0fe6afa4afdddf9003a17712b6245c4d07b5060ff3"
+      },
+      {
+        "panel_filename_count": 8,
+        "path": "outputs/socket-matcher/exact-synthetic-v2-source8-draw1/report.json",
+        "sha256": "9358828611135909905c0074f39d4a67e93ef244657e3f2f4f44807330069df3"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/global-cyclic-translation-v1-fresh-source24-draw2/frozen_predictions.json",
+        "sha256": "06cdea0085f19fa2b4cfa8494e42d8005003f280b24dd7d6c8c9fe6e6f49dc5a"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/global-cyclic-translation-v1-fresh-source24-draw2/report.json",
+        "sha256": "beacfeb5ad052cf4ab6fe158f46405e92a064b757f069c7074e36a52f4d83571"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/paired-v2-d64-vs-v3-source24-draw2/frozen_predictions.json",
+        "sha256": "2a48931a47f1e517257a58a7874397235648694165e81f6f435ab1cf47348da5"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/paired-v2-d64-vs-v3-source24-draw2/report.json",
+        "sha256": "32660841b3d7bd89bd09eaa5f33e790fa47f8c4f89652651c9460f6f64313437"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/paired-v3-d64-vs-v2-source24-draw2/frozen_predictions.json",
+        "sha256": "ee29799617b9ae2d40149f0ea4acd20b174fac66f6931fc5bfea8c6b66bbd8d5"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/paired-v3-d64-vs-v2-source24-draw2/report.json",
+        "sha256": "ee1cee337314cdf0f6bf18c1d4ae6b43f13f80db0c87400c49a4ce24c4c146b9"
+      },
+      {
+        "panel_filename_count": 8,
+        "path": "outputs/socket-matcher/pilot-train64-s100-r100-dev8-v1/report.json",
+        "sha256": "77122bd627b559417f817c81bf0dd97665905b46de38ec45f7465f5117a6e6b6"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/socket-matcher/scale-train256-continue-r400-dev16-v1/report.json",
+        "sha256": "9fbcb98392b83a8e12d21adab43363047374898daf68458238495498fae4d754"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-matcher/smoke-init-v1/report.json",
+        "sha256": "0d229fb3909f0741a4dac29168cfd7e17de8c6790315f7c7fc1218bffa836bdb"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-matcher/smoke-v1/report.json",
+        "sha256": "e3cfa4ae8a3ea9a8525794d97edde2ec3e528ce7f6dd85ec0101509eaec4236b"
+      },
+      {
+        "panel_filename_count": 2,
+        "path": "outputs/socket-matcher/smoke-v2-border-head/report.json",
+        "sha256": "5affcc20fc9ec5918dc789ae5c3cc848a8fe994195a8c7685425dc89bfff7276"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/v2-border-train512-s300-r100-dev24/report.json",
+        "sha256": "d9f1522a2befc76161b7f5ef25887138db0562ca4db30d1ff778c8fc6413b26f"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/v2-checkpoint-confirm-dev24-decoder-prior005/report.json",
+        "sha256": "aba24f50af794033d0ef23851c9210a72b55494937c7bae5777e519e426ab79c"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/v2-checkpoint-fresh-dev24-decoder-prior005/report.json",
+        "sha256": "1b2ddc65bdbe3529d0f52446e8832c791d787bd3ee3a7f684b68937c9eb9cd40"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/report.json",
+        "sha256": "ff461744ed214848e65bfac5f006bc543776a057c8df7ab68c021dabca3942e5"
+      },
+      {
+        "panel_filename_count": 32,
+        "path": "outputs/socket-matcher/v3-d64-continue-s500-r125-dev32/report.json",
+        "sha256": "dc0212c043ffa845a0df7a951936d1474dad4b50510121fc4b43af4b5bf7061a"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/v3-d64-global-cyclic-fresh-source24-draw2/frozen_predictions.json",
+        "sha256": "2691ad31c8b717265db5912dbddc9d4f9db92acf9cbdb2b3922e34a515324438"
+      },
+      {
+        "panel_filename_count": 24,
+        "path": "outputs/socket-matcher/v3-d64-global-cyclic-fresh-source24-draw2/report.json",
+        "sha256": "3a4bdb394c77c03e7e8b4926be79f9d34e8bface18eda68ea625da328649ed0e"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-permutation-flow/capacity-grid4-s400-d96-l3/report.json",
+        "sha256": "454ac297e03a6e0b42a284d44d95a39567dfd8d8518e96019d534f1d224868c9"
+      },
+      {
+        "panel_filename_count": 4,
+        "path": "outputs/socket-permutation-flow/pilot-grid24-train16-s300-d96-l3/report.json",
+        "sha256": "353819b0727fb9c6708ce697adabd04dc6c8bdfd1a944bed50148072db47ad90"
+      },
+      {
+        "panel_filename_count": 1,
+        "path": "outputs/socket-permutation-flow/smoke/report.json",
+        "sha256": "bf1e843233b7829072c55c63d2119068416171ac6555133affc62610f473bd19"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/frozen_predictions.json",
+        "sha256": "1e9f49c2324041d564a1b38eba35fb889a729cb224b3e2e8b679808738c7bc02"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/quadratic_energy_analysis.json",
+        "sha256": "f493c7162337ea24b3fc00590314e0f5eedd55335df862c66d67400193bd42df"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/report.json",
+        "sha256": "a12ca65775facb0717e81fbeaa3735a6fde2ca186f93b428e2985180825ce115"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/sparse-bordergraph-qap/pilot-fit64-s240-eval16-top8-mps/selection_commitment.json",
+        "sha256": "bbe66d8474b838823a02ca5817b2f19007b8f5cfd0e16d1a02d736277f0a84de"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/whole-layout-cyclic-origin/v1-fit256-s400-eval16/frozen_predictions.json",
+        "sha256": "c876c1eed6c63df31ff477af70d32d6f8bc2508e10b3144a5d6590ed2dbb3872"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/whole-layout-cyclic-origin/v1-fit256-s400-eval16/report.json",
+        "sha256": "1ebcac2b45b14e1834b9a671ddfdc9e16342f10f2bd3019529c1107e7a5c5e7c"
+      },
+      {
+        "panel_filename_count": 16,
+        "path": "outputs/whole-layout-cyclic-origin/v1-selection/selection_commitment.json",
+        "sha256": "a8fe3a97f0ed0cee8a210aac725d0e82fb335116ebd355b3aa6133cfea97f94b"
+      },
+      {
+        "panel_filename_count": 280,
+        "panel_filename_digest": "2ec31d2d980bab4dd5bab15ffcca3c6e73400cddbd2faa42a54606ec6812ea41",
+        "path": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/selection-commitment.json",
+        "role": "mandatory-complete-fit-and-evaluation-roster-exclusion",
+        "sha256": "71ae4f5095489613857fcd25c541fe496da0d6861f6ff604850147dd04b91cd2"
+      },
+      {
+        "panel_filename_count": 288,
+        "panel_filename_digest": "30b04978745320741f8047e5dd9393002bd32cc17d9c7f39c12056bbd7c08bc8",
+        "path": "outputs/component-absolute-placer/v1-selection/selection_commitment.json",
+        "role": "mandatory-complete-fit-and-evaluation-roster-exclusion",
+        "sha256": "2b2b0c90e559ca2a6c7898d8eaccc4f8944a73c35d7d78722e0bb30939e0ebe6"
+      }
+    ],
+    "namespace": "aiijc-raw-twin-union-reranker-frozen-fresh64-v1\u0000a5f882ab3c827e4e3779be3372c62d2a8fb9cd95d3558fd30cc566a9c3137f79\u0000472c7a6b43c375097c606cb752cfff2dad60a9cd9da91c97561e0fd82f124b2b\u000020330918",
+    "selected_exclusion_overlap": [],
+    "selection_seed": 20330918,
+    "source_filenames": [
+      "img_002882.png",
+      "img_000707.png",
+      "img_000655.png",
+      "img_006632.png",
+      "img_002153.png",
+      "img_005041.png",
+      "img_002277.png",
+      "img_006091.png",
+      "img_006740.png",
+      "img_002190.png",
+      "img_006569.png",
+      "img_002068.png",
+      "img_004046.png",
+      "img_002292.png",
+      "img_001412.png",
+      "img_000347.png",
+      "img_005883.png",
+      "img_004757.png",
+      "img_006836.png",
+      "img_004236.png",
+      "img_004743.png",
+      "img_002409.png",
+      "img_004217.png",
+      "img_003565.png",
+      "img_000142.png",
+      "img_006033.png",
+      "img_000700.png",
+      "img_000116.png",
+      "img_003404.png",
+      "img_006716.png",
+      "img_001586.png",
+      "img_006065.png",
+      "img_006130.png",
+      "img_000621.png",
+      "img_001344.png",
+      "img_006411.png",
+      "img_001597.png",
+      "img_004783.png",
+      "img_006595.png",
+      "img_000110.png",
+      "img_005342.png",
+      "img_003034.png",
+      "img_005743.png",
+      "img_002941.png",
+      "img_001564.png",
+      "img_003027.png",
+      "img_005768.png",
+      "img_006620.png",
+      "img_006080.png",
+      "img_002193.png",
+      "img_000673.png",
+      "img_001194.png",
+      "img_000634.png",
+      "img_002986.png",
+      "img_002348.png",
+      "img_003109.png",
+      "img_003933.png",
+      "img_006959.png",
+      "img_005969.png",
+      "img_001881.png",
+      "img_006448.png",
+      "img_001291.png",
+      "img_004776.png",
+      "img_004112.png"
+    ],
+    "source_order_digest": "abc679c3dc96da372f74c8e46f2886c91c33779a6e62777de23b525f34cc444d",
+    "source_set_digest": "65ced9e4c0e2e8591bc7975508034d00c7873874bd95f14dd0d2cb4562b96db0",
+    "split": "train",
+    "synthetic_seed": 20330918,
+    "union_fit_eval_excluded": 280
+  },
+  "status": "frozen-before-selected-target-access"
+}

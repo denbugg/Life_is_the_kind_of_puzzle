@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-30T01:12:00+03:00",
+  "purpose": "single-use source-disjoint holdout evaluation before competition-test packaging",
+  "selection_basis": {
+    "layout": "true no-atlas bilateral buddies96 was more robust than the train-only atlas on two disjoint calibration panels",
+    "harmonizer": "target-blind RGB seam offsets followed by bounded luminance gains improved every board on two disjoint calibration panels",
+    "restoration": "manual compliance audit selected colored NLM h=20 with exactly one pass as the maximum safe setting; all multipass settings and h>=30 are rejected"
+  },
+  "pipeline": {
+    "layout": {
+      "edge_view": "bilateral",
+      "solver": "best_buddies",
+      "max_edges": 96,
+      "atlas_weight": 0.0,
+      "strict_permutation": true
+    },
+    "postassembly": {
+      "rgb_seam_offsets": "configs/postassembly_rgb_offset_v1.json",
+      "bounded_luminance_gains": "configs/postassembly_luminance_gain_v1.json",
+      "order": "rgb_offsets_then_luminance_then_nlm"
+    },
+    "restoration": {
+      "name": "opencv_fast_nl_means_colored",
+      "h": 20,
+      "h_color": 20,
+      "template_window_size": 7,
+      "search_window_size": 21,
+      "passes": 1
+    }
+  },
+  "calibration_confirmation": {
+    "split": "calibration",
+    "offset": 120,
+    "count": 48,
+    "filenames_sha256": "5b1a8dcd358c87191d1c0ced0253ec66f45566568e7126c76259ff13f9289bbf",
+    "gate": {
+      "final_mean_ssim_min": 0.28,
+      "gain_vs_same_h_without_harmonizer_min": 0.0,
+      "gain_ci95_lower_min": 0.0,
+      "wins_min": 36
+    }
+  },
+  "single_use_holdout": {
+    "split": "holdout",
+    "offset": 0,
+    "count": 96,
+    "filenames_sha256": "989d5cc1d4428a48304d1ce4a37046bc43e258b174ffbc58913e3ae85f328c4f",
+    "arms": [
+      "raw_strict_assembly",
+      "colored_nlm_h20x1_control",
+      "rgb_luma_then_colored_nlm_h20x1_final"
+    ],
+    "success": {
+      "final_mean_ssim_min": 0.27,
+      "gain_vs_control_ci95_lower_min": 0.0
+    },
+    "no_retuning_after_open": true
+  },
+  "forbidden": [
+    "targets_or_reference_images_during_inference",
+    "test_reference_overrides",
+    "population_or_constant_canvas_rendering",
+    "tile_substitution_or_duplicate_use",
+    "tile_warping_or_rotation",
+    "multipass_nlm",
+    "nlm_h_at_least_30"
+  ]
+}

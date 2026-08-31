@@ -1,0 +1,174 @@
+{
+  "schema": "aiijc-pretrained-drunet-protected-stack-overlap-ledger-v1",
+  "frozen_before_calibration_target_decode": true,
+  "scope": "Every existing outputs/**/*.json artifact containing any img_*.png basename from either preregistered panel",
+  "intersection_digest_algorithm": "sha256(sorted intersecting basenames joined by newline)",
+  "caveat": "Competition-test artifacts can share a basename with a train/calibration record but are a different underlying image; they are listed for completeness and explicitly typed as basename-only overlap.",
+  "primary": {
+    "offset": 264,
+    "count": 120,
+    "filenames_sha256": "11d0dc7ce4d7a797a93b81c13766ad8990b6e60d84f101a80b94f05016c5ab94",
+    "artifacts": [
+      {
+        "path": "outputs/compliant-atlas-decoder/fresh-calibration24-ablation.json",
+        "count": 5,
+        "intersection_sha256": "80ea05bbaa3de8feb54832fd8d7a6c2687ce38715b6ba96eec8ff20d02d70730",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/edge-ranker/conservative-fusion-k16/primary-cal360-count24/report.json",
+        "count": 24,
+        "intersection_sha256": "2754d6c2dfee858ad3ea46de015dcbae1874e01904c563c98d3ae5b80f85f9dc",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/edge-ranker/conservative-fusion-k16/primary-cal360-count24/prediction-commitment.json",
+        "count": 24,
+        "intersection_sha256": "2754d6c2dfee858ad3ea46de015dcbae1874e01904c563c98d3ae5b80f85f9dc",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/dualnaf-bounded-residual/primary-calibration-offset336-count24/report.json",
+        "count": 24,
+        "intersection_sha256": "0abc335d99c45e89fb0c365dd46e085dab620bd98079a94fa87d9a0c0dcec333",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/dualnaf-bounded-residual/primary-calibration-offset336-count24/prediction-commitment.json",
+        "count": 24,
+        "intersection_sha256": "0abc335d99c45e89fb0c365dd46e085dab620bd98079a94fa87d9a0c0dcec333",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/compliant-submission/compliance-attestation.json",
+        "count": 13,
+        "intersection_sha256": "92842980eb7b19b203d51004ad14c6f261d13fba371f495eaf38874bd3310000",
+        "record_semantics": "same_basename_competition_test_only"
+      },
+      {
+        "path": "outputs/compliant-submission/visual-audit/structural-metrics.json",
+        "count": 13,
+        "intersection_sha256": "92842980eb7b19b203d51004ad14c6f261d13fba371f495eaf38874bd3310000",
+        "record_semantics": "same_basename_competition_test_only"
+      },
+      {
+        "path": "outputs/novel-analog-layout/calibration24.json",
+        "count": 6,
+        "intersection_sha256": "be641aa90d36d1134879fb0fb7b96aaac465f416c3d373b6b5a6c3f067a96163",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/legacy-upgrade/calibration700-champion/report.json",
+        "count": 120,
+        "intersection_sha256": "68726a999fc5f31e2d3d9bdf9ea8093f741d6ad1631b2904087713d9a6b6d538",
+        "record_semantics": "calibration_all_targets_historically_exposed"
+      },
+      {
+        "path": "outputs/legacy-upgrade/test-constant-median-rgb/report.json",
+        "count": 13,
+        "intersection_sha256": "92842980eb7b19b203d51004ad14c6f261d13fba371f495eaf38874bd3310000",
+        "record_semantics": "same_basename_competition_test_only"
+      },
+      {
+        "path": "outputs/bm3d-legal-screen/primary-calibration-offset276-count24/report.json",
+        "count": 24,
+        "intersection_sha256": "8f5c9347ec54caa50e356e8f51687d4dc2c1dfb511b19efe2a2c755e3d575ce3",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/bm3d-legal-screen/primary-calibration-offset276-count24/prediction-commitment.json",
+        "count": 24,
+        "intersection_sha256": "8f5c9347ec54caa50e356e8f51687d4dc2c1dfb511b19efe2a2c755e3d575ce3",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/dense-safe-tail/6e1ed5840bf77f9ce5ef7f3a83cdfb84232fa34813f700bda11a56eae2b8fa3c/primary/report.json",
+        "count": 36,
+        "intersection_sha256": "40dff586cc0190b6de69d28d90db4f012f726ebc636e34e2afb257c04b7b2146",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/dense-safe-tail/6e1ed5840bf77f9ce5ef7f3a83cdfb84232fa34813f700bda11a56eae2b8fa3c/primary/prediction-commitment.json",
+        "count": 36,
+        "intersection_sha256": "40dff586cc0190b6de69d28d90db4f012f726ebc636e34e2afb257c04b7b2146",
+        "record_semantics": "calibration"
+      }
+    ]
+  },
+  "confirmation": {
+    "offset": 408,
+    "count": 120,
+    "filenames_sha256": "e0f4c4c5dbf2dcb0d7d659ceda8b131ab4eec53c600c4cfaab10be07450c25bc",
+    "artifacts": [
+      {
+        "path": "outputs/candidate-supply/calibration2-smoke.json",
+        "count": 1,
+        "intersection_sha256": "59cceae97e0f889c784486bc4c4d2fd7c18692c0e0552c4318ebda097c093713",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/compliant-atlas-decoder/fresh-calibration24-ablation.json",
+        "count": 7,
+        "intersection_sha256": "49117ea79df1f0ff73afa3d9c69f899f81aa625c5a9b43e1295f24ff8cc62588",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/nlm-luma-chroma/primary-calibration-offset468-count36/report.json",
+        "count": 36,
+        "intersection_sha256": "03c4c03a0769ddc078cc6e1394f8c5bf9c23da94cedf65f06ebf2ad3cacb0521",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/nlm-luma-chroma/primary-calibration-offset468-count36/prediction-commitment.json",
+        "count": 36,
+        "intersection_sha256": "03c4c03a0769ddc078cc6e1394f8c5bf9c23da94cedf65f06ebf2ad3cacb0521",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/compliant-submission/compliance-attestation.json",
+        "count": 13,
+        "intersection_sha256": "150e5859f1770de8110f5053ecbbc16fa53b1c3cc87c62bd307dfd8a0221b374",
+        "record_semantics": "same_basename_competition_test_only"
+      },
+      {
+        "path": "outputs/compliant-submission/visual-audit/structural-metrics.json",
+        "count": 13,
+        "intersection_sha256": "150e5859f1770de8110f5053ecbbc16fa53b1c3cc87c62bd307dfd8a0221b374",
+        "record_semantics": "same_basename_competition_test_only"
+      },
+      {
+        "path": "outputs/novel-analog-layout/calibration24.json",
+        "count": 6,
+        "intersection_sha256": "e595968e9012160b376e1539277e7bb48fe08443cc94554707b1b0652948cae0",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/legacy-upgrade/calibration700-champion/report.json",
+        "count": 120,
+        "intersection_sha256": "1eddbabdf6bd59b6fbf45b516fa9f8c9338e01b9efc584ef0660c723683a9d8f",
+        "record_semantics": "calibration_all_targets_historically_exposed"
+      },
+      {
+        "path": "outputs/legacy-upgrade/test-constant-median-rgb/report.json",
+        "count": 13,
+        "intersection_sha256": "150e5859f1770de8110f5053ecbbc16fa53b1c3cc87c62bd307dfd8a0221b374",
+        "record_semantics": "same_basename_competition_test_only"
+      },
+      {
+        "path": "outputs/ultimate-stack/4857fe1e67be9c56cad06f0eb651215250e5bbd8e6e80c91a6d095a7cdd1de63/primary/report.json",
+        "count": 24,
+        "intersection_sha256": "8f8fc54e31d6d8d36d2ca73a8ffef1cb1257f4c4f87314d5b9f7b13b04cf8019",
+        "record_semantics": "calibration"
+      },
+      {
+        "path": "outputs/ultimate-stack/4857fe1e67be9c56cad06f0eb651215250e5bbd8e6e80c91a6d095a7cdd1de63/primary/prediction-commitment.json",
+        "count": 24,
+        "intersection_sha256": "8f8fc54e31d6d8d36d2ca73a8ffef1cb1257f4c4f87314d5b9f7b13b04cf8019",
+        "record_semantics": "calibration"
+      }
+    ]
+  },
+  "primary_confirmation_filename_overlap": 0,
+  "freshness_claim": false,
+  "all_primary_and_confirmation_targets_historically_exposed": true
+}

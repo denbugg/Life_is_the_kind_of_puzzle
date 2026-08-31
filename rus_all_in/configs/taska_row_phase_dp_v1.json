@@ -1,0 +1,60 @@
+{
+  "schema": "aiijc-taska-row-phase-dp-preregistration-v1",
+  "created_at": "2026-08-31",
+  "candidate": "exact Viterbi minimum over 24 cyclic phases of each fixed row",
+  "objective": "original TASKA all-1104-bond raw seam cost",
+  "control": "exact frozen confirmed six-arm fusion final layout",
+  "candidate_family": {
+    "movable_unit": "one complete fixed-membership ordered row",
+    "allowed_state_per_row": "one of its 24 cyclic phases",
+    "row_order": "fixed",
+    "within_row_cyclic_order": "fixed",
+    "optimizer": "exact dynamic programming with seam-cost then changed-row-count tie-break",
+    "target_free": true
+  },
+  "diagnostic_before_preregistration": {
+    "panel": "local32 only",
+    "row_phase_pair_oracle_delta_mean": 1.0625,
+    "row_phase_exact_oracle_delta_mean": 0.125,
+    "row_phase_pair_oracle_wins_ties_losses": [13, 19, 0],
+    "column_phase_pair_oracle_delta_mean": 0.75,
+    "column_phase_exact_oracle_delta_mean": -2.0,
+    "decision": "fix row phases only and minimize the original raw seam objective"
+  },
+  "panel_order": [
+    "local32",
+    "held32",
+    "fresh32"
+  ],
+  "local_pair_gate": 0.0,
+  "held_pair_gate": 0.0,
+  "metrics": [
+    "satisfied_adjacent_pairs",
+    "adjacency_recall",
+    "exact_tiles"
+  ],
+  "no_sweep": true,
+  "prohibited_adaptation": [
+    "column-phase fallback",
+    "phase budget or threshold selection",
+    "objective weights, blends, or learned guards",
+    "arm portfolio or arm selection",
+    "tail polishing",
+    "postprocessing",
+    "competition test access"
+  ],
+  "legality": {
+    "strict_original_upright_576_tile_permutation": true,
+    "pixels_changed": false,
+    "targets_used_only_after_target_free_artifacts_are_frozen": true,
+    "production_modified": false
+  },
+  "fixed_source_sha256": {
+    "src/aiijc_puzzle/taska_row_phase_dp.py": "ca8a324ad79727ec457018906223981d900864103a434ddae0237aa53883b7ae",
+    "scripts/run_taska_row_phase_dp.py": "52a1459fac7fd9584069c5b28f776c1584a8a8f0754c0a561ca5aa8b18583d36"
+  },
+  "frozen_control_report": {
+    "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/report.json",
+    "sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af"
+  }
+}

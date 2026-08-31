@@ -1,0 +1,135 @@
+{
+  "schema": "aiijc-pretrained-drunet-protected-all700-measurement-v1",
+  "protocol_version": 2,
+  "status": "immutable_measurement_protocol_frozen_before_current_calibration700_target_decode",
+  "created_on": "2026-08-30",
+  "purpose": "Measure exactly the already-frozen legal D stack on all 700 calibration records, with unchanged fail-closed broad holdout evidence; no tuning, sweep, arm selection, or production change",
+  "v1_target_blind_stop": {
+    "config": "configs/pretrained_drunet_protected_stack_all700_measurement_v1.json",
+    "config_sha256": "4c5ee948c5a54ad6b8888700229aa7980595740b33e201b8a3156e77926ba725",
+    "prepared_board_count": 1,
+    "targets_decoded": 0,
+    "reason": "tuple-valued raw audit fields became lists after JSON round-trip; semantically identical values failed direct Python equality",
+    "v2_only_change": "normalize audit dictionaries through canonical JSON-compatible representation before equality"
+  },
+  "prior_frozen_method_binding": {
+    "preregistration": "configs/pretrained_drunet_protected_stack_preregistered_v1.json",
+    "preregistration_sha256": "6e6db6d4becb22a5fb70a9ce20474c6350f7e55ff391d65d763699938958e5a8",
+    "candidate": "D_drunet_sigma40_protected_h28_h40_t40",
+    "safety_reference_only": "B_original_nlm_h28",
+    "new_candidate_arms": 0,
+    "parameter_selection_from_this_measurement_forbidden": true
+  },
+  "data": {
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "calibration": {
+      "split": "calibration",
+      "offset": 0,
+      "count": 700,
+      "filenames_sha256": "8c384af37afa3db09480feedd3d4bd7b7f4d2edbf132b29c9941551cdf68083d",
+      "input_roster_sha256": "c0f47c07776d008ea0323cee889fccfd7ccde120b1fa79cfbc04cb6987201893",
+      "historical_target_exposure": {
+        "freshness_claim": false,
+        "globally_historically_exposed": true,
+        "legacy_calibration700_exposed_all_700_targets": true,
+        "current_measurement_commits_predictions_before_its_own_target_decode": true
+      }
+    },
+    "holdout": {
+      "split": "holdout",
+      "offset": 0,
+      "count": 700,
+      "filenames_sha256": "5bf0464dd7caf88df895ae4bacfd2375ee912ec127c9a5de88cbf9dbe51e7836",
+      "input_roster_sha256": "0d1bc01e8cfe9c7f8dd1295299bf3c0247b0816c1af4147c64e0a04591c08afe",
+      "historical_target_exposure": {
+        "freshness_claim": false,
+        "workspace_may_have_historically_exposed_targets": true,
+        "no_independence_or_freshness_claim": true,
+        "current_measurement_must_commit_predictions_before_its_own_target_decode": true
+      }
+    },
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4"
+  },
+  "fixed_pipeline": {
+    "layout": "dirty-only bilateral directional scores -> solve_buddies(max_edges=96)",
+    "raw_audit": "576 unique upright input tiles, exact declared reassembly, identical tile multiset and raw pixels before restoration",
+    "harmonizer": "frozen default RGB seam offsets -> frozen default bounded luminance gains",
+    "restoration": "official color DRUNet sigma40 independently per 20x20 tile, reflect pad +4 right/bottom then crop",
+    "tail": "independent colored NLM h20/h28/h40 on one DRUNet canvas; exact t40 mask from h20 selects h28 protected and h40 flat",
+    "edge_budget": 96,
+    "drunet_sigma_255": 40,
+    "drunet_batch_size": 144,
+    "nlm_strengths": [20, 28, 40],
+    "sobel_threshold": 40.0,
+    "same_board_pixels_only": true,
+    "upright_bijection_no_geometry_or_substitution": true,
+    "target_reference_template_access_at_inference": false
+  },
+  "measurement": {
+    "only_target_scored_output": "D_drunet_sigma40_protected_h28_h40_t40",
+    "original_h28_persisted_only_for_preexisting_target_free_safety": true,
+    "exact_contest_ssim_per_board": true,
+    "fixed_ranked_folds_10x70": true,
+    "fixed_quantiles": [0.0, 0.05, 0.1, 0.25, 0.5, 0.75, 0.9, 0.95, 1.0],
+    "target_blind_artifacts_must_be_immutable_and_hash_committed_before_score": true,
+    "resumable_prepare_only_before_commitment": true
+  },
+  "broad_completion_rule_fixed_before_calibration_score": {
+    "calibration700_mean_ssim_closed_interval": [0.27, 0.28],
+    "all_700_strict_provenance_audits_must_pass": true,
+    "preexisting_target_free_safety_gate_must_pass": true,
+    "if_all_pass": "prepare and commit exact unchanged candidate on holdout700 before decoding any holdout target, then score once",
+    "otherwise": "do not open holdout700 targets in this measurement",
+    "holdout_no_method_parameter_or_threshold_change": true,
+    "holdout_freshness_claim": false
+  },
+  "target_free_safety_gate": {
+    "reference": "B_original_nlm_h28",
+    "mean_luma_gradient_retention_at_least": 0.9,
+    "minimum_luma_gradient_retention_at_least": 0.8,
+    "mean_chroma_gradient_retention_at_least": 0.8,
+    "minimum_chroma_gradient_retention_at_least": 0.6,
+    "mean_laplacian_retention_at_least": 0.9,
+    "minimum_laplacian_retention_at_least": 0.8,
+    "mean_grid_ratio_at_most": 1.08,
+    "maximum_grid_ratio_at_most": 1.15,
+    "mean_protected_fraction_range": [0.4, 0.75],
+    "every_board_protected_fraction_range": [0.3, 0.85],
+    "maximum_rgb_mean_shift": 3.0,
+    "every_board_rgb_std_ratio_range": [0.9, 1.05],
+    "maximum_board_mean_abs_pixel_change": 8.0,
+    "maximum_clipping_increase": 0.01
+  },
+  "runtime": {
+    "canonical_prediction_device": "mps",
+    "noncanonical_cpu_or_cuda_uint8_rounding_may_differ": true,
+    "canonical_predictions_are_content_hash_bound": true
+  },
+  "asset_sha256": {
+    "LICENSE": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "drunet_color.pth": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "models/basicblock.py": "48406db8867394ac5ae233ebeec7711ac10acfc3a6bbf0072c33aa77d659b6fd",
+    "models/network_unet.py": "8043b6350f1589d5f08892e3be0b4d12c5a502058014285107b7360696d12bf5"
+  },
+  "source_sha256": {
+    "scripts/run_pretrained_drunet_protected_stack_all700.py": "3924bedd51e6ff5f7108e572f07aee5bb75cf69a9ef4d09f064c06f42cf4c462",
+    "scripts/run_pretrained_drunet_protected_stack_all700_v2.py": "bf77a09f48bc2d5b21f162ba152e6c7d85660d11b17b0fd836f449122b6008fb",
+    "src/aiijc_puzzle/compliant_atlas_decoder.py": "86704849112b66fa2355c1a07c89c409f0f77ea48e175099ae54337f74a0196d",
+    "src/aiijc_puzzle/edge_protected_nlm.py": "e817068e5ef9ffa1cce82a09cc5d8c7763adf0ff680cacfde7b4b1224ff0259f",
+    "src/aiijc_puzzle/legacy_upgrade.py": "3908f7c192a0f9b43e288b17f7614b66456b2bf20e4539e09aa9f5c5ae2a4586",
+    "src/aiijc_puzzle/nlm_luma_chroma.py": "6d743edfedaf287e49944e56fcb094714214890b9623ceb7036e98a66ec7dbd3",
+    "src/aiijc_puzzle/postassembly_harmonizer.py": "4f7a44ab0781d6da8cee88ed956c34e92d756417162855ee4b1cd84b017dcb41",
+    "src/aiijc_puzzle/pretrained_drunet_protected_stack.py": "d1d8b71e088dc316824e8decb1095cffabc580f8033f82ace4f632bc584676c6",
+    "src/aiijc_puzzle/pretrained_tile_denoiser.py": "9b79f27d6b8570d65f64e21f703e20bb880ee9d000adb7675cb89c673f4a196e",
+    "src/aiijc_puzzle/protocol.py": "c97fcb5e6eb07abe6a91480c525f63b72a73bfb0aec7df4d51971e82b2f481be"
+  },
+  "access_contract": {
+    "prepare_must_not_read_target_pngs": true,
+    "score_order": ["verify all 700 committed artifacts and raw provenance", "write immutable target-access receipt", "decode targets", "compute fixed metrics"],
+    "competition_test_access": false,
+    "submission_outputs_modified": false
+  }
+}

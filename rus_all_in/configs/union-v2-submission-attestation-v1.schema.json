@@ -1,0 +1,398 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiijc.local/schemas/union-v2-submission-attestation-v1.json",
+  "title": "AIIJC Union-v2 strict submission attestation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "scope",
+    "correct_hidden_layout_proven",
+    "proof_limitation",
+    "policy",
+    "input_snapshot",
+    "pipeline",
+    "archive",
+    "per_board"
+  ],
+  "properties": {
+    "schema": {
+      "const": "aiijc-union-v2-submission-attestation-v1"
+    },
+    "status": {
+      "const": "METHOD_COMPLIANT_LAYOUT_ACCURACY_UNPROVEN"
+    },
+    "scope": {
+      "const": "provenance_strict_bijection_geometry_model_and_tail_reexecution"
+    },
+    "correct_hidden_layout_proven": {
+      "const": false
+    },
+    "proof_limitation": {
+      "type": "string",
+      "minLength": 40
+    },
+    "policy": {
+      "$ref": "#/$defs/policy"
+    },
+    "input_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_archive_sha256",
+        "filenames_sha256",
+        "file_count",
+        "regular_files_only",
+        "symlinks_rejected"
+      ],
+      "properties": {
+        "source_archive_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "filenames_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "const": 700
+        },
+        "regular_files_only": {
+          "const": true
+        },
+        "symlinks_rejected": {
+          "const": true
+        }
+      }
+    },
+    "pipeline": {
+      "$ref": "#/$defs/pipeline"
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "file_count",
+        "root_only",
+        "format",
+        "mode",
+        "width",
+        "height",
+        "filenames"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "const": 700
+        },
+        "root_only": {
+          "const": true
+        },
+        "format": {
+          "const": "PNG"
+        },
+        "mode": {
+          "const": "RGB"
+        },
+        "width": {
+          "const": 480
+        },
+        "height": {
+          "const": 480
+        },
+        "filenames": {
+          "type": "array",
+          "minItems": 700,
+          "maxItems": 700,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/png_name"
+          }
+        }
+      }
+    },
+    "per_board": {
+      "type": "array",
+      "minItems": 700,
+      "maxItems": 700,
+      "items": {
+        "$ref": "#/$defs/board"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "png_name": {
+      "type": "string",
+      "pattern": "^[^/\\\\]+\\.png$"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "corresponding_input_only",
+        "targets_used",
+        "reference_images_used",
+        "source_lookup_used",
+        "external_templates_used",
+        "filename_or_board_overrides_used",
+        "tile_substitution_used",
+        "constant_or_near_flat_tile_substitution_used",
+        "tile_rotation_used",
+        "tile_resize_used",
+        "tile_warp_used",
+        "cross_board_pixels_used",
+        "external_pixels_used",
+        "all_576_input_tiles_used_exactly_once_before_restoration",
+        "original_upright_tiles_only",
+        "raw_permutation_audited_before_restoration",
+        "restoration_changes_layout"
+      ],
+      "properties": {
+        "corresponding_input_only": { "const": true },
+        "targets_used": { "const": false },
+        "reference_images_used": { "const": false },
+        "source_lookup_used": { "const": false },
+        "external_templates_used": { "const": false },
+        "filename_or_board_overrides_used": { "const": false },
+        "tile_substitution_used": { "const": false },
+        "constant_or_near_flat_tile_substitution_used": { "const": false },
+        "tile_rotation_used": { "const": false },
+        "tile_resize_used": { "const": false },
+        "tile_warp_used": { "const": false },
+        "cross_board_pixels_used": { "const": false },
+        "external_pixels_used": { "const": false },
+        "all_576_input_tiles_used_exactly_once_before_restoration": { "const": true },
+        "original_upright_tiles_only": { "const": true },
+        "raw_permutation_audited_before_restoration": { "const": true },
+        "restoration_changes_layout": { "const": false }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "pipeline": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "production_config_sha256",
+        "artifacts",
+        "layout",
+        "pixel_tail",
+        "device",
+        "mps_nondeterminism_acknowledged",
+        "policy",
+        "runtime",
+        "pipeline_digest"
+      ],
+      "properties": {
+        "schema": {
+          "const": "aiijc-union-v2-submission-packager-v1"
+        },
+        "production_config_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "socket_checkpoint",
+            "twin_checkpoint",
+            "union_checkpoint",
+            "union_preregistration",
+            "union_selection"
+          ],
+          "properties": {
+            "socket_checkpoint": { "$ref": "#/$defs/artifact" },
+            "twin_checkpoint": { "$ref": "#/$defs/artifact" },
+            "union_checkpoint": { "$ref": "#/$defs/artifact" },
+            "union_preregistration": { "$ref": "#/$defs/artifact" },
+            "union_selection": { "$ref": "#/$defs/artifact" }
+          }
+        },
+        "layout": {
+          "type": "object"
+        },
+        "pixel_tail": {
+          "type": "object"
+        },
+        "device": {
+          "enum": ["cpu", "mps"]
+        },
+        "mps_nondeterminism_acknowledged": {
+          "type": "boolean"
+        },
+        "policy": {
+          "$ref": "#/$defs/policy"
+        },
+        "runtime": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "python",
+            "torch",
+            "numpy",
+            "opencv",
+            "pillow",
+            "source_sha256",
+            "digest_sha256"
+          ],
+          "properties": {
+            "python": { "type": "string" },
+            "torch": { "type": "string" },
+            "numpy": { "type": "string" },
+            "opencv": { "type": "string" },
+            "pillow": { "type": "string" },
+            "source_sha256": {
+              "type": "object",
+              "minProperties": 1,
+              "additionalProperties": {
+                "$ref": "#/$defs/sha256"
+              }
+            },
+            "digest_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "pipeline_digest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "board": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "filename",
+        "input",
+        "lineage",
+        "layout",
+        "raw_assembly",
+        "pixel_tail",
+        "output_png_sha256"
+      ],
+      "properties": {
+        "schema": {
+          "const": "aiijc-union-v2-submission-board-record-v1"
+        },
+        "filename": {
+          "$ref": "#/$defs/png_name"
+        },
+        "input": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["file_sha256", "decoded_rgb_sha256"],
+          "properties": {
+            "file_sha256": { "$ref": "#/$defs/sha256" },
+            "decoded_rgb_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "lineage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["pipeline_digest"],
+          "properties": {
+            "pipeline_digest": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "layout": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tile_at_position",
+            "sha256_int32_le",
+            "strict_permutation",
+            "all_576_original_upright_tiles_used_once"
+          ],
+          "properties": {
+            "tile_at_position": {
+              "type": "array",
+              "minItems": 576,
+              "maxItems": 576,
+              "uniqueItems": true,
+              "items": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 575
+              }
+            },
+            "sha256_int32_le": { "$ref": "#/$defs/sha256" },
+            "strict_permutation": { "const": true },
+            "all_576_original_upright_tiles_used_once": { "const": true }
+          }
+        },
+        "raw_assembly": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["array_sha256", "audit", "audited_before_restoration"],
+          "properties": {
+            "array_sha256": { "$ref": "#/$defs/sha256" },
+            "audited_before_restoration": { "const": true },
+            "audit": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "grid_rows",
+                "grid_columns",
+                "tile_count",
+                "unique_tile_indices",
+                "missing_tile_indices",
+                "duplicate_tile_indices",
+                "exact_reassembly_from_declared_layout",
+                "input_output_tile_multiset_equal",
+                "raw_input_pixels_preserved",
+                "restoration_applied_after_audit",
+                "passed"
+              ],
+              "properties": {
+                "grid_rows": { "const": 24 },
+                "grid_columns": { "const": 24 },
+                "tile_count": { "const": 576 },
+                "unique_tile_indices": { "const": 576 },
+                "missing_tile_indices": { "const": [] },
+                "duplicate_tile_indices": { "const": [] },
+                "exact_reassembly_from_declared_layout": { "const": true },
+                "input_output_tile_multiset_equal": { "const": true },
+                "raw_input_pixels_preserved": { "const": true },
+                "restoration_applied_after_audit": { "const": true },
+                "passed": { "const": true }
+              }
+            }
+          }
+        },
+        "pixel_tail": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["contract", "layout_changed", "output_array_sha256"],
+          "properties": {
+            "contract": { "type": "object" },
+            "layout_changed": { "const": false },
+            "output_array_sha256": { "$ref": "#/$defs/sha256" }
+          }
+        },
+        "output_png_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

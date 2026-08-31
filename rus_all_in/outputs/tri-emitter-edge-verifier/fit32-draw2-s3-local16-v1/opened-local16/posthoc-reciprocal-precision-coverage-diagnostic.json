@@ -1,0 +1,116 @@
+{
+  "schema": "aiijc-tri-emitter-reciprocal-precision-coverage-diagnostic-v1",
+  "status": "posthoc-descriptive-only-not-a-selection-policy",
+  "source_panel": "opened-local16",
+  "method": {
+    "predictions": "reuse frozen target-free top-one target, reciprocal flag and confidence arrays; no matcher, model, solver or decoder execution",
+    "labels": "reuse exact references already opened by the completed local16 gate",
+    "confidence": "minimum of the outgoing row margin and incoming column margin for a reciprocal top-one edge",
+    "ordering": "descending inference-visible confidence with stable encounter-order tie break",
+    "fixed_coverage_grid": [
+      0.03,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.4
+    ],
+    "grid_role": "descriptive curve only; no point was selected as a threshold and the signed local gate is unchanged"
+  },
+  "population": {
+    "directed_valid_queries": 17664,
+    "raw_native_reciprocal_queries": 8541,
+    "verifier_native_reciprocal_queries": 7329
+  },
+  "matched_precision_at_fixed_coverage": [
+    {
+      "nominal_coverage": 0.03,
+      "query_count": 530,
+      "actual_coverage": 0.030004528985507248,
+      "raw_precision": 0.8905660377358491,
+      "verifier_precision": 0.9415094339622642,
+      "precision_gain": 0.05094339622641508
+    },
+    {
+      "nominal_coverage": 0.05,
+      "query_count": 883,
+      "actual_coverage": 0.04998867753623189,
+      "raw_precision": 0.8086070215175538,
+      "verifier_precision": 0.8742921857304643,
+      "precision_gain": 0.06568516421291049
+    },
+    {
+      "nominal_coverage": 0.1,
+      "query_count": 1766,
+      "actual_coverage": 0.09997735507246377,
+      "raw_precision": 0.6732729331823329,
+      "verifier_precision": 0.7338618346545867,
+      "precision_gain": 0.06058890147225371
+    },
+    {
+      "nominal_coverage": 0.2,
+      "query_count": 3533,
+      "actual_coverage": 0.20001132246376813,
+      "raw_precision": 0.5157090291536938,
+      "verifier_precision": 0.5324087178035664,
+      "precision_gain": 0.01669968864987259
+    },
+    {
+      "nominal_coverage": 0.3,
+      "query_count": 5299,
+      "actual_coverage": 0.2999886775362319,
+      "raw_precision": 0.4200792602377807,
+      "verifier_precision": 0.4129080958671447,
+      "precision_gain": -0.007171164370635974
+    },
+    {
+      "nominal_coverage": 0.4,
+      "query_count": 7066,
+      "actual_coverage": 0.40002264492753625,
+      "raw_precision": 0.35776960090574583,
+      "verifier_precision": 0.3419190489668837,
+      "precision_gain": -0.015850551938862145
+    }
+  ],
+  "native_points": {
+    "raw": {
+      "query_count": 8541,
+      "coverage": 0.4835258152173913,
+      "precision": 0.31975178550521016
+    },
+    "verifier": {
+      "query_count": 7329,
+      "coverage": 0.4149116847826087,
+      "precision": 0.3331968890708146
+    },
+    "matched_at_verifier_native_count": {
+      "query_count": 7329,
+      "coverage": 0.4149116847826087,
+      "raw_precision": 0.3509346431982535,
+      "verifier_precision": 0.3331968890708146,
+      "precision_gain": -0.017737754127438943
+    }
+  },
+  "interpretation": {
+    "high_confidence_signal": "the verifier is more precise through the fixed 20 percent coverage point",
+    "tail_failure": "the sign reverses between the fixed 20 and 30 percent coverage points and remains negative at the preregistered matched native count",
+    "gate_verdict_changed": false,
+    "terminal_opened": false,
+    "decoder_run": false,
+    "competition_test_accessed": false
+  },
+  "frozen_inputs": {
+    "prediction_archive": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/opened-local16/frozen-target-free-predictions.npz",
+      "sha256": "25f9e48ea8f999ad5ca8c04a4c74d431d03e07dd68c6431420a2c6271c742009"
+    },
+    "prediction_metadata": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/opened-local16/frozen-target-free-predictions.json",
+      "sha256": "f49313a86b8c6e0e8413840728da1a13e70b2a8b24e33fe4f550710bbaedeb19"
+    },
+    "completed_local_report": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/report.json",
+      "sha256": "29686696e606f7b8c0aed51ba6baa24ba87cfcb68841a143b01b3c921b543b0b"
+    }
+  }
+}

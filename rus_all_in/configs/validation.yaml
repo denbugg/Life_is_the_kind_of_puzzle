@@ -1,0 +1,12 @@
+# Frozen generic-only validation protocol. This file intentionally has no test path.
+seed: 20260829
+expected_pairs: 7000
+
+splits:
+  train: 5600
+  calibration: 700
+  holdout: 700
+
+inputs_dir: data/raw/train/inputs
+targets_dir: data/raw/train/targets
+manifest_path: data/interim/validation_manifest.json

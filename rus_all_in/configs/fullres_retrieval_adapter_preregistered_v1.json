@@ -1,0 +1,152 @@
+{
+  "schema": "aiijc-fullres-retrieval-adapter-preregistered-v1",
+  "experiment": "fullres-retrieval-adapter-socket-distillation-v1",
+  "created_before_benchmark_training_or_local_scoring": true,
+  "purpose": "one bounded scaling pilot of a no-downsample tile adapter trained through the frozen d64 SocketMatcher for exact-neighbour retrieval",
+  "no_repeat_boundary": {
+    "fullres_boundary_denoiser": "same stride-one NAF family, but the prior model used boundary pixel reconstruction and regressed direct retrieval",
+    "e13": "prior exact-retrieval model was a standalone four-pixel border CNN; this pilot injects the ranking loss through the much stronger frozen full-tile/contextual d64 SocketMatcher",
+    "drunet_and_dualnaf": "prior generic restoration checkpoints were fixed matcher views and were not trained for neighbour ranking",
+    "restored_border_ranker": "prior learned shortlist cross-ranker used a downsampling DRUNet view rather than an end-to-end no-downsample adapter",
+    "forbidden_repeats": [
+      "generic pixel-MSE-only denoiser",
+      "DRUNet or DualNAF fusion-weight sweep",
+      "standalone E13 width or step sweep",
+      "decoder before retrieval gates"
+    ]
+  },
+  "frozen_inputs": {
+    "source_roster_report": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/report.json",
+      "sha256": "780f6b065ba769bef8b3ffd30cf0bcb781b2040258835964b122725e732fccc7"
+    },
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+      "parameters_frozen": true,
+      "mode": "eval"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    }
+  },
+  "source_protocol": {
+    "fit_sources": 32,
+    "fit_digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c",
+    "local_sources": 16,
+    "local_digest": "25ea956a8514d72cb09b8093f12999534995cf75fb18b383834acf38693ca47f",
+    "terminal_sources": 16,
+    "terminal_digest": "2a39d853772aa2c6d23d8b7dbc59f726e2f3a3ecfe098e96ad065c1bbd6d65a6",
+    "local_panel_already_opened_by_parent": true,
+    "terminal_target_files_unopened": true,
+    "fit_local_terminal_source_disjoint": true,
+    "competition_test_forbidden": true
+  },
+  "adapter": {
+    "architecture": "20x20-to-20x20 zero-initialised bounded residual NAF",
+    "input_views": [
+      "raw RGB",
+      "per-tile channel-standardised RGB"
+    ],
+    "width": 32,
+    "blocks": 8,
+    "residual_limit": 0.12549019607843137,
+    "pooling_stride_or_resampling": false,
+    "parameter_target": 33859,
+    "matcher_view_only": true
+  },
+  "training": {
+    "seed": 20260911,
+    "grid": 24,
+    "one_full_board_per_update": true,
+    "steps": 400,
+    "fixed_scaling_checkpoints": [
+      100,
+      400
+    ],
+    "scaling_interpretation_only": true,
+    "checkpoint_or_hyperparameter_selection_from_local": false,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0002,
+    "gradient_clip": 1.0,
+    "scheduler": "CosineAnnealingLR over 400 steps, eta_min=0.05*learning_rate",
+    "independent_per_tile_corruption": {
+      "contrast": [
+        0.7,
+        1.3
+      ],
+      "brightness_offset_uint8": [
+        -30.0,
+        30.0
+      ],
+      "gaussian_noise_sigma_uint8": [
+        40.0,
+        55.0
+      ],
+      "blur": "separable reflect 1-2-1 blur3",
+      "jpeg_quality": [
+        35,
+        50
+      ],
+      "bag_shuffle_independent_each_update": true
+    },
+    "objective": {
+      "retrieval": "frozen Socket partial-OT bidirectional exact-neighbour NLL plus raw row/column listwise CE",
+      "socket_border_weight": 0.1,
+      "socket_raw_rank_weight": 0.25,
+      "boundary_guard": "border Charbonnier + finite differences + normalised shape + weak dirty identity",
+      "boundary_guard_weight": 0.25,
+      "border_width": 6,
+      "target_labels": "known exact synthetic permutation of organizer-train clean source only"
+    }
+  },
+  "evaluation": {
+    "synthetic_case_seed": 20260908,
+    "draw_index": 0,
+    "checkpoints": [
+      100,
+      400
+    ],
+    "raw_parallel_control": "unchanged raw d64 partial-OT",
+    "candidate": "adapter view through the same frozen d64 partial-OT",
+    "metrics": [
+      "pooled and directional R@1",
+      "pooled and directional R@5",
+      "native and matched-coverage reciprocal precision",
+      "directional raw-top32 union coverage"
+    ],
+    "freeze_before_reference_scoring": true,
+    "no_fixed_score_fusion": true,
+    "no_threshold_weight_architecture_or_augmentation_sweep": true
+  },
+  "local_decoder_gate_final_step400": {
+    "supply": "raw-top32 union coverage gain >= 0.01 independently on right and down",
+    "ranking": "pooled R@1 gain >= 0.005 and pooled R@5 gain >= 0",
+    "precision": "matched reciprocal precision gain >= 0.03 at matched coverage >= 0.03",
+    "overall": "supply AND (ranking OR precision)"
+  },
+  "terminal_transfer_gate": {
+    "opened_only_if_local_decoder_gate_passes": true,
+    "supply": "right and down raw-top32 union coverage gains both >= 0",
+    "ranking": "pooled R@1 and R@5 gains both >= 0",
+    "precision": "matched reciprocal precision gain >= 0 at matched coverage >= 0.03",
+    "overall": "supply AND (ranking OR precision)"
+  },
+  "decoder": {
+    "included_in_this_runner": false,
+    "eligible_only_if_local_and_terminal_gates_pass": true,
+    "strict_original_upright_permutation_required": true,
+    "restored_pixels_in_output": false
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "raw_d64_evidence_preserved": true,
+    "adapter_pixels_matcher_only": true,
+    "original_tiles_are_only_future_output_material": true,
+    "rotation_resampling_warp_or_substitution": false,
+    "competition_test_access": false,
+    "submission_or_production_modification": false
+  }
+}

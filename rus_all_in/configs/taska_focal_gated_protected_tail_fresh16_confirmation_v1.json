@@ -1,0 +1,164 @@
+{
+  "schema": "aiijc-taska-focal-gated-protected-tail-fresh16-config-v1",
+  "experiment": "taska-focal-gated-protected-tail-fresh16-confirmation-v1",
+  "purpose": "One current-lineage-disjoint confirmation of the already fixed focal-logit-zero protected tail; this panel is not claimed universally or model fresh.",
+  "protocol": {
+    "preregistration_and_sha_sidecar_created_before_selected_reference_scoring": true,
+    "target_free_layouts_and_provenance_frozen_before_exact_reference_reconstruction": true,
+    "one_panel_only": true,
+    "threshold_budget_or_arm_search": false,
+    "current_lineage_disjoint_only": true,
+    "universal_or_model_freshness_claimed": false
+  },
+  "panel": {
+    "selection_namespace": "aiijc-taska-focal-gated-protected-tail-fresh16-confirmation-v1-source16xdraw2",
+    "selection_seed": 2026083109,
+    "selection_algorithm": "From img_006400..img_006699, exclude the frozen current-lineage rosters below, then sort by sha256(namespace\\0seed\\0filename), filename tie-break, and take the first 16.",
+    "universe_minimum": "img_006400.png",
+    "universe_maximum": "img_006699.png",
+    "universe_count": 300,
+    "universe_digest": "8a238634f75e90f3f3a8714d8a4bbeb54e5c96c137aee5e05393bc1ac52a1381",
+    "exclusion_rosters": {
+      "train256": {
+        "count": 256,
+        "digest": "e2e80b4b0d3f0909ac32772b3e55a91d22fe9a303b27396c70c0a732acdcde91"
+      },
+      "local32_96_128": {
+        "count": 32,
+        "digest": "f516f12e8943580ab62e17cd6d4064dc519aa20df6485bf5bca34030beaa2bc3"
+      },
+      "opened32": {
+        "count": 16,
+        "digest": "13f7fe84262f9c4d0aee7ce80dfdc1edeec3ce7f1b5082f06ae5c6aceda6fa5f"
+      },
+      "held32": {
+        "count": 16,
+        "digest": "9876aebe37330d923b803d8d01a33e9bf17699a8a9b2cb2363fd22909a92d234"
+      },
+      "prior_fresh32": {
+        "count": 16,
+        "digest": "b9b19c09ecb05587ae7b9ca8c1c93ad00d8fbbee77cf378e647f0f9db31c99b2"
+      },
+      "focal_current_training224": {
+        "count": 224,
+        "digest": "1d4187bd5516081ad0d00f8bc36215e0f0ad9e2a83cd9eee939a54f2c0f55158"
+      },
+      "fullres_train32": {
+        "count": 32,
+        "digest": "6c0d605b60d9f437a9676dbee653185e62ffb44c42e012e05228b8f3901a0d1c"
+      },
+      "fullres_eval16": {
+        "count": 16,
+        "digest": "25ea956a8514d72cb09b8093f12999534995cf75fb18b383834acf38693ca47f"
+      },
+      "fullres_terminal16": {
+        "count": 16,
+        "digest": "2a39d853772aa2c6d23d8b7dbc59f726e2f3a3ecfe098e96ad065c1bbd6d65a6"
+      }
+    },
+    "exclusion_union_count": 366,
+    "exclusion_union_digest": "3b656c2ec72e4ef41e8dbf1ef6089a539f856ca75adfef88e7bde68ea84c8cb0",
+    "eligible_count": 286,
+    "eligible_digest": "06dd185d1a2e8045a86d06c1de5c71f55622c5858e826e5f15f9c17cab4c8591",
+    "source_filenames": [
+      "img_006658.png",
+      "img_006463.png",
+      "img_006577.png",
+      "img_006443.png",
+      "img_006657.png",
+      "img_006532.png",
+      "img_006422.png",
+      "img_006489.png",
+      "img_006447.png",
+      "img_006420.png",
+      "img_006441.png",
+      "img_006519.png",
+      "img_006579.png",
+      "img_006418.png",
+      "img_006624.png",
+      "img_006425.png"
+    ],
+    "source_count": 16,
+    "draws": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "source_order_digest": "f8077a9bc9bf0549c3ae6f353800171b1c8a69beced647ccdf3104123424536e",
+    "cases_digest": "0ebf9de1dcb34eb4ad0c3cffbea0d69fb95182912c34d7bab9de9d2de89f20f4"
+  },
+  "candidate": {
+    "matcher_vote_target": 350,
+    "portfolio_arms": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear"
+    ],
+    "portfolio_selector": "minimum original all-1104-bond TASKA seam cost",
+    "focal_mode": "train_exact_top5",
+    "control_protected_edges": "all harvested candidate edges",
+    "candidate_protected_edges": "harvested candidate edges with frozen train_exact_top5 focal logit >= 0.0",
+    "focal_logit_threshold": 0.0,
+    "tail_max_swaps": 96,
+    "tail_minimum_gain": 1e-09,
+    "threshold_budget_arm_sweep": false
+  },
+  "evaluation": {
+    "primary_metric": "satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": [
+      "adjacency_recall",
+      "exact_tiles_per_board"
+    ],
+    "bootstrap_unit": "source_with_two_draws",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 1603189331,
+    "confirmation_gate": {
+      "pair_delta_mean_at_least": 0.5,
+      "pair_delta_ci95_lower_at_least": -0.25
+    }
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "train256_roster": {
+      "path": "outputs/taska-edge-calibrator/train256-v1/roster.json",
+      "sha256": "e940944865f0a4f93e6f6a9782c33c2da1566ffb8ef1253e88bec369d30c630c"
+    },
+    "opened32_recipe": {
+      "path": "configs/taska_seam_replay_opened32_v1.json",
+      "sha256": "06396905bdf7b552e165e207262d5a0654d19af3d35b2d557501551ca46da359"
+    },
+    "held32_recipe": {
+      "path": "configs/taska_seam_held300_diagnostic_v1.json",
+      "sha256": "112d5b4bcc78708091f4d0cbf47865f7dc6bd9276a0c8280a91de152c1b928d7"
+    },
+    "prior_fresh32_recipe": {
+      "path": "configs/taska_protected_tail_fresh32_confirmation_v1.json",
+      "sha256": "9854ef20c479ab358887896b81bf93263a3bdcd7d7014d6a310b7134fb4daad7"
+    },
+    "focal_current_recipe": {
+      "path": "configs/taska_focal_current_finetune_v1.json",
+      "sha256": "94dce4a73410f9d40cf52b136af27116ddabf79dd5948c68307839e1e7bc6a23"
+    },
+    "focal_training224_metadata": {
+      "path": "outputs/taska-focal-feature-stacker/train224-v1/training-stacked-features.json",
+      "sha256": "e43fdd4a8235f7508f2d651534450afb73225f8e8134ac711bb621dc79a90482"
+    },
+    "fullres_boundary_preregistration": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/preregistered-local-gate.json",
+      "sha256": "828195facd4a861aa0d1232b0e656eed81a80855ce7b560c1ce88ca49898ffb8"
+    }
+  },
+  "legality": {
+    "organizer_train_sources_only": true,
+    "dirty_tiles_only_for_candidate_inference": true,
+    "target_ids_or_exact_references_in_candidate_inference": false,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "rotated_warped_replaced_or_constant_tiles": false,
+    "competition_test_forbidden": true
+  }
+}

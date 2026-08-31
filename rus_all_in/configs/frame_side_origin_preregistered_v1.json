@@ -1,0 +1,110 @@
+{
+  "experiment": "dedicated-frame-side-origin-v1",
+  "registered_before_evaluation_target_access": true,
+  "registered_before_fit_target_access": true,
+  "registered_before_evaluation_dirty_prediction_generation": true,
+  "duplication_audit": {
+    "completed_before_selected_target_access": true,
+    "documents": [
+      "docs/experiments/socket-matcher-v2.md",
+      "docs/experiments/socket-matcher-v3-border-distribution.md",
+      "docs/prior-research/v-series.md",
+      "docs/prior-research/m-series.md",
+      "docs/experiments/socket-global-cyclic-translation.md",
+      "docs/experiments/fullres-boundary-denoiser.md",
+      "docs/experiments/whole-layout-cyclic-origin-cnn.md"
+    ],
+    "distinction": "a permutation-equivariant per-tile four-side classifier over stride-one 20x20 fields and oriented full-resolution boundary sequences; unlike Socket v3 it is not a linear head over six score-distribution statistics, unlike V30/M247 it is trained under the current exact corruption and source-disjoint protocol, and unlike the failed whole-layout origin CNN it never predicts a board coordinate or roll directly"
+  },
+  "selection_commitment": {
+    "path": "outputs/frame-side-origin/v1-selection/selection_commitment.json",
+    "sha256": "2cdfca00618671ddeab6fd829f97ce49d2f975d9c977ec248a043872de89f7b4",
+    "fit_sources": 256,
+    "fit_order_digest": "baf8116b636aecd1dee16ee8f3b8f049b2c1b2b1886b9483d4a305c44f7c4a27",
+    "evaluation_sources": 32,
+    "evaluation_order_digest": "b81a58eb124aea915fdc0fcf08b4378bc0fea63f7d3b112961c05a0fd77cd80e",
+    "fit_evaluation_overlap": 0,
+    "excluded_overlap": 0
+  },
+  "frozen_inputs": {
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+      "role": "d64 context, four existing border logits, pairwise decoder144 evidence, and matched cyclic-border5 comparator"
+    },
+    "fullres_boundary_denoiser": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/fullres_boundary_denoiser.pt",
+      "sha256": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c",
+      "role": "optional matcher-only restored 20x20 tile view"
+    }
+  },
+  "architecture": {
+    "context_dimension": 64,
+    "width": 32,
+    "blocks": 5,
+    "boundary_width": 5,
+    "sequence_dilations": [1, 2, 4],
+    "use_restored_view": true
+  },
+  "expected_parameter_count": 51865,
+  "training": {
+    "manifest_split": "train",
+    "sources": 256,
+    "paired_corruption_draws": [0, 1],
+    "corruption_seed": 20320914,
+    "steps": 600,
+    "source_pairs_per_update": 1,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0004,
+    "weight_decay": 0.0002,
+    "gradient_clip": 1.0,
+    "loss": "all-positive top24 listwise plus balanced BCE and aligned paired-corruption consistency",
+    "bce_weight": 0.1,
+    "consistency_weight": 0.1,
+    "seed": 20320914,
+    "maximum_steps": 800,
+    "target_side_cardinality": 24
+  },
+  "inference": {
+    "visible_features_only": true,
+    "exact_top_cardinality_per_side": 24,
+    "candidate_layout": "unchanged strict raw d64 decoder144 layout rolled over all 576 global translations; lexicographically maximize integer learned frame-set hits then frozen raw Socket pairwise/cut objective",
+    "comparator_layout": "same raw d64 decoder144 followed by frozen cyclic-border5",
+    "no_blend_weight_or_arm_sweep": true,
+    "no_coordinate_or_tile_identity_embedding": true,
+    "original_upright_tiles_only": true
+  },
+  "evaluation": {
+    "manifest_split": "train",
+    "sources": 32,
+    "draw_index": 0,
+    "seed": 20320915,
+    "freeze_dirty_only_top24_sets_and_both_strict_layouts_before_exact_scoring": true,
+    "frame_baseline": "direct Socket v2 four-side top24 sets",
+    "layout_baseline": "raw d64 decoder144 plus frozen cyclic-border5",
+    "calibration_opened": false,
+    "holdout_opened": false,
+    "competition_test_opened": false
+  },
+  "discovery_gate": {
+    "policy": "pass if frame macro F1 gains at least 2pp or exact gains at least 0.1 tile per board; every path requires adjacency loss at most 0.2pp and all 32 strict original-tile permutations",
+    "minimum_macro_f1_gain": 0.02,
+    "minimum_exact_tiles_gain_per_board": 0.1,
+    "maximum_adjacency_loss_fraction": 0.002,
+    "strict_original_permutations_required": 32,
+    "promotion_authorized_on_pass": false,
+    "fresh_source64_required_after_pass": true,
+    "competition_test_authorized_on_pass": false
+  },
+  "capacity_preflight": {
+    "artifact": "outputs/frame-side-origin/capacity-v1/report.json",
+    "synthetic_grid": 8,
+    "updates": 80,
+    "macro_f1": 1.0,
+    "listwise_excess_over_log8": 0.0003240165629621039,
+    "pass": true
+  },
+  "fresh64_opened": false,
+  "holdout_opened": false,
+  "competition_test_opened": false
+}

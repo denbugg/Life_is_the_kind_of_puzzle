@@ -1,0 +1,143 @@
+{
+  "schema_version": 2,
+  "experiment": "dense_safe_single_pass_colored_nlm_tail",
+  "supersedes_before_target_decode": {
+    "path": "configs/dense_safe_tail_reused_calibration_preregistered_v1.json",
+    "sha256": "cb29c68c8f1aa38ba63ca5ff0906a140d694c251c0f7366c1a55851c35dbe8d4",
+    "reason": "v1 incorrectly treated offsets as direct manifest slices; v2 uses the shared ranked experiment selector"
+  },
+  "status_at_freeze": "preregistered_before_this_experiment_decodes_any_target_pixels",
+  "scientific_scope": "reused calibration; not fresh, not holdout, and not an unbiased generalization estimate",
+  "protocol": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "split": "calibration",
+    "selector": {
+      "function": "aiijc_puzzle.protocol.select_manifest_records",
+      "namespace": "aiijc-puzzle-experiments-v1",
+      "seed": 20260829,
+      "rule": "rank all calibration records by sha256(f'{namespace}\\0{seed}\\0{filename}') then filename; take prefix through panel end and slice by offset",
+      "roster_digest_serialization": "UTF-8 filenames joined by single NUL bytes with no terminal NUL"
+    },
+    "primary": {
+      "offset": 300,
+      "count": 36,
+      "filename_nul_join_sha256": "f58ceb741d57e2df7e9b2645c7e2b50cc5944dfc8123bbd26135dffc93839be0",
+      "filename_newline_join_sha256": "053baac5f87a32675da30ca7df4e6b299430fd0a62f89f92219c2f8753c3b86a"
+    },
+    "confirmation_if_and_only_if_primary_passes": {
+      "offset": 384,
+      "count": 36,
+      "filename_nul_join_sha256": "814f211d5771deca4a5dd9343430c248c90e22dd3f276b4bda48b1670325c7f0",
+      "filename_newline_join_sha256": "3157474b4c15caaf39feb04ca242c7488f08aa73733c5c6979ce986642219621"
+    },
+    "primary_confirmation_filename_overlap": 0,
+    "historical_exposure_audit": {
+      "freshness_claim": false,
+      "primary_records_found_in_legacy_calibration700_champion": 36,
+      "confirmation_records_found_in_legacy_calibration700_champion": 36,
+      "legacy_report": "outputs/legacy-upgrade/calibration700-champion/report.json",
+      "legacy_report_contains_all_current_calibration_records": 700,
+      "interpretation": "Both ranked panels were historically target-exposed. This is only a preregistered reused-calibration screen. Predictions are committed before this experiment decodes targets."
+    }
+  },
+  "fixed_pipeline": {
+    "layout": {
+      "solver": "best_buddies",
+      "edge_view": "bilateral",
+      "max_edges": 96,
+      "atlas_weight": 0.0,
+      "strict_permutation": true
+    },
+    "postassembly": {
+      "order": "rgb_offsets_then_bounded_luminance_then_tail",
+      "rgb_offsets_config": "configs/postassembly_rgb_offset_v1.json",
+      "rgb_offsets_config_sha256": "4adfd9b614e8556b7de5c1f527d759d15d29c0f74e20aa26ff87900dd773ec9a",
+      "luminance_config": "configs/postassembly_luminance_gain_v1.json",
+      "luminance_config_sha256": "7488cad2ae7cc75792d6ff0ff2ea0a38fa778979083ffd5c161c857b68fd550f"
+    }
+  },
+  "arms": [
+    {
+      "name": "nlm_h20x1_baseline",
+      "kind": "opencv_fast_nl_means_denoising_colored",
+      "h": 20,
+      "h_color": 20,
+      "template_window_size": 7,
+      "search_window_size": 21,
+      "passes": 1
+    },
+    {
+      "name_pattern": "nlm_h{h}x1",
+      "kind": "opencv_fast_nl_means_denoising_colored",
+      "h_values": [21, 22, 23, 24, 25, 26, 27, 28, 29],
+      "h_color_equals_h": true,
+      "template_window_size": 7,
+      "search_window_size": 21,
+      "passes": 1
+    },
+    {
+      "name": "blend_h20_75_h28_25",
+      "kind": "uint8_rounded_convex_blend_of_two_independent_single_pass_outputs",
+      "weights": {"nlm_h20x1": 0.75, "nlm_h28x1": 0.25},
+      "rounding": "numpy_rint_then_clip_0_255_then_uint8",
+      "rationale": "interpolate toward h28 while retaining three quarters of the detail-preserving h20 response"
+    },
+    {
+      "name": "blend_h20_50_h28_50",
+      "kind": "uint8_rounded_convex_blend_of_two_independent_single_pass_outputs",
+      "weights": {"nlm_h20x1": 0.5, "nlm_h28x1": 0.5},
+      "rounding": "numpy_rint_then_clip_0_255_then_uint8",
+      "rationale": "midpoint response to test whether h28's metric lift survives a stronger detail constraint"
+    }
+  ],
+  "target_access_order": [
+    "load and verify only input PNGs",
+    "solve layouts and freeze layout arrays",
+    "freeze raw assemblies and harmonized canvases",
+    "freeze every arm prediction",
+    "write prediction commitment containing hashes and target-free safety metrics",
+    "only then decode primary target PNGs once"
+  ],
+  "metric": {
+    "name": "skimage.metrics.structural_similarity",
+    "data_range": 255,
+    "channel_axis": 2,
+    "win_size": 7
+  },
+  "paired_ci": {
+    "method": "two-sided paired t interval",
+    "confidence": 0.95,
+    "degrees_of_freedom": "count_minus_one"
+  },
+  "manual_safety_metrics": {
+    "luminance": "0.299*R + 0.587*G + 0.114*B in float64",
+    "within_tile_gradient": "mean absolute horizontal and vertical one-pixel luminance differences excluding pairs crossing 20-pixel tile boundaries",
+    "laplacian_energy": "mean absolute cv2.Laplacian(luminance_float64, CV_64F, ksize=3)",
+    "grid_ratio": "mean absolute horizontal and vertical differences on 20-pixel grid boundaries divided by within_tile_gradient",
+    "relative_denominator": "nlm_h20x1_baseline on the same board"
+  },
+  "primary_promotion_gate": {
+    "mean_rgb_ssim_min": 0.27,
+    "paired_gain_vs_h20_ci95_lower_strictly_greater_than": 0.0,
+    "wins_vs_h20_min": 24,
+    "mean_within_tile_gradient_retention_vs_h20_min": 0.8,
+    "minimum_board_within_tile_gradient_retention_vs_h20_min": 0.7,
+    "mean_laplacian_retention_vs_h20_min": 0.72,
+    "minimum_board_laplacian_retention_vs_h20_min": 0.6,
+    "mean_grid_ratio_relative_to_h20_max": 1.05,
+    "maximum_board_grid_ratio_relative_to_h20_max": 1.12,
+    "all_predictions_distinct_across_boards": true
+  },
+  "selection_rule": "Among arms passing every primary gate, select maximum mean RGB SSIM; break exact ties by lower h/effective h, then lexicographic arm name. Do not access confirmation if no arm passes.",
+  "confirmation_gate": "The frozen primary winner must independently pass the identical absolute SSIM, paired CI, wins, safety, and distinctness bounds on ranked calibration records 384:420 without any change.",
+  "forbidden": [
+    "multi_pass_or_sequential_nlm",
+    "nlm_h_at_least_30",
+    "target_pixels_before_prediction_commitment",
+    "per_board_parameter_selection",
+    "target_or_reference_pixels_at_inference",
+    "spatial_warp_rotation_or_tile_substitution",
+    "changes_to_frozen_production_code_config_or_outputs"
+  ]
+}

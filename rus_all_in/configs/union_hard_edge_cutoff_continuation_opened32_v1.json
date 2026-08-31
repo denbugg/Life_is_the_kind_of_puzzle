@@ -1,0 +1,164 @@
+{
+  "schema": "aiijc-union-hard-edge-cutoff-continuation-opened32-v1",
+  "experiment": "union-hard-edge-cutoff-continuation-opened32-v1",
+  "purpose": "One fixed continuation of the learned Union hard-edge head with a loss aligned to the decoder's top-144 edge budget per axis.",
+  "protocol": {
+    "development_eval_panel_previously_opened": true,
+    "configuration_frozen_before_candidate_training_and_scoring": true,
+    "single_candidate_arm": true,
+    "hyperparameter_or_arm_sweep": false,
+    "target_free_feature_cache_reused_without_feature_pass": true,
+    "eval_predictions_and_layouts_frozen_before_reference_recreation": true,
+    "fresh_source_disjoint_confirmation_required_before_promotion": true
+  },
+  "panel": {
+    "source_filenames": [
+      "img_002555.png",
+      "img_000865.png",
+      "img_001561.png",
+      "img_004284.png",
+      "img_006553.png",
+      "img_002209.png",
+      "img_002637.png",
+      "img_002147.png",
+      "img_003004.png",
+      "img_000436.png",
+      "img_005142.png",
+      "img_000261.png",
+      "img_000676.png",
+      "img_000530.png",
+      "img_003308.png",
+      "img_005798.png"
+    ],
+    "source_order_digest": "13f7fe84262f9c4d0aee7ce80dfdc1edeec3ce7f1b5082f06ae5c6aceda6fa5f",
+    "draws": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "cases_digest": "6b872422b32562b845deb514fd478cd21379384cccdcf07a9e4db257e71b6e04",
+    "previously_opened": true
+  },
+  "parent": {
+    "config": {
+      "path": "configs/union_hard_edge_priority_pilot_v1.json",
+      "sha256": "3cc28b93d88f7e13366740f59a230635a98a528cb11e5e941a0ce3fa9256e7f6"
+    },
+    "checkpoint": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/union-hard-edge-priority.pt",
+      "sha256": "472c2770e8960125359c44afdafa6cd31fbb6517d3db33e514b94aa56905efd5"
+    },
+    "fit_labels": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/fit-labels.npy",
+      "sha256": "c9746421130ac19fab5594ae5a220eb0899b6357d79b0aa46cb7aa41d8b413c9"
+    },
+    "target_free_cache_metadata": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/target-free-cache/metadata.json",
+      "sha256": "2aa1d4a747cd08dca60a7bd66f5a347df9511c0f29e0f7be3877a2a2fcb0f6b5"
+    },
+    "selection_commitment": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/selection-commitment.json",
+      "sha256": "575bb43d850ec3276b61aef616cfa9f2f5fa6f31db35f417d6852b9a38dac540"
+    },
+    "fit_labels_metadata": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/fit-labels.json",
+      "sha256": "9bf766a32baa5c2c65fab2ff4ea8754269251e87c67dd971f5f1ea1b4a626d25"
+    },
+    "frozen_target_free_eval": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/frozen-target-free-eval.npz",
+      "sha256": "86bf9dfa5f0117e3ea35e3c0806f5909a271c176b90cea24c0f1dc7802e11fcc"
+    },
+    "frozen_target_free_eval_metadata": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/frozen-target-free-eval.json",
+      "sha256": "b0e26d3fdf2a05169d6ba18c3ec62561470f205f64c4bf454e8142f8ae39edac"
+    },
+    "report": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/report.json",
+      "sha256": "c4cf10f37f10a709e5390f2bd05555ecf0304ab958f7ca6ebde713cbb9f17e5e"
+    }
+  },
+  "model": {
+    "architecture": "union-hard-edge-deepsets-bounded-residual-v1",
+    "feature_dimension": 340,
+    "hidden_dimension": 64,
+    "residual_limit": 2.0,
+    "hard_edge_count": 1104,
+    "hard_edges_per_axis": 552,
+    "edge_budget_per_axis": 144,
+    "initial_state": "exact parent checkpoint state after 400 updates"
+  },
+  "continuation": {
+    "additional_steps": 200,
+    "optimizer": "AdamW",
+    "learning_rate": 0.00025,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "cases_per_step": 1,
+    "case_order_seed_offset_from_parent_synthetic_seed": 190001,
+    "loss": {
+      "name": "cutoff_exchange",
+      "description": "Per axis, use decoder-compatible current top-144 membership; rank each missed true edge above each false selected edge with mean softplus(selected_false_score - missed_true_score). Axes with no missed true edge contribute an exact differentiable zero.",
+      "selection_order": "descending detached learned score, then descending frozen Union base priority, then ascending source id, then ascending target id",
+      "all_pairwise_or_bce_mixture": false,
+      "normalised_residual_l2_weight": 0.001
+    },
+    "hyperparameter_sweep": false
+  },
+  "evaluation": {
+    "panel": "the already-opened parent eval32 only",
+    "source_count": 16,
+    "draw_indices": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "source_order_digest": "13f7fe84262f9c4d0aee7ce80dfdc1edeec3ce7f1b5082f06ae5c6aceda6fa5f",
+    "source_set_digest": "56112bd9a8c8f99b011654823f0a2cc834bfb9728526b0595055e1972682a6b9",
+    "cases_digest": "6b872422b32562b845deb514fd478cd21379384cccdcf07a9e4db257e71b6e04",
+    "arms": [
+      "union_v2_qap24_cyclic5",
+      "parent_learned_priority_qap24_cyclic5",
+      "cutoff_continuation_qap24_cyclic5"
+    ],
+    "primary_metric": "satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": [
+      "adjacency_recall",
+      "correct_fixed_top288_hard_edges_per_board",
+      "exact_tiles_per_board"
+    ],
+    "development_go_rule": {
+      "minimum_pair_gain_over_parent_per_board": 0.25,
+      "minimum_top288_gain_over_parent_per_board": 0.0,
+      "minimum_exact_delta_over_parent_per_board": -0.25,
+      "all_layouts_must_be_strict_original_tile_permutations": true
+    },
+    "bootstrap_intervals_are_reported_but_not_used_for_tuning": true
+  },
+  "runtime_sources": {
+    "continuation_runner": {
+      "path": "scripts/run_union_hard_edge_cutoff_continuation_opened32.py",
+      "sha256": "af1bb6302cebbb5448fae6f9221d044cb6d3c35c464824179a579f3a075cd076"
+    },
+    "cutoff_loss": {
+      "path": "src/aiijc_puzzle/union_hard_edge_cutoff_loss.py",
+      "sha256": "7c7ee3119df7636cd57462019d56bccff13d2f971af25f5122facc44ad3d8d53"
+    },
+    "union_hard_edge_priority": {
+      "path": "src/aiijc_puzzle/union_hard_edge_priority.py",
+      "sha256": "71f20876514e9b5cb875b1b5a237d57d4a2f78804273d611ab94bae57248f4ca"
+    },
+    "parent_pilot_runner": {
+      "path": "scripts/run_union_hard_edge_priority_pilot.py",
+      "sha256": "80704a6017d33f289b22a932aaaa56bd59461a5be91d651e392bcd6f48f8ec86"
+    }
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "restored_or_denoised_pixels_are_matcher_only": true,
+    "candidate_cannot_add_or_replace_hard_edge_identities": true,
+    "decoder_and_cyclic_translation_are_unchanged": true,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "competition_test_forbidden": true
+  }
+}

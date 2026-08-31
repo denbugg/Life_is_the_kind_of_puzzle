@@ -1,0 +1,122 @@
+{
+  "schema": "aiijc-taska-relation-truth-selector-preregistration-v1",
+  "created_at": "2026-08-31",
+  "created_before_relation_feature_generation_or_model_fit": true,
+  "objective": "select one whole frozen post-tail arm by the sum of predicted truth probabilities over all 1104 realised seams",
+  "control": "confirmed selective plus unique-fullres six-arm fusion final layout",
+  "roster": [
+    "raw",
+    "logistic",
+    "focal_top5",
+    "nonlinear",
+    "selective_vote500_focal",
+    "combined_union_focal"
+  ],
+  "training_rows": "all 1104 realised right/down seams from every arm; binary label is whether the directed seam occurs in the exact synthetic reference",
+  "whole_layout_score": "sum of per-relation positive-class probabilities; maximum wins; exact tie retains control",
+  "model": "HistGradientBoostingClassifier",
+  "model_parameters": {
+    "loss": "log_loss",
+    "learning_rate": 0.05,
+    "max_iter": 160,
+    "max_leaf_nodes": 31,
+    "max_depth": null,
+    "min_samples_leaf": 128,
+    "l2_regularization": 1.0,
+    "max_bins": 255,
+    "early_stopping": false,
+    "random_state": 2026083131
+  },
+  "feature_names": [
+    "raw_cost",
+    "outgoing_rank_fraction",
+    "incoming_rank_fraction",
+    "outgoing_margin_from_best",
+    "incoming_margin_from_best",
+    "outgoing_best_signed_gap",
+    "incoming_best_signed_gap",
+    "outgoing_cost_zscore",
+    "incoming_cost_zscore",
+    "axis_is_down",
+    "post_six_arm_support",
+    "post_six_arm_support_fraction",
+    "pre_six_arm_support",
+    "pre_tail_realised",
+    "tail_created",
+    "arm_supply_member",
+    "arm_supply_logit",
+    "arm_supply_focal_positive",
+    "provenance_current",
+    "provenance_selective_new",
+    "provenance_unique_fullres",
+    "realised_by_control",
+    "arm_is_control",
+    "arm_raw",
+    "arm_logistic",
+    "arm_focal_top5",
+    "arm_nonlinear",
+    "arm_selective_vote500_focal",
+    "arm_combined_union_focal"
+  ],
+  "feature_contract": {
+    "target_visibility_at_inference": "none",
+    "relation_evidence": "raw two-sided local ranks, margins, signed best gaps and z-scores; focal membership/logit/provenance; pre/post six-arm support",
+    "control_evidence": "whether this relation is realised by the frozen control and whether the row belongs to the control arm",
+    "arm_identity_justification": "the six named arms are fixed solver mechanisms with different calibrated reliability; one-hot identity is inference-visible provenance, not target data",
+    "forbidden": "aggregate target-derived labels, tile pixels beyond frozen matcher costs, or any reference feature"
+  },
+  "fit_sequence": [
+    "fit local32; diagnose in-sample and held32 source-disjoint",
+    "if held signal: fit local32+held32; evaluate fresh32 development"
+  ],
+  "held_signal": {
+    "pair_delta": "strictly positive",
+    "exact_delta_minimum": -1.0
+  },
+  "fresh_pair_gate": 0.5,
+  "fresh_exact_gate": -1.0,
+  "development_exposure": {
+    "local32": "already opened",
+    "held32": "already opened; source-disjoint from local32",
+    "fresh32": "already opened and historically model-selection-exposed; development evidence only"
+  },
+  "formal_confirmation": {
+    "eligible_only_if_fresh_pair_delta_at_least": 0.5,
+    "eligible_only_if_fresh_exact_delta_at_least": -1.0,
+    "rule": "before any generation or scoring, sign an entirely new source-disjoint roster excluding every explicit source used by local32, held32, fresh32, all signed TASKA confirmations, and all model training panels",
+    "not_part_of_this_development_contract": true
+  },
+  "no_parameter_sweep": true,
+  "prohibited_adaptation": [
+    "feature subset, threshold, depth, leaf, iteration, learning-rate, regularization, class-weight or arm-weight search",
+    "tail filtering or edge removal",
+    "layout mixing, relation voting into a new layout, or post-processing",
+    "refit after fresh32 inspection",
+    "competition test access",
+    "production or submission changes"
+  ],
+  "legality": {
+    "strict_original_upright_576_tile_permutation": true,
+    "selector_returns_exactly_one_frozen_arm": true,
+    "pixels_changed": false,
+    "restored_views": "frozen matcher-only parent artifacts",
+    "target_free_panel_frozen_before_reference_reconstruction": true
+  },
+  "weco": {
+    "parent_step": 102,
+    "local_fit_held_evaluation": 141,
+    "local_held_fit_fresh_development": 142,
+    "formal_confirmation_if_eligible": 143,
+    "pair_run_id": "6bf52932-d716-4959-bee4-d652d7286cba",
+    "exact_run_id": "c2876967-cca7-44a6-83dd-1fca125c237e",
+    "log_only_if_scored": true
+  },
+  "fixed_source_sha256": {
+    "src/aiijc_puzzle/taska_relation_truth_selector.py": "1c91b3f18d2fe08dce59217bbdf446a4638fabf4eec19b91cacd988de8cd48e2",
+    "scripts/run_taska_relation_truth_selector.py": "790ee3c8760aba209d6b0e18f6aeb8e56bf1f34d9a19f6c3d30ac9066e77be80"
+  },
+  "frozen_parent_report": {
+    "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/report.json",
+    "sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "aiijc-taska-nonlinear-edge-calibrator-v1",
+  "training": {
+    "path": "/Users/rusyalain/Documents/ChatGPT/aiijc-puzzle/outputs/taska-edge-calibrator/train256-v1/training-features.npz",
+    "sha256": "2d1ef6267daab67d74971d625d2d446e7dfb8dc30a6165bd3459ab969e34f373"
+  },
+  "parameters": {
+    "loss": "log_loss",
+    "learning_rate": 0.05,
+    "max_iter": 100,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 100,
+    "l2_regularization": 1.0,
+    "random_state": 0
+  },
+  "sklearn_version": "1.9.0",
+  "training_rows": 96104,
+  "positive_fraction": 0.6955485723799217,
+  "tree_count": 100,
+  "node_count": 2900,
+  "artifact": {
+    "path": "/Users/rusyalain/Documents/ChatGPT/aiijc-puzzle/outputs/taska-nonlinear-calibrator/train256-v1/calibrator.npz",
+    "sha256": "2a5f95bd9d8e08e57b8bd02e242e25ef4661036ed3b1985fda1d70ee1bf9d2a6"
+  }
+}

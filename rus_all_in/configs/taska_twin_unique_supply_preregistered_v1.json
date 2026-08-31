@@ -1,0 +1,96 @@
+{
+  "schema": "aiijc-taska-twin-unique-supply-preregistered-v1",
+  "created_before_candidate_target_scoring": true,
+  "question": "Does frozen FullResolutionTwin provide useful directed edge supply that is genuinely absent from the confirmed selective-target500 plus fullres-fusion solver?",
+  "parent": {
+    "name": "taska-selective-fullres-union-fusion-fixed-v1",
+    "report": "outputs/taska-selective-fullres-union-fusion/fixed-v1/report.json",
+    "report_sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af",
+    "control": "exact frozen combined_union_candidate_layout",
+    "pair_metric_fresh32": 355.625,
+    "adjacency_recall_fresh32": 0.32212409420289856,
+    "exact_tiles_fresh32": 0.9375
+  },
+  "frozen_models": {
+    "socket_d64": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "fullres_twin": {
+      "path": "outputs/fullres-twin-side-matcher/v1-fit256-s400-eval24/fullres-twin-side-matcher.pt",
+      "sha256": "c5b44901e8da459e3c48b6e7af7153c5d7eed26f1c1b52c8712c4fa0dc4ea8ae"
+    },
+    "union_v2": {
+      "path": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/raw-twin-union-reranker-v2.pt",
+      "sha256": "a5f882ab3c827e4e3779be3372c62d2a8fb9cd95d3558fd30cc566a9c3137f79",
+      "config": "configs/raw_twin_union_reranker_v2_preregistered.json",
+      "config_sha256": "6741e92e832a630f1b83bde6edc8a341a348f52daa82313c40a8f32c7c1173d4",
+      "selection": "outputs/raw-twin-union-reranker/v2-fit256-s400-eval24/selection-commitment.json",
+      "selection_sha256": "71ae4f5095489613857fcd25c541fe496da0d6861f6ff604850147dd04b91cd2"
+    },
+    "focal_verifier": {
+      "path": "artifacts/prior-taska/ckpt/verify_pair_best.pt",
+      "sha256": "3bcc89a12e7b539304484b441688b4b9fb1c3711e918befed9cdef7c17f776e7",
+      "mode": "train_exact_top5"
+    }
+  },
+  "fixed_contract": {
+    "inference_device": "cpu",
+    "twin_nomination": "Union-v2 learned partial-OT hard projection, first 144 confidence-sorted edges per axis, retained only when the edge belongs to the directly evaluated FullResolutionTwin top32 row",
+    "twin_topk_in_parent": 32,
+    "union_hard_budget_per_axis": 144,
+    "uniqueness": "drop every nominated edge already present in parent current + selective accepted + unique fullres accepted combined union",
+    "acceptance": "recovered focal verifier logit >= 0.0",
+    "accepted_order": "right then down, preserving Union-v2 confidence order within each axis",
+    "augmented_order": "parent combined union followed by accepted unique Twin edges",
+    "candidate_arm": "twin_unique_union_focal",
+    "selector_roster": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal",
+      "twin_unique_union_focal"
+    ],
+    "selector": "minimum original TASKA all-1104-bond seam cost",
+    "tail": "unchanged focal-gated non-adjacent tail96 on the winning candidate set",
+    "raw_dense_costs_unchanged": true,
+    "threshold_budget_roster_sweep": false
+  },
+  "mechanical_preflight": {
+    "reference_targets_scored": false,
+    "initial_overconstraint": "A stricter provably-Twin-only set-difference formulation yielded zero nominated edges on the one-case target-free smoke and therefore could not exercise the candidate path.",
+    "final_revision_before_any_target_scoring": "Use explicit frozen Twin top32 membership, including raw-overlap, while retaining the already fixed Union-v2 top144 confidence rule, parent-union exclusion, focal threshold, selector, and tail.",
+    "threshold_budget_or_metric_tuning": false
+  },
+  "staged_evaluation": {
+    "local32": {
+      "pair_delta_gate": 0.0
+    },
+    "held32": {
+      "pair_delta_gate": 0.5
+    },
+    "fresh32": {
+      "opened_only_if_prior_gates_pass": true
+    },
+    "primary": "satisfied_adjacent_pairs_per_board",
+    "secondary": [
+      "adjacency_recall",
+      "exact_tiles_per_board"
+    ],
+    "pair_denominator": 1104,
+    "source_clustered_bootstrap_resamples": 20000,
+    "candidate_predictions_frozen_before_reference_scoring": true
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "strict_original_upright_20x20_tile_permutation": true,
+    "twin_and_socket_pixels_matcher_only": true,
+    "no_pixel_replacement_rotation_warp_or_rendered_restoration": true,
+    "no_competition_test": true,
+    "no_postprocess": true,
+    "no_submission": true,
+    "no_production_or_official_best_change": true
+  }
+}

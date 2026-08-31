@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "experiment": "official_drunet40_bilateral_matcher_view_train_selection_verification",
+  "frozen_at": "2026-08-30T10:45:12+03:00",
+  "status_at_freeze": "preregistered_before_this_experiment_decodes_any_train_target_pixels",
+  "scientific_scope": "TRAIN-only reused development diagnostic; all 16 targets were exposed by the earlier DRUNet tail report; not fresh and not a generalization estimate",
+  "protocol": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "split": "train",
+    "offset": 512,
+    "count": 16,
+    "filenames_newline_sha256": "d81693d8a929d9ac3a107a8ce53e186031096cbe02e33c4d5f53b496225c0e67",
+    "filename_input_roster_sha256": "1ec2cfca38293d0997c27c597dfa8f7a016a5bd03734dab1ad9ea9db2e0b5802",
+    "selection_first_8_filenames_sha256": "7329e8e7e46ac891013e3f53a38bfdc24d9017a8caa728b60e914f50611bfc67",
+    "verification_last_8_filenames_sha256": "94cc609ca438289118315c5bd6cb59e4c401833ef30de5ff92a31a05a86316d3",
+    "historical_exposure": {
+      "freshness_claim": false,
+      "prior_report": "outputs/pretrained-tile-denoiser/train-development-offset512-count16/report.json",
+      "prior_report_sha256": "7c64c96661c82e0a684a89e696763efcb35c818c32e7ad0c668d9fdd0a4ce6b0",
+      "all_16_targets_previously_exposed": true
+    }
+  },
+  "official_model": {
+    "architecture": "KAIR colour DRUNet UNetRes, discriminatively trained Gaussian denoiser",
+    "sigma_255": 40.0,
+    "batch_size": 144,
+    "checkpoint": "artifacts/pretrained-denoisers/kair-fc1732f/drunet_color.pth",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "official_commit": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e",
+    "license": "MIT",
+    "license_sha256": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "tile_inference": "each original dirty 20x20 input tile independently; reflect-pad right/bottom by 4 to 24x24; crop exact 20x20; no cross-tile or cross-board context"
+  },
+  "matcher": {
+    "view": "bilateral directional_scores on independently rendered DRUNet40 tiles",
+    "baseline": "bilateral directional_scores on original dirty tiles",
+    "score_semantics": "both directional_scores outputs are row-normalized E14 log-probability matrices",
+    "fusion": "(1-weight)*dirty_bilateral + weight*drunet40_bilateral, separately for right and down",
+    "fusion_weights": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "pure_drunet_weight": 1.0,
+    "decoder": "solve_buddies(max_edges=96) for every score arm",
+    "output_pixels": "always the exact corresponding original upright dirty tiles in the solved strict permutation; DRUNet-rendered pixels are matcher-only and never enter output"
+  },
+  "post_layout_evaluation": {
+    "harmonizer": "exact frozen RGB seam offsets then bounded luminance gains",
+    "tails": [
+      "independent one-pass colored NLM h28",
+      "F: exact h20-derived t40 mask blending independent one-pass h28 protected pixels and h40 flat pixels"
+    ],
+    "layout_metrics": [
+      "right/down/mean exact adjacency under target-assisted recovered train mapping",
+      "translation-aligned placement",
+      "direct placement"
+    ],
+    "pixel_metric": "RGB SSIM for h28 and F final outputs"
+  },
+  "selection_rule": "On first 8 only, choose among fusion weights 0.25,0.5,0.75 by maximum mean F final RGB SSIM; break ties by h28 final RGB SSIM, mean exact adjacency, translation-aligned placement, then lower weight. Pure DRUNet is diagnostic and cannot be selected.",
+  "verification_gate_last_8": {
+    "selected_fusion_mean_F_ssim_gain_vs_dirty_bilateral_strictly_positive": true,
+    "selected_fusion_F_ssim_paired_t_ci95_lower_strictly_positive": true,
+    "selected_fusion_F_ssim_wins_vs_dirty_bilateral_min": 6,
+    "selected_fusion_mean_h28_ssim_gain_vs_dirty_bilateral_strictly_positive": true,
+    "selected_fusion_h28_ssim_wins_vs_dirty_bilateral_min": 6,
+    "selected_fusion_mean_exact_adjacency_gain_vs_dirty_bilateral_strictly_positive": true,
+    "selected_fusion_exact_adjacency_wins_vs_dirty_bilateral_min": 5,
+    "selected_fusion_translation_aligned_placement_gain_vs_dirty_bilateral_strictly_positive": true,
+    "selected_fusion_direct_placement_gain_vs_dirty_bilateral_nonnegative": true,
+    "all_original_tile_permutation_audits_passed": true
+  },
+  "calibration_access_rule": "Do not create a calibration preregistration, decode calibration targets, or scale this matcher unless every last-8 verification gate passes. If it passes, coordinate a reused-calibration panel disjoint from active 264:384 and 408:528 reservations before freezing a new config.",
+  "target_access_order": [
+    "verify checkpoint, assets, manifest and exact train roster",
+    "render DRUNet matcher-only tiles, compute every score arm, solve layouts, assemble only original tiles and freeze h28/F predictions for all 16",
+    "write and read back a content-addressed commitment",
+    "only then decode the already-exposed train targets once for selection and verification"
+  ],
+  "forbidden": [
+    "DRUNet pixels in raw, harmonized, h28, F, submission, or any other output image",
+    "target/reference pixels or recovered mapping during matcher inference",
+    "per-board or filename-dependent fusion weight",
+    "selecting a weight on the last 8 verification records",
+    "changing weights, selection rule, verification gate, sigma, score view, decoder, harmonizer, or tails after target access",
+    "tile substitution, duplicate use, rotation, resampling, warp, or geometry change",
+    "calibration, holdout, test, frozen edge-v1/v2, or production access before the verification gate",
+    "changes to frozen v1/v2/production files or ZIP"
+  ]
+}

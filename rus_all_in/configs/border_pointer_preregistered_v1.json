@@ -1,0 +1,89 @@
+{
+  "schema": "aiijc-border-pointer-preregistered-v1",
+  "frozen_at": "2026-08-30",
+  "status": "frozen-before-source-disjoint-exact16-scoring",
+  "experiment": "BorderPointer-24 bounded discovery",
+  "checkpoint": {
+    "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+    "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+    "role": "frozen matcher features, directional evidence, and matched decoder144 comparator"
+  },
+  "protocol": {
+    "manifest_split": "train",
+    "source_selection_namespace": "aiijc-border-pointer-v1",
+    "seed": 20260906,
+    "fit_sources": 128,
+    "evaluation_sources": 16,
+    "evaluation_draws_per_source": 1,
+    "exclude_complete_socket_checkpoint_lineage": true,
+    "evaluation_disjoint_from_socket_and_pointer_fit_lineage": true,
+    "labels": "exact inverse deterministic shuffle",
+    "corruption": "aiijc_puzzle.restoration_r6.distort_tiles",
+    "freeze_dirty_only_predictions_before_reference_scoring": true,
+    "competition_test_opened": false,
+    "fresh_source64_draw2_opened": false
+  },
+  "architecture": {
+    "field_width": 48,
+    "field_blocks": 4,
+    "field_lattice": "20x20 throughout; stride one; replication padding",
+    "perimeter_positions": 76,
+    "model_dimension": 128,
+    "board_layers": 4,
+    "pointer_layers": 4,
+    "input_index_embedding": false,
+    "decoder": "fixed raster slot to unused original upright tile identity",
+    "conditional_evidence": [
+      "selected-left to candidate-right compatibility",
+      "selected-up to candidate-down compatibility",
+      "learned border side score by four distances-to-border",
+      "frozen d64 directional score"
+    ]
+  },
+  "training": {
+    "maximum_updates": 400,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0002,
+    "adjacency_loss_weight": 0.15,
+    "maximum_parameters": 10000000,
+    "capacity_smoke_grid": 4,
+    "capacity_smoke_required_before_grid24": true,
+    "cpu_mps_benchmark_required_before_grid24": true
+  },
+  "matched_comparator": {
+    "name": "frozen d64 partial-OT decoder144",
+    "same_corruption_and_shuffle_cases": true,
+    "component_edge_budget_per_axis": 144,
+    "swap_edge_budget_per_axis": 144,
+    "max_swap_steps": 24
+  },
+  "metrics": [
+    "exact tiles per board",
+    "correct rows per board",
+    "correct columns per board",
+    "adjacency",
+    "teacher-forced pointer NLL",
+    "directional adjacency NLL",
+    "strict permutation count"
+  ],
+  "discovery_gate": {
+    "purpose": "descriptive continuation signal only; never changes production default",
+    "pass_if_any": [
+      "candidate mean exact tiles per board exceeds matched comparator",
+      "exact is flat, adjacency loss is at most 0.02, and both row or column count rises",
+      "model-predicted-prefix conditional R@1 exceeds the same field without prefix by at least 0.02"
+    ],
+    "teacher_forced_accuracy_is_not_end_to_end_success": true
+  },
+  "strict_promotion_gate": {
+    "not_opened_by_this_run": true,
+    "fresh_panel": "source64 x draw2",
+    "minimum_exact_tiles_per_board_delta": 0.5,
+    "source_clustered_paired_95pct_ci_lower_bound": 0.0,
+    "maximum_adjacency_loss": 0.002,
+    "strict_permutations_required": 128,
+    "input_permutation_equivariance_required": true,
+    "original_upright_tile_render_required": true
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "aiijc-dinov2-boundary-candidate-screen-preregistration-v1",
+  "status": "signed-before-opened-local16-replay",
+  "purpose": "matcher-only complementary neighbour nomination; never absolute placement or pixel output",
+  "panel": "already-opened fullres-retrieval-adapter local16",
+  "model": "official DINOv2 ViT-S/14 through timm dynamic_img_size",
+  "image_size": 98,
+  "patch_grid": 7,
+  "band_width": 2,
+  "side_score": "mean corresponding-token cosine over boundary-to-interior ordered two-patch band",
+  "top_k": 32,
+  "direct_ks": [1, 5, 32],
+  "discovery_gate": {
+    "pooled_raw_union_top32_coverage_gain_min": 0.02,
+    "either_direct_pooled_r5_gain_vs_raw_min": 0.0,
+    "or_reciprocal_precision_min": 0.25
+  },
+  "continuation_if_passed": "one fixed TASKA unique-suffix focal-gated consumer; no direct replacement scorer",
+  "no_sweep": true,
+  "competition_test_accessed": false,
+  "weco_steps_reserved": [144, 145, 146],
+  "frozen_inputs": {
+    "checkpoint": {
+      "path": "artifacts/foundation-semantics/dinov2-vits14-official/dinov2_vits14_pretrain.pth",
+      "sha256": "b938bf1bc15cd2ec0feacfe3a1bb553fe8ea9ca46a7e1d8d00217f29aef60cd9"
+    },
+    "license": {
+      "path": "artifacts/foundation-semantics/dinov2-vits14-official/LICENSE",
+      "sha256": "600cc67cc4cb2f5ea317dcfc687ad1c74dc4bec8782bbe9db0afd83513b935b7"
+    },
+    "model_card": {
+      "path": "artifacts/foundation-semantics/dinov2-vits14-official/MODEL_CARD.md",
+      "sha256": "70ca59606bee0a5fbb1baec80e7e29a93cd7cfbe26ca1910c52a852c4aab09d0"
+    },
+    "raw_candidate_archive": {
+      "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/local16/frozen-target-free-retrieval.npz",
+      "sha256": "b64cb6e5c649f85f3169495f3b576d7eae4d89d6891ab6316cd789b216459343"
+    },
+    "raw_candidate_metadata": {
+      "path": "outputs/fullres-retrieval-adapter/fixed-s100-s400-local16-v1/local16/frozen-target-free-retrieval.json",
+      "sha256": "3e026cdf1ab2e63bd6d1f67778179e5d7cd1bda84f53487f07566b7372732495"
+    },
+    "roster_parent_report": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/report.json",
+      "sha256": "780f6b065ba769bef8b3ffd30cf0bcb781b2040258835964b122725e732fccc7"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    }
+  }
+}

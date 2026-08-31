@@ -1,0 +1,797 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aiijc-puzzle.local/schemas/drunet-protected-submission-compliance-v3.json",
+  "title": "AIIJC frozen DRUNet protected submission compliance attestation",
+  "description": "Fail-closed evidence for corresponding-input provenance, strict upright tile bijection, official independent-tile DRUNet40 and the fixed protected NLM tail. It does not claim hidden-layout correctness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "scope",
+    "correct_hidden_layout_proven",
+    "proof_limitation",
+    "method",
+    "policy",
+    "promotion_evidence",
+    "runtime_manifest",
+    "input_snapshot",
+    "archive",
+    "canonical_execution",
+    "per_board"
+  ],
+  "properties": {
+    "schema": {
+      "const": "aiijc-puzzle-drunet-protected-submission-compliance-v3"
+    },
+    "status": {
+      "const": "METHOD_COMPLIANT_LAYOUT_ACCURACY_UNPROVEN"
+    },
+    "scope": {
+      "const": "provenance_bijection_geometry_frozen_drunet_and_protected_tail_only"
+    },
+    "correct_hidden_layout_proven": {
+      "const": false
+    },
+    "proof_limitation": {
+      "const": "PASS proves corresponding-input provenance, upright 20x20 strict bijection, raw geometry, the frozen bilateral buddies96 solver, independent-tile official DRUNet40 and the frozen protected NLM tail only; it does not prove the hidden ground-truth permutation, reconstruction accuracy, or manual acceptance."
+    },
+    "method": {
+      "type": "string",
+      "minLength": 1
+    },
+    "policy": {
+      "$ref": "#/$defs/policy"
+    },
+    "promotion_evidence": {
+      "$ref": "#/$defs/promotion_evidence"
+    },
+    "runtime_manifest": {
+      "$ref": "#/$defs/runtime_manifest"
+    },
+    "input_snapshot": {
+      "$ref": "#/$defs/input_snapshot"
+    },
+    "archive": {
+      "$ref": "#/$defs/archive"
+    },
+    "canonical_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "device",
+        "cuda_or_cpu_reproduction_is_noncanonical",
+        "noncanonical_backend_may_differ_by_one_lsb"
+      ],
+      "properties": {
+        "device": {
+          "const": "mps"
+        },
+        "cuda_or_cpu_reproduction_is_noncanonical": {
+          "const": true
+        },
+        "noncanonical_backend_may_differ_by_one_lsb": {
+          "const": true
+        }
+      }
+    },
+    "per_board": {
+      "type": "array",
+      "minItems": 700,
+      "maxItems": 700,
+      "items": {
+        "$ref": "#/$defs/board"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output_derived_only_from_corresponding_input",
+        "all_576_input_tiles_used_exactly_once",
+        "tile_identity_preserved_before_restoration",
+        "tile_geometry_preserved_before_restoration",
+        "restoration_after_layout_only",
+        "drunet_each_tile_independent",
+        "drunet_cross_tile_context_used",
+        "targets_used",
+        "reference_images_used",
+        "source_lookup_used",
+        "external_templates_used",
+        "cross_board_pixels_used",
+        "tile_substitution_used",
+        "rotation_or_flip_used",
+        "resize_or_warp_used",
+        "filename_or_board_overrides_used"
+      ],
+      "properties": {
+        "output_derived_only_from_corresponding_input": {
+          "const": true
+        },
+        "all_576_input_tiles_used_exactly_once": {
+          "const": true
+        },
+        "tile_identity_preserved_before_restoration": {
+          "const": true
+        },
+        "tile_geometry_preserved_before_restoration": {
+          "const": true
+        },
+        "restoration_after_layout_only": {
+          "const": true
+        },
+        "drunet_each_tile_independent": {
+          "const": true
+        },
+        "drunet_cross_tile_context_used": {
+          "const": false
+        },
+        "targets_used": {
+          "const": false
+        },
+        "reference_images_used": {
+          "const": false
+        },
+        "source_lookup_used": {
+          "const": false
+        },
+        "external_templates_used": {
+          "const": false
+        },
+        "cross_board_pixels_used": {
+          "const": false
+        },
+        "tile_substitution_used": {
+          "const": false
+        },
+        "rotation_or_flip_used": {
+          "const": false
+        },
+        "resize_or_warp_used": {
+          "const": false
+        },
+        "filename_or_board_overrides_used": {
+          "const": false
+        }
+      }
+    },
+    "evidence_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "promotion_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "config_sha256",
+        "artifacts",
+        "promoted_arm",
+        "production_authorized"
+      ],
+      "properties": {
+        "config_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "promoted_arm": {
+          "const": "D_drunet_sigma40_protected_h28_h40_t40"
+        },
+        "production_authorized": {
+          "const": true
+        },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "preregistration",
+            "primary_commitment",
+            "primary_commitment_receipt",
+            "primary_report",
+            "primary_manual_review",
+            "confirmation_commitment",
+            "confirmation_commitment_receipt",
+            "confirmation_report",
+            "confirmation_manual_review"
+          ],
+          "properties": {
+            "preregistration": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "primary_commitment": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "primary_commitment_receipt": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "primary_report": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "primary_manual_review": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "confirmation_commitment": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "confirmation_commitment_receipt": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "confirmation_report": {
+              "$ref": "#/$defs/evidence_record"
+            },
+            "confirmation_manual_review": {
+              "$ref": "#/$defs/evidence_record"
+            }
+          }
+        }
+      }
+    },
+    "runtime_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "files",
+        "assets",
+        "harmonizers",
+        "versions",
+        "canonical_device",
+        "digest_sha256"
+      ],
+      "properties": {
+        "files": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "assets": {
+          "type": "object",
+          "minProperties": 4,
+          "additionalProperties": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "harmonizers": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {
+            "$ref": "#/$defs/sha256"
+          }
+        },
+        "versions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "python",
+            "numpy",
+            "opencv",
+            "torch"
+          ],
+          "properties": {
+            "python": {
+              "type": "string",
+              "minLength": 1
+            },
+            "numpy": {
+              "type": "string",
+              "minLength": 1
+            },
+            "opencv": {
+              "type": "string",
+              "minLength": 1
+            },
+            "torch": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "canonical_device": {
+          "const": "mps"
+        },
+        "digest_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "input_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_archive_sha256",
+        "filenames_sha256",
+        "file_count",
+        "regular_files_only",
+        "symlinks_rejected"
+      ],
+      "properties": {
+        "source_archive_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "filenames_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "const": 700
+        },
+        "regular_files_only": {
+          "const": true
+        },
+        "symlinks_rejected": {
+          "const": true
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "file_count",
+        "root_only",
+        "filenames_match_input_snapshot",
+        "format",
+        "mode",
+        "width",
+        "height",
+        "filenames"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "file_count": {
+          "const": 700
+        },
+        "root_only": {
+          "const": true
+        },
+        "filenames_match_input_snapshot": {
+          "const": true
+        },
+        "format": {
+          "const": "PNG"
+        },
+        "mode": {
+          "const": "RGB"
+        },
+        "width": {
+          "const": 480
+        },
+        "height": {
+          "const": 480
+        },
+        "filenames": {
+          "type": "array",
+          "minItems": 700,
+          "maxItems": 700,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[^/\\\\]+\\.png$"
+          }
+        }
+      }
+    },
+    "raw_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "grid_rows",
+        "grid_columns",
+        "tile_count",
+        "unique_tile_indices",
+        "missing_tile_indices",
+        "duplicate_tile_indices",
+        "exact_reassembly_from_declared_layout",
+        "input_output_tile_multiset_equal",
+        "raw_input_pixels_preserved",
+        "restoration_applied_after_audit",
+        "passed"
+      ],
+      "properties": {
+        "grid_rows": {
+          "const": 24
+        },
+        "grid_columns": {
+          "const": 24
+        },
+        "tile_count": {
+          "const": 576
+        },
+        "unique_tile_indices": {
+          "const": 576
+        },
+        "missing_tile_indices": {
+          "const": []
+        },
+        "duplicate_tile_indices": {
+          "const": []
+        },
+        "exact_reassembly_from_declared_layout": {
+          "const": true
+        },
+        "input_output_tile_multiset_equal": {
+          "const": true
+        },
+        "raw_input_pixels_preserved": {
+          "const": true
+        },
+        "restoration_applied_after_audit": {
+          "const": true
+        },
+        "passed": {
+          "const": true
+        }
+      }
+    },
+    "drunet_diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tile_count",
+        "sigma_255",
+        "batch_size",
+        "padding_bottom",
+        "padding_right",
+        "runtime_seconds",
+        "mean_abs_change",
+        "q99_abs_change",
+        "maximum_abs_change",
+        "clipped_fraction"
+      ],
+      "properties": {
+        "tile_count": {
+          "const": 576
+        },
+        "sigma_255": {
+          "const": 40.0
+        },
+        "batch_size": {
+          "const": 144
+        },
+        "padding_bottom": {
+          "const": 4
+        },
+        "padding_right": {
+          "const": 4
+        },
+        "runtime_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mean_abs_change": {
+          "type": "number",
+          "minimum": 0
+        },
+        "q99_abs_change": {
+          "type": "number",
+          "minimum": 0
+        },
+        "maximum_abs_change": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 255
+        },
+        "clipped_fraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "restoration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "input_is_raw_assembly",
+        "pixel_restoration_only",
+        "layout_changed",
+        "spatial_warp_used",
+        "external_or_cross_board_pixels_used",
+        "harmonizers",
+        "harmonized_array_sha256",
+        "drunet",
+        "nlm",
+        "protected_mask",
+        "blend",
+        "output_array_sha256"
+      ],
+      "properties": {
+        "name": {
+          "const": "rgb-seam-offsets_then-bounded-luminance-gains_then-independent-tile-official-color-DRUNet-sigma40-then-independent-colored-NLM-h20-h28-h40-then-t40-protected-h28-flat-h40-blend"
+        },
+        "input_is_raw_assembly": {
+          "const": true
+        },
+        "pixel_restoration_only": {
+          "const": true
+        },
+        "layout_changed": {
+          "const": false
+        },
+        "spatial_warp_used": {
+          "const": false
+        },
+        "external_or_cross_board_pixels_used": {
+          "const": false
+        },
+        "harmonizers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "order",
+            "config_sha256"
+          ],
+          "properties": {
+            "order": {
+              "const": [
+                "rgb_seam_offsets",
+                "bounded_luminance_gains"
+              ]
+            },
+            "config_sha256": {
+              "type": "object",
+              "minProperties": 2,
+              "additionalProperties": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        "harmonized_array_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "drunet": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "official_repository",
+            "official_commit",
+            "license",
+            "checkpoint_url",
+            "checkpoint_sha256",
+            "parameter_count",
+            "sigma_255",
+            "tile_count",
+            "tile_input_size",
+            "same_tile_reflect_padding_right_bottom",
+            "exact_crop_size",
+            "batch_size",
+            "cross_tile_context",
+            "cross_board_context",
+            "restored_tiles_array_sha256",
+            "restored_canvas_array_sha256",
+            "runtime_diagnostics"
+          ],
+          "properties": {
+            "official_repository": {
+              "const": "https://github.com/cszn/KAIR"
+            },
+            "official_commit": {
+              "const": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e"
+            },
+            "license": {
+              "const": "MIT"
+            },
+            "checkpoint_url": {
+              "const": "https://github.com/cszn/KAIR/releases/download/v1.0/drunet_color.pth"
+            },
+            "checkpoint_sha256": {
+              "const": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4"
+            },
+            "parameter_count": {
+              "const": 32640960
+            },
+            "sigma_255": {
+              "const": 40.0
+            },
+            "tile_count": {
+              "const": 576
+            },
+            "tile_input_size": {
+              "const": [
+                20,
+                20
+              ]
+            },
+            "same_tile_reflect_padding_right_bottom": {
+              "const": [
+                4,
+                4
+              ]
+            },
+            "exact_crop_size": {
+              "const": [
+                20,
+                20
+              ]
+            },
+            "batch_size": {
+              "const": 144
+            },
+            "cross_tile_context": {
+              "const": false
+            },
+            "cross_board_context": {
+              "const": false
+            },
+            "restored_tiles_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "restored_canvas_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "runtime_diagnostics": {
+              "$ref": "#/$defs/drunet_diagnostics"
+            }
+          }
+        },
+        "nlm": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "proper_rgb_bgr_roundtrip",
+            "independent_single_pass_strengths",
+            "h_color_equals_h",
+            "template_window_size",
+            "search_window_size",
+            "h20_array_sha256",
+            "h28_array_sha256",
+            "h40_array_sha256"
+          ],
+          "properties": {
+            "proper_rgb_bgr_roundtrip": {
+              "const": true
+            },
+            "independent_single_pass_strengths": {
+              "const": [
+                20,
+                28,
+                40
+              ]
+            },
+            "h_color_equals_h": {
+              "const": true
+            },
+            "template_window_size": {
+              "const": 7
+            },
+            "search_window_size": {
+              "const": 21
+            },
+            "h20_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "h28_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "h40_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            }
+          }
+        },
+        "protected_mask": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source",
+            "sobel_threshold",
+            "grid_period",
+            "dilation",
+            "softening",
+            "binary_array_sha256",
+            "soft_array_sha256",
+            "protected_fraction"
+          ],
+          "properties": {
+            "source": {
+              "const": "independent DRUNet+h20"
+            },
+            "sobel_threshold": {
+              "const": 40.0
+            },
+            "grid_period": {
+              "const": 20
+            },
+            "dilation": {
+              "const": "3x3 one iteration"
+            },
+            "softening": {
+              "const": "Gaussian sigma1"
+            },
+            "binary_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "soft_array_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "protected_fraction": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "blend": {
+          "const": "rint(soft*h28 + (1-soft)*h40), clip uint8"
+        },
+        "output_array_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "board": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filename",
+        "input_sha256",
+        "tile_at_position",
+        "layout_sha256",
+        "raw_assembly_sha256",
+        "input_and_raw_tile_multiset_sha256",
+        "raw_permutation_audit",
+        "restoration",
+        "output_png_sha256"
+      ],
+      "properties": {
+        "filename": {
+          "type": "string",
+          "pattern": "^[^/\\\\]+\\.png$"
+        },
+        "input_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "tile_at_position": {
+          "type": "array",
+          "minItems": 576,
+          "maxItems": 576,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 575
+          }
+        },
+        "layout_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_assembly_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "input_and_raw_tile_multiset_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_permutation_audit": {
+          "$ref": "#/$defs/raw_audit"
+        },
+        "restoration": {
+          "$ref": "#/$defs/restoration"
+        },
+        "output_png_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

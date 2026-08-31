@@ -1,0 +1,3922 @@
+{
+  "schema": "aiijc-taska-selective-fullres-union-fusion-report-v1",
+  "status": "complete",
+  "protocol": {
+    "matcher_rerun": false,
+    "frozen_selective_target500_parent": true,
+    "frozen_fullres_accepted_parent": true,
+    "fullres_unique_rule": "drop overlap with current or selective accepted",
+    "combined_order": "current + selective accepted + unique fullres accepted",
+    "selector_roster": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "standalone_fullres_arm_in_selector": false,
+    "selector": "minimum original TASKA all-1104-bond cost",
+    "tail": "focal-gated non-adjacent tail96 on selected candidate set",
+    "control": "exact frozen selective target500 final layout",
+    "local_pair_gate": 0.0,
+    "held_pair_gate": 0.5,
+    "no_threshold_budget_or_roster_sweep": true
+  },
+  "local32": {
+    "status": "complete",
+    "target_free_summary": {
+      "case_count": 32,
+      "control_replay_match_count": 32,
+      "choice_counts": {
+        "raw": 2,
+        "selective_vote500_focal": 11,
+        "nonlinear": 5,
+        "combined_union_focal": 9,
+        "logistic": 4,
+        "focal_top5": 1
+      },
+      "mean_fullres_accepted": 26.1875,
+      "mean_fullres_overlap_selective": 14.46875,
+      "mean_unique_fullres": 11.71875
+    },
+    "runtime_seconds": 26.25873479199072,
+    "artifacts": {
+      "archive": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/local32/frozen-target-free-eval.npz",
+        "sha256": "1b17c4a52ae80b58f973ee8aaffd20d0e1d9a125c1ac5e3acdc66f31abddf7df"
+      },
+      "metadata": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/local32/frozen-target-free-eval.json",
+        "sha256": "106ac31d166c1b244a498c3cc76f59d4730601e6fba3a35fa6721eb7f18befa1"
+      },
+      "pre_score_freeze": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/local32/pre-score-freeze.json",
+        "sha256": "3b35db324f46a0368cad5c3f6570c08f9631560fe1f5f47f14defc77b8689720"
+      }
+    },
+    "rows": [
+      {
+        "prefix": "case_0000",
+        "source_filename": "img_004917.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 315,
+            "adjacency_recall": 0.28532608695652173,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 315,
+            "adjacency_recall": 0.28532608695652173,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 400,
+          "current_true_edges": 260,
+          "selective_new_edges": 44,
+          "selective_new_true_edges": 20,
+          "fullres_accepted_edges": 17,
+          "fullres_accepted_true_edges": 5,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 10,
+          "fullres_overlap_selective_true_edges": 3,
+          "unique_fullres_edges": 7,
+          "unique_fullres_true_edges": 2,
+          "combined_union_edges": 451,
+          "combined_union_true_edges": 282
+        }
+      },
+      {
+        "prefix": "case_0001",
+        "source_filename": "img_001156.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 289,
+            "adjacency_recall": 0.2617753623188406,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 289,
+            "adjacency_recall": 0.2617753623188406,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 399,
+          "current_true_edges": 260,
+          "selective_new_edges": 27,
+          "selective_new_true_edges": 13,
+          "fullres_accepted_edges": 17,
+          "fullres_accepted_true_edges": 6,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 9,
+          "fullres_overlap_selective_true_edges": 3,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 434,
+          "combined_union_true_edges": 276
+        }
+      },
+      {
+        "prefix": "case_0002",
+        "source_filename": "img_001396.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 377,
+            "adjacency_recall": 0.34148550724637683,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 377,
+            "adjacency_recall": 0.34148550724637683,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 391,
+          "current_true_edges": 290,
+          "selective_new_edges": 46,
+          "selective_new_true_edges": 29,
+          "fullres_accepted_edges": 47,
+          "fullres_accepted_true_edges": 34,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 22,
+          "fullres_overlap_selective_true_edges": 19,
+          "unique_fullres_edges": 25,
+          "unique_fullres_true_edges": 15,
+          "combined_union_edges": 462,
+          "combined_union_true_edges": 334
+        }
+      },
+      {
+        "prefix": "case_0003",
+        "source_filename": "img_000121.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 475,
+            "adjacency_recall": 0.4302536231884058,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 453,
+            "adjacency_recall": 0.41032608695652173,
+            "exact_tiles": 67,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 370,
+          "current_true_edges": 304,
+          "selective_new_edges": 98,
+          "selective_new_true_edges": 65,
+          "fullres_accepted_edges": 69,
+          "fullres_accepted_true_edges": 39,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 45,
+          "fullres_overlap_selective_true_edges": 28,
+          "unique_fullres_edges": 24,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 492,
+          "combined_union_true_edges": 380
+        }
+      },
+      {
+        "prefix": "case_0004",
+        "source_filename": "img_001372.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 350,
+            "adjacency_recall": 0.3170289855072464,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 393,
+            "adjacency_recall": 0.35597826086956524,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 376,
+          "current_true_edges": 280,
+          "selective_new_edges": 61,
+          "selective_new_true_edges": 38,
+          "fullres_accepted_edges": 34,
+          "fullres_accepted_true_edges": 23,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 26,
+          "fullres_overlap_selective_true_edges": 18,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 5,
+          "combined_union_edges": 445,
+          "combined_union_true_edges": 323
+        }
+      },
+      {
+        "prefix": "case_0005",
+        "source_filename": "img_003499.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 267,
+            "adjacency_recall": 0.2418478260869565,
+            "exact_tiles": 4,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 270,
+            "adjacency_recall": 0.24456521739130435,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 355,
+          "current_true_edges": 227,
+          "selective_new_edges": 19,
+          "selective_new_true_edges": 13,
+          "fullres_accepted_edges": 7,
+          "fullres_accepted_true_edges": 4,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 3,
+          "fullres_overlap_selective_true_edges": 3,
+          "unique_fullres_edges": 4,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 378,
+          "combined_union_true_edges": 241
+        }
+      },
+      {
+        "prefix": "case_0006",
+        "source_filename": "img_002013.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 460,
+            "adjacency_recall": 0.4166666666666667,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 460,
+            "adjacency_recall": 0.4166666666666667,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 363,
+          "current_true_edges": 319,
+          "selective_new_edges": 80,
+          "selective_new_true_edges": 58,
+          "fullres_accepted_edges": 52,
+          "fullres_accepted_true_edges": 35,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 35,
+          "fullres_overlap_selective_true_edges": 28,
+          "unique_fullres_edges": 17,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 460,
+          "combined_union_true_edges": 384
+        }
+      },
+      {
+        "prefix": "case_0007",
+        "source_filename": "img_003039.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 187,
+            "adjacency_recall": 0.1693840579710145,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 187,
+            "adjacency_recall": 0.1693840579710145,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 429,
+          "current_true_edges": 178,
+          "selective_new_edges": 8,
+          "selective_new_true_edges": 4,
+          "fullres_accepted_edges": 4,
+          "fullres_accepted_true_edges": 2,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 3,
+          "fullres_overlap_selective_true_edges": 2,
+          "unique_fullres_edges": 1,
+          "unique_fullres_true_edges": 0,
+          "combined_union_edges": 438,
+          "combined_union_true_edges": 182
+        }
+      },
+      {
+        "prefix": "case_0008",
+        "source_filename": "img_004666.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 277,
+            "adjacency_recall": 0.2509057971014493,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 277,
+            "adjacency_recall": 0.2509057971014493,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 350,
+          "current_true_edges": 214,
+          "selective_new_edges": 35,
+          "selective_new_true_edges": 22,
+          "fullres_accepted_edges": 18,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 12,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 6,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 391,
+          "combined_union_true_edges": 239
+        }
+      },
+      {
+        "prefix": "case_0009",
+        "source_filename": "img_003742.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 431,
+            "adjacency_recall": 0.3903985507246377,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 431,
+            "adjacency_recall": 0.3903985507246377,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 351,
+          "current_true_edges": 284,
+          "selective_new_edges": 67,
+          "selective_new_true_edges": 51,
+          "fullres_accepted_edges": 38,
+          "fullres_accepted_true_edges": 26,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 20,
+          "fullres_overlap_selective_true_edges": 14,
+          "unique_fullres_edges": 18,
+          "unique_fullres_true_edges": 12,
+          "combined_union_edges": 436,
+          "combined_union_true_edges": 347
+        }
+      },
+      {
+        "prefix": "case_0010",
+        "source_filename": "img_006077.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 300,
+            "adjacency_recall": 0.2717391304347826,
+            "exact_tiles": 14,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 300,
+            "adjacency_recall": 0.2717391304347826,
+            "exact_tiles": 14,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 374,
+          "current_true_edges": 229,
+          "selective_new_edges": 15,
+          "selective_new_true_edges": 8,
+          "fullres_accepted_edges": 14,
+          "fullres_accepted_true_edges": 9,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 4,
+          "fullres_overlap_selective_true_edges": 2,
+          "unique_fullres_edges": 10,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 399,
+          "combined_union_true_edges": 244
+        }
+      },
+      {
+        "prefix": "case_0011",
+        "source_filename": "img_006162.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 313,
+            "adjacency_recall": 0.28351449275362317,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 318,
+            "adjacency_recall": 0.28804347826086957,
+            "exact_tiles": 4,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 396,
+          "current_true_edges": 253,
+          "selective_new_edges": 18,
+          "selective_new_true_edges": 6,
+          "fullres_accepted_edges": 20,
+          "fullres_accepted_true_edges": 11,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 7,
+          "fullres_overlap_selective_true_edges": 4,
+          "unique_fullres_edges": 13,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 427,
+          "combined_union_true_edges": 266
+        }
+      },
+      {
+        "prefix": "case_0012",
+        "source_filename": "img_006177.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 167,
+            "adjacency_recall": 0.151268115942029,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 167,
+            "adjacency_recall": 0.151268115942029,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 382,
+          "current_true_edges": 147,
+          "selective_new_edges": 11,
+          "selective_new_true_edges": 5,
+          "fullres_accepted_edges": 6,
+          "fullres_accepted_true_edges": 2,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 1,
+          "fullres_overlap_selective_true_edges": 1,
+          "unique_fullres_edges": 5,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 398,
+          "combined_union_true_edges": 153
+        }
+      },
+      {
+        "prefix": "case_0013",
+        "source_filename": "img_004944.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 220,
+            "adjacency_recall": 0.19927536231884058,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 220,
+            "adjacency_recall": 0.19927536231884058,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 356,
+          "current_true_edges": 194,
+          "selective_new_edges": 6,
+          "selective_new_true_edges": 1,
+          "fullres_accepted_edges": 1,
+          "fullres_accepted_true_edges": 0,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 1,
+          "fullres_overlap_selective_true_edges": 0,
+          "unique_fullres_edges": 0,
+          "unique_fullres_true_edges": 0,
+          "combined_union_edges": 362,
+          "combined_union_true_edges": 195
+        }
+      },
+      {
+        "prefix": "case_0014",
+        "source_filename": "img_005908.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 335,
+            "adjacency_recall": 0.30344202898550726,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 335,
+            "adjacency_recall": 0.30344202898550726,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 372,
+          "current_true_edges": 264,
+          "selective_new_edges": 24,
+          "selective_new_true_edges": 14,
+          "fullres_accepted_edges": 32,
+          "fullres_accepted_true_edges": 17,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 14,
+          "fullres_overlap_selective_true_edges": 9,
+          "unique_fullres_edges": 18,
+          "unique_fullres_true_edges": 8,
+          "combined_union_edges": 414,
+          "combined_union_true_edges": 286
+        }
+      },
+      {
+        "prefix": "case_0015",
+        "source_filename": "img_004776.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 328,
+            "adjacency_recall": 0.2971014492753623,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 328,
+            "adjacency_recall": 0.2971014492753623,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 383,
+          "current_true_edges": 256,
+          "selective_new_edges": 37,
+          "selective_new_true_edges": 24,
+          "fullres_accepted_edges": 20,
+          "fullres_accepted_true_edges": 11,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 12,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 428,
+          "combined_union_true_edges": 283
+        }
+      },
+      {
+        "prefix": "case_0016",
+        "source_filename": "img_005724.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 365,
+            "adjacency_recall": 0.33061594202898553,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 385,
+            "adjacency_recall": 0.348731884057971,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 353,
+          "current_true_edges": 288,
+          "selective_new_edges": 50,
+          "selective_new_true_edges": 34,
+          "fullres_accepted_edges": 29,
+          "fullres_accepted_true_edges": 20,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 23,
+          "fullres_overlap_selective_true_edges": 16,
+          "unique_fullres_edges": 6,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 409,
+          "combined_union_true_edges": 326
+        }
+      },
+      {
+        "prefix": "case_0017",
+        "source_filename": "img_001668.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 288,
+            "adjacency_recall": 0.2608695652173913,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 288,
+            "adjacency_recall": 0.2608695652173913,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 356,
+          "current_true_edges": 230,
+          "selective_new_edges": 28,
+          "selective_new_true_edges": 17,
+          "fullres_accepted_edges": 16,
+          "fullres_accepted_true_edges": 9,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 8,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 392,
+          "combined_union_true_edges": 250
+        }
+      },
+      {
+        "prefix": "case_0018",
+        "source_filename": "img_002346.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 320,
+            "adjacency_recall": 0.2898550724637681,
+            "exact_tiles": 10,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 320,
+            "adjacency_recall": 0.2898550724637681,
+            "exact_tiles": 10,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 354,
+          "current_true_edges": 268,
+          "selective_new_edges": 20,
+          "selective_new_true_edges": 11,
+          "fullres_accepted_edges": 17,
+          "fullres_accepted_true_edges": 6,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 6,
+          "fullres_overlap_selective_true_edges": 2,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 385,
+          "combined_union_true_edges": 283
+        }
+      },
+      {
+        "prefix": "case_0019",
+        "source_filename": "img_006343.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 509,
+            "adjacency_recall": 0.46105072463768115,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 531,
+            "adjacency_recall": 0.48097826086956524,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 350,
+          "current_true_edges": 308,
+          "selective_new_edges": 93,
+          "selective_new_true_edges": 62,
+          "fullres_accepted_edges": 59,
+          "fullres_accepted_true_edges": 40,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 44,
+          "fullres_overlap_selective_true_edges": 33,
+          "unique_fullres_edges": 15,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 458,
+          "combined_union_true_edges": 377
+        }
+      },
+      {
+        "prefix": "case_0020",
+        "source_filename": "img_002287.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 333,
+            "adjacency_recall": 0.3016304347826087,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 333,
+            "adjacency_recall": 0.3016304347826087,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 384,
+          "current_true_edges": 269,
+          "selective_new_edges": 55,
+          "selective_new_true_edges": 30,
+          "fullres_accepted_edges": 30,
+          "fullres_accepted_true_edges": 14,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 14,
+          "fullres_overlap_selective_true_edges": 10,
+          "unique_fullres_edges": 16,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 455,
+          "combined_union_true_edges": 303
+        }
+      },
+      {
+        "prefix": "case_0021",
+        "source_filename": "img_002471.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 317,
+            "adjacency_recall": 0.2871376811594203,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 317,
+            "adjacency_recall": 0.2871376811594203,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 405,
+          "current_true_edges": 258,
+          "selective_new_edges": 37,
+          "selective_new_true_edges": 22,
+          "fullres_accepted_edges": 18,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 9,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 9,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 451,
+          "combined_union_true_edges": 283
+        }
+      },
+      {
+        "prefix": "case_0022",
+        "source_filename": "img_002901.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 252,
+            "adjacency_recall": 0.22826086956521738,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 252,
+            "adjacency_recall": 0.22826086956521738,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 384,
+          "current_true_edges": 212,
+          "selective_new_edges": 20,
+          "selective_new_true_edges": 10,
+          "fullres_accepted_edges": 14,
+          "fullres_accepted_true_edges": 7,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 3,
+          "fullres_overlap_selective_true_edges": 3,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 415,
+          "combined_union_true_edges": 226
+        }
+      },
+      {
+        "prefix": "case_0023",
+        "source_filename": "img_001872.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 335,
+            "adjacency_recall": 0.30344202898550726,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 335,
+            "adjacency_recall": 0.30344202898550726,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 378,
+          "current_true_edges": 288,
+          "selective_new_edges": 42,
+          "selective_new_true_edges": 26,
+          "fullres_accepted_edges": 27,
+          "fullres_accepted_true_edges": 14,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 7,
+          "fullres_overlap_selective_true_edges": 4,
+          "unique_fullres_edges": 20,
+          "unique_fullres_true_edges": 10,
+          "combined_union_edges": 440,
+          "combined_union_true_edges": 324
+        }
+      },
+      {
+        "prefix": "case_0024",
+        "source_filename": "img_004443.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 341,
+            "adjacency_recall": 0.3088768115942029,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 349,
+            "adjacency_recall": 0.3161231884057971,
+            "exact_tiles": 74,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 359,
+          "current_true_edges": 269,
+          "selective_new_edges": 46,
+          "selective_new_true_edges": 24,
+          "fullres_accepted_edges": 28,
+          "fullres_accepted_true_edges": 13,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 14,
+          "fullres_overlap_selective_true_edges": 9,
+          "unique_fullres_edges": 14,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 419,
+          "combined_union_true_edges": 297
+        }
+      },
+      {
+        "prefix": "case_0025",
+        "source_filename": "img_000405.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 306,
+            "adjacency_recall": 0.27717391304347827,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 306,
+            "adjacency_recall": 0.27717391304347827,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 390,
+          "current_true_edges": 244,
+          "selective_new_edges": 13,
+          "selective_new_true_edges": 6,
+          "fullres_accepted_edges": 6,
+          "fullres_accepted_true_edges": 0,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 1,
+          "fullres_overlap_selective_true_edges": 0,
+          "unique_fullres_edges": 5,
+          "unique_fullres_true_edges": 0,
+          "combined_union_edges": 408,
+          "combined_union_true_edges": 250
+        }
+      },
+      {
+        "prefix": "case_0026",
+        "source_filename": "img_002695.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 404,
+            "adjacency_recall": 0.36594202898550726,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 418,
+            "adjacency_recall": 0.3786231884057971,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 365,
+          "current_true_edges": 319,
+          "selective_new_edges": 68,
+          "selective_new_true_edges": 43,
+          "fullres_accepted_edges": 54,
+          "fullres_accepted_true_edges": 26,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 34,
+          "fullres_overlap_selective_true_edges": 21,
+          "unique_fullres_edges": 20,
+          "unique_fullres_true_edges": 5,
+          "combined_union_edges": 453,
+          "combined_union_true_edges": 367
+        }
+      },
+      {
+        "prefix": "case_0027",
+        "source_filename": "img_004011.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 244,
+            "adjacency_recall": 0.2210144927536232,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 244,
+            "adjacency_recall": 0.2210144927536232,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 373,
+          "current_true_edges": 199,
+          "selective_new_edges": 20,
+          "selective_new_true_edges": 14,
+          "fullres_accepted_edges": 9,
+          "fullres_accepted_true_edges": 5,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 4,
+          "fullres_overlap_selective_true_edges": 2,
+          "unique_fullres_edges": 5,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 398,
+          "combined_union_true_edges": 216
+        }
+      },
+      {
+        "prefix": "case_0028",
+        "source_filename": "img_005559.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 472,
+            "adjacency_recall": 0.427536231884058,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 472,
+            "adjacency_recall": 0.427536231884058,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 368,
+          "current_true_edges": 332,
+          "selective_new_edges": 102,
+          "selective_new_true_edges": 76,
+          "fullres_accepted_edges": 76,
+          "fullres_accepted_true_edges": 52,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 43,
+          "fullres_overlap_selective_true_edges": 33,
+          "unique_fullres_edges": 33,
+          "unique_fullres_true_edges": 19,
+          "combined_union_edges": 503,
+          "combined_union_true_edges": 427
+        }
+      },
+      {
+        "prefix": "case_0029",
+        "source_filename": "img_006495.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 290,
+            "adjacency_recall": 0.26268115942028986,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 298,
+            "adjacency_recall": 0.26992753623188404,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 388,
+          "current_true_edges": 235,
+          "selective_new_edges": 9,
+          "selective_new_true_edges": 4,
+          "fullres_accepted_edges": 6,
+          "fullres_accepted_true_edges": 2,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 3,
+          "fullres_overlap_selective_true_edges": 1,
+          "unique_fullres_edges": 3,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 400,
+          "combined_union_true_edges": 240
+        }
+      },
+      {
+        "prefix": "case_0030",
+        "source_filename": "img_002819.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 163,
+            "adjacency_recall": 0.14764492753623187,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 163,
+            "adjacency_recall": 0.14764492753623187,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 376,
+          "current_true_edges": 155,
+          "selective_new_edges": 12,
+          "selective_new_true_edges": 5,
+          "fullres_accepted_edges": 5,
+          "fullres_accepted_true_edges": 3,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 2,
+          "fullres_overlap_selective_true_edges": 1,
+          "unique_fullres_edges": 3,
+          "unique_fullres_true_edges": 2,
+          "combined_union_edges": 391,
+          "combined_union_true_edges": 162
+        }
+      },
+      {
+        "prefix": "case_0031",
+        "source_filename": "img_006154.png",
+        "draw_index": 0,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 326,
+            "adjacency_recall": 0.29528985507246375,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 326,
+            "adjacency_recall": 0.29528985507246375,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 352,
+          "current_true_edges": 261,
+          "selective_new_edges": 64,
+          "selective_new_true_edges": 39,
+          "fullres_accepted_edges": 48,
+          "fullres_accepted_true_edges": 24,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 24,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 24,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 440,
+          "combined_union_true_edges": 311
+        }
+      }
+    ],
+    "summary": {
+      "case_count": 32,
+      "pair_denominator": 1104,
+      "arms": {
+        "selective_target500_control": {
+          "satisfied_adjacent_pairs": 323.625,
+          "adjacency_recall": 0.29313858695652173,
+          "exact_tiles": 1.5625
+        },
+        "combined_union_candidate": {
+          "satisfied_adjacent_pairs": 326.78125,
+          "adjacency_recall": 0.295997509057971,
+          "exact_tiles": 5.9375
+        }
+      },
+      "choice_counts": {
+        "raw": 2,
+        "selective_vote500_focal": 11,
+        "nonlinear": 5,
+        "combined_union_focal": 9,
+        "logistic": 4,
+        "focal_top5": 1
+      },
+      "control_replay_match_count": 32,
+      "candidate_minus_control": {
+        "satisfied_adjacent_pairs": {
+          "mean": 3.15625,
+          "ci95_lower": -0.0625,
+          "ci95_upper": 6.9375,
+          "source_count": 32,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083195,
+          "case_wins_ties_losses": {
+            "wins": 8,
+            "ties": 23,
+            "losses": 1
+          }
+        },
+        "adjacency_recall": {
+          "mean": 0.002858922101449276,
+          "ci95_lower": -5.6612318840581696e-05,
+          "ci95_upper": 0.006312273550724641,
+          "source_count": 32,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083196,
+          "case_wins_ties_losses": {
+            "wins": 8,
+            "ties": 23,
+            "losses": 1
+          }
+        },
+        "exact_tiles": {
+          "mean": 4.375,
+          "ci95_lower": -0.03125,
+          "ci95_upper": 11.0,
+          "source_count": 32,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083197,
+          "case_wins_ties_losses": {
+            "wins": 4,
+            "ties": 26,
+            "losses": 2
+          }
+        }
+      },
+      "supply_mean_per_board": {
+        "current_edges": 374.4375,
+        "current_true_edges": 252.9375,
+        "selective_new_edges": 39.84375,
+        "selective_new_true_edges": 24.8125,
+        "fullres_accepted_edges": 26.1875,
+        "fullres_accepted_true_edges": 14.96875,
+        "fullres_overlap_current_edges": 0.0,
+        "fullres_overlap_selective_edges": 14.46875,
+        "fullres_overlap_selective_true_edges": 9.6875,
+        "unique_fullres_edges": 11.71875,
+        "unique_fullres_true_edges": 5.28125,
+        "combined_union_edges": 426.0,
+        "combined_union_true_edges": 283.03125
+      },
+      "supply_totals": {
+        "current_edges": 11982,
+        "current_true_edges": 8094,
+        "selective_new_edges": 1275,
+        "selective_new_true_edges": 794,
+        "fullres_accepted_edges": 838,
+        "fullres_accepted_true_edges": 479,
+        "fullres_overlap_current_edges": 0,
+        "fullres_overlap_selective_edges": 463,
+        "fullres_overlap_selective_true_edges": 310,
+        "unique_fullres_edges": 375,
+        "unique_fullres_true_edges": 169,
+        "combined_union_edges": 13632,
+        "combined_union_true_edges": 9057
+      },
+      "supply_quality": {
+        "unique_fullres_precision": 0.45066666666666666,
+        "overlap_selective_precision": 0.6695464362850972,
+        "combined_union_recall": 0.25636888586956524
+      }
+    }
+  },
+  "held32": {
+    "status": "complete",
+    "target_free_summary": {
+      "case_count": 32,
+      "control_replay_match_count": 32,
+      "choice_counts": {
+        "selective_vote500_focal": 9,
+        "logistic": 3,
+        "combined_union_focal": 8,
+        "focal_top5": 6,
+        "raw": 4,
+        "nonlinear": 2
+      },
+      "mean_fullres_accepted": 32.875,
+      "mean_fullres_overlap_selective": 18.0625,
+      "mean_unique_fullres": 14.8125
+    },
+    "runtime_seconds": 26.211004625001806,
+    "artifacts": {
+      "archive": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.npz",
+        "sha256": "6cfb766c1e693a2fec535d683f187a89f2d63632a282ff199e6aa708caafe469"
+      },
+      "metadata": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.json",
+        "sha256": "f37d23bd44c1565ae560c46ed6b6f33b4500b52168147ba114ff8debc59f0bf4"
+      },
+      "pre_score_freeze": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/pre-score-freeze.json",
+        "sha256": "aa5b53abbb3fe5b20900a2102e144f024bf563e42dbe37edd1086811515178bc"
+      }
+    },
+    "rows": [
+      {
+        "prefix": "case_0000",
+        "source_filename": "img_006756.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 470,
+            "adjacency_recall": 0.4257246376811594,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 470,
+            "adjacency_recall": 0.4257246376811594,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 384,
+          "current_true_edges": 322,
+          "selective_new_edges": 85,
+          "selective_new_true_edges": 62,
+          "fullres_accepted_edges": 84,
+          "fullres_accepted_true_edges": 57,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 43,
+          "fullres_overlap_selective_true_edges": 31,
+          "unique_fullres_edges": 41,
+          "unique_fullres_true_edges": 26,
+          "combined_union_edges": 510,
+          "combined_union_true_edges": 410
+        }
+      },
+      {
+        "prefix": "case_0001",
+        "source_filename": "img_006756.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 447,
+            "adjacency_recall": 0.4048913043478261,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 447,
+            "adjacency_recall": 0.4048913043478261,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 383,
+          "current_true_edges": 327,
+          "selective_new_edges": 84,
+          "selective_new_true_edges": 57,
+          "fullres_accepted_edges": 60,
+          "fullres_accepted_true_edges": 39,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 36,
+          "fullres_overlap_selective_true_edges": 25,
+          "unique_fullres_edges": 24,
+          "unique_fullres_true_edges": 14,
+          "combined_union_edges": 491,
+          "combined_union_true_edges": 398
+        }
+      },
+      {
+        "prefix": "case_0002",
+        "source_filename": "img_006878.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 354,
+            "adjacency_recall": 0.32065217391304346,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 377,
+            "adjacency_recall": 0.34148550724637683,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 362,
+          "current_true_edges": 269,
+          "selective_new_edges": 48,
+          "selective_new_true_edges": 33,
+          "fullres_accepted_edges": 30,
+          "fullres_accepted_true_edges": 17,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 20,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 10,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 420,
+          "combined_union_true_edges": 306
+        }
+      },
+      {
+        "prefix": "case_0003",
+        "source_filename": "img_006878.png",
+        "draw_index": 1,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 340,
+            "adjacency_recall": 0.3079710144927536,
+            "exact_tiles": 10,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 340,
+            "adjacency_recall": 0.3079710144927536,
+            "exact_tiles": 10,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 367,
+          "current_true_edges": 279,
+          "selective_new_edges": 42,
+          "selective_new_true_edges": 23,
+          "fullres_accepted_edges": 24,
+          "fullres_accepted_true_edges": 12,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 13,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 6,
+          "combined_union_edges": 420,
+          "combined_union_true_edges": 308
+        }
+      },
+      {
+        "prefix": "case_0004",
+        "source_filename": "img_006926.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 340,
+            "adjacency_recall": 0.3079710144927536,
+            "exact_tiles": 6,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 340,
+            "adjacency_recall": 0.3079710144927536,
+            "exact_tiles": 6,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 382,
+          "current_true_edges": 270,
+          "selective_new_edges": 38,
+          "selective_new_true_edges": 18,
+          "fullres_accepted_edges": 36,
+          "fullres_accepted_true_edges": 18,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 18,
+          "fullres_overlap_selective_true_edges": 9,
+          "unique_fullres_edges": 18,
+          "unique_fullres_true_edges": 9,
+          "combined_union_edges": 438,
+          "combined_union_true_edges": 297
+        }
+      },
+      {
+        "prefix": "case_0005",
+        "source_filename": "img_006926.png",
+        "draw_index": 1,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 357,
+            "adjacency_recall": 0.3233695652173913,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 357,
+            "adjacency_recall": 0.3233695652173913,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 353,
+          "current_true_edges": 282,
+          "selective_new_edges": 72,
+          "selective_new_true_edges": 49,
+          "fullres_accepted_edges": 59,
+          "fullres_accepted_true_edges": 36,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 39,
+          "fullres_overlap_selective_true_edges": 25,
+          "unique_fullres_edges": 20,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 445,
+          "combined_union_true_edges": 342
+        }
+      },
+      {
+        "prefix": "case_0006",
+        "source_filename": "img_006927.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 332,
+            "adjacency_recall": 0.3007246376811594,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 326,
+            "adjacency_recall": 0.29528985507246375,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 362,
+          "current_true_edges": 260,
+          "selective_new_edges": 40,
+          "selective_new_true_edges": 19,
+          "fullres_accepted_edges": 24,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 13,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 413,
+          "combined_union_true_edges": 282
+        }
+      },
+      {
+        "prefix": "case_0007",
+        "source_filename": "img_006927.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 316,
+            "adjacency_recall": 0.286231884057971,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 315,
+            "adjacency_recall": 0.28532608695652173,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 399,
+          "current_true_edges": 255,
+          "selective_new_edges": 30,
+          "selective_new_true_edges": 16,
+          "fullres_accepted_edges": 16,
+          "fullres_accepted_true_edges": 11,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 6,
+          "fullres_overlap_selective_true_edges": 4,
+          "unique_fullres_edges": 10,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 439,
+          "combined_union_true_edges": 278
+        }
+      },
+      {
+        "prefix": "case_0008",
+        "source_filename": "img_006793.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 311,
+            "adjacency_recall": 0.2817028985507246,
+            "exact_tiles": 8,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 311,
+            "adjacency_recall": 0.2817028985507246,
+            "exact_tiles": 8,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 382,
+          "current_true_edges": 257,
+          "selective_new_edges": 16,
+          "selective_new_true_edges": 8,
+          "fullres_accepted_edges": 8,
+          "fullres_accepted_true_edges": 5,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 5,
+          "fullres_overlap_selective_true_edges": 4,
+          "unique_fullres_edges": 3,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 401,
+          "combined_union_true_edges": 266
+        }
+      },
+      {
+        "prefix": "case_0009",
+        "source_filename": "img_006793.png",
+        "draw_index": 1,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 254,
+            "adjacency_recall": 0.23007246376811594,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 254,
+            "adjacency_recall": 0.23007246376811594,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 395,
+          "current_true_edges": 219,
+          "selective_new_edges": 16,
+          "selective_new_true_edges": 6,
+          "fullres_accepted_edges": 12,
+          "fullres_accepted_true_edges": 6,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 5,
+          "fullres_overlap_selective_true_edges": 2,
+          "unique_fullres_edges": 7,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 418,
+          "combined_union_true_edges": 229
+        }
+      },
+      {
+        "prefix": "case_0010",
+        "source_filename": "img_006795.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 391,
+            "adjacency_recall": 0.3541666666666667,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 391,
+            "adjacency_recall": 0.3541666666666667,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 393,
+          "current_true_edges": 285,
+          "selective_new_edges": 52,
+          "selective_new_true_edges": 36,
+          "fullres_accepted_edges": 40,
+          "fullres_accepted_true_edges": 22,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 24,
+          "fullres_overlap_selective_true_edges": 16,
+          "unique_fullres_edges": 16,
+          "unique_fullres_true_edges": 6,
+          "combined_union_edges": 461,
+          "combined_union_true_edges": 327
+        }
+      },
+      {
+        "prefix": "case_0011",
+        "source_filename": "img_006795.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 393,
+            "adjacency_recall": 0.35597826086956524,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 393,
+            "adjacency_recall": 0.35597826086956524,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 354,
+          "current_true_edges": 273,
+          "selective_new_edges": 68,
+          "selective_new_true_edges": 38,
+          "fullres_accepted_edges": 40,
+          "fullres_accepted_true_edges": 19,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 26,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 14,
+          "unique_fullres_true_edges": 6,
+          "combined_union_edges": 436,
+          "combined_union_true_edges": 317
+        }
+      },
+      {
+        "prefix": "case_0012",
+        "source_filename": "img_006748.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 331,
+            "adjacency_recall": 0.29981884057971014,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 331,
+            "adjacency_recall": 0.29981884057971014,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 371,
+          "current_true_edges": 258,
+          "selective_new_edges": 29,
+          "selective_new_true_edges": 18,
+          "fullres_accepted_edges": 19,
+          "fullres_accepted_true_edges": 11,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 12,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 7,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 407,
+          "combined_union_true_edges": 279
+        }
+      },
+      {
+        "prefix": "case_0013",
+        "source_filename": "img_006748.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 332,
+            "adjacency_recall": 0.3007246376811594,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 332,
+            "adjacency_recall": 0.3007246376811594,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 383,
+          "current_true_edges": 264,
+          "selective_new_edges": 34,
+          "selective_new_true_edges": 22,
+          "fullres_accepted_edges": 28,
+          "fullres_accepted_true_edges": 21,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 13,
+          "fullres_overlap_selective_true_edges": 11,
+          "unique_fullres_edges": 15,
+          "unique_fullres_true_edges": 10,
+          "combined_union_edges": 432,
+          "combined_union_true_edges": 296
+        }
+      },
+      {
+        "prefix": "case_0014",
+        "source_filename": "img_006869.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 173,
+            "adjacency_recall": 0.15670289855072464,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 173,
+            "adjacency_recall": 0.15670289855072464,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 390,
+          "current_true_edges": 151,
+          "selective_new_edges": 13,
+          "selective_new_true_edges": 8,
+          "fullres_accepted_edges": 4,
+          "fullres_accepted_true_edges": 2,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 1,
+          "fullres_overlap_selective_true_edges": 0,
+          "unique_fullres_edges": 3,
+          "unique_fullres_true_edges": 2,
+          "combined_union_edges": 406,
+          "combined_union_true_edges": 161
+        }
+      },
+      {
+        "prefix": "case_0015",
+        "source_filename": "img_006869.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 138,
+            "adjacency_recall": 0.125,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 146,
+            "adjacency_recall": 0.1322463768115942,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 407,
+          "current_true_edges": 122,
+          "selective_new_edges": 3,
+          "selective_new_true_edges": 1,
+          "fullres_accepted_edges": 4,
+          "fullres_accepted_true_edges": 1,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 2,
+          "fullres_overlap_selective_true_edges": 1,
+          "unique_fullres_edges": 2,
+          "unique_fullres_true_edges": 0,
+          "combined_union_edges": 412,
+          "combined_union_true_edges": 123
+        }
+      },
+      {
+        "prefix": "case_0016",
+        "source_filename": "img_006755.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 468,
+            "adjacency_recall": 0.42391304347826086,
+            "exact_tiles": 8,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 468,
+            "adjacency_recall": 0.42391304347826086,
+            "exact_tiles": 8,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 401,
+          "current_true_edges": 338,
+          "selective_new_edges": 55,
+          "selective_new_true_edges": 41,
+          "fullres_accepted_edges": 60,
+          "fullres_accepted_true_edges": 37,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 26,
+          "fullres_overlap_selective_true_edges": 18,
+          "unique_fullres_edges": 34,
+          "unique_fullres_true_edges": 19,
+          "combined_union_edges": 490,
+          "combined_union_true_edges": 398
+        }
+      },
+      {
+        "prefix": "case_0017",
+        "source_filename": "img_006755.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 448,
+            "adjacency_recall": 0.4057971014492754,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 472,
+            "adjacency_recall": 0.427536231884058,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 409,
+          "current_true_edges": 335,
+          "selective_new_edges": 56,
+          "selective_new_true_edges": 43,
+          "fullres_accepted_edges": 60,
+          "fullres_accepted_true_edges": 39,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 30,
+          "fullres_overlap_selective_true_edges": 23,
+          "unique_fullres_edges": 30,
+          "unique_fullres_true_edges": 16,
+          "combined_union_edges": 495,
+          "combined_union_true_edges": 394
+        }
+      },
+      {
+        "prefix": "case_0018",
+        "source_filename": "img_006934.png",
+        "draw_index": 0,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 342,
+            "adjacency_recall": 0.30978260869565216,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 342,
+            "adjacency_recall": 0.30978260869565216,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 356,
+          "current_true_edges": 282,
+          "selective_new_edges": 36,
+          "selective_new_true_edges": 21,
+          "fullres_accepted_edges": 31,
+          "fullres_accepted_true_edges": 15,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 18,
+          "fullres_overlap_selective_true_edges": 11,
+          "unique_fullres_edges": 13,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 405,
+          "combined_union_true_edges": 307
+        }
+      },
+      {
+        "prefix": "case_0019",
+        "source_filename": "img_006934.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 364,
+            "adjacency_recall": 0.32971014492753625,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 364,
+            "adjacency_recall": 0.32971014492753625,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 354,
+          "current_true_edges": 273,
+          "selective_new_edges": 55,
+          "selective_new_true_edges": 33,
+          "fullres_accepted_edges": 28,
+          "fullres_accepted_true_edges": 15,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 20,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 2,
+          "combined_union_edges": 417,
+          "combined_union_true_edges": 308
+        }
+      },
+      {
+        "prefix": "case_0020",
+        "source_filename": "img_006949.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 339,
+            "adjacency_recall": 0.3070652173913043,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 339,
+            "adjacency_recall": 0.3070652173913043,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 366,
+          "current_true_edges": 260,
+          "selective_new_edges": 38,
+          "selective_new_true_edges": 21,
+          "fullres_accepted_edges": 23,
+          "fullres_accepted_true_edges": 11,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 18,
+          "fullres_overlap_selective_true_edges": 10,
+          "unique_fullres_edges": 5,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 409,
+          "combined_union_true_edges": 282
+        }
+      },
+      {
+        "prefix": "case_0021",
+        "source_filename": "img_006949.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 351,
+            "adjacency_recall": 0.3179347826086957,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 351,
+            "adjacency_recall": 0.3179347826086957,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 361,
+          "current_true_edges": 251,
+          "selective_new_edges": 32,
+          "selective_new_true_edges": 22,
+          "fullres_accepted_edges": 19,
+          "fullres_accepted_true_edges": 13,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 10,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 9,
+          "unique_fullres_true_edges": 5,
+          "combined_union_edges": 402,
+          "combined_union_true_edges": 278
+        }
+      },
+      {
+        "prefix": "case_0022",
+        "source_filename": "img_006877.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 183,
+            "adjacency_recall": 0.16576086956521738,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 175,
+            "adjacency_recall": 0.1585144927536232,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 407,
+          "current_true_edges": 178,
+          "selective_new_edges": 10,
+          "selective_new_true_edges": 4,
+          "fullres_accepted_edges": 6,
+          "fullres_accepted_true_edges": 2,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 1,
+          "fullres_overlap_selective_true_edges": 1,
+          "unique_fullres_edges": 5,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 422,
+          "combined_union_true_edges": 183
+        }
+      },
+      {
+        "prefix": "case_0023",
+        "source_filename": "img_006877.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 197,
+            "adjacency_recall": 0.17844202898550723,
+            "exact_tiles": 6,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 197,
+            "adjacency_recall": 0.17844202898550723,
+            "exact_tiles": 6,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 377,
+          "current_true_edges": 181,
+          "selective_new_edges": 11,
+          "selective_new_true_edges": 5,
+          "fullres_accepted_edges": 5,
+          "fullres_accepted_true_edges": 0,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 1,
+          "fullres_overlap_selective_true_edges": 0,
+          "unique_fullres_edges": 4,
+          "unique_fullres_true_edges": 0,
+          "combined_union_edges": 392,
+          "combined_union_true_edges": 186
+        }
+      },
+      {
+        "prefix": "case_0024",
+        "source_filename": "img_006977.png",
+        "draw_index": 0,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 278,
+            "adjacency_recall": 0.25181159420289856,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 278,
+            "adjacency_recall": 0.25181159420289856,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 371,
+          "current_true_edges": 237,
+          "selective_new_edges": 20,
+          "selective_new_true_edges": 13,
+          "fullres_accepted_edges": 15,
+          "fullres_accepted_true_edges": 8,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 8,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 7,
+          "unique_fullres_true_edges": 2,
+          "combined_union_edges": 398,
+          "combined_union_true_edges": 252
+        }
+      },
+      {
+        "prefix": "case_0025",
+        "source_filename": "img_006977.png",
+        "draw_index": 1,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 250,
+            "adjacency_recall": 0.22644927536231885,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 250,
+            "adjacency_recall": 0.22644927536231885,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 388,
+          "current_true_edges": 230,
+          "selective_new_edges": 28,
+          "selective_new_true_edges": 17,
+          "fullres_accepted_edges": 15,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 10,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 5,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 421,
+          "combined_union_true_edges": 251
+        }
+      },
+      {
+        "prefix": "case_0026",
+        "source_filename": "img_006883.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 416,
+            "adjacency_recall": 0.37681159420289856,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 416,
+            "adjacency_recall": 0.37681159420289856,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 353,
+          "current_true_edges": 294,
+          "selective_new_edges": 92,
+          "selective_new_true_edges": 70,
+          "fullres_accepted_edges": 93,
+          "fullres_accepted_true_edges": 66,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 53,
+          "fullres_overlap_selective_true_edges": 42,
+          "unique_fullres_edges": 40,
+          "unique_fullres_true_edges": 24,
+          "combined_union_edges": 485,
+          "combined_union_true_edges": 388
+        }
+      },
+      {
+        "prefix": "case_0027",
+        "source_filename": "img_006883.png",
+        "draw_index": 1,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 446,
+            "adjacency_recall": 0.40398550724637683,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 446,
+            "adjacency_recall": 0.40398550724637683,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 405,
+          "current_true_edges": 331,
+          "selective_new_edges": 64,
+          "selective_new_true_edges": 31,
+          "fullres_accepted_edges": 62,
+          "fullres_accepted_true_edges": 34,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 28,
+          "fullres_overlap_selective_true_edges": 14,
+          "unique_fullres_edges": 34,
+          "unique_fullres_true_edges": 20,
+          "combined_union_edges": 503,
+          "combined_union_true_edges": 382
+        }
+      },
+      {
+        "prefix": "case_0028",
+        "source_filename": "img_006701.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 423,
+            "adjacency_recall": 0.38315217391304346,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 446,
+            "adjacency_recall": 0.40398550724637683,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 373,
+          "current_true_edges": 289,
+          "selective_new_edges": 71,
+          "selective_new_true_edges": 51,
+          "fullres_accepted_edges": 46,
+          "fullres_accepted_true_edges": 29,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 27,
+          "fullres_overlap_selective_true_edges": 18,
+          "unique_fullres_edges": 19,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 463,
+          "combined_union_true_edges": 351
+        }
+      },
+      {
+        "prefix": "case_0029",
+        "source_filename": "img_006701.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 413,
+            "adjacency_recall": 0.3740942028985507,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 421,
+            "adjacency_recall": 0.3813405797101449,
+            "exact_tiles": 7,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 400,
+          "current_true_edges": 304,
+          "selective_new_edges": 38,
+          "selective_new_true_edges": 22,
+          "fullres_accepted_edges": 34,
+          "fullres_accepted_true_edges": 21,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 13,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 21,
+          "unique_fullres_true_edges": 13,
+          "combined_union_edges": 459,
+          "combined_union_true_edges": 339
+        }
+      },
+      {
+        "prefix": "case_0030",
+        "source_filename": "img_006789.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 421,
+            "adjacency_recall": 0.3813405797101449,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 421,
+            "adjacency_recall": 0.3813405797101449,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 360,
+          "current_true_edges": 288,
+          "selective_new_edges": 59,
+          "selective_new_true_edges": 44,
+          "fullres_accepted_edges": 40,
+          "fullres_accepted_true_edges": 27,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 25,
+          "fullres_overlap_selective_true_edges": 20,
+          "unique_fullres_edges": 15,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 434,
+          "combined_union_true_edges": 339
+        }
+      },
+      {
+        "prefix": "case_0031",
+        "source_filename": "img_006789.png",
+        "draw_index": 1,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 361,
+            "adjacency_recall": 0.3269927536231884,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 361,
+            "adjacency_recall": 0.3269927536231884,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 387,
+          "current_true_edges": 291,
+          "selective_new_edges": 49,
+          "selective_new_true_edges": 26,
+          "fullres_accepted_edges": 27,
+          "fullres_accepted_true_edges": 15,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 14,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 13,
+          "unique_fullres_true_edges": 8,
+          "combined_union_edges": 449,
+          "combined_union_true_edges": 325
+        }
+      }
+    ],
+    "summary": {
+      "case_count": 32,
+      "pair_denominator": 1104,
+      "arms": {
+        "selective_target500_control": {
+          "satisfied_adjacent_pairs": 343.09375,
+          "adjacency_recall": 0.3107733242753623,
+          "exact_tiles": 1.5625
+        },
+        "combined_union_candidate": {
+          "satisfied_adjacent_pairs": 345.3125,
+          "adjacency_recall": 0.3127830615942029,
+          "exact_tiles": 1.90625
+        }
+      },
+      "choice_counts": {
+        "selective_vote500_focal": 9,
+        "logistic": 3,
+        "combined_union_focal": 8,
+        "focal_top5": 6,
+        "raw": 4,
+        "nonlinear": 2
+      },
+      "control_replay_match_count": 32,
+      "candidate_minus_control": {
+        "satisfied_adjacent_pairs": {
+          "mean": 2.21875,
+          "ci95_lower": -0.21875,
+          "ci95_upper": 5.09375,
+          "source_count": 16,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083195,
+          "case_wins_ties_losses": {
+            "wins": 5,
+            "ties": 24,
+            "losses": 3
+          }
+        },
+        "adjacency_recall": {
+          "mean": 0.002009737318840581,
+          "ci95_lower": -0.000198143115942029,
+          "ci95_upper": 0.00461390398550725,
+          "source_count": 16,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083196,
+          "case_wins_ties_losses": {
+            "wins": 5,
+            "ties": 24,
+            "losses": 3
+          }
+        },
+        "exact_tiles": {
+          "mean": 0.34375,
+          "ci95_lower": -0.03125,
+          "ci95_upper": 0.875,
+          "source_count": 16,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083197,
+          "case_wins_ties_losses": {
+            "wins": 4,
+            "ties": 27,
+            "losses": 1
+          }
+        }
+      },
+      "supply_mean_per_board": {
+        "current_edges": 379.21875,
+        "current_true_edges": 264.21875,
+        "selective_new_edges": 43.25,
+        "selective_new_true_edges": 27.4375,
+        "fullres_accepted_edges": 32.875,
+        "fullres_accepted_true_edges": 19.65625,
+        "fullres_overlap_current_edges": 0.0,
+        "fullres_overlap_selective_edges": 18.0625,
+        "fullres_overlap_selective_true_edges": 11.875,
+        "unique_fullres_edges": 14.8125,
+        "unique_fullres_true_edges": 7.78125,
+        "combined_union_edges": 437.28125,
+        "combined_union_true_edges": 299.4375
+      },
+      "supply_totals": {
+        "current_edges": 12135,
+        "current_true_edges": 8455,
+        "selective_new_edges": 1384,
+        "selective_new_true_edges": 878,
+        "fullres_accepted_edges": 1052,
+        "fullres_accepted_true_edges": 629,
+        "fullres_overlap_current_edges": 0,
+        "fullres_overlap_selective_edges": 578,
+        "fullres_overlap_selective_true_edges": 380,
+        "unique_fullres_edges": 474,
+        "unique_fullres_true_edges": 249,
+        "combined_union_edges": 13993,
+        "combined_union_true_edges": 9582
+      },
+      "supply_quality": {
+        "unique_fullres_precision": 0.5253164556962026,
+        "overlap_selective_precision": 0.657439446366782,
+        "combined_union_recall": 0.2712296195652174
+      }
+    }
+  },
+  "fresh32": {
+    "status": "complete",
+    "target_free_summary": {
+      "case_count": 32,
+      "control_replay_match_count": 32,
+      "choice_counts": {
+        "combined_union_focal": 6,
+        "selective_vote500_focal": 9,
+        "logistic": 8,
+        "raw": 5,
+        "nonlinear": 2,
+        "focal_top5": 2
+      },
+      "mean_fullres_accepted": 29.25,
+      "mean_fullres_overlap_selective": 16.5625,
+      "mean_unique_fullres": 12.6875
+    },
+    "runtime_seconds": 23.668713041988667,
+    "artifacts": {
+      "archive": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/fresh32/frozen-target-free-eval.npz",
+        "sha256": "75a9359eb3ac798096437c22e269c8374a0a38bb01f8e7f9fa9745bd054180cb"
+      },
+      "metadata": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/fresh32/frozen-target-free-eval.json",
+        "sha256": "c65d7e332460001d67b2dc2052a2dd3a2e6c62d08f3a936c7723ecec6dac6794"
+      },
+      "pre_score_freeze": {
+        "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/fresh32/pre-score-freeze.json",
+        "sha256": "7fca88f9ea4489bf64d73a060127af73e1adaa598089eadfb79c1597627d5e93"
+      }
+    },
+    "rows": [
+      {
+        "prefix": "case_0000",
+        "source_filename": "img_006862.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 369,
+            "adjacency_recall": 0.3342391304347826,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 374,
+            "adjacency_recall": 0.338768115942029,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 366,
+          "current_true_edges": 259,
+          "selective_new_edges": 57,
+          "selective_new_true_edges": 44,
+          "fullres_accepted_edges": 30,
+          "fullres_accepted_true_edges": 17,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 21,
+          "fullres_overlap_selective_true_edges": 16,
+          "unique_fullres_edges": 9,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 432,
+          "combined_union_true_edges": 304
+        }
+      },
+      {
+        "prefix": "case_0001",
+        "source_filename": "img_006862.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 359,
+            "adjacency_recall": 0.32518115942028986,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 367,
+            "adjacency_recall": 0.33242753623188404,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 365,
+          "current_true_edges": 275,
+          "selective_new_edges": 59,
+          "selective_new_true_edges": 37,
+          "fullres_accepted_edges": 30,
+          "fullres_accepted_true_edges": 22,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 17,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 13,
+          "unique_fullres_true_edges": 9,
+          "combined_union_edges": 437,
+          "combined_union_true_edges": 321
+        }
+      },
+      {
+        "prefix": "case_0002",
+        "source_filename": "img_006893.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 356,
+            "adjacency_recall": 0.322463768115942,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 356,
+            "adjacency_recall": 0.322463768115942,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 412,
+          "current_true_edges": 265,
+          "selective_new_edges": 36,
+          "selective_new_true_edges": 23,
+          "fullres_accepted_edges": 29,
+          "fullres_accepted_true_edges": 18,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 17,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 12,
+          "unique_fullres_true_edges": 5,
+          "combined_union_edges": 460,
+          "combined_union_true_edges": 293
+        }
+      },
+      {
+        "prefix": "case_0003",
+        "source_filename": "img_006893.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 324,
+            "adjacency_recall": 0.29347826086956524,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 338,
+            "adjacency_recall": 0.3061594202898551,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 392,
+          "current_true_edges": 258,
+          "selective_new_edges": 32,
+          "selective_new_true_edges": 19,
+          "fullres_accepted_edges": 22,
+          "fullres_accepted_true_edges": 8,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 11,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 0,
+          "combined_union_edges": 435,
+          "combined_union_true_edges": 277
+        }
+      },
+      {
+        "prefix": "case_0004",
+        "source_filename": "img_006732.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 339,
+            "adjacency_recall": 0.3070652173913043,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 339,
+            "adjacency_recall": 0.3070652173913043,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 351,
+          "current_true_edges": 248,
+          "selective_new_edges": 41,
+          "selective_new_true_edges": 28,
+          "fullres_accepted_edges": 19,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 11,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 400,
+          "combined_union_true_edges": 279
+        }
+      },
+      {
+        "prefix": "case_0005",
+        "source_filename": "img_006732.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 300,
+            "adjacency_recall": 0.2717391304347826,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 300,
+            "adjacency_recall": 0.2717391304347826,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 380,
+          "current_true_edges": 240,
+          "selective_new_edges": 38,
+          "selective_new_true_edges": 23,
+          "fullres_accepted_edges": 22,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 14,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 2,
+          "combined_union_edges": 426,
+          "combined_union_true_edges": 265
+        }
+      },
+      {
+        "prefix": "case_0006",
+        "source_filename": "img_006866.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 350,
+            "adjacency_recall": 0.3170289855072464,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 350,
+            "adjacency_recall": 0.3170289855072464,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 393,
+          "current_true_edges": 275,
+          "selective_new_edges": 29,
+          "selective_new_true_edges": 23,
+          "fullres_accepted_edges": 20,
+          "fullres_accepted_true_edges": 11,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 9,
+          "fullres_overlap_selective_true_edges": 8,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 433,
+          "combined_union_true_edges": 301
+        }
+      },
+      {
+        "prefix": "case_0007",
+        "source_filename": "img_006866.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 330,
+            "adjacency_recall": 0.29891304347826086,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 330,
+            "adjacency_recall": 0.29891304347826086,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 397,
+          "current_true_edges": 260,
+          "selective_new_edges": 30,
+          "selective_new_true_edges": 21,
+          "fullres_accepted_edges": 24,
+          "fullres_accepted_true_edges": 18,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 9,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 15,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 442,
+          "combined_union_true_edges": 292
+        }
+      },
+      {
+        "prefix": "case_0008",
+        "source_filename": "img_006809.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 448,
+            "adjacency_recall": 0.4057971014492754,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 448,
+            "adjacency_recall": 0.4057971014492754,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 385,
+          "current_true_edges": 308,
+          "selective_new_edges": 84,
+          "selective_new_true_edges": 53,
+          "fullres_accepted_edges": 30,
+          "fullres_accepted_true_edges": 17,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 23,
+          "fullres_overlap_selective_true_edges": 12,
+          "unique_fullres_edges": 7,
+          "unique_fullres_true_edges": 5,
+          "combined_union_edges": 476,
+          "combined_union_true_edges": 366
+        }
+      },
+      {
+        "prefix": "case_0009",
+        "source_filename": "img_006809.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 439,
+            "adjacency_recall": 0.3976449275362319,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 439,
+            "adjacency_recall": 0.3976449275362319,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 356,
+          "current_true_edges": 307,
+          "selective_new_edges": 70,
+          "selective_new_true_edges": 47,
+          "fullres_accepted_edges": 46,
+          "fullres_accepted_true_edges": 26,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 25,
+          "fullres_overlap_selective_true_edges": 15,
+          "unique_fullres_edges": 21,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 447,
+          "combined_union_true_edges": 365
+        }
+      },
+      {
+        "prefix": "case_0010",
+        "source_filename": "img_006951.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 389,
+            "adjacency_recall": 0.3523550724637681,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 389,
+            "adjacency_recall": 0.3523550724637681,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 352,
+          "current_true_edges": 264,
+          "selective_new_edges": 58,
+          "selective_new_true_edges": 43,
+          "fullres_accepted_edges": 32,
+          "fullres_accepted_true_edges": 21,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 17,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 15,
+          "unique_fullres_true_edges": 8,
+          "combined_union_edges": 425,
+          "combined_union_true_edges": 315
+        }
+      },
+      {
+        "prefix": "case_0011",
+        "source_filename": "img_006951.png",
+        "draw_index": 1,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 344,
+            "adjacency_recall": 0.3115942028985507,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 344,
+            "adjacency_recall": 0.3115942028985507,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 395,
+          "current_true_edges": 284,
+          "selective_new_edges": 46,
+          "selective_new_true_edges": 30,
+          "fullres_accepted_edges": 28,
+          "fullres_accepted_true_edges": 15,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 10,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 18,
+          "unique_fullres_true_edges": 9,
+          "combined_union_edges": 459,
+          "combined_union_true_edges": 323
+        }
+      },
+      {
+        "prefix": "case_0012",
+        "source_filename": "img_006716.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 350,
+            "adjacency_recall": 0.3170289855072464,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 350,
+            "adjacency_recall": 0.3170289855072464,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 368,
+          "current_true_edges": 269,
+          "selective_new_edges": 57,
+          "selective_new_true_edges": 37,
+          "fullres_accepted_edges": 33,
+          "fullres_accepted_true_edges": 19,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 23,
+          "fullres_overlap_selective_true_edges": 15,
+          "unique_fullres_edges": 10,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 435,
+          "combined_union_true_edges": 310
+        }
+      },
+      {
+        "prefix": "case_0013",
+        "source_filename": "img_006716.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 341,
+            "adjacency_recall": 0.3088768115942029,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 341,
+            "adjacency_recall": 0.3088768115942029,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 371,
+          "current_true_edges": 271,
+          "selective_new_edges": 59,
+          "selective_new_true_edges": 33,
+          "fullres_accepted_edges": 44,
+          "fullres_accepted_true_edges": 25,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 27,
+          "fullres_overlap_selective_true_edges": 14,
+          "unique_fullres_edges": 17,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 447,
+          "combined_union_true_edges": 315
+        }
+      },
+      {
+        "prefix": "case_0014",
+        "source_filename": "img_006784.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 338,
+            "adjacency_recall": 0.3061594202898551,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 338,
+            "adjacency_recall": 0.3061594202898551,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 360,
+          "current_true_edges": 254,
+          "selective_new_edges": 37,
+          "selective_new_true_edges": 24,
+          "fullres_accepted_edges": 15,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 9,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 6,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 403,
+          "combined_union_true_edges": 281
+        }
+      },
+      {
+        "prefix": "case_0015",
+        "source_filename": "img_006784.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 305,
+            "adjacency_recall": 0.276268115942029,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 305,
+            "adjacency_recall": 0.276268115942029,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 371,
+          "current_true_edges": 248,
+          "selective_new_edges": 50,
+          "selective_new_true_edges": 26,
+          "fullres_accepted_edges": 34,
+          "fullres_accepted_true_edges": 14,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 22,
+          "fullres_overlap_selective_true_edges": 11,
+          "unique_fullres_edges": 12,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 433,
+          "combined_union_true_edges": 277
+        }
+      },
+      {
+        "prefix": "case_0016",
+        "source_filename": "img_006906.png",
+        "draw_index": 0,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 304,
+            "adjacency_recall": 0.2753623188405797,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 304,
+            "adjacency_recall": 0.2753623188405797,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 383,
+          "current_true_edges": 242,
+          "selective_new_edges": 25,
+          "selective_new_true_edges": 15,
+          "fullres_accepted_edges": 13,
+          "fullres_accepted_true_edges": 5,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 9,
+          "fullres_overlap_selective_true_edges": 4,
+          "unique_fullres_edges": 4,
+          "unique_fullres_true_edges": 1,
+          "combined_union_edges": 412,
+          "combined_union_true_edges": 258
+        }
+      },
+      {
+        "prefix": "case_0017",
+        "source_filename": "img_006906.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 246,
+            "adjacency_recall": 0.22282608695652173,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 246,
+            "adjacency_recall": 0.22282608695652173,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 392,
+          "current_true_edges": 249,
+          "selective_new_edges": 25,
+          "selective_new_true_edges": 12,
+          "fullres_accepted_edges": 19,
+          "fullres_accepted_true_edges": 6,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 8,
+          "fullres_overlap_selective_true_edges": 3,
+          "unique_fullres_edges": 11,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 428,
+          "combined_union_true_edges": 264
+        }
+      },
+      {
+        "prefix": "case_0018",
+        "source_filename": "img_006805.png",
+        "draw_index": 0,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 362,
+            "adjacency_recall": 0.3278985507246377,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 362,
+            "adjacency_recall": 0.3278985507246377,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 383,
+          "current_true_edges": 277,
+          "selective_new_edges": 50,
+          "selective_new_true_edges": 33,
+          "fullres_accepted_edges": 53,
+          "fullres_accepted_true_edges": 28,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 24,
+          "fullres_overlap_selective_true_edges": 16,
+          "unique_fullres_edges": 29,
+          "unique_fullres_true_edges": 12,
+          "combined_union_edges": 462,
+          "combined_union_true_edges": 322
+        }
+      },
+      {
+        "prefix": "case_0019",
+        "source_filename": "img_006805.png",
+        "draw_index": 1,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 381,
+            "adjacency_recall": 0.3451086956521739,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 381,
+            "adjacency_recall": 0.3451086956521739,
+            "exact_tiles": 3,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 380,
+          "current_true_edges": 292,
+          "selective_new_edges": 58,
+          "selective_new_true_edges": 40,
+          "fullres_accepted_edges": 41,
+          "fullres_accepted_true_edges": 27,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 20,
+          "fullres_overlap_selective_true_edges": 16,
+          "unique_fullres_edges": 21,
+          "unique_fullres_true_edges": 11,
+          "combined_union_edges": 459,
+          "combined_union_true_edges": 343
+        }
+      },
+      {
+        "prefix": "case_0020",
+        "source_filename": "img_006993.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 371,
+            "adjacency_recall": 0.33605072463768115,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 371,
+            "adjacency_recall": 0.33605072463768115,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 357,
+          "current_true_edges": 287,
+          "selective_new_edges": 59,
+          "selective_new_true_edges": 40,
+          "fullres_accepted_edges": 35,
+          "fullres_accepted_true_edges": 23,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 27,
+          "fullres_overlap_selective_true_edges": 19,
+          "unique_fullres_edges": 8,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 424,
+          "combined_union_true_edges": 331
+        }
+      },
+      {
+        "prefix": "case_0021",
+        "source_filename": "img_006993.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 387,
+            "adjacency_recall": 0.35054347826086957,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 387,
+            "adjacency_recall": 0.35054347826086957,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 364,
+          "current_true_edges": 294,
+          "selective_new_edges": 38,
+          "selective_new_true_edges": 17,
+          "fullres_accepted_edges": 29,
+          "fullres_accepted_true_edges": 13,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 15,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 14,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 416,
+          "combined_union_true_edges": 318
+        }
+      },
+      {
+        "prefix": "case_0022",
+        "source_filename": "img_006727.png",
+        "draw_index": 0,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 326,
+            "adjacency_recall": 0.29528985507246375,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 326,
+            "adjacency_recall": 0.29528985507246375,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 391,
+          "current_true_edges": 270,
+          "selective_new_edges": 29,
+          "selective_new_true_edges": 20,
+          "fullres_accepted_edges": 15,
+          "fullres_accepted_true_edges": 6,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 5,
+          "fullres_overlap_selective_true_edges": 2,
+          "unique_fullres_edges": 10,
+          "unique_fullres_true_edges": 4,
+          "combined_union_edges": 430,
+          "combined_union_true_edges": 294
+        }
+      },
+      {
+        "prefix": "case_0023",
+        "source_filename": "img_006727.png",
+        "draw_index": 1,
+        "choice": "selective_vote500_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 336,
+            "adjacency_recall": 0.30434782608695654,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 336,
+            "adjacency_recall": 0.30434782608695654,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 390,
+          "current_true_edges": 277,
+          "selective_new_edges": 27,
+          "selective_new_true_edges": 15,
+          "fullres_accepted_edges": 16,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 7,
+          "fullres_overlap_selective_true_edges": 5,
+          "unique_fullres_edges": 9,
+          "unique_fullres_true_edges": 5,
+          "combined_union_edges": 426,
+          "combined_union_true_edges": 297
+        }
+      },
+      {
+        "prefix": "case_0024",
+        "source_filename": "img_006770.png",
+        "draw_index": 0,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 470,
+            "adjacency_recall": 0.4257246376811594,
+            "exact_tiles": 2,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 488,
+            "adjacency_recall": 0.4420289855072464,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 367,
+          "current_true_edges": 321,
+          "selective_new_edges": 73,
+          "selective_new_true_edges": 57,
+          "fullres_accepted_edges": 47,
+          "fullres_accepted_true_edges": 34,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 30,
+          "fullres_overlap_selective_true_edges": 25,
+          "unique_fullres_edges": 17,
+          "unique_fullres_true_edges": 9,
+          "combined_union_edges": 457,
+          "combined_union_true_edges": 387
+        }
+      },
+      {
+        "prefix": "case_0025",
+        "source_filename": "img_006770.png",
+        "draw_index": 1,
+        "choice": "focal_top5",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 408,
+            "adjacency_recall": 0.3695652173913043,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 408,
+            "adjacency_recall": 0.3695652173913043,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 384,
+          "current_true_edges": 320,
+          "selective_new_edges": 75,
+          "selective_new_true_edges": 57,
+          "fullres_accepted_edges": 52,
+          "fullres_accepted_true_edges": 35,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 34,
+          "fullres_overlap_selective_true_edges": 25,
+          "unique_fullres_edges": 18,
+          "unique_fullres_true_edges": 10,
+          "combined_union_edges": 477,
+          "combined_union_true_edges": 387
+        }
+      },
+      {
+        "prefix": "case_0026",
+        "source_filename": "img_006811.png",
+        "draw_index": 0,
+        "choice": "logistic",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 395,
+            "adjacency_recall": 0.35778985507246375,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 395,
+            "adjacency_recall": 0.35778985507246375,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 379,
+          "current_true_edges": 294,
+          "selective_new_edges": 39,
+          "selective_new_true_edges": 31,
+          "fullres_accepted_edges": 37,
+          "fullres_accepted_true_edges": 24,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 18,
+          "fullres_overlap_selective_true_edges": 15,
+          "unique_fullres_edges": 19,
+          "unique_fullres_true_edges": 9,
+          "combined_union_edges": 437,
+          "combined_union_true_edges": 334
+        }
+      },
+      {
+        "prefix": "case_0027",
+        "source_filename": "img_006811.png",
+        "draw_index": 1,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 392,
+            "adjacency_recall": 0.35507246376811596,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 392,
+            "adjacency_recall": 0.35507246376811596,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 377,
+          "current_true_edges": 301,
+          "selective_new_edges": 58,
+          "selective_new_true_edges": 32,
+          "fullres_accepted_edges": 45,
+          "fullres_accepted_true_edges": 30,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 24,
+          "fullres_overlap_selective_true_edges": 16,
+          "unique_fullres_edges": 21,
+          "unique_fullres_true_edges": 14,
+          "combined_union_edges": 456,
+          "combined_union_true_edges": 347
+        }
+      },
+      {
+        "prefix": "case_0028",
+        "source_filename": "img_006772.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 349,
+            "adjacency_recall": 0.3161231884057971,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 349,
+            "adjacency_recall": 0.3161231884057971,
+            "exact_tiles": 1,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 379,
+          "current_true_edges": 275,
+          "selective_new_edges": 47,
+          "selective_new_true_edges": 32,
+          "fullres_accepted_edges": 22,
+          "fullres_accepted_true_edges": 16,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 15,
+          "fullres_overlap_selective_true_edges": 13,
+          "unique_fullres_edges": 7,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 433,
+          "combined_union_true_edges": 310
+        }
+      },
+      {
+        "prefix": "case_0029",
+        "source_filename": "img_006772.png",
+        "draw_index": 1,
+        "choice": "nonlinear",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 340,
+            "adjacency_recall": 0.3079710144927536,
+            "exact_tiles": 11,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 340,
+            "adjacency_recall": 0.3079710144927536,
+            "exact_tiles": 11,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 368,
+          "current_true_edges": 266,
+          "selective_new_edges": 40,
+          "selective_new_true_edges": 24,
+          "fullres_accepted_edges": 20,
+          "fullres_accepted_true_edges": 10,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 11,
+          "fullres_overlap_selective_true_edges": 7,
+          "unique_fullres_edges": 9,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 417,
+          "combined_union_true_edges": 293
+        }
+      },
+      {
+        "prefix": "case_0030",
+        "source_filename": "img_006833.png",
+        "draw_index": 0,
+        "choice": "raw",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 288,
+            "adjacency_recall": 0.2608695652173913,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 288,
+            "adjacency_recall": 0.2608695652173913,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 398,
+          "current_true_edges": 243,
+          "selective_new_edges": 32,
+          "selective_new_true_edges": 18,
+          "fullres_accepted_edges": 22,
+          "fullres_accepted_true_edges": 13,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 10,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 12,
+          "unique_fullres_true_edges": 7,
+          "combined_union_edges": 442,
+          "combined_union_true_edges": 268
+        }
+      },
+      {
+        "prefix": "case_0031",
+        "source_filename": "img_006833.png",
+        "draw_index": 1,
+        "choice": "combined_union_focal",
+        "mechanical_control_matches_frozen": true,
+        "metrics": {
+          "selective_target500_control": {
+            "satisfied_adjacent_pairs": 295,
+            "adjacency_recall": 0.26721014492753625,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          },
+          "combined_union_candidate": {
+            "satisfied_adjacent_pairs": 299,
+            "adjacency_recall": 0.2708333333333333,
+            "exact_tiles": 0,
+            "strict_original_upright_permutation": true
+          }
+        },
+        "supply": {
+          "current_edges": 390,
+          "current_true_edges": 245,
+          "selective_new_edges": 30,
+          "selective_new_true_edges": 15,
+          "fullres_accepted_edges": 12,
+          "fullres_accepted_true_edges": 9,
+          "fullres_overlap_current_edges": 0,
+          "fullres_overlap_selective_edges": 8,
+          "fullres_overlap_selective_true_edges": 6,
+          "unique_fullres_edges": 4,
+          "unique_fullres_true_edges": 3,
+          "combined_union_edges": 424,
+          "combined_union_true_edges": 263
+        }
+      }
+    ],
+    "summary": {
+      "case_count": 32,
+      "pair_denominator": 1104,
+      "arms": {
+        "selective_target500_control": {
+          "satisfied_adjacent_pairs": 354.09375,
+          "adjacency_recall": 0.3207370923913043,
+          "exact_tiles": 0.96875
+        },
+        "combined_union_candidate": {
+          "satisfied_adjacent_pairs": 355.625,
+          "adjacency_recall": 0.32212409420289856,
+          "exact_tiles": 0.9375
+        }
+      },
+      "choice_counts": {
+        "combined_union_focal": 6,
+        "selective_vote500_focal": 9,
+        "logistic": 8,
+        "raw": 5,
+        "nonlinear": 2,
+        "focal_top5": 2
+      },
+      "control_replay_match_count": 32,
+      "candidate_minus_control": {
+        "satisfied_adjacent_pairs": {
+          "mean": 1.53125,
+          "ci95_lower": 0.125,
+          "ci95_upper": 3.09375,
+          "source_count": 16,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083195,
+          "case_wins_ties_losses": {
+            "wins": 5,
+            "ties": 27,
+            "losses": 0
+          }
+        },
+        "adjacency_recall": {
+          "mean": 0.0013870018115942021,
+          "ci95_lower": 0.00022644927536231638,
+          "ci95_upper": 0.002802309782608696,
+          "source_count": 16,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083196,
+          "case_wins_ties_losses": {
+            "wins": 5,
+            "ties": 27,
+            "losses": 0
+          }
+        },
+        "exact_tiles": {
+          "mean": -0.03125,
+          "ci95_lower": -0.09375,
+          "ci95_upper": 0.0,
+          "source_count": 16,
+          "case_count": 32,
+          "bootstrap_resamples": 20000,
+          "bootstrap_seed": 2026083197,
+          "case_wins_ties_losses": {
+            "wins": 1,
+            "ties": 29,
+            "losses": 2
+          }
+        }
+      },
+      "supply_mean_per_board": {
+        "current_edges": 378.0,
+        "current_true_edges": 273.0625,
+        "selective_new_edges": 46.5,
+        "selective_new_true_edges": 30.28125,
+        "fullres_accepted_edges": 29.25,
+        "fullres_accepted_true_edges": 17.1875,
+        "fullres_overlap_current_edges": 0.0,
+        "fullres_overlap_selective_edges": 16.5625,
+        "fullres_overlap_selective_true_edges": 11.15625,
+        "unique_fullres_edges": 12.6875,
+        "unique_fullres_true_edges": 6.03125,
+        "combined_union_edges": 437.1875,
+        "combined_union_true_edges": 309.375
+      },
+      "supply_totals": {
+        "current_edges": 12096,
+        "current_true_edges": 8738,
+        "selective_new_edges": 1488,
+        "selective_new_true_edges": 969,
+        "fullres_accepted_edges": 936,
+        "fullres_accepted_true_edges": 550,
+        "fullres_overlap_current_edges": 0,
+        "fullres_overlap_selective_edges": 530,
+        "fullres_overlap_selective_true_edges": 357,
+        "unique_fullres_edges": 406,
+        "unique_fullres_true_edges": 193,
+        "combined_union_edges": 13990,
+        "combined_union_true_edges": 9900
+      },
+      "supply_quality": {
+        "unique_fullres_precision": 0.4753694581280788,
+        "overlap_selective_precision": 0.6735849056603773,
+        "combined_union_recall": 0.28023097826086957
+      }
+    }
+  },
+  "runtime_seconds": 78.85478020799928,
+  "legality": {
+    "strict_original_upright_tile_permutations": true,
+    "pixels_restored_replaced_rotated_or_warped": false,
+    "targets_used_only_after_candidate_freeze": true,
+    "competition_test_accessed": false,
+    "postprocessing_used": false,
+    "production_modified": false
+  },
+  "artifacts": {
+    "runner": {
+      "path": "scripts/run_taska_selective_fullres_fusion.py",
+      "sha256": "173a9f44870a4e60b2e5199ff28e03e42afa0bf34d8fe970806f762e2dba4ab5"
+    },
+    "fusion_module": {
+      "path": "src/aiijc_puzzle/taska_selective_fullres_fusion.py",
+      "sha256": "13ba0e8f5c09c84dfef8c25711805e334a7afd5f0e9e80db749415f566ed6348"
+    },
+    "raw_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    }
+  }
+}

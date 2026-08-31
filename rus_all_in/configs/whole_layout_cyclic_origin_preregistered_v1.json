@@ -1,0 +1,98 @@
+{
+  "experiment": "whole-layout-cyclic-origin-cnn-v1-train-only-discovery",
+  "registered_before_evaluation_target_access": true,
+  "registered_before_evaluation_dirty_prediction_generation": true,
+  "duplication_audit": {
+    "document": "docs/experiments/whole-layout-cyclic-origin-cnn.md",
+    "completed_before_implementation": true,
+    "distinction": "nonlinear circular/dilated CNN over the actual predicted feature grid; not summed isolated tile-coordinate unaries, an analytic cut scorer, a population semantic field, or an individual tile-slot decoder"
+  },
+  "selection_commitment": {
+    "path": "outputs/whole-layout-cyclic-origin/v1-selection/selection_commitment.json",
+    "sha256": "a8fe3a97f0ed0cee8a210aac725d0e82fb335116ebd355b3aa6133cfea97f94b",
+    "fit_sources": 256,
+    "fit_order_digest": "d1d615ce91c408e756533627cffae7423ded39c6e6e1d679f3cbd149f7811b08",
+    "evaluation_sources": 16,
+    "evaluation_order_digest": "feb6a3ae433db243b2032053d2ad7638634afb07137cd5542045dc3f60451ef0"
+  },
+  "frozen_socket": {
+    "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+    "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+    "decoder_component_edge_budget_per_axis": 144,
+    "decoder_max_swap_steps": 24
+  },
+  "architecture": {
+    "input_channels": 109,
+    "raw_feature_channels": 25,
+    "frozen_d64_context_channels": 64,
+    "socket_feature_channels": 12,
+    "component_feature_channels": 8,
+    "width": 32,
+    "dilations": [1, 2, 4, 8],
+    "circular_padding_only": true,
+    "receptive_radius": 15,
+    "tile_identity_feature": false,
+    "shuffled_input_index_embedding": false,
+    "absolute_layout_position_embedding": false,
+    "parameter_count": 45345
+  },
+  "synthetic_seed": 20260911,
+  "training": {
+    "device": "cpu",
+    "frozen_feature_extraction_device_selected_by_benchmark": "mps",
+    "steps": 400,
+    "batch_size": 8,
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0001,
+    "exact_roll_only_steps": 120,
+    "mixed_curriculum_steps": 120,
+    "decoder_only_steps": 160,
+    "loss": "negative log probability assigned to any maximum-exact global roll",
+    "random_whole_grid_roll_augmentation": true,
+    "seed": 20260911
+  },
+  "capacity_and_device_preflight": {
+    "capacity": {
+      "synthetic_boards": 8,
+      "steps": 80,
+      "initial_nll": 6.450252532958984,
+      "final_nll": 0.00003361701965332031,
+      "final_r1": 1.0,
+      "pass": true
+    },
+    "head_update_seconds": {
+      "cpu": 0.015304199903039262,
+      "mps_nondeterministic_timing_only": 0.007441279201884754
+    },
+    "frozen_socket_plus_decoder_seconds": {
+      "cpu": 1.0500273473298876,
+      "mps": 0.24218856967248334
+    },
+    "device_decision": "MPS frozen feature extraction plus deterministic CPU head training; deterministic MPS backward is unsupported for the required indexed log-sum-exp"
+  },
+  "evaluation": {
+    "manifest_split": "train",
+    "sources": 16,
+    "draws_per_source": 1,
+    "baseline": "raw d64 decoder144 plus frozen cyclic-border5",
+    "candidate": "same raw d64 decoder144 plus learned whole-layout cyclic roll",
+    "no_weight_or_arm_sweep": true,
+    "freeze_both_strict_layouts_before_reference_scoring": true,
+    "original_upright_tiles_only": true,
+    "calibration_opened": false,
+    "holdout_opened": false,
+    "competition_test_opened": false
+  },
+  "discovery_gate": {
+    "policy": "pass if primary exact path, or one low-D1 roll diagnostic with exact nonnegative; every path also requires adjacency and strict-permutation safety",
+    "minimum_exact_gain_per_board": 0.1,
+    "minimum_r1_gain_over_uniform": 0.05,
+    "minimum_r5_gain_over_uniform": 0.1,
+    "minimum_nll_gain_over_uniform": 0.1,
+    "minimum_adjacency_delta": -0.002,
+    "strict_original_permutations_required": 16,
+    "promotion_authorized_on_pass": false,
+    "future_fresh_source64_draw2_required_for_promotion": true,
+    "competition_test_authorized_on_pass": false
+  }
+}

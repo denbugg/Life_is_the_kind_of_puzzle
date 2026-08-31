@@ -1,0 +1,157 @@
+{
+  "schema": "aiijc-sparse-bordergraph-qap-preregistered-v1",
+  "frozen_at": "2026-08-30",
+  "status": "frozen-before-capacity-benchmark-fit-or-exact16-access",
+  "experiment": "Rank2 Sparse BorderGraph-QAP bounded discovery",
+  "pre_target_access_correction": {
+    "reason": "The original literal all-JSON-filename exclusion also collected historical fit/lineage declarations whose union covers all 5,600 organizer-train sources. Before any QAP fit/eval target was opened, it was corrected to exclude every actual/opened evaluation-panel field plus every frozen-input checkpoint lineage, while not treating historical train-only fit declarations as exact-panel access.",
+    "selected_qap_targets_opened_before_correction": false,
+    "capacity_and_random_benchmark_evidence_only": true,
+    "capacity_and_benchmark_must_be_rerun_after_this_hash": true
+  },
+  "activation_prerequisite": {
+    "source": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/report.json",
+    "fullres_relation_fusion_discovery_pass": true,
+    "top32_confidence_precision_gain_percentage_points": 14.453125,
+    "top32_correct_attachments_gain_per_board": 4.625,
+    "union_supply_coverage_gain_percentage_points": 7.458507280317683,
+    "rank2_threshold_from_literature_memo": {
+      "minimum_precision_gain_percentage_points": 3.0,
+      "minimum_correct_top32_gain_per_board": 1.0
+    },
+    "parent_authorization": "The Rank2 downstream decoder is explicitly authorized by the root task after the representation gate; the earlier fusion report itself remains local-only and is not retroactively edited."
+  },
+  "frozen_inputs": {
+    "socket_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "component_relation_checkpoint": {
+      "path": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/component_relation_reranker.pt",
+      "sha256": "bab833bbbef2f73c17d6ae87ce383989138fea9bc48f4015ed1bfdc5b3c1f0ae"
+    },
+    "fullres_denoiser_checkpoint": {
+      "path": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/fullres_boundary_denoiser.pt",
+      "sha256": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c"
+    },
+    "fullres_relation_fusion_checkpoint": {
+      "path": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/fullres_relation_fusion.pt",
+      "sha256": "ebc202d623cf8323319a00ffa09418d9d03ee39e70b96ac9cafdcc3f4003877c"
+    }
+  },
+  "distinction_from_failed_lines": {
+    "socket_permutation_flow": "Retains explicit directional pairwise tile-to-grid energy at every refinement; it never collapses the graph into separable row/column coordinate proposals.",
+    "historical_qap": "Activated only after source-disjoint fullres-relation evidence exceeded the preregistered precision/correct-attachment knee; edge weights are learned with exact shuffles instead of applying a solver to the old weak score matrix.",
+    "historical_sync": "No gauge-free relative pose claim: the fixed absolute grid and dirty-visible tile-to-slot unary are optimized jointly, and Hungarian fixes a strict absolute permutation.",
+    "standalone_sinkhorn": "Sinkhorn is only a bounded continuous optimizer inside a sparse quadratic objective; it is not the solver objective by itself.",
+    "dense_affinity": "Only O(E*N) sparse directional messages are materialized; no (N^2)^2 four-index affinity tensor."
+  },
+  "selection": {
+    "manifest_split": "train",
+    "namespace": "aiijc-sparse-bordergraph-qap-v1-20310913",
+    "seed": 20310913,
+    "fit_sources": 64,
+    "evaluation_sources": 16,
+    "draws_per_source": 1,
+    "exclusion_policy": "Before roster commitment, scan every existing JSON under configs and outputs. Exclude all explicit eval/evaluation/local/confirm/decoder/terminal/selection/selected/source panel filename fields and every singular source_filename/filename case record, but ignore broad train/fit/lineage/pool/library declarations as panel labels. From frozen binary checkpoints add only actual train/fit/eval rosters; do not confuse an exclusion pool or lineage registry with pixels actually opened. Write and hash selection_commitment.json before opening any selected target.",
+    "required_current_commitments": [
+      {
+        "path": "configs/fullres_relation_fusion_decoder_d2_preregistered_v1.json",
+        "sha256": "46ae0388fee837efbb1bb47f665a442f1badab62bfc6279b6728c1f5a840114a",
+        "source_order_digest": "058bec96c295db71580436eb254c2b77f600a69a51e2d21c31b9e66bfc8a1bf9"
+      },
+      {
+        "path": "outputs/whole-layout-cyclic-origin/v1-selection/selection_commitment.json",
+        "sha256": "a8fe3a97f0ed0cee8a210aac725d0e82fb335116ebd355b3aa6133cfea97f94b",
+        "evaluation_order_digest": "feb6a3ae"
+      }
+    ],
+    "fit_eval_source_disjoint": true,
+    "exclude_calibration_holdout_and_competition_test": true,
+    "freeze_dirty_only_predictions_before_exact_scoring": true
+  },
+  "sparse_graph": {
+    "directions": [
+      "right",
+      "down"
+    ],
+    "topk_per_tile_direction": 8,
+    "candidate_pool": "raw d64 top8 union restored d64 top8 union every frozen fullres-relation contact union decoder-component internal edges",
+    "selection_priority": "target-free max raw/restored standardized evidence plus frozen relation rank/confidence and internal-component indicator",
+    "edge_features": [
+      "frozen_priority_z",
+      "raw_socket_z",
+      "raw_ot_z",
+      "restored_socket_z",
+      "restored_ot_z",
+      "raw_outgoing_reciprocal_rank",
+      "raw_incoming_reciprocal_rank",
+      "restored_outgoing_reciprocal_rank",
+      "restored_incoming_reciprocal_rank",
+      "fusion_relation_z",
+      "fusion_query_confidence_tanh",
+      "fusion_query_top_candidate",
+      "decoder_component_internal",
+      "raw_top8_supply",
+      "restored_top8_supply",
+      "direction_down"
+    ]
+  },
+  "architecture": {
+    "tile_features": "raw d64 context + restored d64 context + raw/restored four border logits + dirty RGB per-tile mean/std",
+    "hidden_dimension": 96,
+    "edge_hidden_dimension": 64,
+    "unrolled_qap_steps": 2,
+    "sinkhorn_iterations": 6,
+    "sinkhorn_temperature": 0.7,
+    "baseline_decoder_anchor": 2.0,
+    "pairwise_scale": 2.0,
+    "message_normalizer": 8.0,
+    "edge_residual_limit": 2.0,
+    "final_projection": "Hungarian strict permutation",
+    "input_tile_identity_embedding": false,
+    "borderpointer_checkpoint_or_memory_used": false
+  },
+  "training": {
+    "maximum_fit_sources": 128,
+    "fit_sources": 64,
+    "updates": 240,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0005,
+    "weight_decay": 0.0002,
+    "gradient_clip": 1.0,
+    "edge_loss_weight": 0.2,
+    "axis_loss_weight": 0.15,
+    "energy_margin_weight": 0.1,
+    "energy_margin_per_tile": 0.02,
+    "capacity_grid": 4,
+    "capacity_before_full_grid": true,
+    "cpu_mps_benchmark_before_full_grid": true
+  },
+  "layout": {
+    "grid": 24,
+    "matched_comparator": "frozen d64 decoder144 then the same preregistered cyclic-border5",
+    "candidate_tail": "Sparse QAP Hungarian then the same preregistered cyclic-border5",
+    "cyclic_border_weight": 5.0,
+    "render": "strict permutation of original upright tile identities; matcher views never replace pixels"
+  },
+  "discovery_gate": {
+    "truth_total_quadratic_energy_strictly_better_than_frozen_decoder_layout": true,
+    "and_either": [
+      "mean exact tiles per board delta versus matched comparator is strictly positive",
+      "mean adjacency delta versus matched comparator is at least -0.01"
+    ],
+    "descriptive_only": true,
+    "promotion_authorized": false,
+    "competition_test_authorized": false
+  },
+  "strict_promotion_gate": {
+    "not_opened_by_this_run": true,
+    "fresh_panel": "source64 x draw2",
+    "minimum_exact_tiles_per_board_delta": 0.5,
+    "source_clustered_paired_95pct_ci_lower_bound": 0.0,
+    "maximum_adjacency_loss": 0.002,
+    "strict_permutations_required": 128,
+    "original_upright_tile_render_required": true
+  }
+}

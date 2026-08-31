@@ -1,0 +1,52 @@
+{
+  "schema": "aiijc-taska-edge-calibrator-train256-v1",
+  "experiment": "taska-edge-calibrator-train256-v1",
+  "selection": {
+    "namespace": "aiijc-taska-edge-calibrator-train256-v1",
+    "seed": 1729044311,
+    "algorithm": "sha256(namespace\\0seed\\0filename) ascending, filename tie-break",
+    "eligible_source_rule": "organizer-train filename index < 6700, excluding all opened32 sources",
+    "eligible_source_count": 6684,
+    "selected_source_count": 256,
+    "selected_source_order_digest": "4ecbb2cfb300153408e3907861406ac746cfc792232412512f15a7b23822dcf7",
+    "draw_indices": [0]
+  },
+  "synthetic_seed": 1267233517,
+  "matcher": {
+    "checkpoints": ["v3", "local"],
+    "views": ["raw", "median", "bilateral"],
+    "orientations": 2,
+    "votes_fallback": 10,
+    "vote_target": 350,
+    "depth": 1,
+    "quad_weight": 0.0,
+    "cycle_rounds": 3,
+    "cycle_weight": 0.35,
+    "sinkhorn_iterations": 20,
+    "acyclic_weight": 3.0
+  },
+  "features": {
+    "version": "taska-edge-features-v1",
+    "count": 15,
+    "diagonal_participates_in_row_and_column_partitions": true,
+    "rank_denominator": 575,
+    "z_epsilon": 1e-6
+  },
+  "calibrator": {
+    "estimator": "sklearn.pipeline(StandardScaler, LogisticRegression)",
+    "C": 1.0,
+    "max_iter": 1000,
+    "edge_priority": "positive-class predict_proba descending, stable ties"
+  },
+  "locked_evaluation_order": [
+    "opened32 frozen panel",
+    "held300 frozen panel"
+  ],
+  "legality": {
+    "organizer_train_only": true,
+    "upright_original_tile_permutation_only": true,
+    "competition_test_access": false,
+    "target_features_at_inference": false,
+    "tile_id_or_source_coordinate_features": false
+  }
+}

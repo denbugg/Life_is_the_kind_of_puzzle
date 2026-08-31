@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "experiment": "h28_safe_source_edge_and_grid_protected_h40_flat_region_tail",
+  "frozen_at": "2026-08-30T10:25:55+03:00",
+  "status_at_freeze": "preregistered_before_this_experiment_decodes_any_selected_target_pixels",
+  "scientific_scope": "broader reused calibration confirmation of a development-selected arm; historically target-exposed; not fresh, not holdout, and not an unbiased generalization estimate",
+  "hypothesis_provenance": {
+    "candidate_origin": "F was fixed after development on already-opened edge-v1 calibration records 120:168 and an already-opened DualNAF-stack panel 636:668",
+    "development_result_120_168": "F mean 0.271490 versus h28 0.269263, gain +0.002227, 48/48 wins",
+    "development_result_636_668": "F mean 0.269138 versus A 0.255451 and B/h28 0.266820, gain +0.002318 versus B, 32/32 wins",
+    "rejected_complication": "Adding the historical DualNAF alpha=.125 bridge before F gave only +0.000565 versus F and 17/32 wins; v2 therefore contains no neural renderer",
+    "not_a_claim": "Development values are adaptive and target-exposed; only the frozen v2 primary gate may authorize confirmation"
+  },
+  "protocol": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "split": "calibration",
+    "primary": {
+      "offset": 60,
+      "count": 60,
+      "filenames_newline_sha256": "9d37fb3e9a57c59e83e10794a812f1992d871ff61e98403c25aededcb2934e61",
+      "filename_input_roster_sha256": "96dca03277355c1c1d0ab9fc5c31f95270c4c1ac4ebb871ef7a0b06b549e4b69"
+    },
+    "confirmation_if_and_only_if_primary_passes": {
+      "offset": 0,
+      "count": 60,
+      "filenames_newline_sha256": "f15d8258f51e9ac48b41aa0d3e05d8582659e437cdbd2eefa73859ae31ae3f9d",
+      "filename_input_roster_sha256": "24ae62e80d73921c554e89d709c64a8959baf0aaee73a4a501f5f7a61d44de26"
+    },
+    "primary_confirmation_filename_overlap": 0,
+    "development_panel_filename_overlap": 0,
+    "concurrent_new_method_panel_coordination": {
+      "dualnaf_bounded_fusion_calibration_ranges": [
+        "168:192",
+        "240:264"
+      ],
+      "edge_ranker_residual_calibration_ranges": [
+        "192:216",
+        "216:240"
+      ],
+      "overlap_with_v2_primary_or_confirmation": 0
+    },
+    "historical_exposure": {
+      "freshness_claim": false,
+      "legacy_report": "outputs/legacy-upgrade/calibration700-champion/report.json",
+      "all_primary_records_previously_exposed": true,
+      "all_confirmation_records_previously_exposed": true,
+      "additional_workspace_reports_also_exposed_subsets": true
+    }
+  },
+  "fixed_pipeline": {
+    "layout": "bilateral directional scores -> solve_buddies(max_edges=96), strict upright permutation of all 576 input tiles",
+    "layout_shared_by_all_arms": true,
+    "rgb_offsets_config": "configs/postassembly_rgb_offset_v1.json",
+    "rgb_offsets_config_sha256": "4adfd9b614e8556b7de5c1f527d759d15d29c0f74e20aa26ff87900dd773ec9a",
+    "luminance_config": "configs/postassembly_luminance_gain_v1.json",
+    "luminance_config_sha256": "7488cad2ae7cc75792d6ff0ff2ea0a38fa778979083ffd5c161c857b68fd550f",
+    "postassembly_order": "RGB seam offsets -> bounded luminance gains -> independently compute h20/h28/h40 single-pass NLM outputs -> derive exact v1 t40 mask from h20 -> fixed h28/h40 spatial blend",
+    "nlm_template_window_size": 7,
+    "nlm_search_window_size": 21
+  },
+  "mask_algorithm": {
+    "mask_source": "independent colored NLM h20/hColor20 single-pass uint8 RGB; h20 is mask-only for candidate F",
+    "grayscale": "cv2.cvtColor(h20, cv2.COLOR_RGB2GRAY).astype(float32)",
+    "edge_magnitude": "sqrt(Sobel(gray,CV_32F,1,0,ksize=3)^2 + Sobel(gray,CV_32F,0,1,ksize=3)^2)",
+    "sobel_threshold": 40.0,
+    "grid_protection": "for coordinates 20,40,...,460 set rows and columns [coordinate-1:coordinate+1] true",
+    "binary_edge": "edge_magnitude >= 40 OR grid_protection",
+    "dilation": "cv2.dilate(uint8 mask, 3x3 all-ones kernel, iterations=1)",
+    "soft_safe_weight": "clip(cv2.GaussianBlur(float32 dilated mask, ksize=(0,0), sigmaX=1.0, sigmaY=1.0),0,1)",
+    "candidate_output": "uint8 clip rint(safe_weight*independent_h28 + (1-safe_weight)*independent_h40), channelwise",
+    "exact_relation_to_v1": "identical E_flat_h40_t40 mask algorithm and h20 mask source; only the protected blend source changes from h20 to h28",
+    "target_or_filename_dependency": false
+  },
+  "arms": [
+    {
+      "name": "A_nlm_h20_control",
+      "kind": "global_single_pass",
+      "h": 20,
+      "h_color": 20,
+      "role": "baseline_and_candidate_mask_source"
+    },
+    {
+      "name": "B_nlm_h28_strong_control",
+      "kind": "global_single_pass",
+      "h": 28,
+      "h_color": 28,
+      "role": "strong_control_and_candidate_safe_pixel_source"
+    },
+    {
+      "name": "F_h28safe_flat_h40_t40",
+      "kind": "edge_protected_blend",
+      "mask_source_h": 20,
+      "safe_h": 28,
+      "safe_h_color": 28,
+      "aggressive_h": 40,
+      "aggressive_h_color": 40,
+      "sobel_threshold": 40.0,
+      "role": "only_candidate"
+    }
+  ],
+  "target_access_order": [
+    "verify only input PNGs and the exact selected roster",
+    "solve and audit the shared strict layout",
+    "freeze harmonized canvas, independent h20/h28/h40 images, exact binary/soft mask and all three final arm predictions",
+    "write and read back a content-addressed commitment with target-free safety diagnostics",
+    "only then decode primary target PNGs once"
+  ],
+  "metric": {
+    "name": "skimage.metrics.structural_similarity",
+    "channel_axis": 2,
+    "data_range": 255,
+    "win_size": 7
+  },
+  "paired_ci": {
+    "method": "two-sided paired t interval",
+    "confidence": 0.95,
+    "degrees_of_freedom": "count_minus_one"
+  },
+  "primary_promotion_gate": {
+    "candidate_mean_rgb_ssim_min": 0.27,
+    "candidate_paired_gain_vs_A_ci95_lower_strictly_greater_than": 0.0,
+    "candidate_paired_gain_vs_B_ci95_lower_strictly_greater_than": 0.0,
+    "candidate_wins_vs_A_min": 45,
+    "candidate_wins_vs_B_min": 45,
+    "mean_within_tile_luminance_gradient_retention_vs_A_min": 0.8,
+    "minimum_board_within_tile_luminance_gradient_retention_vs_A_min": 0.7,
+    "mean_within_tile_chroma_gradient_retention_vs_A_min": 0.8,
+    "minimum_board_within_tile_chroma_gradient_retention_vs_A_min": 0.7,
+    "mean_luminance_laplacian_retention_vs_A_min": 0.72,
+    "minimum_board_luminance_laplacian_retention_vs_A_min": 0.6,
+    "mean_grid_ratio_relative_to_A_max": 1.05,
+    "maximum_board_grid_ratio_relative_to_A_max": 1.12,
+    "mean_protected_pixel_fraction_range": [
+      0.4,
+      0.75
+    ],
+    "every_board_protected_pixel_fraction_range": [
+      0.3,
+      0.85
+    ],
+    "maximum_clipped_fraction_increase_vs_A": 0.01,
+    "all_predictions_distinct_from_A_and_B_on_every_board": true,
+    "manual_severe_new_artifacts_allowed": 0
+  },
+  "manual_review": {
+    "all_60_full_canvas_comparisons": true,
+    "fixed_zoom_board_indices": [
+      0,
+      19,
+      39,
+      59
+    ],
+    "compare": "F versus A and B after prediction commitment",
+    "fail_on": [
+      "new smooth blob crossing a protected content edge or tile boundary",
+      "material loss of identifiable text, face, or object edge relative to B",
+      "halo or contour artifact caused by the soft mask",
+      "visibly worse fragment boundary integrity",
+      "new local discontinuity between h28-protected and h40-flat regions"
+    ]
+  },
+  "selection_rule": "F is the only candidate and passes only if every numeric and manual primary gate passes; A and B are controls and cannot win. Do not access confirmation after any failed check.",
+  "confirmation_gate": "The unchanged F implementation, h20-derived t40 mask, thresholds and all identical numeric/manual gates must pass on ranked reused-calibration records 0:60.",
+  "forbidden": [
+    "changing the h20-derived t40 mask after target access",
+    "global final h>=30 output",
+    "multi-pass or sequential NLM",
+    "target pixels before prediction commitment",
+    "per-board, per-image-class, filename-dependent, or target-dependent routing",
+    "new arm, mask threshold, or blend after primary target access",
+    "target/reference/cross-board pixels at inference",
+    "DualNAF or any neural renderer in this v2 experiment",
+    "tile substitution, rotation, resampling, spatial warp, or geometry change",
+    "changes to edge-protected v1 files, artifacts, production code, or production ZIP"
+  ]
+}

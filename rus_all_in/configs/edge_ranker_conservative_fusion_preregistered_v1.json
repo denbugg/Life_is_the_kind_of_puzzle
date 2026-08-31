@@ -1,0 +1,130 @@
+{
+  "schema": "aiijc-edge-ranker-conservative-fusion-preregistration-v1",
+  "created_at_utc": "2026-08-29T23:15:00Z",
+  "experiment": "non-destructive mutual-best learned residual union over bilateral buddies96",
+  "hypothesis": "A sparse set of high-confidence k16 learned mutual-best edges can add true local adjacency while preserving every bilateral mutual-best edge and avoiding the SSIM regression of full learned-score replacement.",
+  "historical_exposure": {
+    "calibration_is_globally_fresh": false,
+    "reason": "outputs/legacy-upgrade/calibration700-champion/report.json historically enumerated the complete calibration roster",
+    "claim": "The primary and confirmation panels are disjoint from each other, and this experiment freezes and commits all current-run predictions before reading either panel's targets. It does not claim untouched or globally fresh calibration."
+  },
+  "frozen_checkpoint": {
+    "path": "outputs/edge-ranker/scale-raw-k16-train256-cal24-offset228/edge_ranker.pt",
+    "sha256": "939305342a9551806cd1896aae3020950ab0c883f5d0f52063989d7269f1b7e7",
+    "fit_records": "shared-selector train[0:256]",
+    "candidate_k": 16,
+    "view_mode": "raw",
+    "width": 32,
+    "hidden": 64
+  },
+  "train_only_arm_selection": {
+    "records": "shared-selector train[256:280]",
+    "report_path": "outputs/edge-ranker/conservative-fusion-train-diagnostic-256-280/report.json",
+    "report_sha256": "2abfff1ff6ac681b2806815d9986767502f8be07cbf2bbf3079db0cf65e62021",
+    "diagnostic_runner_sha256": "e8694b18aae48b6579272c48ae9e3da8c859ef78b35ea6ed9c5a228a38c1e081",
+    "fusion_source_sha256": "030ebecf9e4bc30f14502e570d69f07a515c2718501a31d35dfcda4a6382d0dc",
+    "calibration_or_holdout_targets_accessed_by_arm_selection": false,
+    "selection_rule": "Retain the five arms with the strongest combination of mean final-SSIM gain, positive adjacency gain, and conservative edge count on the fixed train-only diagnostic."
+  },
+  "selector": {
+    "namespace": "aiijc-puzzle-experiments-v1",
+    "seed": 20260829,
+    "operation": "select_manifest_records(manifest, 'calibration', limit=offset+count), then slice [offset:offset+count]"
+  },
+  "panels": {
+    "primary": {
+      "split": "calibration",
+      "offset": 360,
+      "count": 24,
+      "newline_filenames_sha256": "5a1603e7dd694bec483f123e0f5a189489eb04b4e881e5a7f8fa5d967abf3870"
+    },
+    "confirmation": {
+      "split": "calibration",
+      "offset": 444,
+      "count": 24,
+      "newline_filenames_sha256": "14f422d1c25fada1928867e4b975e2838edf4680a8f23be00bb28e66436ba84b",
+      "authorised_only_if": "At least one primary arm passes every frozen promotion gate; evaluate exactly the preregistered winning arm without retuning."
+    }
+  },
+  "arms_in_preregistered_priority_order": [
+    {
+      "name": "cap32-v2-c000",
+      "max_new_edges": 32,
+      "min_top4_view_votes": 2,
+      "min_confidence": 0.0,
+      "train_mean_final_ssim_delta": 0.0057225306618489125,
+      "train_mean_adjacency_delta": 0.004944142512077292
+    },
+    {
+      "name": "cap08-v0-c050",
+      "max_new_edges": 8,
+      "min_top4_view_votes": 0,
+      "min_confidence": 0.5,
+      "train_mean_final_ssim_delta": 0.004086435575365921,
+      "train_mean_adjacency_delta": 0.002226751207729468
+    },
+    {
+      "name": "cap08-v0-c000",
+      "max_new_edges": 8,
+      "min_top4_view_votes": 0,
+      "min_confidence": 0.0,
+      "train_mean_final_ssim_delta": 0.003978103634755092,
+      "train_mean_adjacency_delta": 0.002264492753623181
+    },
+    {
+      "name": "cap16-v2-c000",
+      "max_new_edges": 16,
+      "min_top4_view_votes": 2,
+      "min_confidence": 0.0,
+      "train_mean_final_ssim_delta": 0.0035828718799184034,
+      "train_mean_adjacency_delta": 0.003736413043478253
+    },
+    {
+      "name": "cap16-v2-c050",
+      "max_new_edges": 16,
+      "min_top4_view_votes": 2,
+      "min_confidence": 0.5,
+      "train_mean_final_ssim_delta": 0.0030092437734347,
+      "train_mean_adjacency_delta": 0.0033589975845410604
+    }
+  ],
+  "fusion_policy": {
+    "baseline": "bilateral score matrices",
+    "learned_signal": "frozen k16 raw pairwise ranker",
+    "proposal": "learned mutual row/column top-one edge with positive residual",
+    "non_destructive_guard": "source and target must both be unused by every bilateral mutual-best edge in that direction",
+    "analytic_guard": "minimum count of frozen raw/tile_z/bilateral/gray views ranking the pair in top four",
+    "confidence": "minimum of learned row-margin/robust-row-scale and column-margin/robust-column-scale",
+    "promotion": "smallest float32 score strictly above current row and column maxima",
+    "solver": "solve_buddies(max_edges=96)",
+    "strict_geometry": "all 576 original upright 20x20 dirty tiles exactly once",
+    "tail": "RGB seam offsets -> bounded luminance gains -> exactly one coloured NLM pass h20"
+  },
+  "freeze_before_target_access": {
+    "artifacts": [
+      "baseline and every evaluated arm right/down score matrices",
+      "layout",
+      "raw exact-tile assembly",
+      "RGB+luma harmonized image",
+      "NLM h20 final image"
+    ],
+    "commitment": "Write content-addressed JSON, read it back, and verify its self-hash before reading any current panel target bytes."
+  },
+  "primary_promotion_gate_per_arm": {
+    "all_conditions_required": true,
+    "final_ssim_mean_minus_baseline": ">= 0.004",
+    "final_ssim_mean_absolute": ">= 0.27",
+    "paired_final_ssim_delta_bootstrap_ci95_lower": "> 0",
+    "paired_adjacency_delta_bootstrap_ci95_lower": ">= 0",
+    "translation_aligned_placement_mean_minus_baseline": ">= 0",
+    "bootstrap": {
+      "replicates": 20000,
+      "base_seed": 20260910,
+      "method": "paired percentile bootstrap of board-level mean differences"
+    }
+  },
+  "winner_rule": "Among arms passing every gate, choose largest mean final SSIM, then largest mean adjacency, then preregistered priority order.",
+  "manual_review": "Always render dirty/target/baseline/five-arm raw/final primary sheet. Numerical passage does not by itself prove manual-review quality.",
+  "failure_policy": "If no primary arm passes every condition, confirmation, holdout, test, and production integration are forbidden. No thresholds or arms may be retuned on primary targets.",
+  "success_policy": "If a primary arm passes, run only that frozen arm on confirmation 444:468. Require the identical gate again before recommending integration; do not access holdout or test in this experiment."
+}

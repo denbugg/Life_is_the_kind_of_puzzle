@@ -1,0 +1,83 @@
+{
+  "schema": "aiijc-taska-drunet-unique-supply-preregistration-v1",
+  "status": "frozen-before-target-assisted-scoring",
+  "date": "2026-08-31",
+  "hypothesis": "A supply-positive official-DRUNet restored border descriptor may nominate a small complementary edge set when used only through reciprocal support and the already frozen dirty-visible focal gate.",
+  "emitter": {
+    "checkpoint": "artifacts/pretrained-denoisers/kair-fc1732f/drunet_color.pth",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "sigma_255": 40.0,
+    "tile_processing": "independent upright 20x20, reflect-pad to 24x24, crop to 20x20",
+    "restored_pixels": "matcher-only and never rendered",
+    "descriptor": "existing normalized grayscale width-6 border descriptor",
+    "support_rule": "depth-one row/column mutual argmax independently for right and down",
+    "historical_supply_evidence": "restored top32 union +2.9778pp right and +2.7627pp down on source-disjoint16"
+  },
+  "unique_acceptance": {
+    "deduplicate_before_focal": [
+      "current harvested edges",
+      "selective-target500 accepted new edges",
+      "confirmed fullres accepted new edges"
+    ],
+    "focal_checkpoint": "frozen TASKA train_exact_top5 verifier",
+    "focal_input": "original dirty upright tile pixels plus original dense costs",
+    "focal_logit_minimum": 0.0,
+    "threshold_sweep": false
+  },
+  "solver": {
+    "control": "taska-selective-fullres-union-fusion/fixed-v1",
+    "combined_order": "current + selective accepted + unique fullres accepted + unique accepted DRUNet nominations",
+    "dense_matrices": "frozen original TASKA cost_right/cost_down unchanged",
+    "selector_roster": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "new_standalone_arm": false,
+    "selector": "minimum original all-1104-bond TASKA cost",
+    "tail": "unchanged focal-gated non-adjacent tail96"
+  },
+  "panels_and_gates": {
+    "local32": "candidate-control pair mean >= 0",
+    "held32": "candidate-control pair mean >= +0.5",
+    "fresh32": "open only after both earlier gates",
+    "weco_steps": {
+      "local32": 103,
+      "held32": 104,
+      "fresh32": 105
+    }
+  },
+  "frozen_parent_artifacts": {
+    "local32": {
+      "archive_sha256": "1b17c4a52ae80b58f973ee8aaffd20d0e1d9a125c1ac5e3acdc66f31abddf7df",
+      "metadata_sha256": "106ac31d166c1b244a498c3cc76f59d4730601e6fba3a35fa6721eb7f18befa1",
+      "pre_score_freeze_sha256": "3b35db324f46a0368cad5c3f6570c08f9631560fe1f5f47f14defc77b8689720"
+    },
+    "held32": {
+      "archive_sha256": "6cfb766c1e693a2fec535d683f187a89f2d63632a282ff199e6aa708caafe469",
+      "metadata_sha256": "f37d23bd44c1565ae560c46ed6b6f33b4500b52168147ba114ff8debc59f0bf4",
+      "pre_score_freeze_sha256": "aa5b53abbb3fe5b20900a2102e144f024bf563e42dbe37edd1086811515178bc"
+    },
+    "fresh32": {
+      "archive_sha256": "75a9359eb3ac798096437c22e269c8374a0a38bb01f8e7f9fa9745bd054180cb",
+      "metadata_sha256": "c65d7e332460001d67b2dc2052a2dd3a2e6c62d08f3a936c7723ecec6dac6794",
+      "pre_score_freeze_sha256": "7fca88f9ea4489bf64d73a060127af73e1adaa598089eadfb79c1597627d5e93"
+    }
+  },
+  "legality": {
+    "strict_permutation_of_all_576_original_upright_tiles": true,
+    "targets_only_after_target_free_freeze": true,
+    "competition_test": false,
+    "submission": false,
+    "postprocessing": false,
+    "production_or_official_best_change": false
+  },
+  "no_repeat": [
+    "no direct DRUNet score replacement or dirty/DRUNet fixed blend",
+    "no rejected restored BorderRanker checkpoint",
+    "no sigma, descriptor width, reciprocal depth, focal threshold, arm roster or tail-budget sweep"
+  ]
+}

@@ -1,0 +1,175 @@
+{
+  "schema": "aiijc-taska-relation-truth-selector-confirmation-config-v1",
+  "created_at": "2026-08-31",
+  "purpose": "One formal source16 x draw2 confirmation of the frozen relation-level whole-layout selector after positive held and fresh development evidence.",
+  "protocol": {
+    "config_exclusion_snapshot_roster_model_and_runner_signed_before_candidate_generation_or_scoring": true,
+    "entirely_new_source_disjoint_roster": true,
+    "all_six_post_tail_layouts_relation_features_expected_scores_and_choice_frozen_before_reference_reconstruction": true,
+    "single_fixed_panel_only": true,
+    "model_retraining_parameter_threshold_feature_or_roster_sweep": false,
+    "collision_audit_fail_closed": true
+  },
+  "panel": {
+    "selection_namespace": "aiijc-taska-relation-truth-selector-formal-confirmation-v1-source16xdraw2",
+    "selection_seed": 2026083132,
+    "selection_algorithm": "From organizer-train filenames img_006400..img_006999 in the signed manifest, remove the complete signed semantic explicit-source union, sort remaining filenames by sha256(namespace\\0seed\\0filename) with filename tie-break, and take the first 16.",
+    "universe_minimum": "img_006400.png",
+    "universe_maximum": "img_006999.png",
+    "organizer_train_universe_count": 483,
+    "organizer_train_universe_digest": "8d5fc48e7a8182ff58739073ce6e3eb8638f90a1ba66381c0b19e44a356fbabb",
+    "excluded_in_universe_count": 227,
+    "excluded_in_universe_digest": "e22dbaa085675c1e8035a3489299a3520a9f8c990862b6157911b7d23b6dce82",
+    "eligible_count": 256,
+    "eligible_digest": "50dbdfa143e26392bd382759e63222411db7c84ab3b954f13730aea20f87eb5c",
+    "source_filenames": [
+      "img_006581.png",
+      "img_006644.png",
+      "img_006427.png",
+      "img_006493.png",
+      "img_006670.png",
+      "img_006737.png",
+      "img_006743.png",
+      "img_006797.png",
+      "img_006640.png",
+      "img_006449.png",
+      "img_006980.png",
+      "img_006967.png",
+      "img_006412.png",
+      "img_006705.png",
+      "img_006601.png",
+      "img_006648.png"
+    ],
+    "source_count": 16,
+    "draws": [0, 1],
+    "case_count": 32,
+    "source_order_digest": "1a97e1374dbd75a0f4eb10ff1e364ec0f8aabd809fb94ae1cf1e08834fcc6309",
+    "cases_digest": "df142269f393b733ae49a7fd9f79b1afd2d4f19cfb527713044749434ed321cc"
+  },
+  "candidate": {
+    "parent_inference": "unchanged selective-target500 plus unique-fullres six-arm recipe",
+    "post_tail_arms": [
+      "raw",
+      "logistic",
+      "focal_top5",
+      "nonlinear",
+      "selective_vote500_focal",
+      "combined_union_focal"
+    ],
+    "tail": "independent focal-logit>=0 protected non-adjacent tail96 per arm",
+    "relation_model_sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b",
+    "relation_feature_names": [
+      "raw_cost",
+      "outgoing_rank_fraction",
+      "incoming_rank_fraction",
+      "outgoing_margin_from_best",
+      "incoming_margin_from_best",
+      "outgoing_best_signed_gap",
+      "incoming_best_signed_gap",
+      "outgoing_cost_zscore",
+      "incoming_cost_zscore",
+      "axis_is_down",
+      "post_six_arm_support",
+      "post_six_arm_support_fraction",
+      "pre_six_arm_support",
+      "pre_tail_realised",
+      "tail_created",
+      "arm_supply_member",
+      "arm_supply_logit",
+      "arm_supply_focal_positive",
+      "provenance_current",
+      "provenance_selective_new",
+      "provenance_unique_fullres",
+      "realised_by_control",
+      "arm_is_control",
+      "arm_raw",
+      "arm_logistic",
+      "arm_focal_top5",
+      "arm_nonlinear",
+      "arm_selective_vote500_focal",
+      "arm_combined_union_focal"
+    ],
+    "whole_layout_score": "sum positive-class probabilities over all 1104 seams",
+    "selector": "maximum expected-correct score; exact tie retains confirmed control",
+    "returns_one_whole_frozen_arm": true,
+    "retraining": false,
+    "threshold_or_parameter_sweep": false
+  },
+  "evaluation": {
+    "primary_metric": "candidate_minus_control_satisfied_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": ["adjacency_recall", "exact_tiles_per_board"],
+    "bootstrap_unit": "source_with_two_draws",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 2026083143,
+    "confirmation_gate": {
+      "pair_delta_mean_at_least": 1.0,
+      "pair_delta_ci95_lower_at_least": 0.0,
+      "exact_delta_mean_at_least": -1.0,
+      "strict_permutations_required": true
+    }
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "exclusion_snapshot": {
+      "path": "configs/taska_relation_truth_selector_confirmation_exclusions_v1.json",
+      "sha256": "46d3acccc593998b4afcdf0e53459649aa8cd17cfbf0145631162b6ebca4661f"
+    },
+    "exclusion_snapshot_sidecar": {
+      "path": "configs/taska_relation_truth_selector_confirmation_exclusions_v1.json.sha256",
+      "sha256": "10a27e0c9c7e8420f50956581648d670617c184e379718e4519e58ebcbae37d3"
+    },
+    "development_contract": {
+      "path": "configs/taska_relation_truth_selector_v1.json",
+      "sha256": "5fac92c3a2c6c562f18a6e38065d1d2dcc13131a74e29ab5cf079213d1b6bacd"
+    },
+    "development_report": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/report.json",
+      "sha256": "022739dec8a47465f588a3ad9e45660ffbfa327a6f1647bd1517134c01420c39"
+    },
+    "frozen_relation_model": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/frozen-relation-classifier.pkl",
+      "sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b"
+    },
+    "pre_fresh_model_freeze": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/pre-evaluation-freeze.json",
+      "sha256": "b8f6a360cdeffb38f80a978aac9305a9e34cb7284af12345c98ba517f586908d"
+    },
+    "confirmation_runner": {
+      "path": "scripts/run_taska_relation_truth_selector_confirmation.py",
+      "sha256": "d04299b0e69a12abb0e063a919407deb692254860ab53c084255ad1a97e5330e"
+    },
+    "relation_selector": {
+      "path": "src/aiijc_puzzle/taska_relation_truth_selector.py",
+      "sha256": "1c91b3f18d2fe08dce59217bbdf446a4638fabf4eec19b91cacd988de8cd48e2"
+    },
+    "parent_confirmation_runner": {
+      "path": "scripts/run_taska_selective_fullres_union_fusion_fresh32_confirmation.py",
+      "sha256": "f38356446da7283d42fb8c14ce2c024a74c5f57a1c9133ca3f107f54bdd5a654"
+    },
+    "previous_formal_confirmation_report": {
+      "path": "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/report.json",
+      "sha256": "4d0ea850e101cb56a4f70dc6ff164201c09af047dcb669e3c81e19488661e555"
+    }
+  },
+  "weco": {
+    "parent_step": 102,
+    "confirmation_step": 143,
+    "pair_run_id": "6bf52932-d716-4959-bee4-d652d7286cba",
+    "exact_run_id": "c2876967-cca7-44a6-83dd-1fca125c237e"
+  },
+  "legality": {
+    "organizer_train_sources_only": true,
+    "dirty_tiles_only_for_candidate_inference": true,
+    "targets_or_exact_references_in_candidate_inference": false,
+    "restored_pixels_matcher_only": true,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "rotated_warped_replaced_or_constant_tiles": false,
+    "competition_test_forbidden": true,
+    "postprocessing_used": false,
+    "production_or_submission_modified": false
+  }
+}

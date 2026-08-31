@@ -1,0 +1,130 @@
+{
+  "experiment": "fullres-relation-fusion-v1",
+  "registered_before_fit_or_eval_target_access": true,
+  "purpose": "Learn a target-free nonlinear selector/reranker over the preserved raw plus full-resolution-restored top-32 component-relation union; no fixed score fusion and no decoder.",
+  "legal_contract": {
+    "restored_pixels_are_matcher_view_only": true,
+    "original_upright_tiles_are_only_legal_output_material": true,
+    "global_decoder_present": false,
+    "competition_test_access": false,
+    "organizer_holdout_split_access": false
+  },
+  "frozen_inputs": {
+    "socket_checkpoint": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+    "socket_checkpoint_sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670",
+    "component_relation_checkpoint": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/component_relation_reranker.pt",
+    "component_relation_checkpoint_sha256": "bab833bbbef2f73c17d6ae87ce383989138fea9bc48f4015ed1bfdc5b3c1f0ae",
+    "fullres_denoiser_checkpoint": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/fullres_boundary_denoiser.pt",
+    "fullres_denoiser_checkpoint_sha256": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c",
+    "component_panel_preregistration": "configs/component_relation_confidence_preregistered_v1_1.json",
+    "component_panel_preregistration_sha256": "a029377e4b5629b1906e960c825bbf5a347fda15ed0f6c5369e0dfcd3f4a76ab"
+  },
+  "candidate_contract": {
+    "component_partition": "frozen raw d64 decoder144 components",
+    "raw_proposal_topk_per_exposed_member": 32,
+    "restored_proposal_topk_per_exposed_member": 32,
+    "raw_cap_per_component_direction_query": 64,
+    "union_cap_per_component_direction_query": 128,
+    "raw_preservation": "Every raw relation key is retained before restored-only candidates fill the union cap.",
+    "features": "raw/restored d64 scores, OT, ranks and margins; fullres descriptor; raw/restored d64 context drift; component geometry; frozen relation score; supply origin; no source/tile identity or absolute target coordinate"
+  },
+  "selection": {
+    "manifest_split": "calibration",
+    "namespace": "aiijc-fullres-relation-fusion-v1-calibration-20300909",
+    "actual_access_registry_policy": "Before selection, recursively collect explicit train/fit/eval/calibration/confirm/source/selected/decoder *_filenames from existing reports; exclude lineage/pool/reserved/terminal declarations. Exclude both component-agent confirm24 and decoder40 explicitly.",
+    "actual_access_registry_digest_before_run": "b2bfef1dc80b52a31771d96b727e84636c702cd9c8558c5cd25abbf41b68a28c",
+    "fit_filenames": [
+      "img_006458.png",
+      "img_003223.png",
+      "img_000641.png",
+      "img_001217.png",
+      "img_005044.png",
+      "img_006499.png",
+      "img_000202.png",
+      "img_006012.png",
+      "img_003680.png",
+      "img_002448.png",
+      "img_001461.png",
+      "img_002994.png",
+      "img_006325.png",
+      "img_003550.png",
+      "img_006455.png",
+      "img_000755.png",
+      "img_002690.png",
+      "img_003159.png",
+      "img_004528.png",
+      "img_003570.png",
+      "img_003848.png",
+      "img_005295.png",
+      "img_002911.png",
+      "img_002028.png",
+      "img_001157.png",
+      "img_004375.png",
+      "img_005094.png",
+      "img_006887.png",
+      "img_006896.png",
+      "img_001460.png",
+      "img_004517.png",
+      "img_001558.png"
+    ],
+    "fit_digest": "2d1f5bf1e1ee5027322807a6e9697838680e4bde552d33efd9e598940e3ebdff",
+    "eval_filenames": [
+      "img_004675.png",
+      "img_005908.png",
+      "img_003567.png",
+      "img_004058.png",
+      "img_006219.png",
+      "img_005211.png",
+      "img_005489.png",
+      "img_004726.png",
+      "img_004075.png",
+      "img_006074.png",
+      "img_000396.png",
+      "img_002762.png",
+      "img_000740.png",
+      "img_005764.png",
+      "img_003094.png",
+      "img_005229.png"
+    ],
+    "eval_digest": "8a29344b096e970ddf4d91c919dd8161a738165f53313ecfcb5ead22d5df4f72",
+    "component_confirm24_overlap": 0,
+    "component_decoder40_overlap": 0,
+    "organizer_holdout_remaining_untouched": 700
+  },
+  "training": {
+    "steps": 300,
+    "synthetic_seed": 20300909,
+    "draw_index": "step",
+    "hidden_dimension": 96,
+    "residual_limit": 2.0,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0002,
+    "confidence_loss_weight": 0.15,
+    "residual_loss_weight": 0.001,
+    "gradient_clip": 1.0
+  },
+  "evaluation": {
+    "synthetic_seed": 20310909,
+    "draw_index": 0,
+    "single_frozen_pass": true,
+    "primary_scope": "exact local component relation ranking and confidence only"
+  },
+  "discovery_gate": {
+    "minimum_union_oracle_query_coverage_gain_over_raw_roster": 0.01,
+    "ranking_branch": {
+      "minimum_pair_translation_r1_gain_over_frozen_relation": 0.0025,
+      "minimum_pair_translation_r5_gain_over_frozen_relation": -0.0025
+    },
+    "confidence_branch_either": {
+      "minimum_top32_correct_attachments_per_board_gain_over_frozen_relation": 0.25,
+      "minimum_top32_precision_gain_over_frozen_relation": 0.01
+    },
+    "logic": "supply coverage must pass and either ranking or confidence must pass",
+    "authorization_on_pass": "preserve the fusion candidate and report to root; global decoder still requires separate preregistration and permission"
+  },
+  "promotion": {
+    "authorized": false,
+    "competition_test_authorized": false,
+    "global_decoder_authorized": false
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "aiijc-taska-context-bridge-relocator-preregistration-v1",
+  "created_at": "2026-08-31",
+  "created_before_fit_or_candidate_target_scoring": true,
+  "candidate": "one post-tail rigid relocation of a weak OOF-classified realised supply-graph bridge subtree",
+  "control": "exact frozen confirmed selective plus unique-fullres six-arm fusion final layout",
+  "classifier": "reuse only the fixed 27 context-protector features and unweighted logistic model; classifier does not order edges or change a solver supply",
+  "feature_names": [
+    "focal_logit", "raw_priority_negative_cost", "raw_outgoing_rank_fraction", "raw_incoming_rank_fraction", "raw_outgoing_margin_from_best", "raw_incoming_margin_from_best", "axis_is_down", "provenance_current", "provenance_selective_new", "provenance_unique_fullres", "selected_arm_raw", "selected_arm_logistic", "selected_arm_focal_top5", "selected_arm_nonlinear", "selected_arm_selective_vote500_focal", "selected_arm_combined_union_focal", "six_arm_realisation_count", "six_arm_realisation_fraction", "realised_component_tile_count", "source_realised_degree", "target_realised_degree", "component_mean_six_arm_support", "same_source_axis_conflict_count", "same_target_axis_conflict_count", "source_competing_logit_margin", "target_competing_logit_margin", "incident_conflict_density"
+  ],
+  "model": "StandardScaler plus unweighted LogisticRegression(C=1, lbfgs, max_iter=1000, random_state=0)",
+  "probability_threshold": 0.5,
+  "weak_bridge_definition": "an already realised focal-positive selected-supply edge with p < 0.5 whose removal disconnects its endpoints in the undirected realised-edge graph",
+  "movable_subtree": "one side of a weak bridge cut, only if it contains at least two tiles and no tile incident to any p >= 0.5 realised edge",
+  "high_confidence_core": "all endpoints of realised edges with p >= 0.5; their board positions are immutable",
+  "move": "enumerate all nonzero rigid translations of each eligible subtree that remain on 24x24 board and do not enter a core position; preserve internal geometry and use existing local bijective fill only for non-core displaced tiles",
+  "selection": "at most one candidate: strictly minimum unchanged original all-1104-bond raw seam cost; ties lower bridge p, larger subtree, frozen edge order, then row-major translation",
+  "minimum_cost_gain": 1e-9,
+  "fallback": "return frozen six-arm final control bit-for-bit if no strictly improving feasible move exists",
+  "fit_panel": "local32 only",
+  "oof_splits": 8,
+  "oof_group": "source_filename",
+  "local_prediction": "validation source is predicted by a model fitted only on other source groups",
+  "panel_order": ["local32 source-grouped OOF", "held32 frozen local model", "fresh32 frozen local model"],
+  "local_pair_gate": 0.0,
+  "local_exact_gate": -1.0,
+  "held_pair_gate": 0.25,
+  "held_exact_gate": -1.0,
+  "metrics": ["satisfied_adjacent_pairs", "adjacency_recall", "exact_tiles"],
+  "no_sweep": true,
+  "prohibited_adaptation": [
+    "threshold, bridge, subtree-size, weight, tie-break, cost-gain, feature, model, class-weight, or gate sweep",
+    "relation-vote shift restriction or component-anchor objective reuse",
+    "matcher, denoiser, supply, solver, tail, or pre-tail layout rerun",
+    "held/fresh refit", "competition test access", "production/submission integration"
+  ],
+  "legality": {
+    "strict_original_upright_576_tile_permutation": true,
+    "pixels_changed": false,
+    "target_free_graph_inputs_frozen_before_labels": true,
+    "local_model_frozen_before_held_fresh": true
+  },
+  "weco": {"parent_step": 102, "local_oof": 135, "held32": 136, "fresh32": 137, "log_only_if_scored": true},
+  "fixed_source_sha256": {
+    "scripts/run_taska_context_bridge_relocator.py": "666c655fcff2cd0cf4474a73cb7db1435a9876a12d9fe206521cb56602b64ae6",
+    "src/aiijc_puzzle/taska_context_bridge_relocator.py": "3cd32d017b96b2e1ebb253ddd10a0f6bb4815c3f4b7b46267d20bb6ed2d526b9"
+  }
+}

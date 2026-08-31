@@ -1,0 +1,80 @@
+{
+  "schema": "aiijc-edge-ranker-k16-scale-preregistration-v1",
+  "created_before_calibration_target_access": true,
+  "hypothesis": "A broader union of raw-domain analytic candidates plus fourfold training data can improve true puzzle adjacency beyond the frozen candidate-k5 ranker without materially degrading the compliant final tail.",
+  "training": {
+    "train_split": "train",
+    "train_limit": 256,
+    "train_selection_sha256": "4e407402ad5c81fd1698c65a22da5c5b8d12ea886608eed337051473e54348dc",
+    "candidate_k": 16,
+    "views": [
+      "raw",
+      "tile_z",
+      "bilateral",
+      "gray"
+    ],
+    "view_mode": "raw",
+    "epochs": 4,
+    "rows_per_board": 128,
+    "batch_rows": 24,
+    "pair_batch": 1024,
+    "width": 32,
+    "hidden": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "teacher_weight": 0.15,
+    "seed": 20260830,
+    "device": "mps",
+    "architecture_or_hyperparameter_tuning_after_registration": false
+  },
+  "calibration": {
+    "split": "calibration",
+    "offset": 228,
+    "count": 24,
+    "selection_sha256": "d36f91a3f83718a28b295700f7f0bb7e1a8374f1e820f774e51d132ee793b103",
+    "prediction_protocol": "Freeze every dirty-only score matrix, strict layout, raw assembly and final-tail image before opening any calibration target.",
+    "control": "bilateral score matrices -> solve_buddies(max_edges=96)",
+    "learned": "candidate-k16 raw pairwise residual score matrices -> solve_buddies(max_edges=96)",
+    "raw_assembly": "all 576 original upright dirty tiles exactly once",
+    "final_tail": "bounded RGB seam offsets -> bounded luminance gains -> coloured NLM h20x1"
+  },
+  "promotion_gate": {
+    "all_conditions_required": true,
+    "learned_final_adjacency_minimum": 0.08,
+    "adjacency_gain_paired_bootstrap_ci95_lower_strictly_greater_than": 0.0,
+    "mean_final_ssim_delta_minimum": -0.002,
+    "final_ssim_delta_paired_bootstrap_ci95_lower_minimum": -0.006,
+    "mean_translation_aligned_placement_delta_minimum": 0.0,
+    "bootstrap_replicates": 20000,
+    "bootstrap_seed": 20260830
+  },
+  "early_stop": {
+    "candidate_coverage_or_local_r1_collapse": "stop and fail gate",
+    "infrastructure_runtime_limit_minutes": 25,
+    "runtime_limit_scope": "training process wall clock excluding source inspection and documentation"
+  },
+  "confirmation_if_and_only_if_gate_passes": {
+    "split": "calibration",
+    "offset": 252,
+    "count": 24,
+    "selection_sha256": "1bd59c6db73fa4af59e4304949c87512a3a4bb700845ad2bbe0ef677d48a27f1",
+    "configuration_changes_allowed": false
+  },
+  "forbidden": {
+    "holdout": true,
+    "test": true,
+    "production_integration_before_confirmation": true,
+    "target_features_or_target_assisted_inference": true,
+    "template_constant_cross_board_or_external_clean_substitution": true
+  },
+  "frozen_source_sha256": {
+    "scripts/run_edge_ranker.py": "63a3f97f9093056bd3d9a4f5990abf933abaacbe856e98aab679549400917220",
+    "src/aiijc_puzzle/edge_ranker.py": "9f099bcff1df2737efce0ef3968bfaacee9640a78ab7aa8f8c49496236ac2592",
+    "src/aiijc_puzzle/candidate_supply.py": "2b0fe09bdcac736b34b2f260a0456f519e6dc6cdb4568e79e3a6b8679884dcfc",
+    "src/aiijc_puzzle/legacy_upgrade.py": "3908f7c192a0f9b43e288b17f7614b66456b2bf20e4539e09aa9f5c5ae2a4586",
+    "src/aiijc_puzzle/protocol.py": "c97fcb5e6eb07abe6a91480c525f63b72a73bfb0aec7df4d51971e82b2f481be",
+    "data/interim/validation_manifest.json": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "configs/postassembly_rgb_offset_v1.json": "4adfd9b614e8556b7de5c1f527d759d15d29c0f74e20aa26ff87900dd773ec9a",
+    "configs/postassembly_luminance_gain_v1.json": "7488cad2ae7cc75792d6ff0ff2ea0a38fa778979083ffd5c161c857b68fd550f"
+  }
+}

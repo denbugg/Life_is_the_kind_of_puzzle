@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "frozen_at": "2026-08-30T01:22:00+03:00",
+  "purpose": "unchanged legal final pipeline under the user-authorized >=0.25 fallback after more than ten failed architecture/layout attempts",
+  "decision": {
+    "aspirational_gate_result": "configs/frozen_final_h20x1_v1.json failed its preregistered 0.28 absolute calibration gate and remains immutable",
+    "fallback_authority": "user explicitly allowed completion at >=0.25 after 10-15 unsuccessful attempts",
+    "retuning_after_aspirational_failure": false,
+    "pipeline_changed_from_aspirational_config": false
+  },
+  "pipeline": {
+    "layout": {
+      "edge_view": "bilateral",
+      "solver": "best_buddies",
+      "max_edges": 96,
+      "atlas_weight": 0.0,
+      "strict_permutation": true
+    },
+    "postassembly": {
+      "rgb_seam_offsets": "configs/postassembly_rgb_offset_v1.json",
+      "bounded_luminance_gains": "configs/postassembly_luminance_gain_v1.json",
+      "order": "rgb_offsets_then_luminance_then_nlm"
+    },
+    "restoration": {
+      "name": "opencv_fast_nl_means_colored",
+      "h": 20,
+      "h_color": 20,
+      "template_window_size": 7,
+      "search_window_size": 21,
+      "passes": 1
+    }
+  },
+  "calibration_confirmation": {
+    "split": "calibration",
+    "offset": 120,
+    "count": 48,
+    "filenames_sha256": "5b1a8dcd358c87191d1c0ced0253ec66f45566568e7126c76259ff13f9289bbf",
+    "existing_report": "outputs/postassembly-harmonizer/no-atlas-calibration-offset120-count48-h20x1-frozen.json",
+    "observed_before_this_config_was_frozen": {
+      "raw_mean_ssim": 0.11171054110478174,
+      "same_h_without_harmonizer_mean_ssim": 0.24730834121208653,
+      "final_mean_ssim": 0.2576641708656319,
+      "final_gain_vs_control": 0.010355829653545376,
+      "gain_ci95": [
+        0.00907352611223005,
+        0.01170082624060087
+      ],
+      "wins_ties_losses": [
+        48,
+        0,
+        0
+      ]
+    },
+    "gate": {
+      "final_mean_ssim_min": 0.25,
+      "gain_vs_same_h_without_harmonizer_min": 0.0,
+      "gain_ci95_lower_min": 0.0,
+      "wins_min": 36
+    }
+  },
+  "single_use_holdout": {
+    "split": "holdout",
+    "offset": 96,
+    "count": 96,
+    "filenames_sha256": "a8d840c30a15419852bbd748b06d3985b390d069cbed8ed39964ac6f4cc8c175",
+    "fresh_relative_to_current_workspace_holdout_runs": true,
+    "arms": [
+      "raw_strict_assembly",
+      "colored_nlm_h20x1_control",
+      "rgb_luma_then_colored_nlm_h20x1_final"
+    ],
+    "success": {
+      "final_mean_ssim_min": 0.25,
+      "gain_vs_control_ci95_lower_min": 0.0
+    },
+    "no_retuning_after_open": true
+  },
+  "forbidden": [
+    "targets_or_reference_images_during_inference",
+    "test_reference_overrides",
+    "population_or_constant_canvas_rendering",
+    "tile_substitution_or_duplicate_use",
+    "tile_warping_or_rotation",
+    "multipass_nlm",
+    "nlm_h_at_least_30"
+  ]
+}

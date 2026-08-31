@@ -1,0 +1,103 @@
+{
+  "schema": "aiijc-taska-six-arm-learned-selector-preregistration-v1",
+  "created_at": "2026-08-31",
+  "created_before_fit_or_candidate_target_scoring": true,
+  "objective": "select the best whole post-tail arm for satisfied adjacent pairs",
+  "control": "exact frozen confirmed selective plus unique-fullres six-arm fusion final layout",
+  "roster": [
+    "raw",
+    "logistic",
+    "focal_top5",
+    "nonlinear",
+    "selective_vote500_focal",
+    "combined_union_focal"
+  ],
+  "tail": {
+    "application": "independently apply the same tail to every arm",
+    "rule": "focal-logit-zero protected non-adjacent tail96",
+    "current_four_supply": "current harvested edges and logits",
+    "selective_supply": "selective union edges and aligned logits",
+    "combined_supply": "combined union edges and aligned logits"
+  },
+  "feature_names": [
+    "pre_raw_cost",
+    "post_raw_cost",
+    "tail_raw_gain",
+    "accepted_swaps",
+    "protected_tiles",
+    "free_tiles",
+    "initial_realised_focal_edges",
+    "final_realised_focal_edges",
+    "focal_kept_edges",
+    "focal_kept_fraction",
+    "focal_kept_logit_sum",
+    "focal_kept_logit_mean",
+    "pre_realised_focal_logit_sum",
+    "post_realised_focal_logit_sum",
+    "mean_tile_position_agreement",
+    "mean_directed_adjacency_agreement"
+  ],
+  "feature_contract": {
+    "continuous": "subtract the six-arm within-board mean for each feature",
+    "arm_identity": "append one fixed six-way arm contrast",
+    "target_visibility": "none at inference"
+  },
+  "model": "StandardScaler plus ordered-pair Ridge alpha=1 without intercept",
+  "ridge_alpha": 1.0,
+  "pairwise_training": {
+    "examples": "all 30 ordered arm differences per fit board",
+    "label": "satisfied-pairs arm_i minus arm_j",
+    "selector": "maximum predicted arm score",
+    "tie_break": "retain board control arm if tied, otherwise fixed roster order"
+  },
+  "fit_panel": "local32 only",
+  "oof_splits": 8,
+  "oof_group": "source_filename",
+  "panel_order": [
+    "local32 source-grouped OOF",
+    "held32 frozen model",
+    "fresh32 frozen model"
+  ],
+  "local_pair_gate": 0.0,
+  "local_exact_gate": -1.0,
+  "held_pair_gate": 0.5,
+  "held_exact_gate": -1.0,
+  "metrics": [
+    "satisfied_adjacent_pairs",
+    "adjacency_recall",
+    "exact_tiles"
+  ],
+  "no_sweep": true,
+  "prohibited_adaptation": [
+    "adjacency consensus selector",
+    "feature subset selection",
+    "alpha, regularization, threshold, or confidence-margin search",
+    "class balancing or oversampling",
+    "arm roster or tail budget changes",
+    "held or fresh refit",
+    "competition test access",
+    "postprocessing or production integration"
+  ],
+  "legality": {
+    "strict_original_upright_576_tile_permutation": true,
+    "pixels_changed": false,
+    "restored_views": "matcher-only frozen parent artifacts",
+    "target_free_arm_artifacts_frozen_before_panel_scoring": true,
+    "final_model_frozen_before_held": true
+  },
+  "weco": {
+    "parent_step": 102,
+    "local_oof": 116,
+    "held32": 117,
+    "fresh32": 118,
+    "log_only_if_scored": true
+  },
+  "fixed_source_sha256": {
+    "src/aiijc_puzzle/taska_six_arm_learned_selector.py": "cb37af0e278c7b8143bac65a538b349ade85ad1dd07079d4c13837da469bd1a6",
+    "scripts/run_taska_six_arm_learned_selector.py": "1cd0f316c7b88d58b156f9f4c1873396d5f46e6101c5de58b5bbb22575a15468"
+  },
+  "frozen_control_report": {
+    "path": "outputs/taska-selective-fullres-union-fusion/fixed-v1/report.json",
+    "sha256": "1f9d84c99eae6ba1f03a668163f6e19321e20292e31dd5e51ec00282587517af"
+  }
+}

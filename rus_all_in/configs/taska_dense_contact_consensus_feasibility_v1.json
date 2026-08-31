@@ -1,0 +1,40 @@
+{
+  "schema": "aiijc-taska-dense-contact-consensus-feasibility-v1",
+  "purpose": "One fixed pair-first feasibility check over the frozen dense TASKA top-8 contacts; this is not a pose model or a solver sweep.",
+  "panels": [
+    "fit32",
+    "local32"
+  ],
+  "grid_size": 24,
+  "dense_contact_topk": 8,
+  "component_definition": "realised selected-supply focal-positive connected components from each final confirmed six-arm layout",
+  "canonical_group_key": "unordered component pair plus one implied integer relative translation",
+  "minimum_independent_contacts": 2,
+  "independent_contact_definition": "distinct directed physical tile adjacency (source, target, axis)",
+  "require_every_counted_contact_reciprocal": true,
+  "reciprocity_definition": "the physical edge occurs in both the source outgoing top-8 list and the target incoming top-8 list after the same board-feasibility filter used by the frozen cache",
+  "require_axis_consistency": true,
+  "axis_consistency_definition": "a retained group contains at least one reciprocal right edge and at least one reciprocal down edge",
+  "exclude_contacts_already_realised_by_control": true,
+  "frequency_gate_per_panel": {
+    "minimum_boards_with_signal": 8,
+    "minimum_mean_emitted_edges_per_board": 2.0
+  },
+  "precision_gate_per_panel": {
+    "minimum_pooled_edge_precision": 0.6
+  },
+  "pass_action": "Preregister exactly one consensus-supply arm/consumer over confirmed fusion with local pair delta >= 0 and exact delta >= -1.",
+  "fail_action": "Document stop without constructing or evaluating a solver arm.",
+  "no_sweep": true,
+  "competition_test_accessed": false,
+  "fixed_inputs_sha256": {
+    "outputs/taska-joint-component-pose/pilot-v1/cache/dirty-visible-inputs.npz": "fcaee42adcc4f07ff00a04ca130194d6f20cda6d61b7f30428eb48054846f0ba",
+    "outputs/taska-joint-component-pose/pilot-v1/cache/metadata.json": "301c4a25d3387a17e672c7055601b9879506e19b4730e24ddc9423d657abd953",
+    "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/frozen-target-free-eval.npz": "1cbc3b38aff3ac6af5a5ac263d4fbb9cf57b449710a1716513aa6f55477d43e0",
+    "outputs/taska-selective-fullres-union-fusion/fresh32-formal-confirmation-v1/frozen-target-free-eval.json": "2b66d8ff95620dc27e9874ffd4bd62b67f065aee5bf4a46f980f9759a68d1a83",
+    "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.npz": "6cfb766c1e693a2fec535d683f187a89f2d63632a282ff199e6aa708caafe469",
+    "outputs/taska-selective-fullres-union-fusion/fixed-v1/held32/frozen-target-free-eval.json": "f37d23bd44c1565ae560c46ed6b6f33b4500b52168147ba114ff8debc59f0bf4",
+    "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.npz": "0876d7acd6be7ebe863f831de568586c837da52cc603df4ff8d7c5a6b0d441df",
+    "configs/taska_joint_component_pose_pilot_v1.json": "3b22094a1e164f39cd90cdebbb17a591ca1f525603a4fa446e7b00d07bf46a1b"
+  }
+}

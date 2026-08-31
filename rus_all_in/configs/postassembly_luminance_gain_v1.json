@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "kind": "ported_target_blind_postassembly_bounded_luminance_gain",
+  "origin": {
+    "repository": "/Users/rusyalain/Documents/GitHub/pazzle_will_be_killed",
+    "branch": "origin/таска-говно",
+    "commit": "d6a82f82ceefa109ef706402712d03805bc9e880",
+    "source_path": "source/src/puzzle_assembly/postassembly_harmonizer.py",
+    "source_blob": "9d8d01c0f48d0e1473c1ff48285b06ab786a5dd8"
+  },
+  "target_access": false,
+  "input": "uint8 output of the frozen RGB-offset method",
+  "method": {
+    "extrapolation_band": 3,
+    "confidence_scale": 0.08,
+    "confidence_floor": 0.05,
+    "ridge": 0.5,
+    "huber_delta": 0.025,
+    "irls_steps": 4,
+    "max_fractional_gain": 0.04,
+    "luminance_floor": 12.0,
+    "luminance_ceiling": 243.0,
+    "global_gauge": "median log gain equals zero"
+  }
+}

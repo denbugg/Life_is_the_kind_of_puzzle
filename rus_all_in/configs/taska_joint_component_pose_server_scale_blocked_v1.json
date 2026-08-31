@@ -1,0 +1,47 @@
+{
+  "schema": "aiijc-taska-joint-component-pose-server-scale-contract-v1",
+  "status": "blocked-by-bounded-pilot-gate",
+  "enabled": false,
+  "reason": "capacity passed and conditional R@5 improved, but local R@1 gain was below gate, only 1 of 97 selected anchors matched the dominant exact shift, and final pairs fell by 66.46875 per board",
+  "pilot_preregistration_sha256": "3b22094a1e164f39cd90cdebbb17a591ca1f525603a4fa446e7b00d07bf46a1b",
+  "pilot_report": {
+    "path": "outputs/taska-joint-component-pose/pilot-v1/report.json",
+    "sha256": "1f47494059e063b4dccf7d0b7c27b6eb092d905d878321b19c601f69135f83bc"
+  },
+  "server_ready_data_cache": {
+    "dirty_visible_inputs": {
+      "path": "outputs/taska-joint-component-pose/pilot-v1/cache/dirty-visible-inputs.npz",
+      "sha256": "fcaee42adcc4f07ff00a04ca130194d6f20cda6d61b7f30428eb48054846f0ba"
+    },
+    "fit_exact_labels": {
+      "path": "outputs/taska-joint-component-pose/pilot-v1/cache/fit-exact-labels.npz",
+      "sha256": "57612b8849f486d6d15f2768aeca2803023bf07cccafe55b058469324c68a989"
+    },
+    "metadata": {
+      "path": "outputs/taska-joint-component-pose/pilot-v1/cache/metadata.json",
+      "sha256": "301c4a25d3387a17e672c7055601b9879506e19b4730e24ddc9423d657abd953"
+    },
+    "cache_freeze": {
+      "path": "outputs/taska-joint-component-pose/pilot-v1/cache/cache-freeze.json",
+      "sha256": "b50500f8a1ed1bd08e0710eaaf6a1f680628994c1ed2085c8ed7785edfc23c80"
+    }
+  },
+  "intended_server_scale_if_a_materially_new_signal_reopens_the_gate": {
+    "device": "cuda",
+    "width": 128,
+    "layers": 4,
+    "heads": 8,
+    "fit_steps": 2000,
+    "mixed_precision": "bf16",
+    "gradient_accumulation_boards": 4,
+    "required_new_evidence": "a pair-preserving joint packing objective or independent absolute evidence that raises source-disjoint shift R@1 by at least 2 percentage points",
+    "required_new_data": "new source-disjoint organizer-train six-arm fit/local caches; the opened pilot local panel must not be reused for selection"
+  },
+  "execution": {
+    "command": null,
+    "blocked": true,
+    "do_not_override_enabled_without_new_preregistration": true,
+    "competition_test_accessed": false
+  }
+}
+

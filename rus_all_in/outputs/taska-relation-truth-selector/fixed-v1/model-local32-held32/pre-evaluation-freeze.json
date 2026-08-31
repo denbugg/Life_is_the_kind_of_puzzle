@@ -1,0 +1,27 @@
+{
+  "schema": "aiijc-taska-relation-truth-model-freeze-v1",
+  "created_before_next_panel_target_free_generation_or_scoring": true,
+  "trained_on": [
+    "local32",
+    "held32"
+  ],
+  "contains_next_panel_references_or_labels": false,
+  "artifacts": {
+    "model": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/frozen-relation-classifier.pkl",
+      "sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b"
+    },
+    "preregistration": {
+      "path": "configs/taska_relation_truth_selector_v1.json",
+      "sha256": "5fac92c3a2c6c562f18a6e38065d1d2dcc13131a74e29ab5cf079213d1b6bacd"
+    },
+    "local32_target_free_archive": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/local32/frozen-target-free-relations.npz",
+      "sha256": "9d2f9527eeba49428e621915692b8b2b90f77f0cf376d4084b08f88986c50b35"
+    },
+    "held32_target_free_archive": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/held32/frozen-target-free-relations.npz",
+      "sha256": "40ac40f435900c253e6b7f8c698e431b905d444fba3b0c78e99e69f628f4c38e"
+    }
+  }
+}

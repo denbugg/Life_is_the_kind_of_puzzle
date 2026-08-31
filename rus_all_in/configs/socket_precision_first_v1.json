@@ -1,0 +1,37 @@
+{
+  "decoder": "socket-precision-first-components-v1",
+  "status": "frozen before offset-2816 confirmation target access",
+  "selection_source": {
+    "panel": "manifest train, namespace aiijc-socket-matcher-v1, offset 2304, count 24",
+    "curve_report": "outputs/socket-matcher/precision-first-selection-curve-offset2304.json",
+    "curve_report_sha256_at_selection": "ee8f2f512c08cb93905f71e916c9d79f180ada7b1c28c82b2113f03462e1a2ec",
+    "trusted_exact_edge_rate": 0.7823741007194245,
+    "trusted_correct_edges_per_board": 18.125
+  },
+  "config": {
+    "minimum_edge_confidence": -1.0,
+    "minimum_real_row_margin": 0.0,
+    "minimum_real_column_margin": 0.0,
+    "minimum_dustbin_margin": 0.5,
+    "maximum_component_size": 8,
+    "border_weight": 0.2
+  },
+  "selection_rationale": "The -1 confidence point preserves about 18 trusted-correct edges per board while raising precision from 34% at fixed top-144 to 78%. Requiring mutual real top-1 margins and a +0.5 log margin over both dustbins removes only low-certainty survivors. The size cap 8 is just above the previously observed maximum exactly rigid component size 6 and prevents a weak bridge from percolating into a giant island.",
+  "confirmation_contract": {
+    "single_config": true,
+    "primary_metric": "direct placement against target-assisted recovered permutation",
+    "secondary_metrics": [
+      "adjacency",
+      "translation-aligned placement",
+      "raw SSIM",
+      "component translation purity"
+    ],
+    "confirm_offset": 2816,
+    "confirm_count": 24,
+    "forbidden_offsets": [
+      2304,
+      2560,
+      3072
+    ]
+  }
+}

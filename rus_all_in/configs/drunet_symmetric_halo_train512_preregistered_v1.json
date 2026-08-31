@@ -1,0 +1,169 @@
+{
+  "schema": "aiijc-drunet-symmetric-halo-train512-preregistration-v1",
+  "status": "one_geometry_arm_frozen_before_train512_prediction_or_target_decode",
+  "created_on": "2026-08-30",
+  "purpose": "One B-only paired ablation of DRUNet boundary geometry; reused train evidence only, never a promotion or fresh-generalization claim",
+  "cycle2_binding": {
+    "split": "train",
+    "offset": 528,
+    "count": 16,
+    "preregistration_path": "configs/drunet_goal_cycle2_train_preregistered_v2.json",
+    "preregistration_sha256": "b163d1060c2ce8a88890a7f671971f2603564d360bdf7f88940968d0665a00db",
+    "commitment_path": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/prediction-commitment.json",
+    "commitment_sha256": "d8eb8314a6a281ad62371bd884267247376fa3d2ee09b71840742dfec4177120",
+    "receipt_path": "outputs/drunet-goal-cycle2-v2/train-offset528-count16.commitment-receipt.json",
+    "receipt_sha256": "4ccb02425cd9538606e54d17cc08127af4a3a9eaff37657a68d61a73ba5ddbc1",
+    "selection_decision_path": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/selection-decision.json",
+    "selection_decision_sha256": "5b26f02878cb502b5e4650d3a87cce20d56c8cd87d5e7e3f6c7d88fa85ceb866",
+    "report_path": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/report.json",
+    "report_sha256": "9898716bceb11892c0f7955ceebfeced573b7e9b9ae4bdda76781cb9e78d8f99",
+    "formal_train_gate_pass": false,
+    "metric_selected_arm": "D_half_B_half_C",
+    "metric_selected_arm_rejected_by_structural_safety": true,
+    "post_h28_C_rejected_by_structural_safety": true,
+    "fixed_safe_candidate_for_this_ablation": "B_drunet50_protected_h28_h50_t60",
+    "B_mean_ssim_all_16": 0.2949894712907268,
+    "B_mean_delta_vs_current_D_all_16": 0.00239908636911341,
+    "B_wins_vs_current_D_all_16": 16,
+    "B_structure_vs_current_D": {
+      "mean_luminance_gradient_retention": 0.9780822233707307,
+      "mean_chroma_gradient_retention": 0.9795075917334443,
+      "mean_laplacian_retention": 1.0127672788642084,
+      "mean_grid_ratio_relative_to_baseline": 1.0092279065097962,
+      "maximum_grid_ratio_relative_to_baseline": 1.0161594151308067,
+      "total_exact_constant_tile_increase": 0
+    },
+    "note": "B did not pass cycle2's stricter mean-gradient>=1 preservation predicate; it is frozen here only as the bounded safe comparator selected after C/D structural rejection"
+  },
+  "historical_exposure": {
+    "freshness_claim": false,
+    "train_512_528_targets_already_decoded_by_pretrained_drunet_experiments": true,
+    "train_512_528_is_record_disjoint_from_cycle2_train_528_544": true,
+    "source_family_disjointness_not_proven": true,
+    "no_halo_prediction_or_score_existed_when_this_contract_was_frozen": true
+  },
+  "train_panel": {
+    "split": "train",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "offset": 512,
+    "count": 16,
+    "filenames_sha256": "d81693d8a929d9ac3a107a8ce53e186031096cbe02e33c4d5f53b496225c0e67",
+    "input_roster_sha256": "99537c7b901a62583dd464453ecfbe1ad503c20c12043755f143494ad3c6153b",
+    "record_overlap_with_cycle2_train_528_544": 0
+  },
+  "arm_names": [
+    "B_drunet50_protected_h28_h50_t60",
+    "E_drunet50_symmetric_halo32_protected_h28_h50_t60"
+  ],
+  "fixed_algorithm": {
+    "layout": "dirty-only bilateral directional scores then solve_buddies(max_edges=96)",
+    "edge_budget": 96,
+    "raw_permutation_audit_before_any_restoration": true,
+    "harmonizer": "frozen RGB seam offsets then frozen bounded luma gains",
+    "drunet_sigma": 50.0,
+    "baseline_geometry": "same-tile reflect-pad right=4,bottom=4 from 20x20 to 24x24; exact top-left 20x20 crop",
+    "baseline_model_batch_size": 144,
+    "candidate_geometry": "same-tile reflect-pad left=6,right=6,top=6,bottom=6 from 20x20 to 32x32; exact center crop rows/columns [6:26]",
+    "candidate_model_batch_size": 72,
+    "candidate_changes_only_neural_padding_and_crop": true,
+    "independent_nlm_strengths_after_each_drunet_canvas": [20, 28, 50],
+    "mask_source": "independent h20 canvas from the corresponding DRUNet geometry",
+    "safe_source": "independent h28 canvas from the corresponding DRUNet geometry",
+    "flat_source": "independent h50 canvas from the corresponding DRUNet geometry",
+    "mask_sobel_threshold": 60.0,
+    "mask_grid_protection": "all 20-pixel fragment boundaries plus/minus one pixel, one 3x3 dilation, Gaussian sigma1 softening",
+    "no_parameter_sweep": true,
+    "no_tta": true,
+    "no_new_blend": true,
+    "no_post_h28_drunet": true
+  },
+  "geometry_contract": {
+    "strict_shared_layout": true,
+    "all_576_original_upright_tiles_preserved_one_to_one_before_restoration": true,
+    "tile_identity_and_layout_index_unchanged_after_raw_audit": true,
+    "same_board_pixels_only": true,
+    "same_tile_neural_pixels_only": true,
+    "cross_board_context": false,
+    "cross_tile_neural_context": false,
+    "external_reference_or_template_pixels": false,
+    "constant_or_near_flat_tile_substitution": false,
+    "generation": false,
+    "resize": false,
+    "warp": false,
+    "rotation": false,
+    "flip": false
+  },
+  "target_access_contract": {
+    "freeze_both_predictions_and_write_readonly_external_receipt_before_any_target_decode": true,
+    "manual_target_content_inspection": false,
+    "target_decoding_allowed_only_in_score_phase_after_full_hash_verification": true,
+    "calibration_access": false,
+    "holdout_access": false,
+    "competition_test_access": false
+  },
+  "train_gate": {
+    "candidate_mean_ssim_delta_vs_baseline_at_least": 0.001,
+    "paired_bootstrap_replicates": 20000,
+    "paired_bootstrap_seed": 20260829,
+    "paired_bootstrap_ci95_lower_strictly_above": 0.0,
+    "wins_vs_baseline_at_least": 12,
+    "target_free_safety_vs_baseline": {
+      "mean_luma_gradient_ratio_at_least": 0.98,
+      "minimum_board_luma_gradient_ratio_at_least": 0.95,
+      "mean_chroma_gradient_ratio_at_least": 0.98,
+      "minimum_board_chroma_gradient_ratio_at_least": 0.95,
+      "mean_laplacian_ratio_at_least": 0.98,
+      "minimum_board_laplacian_ratio_at_least": 0.95,
+      "mean_grid_ratio_at_most": 1.02,
+      "maximum_board_grid_ratio_at_most": 1.1,
+      "total_exact_spatially_constant_tile_increase_at_most": 0
+    },
+    "report_only_diagnostics": [
+      "per-board SSIM and delta",
+      "runtime per neural geometry",
+      "clipped fraction",
+      "near-flat std<2 and std<4 tile counts",
+      "mean/q99/maximum neural pixel change"
+    ],
+    "gate_pass_does_not_authorize_calibration_holdout_test_or_production": true
+  },
+  "model_provenance": {
+    "architecture": "official KAIR colour DRUNet UNetRes discriminative Gaussian denoiser",
+    "official_repository": "https://github.com/cszn/KAIR",
+    "official_commit": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e",
+    "license": "MIT",
+    "license_sha256": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "parameter_count": 32640960,
+    "strict_state_dict_load": true,
+    "discriminative_not_diffusion_gan_or_generative": true
+  },
+  "bound_source_sha256": {
+    "src/aiijc_puzzle/drunet_symmetric_halo.py": "f5713d696878207554ac57e93580c3e8c7436dc91eadf1eda95ed44cd19034e3",
+    "src/aiijc_puzzle/pretrained_tile_denoiser.py": "9b79f27d6b8570d65f64e21f703e20bb880ee9d000adb7675cb89c673f4a196e",
+    "src/aiijc_puzzle/drunet_goal_cycle2.py": "b49913044fcec261b29d1f788f1fb48e1e5f972aba6706942543c017b8462838",
+    "src/aiijc_puzzle/edge_protected_nlm.py": "e817068e5ef9ffa1cce82a09cc5d8c7763adf0ff680cacfde7b4b1224ff0259f",
+    "src/aiijc_puzzle/nlm_luma_chroma.py": "6d743edfedaf287e49944e56fcb094714214890b9623ceb7036e98a66ec7dbd3",
+    "src/aiijc_puzzle/legacy_upgrade.py": "3908f7c192a0f9b43e288b17f7614b66456b2bf20e4539e09aa9f5c5ae2a4586",
+    "src/aiijc_puzzle/postassembly_harmonizer.py": "4f7a44ab0781d6da8cee88ed956c34e92d756417162855ee4b1cd84b017dcb41",
+    "src/aiijc_puzzle/compliant_atlas_decoder.py": "86704849112b66fa2355c1a07c89c409f0f77ea48e175099ae54337f74a0196d",
+    "src/aiijc_puzzle/dualnaf_bounded_residual.py": "5042784b713b10a93d3aa0005e87979f419ffdc24659f2860d7dd887e0d157d5",
+    "src/aiijc_puzzle/protocol.py": "c97fcb5e6eb07abe6a91480c525f63b72a73bfb0aec7df4d51971e82b2f481be"
+  },
+  "runtime": {
+    "canonical_prediction_device": "mps",
+    "torch_version_at_preregistration": "2.13.0",
+    "mps_available_at_preregistration": true,
+    "noncanonical_cpu_or_cuda_may_differ_by_uint8_rounding": true
+  },
+  "forbidden": [
+    "changing halo size, padding mode, crop, batch, sigma, h, mask, blend, layout, harmonizer, metric, bootstrap, or gates after this preregistration",
+    "running more than the two frozen B geometry arms",
+    "opening any train target before both full prediction rosters and external receipt are immutable",
+    "manual target-content review",
+    "any calibration, holdout, competition-test, or production access",
+    "a same-panel follow-up halo sweep after pass or failure",
+    "altering any existing cycle2, production, or pretrained DRUNet source or output"
+  ]
+}

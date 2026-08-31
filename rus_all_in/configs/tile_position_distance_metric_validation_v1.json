@@ -1,0 +1,159 @@
+{
+  "schema": "aiijc-tile-position-distance-metric-validation-preregistration-v1",
+  "registered_at": "2026-08-31T12:24:39+03:00",
+  "purpose": "Objectively validate tile-to-true-position distance as an additional solver metric against exact placement and clean/dirty/restored SSIM, without opening competition test, terminal, held, or fresh panels.",
+  "panel": {
+    "name": "already-opened TASKA local32",
+    "source_count": 32,
+    "draws_per_source": 1,
+    "source_order_digest": "f516f12e8943580ab62e17cd6d4064dc519aa20df6485bf5bca34030beaa2bc3",
+    "source_filenames": [
+      "img_004917.png",
+      "img_001156.png",
+      "img_001396.png",
+      "img_000121.png",
+      "img_001372.png",
+      "img_003499.png",
+      "img_002013.png",
+      "img_003039.png",
+      "img_004666.png",
+      "img_003742.png",
+      "img_006077.png",
+      "img_006162.png",
+      "img_006177.png",
+      "img_004944.png",
+      "img_005908.png",
+      "img_004776.png",
+      "img_005724.png",
+      "img_001668.png",
+      "img_002346.png",
+      "img_006343.png",
+      "img_002287.png",
+      "img_002471.png",
+      "img_002901.png",
+      "img_001872.png",
+      "img_004443.png",
+      "img_000405.png",
+      "img_002695.png",
+      "img_004011.png",
+      "img_005559.png",
+      "img_006495.png",
+      "img_002819.png",
+      "img_006154.png"
+    ]
+  },
+  "layout_convention": "tile_at_position; every candidate is a strict permutation of 576 original upright tile identities",
+  "distance_metric_contract": {
+    "position_error": "For each tile identity t, invert candidate and exact tile_at_position layouts to predicted and true (row,column); compute errors in board cells.",
+    "absolute": {
+      "mean_manhattan_cells": "mean_t(abs(pred_row-true_row)+abs(pred_col-true_col))",
+      "median_manhattan_cells": "numpy median over 576 integer Manhattan errors",
+      "p90_manhattan_cells": "numpy quantile q=0.90 with method=higher",
+      "normalized_mean_l1": "mean_manhattan_cells / (2*(grid-1)); denominator=46 for grid24",
+      "mean_euclidean_cells": "mean_t(sqrt(delta_row^2+delta_col^2))",
+      "within_radius_0_recall": "fraction with Manhattan error <=0; exactly equal to exact tile recall",
+      "within_radius_1_recall": "fraction with Manhattan error <=1",
+      "within_radius_2_recall": "fraction with Manhattan error <=2"
+    },
+    "best_global_cyclic_aligned": {
+      "candidate_family": "all 576 whole-board numpy-style cyclic row/column rolls of the candidate layout",
+      "selection_objective": "minimum absolute mean_manhattan_cells after roll",
+      "tie_break": "zero roll is initial incumbent; enumerate row roll 0..23 then column roll 0..23; replace only on strict decrease greater than 1e-12",
+      "reported_metrics": "the same complete metric suite evaluated after the selected single roll",
+      "warning": "aligned metrics are diagnostic only and must never replace absolute metrics because a globally mis-originated board can become perfect after alignment"
+    }
+  },
+  "frozen_solver_layout_roster": [
+    "raw",
+    "logistic",
+    "focal_top5",
+    "nonlinear",
+    "selective_vote500_focal",
+    "combined_union_focal",
+    "confirmed_six_arm_fusion",
+    "socket_cyclic_border5_origin"
+  ],
+  "deterministic_perturbation_roster": {
+    "reference_based": [
+      "exact_reference",
+      "reference_global_row_plus1",
+      "reference_global_row_minus1",
+      "reference_global_column_plus1",
+      "reference_global_column_minus1",
+      "reference_global_diagonal_plus1_plus1",
+      "reference_local_horizontal_swaps8",
+      "reference_local_horizontal_swaps32",
+      "reference_block_swap_4x4",
+      "reference_component_shift_irregular21_plus10_plus10",
+      "reference_fixed_position_permutation_seed20260831"
+    ],
+    "confirmed_control_based": [
+      "control_global_row_plus1",
+      "control_global_column_plus1",
+      "control_global_diagonal_minus1_plus1",
+      "control_local_horizontal_swaps8",
+      "control_component_shift_irregular21_plus10_plus10"
+    ],
+    "global_roll_semantics": "numpy.roll on the 24x24 tile_at_position board",
+    "local_swaps8": "horizontal swaps at (row,column)=(2,6),(5,15),(8,1),(11,10),(14,19),(17,5),(20,14),(22,20)",
+    "local_swaps32": "horizontal swaps for rows [1,4,7,10,13,16,19,22] crossed with columns [2,8,14,20]",
+    "block_swap_4x4": "exchange equal row-major 4x4 regions rows2:6 cols2:6 and rows18:22 cols18:22",
+    "component_shift_irregular21_plus10_plus10": "move the connected 5x5-minus-four-corners component rooted at row3,col3 by (+10,+10); displaced destination identities fill corresponding vacated positions",
+    "fixed_position_permutation": "apply numpy.random.default_rng(20260831).permutation(576) to the positions of exact tile_at_position; identical position permutation on every source",
+    "application": "reference perturbations are target-assisted metric controls only; control perturbations are applied to frozen confirmed_six_arm_fusion",
+    "candidate_count_per_board": 24,
+    "total_candidate_count": 768
+  },
+  "freeze_protocol": {
+    "phase_1": "materialize all 768 strict layouts, including reference-based diagnostic controls, and persist a candidate archive plus manifest",
+    "phase_2": "write a pre-score freeze containing candidate hashes before computing any distance metric or SSIM",
+    "phase_3": "only then compute metrics and correlations; no roster, perturbation, metric, or subgroup change is allowed",
+    "contains_target_assisted_diagnostic_layouts": true
+  },
+  "ssim_contract": {
+    "implementation": "aiijc_puzzle.protocol.contest_ssim; RGB channel_axis=2 data_range=255",
+    "layout_only_clean": "recover clean tiles in shuffled input-identity order and assemble them under candidate layout; compare with clean organizer-train target",
+    "production_like_dirty": "assemble the original corrupted shuffled uint8 tiles under candidate layout; compare with clean organizer-train target",
+    "production_like_restored": "apply exactly one aiijc_puzzle.socket_pixel_tails.historical_rgb_luma_nlm_h20_once pass to dirty assembly; compare with clean organizer-train target"
+  },
+  "correlation_contract": {
+    "methods": [
+      "Pearson",
+      "Spearman"
+    ],
+    "views": {
+      "pooled": "all 768 case-layout rows",
+      "within_source_centered": "Pearson after subtracting each source mean; Spearman after within-source average ranks, then pooling centered ranks",
+      "per_source": "compute each correlation over 24 candidates within each source and report median, p25, p75 over 32 sources",
+      "family_mean": "average every metric/SSIM over the 32 sources for each of 24 named layout variants, then correlate the 24 means"
+    },
+    "quality_orientation": "distance metrics are negated for headline quality-oriented correlations; radius recalls/exact are not negated",
+    "no_significance_threshold_or_feature_selection": true
+  },
+  "decision_questions": [
+    "Does absolute mean Manhattan provide a smoother relationship with layout-only clean SSIM than exact radius0?",
+    "Does that relationship persist for dirty and restored production-like SSIM?",
+    "How much does best-global-cyclic alignment inflate correlation or hide absolute-origin errors?",
+    "Should distance replace exact, or be added only as a secondary diagnostic?"
+  ],
+  "fixed_inputs_sha256": {
+    "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.npz": "0f8458650c901a406747d25f54849068891ee39a5b3be5061828d08df25b7814",
+    "outputs/taska-six-arm-learned-selector/fixed-v1/local32/frozen-target-free-arms.json": "990d6d6ddefddaab47f327ca640427e6f515564a331c8c15244917263abe77fd",
+    "outputs/taska-six-arm-learned-selector/fixed-v1/local32/pre-arm-score-freeze.json": "b4684b1c7fc9cd6701ee4abd0001029b59626b3714dc35a41525905e9e8d4261",
+    "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.npz": "92bda45e3a3347aebbebf5ba111a80b08ef280705a325e291120749279ca8592",
+    "outputs/taska-socket-cyclic-origin-transfer/local32-v1/frozen-target-free-eval.json": "9fab4bb4d3c74fbedc623e7f5ae1d75973f2c87f8309cacc3f3895a82e319d2d",
+    "outputs/taska-socket-cyclic-origin-transfer/local32-v1/pre-score-freeze.json": "72a07fdb92a9fc789099e7cdf224dddb5748ce234c2982d6b1dbbdd69b7ed193",
+    "configs/taska_focal_current_finetune_v1.json": "94dce4a73410f9d40cf52b136af27116ddabf79dd5948c68307839e1e7bc6a23",
+    "data/interim/validation_manifest.json": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+  },
+  "data_and_legality": {
+    "organizer_train_targets_only": true,
+    "already_opened_sources_only": true,
+    "competition_test_accessed": false,
+    "terminal_held_or_fresh_accessed": false,
+    "output_layouts_are_strict_576_original_upright_permutations": true,
+    "no_model_training_or_threshold_sweep": true,
+    "weco_steps_149_through_154_used": false,
+    "new_weco_run_created": false
+  }
+}

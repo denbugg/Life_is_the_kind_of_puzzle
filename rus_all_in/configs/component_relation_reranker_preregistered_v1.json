@@ -1,0 +1,47 @@
+{
+  "experiment": "d64-component-relation-reranker-v1",
+  "registered_before_local_metrics": true,
+  "quality_panel_authorized": false,
+  "competition_test_authorized": false,
+  "supply": "raw",
+  "socket_checkpoint": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+  "fit": {
+    "count": 152,
+    "digest": "969cb532d0f9136fa9601dac14b3c7aa9c9f3838b8615776c1b7671fb5a3d3c7"
+  },
+  "local_eval": {
+    "count": 32,
+    "digest": "a11e3954ca20bb5da520b2e28d035f5d9a210f1f0a209ddc1c5bddec758899b5"
+  },
+  "reserved_untouched": {
+    "count": 64,
+    "digest": "125d494b8908a9a0df0e07097e34f091bd076f9a29007c0d0b99d1346ce437cc"
+  },
+  "forbidden_prior_sources": 5352,
+  "training": {
+    "steps": 400,
+    "hidden_dimension": 64,
+    "trainable_parameters": 131665,
+    "proposal_topk_per_view": 8,
+    "candidate_cap_per_query": 64,
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0002,
+    "seed": 20260909,
+    "device": "cpu"
+  },
+  "gate": {
+    "minimum_oracle_queries": 256,
+    "minimum_candidate_supply_coverage": 0.15,
+    "minimum_pair_translation_r1_gain": 0.03,
+    "minimum_pair_translation_r5_gain": -0.005,
+    "minimum_top32_correct_attachments_per_board_gain": 1.0,
+    "minimum_top32_precision_gain": 0.03,
+    "all_conditions_required": true
+  },
+  "exclusion_reports": [
+    "outputs/e13-corruption-border/pilot-grid24-train256-s400-eval16-mps/report.json",
+    "outputs/restored-border-ranker/pilot-train256-s400-eval16-mps/report.json",
+    "outputs/component-shift-head/train-only-d32-h64-train2048-s800/report.json",
+    "outputs/absolute-coordinate-sorter/component-translation-scale-confirm-source64-draw2/report.json"
+  ]
+}

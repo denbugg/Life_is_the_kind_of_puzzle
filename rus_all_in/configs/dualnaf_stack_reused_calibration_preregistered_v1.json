@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "experiment": "frozen_dualnaf_alpha0125_plus_single_pass_h28_stack",
+  "status_at_freeze": "preregistered_before_this_experiment_decodes_any_target_pixels",
+  "scientific_scope": "reused calibration; historically target-exposed; not fresh, not holdout, and not an unbiased generalization estimate",
+  "protocol": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "split": "calibration",
+    "selector": {
+      "function": "aiijc_puzzle.protocol.select_manifest_records",
+      "namespace": "aiijc-puzzle-experiments-v1",
+      "seed": 20260829,
+      "rule": "rank all calibration records by sha256(f'{namespace}\\0{seed}\\0{filename}') then filename; take prefix through panel end and slice by offset",
+      "roster_digest_serialization": "UTF-8 filenames joined by single NUL bytes with no terminal NUL"
+    },
+    "primary": {
+      "offset": 636,
+      "count": 32,
+      "filename_nul_join_sha256": "652f57b31ba5642babdd9d48202d0b08f738b07258fb4a60689103def452197a",
+      "filename_newline_join_sha256": "ec63f413af23578f6d316e2767bbb2fc6196ac93619800e5f8aed6a7373a9fdf"
+    },
+    "confirmation_if_and_only_if_all_primary_gates_pass": {
+      "offset": 668,
+      "count": 32,
+      "filename_nul_join_sha256": "4dcd776a77c6effe966a276b44ab7de1710014165e46c83e51ac38b29d4bf7eb",
+      "filename_newline_join_sha256": "adfe4546f2cc76870099dd5df3861a4de9901e3ad57fffb9382b0ba9dd171e2b"
+    },
+    "primary_confirmation_filename_overlap": 0,
+    "historical_exposure_audit": {
+      "freshness_claim": false,
+      "primary_exact_records_found_in_legacy_calibration700_champion": 32,
+      "confirmation_exact_records_found_in_legacy_calibration700_champion": 32,
+      "legacy_report": "outputs/legacy-upgrade/calibration700-champion/report.json",
+      "legacy_report_contains_all_current_calibration_records": 700
+    }
+  },
+  "fixed_pipeline": {
+    "layout": {
+      "solver": "best_buddies",
+      "edge_view": "bilateral",
+      "max_edges": 96,
+      "atlas_weight": 0.0,
+      "strict_permutation": true,
+      "input_for_matching": "original dirty upright 20x20 tiles"
+    },
+    "renderer": {
+      "checkpoint": "outputs/restoration-r6/compliant-r6-medium-train256-step2000-h10.pt",
+      "checkpoint_sha256": "331322460c8af87e5d4760b075726979f0574a23209889c1e95b6b90f2eac1a9",
+      "architecture": "TileAwareDualNAFNet dual_naf base24 depth3 blocks2",
+      "conditioning": "independent per-tile colored NLM h10; no cross-tile pixels or context",
+      "same_index_output": true,
+      "batch_size": 144,
+      "blend": {
+        "alpha": 0.125,
+        "formula": "rint(0.875*original_ordered_uint8_tile + 0.125*frozen_same_index_DualNAF_uint8_tile), clip 0..255, uint8",
+        "applied_before_harmonization": true,
+        "no_per_board_or_per_pixel_alpha_selection": true
+      }
+    },
+    "postassembly": {
+      "order": "per_tile_same_index_blend_then_rgb_offsets_then_bounded_luminance_then_exactly_one_colored_nlm",
+      "rgb_offsets_config": "configs/postassembly_rgb_offset_v1.json",
+      "rgb_offsets_config_sha256": "4adfd9b614e8556b7de5c1f527d759d15d29c0f74e20aa26ff87900dd773ec9a",
+      "luminance_config": "configs/postassembly_luminance_gain_v1.json",
+      "luminance_config_sha256": "7488cad2ae7cc75792d6ff0ff2ea0a38fa778979083ffd5c161c857b68fd550f"
+    }
+  },
+  "arms": [
+    {
+      "name": "A_alpha0_h20_baseline",
+      "alpha": 0.0,
+      "nlm_h": 20,
+      "nlm_h_color": 20,
+      "passes": 1
+    },
+    {
+      "name": "B_alpha0_h28_denoise_control",
+      "alpha": 0.0,
+      "nlm_h": 28,
+      "nlm_h_color": 28,
+      "passes": 1
+    },
+    {
+      "name": "C_alpha0p125_h20_bridge",
+      "alpha": 0.125,
+      "nlm_h": 20,
+      "nlm_h_color": 20,
+      "passes": 1
+    },
+    {
+      "name": "D_alpha0p125_h28_candidate",
+      "alpha": 0.125,
+      "nlm_h": 28,
+      "nlm_h_color": 28,
+      "passes": 1,
+      "only_promotable_candidate": true
+    }
+  ],
+  "nlm_common": {
+    "implementation": "proper RGB-to-BGR OpenCV fastNlMeansDenoisingColored then BGR-to-RGB",
+    "template_window_size": 7,
+    "search_window_size": 21,
+    "sequential_or_repeated_passes": false
+  },
+  "target_access_order": [
+    "verify only input PNGs and the frozen checkpoint",
+    "freeze layouts, raw assemblies, same-index renders, alpha blends and harmonized canvases",
+    "freeze exactly four arm predictions",
+    "write read-only prediction commitment with all artifact hashes and target-free safety metrics",
+    "only then create the panel receipt and decode targets once"
+  ],
+  "metric": {
+    "name": "skimage.metrics.structural_similarity",
+    "data_range": 255,
+    "channel_axis": 2,
+    "win_size": 7
+  },
+  "paired_intervals": {
+    "student_t": "two-sided paired t interval, confidence 0.95, df=count-1",
+    "bootstrap": "deterministic paired percentile bootstrap, 20000 replicates, seed 20260829",
+    "both_lower_bounds_must_pass": true
+  },
+  "manual_safety_metrics": {
+    "definitions": "identical to dense_safe_tail_reused_calibration_preregistered_v2",
+    "relative_denominator": "A_alpha0_h20_baseline on the same board"
+  },
+  "primary_numeric_gate_for_D_only": {
+    "mean_rgb_ssim_min": 0.27,
+    "paired_t_gain_vs_A_ci95_lower_strictly_greater_than": 0.0,
+    "paired_bootstrap_gain_vs_A_ci95_lower_strictly_greater_than": 0.0,
+    "paired_t_gain_vs_B_ci95_lower_strictly_greater_than": 0.0,
+    "paired_bootstrap_gain_vs_B_ci95_lower_strictly_greater_than": 0.0,
+    "wins_vs_A_min": 24,
+    "wins_vs_B_min": 20,
+    "mean_within_tile_gradient_retention_vs_A_min": 0.8,
+    "minimum_board_within_tile_gradient_retention_vs_A_min": 0.7,
+    "mean_laplacian_retention_vs_A_min": 0.72,
+    "minimum_board_laplacian_retention_vs_A_min": 0.6,
+    "mean_grid_ratio_relative_to_A_max": 1.05,
+    "maximum_board_grid_ratio_relative_to_A_max": 1.12,
+    "all_D_predictions_distinct_across_boards": true
+  },
+  "manual_review_gate": {
+    "boards_by_panel_index": [0, 10, 21, 31],
+    "views": ["full_canvas", "center_zoom"],
+    "comparison": "D against B, with target shown only after commitment",
+    "must_pass_all": [
+      "no visually material new large smooth blobs spanning multiple tiles",
+      "no visually material erasure of identifiable text, faces, or object edges relative to B",
+      "no visually worse 20-pixel grid discontinuity relative to B"
+    ],
+    "confirmation_requires_explicit_recorded_PASS": true
+  },
+  "selection_rule": "D is the only candidate. Confirmation uses D unchanged and is forbidden unless every numeric and manual primary gate passes. No post-hoc arm choice or parameter change is allowed.",
+  "confirmation_gate": "D unchanged must pass the identical numeric and manual gates on ranked calibration records 668:700.",
+  "forbidden": [
+    "post_hoc_arm_or_alpha_selection",
+    "per_board_or_per_pixel_alpha",
+    "multi_pass_or_sequential_nlm",
+    "target_pixels_before_prediction_commitment",
+    "target_or_reference_pixels_at_inference",
+    "cross_tile_renderer_pixels_or_context",
+    "spatial_warp_rotation_or_tile_substitution",
+    "changes_to_frozen_production_code_config_outputs_or_submission_zip"
+  ]
+}

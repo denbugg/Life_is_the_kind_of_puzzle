@@ -1,0 +1,171 @@
+{
+  "schema": "aiijc-drunet-goal-cycle2-train-preregistration-v1",
+  "status": "four_arm_roster_and_selection_rule_frozen_before_any_further_target_decode",
+  "created_on": "2026-08-30",
+  "purpose": "Formal train reproduction and bounded extension of the frozen DRUNet40/t40 legal stack; not a fresh discovery claim and not a parameter sweep",
+  "historical_exposure": {
+    "freshness_claim": false,
+    "train_528_544_already_decoded_by_root_for_sigma_and_postfilter_diagnostics": true,
+    "this_run_is_formal_reproduction_confirmation": true,
+    "calibration_is_globally_historically_exposed_through_legacy_calibration700": true,
+    "primary_and_confirmation_claim_only_record_disjointness": true,
+    "manifest_has_no_external_source_group_identifier": true,
+    "selection_and_verification_are_disjoint_unique_filename_and_input_hash_rosters_not_proven_source_family_groups": true
+  },
+  "train_panel": {
+    "split": "train",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "offset": 528,
+    "count": 16,
+    "filenames_sha256": "373694193c3eb6adc383e9d04ac5c0d5dda1f75baf574510857e9485d141a89f",
+    "input_roster_sha256": "dc76cbaa60eccbc00896186cfb2db2b1f6a9b1941896fb92410a6d8e0c301d4a",
+    "selection_count": 8,
+    "selection_filenames_sha256": "b1e2ca2d2e30ca733eac9ef9e8233a395645227ecabf92c0e67d649f75d48f17",
+    "selection_input_roster_sha256": "162c6c8dbf0242d20a07ad12e614df990cf8dba76c78dcb7a2b35915e34c50ab",
+    "verification_count": 8,
+    "verification_filenames_sha256": "254ad7741e2941944863fb8a541463f694c04ba8b6e1bb32979a1d3e4690a01d",
+    "verification_input_roster_sha256": "05ce8de8a1936e7c068a6ac3a0394447c23272c021b8b7b4d180017209334df8",
+    "selection_verification_record_overlap": 0
+  },
+  "calibration_plan_only_if_train_gate_passes": {
+    "split": "calibration",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "primary": {
+      "offset": 120,
+      "count": 120,
+      "filenames_sha256": "95fa9b4856e49fbd520dcf8c67cfcd6004d774db16196cbea6fe9ca47321a95f",
+      "input_roster_sha256": "49cd4ac23029ce92768e92aeaca9a70946b5461414b7864efec9cdc0cddc90de"
+    },
+    "confirmation": {
+      "offset": 528,
+      "count": 120,
+      "filenames_sha256": "5a02a10db876be646d4b518952b21abc13d47c70d2bcb703882c2157c1843488",
+      "input_roster_sha256": "54036256a366c4ab82b43ffa20a1754f50f99ac24aa181f49af315313ec16363"
+    },
+    "primary_confirmation_record_overlap": 0,
+    "absolute_mean_ssim_required_on_each_panel": 0.27,
+    "no_independence_or_freshness_claim": true,
+    "confirmation_requires_unchanged_candidate_and_primary_gate_plus_manual_pass": true
+  },
+  "arm_names": [
+    "A_current_drunet40_protected_h28_h40_t40",
+    "B_drunet50_protected_h28_h50_t60",
+    "C_h28_tilewise_drunet30_alpha_0_5",
+    "D_half_B_half_C"
+  ],
+  "arms": [
+    {
+      "name": "A_current_drunet40_protected_h28_h40_t40",
+      "role": "frozen_current_reference",
+      "pipeline": "exact existing DRUNet40 tilewise renderer; independent h20 mask, h28 safe and h40 flat canvases; fixed t40 protected blend"
+    },
+    {
+      "name": "B_drunet50_protected_h28_h50_t60",
+      "role": "new_base_candidate",
+      "pipeline": "tilewise DRUNet50; exact assembly; independent single-pass h20 mask, h28 safe and h50 flat canvases; fixed t60 protected blend"
+    },
+    {
+      "name": "C_h28_tilewise_drunet30_alpha_0_5",
+      "role": "new_base_candidate",
+      "pipeline": "one global h28 on the original harmonized canvas; split back into the same 576 indices; independent tilewise DRUNet30; exact half-up uint8 blend 0.5 original h28 plus 0.5 post-DRUNet canvas"
+    },
+    {
+      "name": "D_half_B_half_C",
+      "role": "single_optional_fixed_composition",
+      "pipeline": "exact half-up uint8 blend 0.5*B + 0.5*C at identical board coordinates; eligible only under the frozen first-eight selection rule"
+    }
+  ],
+  "selection_rule": {
+    "base_candidates": [
+      "B_drunet50_protected_h28_h50_t60",
+      "C_h28_tilewise_drunet30_alpha_0_5"
+    ],
+    "best_base": "highest first-eight mean SSIM, exact tie toward B",
+    "combination_formula": "floor((uint16(B)+uint16(C)+1)/2), returned as uint8",
+    "combination_eligible_only_if": {
+      "first_eight_mean_margin_over_best_base_at_least": 0.0002,
+      "first_eight_wins_over_best_base_at_least": 5
+    },
+    "winner": "highest first-eight mean among B, C, and eligible D; exact tie in B then C then D order",
+    "verification": "winner is frozen before inspecting the last eight scores and evaluated unchanged there"
+  },
+  "fixed_algorithm": {
+    "layout": "dirty-only bilateral directional scores then solve_buddies(max_edges=96)",
+    "edge_budget": 96,
+    "raw_permutation_audit_before_any_restoration": true,
+    "harmonizer": "frozen RGB seam offsets then frozen bounded luma gains",
+    "direct_drunet_sigma": 50.0,
+    "direct_independent_nlm_strengths": [20, 28, 50],
+    "sigma50_mask_sobel_threshold": 60.0,
+    "sigma50_mask_grid_protection": "all 20-pixel fragment boundaries plus/minus one pixel, one 3x3 dilation, Gaussian sigma1 softening",
+    "post_h28_global_nlm_strength": 28,
+    "post_h28_drunet_sigma": 30.0,
+    "post_h28_blend_alpha": 0.5,
+    "optional_B_C_blend_alpha": 0.5,
+    "model_batch_size": 144,
+    "same_tile_reflection_padding": "right=4,bottom=4 from 20x20 to 24x24",
+    "crop": "exact top-left 20x20",
+    "no_sequential_or_multi_pass_nlm": true,
+    "no_global_output_h_at_least_30": true,
+    "h50_is_used_only_as_the_flat_source_of_a_protected_blend": true,
+    "no_parameter_sweep": true
+  },
+  "geometry_contract": {
+    "strict_shared_layout": true,
+    "all_576_original_upright_tiles_preserved_one_to_one_before_restoration": true,
+    "tile_identity_and_layout_index_unchanged_after_raw_audit": true,
+    "same_board_pixels_only": true,
+    "cross_board_context": false,
+    "cross_tile_neural_context": false,
+    "external_reference_or_template_pixels": false,
+    "constant_or_near_flat_tile_substitution": false,
+    "generation": false,
+    "resize": false,
+    "warp": false,
+    "rotation": false,
+    "flip": false
+  },
+  "train_gate": {
+    "selection_mean_delta_vs_current_D_strictly_positive": true,
+    "selection_wins_vs_current_D_at_least": 6,
+    "verification_mean_delta_vs_current_D_strictly_positive": true,
+    "verification_wins_vs_current_D_at_least": 6,
+    "preservation_vs_current_D": {
+      "mean_luma_gradient_ratio_at_least": 1.0,
+      "minimum_board_luma_gradient_ratio_at_least": 0.95,
+      "mean_chroma_gradient_ratio_at_least": 1.0,
+      "minimum_board_chroma_gradient_ratio_at_least": 0.95,
+      "mean_laplacian_ratio_at_least": 1.0,
+      "minimum_board_laplacian_ratio_at_least": 0.95,
+      "mean_grid_ratio_at_most": 1.02,
+      "maximum_board_grid_ratio_at_most": 1.1,
+      "total_exact_spatially_constant_tile_increase_at_most": 0,
+      "mean_near_flat_std_lt_2_tile_count_increase_at_most": 2.0,
+      "maximum_board_near_flat_std_lt_2_tile_count_increase_at_most": 6
+    }
+  },
+  "model_provenance": {
+    "architecture": "official KAIR colour DRUNet UNetRes discriminative Gaussian denoiser",
+    "official_repository": "https://github.com/cszn/KAIR",
+    "official_commit": "fc1732f4a4514e42ce15e5b3a1e18c828af47a1e",
+    "license": "MIT",
+    "license_sha256": "448e69b705d64f21bf8cb86562301e0edd99ac79026064ddd75af8242b067be5",
+    "checkpoint_sha256": "479abe3c5327dfd10ff54a80ec7d4098ca80752a5c9492cdff31cee430bec4b4",
+    "parameter_count": 32640960,
+    "strict_state_dict_load": true
+  },
+  "runtime": {
+    "canonical_prediction_device": "mps",
+    "noncanonical_cpu_or_cuda_may_differ_by_uint8_rounding": true
+  },
+  "forbidden": [
+    "changing any arm, sigma, h, threshold, blend, selector, or gate after this preregistration",
+    "opening verification scores before first-eight selection is fixed",
+    "calibration access if the train gate fails",
+    "confirmation access before frozen primary predictions, numeric pass, and bound manual pass",
+    "holdout or competition-test scoring",
+    "altering production or previous frozen experiment outputs"
+  ]
+}

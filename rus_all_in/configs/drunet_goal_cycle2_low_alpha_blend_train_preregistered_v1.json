@@ -1,0 +1,109 @@
+{
+  "schema": "aiijc-drunet-goal-cycle2-low-alpha-blend-train-preregistration-v1",
+  "status": "exact_three_arm_roster_and_gate_frozen_before_low_alpha_target_scoring",
+  "created_on": "2026-08-30",
+  "purpose": "One bounded reused-train-only rescue screen using already-frozen cycle2-v2 B and C PNGs; no new neural inference, no calibration, no holdout, no competition-test access, and no production change",
+  "historical_exposure": {
+    "freshness_claim": false,
+    "adaptive_followup_after_cycle2_B_C_D_results_were_known": true,
+    "train_528_544_targets_already_exposed_by_prior_work": true,
+    "selection_and_verification_are_record_disjoint_but_not_claimed_source_family_independent": true,
+    "result_is_reused_train_evidence_only": true
+  },
+  "parent_binding": {
+    "commitment_path": "outputs/drunet-goal-cycle2-v2/train-offset528-count16/prediction-commitment.json",
+    "commitment_sha256": "d8eb8314a6a281ad62371bd884267247376fa3d2ee09b71840742dfec4177120",
+    "receipt_path": "outputs/drunet-goal-cycle2-v2/train-offset528-count16.commitment-receipt.json",
+    "receipt_sha256": "4ccb02425cd9538606e54d17cc08127af4a3a9eaff37657a68d61a73ba5ddbc1",
+    "frozen_prediction_roster_sha256": "2c449f87c7444da1334fd6cb1d14c4ff9d4c139ec368a87f175821bd430dfcb4",
+    "split": "train",
+    "offset": 528,
+    "count": 16,
+    "selection_count": 8,
+    "verification_count": 8,
+    "filenames_sha256": "373694193c3eb6adc383e9d04ac5c0d5dda1f75baf574510857e9485d141a89f",
+    "input_roster_sha256": "dc76cbaa60eccbc00896186cfb2db2b1f6a9b1941896fb92410a6d8e0c301d4a",
+    "selection_filenames_sha256": "b1e2ca2d2e30ca733eac9ef9e8233a395645227ecabf92c0e67d649f75d48f17",
+    "verification_filenames_sha256": "254ad7741e2941944863fb8a541463f694c04ba8b6e1bb32979a1d3e4690a01d",
+    "baseline_B": "B_drunet50_protected_h28_h50_t60",
+    "rejected_source_C": "C_drunet50_h28_tilewise_drunet30_alpha_0_5",
+    "rejected_parent_blend_D": "D_half_B_half_C"
+  },
+  "manifest_binding": {
+    "path": "data/interim/validation_manifest.json",
+    "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4"
+  },
+  "candidate_roster": [
+    {
+      "name": "E_B90_C10",
+      "B_numerator": 9,
+      "C_numerator": 1,
+      "denominator": 10
+    },
+    {
+      "name": "F_B80_C20",
+      "B_numerator": 8,
+      "C_numerator": 2,
+      "denominator": 10
+    },
+    {
+      "name": "G_B70_C30",
+      "B_numerator": 7,
+      "C_numerator": 3,
+      "denominator": 10
+    }
+  ],
+  "pixel_formula": "floor((B_numerator*uint16(B) + C_numerator*uint16(C) + denominator//2) / denominator), exact half-up uint8",
+  "target_free_safety_panel": "all 16 frozen train records",
+  "target_free_safety_vs_B": {
+    "mean_luminance_gradient_retention_at_least": 0.98,
+    "minimum_board_luminance_gradient_retention_at_least": 0.95,
+    "mean_chroma_gradient_retention_at_least": 0.98,
+    "minimum_board_chroma_gradient_retention_at_least": 0.95,
+    "mean_laplacian_retention_at_least": 0.98,
+    "minimum_board_laplacian_retention_at_least": 0.95,
+    "mean_grid_ratio_at_most": 1.02,
+    "maximum_board_grid_ratio_at_most": 1.1,
+    "total_exact_spatially_constant_tile_increase_at_most": 0,
+    "mean_near_flat_std_lt_2_tile_count_increase_at_most": 2.0,
+    "maximum_board_near_flat_std_lt_2_tile_count_increase_at_most": 6
+  },
+  "selection_rule": {
+    "eligible_candidates": "only candidates passing every target-free safety condition on all 16 boards",
+    "stop_before_any_target_scoring_if_none_eligible": true,
+    "selection_panel": "first 8 records only",
+    "winner": "highest first-eight mean SSIM among eligible candidates",
+    "exact_tie_order": [
+      "E_B90_C10",
+      "F_B80_C20",
+      "G_B70_C30"
+    ],
+    "selection_decision_frozen_before_last_eight_target_decode": true
+  },
+  "acceptance_gate_vs_B": {
+    "selection_first8_mean_delta_at_least": 0.0003,
+    "selection_first8_wins_at_least": 6,
+    "verification_last8_mean_delta_at_least": 0.0003,
+    "verification_last8_wins_at_least": 6,
+    "failure_action": "reject_entire_low_alpha_blend_line"
+  },
+  "preserved_prior_decisions": {
+    "C_remains_rejected": true,
+    "D_remains_rejected": true,
+    "this_screen_cannot_reopen_or_rescore_C_or_D": true
+  },
+  "forbidden": [
+    "any blend other than exact B/C 90/10, 80/20, and 70/30",
+    "new model or denoiser inference",
+    "target access before config, blend PNGs, commitment, receipt, and target-free safety decision are frozen",
+    "target scoring if no candidate passes the full target-free safety gate",
+    "using last-eight scores for selection",
+    "changing a selected candidate after last-eight target decode",
+    "calibration access",
+    "holdout access",
+    "competition-test access",
+    "production or submission changes",
+    "claiming freshness, independence, or generalization"
+  ]
+}

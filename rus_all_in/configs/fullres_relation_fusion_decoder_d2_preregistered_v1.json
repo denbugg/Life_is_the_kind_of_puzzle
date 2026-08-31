@@ -1,0 +1,138 @@
+{
+  "experiment": "fullres-relation-fusion-decoder-d2-v1",
+  "registered_before_source40_target_access": true,
+  "purpose": "One bounded exact-position decoder pilot for the already-confirmed fullres/component-relation fusion signal.",
+  "protocol": {
+    "manifest_split": "train",
+    "known_exact_synthetic_shuffle": true,
+    "draw_count_per_source": 1,
+    "synthetic_seed": 20320909,
+    "draw_index": 0,
+    "baseline_and_treatment_layouts_frozen_before_exact_scoring": true,
+    "strict_original_upright_tile_permutation_required": true,
+    "restored_pixels_matcher_view_only": true,
+    "organizer_calibration_access": false,
+    "organizer_holdout_access": false,
+    "competition_test_access": false
+  },
+  "frozen_inputs": {
+    "fusion_preregistration": "configs/fullres_relation_fusion_preregistered_v1.json",
+    "fusion_preregistration_sha256": "b83e819d161524dccb37dabbee6faf7470a27b835a598eded9c8285fe487d7b5",
+    "fusion_report": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/report.json",
+    "fusion_report_sha256": "3afbd75773370a7f80ba95060b0a7f0dfb4a3343fac69019a79170641f7a42c9",
+    "fusion_checkpoint": "outputs/fullres-relation-fusion/v1-fit32-s300-eval16/fullres_relation_fusion.pt",
+    "fusion_checkpoint_sha256": "ebc202d623cf8323319a00ffa09418d9d03ee39e70b96ac9cafdcc3f4003877c",
+    "component_relation_checkpoint": "outputs/component-relation-reranker/raw-d64-train152-s400-local32/component_relation_reranker.pt",
+    "component_relation_checkpoint_sha256": "bab833bbbef2f73c17d6ae87ce383989138fea9bc48f4015ed1bfdc5b3c1f0ae",
+    "fullres_denoiser_checkpoint": "outputs/fullres-boundary-denoiser/pilot-train32-s400-eval16-auto/fullres_boundary_denoiser.pt",
+    "fullres_denoiser_checkpoint_sha256": "a6dfc3e264e97d93ad678f3ee97e070067357c2a6f6875e7b7432f880aa1492c",
+    "socket_checkpoint": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+    "socket_checkpoint_sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+  },
+  "capacity_selection": {
+    "kind": "train-only exact capacity on the first 8 already-opened fusion fit32 sources; no D2 source accessed",
+    "component_edge_budget_per_axis": 144,
+    "candidate_caps_compared": [8, 16, 32],
+    "mean_exact_gain_per_board": {
+      "8": 0.375,
+      "16": 0.25,
+      "32": 0.125
+    },
+    "mean_adjacency_gain_fraction": {
+      "8": 0.004302536231884055,
+      "16": 0.002604166666666666,
+      "32": 0.0005661231884057961
+    },
+    "selected_top_query_cap": 8,
+    "selection_rule": "lexicographic maximum mean exact gain, then adjacency; budget 144 fixed by unchanged decoder144 comparator"
+  },
+  "candidate_and_decoder": {
+    "raw_proposal_topk_per_exposed_member": 32,
+    "restored_proposal_topk_per_exposed_member": 32,
+    "raw_candidate_cap_per_query": 64,
+    "union_candidate_cap_per_query": 128,
+    "raw_candidates_preserved_before_restored_fill": true,
+    "baseline": "raw d64 assignments -> unchanged decoder144 -> global cyclic border-weight5",
+    "treatment": "fusion winner/confidence top8 -> translation-consistent relation forest -> scale-preserving score substitution that may introduce restored-only contacts -> unchanged decoder144 -> the same raw-evidence global cyclic border-weight5",
+    "component_edge_budget_per_axis": 144,
+    "decoder_max_swap_steps": 24,
+    "forest_top_query_cap": 8,
+    "cyclic_border_weight": 5.0,
+    "cyclic_evidence_for_both_arms": "original raw d64 assignments",
+    "one_primary_treatment_only": true
+  },
+  "selection": {
+    "namespace": "aiijc-fullres-relation-fusion-decoder-d2-v1-source40-20320909",
+    "freshness_definition": "Exact-layout-panel fresh and zero-overlap with active Socket/relation/fullres/fusion/pointer/origin fit/eval/confirm/decoder rosters. A literal exclusion of every historical train-only fit is impossible because their union covers all 5,600 manifest-train sources; that broad declaration is not treated as prior exact-layout target access.",
+    "source_filenames": [
+      "img_004878.png",
+      "img_004873.png",
+      "img_006872.png",
+      "img_005016.png",
+      "img_000505.png",
+      "img_003720.png",
+      "img_006316.png",
+      "img_003442.png",
+      "img_004563.png",
+      "img_002511.png",
+      "img_005746.png",
+      "img_002717.png",
+      "img_001469.png",
+      "img_002810.png",
+      "img_002693.png",
+      "img_000823.png",
+      "img_000281.png",
+      "img_003811.png",
+      "img_000280.png",
+      "img_006876.png",
+      "img_004105.png",
+      "img_004227.png",
+      "img_003471.png",
+      "img_002077.png",
+      "img_002546.png",
+      "img_002708.png",
+      "img_000876.png",
+      "img_001352.png",
+      "img_001859.png",
+      "img_005745.png",
+      "img_000346.png",
+      "img_006397.png",
+      "img_005835.png",
+      "img_004008.png",
+      "img_003593.png",
+      "img_006510.png",
+      "img_006777.png",
+      "img_000829.png",
+      "img_001534.png",
+      "img_005915.png"
+    ],
+    "source_order_digest": "058bec96c295db71580436eb254c2b77f600a69a51e2d21c31b9e66bfc8a1bf9",
+    "source_set_digest": "032b0c7f0bb542f0184827ceaabe683729be7c62fea970e0b924b1af857719a6",
+    "source_count": 40,
+    "overlap_with_fusion_fit32_eval16": 0,
+    "overlap_with_component_confirm24_decoder40_fresh64": 0,
+    "overlap_with_pointer_fit128_eval16": 0,
+    "overlap_with_prior_exact_source_panels": 0
+  },
+  "d2_discovery_gate": {
+    "exact_branch": {
+      "minimum_mean_exact_tiles_gain_per_board": 0.1,
+      "maximum_adjacency_loss_fraction": 0.002
+    },
+    "adjacency_branch": {
+      "minimum_mean_exact_tiles_gain_per_board": 0.0,
+      "minimum_mean_adjacency_gain_fraction": 0.0005,
+      "maximum_adjacency_loss_fraction": 0.002
+    },
+    "logic": "strict permutations on all 40 boards, adjacency loss no worse than 0.2 percentage points, and either exact +0.1 tile/board or exact nonnegative with adjacency +0.05 percentage point",
+    "authorization_on_pass": "preserve D2 candidate only; no default or submission promotion"
+  },
+  "future_promotion_gate": {
+    "not_evaluated_here": true,
+    "required_panel": "new source-disjoint 64 sources x 2 draws",
+    "minimum_mean_exact_tiles_gain_per_board": 0.5,
+    "source_cluster_bootstrap_95ci_lower_strictly_positive": true,
+    "maximum_adjacency_loss_fraction": 0.002,
+    "competition_test_authorized": false
+  }
+}

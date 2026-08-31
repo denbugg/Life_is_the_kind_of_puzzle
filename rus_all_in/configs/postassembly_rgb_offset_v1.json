@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "ported_target_blind_postassembly_rgb_offset",
+  "origin": {
+    "repository": "/Users/rusyalain/Documents/GitHub/pazzle_will_be_killed",
+    "branch": "origin/таска-говно",
+    "commit": "d6a82f82ceefa109ef706402712d03805bc9e880",
+    "source_path": "source/src/puzzle_assembly/postassembly_harmonizer.py",
+    "source_blob": "9d8d01c0f48d0e1473c1ff48285b06ab786a5dd8"
+  },
+  "target_access": false,
+  "input": "strict atlas_w0.03+buddies96 ordered dirty uint8 tiles",
+  "method": {
+    "extrapolation_band": 3,
+    "confidence_scale": 12.0,
+    "confidence_floor": 0.05,
+    "ridge": 0.2,
+    "huber_delta": 4.0,
+    "irls_steps": 4,
+    "max_abs_offset": 12.0,
+    "global_gauge": "per-channel median offset equals zero"
+  }
+}

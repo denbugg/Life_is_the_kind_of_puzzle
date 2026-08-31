@@ -1,0 +1,23 @@
+{
+  "schema": "aiijc-tri-emitter-verifier-pre-score-v1",
+  "created_before_exact_reference_scoring": true,
+  "contains_exact_references_or_labels": false,
+  "artifacts": {
+    "archive": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/opened-local16/frozen-target-free-predictions.npz",
+      "sha256": "25f9e48ea8f999ad5ca8c04a4c74d431d03e07dd68c6431420a2c6271c742009"
+    },
+    "metadata": {
+      "path": "outputs/tri-emitter-edge-verifier/fit32-draw2-s3-local16-v1/opened-local16/frozen-target-free-predictions.json",
+      "sha256": "f49313a86b8c6e0e8413840728da1a13e70b2a8b24e33fe4f550710bbaedeb19"
+    },
+    "module": {
+      "path": "src/aiijc_puzzle/tri_emitter_edge_verifier.py",
+      "sha256": "dd647d73482e1efae34948d01d33a6b6e3df3efce43dd42a82842f712a52a546"
+    },
+    "runner": {
+      "path": "scripts/run_tri_emitter_edge_verifier.py",
+      "sha256": "2536d636ffdc1afe656890cdf9cfca012f91c7a5393876be543c406cd8ff7ffc"
+    }
+  }
+}

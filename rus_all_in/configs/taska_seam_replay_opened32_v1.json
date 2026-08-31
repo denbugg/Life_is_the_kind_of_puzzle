@@ -1,0 +1,152 @@
+{
+  "schema": "aiijc-taska-seam-replay-opened32-v1",
+  "experiment": "taska-seam-replay-opened32-v1",
+  "purpose": "One fixed legal replay of the historical TASKA v3+local seam evidence and raw-tail solver on the already-opened Union hard-edge eval32 panel. This is development evidence, not a fresh promotion gate.",
+  "protocol": {
+    "development_eval_panel_previously_opened": true,
+    "single_candidate_arm": true,
+    "hyperparameter_or_arm_sweep": false,
+    "predictions_harvest_and_layouts_frozen_before_reference_recreation": true,
+    "fresh_source_disjoint_confirmation_required_before_promotion": true
+  },
+  "panel": {
+    "source_filenames": [
+      "img_002555.png",
+      "img_000865.png",
+      "img_001561.png",
+      "img_004284.png",
+      "img_006553.png",
+      "img_002209.png",
+      "img_002637.png",
+      "img_002147.png",
+      "img_003004.png",
+      "img_000436.png",
+      "img_005142.png",
+      "img_000261.png",
+      "img_000676.png",
+      "img_000530.png",
+      "img_003308.png",
+      "img_005798.png"
+    ],
+    "source_order_digest": "13f7fe84262f9c4d0aee7ce80dfdc1edeec3ce7f1b5082f06ae5c6aceda6fa5f",
+    "draws": [
+      0,
+      1
+    ],
+    "case_count": 32,
+    "cases_digest": "6b872422b32562b845deb514fd478cd21379384cccdcf07a9e4db257e71b6e04",
+    "previously_opened": true
+  },
+  "artifacts": {
+    "selection_commitment": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/selection-commitment.json",
+      "sha256": "575bb43d850ec3276b61aef616cfa9f2f5fa6f31db35f417d6852b9a38dac540"
+    },
+    "parent_frozen_eval": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/frozen-target-free-eval.npz",
+      "sha256": "86bf9dfa5f0117e3ea35e3c0806f5909a271c176b90cea24c0f1dc7802e11fcc"
+    },
+    "parent_frozen_eval_metadata": {
+      "path": "outputs/union-hard-edge-priority/pilot-v1-final/frozen-target-free-eval.json",
+      "sha256": "b0e26d3fdf2a05169d6ba18c3ec62561470f205f64c4bf454e8142f8ae39edac"
+    },
+    "matcher_v3": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_v3.pt",
+      "sha256": "6f0917d66d908f6cc0f4c1fcb949d3bcbadcba2490a6f7b5a12596e61de9730e"
+    },
+    "matcher_local": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_local.pt",
+      "sha256": "5932853a73961d261b494368a4db04633fecc5996771c14d64f49ef00c7cfe73"
+    }
+  },
+  "matcher": {
+    "kinds": [
+      "v3",
+      "local"
+    ],
+    "views": [
+      "raw",
+      "median",
+      "bilateral"
+    ],
+    "orientations": 2,
+    "fusion": "per-model-sinkhorn-then-elementwise-min",
+    "sinkhorn_iterations": 20,
+    "cycle_rounds": 3,
+    "cycle_weight": 0.35,
+    "acyclic_weight": 3.0,
+    "sinkhorn_slack": 0
+  },
+  "harvest": {
+    "depth": 1,
+    "votes_fallback": 10,
+    "vote_target": 350,
+    "weighted": false,
+    "margin": 0.0,
+    "order": "raw_fused_score",
+    "quad_weight": 0.0,
+    "historical_quad_0_4_excluded_as_target_id_dependent": true
+  },
+  "solver": {
+    "name": "raw-tail-global",
+    "baseline_quantile": 0.15,
+    "search_rounds": 6,
+    "random_seed": 0,
+    "component_cap": 0,
+    "fill_rounds": 1,
+    "border_unary": false,
+    "border_weight": 0.0
+  },
+  "historical_deviations_for_legality": {
+    "quad": "The historical 0.4 quad reranker used tile-id-derived boundary masks after target-derived validation relabeling. The legal primary arm fixes it to zero.",
+    "chooser": "Excluded because the production full chooser checkpoint is unavailable; the recovered chooser-big checkpoint was historically rejected.",
+    "verifier": "Excluded because the recovered hinge checkpoint was cancelled and materially below its matcher precision baseline.",
+    "border": "Excluded to isolate seam matcher plus solver and avoid an additional unavailable or separately trained structural prior.",
+    "tie_rule": "Raw-tail exact score ties use stable caller order rather than historical unspecified NumPy quicksort order."
+  },
+  "evaluation": {
+    "arms": [
+      "union_v2",
+      "learned_priority",
+      "taska_legal_raw_tail"
+    ],
+    "primary_metric": "satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": [
+      "adjacency_recall",
+      "exact_tiles_per_board"
+    ],
+    "full_panel_requires_exactly_32_cases": true,
+    "bootstrap_intervals_are_reported_but_not_used_for_tuning": true
+  },
+  "runtime_sources": {
+    "replay_runner": {
+      "path": "scripts/run_taska_seam_replay_opened32.py",
+      "sha256": "b0318429b77ae8201068d54cd4bb7506278b08640f8c7166b0e7b1abf4c0b546"
+    },
+    "taska_seam_matcher": {
+      "path": "src/aiijc_puzzle/taska_seam_matcher.py",
+      "sha256": "9b0d3783e3fc3065f427d7d50e8d5ca5e8d755c006844f6905bd5633a7b80790"
+    },
+    "raw_tail_global_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    },
+    "parent_pilot_runner": {
+      "path": "scripts/run_union_hard_edge_priority_pilot.py",
+      "sha256": "80704a6017d33f289b22a932aaaa56bd59461a5be91d651e392bcd6f48f8ec86"
+    }
+  },
+  "legality": {
+    "organizer_train_only": true,
+    "dirty_tiles_only_for_candidate_inference": true,
+    "restored_or_denoised_pixels_emitted": false,
+    "target_ids_or_exact_references_in_candidate_inference": false,
+    "chooser_used": false,
+    "verifier_used": false,
+    "border_prior_used": false,
+    "index_derived_boundary_mask_used": false,
+    "output_uses_each_original_upright_20x20_tile_exactly_once": true,
+    "competition_test_forbidden": true
+  }
+}

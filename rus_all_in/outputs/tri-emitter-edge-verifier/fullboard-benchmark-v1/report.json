@@ -1,0 +1,24 @@
+{
+  "schema": "aiijc-tri-emitter-verifier-benchmark-v1",
+  "status": "complete-no-quality-metric",
+  "config_sha256": "093c7444fadba7d1d9470ce8d62d311374aa01e3bebc712972a5079f9c58fa12",
+  "prep": {
+    "raw_socket_seconds": 0.15754266598378308,
+    "adapter_seconds": 0.05876037501730025,
+    "adapted_socket_seconds": 0.033089083997765556,
+    "dino_cpu_concurrent_seconds": 1.0376623749907594,
+    "total_seconds": 2.0784600419865455,
+    "union_identity_digest": "09b1210246a5c44bfd153d16c8ea7602a81cbff37d32d2c930b745022e8cb3ee"
+  },
+  "eligible_queries": 915,
+  "mean_warm_update_seconds": 0.05233769775804831,
+  "runtime_estimate": {
+    "fit_prep_seconds": 133.02144268713892,
+    "training_seconds": 100.48837969545275,
+    "local_prep_seconds": 33.25536067178473,
+    "projected_train_steps": 1920,
+    "total_before_local_score_seconds": 233.50982238259166
+  },
+  "competition_test_accessed": false,
+  "decoder_run": false
+}

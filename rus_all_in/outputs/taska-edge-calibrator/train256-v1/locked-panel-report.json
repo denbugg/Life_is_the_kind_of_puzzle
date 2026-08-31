@@ -1,0 +1,79 @@
+{
+  "schema": "aiijc-taska-edge-calibrator-train256-locked-report-v1",
+  "config_sha256": "6fa0bc5d6a31bcc0c9efaa359edc56580d84f2499b7aed9f3616a0c12044a091",
+  "training": {
+    "cases": 256,
+    "edge_rows": 96104,
+    "positive_rate": 0.6955485723799217,
+    "train_auc": 0.9253674294736409
+  },
+  "opened32": {
+    "candidate_pairs": 334.78125,
+    "candidate_recall": 0.30324388586956524,
+    "candidate_exact": 4.28125,
+    "baseline_pairs": 334.71875,
+    "baseline_recall": 0.3031872735507246,
+    "baseline_exact": 4.46875,
+    "pair_delta": 0.0625,
+    "exact_delta": -0.1875,
+    "strict_count": 32,
+    "pair_delta_ci95": [
+      -3.65625,
+      3.59375
+    ],
+    "pair_source_wtl": [
+      10,
+      0,
+      6
+    ],
+    "exact_delta_ci95": [
+      -1.4375,
+      0.8125
+    ],
+    "exact_source_wtl": [
+      7,
+      4,
+      5
+    ],
+    "raw_edge_auc": 0.9247955683471272,
+    "calibrated_edge_auc": 0.9206651773223249,
+    "calibrated_logloss": 0.31899472418430624
+  },
+  "held300": {
+    "candidate_pairs": 333.90625,
+    "candidate_recall": 0.3024513134057971,
+    "candidate_exact": 2.71875,
+    "baseline_pairs": 329.625,
+    "baseline_recall": 0.2985733695652174,
+    "baseline_exact": 2.90625,
+    "pair_delta": 4.28125,
+    "exact_delta": -0.1875,
+    "strict_count": 32,
+    "pair_delta_ci95": [
+      -2.9070312499999993,
+      14.000781249999932
+    ],
+    "pair_source_wtl": [
+      10,
+      1,
+      5
+    ],
+    "exact_delta_ci95": [
+      -0.78125,
+      0.40625
+    ],
+    "exact_source_wtl": [
+      5,
+      2,
+      9
+    ],
+    "raw_edge_auc": 0.9186202208623659,
+    "calibrated_edge_auc": 0.9157468246213971,
+    "calibrated_logloss": 0.3408883406964541
+  },
+  "legality": {
+    "target_free_inference_features": true,
+    "strict_original_tile_permutations": true,
+    "competition_test_accessed": false
+  }
+}

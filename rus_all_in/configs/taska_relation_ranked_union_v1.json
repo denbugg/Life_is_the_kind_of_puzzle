@@ -1,0 +1,238 @@
+{
+  "schema": "aiijc-taska-relation-ranked-union-config-v1",
+  "signed_before_any_candidate_panel_construction_or_scoring": true,
+  "model_sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b",
+  "arm_order": [
+    "raw",
+    "logistic",
+    "focal_top5",
+    "nonlinear",
+    "selective_vote500_focal",
+    "combined_union_focal"
+  ],
+  "relation_feature_names": [
+    "raw_cost",
+    "outgoing_rank_fraction",
+    "incoming_rank_fraction",
+    "outgoing_margin_from_best",
+    "incoming_margin_from_best",
+    "outgoing_best_signed_gap",
+    "incoming_best_signed_gap",
+    "outgoing_cost_zscore",
+    "incoming_cost_zscore",
+    "axis_is_down",
+    "post_six_arm_support",
+    "post_six_arm_support_fraction",
+    "pre_six_arm_support",
+    "pre_tail_realised",
+    "tail_created",
+    "arm_supply_member",
+    "arm_supply_logit",
+    "arm_supply_focal_positive",
+    "provenance_current",
+    "provenance_selective_new",
+    "provenance_unique_fullres",
+    "realised_by_control",
+    "arm_is_control",
+    "arm_raw",
+    "arm_logistic",
+    "arm_focal_top5",
+    "arm_nonlinear",
+    "arm_selective_vote500_focal",
+    "arm_combined_union_focal"
+  ],
+  "model_parameters": {
+    "loss": "log_loss",
+    "learning_rate": 0.05,
+    "max_iter": 160,
+    "max_leaf_nodes": 31,
+    "max_depth": null,
+    "min_samples_leaf": 128,
+    "l2_regularization": 1.0,
+    "max_bins": 255,
+    "early_stopping": false,
+    "random_state": 2026083131
+  },
+  "candidate": {
+    "score_occurrences": "all 1104 realised relations in each of six post-tail arms",
+    "deduplicate": "maximum positive-class probability per (axis,source,target)",
+    "deduplicate_exact_tie": "earliest fixed arm then relation order",
+    "order": "all unique edges descending probability; fixed occurrence order ties",
+    "threshold": null,
+    "top_k": null,
+    "solver": "unchanged solve_prioritized_raw_tail_global",
+    "solver_config": {
+      "baseline_quantile": 0.15,
+      "search_rounds": 6,
+      "border_weight": 0.0,
+      "random_seed": 0,
+      "component_cap": 0,
+      "fill_rounds": 1
+    },
+    "cost_matrices_and_fill": "unchanged frozen parent"
+  },
+  "control": "confirmed whole-arm relation_truth_selector",
+  "panel_order": [
+    "local32",
+    "held32",
+    "fresh32"
+  ],
+  "development_exposure": {
+    "local32": "in-sample/mechanical because frozen HGB fit included local32",
+    "held32": "in-sample/mechanical because frozen final HGB fit included held32",
+    "fresh32": "existing opened model-selection-exposed development panel",
+    "none_are_confirmation": true
+  },
+  "gates": {
+    "local_pair_delta_minimum": 0.0,
+    "held_pair_delta_minimum": 0.0,
+    "fresh_pair_delta_minimum": 1.0,
+    "fresh_pair_source_ci95_lower_minimum": 0.0,
+    "fresh_exact_delta_minimum": -1.0,
+    "all_outputs_strict": true
+  },
+  "formal_if_all_development_gates_pass": {
+    "must_sign_before_generation_or_scoring": true,
+    "panel": "wholly new source-disjoint organizer-train source16xdraw2",
+    "pair_delta_mean_minimum": 1.0,
+    "pair_delta_source_ci95_lower_minimum": 0.0,
+    "exact_delta_mean_minimum": -1.0,
+    "all_outputs_strict": true,
+    "retrain_or_rule_change": false
+  },
+  "no_repeat_audit": {
+    "exact_match_found": false,
+    "closest_prior": [
+      {
+        "experiment": "TASKA focal nonlinear stacker",
+        "difference": "scored harvested pre-layout candidates with a different 22-feature HGB and inserted one portfolio arm; it did not union realised post-tail relations across six arms"
+      },
+      {
+        "experiment": "Union-hard learned edge priority",
+        "difference": "learned board-listwise Union-v2 hard-edge ordering and a different decoder lineage; it did not reuse the confirmed TASKA relation-truth HGB or six post-tail layouts"
+      },
+      {
+        "experiment": "component relation confidence decoder",
+        "difference": "used capped Socket component queries, calibrated bonus and Socket decoder; this candidate uses all realised TASKA relations without cap or bonus in raw-tail global"
+      },
+      {
+        "experiment": "confirmed relation whole-arm selector",
+        "difference": "selected one whole frozen arm; this consumer composes a new layout from the unique union ranked by the same frozen per-relation probabilities"
+      }
+    ],
+    "known_risk": "maximum over arm-specific occurrence contexts is target-free but optimistic; local and held are in-sample and cannot establish transfer"
+  },
+  "no_threshold_topk_weight_parameter_or_model_sweep": true,
+  "no_matcher_denoiser_or_feature_rerun": true,
+  "competition_test_production_submission_and_pixel_postprocess_forbidden": true,
+  "weco_steps": {
+    "local32": 155,
+    "held32": 156,
+    "fresh32": 157,
+    "formal_only_if_authorized": 158
+  },
+  "fixed_sources": {
+    "candidate": {
+      "path": "src/aiijc_puzzle/taska_relation_ranked_union.py",
+      "sha256": "426e7ab5ff207109343f0d158e2555bb7a9d243f5638b255ec393c8c98345a90"
+    },
+    "runner": {
+      "path": "scripts/run_taska_relation_ranked_union.py",
+      "sha256": "d27ebe82e00ced7db8c3e4c366492a61b101ae2eb90cb9bfe0736cc18c23b048"
+    },
+    "relation_selector": {
+      "path": "src/aiijc_puzzle/taska_relation_truth_selector.py",
+      "sha256": "1c91b3f18d2fe08dce59217bbdf446a4638fabf4eec19b91cacd988de8cd48e2"
+    },
+    "edge_calibrator_solver_wrapper": {
+      "path": "src/aiijc_puzzle/taska_edge_calibrator.py",
+      "sha256": "1915d250ed077040ec5df8a5e3ec79a9f040dc550b8b8330d5e7b664cd4a8fc5"
+    },
+    "raw_tail_global_solver": {
+      "path": "src/aiijc_puzzle/raw_tail_global_solver.py",
+      "sha256": "97859e1f4ff6ceadf56ebccf429f2944ae7a5726631731d9f776224a667eb486"
+    },
+    "pair_solver_config": {
+      "path": "src/aiijc_puzzle/taska_pair_pipeline.py",
+      "sha256": "b355f424bfd673f11ee559e3dbd8b858875bede7c42abc0b45c494e74170ad69"
+    }
+  },
+  "frozen_inputs": {
+    "relation_development_config": {
+      "path": "configs/taska_relation_truth_selector_v1.json",
+      "sha256": "5fac92c3a2c6c562f18a6e38065d1d2dcc13131a74e29ab5cf079213d1b6bacd"
+    },
+    "relation_development_report": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/report.json",
+      "sha256": "022739dec8a47465f588a3ad9e45660ffbfa327a6f1647bd1517134c01420c39"
+    },
+    "relation_model": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/frozen-relation-classifier.pkl",
+      "sha256": "ec4eca99243cdc6be20104d789b9e5d5598b79fa0d1b7e69bc37314375ad8c6b"
+    },
+    "relation_model_freeze": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/model-local32-held32/pre-evaluation-freeze.json",
+      "sha256": "b8f6a360cdeffb38f80a978aac9305a9e34cb7284af12345c98ba517f586908d"
+    },
+    "local_relation_archive": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/local32/frozen-target-free-relations.npz",
+      "sha256": "9d2f9527eeba49428e621915692b8b2b90f77f0cf376d4084b08f88986c50b35"
+    },
+    "local_relation_metadata": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/local32/frozen-target-free-relations.json",
+      "sha256": "2e6a43f257010c0fdede29bd469c43db92415045978d505d6192f1a677808c86"
+    },
+    "local_relation_freeze": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/local32/pre-score-freeze.json",
+      "sha256": "5f8f0d1222e7744acfd475b1b3eb67e30af8453b8feeb695178f6c300658fc9f"
+    },
+    "held_relation_archive": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/held32/frozen-target-free-relations.npz",
+      "sha256": "40ac40f435900c253e6b7f8c698e431b905d444fba3b0c78e99e69f628f4c38e"
+    },
+    "held_relation_metadata": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/held32/frozen-target-free-relations.json",
+      "sha256": "fec001d773e7268b695c5e28c5d5e03feac7ab20ab766d283ff11e5fed295fe7"
+    },
+    "held_relation_freeze": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/held32/pre-score-freeze.json",
+      "sha256": "09fbbaf5d0173d7d1fb3d4387d478fdf811ef18ae0670386a72a09d159e6ce20"
+    },
+    "fresh_relation_archive": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/fresh32/frozen-target-free-relations.npz",
+      "sha256": "08785100145a344628c6c789df76c58c3c9cdc76db03ac2ee08444bae5ca00e1"
+    },
+    "fresh_relation_metadata": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/fresh32/frozen-target-free-relations.json",
+      "sha256": "47b3fbe6c9752ba3512490f697b8899cbf5447863bd17b21efa22e083ac8415b"
+    },
+    "fresh_relation_freeze": {
+      "path": "outputs/taska-relation-truth-selector/fixed-v1/fresh32/pre-score-freeze.json",
+      "sha256": "f251b9a1e5a8bb88a4555dab467ca541cb54fdd3318bc20b68748a2b9d3ed00f"
+    },
+    "local_base_costs": {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/frozen-target-free-eval.npz",
+      "sha256": "e615659915d6bb17710403833b46b78d64916e4910afd7effa834a9f46d98e27"
+    },
+    "local_base_metadata": {
+      "path": "outputs/taska-focal-feature-stacker/train96-v1/local32/frozen-target-free-eval.json",
+      "sha256": "78a10b5f3581ef89a1dadae284906cd6f85ec7708250154b4ef4b819cd01a62c"
+    },
+    "held_base_costs": {
+      "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.npz",
+      "sha256": "0876d7acd6be7ebe863f831de568586c837da52cc603df4ff8d7c5a6b0d441df"
+    },
+    "held_base_metadata": {
+      "path": "outputs/taska-seam-replay/held300-diagnostic-mps-v1/frozen-target-free-eval.json",
+      "sha256": "91710486233f45bda2b8aab019c508d1e6a0f75e282a6ce9a47aee93d9bf0a8d"
+    },
+    "fresh_base_costs": {
+      "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/frozen-target-free-eval.npz",
+      "sha256": "d7b156ff1a8cdab702881242e48797b1a18f750a2d6a60f2a7d769dbfa1bffc1"
+    },
+    "fresh_base_metadata": {
+      "path": "outputs/taska-protected-tail/fresh-held32-mps-v1/frozen-target-free-eval.json",
+      "sha256": "1acb5d0000dd76e48fb6c079827fa2113bb56f541905fc97ced9656b8d7fe53f"
+    }
+  }
+}

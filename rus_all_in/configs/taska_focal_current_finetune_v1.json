@@ -1,0 +1,119 @@
+{
+  "schema": "aiijc-taska-focal-current-finetune-v1",
+  "experiment": "taska-focal-current-finetune-v1",
+  "protocol": {
+    "single_fixed_arm": true,
+    "hyperparameter_sweep": false,
+    "roster_and_training_recipe_committed_before_this_run_opened_selected_targets": true,
+    "organizer_train_only": true,
+    "competition_test_forbidden": true,
+    "gate_predictions_frozen_before_gate_references": true,
+    "held_predictions_frozen_before_held_references": true,
+    "held_requires_nonnegative_gate_delta_vs_recovered_top5": true
+  },
+  "selection": {
+    "parent_roster": {
+      "path": "outputs/taska-edge-calibrator/train256-v1/roster.json",
+      "sha256": "e940944865f0a4f93e6f6a9782c33c2da1566ffb8ef1253e88bec369d30c630c",
+      "source_count": 256,
+      "source_order_digest": "e2e80b4b0d3f0909ac32772b3e55a91d22fe9a303b27396c70c0a732acdcde91"
+    },
+    "algorithm": "take parent roster positions 0:96 for train and 96:128 for local gate; require zero overlap with opened32, held300, and protected-tail fresh32 source rosters",
+    "draw_indices": [0],
+    "train": {
+      "slice": [0, 96],
+      "source_count": 96,
+      "source_order_digest": "7b3ff55d8e73097fccfe2aeae45528c13734c7793a9fd0f8ee1dfdf4893cd7fe"
+    },
+    "local_gate": {
+      "slice": [96, 128],
+      "source_count": 32,
+      "source_order_digest": "f516f12e8943580ab62e17cd6d4064dc519aa20df6485bf5bca34030beaa2bc3"
+    },
+    "combined_source_order_digest": "386e53d43ae5c1af63f50f0a6bdc3ad21611554d48a39a04d2ccfa81358d9f0c",
+    "synthetic_seed": 1267233517
+  },
+  "matcher": {
+    "recipe": "current frozen TASKA v3+local raw+median+bilateral harvest",
+    "views": ["raw", "median", "bilateral"],
+    "orientations": 2,
+    "votes_fallback": 10,
+    "vote_target": 350,
+    "depth": 1,
+    "quad_weight": 0.0,
+    "cycle_rounds": 3,
+    "cycle_weight": 0.35,
+    "sinkhorn_iterations": 20,
+    "acyclic_weight": 3.0
+  },
+  "training": {
+    "initial_checkpoint": {
+      "path": "artifacts/prior-taska/ckpt/verify_pair_best.pt",
+      "sha256": "3bcc89a12e7b539304484b441688b4b9fb1c3711e918befed9cdef7c17f776e7"
+    },
+    "feature_mode": "train_exact_top5",
+    "candidate_distribution": "only current TASKA harvested edges",
+    "loss": "mean softplus(-(positive_logit-negative_logit)) over every true-false harvested-edge pair within each board",
+    "optimizer": "AdamW",
+    "learning_rate": 0.00003,
+    "weight_decay": 0.01,
+    "epochs": 2,
+    "board_batch_size": 1,
+    "gradient_clip_norm": 1.0,
+    "seed": 2026083103,
+    "freeze_raw_score_prior": true,
+    "checkpoint_selection": "final epoch only; no epoch or arm selection"
+  },
+  "solver": {
+    "consumer": "external edge-priority ordering only",
+    "baseline_quantile": 0.15,
+    "search_rounds": 6,
+    "border_weight": 0.0,
+    "random_seed": 0,
+    "component_cap": 0,
+    "fill_rounds": 1,
+    "candidate_membership_changes": false,
+    "placement_and_fill_costs": "original TASKA costs"
+  },
+  "evaluation": {
+    "primary_metric": "satisfied_adjacent_pairs_per_board",
+    "pair_denominator": 1104,
+    "secondary_metrics": ["adjacency_recall", "exact_tiles_per_board"],
+    "gate_comparator": "recovered checkpoint train_exact_top5 on the same local-gate cases",
+    "held_gate": "finetuned minus recovered mean satisfied pairs >= 0",
+    "also_report_raw_taska": true
+  },
+  "artifacts": {
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "opened32_recipe": {
+      "path": "configs/taska_seam_replay_opened32_v1.json",
+      "sha256": "06396905bdf7b552e165e207262d5a0654d19af3d35b2d557501551ca46da359"
+    },
+    "held300_recipe": {
+      "path": "configs/taska_seam_held300_diagnostic_v1.json",
+      "sha256": "112d5b4bcc78708091f4d0cbf47865f7dc6bd9276a0c8280a91de152c1b928d7"
+    },
+    "fresh32_recipe": {
+      "path": "configs/taska_protected_tail_fresh32_confirmation_v1.json",
+      "sha256": "9854ef20c479ab358887896b81bf93263a3bdcd7d7014d6a310b7134fb4daad7"
+    },
+    "matcher_v3": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_v3.pt",
+      "sha256": "6f0917d66d908f6cc0f4c1fcb949d3bcbadcba2490a6f7b5a12596e61de9730e"
+    },
+    "matcher_local": {
+      "path": "artifacts/prior-taska/ckpt/seam_embed_local.pt",
+      "sha256": "5932853a73961d261b494368a4db04633fecc5996771c14d64f49ef00c7cfe73"
+    }
+  },
+  "legality": {
+    "target_or_exact_reference_used_at_inference": false,
+    "tile_id_or_source_coordinate_feature_used_at_inference": false,
+    "rotation_warp_or_replacement": false,
+    "output_uses_each_original_upright_tile_exactly_once": true,
+    "training_targets_used_only_for_offline_binary_edge_labels": true
+  }
+}

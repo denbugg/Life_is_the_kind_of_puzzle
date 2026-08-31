@@ -1,0 +1,22 @@
+{
+  "solver_exact": {
+    "run_id": "c2876967-cca7-44a6-83dd-1fca125c237e",
+    "metric": "exact_tiles_per_board",
+    "goal": "maximize",
+    "baseline_step": 0
+  },
+  "solver_adjacency_pairs": {
+    "run_id": "6bf52932-d716-4959-bee4-d652d7286cba",
+    "metric": "satisfied_adjacent_pairs_per_board",
+    "secondary_metric": "adjacency_recall",
+    "pair_denominator": 1104,
+    "goal": "maximize",
+    "baseline_step": 0
+  },
+  "official_ssim": {
+    "run_id": "080b97ed-d29c-4aa0-b68f-427331537a8c",
+    "metric": "leaderboard_ssim",
+    "goal": "maximize",
+    "baseline_step": 0
+  }
+}

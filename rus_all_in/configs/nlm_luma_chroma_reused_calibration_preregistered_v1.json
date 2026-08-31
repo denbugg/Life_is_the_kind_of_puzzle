@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "experiment": "single_pass_colored_nlm_decoupled_luma_chroma_strength",
+  "frozen_at": "2026-08-30T09:43:39+03:00",
+  "status_at_freeze": "preregistered_before_this_experiment_decodes_any_target_pixels",
+  "scientific_scope": "reused calibration screen; not fresh, not holdout, and not an unbiased generalization estimate",
+  "novelty_boundary": {
+    "tested_hypothesis": "OpenCV colored NLM can suppress chroma noise more strongly than luminance noise while preserving most luminance geometry",
+    "historical_audit": "All located prior colored-NLM calls coupled hColor=h; no decoupled h/hColor sweep was found in this workspace or pazzle_will_be_killed",
+    "not_repeated": [
+      "multi-pass or sequential NLM",
+      "NLM strength at least 30",
+      "target-guided per-board strength selection",
+      "layout replacement"
+    ]
+  },
+  "protocol": {
+    "manifest": "data/interim/validation_manifest.json",
+    "manifest_sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da",
+    "protocol_digest": "2a9e3b74f7defa8c00846a05eb598fd263fd16c2787c70e77d3b7a4b585bfbf4",
+    "selector_namespace": "aiijc-puzzle-experiments-v1",
+    "selector_seed": 20260829,
+    "split": "calibration",
+    "primary": {
+      "offset": 468,
+      "count": 36,
+      "filenames_newline_sha256": "0fe1f7beb15995e98461f863856f74f1c96837732dfb935772c87643288b5000",
+      "filename_input_roster_sha256": "8134af4e382bc10e91cafb945487b10b01358b80550f89b7cacc60d940f38991"
+    },
+    "confirmation_if_and_only_if_primary_passes": {
+      "offset": 504,
+      "count": 36,
+      "filenames_newline_sha256": "1511f39f31c93a7984c181e9841d5740c4749e862ee3e9c4dab46a4144fc0e7b",
+      "filename_input_roster_sha256": "e798c2d5d237761955b16f4e6ecc589586ec100776f0b33ce5b1a08f7582bdd3"
+    },
+    "primary_confirmation_filename_overlap": 0,
+    "historical_exposure": {
+      "freshness_claim": false,
+      "legacy_report": "outputs/legacy-upgrade/calibration700-champion/report.json",
+      "all_primary_records_previously_exposed": true,
+      "all_confirmation_records_previously_exposed": true,
+      "interpretation": "Predictions are committed before target decode in this experiment, but historical target exposure prevents a fresh-validation claim."
+    }
+  },
+  "fixed_pipeline": {
+    "layout": "bilateral directional scores -> solve_buddies(max_edges=96), strict upright permutation of all 576 input tiles",
+    "layout_shared_by_all_arms": true,
+    "rgb_offsets_config": "configs/postassembly_rgb_offset_v1.json",
+    "rgb_offsets_config_sha256": "4adfd9b614e8556b7de5c1f527d759d15d29c0f74e20aa26ff87900dd773ec9a",
+    "luminance_config": "configs/postassembly_luminance_gain_v1.json",
+    "luminance_config_sha256": "7488cad2ae7cc75792d6ff0ff2ea0a38fa778979083ffd5c161c857b68fd550f",
+    "postassembly_order": "RGB seam offsets -> bounded luminance gains -> exactly one full-canvas OpenCV colored NLM pass",
+    "nlm_template_window_size": 7,
+    "nlm_search_window_size": 21
+  },
+  "arms": [
+    {"name": "nlm_h20_hc20_baseline", "h": 20, "h_color": 20, "role": "control"},
+    {"name": "nlm_h20_hc24", "h": 20, "h_color": 24, "role": "candidate"},
+    {"name": "nlm_h20_hc28", "h": 20, "h_color": 28, "role": "candidate"},
+    {"name": "nlm_h22_hc20", "h": 22, "h_color": 20, "role": "candidate"},
+    {"name": "nlm_h22_hc24", "h": 22, "h_color": 24, "role": "candidate"},
+    {"name": "nlm_h22_hc28", "h": 22, "h_color": 28, "role": "candidate"},
+    {"name": "nlm_h24_hc20", "h": 24, "h_color": 20, "role": "candidate"},
+    {"name": "nlm_h24_hc28", "h": 24, "h_color": 28, "role": "candidate"}
+  ],
+  "target_access_order": [
+    "verify input hashes and exact selected roster",
+    "solve and audit the shared strict layout",
+    "freeze the harmonized canvas and every arm prediction",
+    "write and read back a content-addressed prediction commitment",
+    "compute all target-free safety diagnostics",
+    "only then decode primary target PNGs once"
+  ],
+  "metric": {
+    "name": "skimage.metrics.structural_similarity",
+    "channel_axis": 2,
+    "data_range": 255,
+    "win_size": 7
+  },
+  "paired_ci": {
+    "method": "two-sided paired t interval",
+    "confidence": 0.95,
+    "degrees_of_freedom": "count_minus_one"
+  },
+  "target_free_safety_metrics": {
+    "within_tile_luminance_gradient": "mean absolute one-pixel Y differences excluding 20-pixel grid crossings",
+    "within_tile_chroma_gradient": "mean Euclidean one-pixel differences in OpenCV Lab a/b excluding 20-pixel grid crossings",
+    "luminance_laplacian_energy": "mean absolute cv2.Laplacian(Y, CV_64F, ksize=3)",
+    "grid_ratio": "mean absolute Y differences on grid boundaries divided by within-tile Y gradient",
+    "relative_denominator": "nlm_h20_hc20_baseline on the same board"
+  },
+  "primary_promotion_gate": {
+    "winner_mean_rgb_ssim_min": 0.27,
+    "winner_paired_gain_vs_baseline_ci95_lower_strictly_greater_than": 0.0,
+    "winner_wins_vs_baseline_min": 24,
+    "mean_luminance_gradient_retention_min": 0.82,
+    "minimum_board_luminance_gradient_retention_min": 0.72,
+    "mean_chroma_gradient_retention_min": 0.70,
+    "minimum_board_chroma_gradient_retention_min": 0.55,
+    "mean_laplacian_retention_min": 0.75,
+    "minimum_board_laplacian_retention_min": 0.65,
+    "mean_grid_ratio_relative_to_baseline_max": 1.05,
+    "maximum_board_grid_ratio_relative_to_baseline_max": 1.12,
+    "all_predictions_distinct_across_boards": true
+  },
+  "selection_rule": "Among candidate arms passing every primary gate, choose maximum mean RGB SSIM; break exact ties by lower h, then lower hColor, then arm name. Do not access confirmation if no candidate passes.",
+  "confirmation_gate": "The unchanged primary winner must pass the identical absolute SSIM, paired CI, win count, target-free safety and distinctness gates on records 504:540.",
+  "forbidden": [
+    "target pixels before prediction commitment",
+    "per-board or target-dependent arm selection",
+    "new arm after primary target access",
+    "target/reference pixels at inference",
+    "cross-board pixels or templates",
+    "tile substitution, rotation, resampling, warp, or distortion",
+    "multi-pass NLM",
+    "h or hColor at least 30",
+    "changes to the existing production ZIP"
+  ]
+}

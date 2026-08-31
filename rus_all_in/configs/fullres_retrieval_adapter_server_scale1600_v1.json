@@ -1,0 +1,68 @@
+{
+  "schema": "aiijc-fullres-retrieval-adapter-server-scale1600-v1",
+  "status": "server-ready-training-artifact-only-no-solver-promotion",
+  "created_only_after_positive_fixed_scaling_slope": true,
+  "preregistration": {
+    "path": "configs/fullres_retrieval_adapter_scale1600_preregistered_v1.json",
+    "sha256": "840a50cba2dea4c7c57300f65ce18613d62ec26f696dd25311a58a25e0605563"
+  },
+  "checkpoint": {
+    "path": "outputs/fullres-retrieval-adapter/scale1600-local16-v1/adapter_step1600.pt",
+    "sha256": "51beee8dea615e00440f90737ee537244dcf26934e9e292ac7a33bea235e6a48"
+  },
+  "architecture_and_loss_unchanged": true,
+  "training": {
+    "steps": 1600,
+    "fit_sources": 32,
+    "seed": 20260911,
+    "device_recommendation": "CUDA or MPS; checkpoint is portable"
+  },
+  "local16_scaling_step1600_minus_step400": {
+    "retrieval": {
+      "pooled_r1": 0.002321105072463747,
+      "pooled_r5": 0.003453351449275388,
+      "right_r1": 0.0006793478260869457,
+      "right_r5": 0.004528985507246341,
+      "down_r1": 0.0039628623188405765,
+      "down_r5": 0.0023777173913043237
+    },
+    "raw_union_top32": {
+      "pooled_coverage": 0.007189764492753659,
+      "right_coverage": 0.006567028985507206,
+      "down_coverage": 0.0078125
+    },
+    "matched_reciprocal": {
+      "matched_query_count": 8169,
+      "matched_coverage": 0.4624660326086957,
+      "adapter_step400_precision": 0.3303953972334435,
+      "adapter_step1600_precision": 0.33725058146651976,
+      "step1600_minus_step400_precision": 0.006855184233076239
+    }
+  },
+  "local16_step1600_retrieval": {
+    "right_total": 8832,
+    "right_hits_at_1": 1692,
+    "right_hits_at_5": 3496,
+    "right_hits_at_32": 6266,
+    "down_total": 8832,
+    "down_hits_at_1": 1839,
+    "down_hits_at_5": 3536,
+    "down_hits_at_32": 6212,
+    "pooled_total": 17664,
+    "pooled_hits_at_1": 3531,
+    "pooled_hits_at_5": 7032,
+    "pooled_hits_at_32": 12478,
+    "right_r1": 0.19157608695652173,
+    "right_r5": 0.3958333333333333,
+    "right_r32": 0.7094655797101449,
+    "down_r1": 0.20822010869565216,
+    "down_r5": 0.4003623188405797,
+    "down_r32": 0.7033514492753623,
+    "pooled_r1": 0.19989809782608695,
+    "pooled_r5": 0.39809782608695654,
+    "pooled_r32": 0.7064085144927537
+  },
+  "raw_control_required": true,
+  "matcher_view_only": true,
+  "decoder_or_production_authorized": false
+}
