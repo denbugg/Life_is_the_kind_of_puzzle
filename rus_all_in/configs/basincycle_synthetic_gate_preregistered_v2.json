@@ -1,0 +1,70 @@
+{
+  "schema_version": "aiijc-basincycle-synthetic-gate-config-v1",
+  "name": "basincycle-stage-a-one-shot-v2-mechanical-import-correction",
+  "date_frozen": "2026-08-31",
+  "frozen": true,
+  "scope": "synthetic-mechanism-only",
+  "supersedes_failed_config": {
+    "path": "configs/basincycle_synthetic_gate_preregistered_v1.json",
+    "sha256": "8eb4e28e2ce251b73a30e0787eed077205d80ab5d4b497c03bc9d33c407a1e40",
+    "failure": "ModuleNotFoundError: No module named 'src' before main() and before any synthetic case was generated",
+    "scientific_fields_changed": false,
+    "output_created": false
+  },
+  "decision_boundary": {
+    "authorizes_exactly_one_report": true,
+    "authorizes_model_training": false,
+    "authorizes_organizer_data": false,
+    "authorizes_dev_holdout_terminal_or_test": false,
+    "authorizes_production_promotion": false,
+    "interpretation": "This gate can only falsify strict-cycle generation, dynamic candidate closure, and KEEP mechanics."
+  },
+  "implementation": {
+    "module": {
+      "path": "src/aiijc_puzzle/basincycle_synthetic.py",
+      "sha256": "46e6878296d4a9282434f4b5cc9b7d62931dd8511b84eadf83e5ac25223636f9"
+    },
+    "runner": {
+      "path": "scripts/run_basincycle_synthetic_gate.py",
+      "sha256": "7e68c1993b122b9fb1985311a8b6ed69262400acda7577d411a1897db24ae761"
+    },
+    "focused_tests": {
+      "path": "tests/test_basincycle_synthetic.py",
+      "sha256": "ced997c2d9f87150aa27ba172a5b2952b08eae68624921c7a313b6a435d64a4d"
+    }
+  },
+  "panel": {
+    "generator": "fixed-planted-directional-edges-with-disjoint-same-parity-cycles",
+    "case_count": 64,
+    "grid_size": 6,
+    "seed_start": 2026083100,
+    "true_edge_score": 8.0,
+    "false_edge_sigma": 1.0,
+    "true_edge_noise_sigma": 0.25,
+    "distractor_probability": 0.015,
+    "distractor_boost": 4.0,
+    "corruption_cycle_count": 4,
+    "corruption_cycle_length": 3
+  },
+  "search": {
+    "top_k": 8,
+    "candidate_cap": 6,
+    "seed_count": 18,
+    "max_cycle_length": 3,
+    "max_steps": 12,
+    "minimum_delta": 1e-09,
+    "state": "strict-slot-to-tile-permutation",
+    "actions": "KEEP-or-one-atomic-closed-cycle"
+  },
+  "gates": {
+    "require_all_prefixes_strict": true,
+    "minimum_truth_keep_rate": 0.95,
+    "minimum_mean_pair_delta": 4.0,
+    "minimum_mean_exact_delta": 2.0,
+    "maximum_negative_pair_rate": 0.05
+  },
+  "output": {
+    "report_path": "outputs/basincycle-synthetic/gate-v2/report.json",
+    "overwrite": false
+  }
+}

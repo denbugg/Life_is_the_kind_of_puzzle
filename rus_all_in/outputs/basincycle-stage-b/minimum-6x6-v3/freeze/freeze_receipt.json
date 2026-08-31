@@ -1,0 +1,31 @@
+{
+  "all_banks_keep_index0": true,
+  "all_candidate_layouts_strict": true,
+  "all_controls_strict": true,
+  "all_selected_outputs_strict": true,
+  "bundle": {
+    "path": "target_free_predictions.npz",
+    "sha256": "b0ff71b112c4370243cea9fad9fe7893cbbc9e086bc1a30f5ba8a5d6ddb79b5d"
+  },
+  "clean_pixels_persisted_in_bundle": false,
+  "clean_pixels_supplied_directly_to_model_proposals_or_selector": false,
+  "config_sha256": "133587c2e0257c206b8d81009e7ba2addfb6bd48a167527c0e9771334df05b91",
+  "control_layout_sha256": "bf1b6623e46b0dd6fcd3391a6f9647d642bdc28d87c68c68f2a8bfc65913395a",
+  "derived_procedural_control_supplied_to_model": true,
+  "eval_case_count": 64,
+  "eval_plan_digest": "e4df9098c92ec842abc31f77ee0a7507c83fa797295745a1bc8913708959c632",
+  "eval_source_digest": "a8d611bdd8b9a239e0049615df456da2601459658cd2c2b68a0d4a64e23691cc",
+  "evaluation_metric_or_oracle_attached_before_freeze": false,
+  "execution_binding_sha256": "fc01838457a9bc788c83dc5703c29434007b1a94ac963b6b3635b1f3c4ee2a9d",
+  "model_sha256": "766238d956798544fb4a3dbb968028b5bc2bb7539f19173e83dc1c8f5c3ef71d",
+  "prediction_roster_sha256": "791201d8694ceffce0e10b66a0867852bb408a4a5efc43ddadce119674a88b0f",
+  "procedural_control_initialized_from_planted_truth": true,
+  "proposal_identity_sha256": "00312a5f7cc1cbf81d3c85b74ecf95ee7196584468727f4b09857f1038a20087",
+  "reference_opened": false,
+  "reference_semantics": "reference_opened=false means that no evaluation metric/oracle was attached before freeze. The deterministic synthetic shuffle inverse was nevertheless constructed inside case generation, and each procedural control was initialized from that planted truth. The model received that derived control by design, but neither the planted truth nor clean pixels were supplied directly to the predictor, proposal builder, or selector or persisted in the bundle.",
+  "schema": "aiijc-basincycle-stage-b-target-free-freeze-v1",
+  "selection_or_threshold_sweep_performed": false,
+  "synthetic_shuffle_truth_constructed_for_case_generation": true,
+  "synthetic_shuffle_truth_persisted_in_bundle": false,
+  "synthetic_shuffle_truth_supplied_directly_to_model_proposals_or_selector": false
+}

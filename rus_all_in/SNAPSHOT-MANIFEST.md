@@ -1,6 +1,6 @@
 # Rus all-in snapshot manifest
 
-Срез: 2026-08-31. Этот каталог добавлен поверх legacy ветки Pasha883; legacy
+Срез: 2026-09-01. Этот каталог добавлен поверх legacy ветки Pasha883; legacy
 файлы не удалялись и не переписывались. Competition test, submission и
 prediction outputs в snapshot не входят.
 
@@ -115,6 +115,41 @@ freezers, fail-closed evaluator, unit tests, compact JSON metadata/receipts,
 | full results document | `2c2314836c5984a82176b21c07de9b8f54e014a4fcb4085a7430e2e245c1b261` |
 | Weco step 162 journal | `d5fe14a1047845a4ac52ab2d6e1aae5c4ad495f7d085b62514d7a171fc80d948` |
 
+## BasinCycle Stage-B and selector-aligned v2
+
+Signed Stage-B 6x6 завершил единственный final-only FIT/freeze/score цикл.
+Генератор коротких 2/3-cycle действий покрыл `54/58 = 93.1%` состояний, где
+oracle видел улучшение, но фиксированный selector выбрал KEEP в `64/64`.
+Pairs, exact и radius2 delta поэтому равны нулю. Это selector failure, а не
+proposal-supply failure; q10/risk/q50 пороги на уже открытом EVAL32 не
+подбирались и post-hoc policy rescue не применялся.
+
+Следующий unsigned/data-blocked v2 напрямую учит safe improvement и pair gain
+относительно аналитического KEEP=0. Независимый RED-аудит поймал ошибку ранней
+векторизации: сохранность пары сравнивалась по raster bond, а не по directed
+pair identity. Исправленная версия индексирует `(axis, source tile)`, включает
+фиксированный контрпример и fuzz против scalar reference; root дополнительно
+проверил `50 seeds × B4 × P101`. Финальный независимый GREEN-аудит расширил
+проверку до `250` seeds, `778` boards и `32,872` arbitrary proposals на grids
+2×2–9×9 без единого расхождения. Execution guard в no-runner scaffold теперь
+безусловно запрещает запуск. Реальные roster/data/signature/FIT/Weco для v2
+не открывались.
+
+Ключевые hashes:
+
+| Artifact | SHA-256 |
+|---|---|
+| Stage-B v3 endpoint | `766238d956798544fb4a3dbb968028b5bc2bb7539f19173e83dc1c8f5c3ef71d` |
+| Stage-B v3 FIT report | `73fd994229af118e7793a0806dd8b664c002d7a3a1750bcd4a7400cc95f564b2` |
+| Stage-B target-free predictions | `b0ff71b112c4370243cea9fad9fe7893cbbc9e086bc1a30f5ba8a5d6ddb79b5d` |
+| Stage-B freeze receipt | `e4abb671aca288290394aa319a9d55872a264c4c78a8b3ff81515ace0bd3ca32` |
+| Stage-B immutable score report | `7879f0b38136a6f44962a9151bc751543e44fe2362b31930a05ae47552972e62` |
+| selector-aligned v2 model | `6e4005062c766a9716dd4999b13e04f0a2fa21dd0a607eb5fd9aa7bc07391947` |
+| selector-aligned v2 protocol | `1d30d6b0760a324361543fa2adc2432ad954f8cbadbcee2ed389602691974b3f` |
+| selector-aligned v2 unsigned config | `dd353dda0d8f432c83dd48e57410ab0bc5cddff0c9623ee8bde5942c40712969` |
+| selector-aligned v2 design report | `00acb41ba56d11d434f31d6c6383649190ec2997a1ebeb72e540f24f6a791901` |
+| Weco Stage-B fail-stop journal | `c93f41b57b32ef0e9964d48c114df4a4ee68f72b5db2515543601b23bcfe7e09` |
+
 ## Included runtime/evidence chain
 
 Promoted relation selector может fail-closed проверить весь frozen runtime
@@ -159,8 +194,12 @@ Scale3200 is represented only by the signed config, runner/tests/docs and
   не нужны для воспроизведения roster-inventory blocker;
 - duplicate scale256 evaluator stdout log; the immutable JSON report is the
   canonical score artifact;
-- all moving BasinCycle Stage-B v3 and six-emitter code/config/report files.
-  They remain in the canonical workspace until that work is stable.
+- the large Stage-B checkpoint/prediction arrays and stdout logs. Their signed
+  configs, code, tests, compact reports, receipts, exact hashes and Weco journal
+  are included; selector-aligned v2 remains unsigned/no-runner by design;
+- all moving six-emitter and blindspot retry code/config/report files. They
+  remain in the canonical workspace until independent audit and execution are
+  complete.
 
 For optional research reproduction, download only from the official locations
 and verify before use:
@@ -209,6 +248,10 @@ At snapshot time:
   sanity pass verified four signed configs, all locally present records in
   three receipt chains, the immutable `64×11` report SHA and both no-selection /
   no-competition-test flags;
+- the synchronized BasinCycle selector-aligned v2 focused slice passes
+  `19/19`, Ruff is clean, and the compatible Stage-B slice passes `38/38`
+  when excluding one stale historical assertion that the now-completed v3
+  output directory must not exist;
 - in this portable copy, the earlier promoted-relation subset passed `20/20`,
   and the promoted relation adapter verified all `22/22` pinned
   source/model/report/archive SHA records. Four canonical slice tests require

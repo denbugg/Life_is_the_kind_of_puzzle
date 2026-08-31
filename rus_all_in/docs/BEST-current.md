@@ -13,6 +13,12 @@
   **`+0.7133/+1.1690 pp`**, а precision фиксированной reciprocal-head 5% — на
   **`+10.3448 pp`** (`77.7478→88.0927%`). Все девять directional/pooled
   bootstrap-CI положительны; это retrieval-result, а не готовый layout gain.
+- **Scale256 DEV64 уже открыт ровно один раз и полностью зафиксирован.**
+  Canonical rank-delta layout дал exact `1.875`, pairs `352.641` и mean
+  Manhattan `14.8847`. Единственный selective arm поднял exact до `6.672`
+  (`+4.797`, source-CI95 `[+0.375,+11.454]`), но одновременно потерял
+  `5.734` пары/board. Поэтому это exact/radius Pareto-evidence, а не новый
+  универсальный default; соседний selector/threshold sweep на DEV64 закрыт.
 - **Следующий scale-переход:** target-free FIT256×2 cache закончен `512/512`
   (`3.342 GiB`, все SHA проверены). Reserved DEV64 остаётся неоткрытым;
   обучение и consumer freeze выполняются отдельным подписанным переходом.
@@ -49,5 +55,17 @@
   `24/32` boards имеют `<=1` exact tile, один sample создаёт `83.93%`
   positive mass. Дальше обязательны median/quartiles/W-T-L/source bootstrap,
   max-contribution и leave-largest-positive вместе с mean.
+- **BasinCycle Stage-B v3 закрыт как selector failure, не как proposal
+  failure.** На signed 6x6 one-shot generator покрыл `54/58 = 93.1%`
+  oracle-возможностей, но selector выбрал KEEP в `64/64`, поэтому все
+  layout-дельты нулевые. Старые q10/risk/q50 пороги на открытом EVAL32 не
+  подбираются; следующий вариант обязан напрямую учить safe improvement и
+  gain относительно аналитического KEEP=0 на новом source-disjoint протоколе.
+- **Default-six ranker пока не имеет endpoint.** Его единственный MPS FIT
+  завершился после первого конечного update (`loss 9.7913`, clipped grad norm
+  `1.8589`) из-за non-finite residual logits перед вторым loss. Cache и оба
+  первых случая проверены конечными; причина локализована в MPS optimizer
+  transition. Старый claim сохранён, resume запрещён; допустим только отдельно
+  reviewed step-zero retry с CPU-fp32 shadow AdamW и post-update guards.
 
 Полное описание: [TASKA relation-level truth selector](experiments/taska-relation-truth-selector.md).

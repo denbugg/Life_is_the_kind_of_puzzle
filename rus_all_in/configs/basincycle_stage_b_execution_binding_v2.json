@@ -1,0 +1,123 @@
+{
+  "schema": "aiijc-basincycle-stage-b-execution-binding-v2",
+  "status": "signed-unexecuted-review-required",
+  "execution_revision": "mps-staged-pair-logit-transfer-v2",
+  "created_at": "2026-08-31",
+  "purpose": "Separate one-run retry binding after the v1 fit stopped before update zero because a fused MPS-float32 to CPU-float64 detached proposal transfer corrupted two values. Scientific config, roster, plan, seed, architecture, loss, selector and gates remain byte-identical; only the device transfer is staged through CPU float32.",
+  "real_execution_authorized": false,
+  "scientific_config": {
+    "path": "configs/basincycle_stage_b_6x6_preregistered_v1.json",
+    "sha256": "133587c2e0257c206b8d81009e7ba2addfb6bd48a167527c0e9771334df05b91"
+  },
+  "implementation": {
+    "base_execution_binding": {
+      "path": "configs/basincycle_stage_b_execution_binding_v1.json",
+      "sha256": "a2d932569f13e5fb58f0f51c3d15a4fb981bdfc3487936935285b31991af4356"
+    },
+    "stage_b_model": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b.py",
+      "sha256": "450490ded7be50f2b2f2dbfa11a6f7030339c4c26db5c7aabbe22e064332e2ab"
+    },
+    "runner_module": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b_runner.py",
+      "sha256": "3e6b021de15000848f9fc4d39caa97c3774ac2e811e70c6271e082c24e7acb47"
+    },
+    "mps_transfer_adapter": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b_mps_transfer_v2.py",
+      "sha256": "e0297d1f386a79ca18abf52e2148b8c840dbd667c10c59359880d19803cb532b"
+    },
+    "runner_cli": {
+      "path": "scripts/run_basincycle_stage_b_v2.py",
+      "sha256": "579eb05988ac3d9720f037f6eba7f086e3c11f06bfbb124c635900c122fdbc94"
+    },
+    "failed_v1_log": {
+      "path": "outputs/basincycle-stage-b-minimum-6x6-v1.fit.log",
+      "sha256": "fd13ba6b618683601d6f8cfc76302b3e5ddc06514e434dc14ed951488d49b717"
+    }
+  },
+  "failed_v1": {
+    "fit_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v1/fit",
+    "fit_output_dir_preserved_empty": true,
+    "optimizer_updates_completed": 0,
+    "failure": "ValueError: directional scores must be finite",
+    "failure_boundary": "detached target-free proposal construction before label attachment, loss, backward or optimizer step",
+    "reuse_resume_or_deletion_authorized": false
+  },
+  "mps_transfer_fix": {
+    "failed_operation": "fused-mps-float32-to-cpu-float64",
+    "observed_finite_count": 10366,
+    "observed_value_count": 10368,
+    "observed_nan_count": 2,
+    "observed_finite_absmax": 1.59e+308,
+    "replacement": "mps-float32-to-cpu-float32-then-cpu-float64",
+    "replacement_finite_count": 10368,
+    "replacement_value_count": 10368,
+    "proposal_membership_still_detached": true,
+    "scientific_semantics_changed": false
+  },
+  "artifacts": {
+    "fit_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v2/fit",
+    "final_checkpoint": "outputs/basincycle-stage-b/minimum-6x6-v2/fit/basincycle_stage_b_final.pt",
+    "freeze_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v2/freeze",
+    "score_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v2/score",
+    "one_run_guard": "the v2 fit/freeze/score directories must not exist before their phase; the preserved failed v1 directory is never reused, deleted or resumed"
+  },
+  "data": {
+    "organizer_train_targets": "data/raw/train/targets",
+    "fit_source_count": 64,
+    "eval_source_count": 32,
+    "preload_policy": "inherited byte-for-byte from the hash-bound v1 execution binding",
+    "forbidden_roots": [
+      "data/raw/train/inputs",
+      "data/raw/test"
+    ]
+  },
+  "execution": {
+    "required_review_acknowledgement": "I_REVIEWED_BASINCYCLE_STAGE_B_V2_MPS_STAGED_TRANSFER_ONE_RUN_NO_RESUME",
+    "modes": [
+      "audit",
+      "fit",
+      "freeze",
+      "score"
+    ],
+    "audit_is_metadata_hash_only": true,
+    "fit_is_exactly_2000_updates": true,
+    "checkpoint_is_final_update_only": true,
+    "resume_forbidden": true,
+    "existing_output_directory_forbidden": true,
+    "threshold_checkpoint_or_seed_sweep_forbidden": true,
+    "cpu_prefetch_workers": 4,
+    "log_every_updates": 50,
+    "proposal_transfer": "detach MPS float32 pair logits, copy to CPU without dtype conversion, then let the unchanged v1 builder promote to CPU float64"
+  },
+  "fit_diagnostics": {
+    "steps_zero_based": [
+      0,
+      49,
+      199,
+      499,
+      999,
+      1499,
+      1999
+    ],
+    "labels": "FIT64 only",
+    "selection_or_tuning_use": false
+  },
+  "score": {
+    "source_clustered_bootstrap": {
+      "seed": 20260924,
+      "resamples": 20000,
+      "cluster": "reserved source filename retaining its two fixed draws"
+    },
+    "gates": "exactly those in the unchanged scientific config",
+    "post_open_tuning": false
+  },
+  "legality": {
+    "pieces_upright": true,
+    "original_tile_identities_exactly_once": true,
+    "model_transition_keep_or_closed_2_3_cycle_only": true,
+    "restored_generated_or_constant_output_pixels": false,
+    "absolute_content_filename_face_center_or_background_prior": false,
+    "competition_test_or_submission_path": false
+  }
+}

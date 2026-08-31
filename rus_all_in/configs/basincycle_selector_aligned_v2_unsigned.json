@@ -1,0 +1,297 @@
+{
+  "schema": "aiijc-basincycle-selector-aligned-v2-unsigned-template",
+  "status": "unsigned-design-data-blocked",
+  "created_at": "2026-08-31",
+  "name": "basincycle-selector-aligned-paired-abstention-6x6-v2",
+  "purpose": "A source-disjoint successor design for the failed Stage-B v1 selector. It preserves the target-free 2/3-cycle proposal generator and strict hard-permutation transition, but trains and selects the same candidate-vs-KEEP safe-improvement and gain heads. This file is not a preregistration, signature, or authorization.",
+  "evidence_boundary": {
+    "allowed_prior_aggregate": {
+      "stage_b_v1_proposal_oracle_coverage": "54/58",
+      "stage_b_v1_selected_nonkeep": "0/64",
+      "stage_b_v1_pair_delta": 0.0
+    },
+    "diagnosis": "The proposal family had useful actions, but inference ignored the trained policy logit and conjoined separately learned q10, pair-loss risk, and a margin against a learned KEEP delta even though true KEEP delta is exactly zero.",
+    "opened_eval32_raw_predictions_or_case_labels_inspected_for_v2": false,
+    "threshold_or_architecture_choice_from_opened_eval32": false,
+    "old_eval32_must_be_excluded_from_all_future_fit_calibration_confirmation": true
+  },
+  "authorization": {
+    "review_completed": false,
+    "source_roster_materialized_and_hash_bound": false,
+    "organizer_train_fit_authorized": false,
+    "organizer_pixels_opened": false,
+    "organizer_labels_opened": false,
+    "model_initialized_or_trained": false,
+    "calibration_opened": false,
+    "confirmation_opened": false,
+    "dev_holdout_terminal_competition_test_authorized": false,
+    "weco_run_or_observe_authorized": false,
+    "promotion_or_submission_authorized": false
+  },
+  "implementation": {
+    "model": "src/aiijc_puzzle/basincycle_selector_aligned_v2.py",
+    "protocol": "src/aiijc_puzzle/basincycle_selector_aligned_v2_protocol.py",
+    "model_tests": "tests/test_basincycle_selector_aligned_v2.py",
+    "protocol_tests": "tests/test_basincycle_selector_aligned_v2_protocol.py",
+    "runner": null,
+    "execution_binding": null,
+    "sha256_values": null,
+    "execution_guard": "require_signed_execution unconditionally denies every supplied mapping; this scaffold recognises no signed schema and cannot authenticate a transition",
+    "rule": "A future separately audited runner must implement fixed-path sidecar/config/hash/transition verification. This unsigned template must never acquire an in-place signature or sidecar."
+  },
+  "source_protocol": {
+    "selection_namespace": "aiijc-basincycle-selector-aligned-v2-fit128-cal32-confirm32",
+    "selection_seed": 20261001,
+    "manifest_split": "train",
+    "fit_source_count": 128,
+    "calibration_source_count": 32,
+    "confirmation_source_count": 32,
+    "joint_selection_before_pixel_access": true,
+    "actual_filenames": null,
+    "actual_digests": null,
+    "required_exclusion_groups_at_future_signing": {
+      "stage_b_v1_fit64": 64,
+      "stage_b_v1_opened_eval32": 32,
+      "socket_v2_train1024": 1024,
+      "socket_v2_opened_eval32": 32,
+      "active_joint_fit256": 256,
+      "active_joint_reserved_dev64": 64,
+      "protected_adapter3200_terminal16": 16,
+      "post_design_opened_or_reserved": "zero or more, but the named group and provenance attestation are mandatory"
+    },
+    "required_exclusion_provenance": [
+      "exact required group-name inventory with no missing or unexpected group",
+      "fixed count validation for every historical group",
+      "every exclusion filename belongs to the bound organizer-train manifest",
+      "per-group ordered filename count and newline SHA-256",
+      "exact deduplicated union count and sorted-newline SHA-256",
+      "canonical provenance SHA-256 over the complete named inventory"
+    ],
+    "claim_if_materialized": "mutually source-disjoint FIT128/calibration32/confirmation32 and disjoint from the complete Stage-B v1 plus frozen warm-start/active protected lineage; not universally untouched against every historical experiment",
+    "selection_algorithm": "sha256(namespace\\0seed\\0filename), ascending digest then filename; select all 192 at once after exclusions and partition 128/32/32",
+    "required_metadata_receipt": [
+      "validation manifest hash",
+      "named exclusion-group counts and ordered digests",
+      "deduplicated exclusion digest",
+      "all three ordered filename lists and digests",
+      "zero pairwise and exclusion overlap",
+      "fit/calibration/confirmation row counts and plan SHA-256 values",
+      "canonical binding-metadata SHA-256 over manifest-name digest, exclusion provenance, roster and plans"
+    ]
+  },
+  "corruption_plan": {
+    "plan_seed": 20261002,
+    "grid_size": 6,
+    "parent_grid_size": 24,
+    "tile_size": 20,
+    "fit_updates": 3000,
+    "batch_size": 4,
+    "fit_row_count": 12000,
+    "fit_source_schedule": "concatenated seeded permutations of FIT128, truncated at 12000 rows; every source occurs 93 or 94 times and each batch contains four distinct sources",
+    "fit_state_family_balance": {
+      "solver_replay": 0.5,
+      "procedural": 0.5
+    },
+    "evaluation_draws_per_source": 2,
+    "evaluation_draw_zero": "solver_replay",
+    "evaluation_draw_one": "procedural",
+    "procedural_mixture": {
+      "short_tile_cycle": 0.3,
+      "congruent_patch_cycle": 0.25,
+      "wrong_edge_weld_cycle": 0.2,
+      "band_cyclic_roll": 0.15,
+      "whole_board_roll": 0.1
+    },
+    "severity_actions": {
+      "1": 0.35,
+      "2": 0.3,
+      "4": 0.2,
+      "8": 0.15
+    },
+    "pixel_recipe_roster": [
+      "gaussian_poisson",
+      "gaussian_blur",
+      "motion_blur",
+      "jpeg_ringing",
+      "scale_bias_chroma",
+      "edge_erosion",
+      "mixed_two_stage"
+    ],
+    "pixel_ranges": "must be copied byte-for-byte from the reviewed Stage-B v1 scientific config at future signing",
+    "coherent_equivariance": "whole-board transpose/flip only, with directions/layout remapped; no per-tile rotation"
+  },
+  "architecture": {
+    "preserved_backbone": "BasinCycleStageBMPSReductionsV3 with staged MPS-to-CPU proposal transfer",
+    "preserved_proposal_generator": "exact Stage-B v1 target-free proposal closure",
+    "proposal_top_k": 8,
+    "proposal_candidate_cap": 6,
+    "proposal_seed_count": 18,
+    "proposal_cap_including_keep": 256,
+    "maximum_cycle_length": 3,
+    "keep_index": 0,
+    "action_input": "the existing 491 state/action features plus two compositional changed-edge features",
+    "compositional_features": [
+      "sum over changed bonds of softmax_probability(new contact)-softmax_probability(KEEP contact)",
+      "one minus product over removed contacts of one-softmax_probability(KEEP contact)"
+    ],
+    "selector_head": [
+      493,
+      128,
+      64,
+      2
+    ],
+    "head_outputs": [
+      "candidate-vs-KEEP safe-improvement logit",
+      "candidate-vs-KEEP true-pair gain score"
+    ],
+    "trainable_parameters_exact": 140744,
+    "selector_head_parameters_exact": 71618,
+    "forward_learned_macs_per_board_analytic": 261542016,
+    "compute_scope": "same Stage-B v1 analytic convention; excludes fixed preprocessing, normalization, activations, detached CPU proposal closure and backward",
+    "keep_safe_logit": "not predicted and never eligible",
+    "keep_pair_gain": 0.0,
+    "invalid_padding": "both outputs negative infinity and never selectable",
+    "strict_output": "KEEP or one atomic closed 2/3-cycle of original upright tile positions"
+  },
+  "fit_labels": {
+    "proposal_membership": "frozen from dirty-visible pair logits before truth attachment",
+    "pair_delta": "candidate true-pair count minus KEEP true-pair count",
+    "loses_existing_true_pair": "any true directed pair realised by KEEP is absent in candidate",
+    "safe_improvement": "valid non-KEEP AND pair_delta>0 AND NOT loses_existing_true_pair",
+    "keep_pair_delta": 0,
+    "keep_loses_existing_true_pair": false,
+    "cpu_mechanics": "all BxP candidate pair deltas and incumbent-pair-loss flags are attached by vectorized NumPy right/down truth-neighbour tables indexed by directed pair identity (axis, source tile), so an intact pair may move to another raster bond; no proposal-level Python set loop"
+  },
+  "training": {
+    "model_seed": 20261003,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "schedule": "cosine to zero over exactly 3000 updates",
+    "checkpoint_selection": "final update 3000 only",
+    "resume": false,
+    "model_seed_count": 1,
+    "mixed_precision": false,
+    "gradient_clip_norm": 1.0,
+    "hard_negative_rule": "for each state and each of three negative strata, retain at most 32 candidates with largest detached compositional expected gain",
+    "negative_strata": [
+      "pair_delta<=0 and no incumbent-pair loss",
+      "pair_delta>0 but incumbent-pair loss",
+      "pair_delta<=0 and incumbent-pair loss"
+    ],
+    "safe_bce": "equal mean over every present positive/negative-stratum state group",
+    "listwise_target": "all safe actions attaining maximum true pair gain; KEEP alone if no safe action exists",
+    "gain_regression": "SmoothL1 to integer pair delta on positives plus fixed hard negatives",
+    "loss_weights": {
+      "safe_bce": 1.0,
+      "listwise": 0.75,
+      "gain_regression": 0.25,
+      "directional_edge_cross_entropy": 0.25,
+      "clean_boundary_charbonnier": 0.15
+    },
+    "removed_losses": [
+      "action policy head not consumed by inference",
+      "q10/q50/q90 metric pinball",
+      "separate any-pair-loss risk BCE"
+    ]
+  },
+  "inference": {
+    "transition_count": 1,
+    "eligible_nonkeep": "valid AND safe_improvement_logit>=0 AND pair_gain_score>0",
+    "threshold_origin": "zero is the balanced-BCE boundary and analytical KEEP gain; no scored-panel threshold is fitted",
+    "selection_order": [
+      "maximum trained pair_gain_score",
+      "maximum trained safe_improvement_logit",
+      "shorter cycle",
+      "raster cycle tuple"
+    ],
+    "abstention": "KEEP index zero when no non-KEEP action is eligible",
+    "selector_consumes_exactly_trained_heads": true,
+    "threshold_or_beam_sweep": false
+  },
+  "phase_firewall": {
+    "implementation_status": "requirements only; this no-runner scaffold unconditionally denies execution and authenticates none of these transitions",
+    "fit": "train on FIT128 only and retain final endpoint only",
+    "calibration_freeze": "freeze model, controls, proposal identities, candidates, both trained-head outputs and selected layouts without calibration truth",
+    "calibration_score": "attach calibration truth once; apply fixed activation gates; do not modify threshold, loss, architecture, checkpoint or plan",
+    "confirmation_freeze": "only after all calibration gates pass, freeze the unchanged endpoint and selector on CONFIRM32 without truth",
+    "confirmation_score": "attach confirmation truth exactly once and apply fixed confirmation gates",
+    "forbidden": "opening confirmation after calibration fail; reusing old EVAL32; DEV/holdout/terminal/test; any post-open rescue"
+  },
+  "calibration_gates": {
+    "strict_controls_candidates_outputs": 1.0,
+    "keep_exact_replay": 1.0,
+    "minimum_nonkeep_selection_fraction": 0.05,
+    "maximum_nonkeep_selection_fraction": 0.8,
+    "selected_mean_pair_delta_strictly_positive": true,
+    "minimum_selected_no_existing_pair_loss_fraction": 0.75,
+    "minimum_all_case_exact_delta_mean": -0.125,
+    "minimum_all_case_radius2_delta_mean": -0.125,
+    "source_bootstrap": {
+      "resamples": 20000,
+      "seed": 20261004,
+      "unit": "source cluster with both fixed draws",
+      "interval": "equal-tail 95%, linear quantile",
+      "minimum_pair_delta_lower_bound": -0.25
+    },
+    "if_fail": "stop this v2 mechanism; do not tune on calibration and do not open confirmation"
+  },
+  "confirmation_gates": {
+    "strict_controls_candidates_outputs": 1.0,
+    "keep_exact_replay": 1.0,
+    "minimum_nonkeep_selection_fraction": 0.05,
+    "minimum_all_case_pair_delta_mean": 0.25,
+    "source_bootstrap_pair_delta_95pct_ci_lower_bound_strictly_positive": true,
+    "minimum_selected_no_existing_pair_loss_fraction": 0.8,
+    "minimum_pair_nonworsening_all_case_fraction": 0.95,
+    "maximum_pair_catastrophe_delta": -2,
+    "minimum_all_case_exact_delta_mean": 0.0,
+    "minimum_all_case_radius2_delta_mean": 0.0,
+    "source_bootstrap": {
+      "resamples": 20000,
+      "seed": 20261005,
+      "unit": "source cluster with both fixed draws",
+      "interval": "equal-tail 95%, linear quantile"
+    },
+    "if_pass": "permits design of a separately signed larger-grid continuation only; no production, submission or competition-test authorization",
+    "if_fail": "stop without rescue on confirmation"
+  },
+  "reporting": {
+    "primary": [
+      "all-case pair delta mean and source-clustered CI",
+      "nonkeep selection fraction",
+      "selected-action safe precision and pair gain",
+      "all-case pair nonworsening fraction and minimum",
+      "exact and radius2 deltas"
+    ],
+    "strata": [
+      "solver_replay",
+      "procedural",
+      "pooled"
+    ],
+    "diagnostics": [
+      "safe positive prevalence in the frozen proposal bank",
+      "safe-logit sign confusion matrix",
+      "pair-gain rank recall@1 and NDCG among safe actions",
+      "proposal-oracle coverage using frozen identities"
+    ]
+  },
+  "legality": {
+    "pieces_upright": true,
+    "all_original_tile_identities_exactly_once": true,
+    "rotation_resize_warp_crop_replacement_duplication_forbidden": true,
+    "restored_or_generated_pixels_never_emitted": true,
+    "feature_only_boundary_restoration": true,
+    "absolute_content_atlas_filename_source_retrieval_face_center_background_priors_forbidden": true,
+    "postassembly_processing_out_of_scope": true
+  },
+  "blocking_conditions": [
+    "independent scientific/code review",
+    "materialize the complete current exclusion union using metadata only",
+    "materialize and hash all three filename rosters and plans",
+    "bind exact implementation/config/environment hashes in a separate signed artifact",
+    "implement and test a phase-separated no-resume runner",
+    "implement fixed-path config sidecar, implementation/environment hash, roster/plan binding and phase-transition verification in that separate runner",
+    "obtain explicit one-run execution acknowledgement"
+  ]
+}

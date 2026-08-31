@@ -6,6 +6,19 @@
 отрицательного результата, чтобы следующие запуски не повторяли уже закрытые
 гипотезы.
 
+[BasinCycle Stage-B 6x6](basincycle-stage-b-mps-reductions-v3.md) после двух
+нулевых MPS-runtime сбоев был механически исправлен и прошёл единственный
+подписанный final-only FIT/EVAL цикл. Генератор коротких swap/3-cycle действий
+показал сильный supply: `54/58 = 93.1%` состояний с oracle-возможностью покрыты.
+Но фиксированный selector выбрал KEEP в `64/64` случаях, поэтому pairs/exact/
+radius2 delta равны нулю и результат имеет статус **fail-stop**. Причина — не
+баг и не отсутствие кандидатов: q10/risk/q50 головы выучили маргинальный prior
+сильно несбалансированного банка и создали пустое feasible set. Не подбирать
+пороги и не переключаться post-hoc на policy argmax на открытом EVAL32. Сохранять
+proposal generator; следующий materially different consumer должен напрямую
+учить paired safe-improvement относительно KEEP либо композиционную changed-edge
+energy на новом source-disjoint протоколе.
+
 [Fixed adapter scale3200 continuation](fullres-retrieval-adapter-scale3200-deferred.md)
 подписан как единственное продолжение положительного step400→1600 slope, но
 локально остановлен на update400 до первого checkpoint и до любого scoring:

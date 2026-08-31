@@ -1,0 +1,130 @@
+{
+  "batch_size": 4,
+  "checkpoint": {
+    "final_update": 2000,
+    "path": "basincycle_stage_b_final.pt",
+    "sha256": "766238d956798544fb4a3dbb968028b5bc2bb7539f19173e83dc1c8f5c3ef71d"
+  },
+  "evaluation_sources_or_labels_opened": false,
+  "execution_binding_sha256": "fc01838457a9bc788c83dc5703c29434007b1a94ac963b6b3635b1f3c4ee2a9d",
+  "fit_only_proposal_starvation_diagnostics": [
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 9,
+        "exhaustive_has_benefit": true,
+        "proposal_best_exact_delta": 1,
+        "proposal_best_pair_delta": 3,
+        "proposal_count": 256,
+        "proposal_has_benefit": true
+      },
+      "keep_is_positive_fraction": 0.25,
+      "mean_best_proposal_pair_delta": 2.25,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 0.75,
+      "state_count": 4,
+      "step_zero_based": 0
+    },
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 7,
+        "exhaustive_has_benefit": true,
+        "proposal_best_exact_delta": 2,
+        "proposal_best_pair_delta": 7,
+        "proposal_count": 256,
+        "proposal_has_benefit": true
+      },
+      "keep_is_positive_fraction": 0.0,
+      "mean_best_proposal_pair_delta": 3.5,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 1.0,
+      "state_count": 4,
+      "step_zero_based": 49
+    },
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 0,
+        "exhaustive_has_benefit": false,
+        "proposal_best_exact_delta": 0,
+        "proposal_best_pair_delta": 0,
+        "proposal_count": 256,
+        "proposal_has_benefit": false
+      },
+      "keep_is_positive_fraction": 0.5,
+      "mean_best_proposal_pair_delta": 1.75,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 0.5,
+      "state_count": 4,
+      "step_zero_based": 199
+    },
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 5,
+        "exhaustive_has_benefit": true,
+        "proposal_best_exact_delta": 2,
+        "proposal_best_pair_delta": 3,
+        "proposal_count": 256,
+        "proposal_has_benefit": true
+      },
+      "keep_is_positive_fraction": 0.0,
+      "mean_best_proposal_pair_delta": 3.75,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 1.0,
+      "state_count": 4,
+      "step_zero_based": 499
+    },
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 3,
+        "exhaustive_has_benefit": true,
+        "proposal_best_exact_delta": 0,
+        "proposal_best_pair_delta": 3,
+        "proposal_count": 256,
+        "proposal_has_benefit": true
+      },
+      "keep_is_positive_fraction": 0.0,
+      "mean_best_proposal_pair_delta": 3.5,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 1.0,
+      "state_count": 4,
+      "step_zero_based": 999
+    },
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 4,
+        "exhaustive_has_benefit": true,
+        "proposal_best_exact_delta": 0,
+        "proposal_best_pair_delta": 3,
+        "proposal_count": 256,
+        "proposal_has_benefit": true
+      },
+      "keep_is_positive_fraction": 0.25,
+      "mean_best_proposal_pair_delta": 3.75,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 0.75,
+      "state_count": 4,
+      "step_zero_based": 1499
+    },
+    {
+      "exhaustive_first_case": {
+        "exhaustive_best_pair_delta": 2,
+        "exhaustive_has_benefit": true,
+        "proposal_best_exact_delta": 1,
+        "proposal_best_pair_delta": 1,
+        "proposal_count": 256,
+        "proposal_has_benefit": true
+      },
+      "keep_is_positive_fraction": 0.25,
+      "mean_best_proposal_pair_delta": 1.5,
+      "mean_proposal_count": 256.0,
+      "positive_pair_proposal_fraction": 0.75,
+      "state_count": 4,
+      "step_zero_based": 1999
+    }
+  ],
+  "fit_source_count": 64,
+  "schema": "aiijc-basincycle-stage-b-fit-report-v1",
+  "scientific_config_sha256": "133587c2e0257c206b8d81009e7ba2addfb6bd48a167527c0e9771334df05b91",
+  "selection_or_resume_performed": false,
+  "status": "fit-complete-unscored-final-endpoint-only",
+  "update_count": 2000
+}

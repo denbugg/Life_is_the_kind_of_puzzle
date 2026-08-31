@@ -1,0 +1,150 @@
+{
+  "schema": "aiijc-basincycle-stage-b-execution-binding-v3",
+  "status": "signed-unexecuted-review-required",
+  "execution_revision": "mps-finite-masked-reductions-v3",
+  "created_at": "2026-08-31",
+  "purpose": "Separate one-run retry binding after v2 stopped at update zero because MPS backward saved index -1 for padded all-masked +/-infinity reductions. Scientific config, roster, plan, seed, architecture, loss, selector and gates remain byte-identical. V3 retains the v2 staged proposal transfer and replaces only three empty-mask sentinels with finite dtype extrema plus an explicit has-any zero branch.",
+  "real_execution_authorized": false,
+  "scientific_config": {
+    "path": "configs/basincycle_stage_b_6x6_preregistered_v1.json",
+    "sha256": "133587c2e0257c206b8d81009e7ba2addfb6bd48a167527c0e9771334df05b91"
+  },
+  "implementation": {
+    "base_execution_binding_v1": {
+      "path": "configs/basincycle_stage_b_execution_binding_v1.json",
+      "sha256": "a2d932569f13e5fb58f0f51c3d15a4fb981bdfc3487936935285b31991af4356"
+    },
+    "base_execution_binding_v2": {
+      "path": "configs/basincycle_stage_b_execution_binding_v2.json",
+      "sha256": "cdd8d4986077d18ed3c3658e4dcba23b45722d4f45ce1620165bb852c6c2192b"
+    },
+    "stage_b_model": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b.py",
+      "sha256": "450490ded7be50f2b2f2dbfa11a6f7030339c4c26db5c7aabbe22e064332e2ab"
+    },
+    "runner_module": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b_runner.py",
+      "sha256": "3e6b021de15000848f9fc4d39caa97c3774ac2e811e70c6271e082c24e7acb47"
+    },
+    "mps_transfer_adapter_v2": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b_mps_transfer_v2.py",
+      "sha256": "e0297d1f386a79ca18abf52e2148b8c840dbd667c10c59359880d19803cb532b"
+    },
+    "mps_reduction_adapter_v3": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b_mps_reductions_v3.py",
+      "sha256": "77e6914fd64662728270e1ecd1d5d3c3d9b08084d8487bd8cc016c4450f8ede9"
+    },
+    "runner_cli": {
+      "path": "scripts/run_basincycle_stage_b_v3.py",
+      "sha256": "13e3c55d31c8480e9a4b5c4d0a5f991c24b8d52ddd762227e40bb7a5e2b9c795"
+    },
+    "failed_v1_log": {
+      "path": "outputs/basincycle-stage-b-minimum-6x6-v1.fit.log",
+      "sha256": "fd13ba6b618683601d6f8cfc76302b3e5ddc06514e434dc14ed951488d49b717"
+    },
+    "failed_v2_log": {
+      "path": "outputs/basincycle-stage-b-minimum-6x6-v2.fit.log",
+      "sha256": "405e8ea216a7e437cbdde95b5bfa14febb487fab5b699939cc717f911fdb240a"
+    }
+  },
+  "failed_v1": {
+    "fit_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v1/fit",
+    "fit_output_dir_preserved_empty": true,
+    "optimizer_updates_completed": 0,
+    "failure": "ValueError: directional scores must be finite",
+    "failure_boundary": "detached target-free proposal construction before label attachment, loss, backward or optimizer step",
+    "reuse_resume_or_deletion_authorized": false
+  },
+  "failed_v2": {
+    "fit_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v2/fit",
+    "fit_output_dir_preserved_empty": true,
+    "optimizer_updates_completed": 0,
+    "failure": "torch.AcceleratorError: scatter: index -1 is out of bounds for dimension with size 60",
+    "failure_boundary": "first FIT batch after target-free forward, FIT label attachment, diagnostic and loss; backward was dispatched, the asynchronous error surfaced before gradient clipping completed and before optimizer.step, scheduler.step, update logging or checkpoint persistence",
+    "reuse_resume_or_deletion_authorized": false
+  },
+  "mps_transfer_fix_v2": {
+    "replacement": "mps-float32-to-cpu-float32-then-cpu-float64",
+    "proposal_membership_still_detached": true,
+    "scientific_semantics_changed": false
+  },
+  "mps_reduction_fix": {
+    "root_cause": "MPS min/max backward records arg index -1 when every element is masked to positive or negative infinity; KEEP and padding proposals intentionally have empty masks",
+    "surfaced_reduction": "changed-edge minimum/maximum over 60 grid contacts",
+    "latent_reduction": "changed-position context maximum over three cycle slots",
+    "all_masked_reduction_count_fixed": 3,
+    "replacement": "finite-dtype-sentinel-plus-explicit-has-any-zero",
+    "nonempty_forward_values_changed": false,
+    "empty_forward_values_changed": false,
+    "cpu_forward_bitwise_equal": true,
+    "cpu_input_gradients_bitwise_equal": true,
+    "mps_backward_regression_passed": true,
+    "scientific_semantics_changed": false
+  },
+  "artifacts": {
+    "fit_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v3/fit",
+    "final_checkpoint": "outputs/basincycle-stage-b/minimum-6x6-v3/fit/basincycle_stage_b_final.pt",
+    "freeze_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v3/freeze",
+    "score_output_dir": "outputs/basincycle-stage-b/minimum-6x6-v3/score",
+    "one_run_guard": "the v3 fit/freeze/score directories must not exist before their phase; preserved failed v1/v2 directories are never reused, deleted or resumed"
+  },
+  "data": {
+    "organizer_train_targets": "data/raw/train/targets",
+    "fit_source_count": 64,
+    "eval_source_count": 32,
+    "preload_policy": "inherited byte-for-byte from the hash-bound v1 execution binding",
+    "forbidden_roots": [
+      "data/raw/train/inputs",
+      "data/raw/test"
+    ]
+  },
+  "execution": {
+    "required_review_acknowledgement": "I_REVIEWED_BASINCYCLE_STAGE_B_V3_MPS_FINITE_SENTINELS_ONE_RUN_NO_RESUME",
+    "modes": [
+      "audit",
+      "fit",
+      "freeze",
+      "score"
+    ],
+    "audit_is_metadata_hash_only": true,
+    "fit_is_exactly_2000_updates": true,
+    "checkpoint_is_final_update_only": true,
+    "resume_forbidden": true,
+    "existing_output_directory_forbidden": true,
+    "threshold_checkpoint_or_seed_sweep_forbidden": true,
+    "cpu_prefetch_workers": 4,
+    "log_every_updates": 50,
+    "proposal_transfer": "retain v2 detached MPS float32 to CPU float32 transfer, followed by unchanged CPU float64 proposal closure",
+    "padded_reductions": "use finite dtype extrema for masked context max and edge min/max; use explicit has-any masks to restore intended zero on KEEP/padding"
+  },
+  "fit_diagnostics": {
+    "steps_zero_based": [
+      0,
+      49,
+      199,
+      499,
+      999,
+      1499,
+      1999
+    ],
+    "labels": "FIT64 only",
+    "selection_or_tuning_use": false
+  },
+  "score": {
+    "source_clustered_bootstrap": {
+      "seed": 20260924,
+      "resamples": 20000,
+      "cluster": "reserved source filename retaining its two fixed draws"
+    },
+    "gates": "exactly those in the unchanged scientific config",
+    "post_open_tuning": false
+  },
+  "legality": {
+    "pieces_upright": true,
+    "original_tile_identities_exactly_once": true,
+    "model_transition_keep_or_closed_2_3_cycle_only": true,
+    "restored_generated_or_constant_output_pixels": false,
+    "absolute_content_filename_face_center_or_background_prior": false,
+    "competition_test_or_submission_path": false
+  }
+}

@@ -1,0 +1,580 @@
+{
+  "all_gates_pass": false,
+  "dev_holdout_terminal_test_opened": false,
+  "evaluation_case_count": 64,
+  "evaluation_source_count": 32,
+  "execution_binding_sha256": "fc01838457a9bc788c83dc5703c29434007b1a94ac963b6b3635b1f3c4ee2a9d",
+  "freeze_receipt_file_sha256": "e4abb671aca288290394aa319a9d55872a264c4c78a8b3ff81515ace0bd3ca32",
+  "freeze_receipt_sha256": "e83847dbd12f041d3e80b51d61c9a12b5681596cce2340cb3f870d019e339abf",
+  "gate_results": {
+    "keep_index_zero_exact_replay": true,
+    "pair_catastrophe_bound": true,
+    "pair_nonworsening_fraction": true,
+    "proposal_oracle_coverage": true,
+    "selected_mean_exact_delta_nonnegative": true,
+    "selected_mean_pair_delta": false,
+    "selected_mean_radius2_delta_nonnegative": true,
+    "source_clustered_pair_ci_lower_positive": false,
+    "strict_controls_candidates_outputs": true
+  },
+  "pair_count_per_case": 60,
+  "promotion_authorized": false,
+  "proposal_diagnostics": [
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 10,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 10,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 9,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 1,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 10,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 10,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 1,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 0,
+      "exhaustive_has_benefit": false,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 4,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 2,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 2,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 9,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 9,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 1,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 2,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 6,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 6,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 8,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 1,
+      "proposal_best_pair_delta": 4,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 1,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 10,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 10,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 2,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 1,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 0,
+      "exhaustive_has_benefit": false,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": -1,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 1,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 1,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 8,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": -1,
+      "proposal_best_pair_delta": 1,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 9,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 1,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 6,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 4,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 7,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 7,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 6,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 6,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 4,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 0,
+      "exhaustive_has_benefit": false,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 2,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 1,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 6,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 5,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 8,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 8,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": -1,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 7,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 5,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 8,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 8,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 11,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 11,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 7,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 7,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 0,
+      "exhaustive_has_benefit": false,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 4,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 7,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 5,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 9,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 3,
+      "proposal_best_pair_delta": 9,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 2,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 0,
+      "exhaustive_has_benefit": false,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 5,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 0,
+      "exhaustive_has_benefit": false,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 1,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 5,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 1,
+      "proposal_best_pair_delta": 5,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 4,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 2,
+      "proposal_best_pair_delta": 4,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 3,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 3,
+      "proposal_count": 256,
+      "proposal_has_benefit": true
+    },
+    {
+      "exhaustive_best_pair_delta": 10,
+      "exhaustive_has_benefit": true,
+      "proposal_best_exact_delta": 0,
+      "proposal_best_pair_delta": 0,
+      "proposal_count": 256,
+      "proposal_has_benefit": false
+    }
+  ],
+  "proposal_oracle": {
+    "beneficial_exhaustive_state_count": 58,
+    "beneficial_proposal_state_count": 54,
+    "proposal_oracle_coverage": 0.9310344827586207,
+    "state_count": 64
+  },
+  "schema": "aiijc-basincycle-stage-b-score-report-v1",
+  "scientific_config_sha256": "133587c2e0257c206b8d81009e7ba2addfb6bd48a167527c0e9771334df05b91",
+  "selected_action_nonkeep_count": 0,
+  "selection_threshold_or_checkpoint_sweep_performed": false,
+  "source_clustered_pair_delta": {
+    "case_count": 64.0,
+    "ci95_lower": 0.0,
+    "ci95_upper": 0.0,
+    "mean": 0.0,
+    "source_count": 32.0
+  },
+  "status": "fail-stop",
+  "strata": {
+    "all": {
+      "case_count": 64,
+      "exact_delta_mean": 0.0,
+      "pair_delta_mean": 0.0,
+      "pair_delta_minimum": 0,
+      "pair_nonworsening_fraction": 1.0,
+      "radius2_delta_mean": 0.0
+    },
+    "procedural": {
+      "case_count": 32,
+      "exact_delta_mean": 0.0,
+      "pair_delta_mean": 0.0,
+      "pair_delta_minimum": 0,
+      "pair_nonworsening_fraction": 1.0,
+      "radius2_delta_mean": 0.0
+    },
+    "solver_replay": {
+      "case_count": 32,
+      "exact_delta_mean": 0.0,
+      "pair_delta_mean": 0.0,
+      "pair_delta_minimum": 0,
+      "pair_nonworsening_fraction": 1.0,
+      "radius2_delta_mean": 0.0
+    }
+  }
+}

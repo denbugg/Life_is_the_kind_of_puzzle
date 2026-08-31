@@ -1,0 +1,453 @@
+{
+  "schema": "aiijc-basincycle-stage-b-6x6-preregistered-v1",
+  "status": "signed-blocked-awaiting-review-no-data-access",
+  "created_at": "2026-08-31",
+  "name": "basincycle-minimum-mechanism-faithful-stage-b-6x6-v1",
+  "purpose": "One bounded learned 6x6 falsification of full-resolution boundary evidence plus current-layout-conditioned KEEP/closed-cycle utility. This signed artifact freezes code, metadata roster, corruption schedule, architecture, loss, selector and gates, but does not authorize opening organizer pixels or labels, training, MPS, DEV, holdout, terminal, competition test, Weco, production or submission.",
+  "scientific_scope": {
+    "claim_if_pass": "the small warm-start hard-cycle mechanism merits a separately preregistered 12x12 continuation",
+    "claim_if_fail": "this particular minimum pilot fails; the full BasinCycle design is not falsified",
+    "not_a_quality_result": true,
+    "not_full_basincycle": true,
+    "implemented_core": [
+      "ten-channel corruption-visible tile preprocessing",
+      "full-resolution stride-one 20x20 boundary encoder with no spatial reduction",
+      "ordered four-side 20-sample sequences and learned right/down pair logits",
+      "external frozen Socket-v2 6x6 strict warm-start control for half the states",
+      "current-layout realised-contact features and three local 3x3 state blocks",
+      "target-free detached dynamic proposal closure",
+      "KEEP at proposal index zero and atomic strict closed 2/3-cycles only",
+      "current-state/action utility with pair/exact/radius2 quantiles and pair-loss risk",
+      "strict hard-permutation output with original upright tile identities"
+    ],
+    "explicit_omissions_from_full_design": [
+      "no deep top-64 cross-pair 1D encoder; the 6x6 pilot uses shallow ordered-side projected dot products",
+      "no sparse top-64 candidate-graph attention; state context is local 3x3 grid convolution",
+      "no prefix-conditioned pointer decoder; the bank enumerates bounded 2/3-cycles from detached pair logits",
+      "no length-4-to-8 cycles",
+      "no oracle-continuation or attraction-basin target; positives are all one-step lexicographically best non-worsening actions",
+      "no multi-step learned rollout evaluation; one selected cycle is compared with KEEP",
+      "no 12x12 or 24x24 scaling claim"
+    ],
+    "closed_families_not_reintroduced": [
+      "continuous Sinkhorn solver state",
+      "full N-by-N assignment replacement",
+      "independent absolute row/column prediction",
+      "cold-start image or permutation DDPM",
+      "standalone denoiser output",
+      "rendered or generated replacement pixels"
+    ]
+  },
+  "authorization": {
+    "metadata_roster_freeze_completed": true,
+    "organizer_pixels_opened": false,
+    "organizer_labels_or_exact_references_opened": false,
+    "model_initialized_or_trained": false,
+    "prediction_or_proposal_roster_materialized": false,
+    "review_by_parent_required_before_any_data_access": true,
+    "training_runner_intentionally_absent_until_review": true,
+    "device_for_tests": "cpu",
+    "mps_authorized": false,
+    "dev_holdout_terminal_competition_test_authorized": false,
+    "promotion_authorized": false
+  },
+  "frozen_inputs": {
+    "stage_b_model": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b.py",
+      "sha256": "450490ded7be50f2b2f2dbfa11a6f7030339c4c26db5c7aabbe22e064332e2ab"
+    },
+    "stage_b_protocol": {
+      "path": "src/aiijc_puzzle/basincycle_stage_b_protocol.py",
+      "sha256": "6021382578b5374b93f523cc8155c2484b723f67730247d6c1ae313d3c9f8a07"
+    },
+    "strict_cycle_helper": {
+      "path": "src/aiijc_puzzle/basincycle_synthetic.py",
+      "sha256": "46e6878296d4a9282434f4b5cc9b7d62931dd8511b84eadf83e5ac25223636f9"
+    },
+    "model_tests": {
+      "path": "tests/test_basincycle_stage_b.py",
+      "sha256": "997474691d09c3398bb14d9df0303015a596d7197059f5e1b96ac756233ad005"
+    },
+    "protocol_tests": {
+      "path": "tests/test_basincycle_stage_b_protocol.py",
+      "sha256": "3c6021ff8e78b20ec511524013cedb64da4a944cd84fb25615e819d69c3600ba"
+    },
+    "manifest": {
+      "path": "data/interim/validation_manifest.json",
+      "sha256": "4781e370e092ad272c63e6d5165b25951aaf93fae5fde74c75d534a9e8efc9da"
+    },
+    "socket_v2_checkpoint": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/socket_matcher.pt",
+      "sha256": "0e9df49a503c65aac7f1468e9acd6a074a5e658ae8b61f8954be086272c49670"
+    },
+    "socket_parent_report": {
+      "path": "outputs/socket-matcher/v2-d64-train1024-s1600-r400-dev32/report.json",
+      "sha256": "ff461744ed214848e65bfac5f006bc543776a057c8df7ab68c021dabca3942e5"
+    },
+    "socket_model_implementation": {
+      "path": "src/aiijc_puzzle/socket_matcher.py",
+      "sha256": "b9e422033a18926412711d97ed3d234d4ac9ae7016d9a16f02049a920712f3e2"
+    },
+    "socket_decoder_implementation": {
+      "path": "src/aiijc_puzzle/socket_decoder.py",
+      "sha256": "7945817a50705bc81867ab730df888e38355afaad6299cac5f49a855f6f25c33"
+    },
+    "active_scale_config": {
+      "path": "configs/joint_reciprocal_scale256_fit_cache_preregistered_v1.json",
+      "sha256": "3e397e7ff3a565de2b1ab412f71f8e5b7d500649b40a51be2ed97805ecc7344e"
+    },
+    "protected_roster_audit": {
+      "path": "outputs/joint-reciprocal-tri-emitter-verifier/roster-audit-v1/report.json",
+      "sha256": "6105680a08ee4140d56b7a326cc6539c4b958d12052a4922b99d9ecfced79797"
+    },
+    "python_project": {
+      "path": "pyproject.toml",
+      "sha256": "f4e0a92f55abc520bd1b5f24bd37f4010f61d94a44e34f3eb5fbc8bdfe489419"
+    },
+    "environment_lock": {
+      "path": "uv.lock",
+      "sha256": "500644fc0d3a6932bbc45a5ab3c6ef66b2a11a107ac704993ccca6796b1c186c"
+    }
+  },
+  "source_protocol": {
+    "selection_namespace": "aiijc-basincycle-stage-b-6x6-fit64-eval32-v1",
+    "selection_seed": 20260921,
+    "manifest_split": "train",
+    "claim": "source-disjoint within this Stage-B experiment and disjoint from the frozen Socket-v2 lineage, active joint FIT/reserved-DEV roster and protected adapter3200 terminal16; not universally fresh against every historical experiment",
+    "exclusion_groups": {
+      "socket_v2_train1024": 1024,
+      "socket_v2_opened_eval32": 32,
+      "active_joint_fit256": 256,
+      "active_joint_reserved_dev64": 64,
+      "protected_adapter3200_terminal16": 16
+    },
+    "exclusion_count": 1392,
+    "exclusion_digest": "22e543bd263fe2a48304c039f1cee6b464d02d091d9a12e680c2736d2b66632f",
+    "fit_source_count": 64,
+    "fit_filenames": [
+      "img_002845.png",
+      "img_000977.png",
+      "img_004535.png",
+      "img_006422.png",
+      "img_002582.png",
+      "img_002858.png",
+      "img_006130.png",
+      "img_003433.png",
+      "img_004220.png",
+      "img_000065.png",
+      "img_004046.png",
+      "img_005149.png",
+      "img_003015.png",
+      "img_000216.png",
+      "img_001620.png",
+      "img_003869.png",
+      "img_003969.png",
+      "img_001421.png",
+      "img_001459.png",
+      "img_004795.png",
+      "img_003889.png",
+      "img_002618.png",
+      "img_002095.png",
+      "img_004566.png",
+      "img_000302.png",
+      "img_005232.png",
+      "img_000363.png",
+      "img_002865.png",
+      "img_000055.png",
+      "img_004591.png",
+      "img_004475.png",
+      "img_006608.png",
+      "img_001266.png",
+      "img_000176.png",
+      "img_005993.png",
+      "img_000932.png",
+      "img_006378.png",
+      "img_004819.png",
+      "img_002882.png",
+      "img_000832.png",
+      "img_002196.png",
+      "img_004501.png",
+      "img_006687.png",
+      "img_004141.png",
+      "img_004440.png",
+      "img_002016.png",
+      "img_001469.png",
+      "img_006261.png",
+      "img_001090.png",
+      "img_003578.png",
+      "img_001135.png",
+      "img_000530.png",
+      "img_001638.png",
+      "img_006924.png",
+      "img_001721.png",
+      "img_004400.png",
+      "img_006982.png",
+      "img_002876.png",
+      "img_001068.png",
+      "img_004697.png",
+      "img_004260.png",
+      "img_006988.png",
+      "img_006571.png",
+      "img_000103.png"
+    ],
+    "fit_digest": "74c0ebd70b8fa2daa799c9fb2e25d2da43f7e95a8aeceb58b0d8e63dd44ffd92",
+    "eval_source_count": 32,
+    "eval_filenames": [
+      "img_004855.png",
+      "img_001971.png",
+      "img_004373.png",
+      "img_002554.png",
+      "img_004457.png",
+      "img_002422.png",
+      "img_002199.png",
+      "img_002407.png",
+      "img_000308.png",
+      "img_006048.png",
+      "img_005838.png",
+      "img_002630.png",
+      "img_006776.png",
+      "img_004365.png",
+      "img_002930.png",
+      "img_004293.png",
+      "img_000625.png",
+      "img_006381.png",
+      "img_004687.png",
+      "img_005753.png",
+      "img_004378.png",
+      "img_002572.png",
+      "img_002653.png",
+      "img_006153.png",
+      "img_001416.png",
+      "img_006356.png",
+      "img_006456.png",
+      "img_006963.png",
+      "img_001451.png",
+      "img_000997.png",
+      "img_005103.png",
+      "img_003421.png"
+    ],
+    "eval_digest": "a8d611bdd8b9a239e0049615df456da2601459658cd2c2b68a0d4a64e23691cc",
+    "fit_eval_overlap_count": 0,
+    "pixels_or_labels_read_during_selection": false
+  },
+  "corruption_plan": {
+    "plan_seed": 20260922,
+    "fit_updates": 2000,
+    "batch_size": 4,
+    "fit_row_count": 8000,
+    "fit_plan_digest": "753e1b1e3371b23f96bc14624628ff6b624464332a8fd8f04533b37a4a99ab6e",
+    "eval_draw_indices": [0, 1],
+    "eval_row_count": 64,
+    "eval_plan_digest": "e4df9098c92ec842abc31f77ee0a7507c83fa797295745a1bc8913708959c632",
+    "crop": "aligned 6x6 tile crop from a 24x24 organizer-train clean canvas; row/column each frozen in [0,18]",
+    "solver_replay_fraction": 0.5,
+    "procedural_fraction": 0.5,
+    "solver_replay_recipe": "dirty crop -> frozen SocketMatcher-v2 grid=6 -> strict socket decoder control; no truth input",
+    "procedural_mixture": {
+      "short_tile_cycle": 0.30,
+      "congruent_patch_cycle": 0.25,
+      "wrong_edge_weld_cycle": 0.20,
+      "band_cyclic_roll": 0.15,
+      "whole_board_roll": 0.10
+    },
+    "severity_actions": {
+      "1": 0.35,
+      "2": 0.30,
+      "4": 0.20,
+      "8": 0.15
+    },
+    "pixel_recipe_roster": [
+      "gaussian_poisson",
+      "gaussian_blur",
+      "motion_blur",
+      "jpeg_ringing",
+      "scale_bias_chroma",
+      "edge_erosion",
+      "mixed_two_stage"
+    ],
+    "pixel_ranges": {
+      "gaussian_sigma_01": [0.0, 0.18],
+      "poisson_peak": [8, 64],
+      "gaussian_blur_sigma": [0.2, 1.6],
+      "motion_length": [3, 5, 7],
+      "jpeg_quality": [20, 95],
+      "rgb_scale": [0.65, 1.35],
+      "rgb_bias_01": [-0.20, 0.20],
+      "chroma_scale": [0.70, 1.30],
+      "edge_erosion_pixels": [0, 1, 2]
+    },
+    "coherent_equivariance": "whole-board transpose/flip only, with direction and layout remapped; no per-tile rotation"
+  },
+  "warm_start_control": {
+    "checkpoint": "socket_v2_checkpoint",
+    "checkpoint_grid_support": 6,
+    "sinkhorn_iterations": 12,
+    "decoder": "socket-translation-components-qap-v1",
+    "decoder_grid": 6,
+    "component_edge_budget_per_axis": 30,
+    "swap_edge_budget_per_axis": 30,
+    "max_swap_steps": 24,
+    "border_weight": 0.2,
+    "component_prior_weight": 0.0,
+    "strict_output_required": true,
+    "note": "This frozen classical full-layout decoder supplies only the external incumbent. The learned BasinCycle output never emits a soft/full assignment and may only KEEP or apply one closed cycle."
+  },
+  "architecture": {
+    "grid_size": 6,
+    "tile_count": 36,
+    "tile_size": 20,
+    "input_shape": "B x 36 x 3 x 20 x 20",
+    "preprocessed_shape": "(B*36) x 10 x 20 x 20",
+    "preprocessing_channels": "raw RGB 3 + robust standardized RGB 3 + Scharr-x/y luma + luma Laplacian + 3x3 luma high-pass",
+    "feature_channels": 48,
+    "image_encoder_blocks": 4,
+    "all_convolution_strides": 1,
+    "minimum_feature_map": "20x20",
+    "feature_shape": "B x 36 x 48 x 20 x 20",
+    "side_width": 4,
+    "side_shape": "B x 36 x 4 x 20 x 48",
+    "retrieval_dim": 64,
+    "pair_logit_shape": "B x 2 x 36 x 36",
+    "boundary_aux_shape": "B x 36 x 4 x 20 x 6",
+    "state_dim": 96,
+    "state_blocks": 3,
+    "state_context_shape": "B x 36 x 96",
+    "proposal_top_k": 8,
+    "proposal_candidate_cap": 6,
+    "proposal_seed_count": 18,
+    "proposal_cap_including_keep": 256,
+    "max_cycle_length": 3,
+    "proposal_positions_shape": "B x 256 x 3",
+    "candidate_layout_shape": "B x 256 x 36",
+    "action_scalar_features": 11,
+    "action_feature_shape": "B x 256 x 491",
+    "action_mlp": [491, 128, 64, 11],
+    "metric_order": ["pair", "exact", "radius2"],
+    "quantile_order": [0.10, 0.50, 0.90],
+    "quantile_shape": "B x 256 x 3_metrics x 3_quantiles",
+    "risk_shape": "B x 256",
+    "trainable_parameters_exact": 141073,
+    "output_transition": "proposal 0 exact KEEP; otherwise one atomic closed cycle; no other path"
+  },
+  "compute_ledger": {
+    "counting_rule": "analytic learned multiply-accumulate operations for one forward; excludes fixed preprocessing kernels, normalization, activations, detached CPU top-k/cycle closure and backward",
+    "forward_learned_macs_per_board": 261623936,
+    "forward_learned_macs_per_batch4": 1046495744,
+    "per_board": {
+      "image_stem": 62208000,
+      "image_blocks": 157593600,
+      "side_query_key": 17694720,
+      "pair_dot_products": 3317760,
+      "boundary_head": 829440,
+      "tile_projection": 165888,
+      "state_stem": 359424,
+      "state_blocks": 1088640,
+      "action_head": 18366464
+    },
+    "deep_feature_values_per_board": 691200,
+    "deep_feature_bytes_fp32_per_board": 2764800,
+    "pair_logit_values_per_board": 2592,
+    "proposal_layout_values_per_board": 9216,
+    "nonlearned_state_edge_values_per_board": 15360,
+    "proposal_enumeration_upper_bound_before_dedup_per_board": 756,
+    "measured_peak_memory": null,
+    "measured_wall_time": null
+  },
+  "training": {
+    "model_seed": 20260923,
+    "optimizer": "AdamW",
+    "learning_rate": 0.0003,
+    "weight_decay": 0.0001,
+    "schedule": "cosine to 0 over exactly 2000 updates; no early-stop selection",
+    "gradient_clip_norm": 1.0,
+    "mixed_precision": false,
+    "checkpoint_selection": "final update 2000 only",
+    "model_seed_count": 1,
+    "proposal_membership_gradient": "detached; no straight-through estimator",
+    "positive_action_definition": "after proposal freeze, all valid actions with pair delta >=0 attaining the lexicographic maximum (pair, exact, radius2); KEEP is sole positive if no valid non-worsening action",
+    "one_step_label_limitation": true,
+    "loss": {
+      "policy": 1.0,
+      "directional_edge_cross_entropy": 0.25,
+      "clean_boundary_charbonnier": 0.15,
+      "pair_exact_radius2_quantile_pinball": 0.5,
+      "any_true_pair_loss_bce": 0.25,
+      "equivariance": 0.0
+    }
+  },
+  "inference": {
+    "transition_count": 1,
+    "minimum_pair_q10": 0.0,
+    "maximum_pair_loss_risk": 0.10,
+    "minimum_pair_q50_margin_over_keep": 0.0,
+    "selection_order": [
+      "eligible only if pair q10 >=0 and pair-loss risk <=0.10",
+      "maximum pair q50",
+      "maximum radius2 q50",
+      "maximum exact q50",
+      "shorter cycle",
+      "raster cycle tuple"
+    ],
+    "no_threshold_or_beam_sweep": true,
+    "invalid_proposals": "action=-inf, risk=+inf and never selectable",
+    "keep_exact_replay_required": true
+  },
+  "target_reference_separation": {
+    "phase_1": "materialize dirty crops, frozen strict controls, model checkpoint, pair logits, proposal identities, candidate strict layouts and target-free predictions without loading exact references for evaluation",
+    "required_phase_1_receipt_schema": "aiijc-basincycle-stage-b-target-free-freeze-v1",
+    "required_phase_1_hashes": [
+      "model_sha256",
+      "prediction_roster_sha256",
+      "proposal_identity_sha256",
+      "control_layout_sha256"
+    ],
+    "phase_2": "only after the phase-1 receipt passes, load evaluation references and attach pair/exact/radius2 deltas; proposal membership and model bytes cannot change",
+    "fit_labels": "organizer-train only and inaccessible to the eval proposal freeze",
+    "eval_labels": "reserved organizer-train sources only; never DEV/holdout/test"
+  },
+  "proposal_oracle_diagnostic": {
+    "bank": "the exact frozen target-free proposal identities, KEEP included",
+    "reference_oracle": "all unique swaps plus both orientations of every 3-cycle",
+    "swap_count": 630,
+    "oriented_three_cycle_count": 14280,
+    "total_exhaustive_cycle_count": 14910,
+    "opportunity_denominator": "only eval states whose exhaustive 2/3-cycle oracle has best true pair delta >0",
+    "covered_numerator": "opportunity states whose frozen proposal bank contains at least one true pair-improving action",
+    "reported": [
+      "opportunity state count",
+      "covered state count and coverage",
+      "exhaustive versus proposal best pair delta",
+      "proposal best exact delta",
+      "proposal count distribution",
+      "separate solver-replay and procedural strata"
+    ],
+    "no_oracle_action_is_selectable_at_inference": true
+  },
+  "fail_stop_gates": {
+    "strict_permutation_all_controls_candidates_outputs": 1.0,
+    "keep_index_zero_exact_replay": 1.0,
+    "minimum_proposal_oracle_coverage_on_opportunity_states": 0.70,
+    "minimum_selected_mean_pair_delta_of_60": 2.0,
+    "source_clustered_pair_delta_95pct_ci_lower_bound_strictly_positive": true,
+    "minimum_selected_mean_exact_delta": 0.0,
+    "minimum_selected_mean_radius2_delta": 0.0,
+    "minimum_pair_nonworsening_case_fraction": 0.90,
+    "maximum_pair_catastrophe_delta": -6,
+    "required_stratified_reporting": [
+      "solver_replay",
+      "procedural",
+      "all"
+    ],
+    "if_any_gate_fails": "stop; do not tune on opened eval, do not run 12x12, do not open DEV/holdout/terminal/test",
+    "if_all_gates_pass": "authorize design of one separately signed source-disjoint 12x12 continuation only; no production or promotion"
+  },
+  "legality": {
+    "pieces_upright": true,
+    "all_original_tile_identities_exactly_once": true,
+    "rotation_resize_warp_crop_replacement_duplication_forbidden": true,
+    "feature_only_boundary_restoration": true,
+    "restored_or_generated_pixels_never_emitted": true,
+    "absolute_content_atlas_filename_source_retrieval_face_center_background_priors_forbidden": true,
+    "postassembly_processing_out_of_scope": true
+  }
+}

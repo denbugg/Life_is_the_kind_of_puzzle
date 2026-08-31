@@ -1,0 +1,63 @@
+{
+  "schema_version": "aiijc-basincycle-synthetic-gate-config-v1",
+  "name": "basincycle-stage-a-one-shot-v1",
+  "date_frozen": "2026-08-31",
+  "frozen": true,
+  "scope": "synthetic-mechanism-only",
+  "decision_boundary": {
+    "authorizes_exactly_one_report": true,
+    "authorizes_model_training": false,
+    "authorizes_organizer_data": false,
+    "authorizes_dev_holdout_terminal_or_test": false,
+    "authorizes_production_promotion": false,
+    "interpretation": "This gate can only falsify strict-cycle generation, dynamic candidate closure, and KEEP mechanics."
+  },
+  "implementation": {
+    "module": {
+      "path": "src/aiijc_puzzle/basincycle_synthetic.py",
+      "sha256": "46e6878296d4a9282434f4b5cc9b7d62931dd8511b84eadf83e5ac25223636f9"
+    },
+    "runner": {
+      "path": "scripts/run_basincycle_synthetic_gate.py",
+      "sha256": "87a91b43fb1bc5f002a3df85a10f60a8fd724621c98d4e95ab814403693260e4"
+    },
+    "focused_tests": {
+      "path": "tests/test_basincycle_synthetic.py",
+      "sha256": "ced997c2d9f87150aa27ba172a5b2952b08eae68624921c7a313b6a435d64a4d"
+    }
+  },
+  "panel": {
+    "generator": "fixed-planted-directional-edges-with-disjoint-same-parity-cycles",
+    "case_count": 64,
+    "grid_size": 6,
+    "seed_start": 2026083100,
+    "true_edge_score": 8.0,
+    "false_edge_sigma": 1.0,
+    "true_edge_noise_sigma": 0.25,
+    "distractor_probability": 0.015,
+    "distractor_boost": 4.0,
+    "corruption_cycle_count": 4,
+    "corruption_cycle_length": 3
+  },
+  "search": {
+    "top_k": 8,
+    "candidate_cap": 6,
+    "seed_count": 18,
+    "max_cycle_length": 3,
+    "max_steps": 12,
+    "minimum_delta": 1e-09,
+    "state": "strict-slot-to-tile-permutation",
+    "actions": "KEEP-or-one-atomic-closed-cycle"
+  },
+  "gates": {
+    "require_all_prefixes_strict": true,
+    "minimum_truth_keep_rate": 0.95,
+    "minimum_mean_pair_delta": 4.0,
+    "minimum_mean_exact_delta": 2.0,
+    "maximum_negative_pair_rate": 0.05
+  },
+  "output": {
+    "report_path": "outputs/basincycle-synthetic/gate-v1/report.json",
+    "overwrite": false
+  }
+}
